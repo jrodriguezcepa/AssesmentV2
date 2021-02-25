@@ -112,8 +112,9 @@
 %>
 	<body>
     	<header id="header">
-        	<section class="grid_container">
+        	<section class="grid_container"> 
             	<h1 class="customer_logo" style="background-image: url('../flash/images/logo29.png');">Driver Assessment</h1>
+         
             	<div class="toolbar">
             	</div>
          	</section>
@@ -190,10 +191,22 @@
    <body>
       <header id="header">
          <section class="grid_container">
+<%		if(userSessionData.isMutual()) {
+%>            	<h1 class="customer_logo" style="background-image: url(images/mutual_logo.png);">Driver Assessment</h1>
+					<div class="toolbar">
+			   		<span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
+				</div>
+<%	
+		}else {
+%>   
             <h1 class="customer_logo" style="background-image: url('<%=logoName%>');">Driver Assessment</h1>
+<%		} %>
             <div class="toolbar">
 <%		if(!telematics) {	
+%>
+<%		if(!userSessionData.isMutual()) {
 %>		       <div class="cepa_logo">CEPA Safe Drive</div>
+<%		} %>
                <span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
 <%		}
 %>             <span class="exit"><a href="logout.jsp"><%=messages.getText("generic.messages.logout")%></a></span>

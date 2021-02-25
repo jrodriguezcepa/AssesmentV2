@@ -236,7 +236,16 @@
 	<body>
       	<header id="header">
          	<section class="grid_container">
+<%		if(userSessionData.isMutual()) {
+%>            	<h1 class="customer_logo" style="background-image: url(images/mutual_logo.png);">Driver Assessment</h1>
+					<div class="toolbar">
+			   		<span class="username"><%=user.getFirstName()+" "+user.getLastName() %></span>
+				</div>
+<%	
+		}else {
+%>  
 				<h1 class="customer_logo" style="background-image: url('images/main_logo_large.png');">CEPA Driver Assessment</h1>
+ <%		} %>           	
             	<div class="toolbar">
                		<span class="username"><%=user.getFirstName()+" "+user.getLastName() %></span>
                		<span class="exit">
