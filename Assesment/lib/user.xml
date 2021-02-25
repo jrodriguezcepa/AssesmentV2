@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<assesment id="1" user_name="Diego" company="id_empresa" >
+    <modules>
+        <module id="5" order="1" status="1" >
+            <text>Datos Personales</text>
+        </module>
+        <module id="6" order="2" status="0" >
+            <text>Cultura General de Seguridad</text>
+        </module>
+        <module id="7" order="3" status="1" >
+            <text>Conocimientos de la Política de Seguridad</text>
+        </module>
+        <module id="8" order="4" status="0" >
+            <text>Conocimientos de Seguridad Vehicular</text>
+        </module>
+        <module id="9" order="5" status="0" >
+            <text>Comportamiento</text>
+        </module>
+    </modules>
+</assesment>

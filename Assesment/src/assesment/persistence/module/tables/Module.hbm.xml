@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.module.tables" >
+
+	<class name="Module" table="modules">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">Module_Sequence</param>
+            </generator>
+		</id>
+	    
+		<many-to-one name="assesment" column="assesment" not-null="true"/>
+		
+	    <property name="key" 	column="key" 			type="java.lang.String" 	not-null="true"/>
+	    <property name="order" 	column="moduleorder" 	type="java.lang.Integer" 	not-null="true"/>
+	    <property name="type" 	column="type" 			type="java.lang.Integer" 	/>
+	    
+		<set inverse="true" name="questionSet"  cascade="all-delete-orphan">
+			<key column="module" not-null="true"/>
+			<one-to-many class="assesment.persistence.question.tables.Question" />
+		</set>
+
+  	</class>
+
+</hibernate-mapping>

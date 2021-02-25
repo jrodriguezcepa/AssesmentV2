@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserPsiAnswer" table="psianswerdata">
+
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">UserPsiAnswer_Sequence</param>
+            </generator>
+		</id>
+        <many-to-one name="psiquestion" class="assesment.persistence.question.tables.PsiQuestion" column="psiquestion" />
+        <many-to-one name="psianswer" class="assesment.persistence.question.tables.PsiAnswer" column="psianswer" />
+	</class>
+
+</hibernate-mapping>

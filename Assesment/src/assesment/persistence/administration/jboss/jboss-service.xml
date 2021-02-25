@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>   
+<mbean code="persistence.administration.jboss.ActiveSessionsListener"
+       name="persistence.administration.jboss:service=ActiveSessionsListener">
+     <attribute name="SubscriptionList">     
+      <subscription-list>
+        <mbean name="jboss.monitor:name=Heartbeat,type=Timer"/>
+      </subscription-list>
+     </attribute>
+</mbean>
+</server>

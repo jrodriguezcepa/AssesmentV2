@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+    version="1.8">
+    
+    <pre-processing-commands>
+        <delete-jobs-in-group>*</delete-jobs-in-group>  <!-- clear all jobs in scheduler -->
+        <delete-triggers-in-group>*</delete-triggers-in-group> <!-- clear all triggers in scheduler -->
+    </pre-processing-commands>
+    
+    <processing-directives>
+        <!-- if there are any jobs/trigger in scheduler of same name (as in this file), overwrite them -->
+        <overwrite-existing-data>true</overwrite-existing-data>
+        <!-- if there are any jobs/trigger in scheduler of same name (as in this file), and over-write is false, ignore them rather then generating an error -->
+        <ignore-duplicates>false</ignore-duplicates> 
+    </processing-directives>
+    
+    <schedule>
+    
+<!-- Se deja esto comentado para tenerlo como referencia para otras alertas -->
+<!--	    <job>-->
+<!--	        <name>TestJob1</name>-->
+<!--	        <job-class>org.quartz.examples.example10.SimpleJob</job-class>-->
+<!--	    </job>-->
+<!--	    -->
+<!--        <job>-->
+<!--            <name>TestDurableJob</name>-->
+<!--            <job-class>org.quartz.examples.example10.SimpleJob</job-class>-->
+<!--            <volatility>false</volatility>-->
+<!--            <durability>true</durability>-->
+<!--            <recover>false</recover>-->
+<!--        </job>-->
+<!---->
+<!--	    <trigger>-->
+<!--	        <simple>-->
+<!--	            <name>TestSimpleTrigger1AtFiveSecondInterval</name>-->
+<!--	            <job-name>TestJob1</job-name>-->
+<!--	            <repeat-count>-1</repeat-count>  repeat indefinitely  -->
+<!--	            <repeat-interval>5000</repeat-interval>    every 5 seconds -->
+<!--	        </simple>-->
+<!--	    </trigger>-->
+	
+	 
+		<!-- Tarea Programada para recibir emails de Abitab -->
+	    <job>
+	        <name>AbitabJob</name>
+	        <group>AssessmentJobs</group>
+	        <description>Receptor de emails de Abitab</description>
+	        <job-class>assesment.business.schedulertask.AbitabJob</job-class>
+	        
+	        <job-data-map>
+	            <entry>
+	                <key>nombre</key>
+	                <value>Abitab-Job</value>
+	            </entry>
+	            <entry>
+	                <key>someOtherKey</key>
+	                <value>someOtherValue</value>
+	            </entry>
+	        </job-data-map>
+	    </job>
+	    
+	    <!-- Disparador de la tarea o job: -->
+	    <trigger>
+	        <cron>
+	            <name>AbitabExampleTrigger</name>
+	            <group>AssessmentTriggers</group>
+	            <job-name>AbitabJob</job-name>
+	            <job-group>AssessmentJobs</job-group>
+                <job-data-map>
+                    <entry>
+	                    <key>nombre</key>
+	                    <value>Abitab-Trigger</value>
+                    </entry>
+	                <entry>
+	                    <key>someOtherKey</key>
+	                    <value>someOtherOverriddenValue</value>
+	                </entry>
+                </job-data-map>
+                <!-- http://www.yaxche-soft.com/es/blog/cronexpressions_quartz -->
+                <!-- Segundos Minutos Horas Dia-del-Mes Mes Dia-de-la-semana -->
+                <!-- Corre a las 0:45:0 am todos los dias-* -->                
+                <cron-expression>0 45 0 * * ?</cron-expression>
+                
+                <!-- Corre cada 30 segundos -->
+                <!-- <cron-expression>30 * * ? * *</cron-expression> -->
+            </cron>
+	    </trigger>
+
+<!-- Otra forma de invocar los triggers es al modo "java" sin cron: -->
+<!--	    <trigger>-->
+<!--	        <simple>-->
+<!--	            <name>TestSimpleTrigger2AtTenSecondIntervalAndFiveRepeats</name>-->
+<!--	            <group>GroupOfTestJob2Triggers</group>-->
+<!--	            <job-name>TestJob2</job-name>-->
+<!--	            <job-group>GroupOfTestJob2</job-group>-->
+<!--	            <volatility>true</volatility>-->
+<!--	            <start-time>2010-02-09T10:15:00</start-time>-->
+<!--	            <misfire-instruction>MISFIRE_INSTRUCTION_RESCHEDULE_NOW_WITH_EXISTING_REPEAT_COUNT</misfire-instruction>-->
+<!--	            <repeat-count>5</repeat-count>-->
+<!--	            <repeat-interval>10000</repeat-interval>-->
+<!--	        </simple>-->
+<!--	    </trigger>-->	
+<!--	    <trigger>-->
+<!--	        <cron>-->
+<!--	            <name>TestCronTrigger2AtEveryMinuteOnThe45thSecond</name>-->
+<!--	            <group>GroupOfTestJob2Triggers</group>-->
+<!--	            <job-name>TestJob2</job-name>-->
+<!--	            <job-group>GroupOfTestJob2</job-group>-->
+<!--	            <volatility>true</volatility>-->
+<!--	            <start-time>2010-02-09T12:26:00.0</start-time>-->
+<!--	            <end-time>2012-02-09T12:26:00.0</end-time>-->
+<!--	            <misfire-instruction>MISFIRE_INSTRUCTION_SMART_POLICY</misfire-instruction>-->
+<!--	            <cron-expression>45 * * ? * *</cron-expression>-->
+<!--	            <time-zone>America/Los_Angeles</time-zone>-->
+<!--	        </cron>-->
+<!--        </trigger>-->
+	    
+    </schedule>    
+</job-scheduling-data>

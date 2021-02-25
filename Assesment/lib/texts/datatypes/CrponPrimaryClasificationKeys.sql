@@ -1,0 +1,19 @@
+persistence.datatype.crponprimaryclasification.collisionbetwen	2	1
+persistence.datatype.crponprimaryclasification.collisionfixedobject	2	2
+persistence.datatype.crponprimaryclasification.noncollisionaccident	2	3
+persistence.datatype.crponprimaryclasification.injury	2	4
+persistence.datatype.crponprimaryclasification.contactwithanimal	2	5
+persistence.datatype.crponprimaryclasification.twocompanyvehicles	2	6
+persistence.datatype.crponprimaryclasification.drivenbynonemployee	2	7
+persistence.datatype.crponprimaryclasification.other	2	8
+persistence.datatype.crponprimaryclasification.nearmiss	2	9
+persistence.datatype.crponprimaryclasification.ourdriverlostcontrol	2	10
+persistence.datatype.crponprimaryclasification.ourdriverfailedtoyeld	2	11
+persistence.datatype.crponprimaryclasification.ourdriverparkingbacking	2	12
+persistence.datatype.crponprimaryclasification.ourdriverhitrearotherparty	2	13
+persistence.datatype.crponprimaryclasification.collisionwithstationaryobject	2	14
+persistence.datatype.crponprimaryclasification.slickpavement	2	15
+persistence.datatype.crponprimaryclasification. rollover	2	16
+persistence.datatype.crponprimaryclasification. runofftheroad	2	17
+\.
+

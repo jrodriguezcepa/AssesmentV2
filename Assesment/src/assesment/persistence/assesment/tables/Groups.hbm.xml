@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.assesment.tables" >
+
+	<class name="Group" table="groups">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">Group_Sequence</param>
+            </generator>
+		</id>
+	    
+		<many-to-one name="corporation" column="corporation" not-null="true"/>
+		
+	    <property name="name" column="name" type="java.lang.String"/>
+		<property name="initialText" type="java.lang.Boolean" not-null="true" >
+			<column name="initialtext" default="false" />
+		</property>
+	    <property name="image" column="image" type="java.lang.String"/>
+	    
+	    <property name="layout" 	column="layout"  type="java.lang.Integer" />
+
+		<property name="repeatable" type="java.lang.Boolean" not-null="true" >
+			<column name="repeatable" default="false" />
+		</property>
+
+	    <set inverse="true" name="CategorySet"  cascade="all-delete-orphan">
+			<key column="groupId" not-null="true"/>
+			<one-to-many class="assesment.persistence.assesment.tables.Category" />
+		</set>
+	    
+	    
+  	</class>
+
+</hibernate-mapping>

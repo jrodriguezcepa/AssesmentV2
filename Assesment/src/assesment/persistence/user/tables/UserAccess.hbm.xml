@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.user.tables">
+    <class name="UserAccess" table="usersaccess">
+
+
+        <id name="loginName" column="loginname" type="java.lang.String">
+            <generator class="assigned">
+            </generator>
+        </id>
+ 		<property	name="firstAccess"/>
+ 		<property	name="passwordDate"	type="java.util.Date"	column="passworddate"/>
+
+
+    </class>
+
+</hibernate-mapping>

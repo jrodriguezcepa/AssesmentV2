@@ -1,0 +1,766 @@
+corporation.name.invalid	Nombre Inválido	Invalid Name	
+corporation.name.invalid	Nombre Inválido	Invalid Name	
+corporation.error.alreadyexist	Ya Existe Corporación con ese Nombre	Corporation Already Exists	
+corporation.delete.assesmentasociated	No se puede Borrar - Tiene un Assessment Asociado	Cant be Delete - Has an asociated assessment	
+user.error.invalidpassword	Contraseña Inváida	Invalid Password	
+generic.messages.logout	Salir	Logout	Sair
+generic.messages.preferences	Preferencias	Preferences	Preferências
+generic.user.changepassword	Cambiar Contraseña	Change Password	Alterar Senha
+generic.user.changelanguage	Cambiar Lenguaje	Change Language	Trocar de Idioma
+generic.data.corporation	Corporación	Corporation	Corporação
+generic.data.management	Mantenimiento	Management	Gerenciamento
+system.data.corporations	Corporaciones en el Sistema	System Corporations	Corporação
+generic.messages.save	Salvar	Save	Aceitar
+generic.messages.search	Buscar	Search	Buscar
+generic.corporation	Corporación	Corporation	Corporação
+generic.messages.options	Opciones	Options	Opções
+corporation.message.new	Nuevo	New	Novo
+corporation.data.name	Nombre	Name	Nome
+corporation.data.assesments	Assessments	Assessments	Assessments
+generic.messages.delete	Borrar	Delete	Deletar
+generic.messages.loading	Cargando	Loading	Carregando
+generic.messages.exception	Se ha producido una excepción	An exception has occurred	Ocorreu uma exceção
+generic.messages.senderror	Enviar Mensaje de Error	Send Error Message	Enviar Mensagem de Erro
+generic.exception.description	Descripción	Description	Descrição
+generic.exception.hidedetail	Ocultar Detalle	Hide Detail	Ocultar Detalhe
+generic.exception.send	Enviar	Send	Enviar
+generic.exception.showdetail	Mostrar Detalle	Show Detail	Mostrar Detalhe
+generic.exception.stacktrace	Trazabilidad	Traceability	Rastreabilidade
+generic.exception.systemmessage	Mensaje del Sistema	System Message	Mensagem do Sistema
+corporation.delete.confirm	Confirma que Desea Borrar la Corporación ?	Are You Sure You Want to Delete this Corporation ?	Você Realmente Deseja Deletar essa Corporação ?
+generic.corporation.data	Datos de la Corporación	Corporate Data	Dados da Corporação
+generic.messages.edit	Editar	Edit	Editar
+generic.messages.cancel	Cancelar	Cancel	Cancelar
+generic.corporation.corporationdata.name	Corporación	Corporate Name	Nome da Corporação
+assesment.data.name	Nombre	Name	Nome
+assesment.data.start	Inicio	Start	Início
+assesment.data.end	Fin	End	Fin
+generic.messages.notresult	Sin Datos	No Data	Sem Dados
+corporation.action.addassesment	Nuevo Assessment	New Assessment	Novo Assessment
+generic.assesment	Assessment	Assessment	Assessment
+generic.assesment.new	Nuevo Assessment	New Assessment	Novo Assessment
+generic.messages.select	Seleccione una Opción	Select an Option	Selecione a Opção
+generic.assesment.data	Datos del Assessment	Assessment Data	Dados da Assessment
+assesment.data.corporation	Corporación	Corporation	Corporação
+assesment.data.description	Descripción	Description	Descrição
+assesment.delete.confirm	Confirma que Desea Borrar el Assessment ?	Are You Sure You Want to Delete this Assessment ?	Você Realmente Deseja Deletar esse Assessment ?
+assesment.delete.moduleasociated	No se puede Borrar - Tiene Modulos Asociados	Cant be Delete - Has Asociated Modules	
+assesment.data.modules	Modulos	Modules	Modulos
+assesment.action.newmodule	Agregar Modulo Nuevo	Add New Module	Adicionar Modelo Novo
+assesment.action.existingmodule	Agregar Modulo Existente	Add Existing Module	Adicionar Modelo Existente
+generic.data.assesment	Assessment	Assessment	Assessment
+system.data.assesments	Assessments en el Sistema	System Assessments	
+assesment.message.new	Nuevo	New	Novo
+generic.module	Módulo	Module	
+generic.module.data	Datos del Módulo	Module Data	
+module.data.corporation	Corporación	Corporation	Corporação
+module.data.assesment	Assessment	Assessment	Assessment
+module.data.name	Nombre	Name	Nome
+module.data.name.es	Español	Spanish	Espanhol
+module.data.name.en	Ingles	English	Inglês
+module.data.name.pt	Portugués	Portuguese	Português
+module.name.empty	El Nombre debe Ingresarse para Todos los Idiomas		
+module.data.withoutquestions	Sin Preguntas Asociadas	Without Any Question Asocciated	
+module.data.questions	Preguntas Asociadas	Asociated Questions	
+module.action.newquestion	Agregar Pregunta Nueva	Add New Question	
+module.action.existingquestion	Agregar Pregunta Existente	Add Existing Question	
+module.delete.confirm	Confirma que Desea Borrar el Módulo y sus Preguntas?	Are You Sure You Want to Delete this Module and its Questions?	Você Realmente Deseja Deletar esse Module ?
+generic.question	Pregunta	Question	
+generic.question.data	Datos de la Pregunta	Question Data	
+question.data.module	Módulo	Module	Modulo
+question.data.text	Texto	Text	Texto
+question.data.name.es	Español	Spanish	Espanhol
+question.data.name.en	Ingles	English	Inglês
+question.data.name.pt	Portugués	Portuguese	Português
+question.data.type	Tipo	Type	Tipo
+question.data.optioncount	Cantidad de Opciones	Options Count	
+question.data.options	Opciones	Options	
+question.data.option	Opción 	Option 	
+question.result.green	Verde	Green	
+question.result.yellow	Amarillo	Yellow	
+question.result.red	Rojo	Red	
+question.error.emptytext	Debe Completar el Texto de la Pregunta en Todos los Idiomas		
+question.error.emptytype	Debe Ingresar el Tipo de la Pregunta		
+question.data.resultvalue	Tipo de Resultado	Result Type	
+question.error.emptyanswertext	Debe Completar el Texto de las Opciones en Todos los Idiomas		
+question.error.emptyanswertype	Debe Ingresar el Tipo de las Opciones		
+module.data.asociatedquestion	Preguntas Asociadas	Asociated Questions	
+module.data.onequestion	Solo 1 Pregunta Asociada	Only 1 Asociated Question	
+module.data.questions.view	Ver Preguntas	View Questions	
+module.data.questions.hide	Ocultar Preguntas	Hide Questions	
+question.delete.confirm	Confirma que Desea Borrar esa Pregunta ?	Are You Sure You Want to Delete this Question ?	Você Realmente Deseja Deletar essa Pregunta ?
+generic.data.genericmodules	Módulos Genéricos	Generic Modules	
+system.data.genericmodules	Módulos Genéricos	Generic Modules	
+module.message.new	Nuevo	New	Novo
+system.data.modules	Módulos en el Sistema	System Modules	
+module.data.question	Cantidad de Preguntas	Question Count	
+system.add.genericmodules	Módulos Genéricos	Generic Modules	
+module.add.confirm	Confirma que Desea Agregar ese Módulo y sus Preguntas ?	Are You Sure You Want to Add this Module and Questions ?	Você Realmente Deseja Adicionar esse Modulo y Preguntas ?
+module.messages.delete	Borrar Módulo	Delete Module	
+question.messages.delete	Borrar Preguntas	Delete Questions	
+system.add.genericquestions	Agregar Pregunta Existente		
+system.data.questions	Preguntas Existentes		
+module.data.text	Texto	Text	Texto
+module.data.type	Tipo	Type	Tipo
+question.add.confirm	Confirma que Desea Agregar Esta/s Pregunta/s ?		
+generic.messages.add	Agregar	Add	Adicionar
+assesment.status.editable	Editable	Editable	Editable
+assesment.status.noeditable	No Editable	Non Editable	No Editable
+assesment.status.ended	Finalizado	Ended	Finalizado
+assesment.data.status	Estado	Status	Estado
+question.data.image	Imagen Asociada	Associated Image	
+generic.systemusers	Usuarios del sistema	System Users	Usuários do Sistema
+user.data.firstname	Nombre	First Name	Nome
+user.data.firstname.isempty	El nombre es nulo	First name is blank	O campo Nome está vazio
+user.data.firstname.isinvalid	El atributo nombre es invalido	First name is invalid	O nome informado é inválido
+user.data.isempty	Los datos del usuario son nulos	User data is blank	Os dados de usuários estão vazios
+user.data.isinvalid	Los datas del usuario son inválidos	User data is invalid	Os dados de usuário são inválidos
+user.data.language	Lenguaje	Language	Idioma
+user.data.language.isempty	El atributo language es nulo	Language is blank	o campo Idioma está vazio
+user.data.language.isinvalid	El atributo language es invalido	Language is invalid	Idioma inválido
+user.data.lastname	Apellido	Last Name	Sobrenome
+user.data.lastname.isempty	El apellido es nulo	Last name is blank	O campo Sobrenome está vazio
+user.data.lastname.isinvalid	El atributo apellido es invalido	Last name is invalid	O sobrenome informado é inválido
+user.data.loginname.isinvalid	El atributo usuario es invalido	Login name is invalid	O nome de usuário informado é inválido
+user.data.mail	Correo	Email	Endereço eletrônico
+user.data.mail.isempty	El e-mail es nulo	Email is blank	O campo Endereço Eletrônico está vazio
+user.data.mail.isinvalid	El atributo e-mail es invalido	Email is invalid	O endereço eletrônico informado é inválido
+user.data.nickname	Usuario	User	Usuário
+user.data.pass	Password	Password	Senha
+user.data.pass.confir.different	La contraseña y su confirmación son diferentes	The password and its confirmation don't match	A senha e a confirmação da senha são diferentes
+user.data.pass.isempty	La password es nula	Password is blank	O campo Senha está vazio
+user.data.pass.isinvalid	El atributo password es invalido	Password is invalid	A senha informada é inválida
+user.data.role	Rol	Job Title	Função
+user.delete.confirm	Confirma que desea borrar este usuario ?	Are you sure you want to delete this user?	Você realmente deseja deletar este usuário?
+generic.data.users	Usuarios	Users	Usuários
+generic.user.new	Nuevo Usuario	New User	Novo Usuário
+en	Ingles	English	Inglês
+es	Español	Spanish	Espanhol
+pt	Portugués	Portuguese	Português
+generic.messages.all	Todos	All	Todos
+generic.messages.of	de	of	de
+role.administrator.name	Administrador del Sistema	System Administrator	Adminstrador de Sistema
+role.systemacces.name	Conductor	Driver	Condutor
+role.systemaccess.name	Conductor	Driver	Condutor
+generic.user.data	Datos del usuario	System User Data	Dados do Usuário
+user.data.confirmpassword	Confirmar el password	Confirm password	Confirmar senha
+user.create.with.password	Crear y Generar Password	Create and Genereate Password	Criar sim Senha
+generic.messages.modify	Modificar	Modify	Modificar
+user.data.resetpassword	Cambiar clave	Change Password	Mudar a senha
+user.resetpassword.foruser	Cambiar Clave del Usuario 	Change User's Password	Mudar a Senha do Usuário
+user.data.newpass	Nueva Clave	New Password	Nova Senha
+user.data.confirmnewpassword	Confirmar la Nueva Clave	Confirm New Password	Confirmar Nova Senha
+user.resetpassword.newdata	Nuevos Datos	New Data	Novos Dados
+user.data.assesement	Assessment Asociado	Asociated Assessment	
+user.data.assesements	Assessments Asociados	Asociated Assessments	
+user.assesment.notassociated	Ninguno	None	
+user.assesment.asociate	Asociar Assessment	Associate Assessment	
+user.assesment.desasociate.confirm	Confirma que Desea Borrar esta Asociación ?		
+generic.data.reports	Reportes	Reports	Reportes
+system.questions	Preguntas	Questions	
+system.report.assesments	Reporte de Assessment	Assessment Report	
+generic.report.parameters	Parámetros	Parameters	
+generic.report.open	Abrir Reporte	Open Report	
+generic.report.output	Salida	Ouput	
+question.result.correct	Correcto	Correct	Correto
+question.result.half	Medio	Half	
+question.result.incorrect	Incorrecto	Incorrect	Incorreto
+question.data.testtype	Se Toma en Cuenta para la Evaluación		
+generic.messages.yes	Si	Yes	Sim
+generic.messages.no	No	No	No
+system.report.users	Usuarios que Realizaron el Assessment	Users Who Made the Assessment	
+report.users.not	Usuarios que no comenzaron el Assessment	Users who do not start the Assessment	
+generic.messages.of	de	of	de
+assesment.modules	Módulos del Assessment	Assessment Modules	
+generic.data.results	Resultados Generales	General Results	
+generic.driver.results	Resultados de Usuario	User Results	
+generic.user.search	Buscar Usuario	Search	
+assesment.data.psitest	Incluye Test de Comportamiento	Include Behavorial Assessment	Incluye Test de Comportamento
+assesment.module.psicologic	Test de Comportamiento	Behavorial Assessment	Test de Comportamento
+question.type.text	Texto	Text	Texto
+question.type.date	Fecha	Date	Fecha
+question.type.excludedoptions	Opciones Excluyentes	Excluded Options	Opciones
+question.type.includedoptions	Opciones Incluyentes	Included Options	Opciones
+question.type.email	Ingreso de Email		
+question.type.country	Ingreso de País		
+question.type.list	Lista de Opciones		
+question.type.number	Ingreso de Número		
+question.type.kilometers	Ingreso de Kilometros		
+question.type.optionaldate	Fecha Opcional		
+module.delete.questionanswered	No se puede borrar - Tiene preguntas ya contestadas		
+generic.messages.changeorder	Cambiar Orden de Módulos		
+generic.messages.changequestionorder	Cambiar Orden de Preguntas		
+module.action.moveup	Subir		
+module.action.movedown	Bajar		
+generic.messages.end	Terminar	End	
+user.sex.female	Femenino	Female	Feminino
+user.sex.male	Masculino	Male	Masculino
+user.location.acomp	Acompañante	Accompanist	
+user.location.general	General	General	
+user.location.nonsales	Non Sales	Non sales	
+user.location.plant	Planta	Plant	
+user.location.sales	Sales	Sales	
+user.data.birthdate	Fecha de Nacimiento	Date of Birth	Data de Nascimento
+user.data.sex	Sexo	Sex	Sexo
+user.data.country	País	Country	Pais
+user.data.nationality	Nacionalidad	Nationality	
+user.data.startdate	Fecha de Ingreso	Start Date	
+user.data.expirydate	Vencimiento de Licencia	License Expiry Date	
+user.data.vehicle	Vehículo	Vehicle	
+user.data.location	Ubicación	Location	
+datatype.country.al	Albania	Albanian	Albânia
+datatype.country.de	Alemania	Germany	Alemanha
+datatype.country.sa	Arabia Saudita	Saudi Arabia	Arábia Saudita
+datatype.country.ag	Argelia	Algeria	Argélia
+datatype.country.ar	Argentina	Argentina	Argentina
+datatype.country.au	Australia	Australia	Austrália
+datatype.country.at	Austria	Austria	Áustria
+datatype.country.bs	Bahamas	Bahamas	Bahamas
+datatype.country.bd	Bangladesh	Bangladesh	Bangladesh
+datatype.country.bb	Barbados	Barbados	Barbados
+datatype.country.be	Bélgica	Belgium	Bélgica
+datatype.country.bz	Belice	Belize	Belize
+datatype.country.bm	Bermudas	Bermudas	Bermudas
+datatype.country.bo	Bolivia	Bolivia	Bolívia
+datatype.country.ba	Bosnia - Herzegovina	Bosnia & Herzegovina	Bósnia
+datatype.country.br	Brasil	Brazil	Brasil
+datatype.country.bg	Bulgaria	Bulgaria	Bulgária
+datatype.country.ca	Canadá	Canada	Canadá
+datatype.country.cl	Chile	Chile	Chile
+datatype.country.cn	China	China	China
+datatype.country.co	Colombia	Colombia	Colômbia
+datatype.country.kr	Corea del Sur	South Korea	Coréia do Sul
+datatype.country.cr	Costa Rica	Costa Rica	Costa Rica
+datatype.country.hr	Croacia	Croatia	Croácia
+datatype.country.cu	Curazao	Curacao	Curaçao
+datatype.country.dk	Dinamarca	Denmark	Dinamarca
+datatype.country.dm	Dominica	Dominica	Dominica
+datatype.country.ec	Ecuador	Ecuador	Equador
+datatype.country.eg	Egipto	Egypt	Egito
+datatype.country.sv	El Salvador	El Salvador	El Salvador
+datatype.country.ae	Emiratos Árabes Unidos	United Arab Emirates	Emirados Árabes Unidos
+datatype.country.sk	Eslovaquia	Slovakia	Eslováquia
+datatype.country.si	Eslovenia	Slovenia	Eslovênia
+datatype.country.es	España	Spain	Espanha
+datatype.country.us	Estados Unidos	United States of America	Estados Unidos da América
+datatype.country.ee	Estonia	Estonia	Estônia
+datatype.country.ph	Filipinas	Philippines	Filipinas
+datatype.country.fi	Finlandia	Finland	Finlândia
+datatype.country.fr	Francia	France	França
+datatype.country.gr	Grecia	Greece	Grécia
+datatype.country.gp	Guadalupe	Guadalupe	Guadalupe
+datatype.country.gt	Guatemala	Guatemala	Guatemala
+datatype.country.gf	Guyana Francesa	French Guyana	Guiana Francesa
+datatype.country.ha	Haití	Haiti	Haiti
+datatype.country.nl	Holanda	Holland	Holanda
+datatype.country.hn	Honduras	Honduras	Honduras
+datatype.country.hk	Hong Kong	Hong Kong	Hong Kong
+datatype.country.hu	Hungría	Hungary	Hungria
+datatype.country.in	India	India	Índia
+datatype.country.id	Indonesia	Indonesia	Indonésia
+datatype.country.gb	Inglaterra	England	Inglaterra
+datatype.country.ie	Irlanda	Ireland	Irlanda
+datatype.country.il	Israel	Israel	Israel
+datatype.country.it	Italia	Italy	Itália
+datatype.country.ja	Jamaica	Jamaica	Jamaica
+datatype.country.jp	Japón	Japan	Japão
+datatype.country.jo	Jordania	Jordan	Jordânia
+datatype.country.ke	Kenia	Kenya	Kenia
+datatype.country.lv	Letonia	Latvia	Letônia
+datatype.country.lb	Líbano	Libya	Líbano
+datatype.country.lt	Lituania	Lithuania	Lituânia
+datatype.country.lu	Luxemburgo	Luxemburg	Luxemburgo
+datatype.country.my	Malasia	Malaysia	Malásia
+datatype.country.ma	Marruecos	Morocco	Marrocos
+datatype.country.mx	México	Mexico	México
+datatype.country.ni	Nicaragua	Nicaragua	Nicarágua
+datatype.country.no	Noruega	Norway	Noruega
+datatype.country.nz	Nueva Zelanda	New Zealand	Nova Zelândia
+datatype.country.pk	Pakistán	Pakistan	Paquistão
+datatype.country.pa	Panamá	Panama	Panamá
+datatype.country.py	Paraguay	Paraguay	Paraguai
+datatype.country.pe	Perú	Peru	Peru
+datatype.country.pl	Polonia	Poland	Polônia
+datatype.country.pt	Portugal	Portugal	Portugal
+datatype.country.pr	Puerto Rico	Puerto Rico	Porto Rico
+datatype.country.cz	Rep. Checa	Czech Republic	República Tcheca
+datatype.country.do	Rep. Dominicana	Dominican Republic	República Dominicana
+datatype.country.ro	Rumania	Romania	Romênia
+datatype.country.ru	Rusia	Russia	Rússia
+datatype.country.sg	Singapur	Singapore	Cingapura
+datatype.country.lk	Sri Lanka	Sri Lanka	Sri Lanka
+datatype.country.za	Sudáfrica	South Africa	África do Sul
+datatype.country.se	Suecia	Sweden	Suécia
+datatype.country.ch	Suiza	Switzerland	Suíça
+datatype.country.th	Tailandia	Thailand	Tailândia
+datatype.country.tw	Taiwán	Taiwan	Taiwan
+datatype.country.tt	Trinidad y Tobago	Trinidad & Tobago	Trinidad e Tobago
+datatype.country.tr	Turquía	Turkey	Turquia
+datatype.country.ua	Ucrania	Ukraine	Ucrânia
+datatype.country.uy	Uruguay	Uruguay	Uruguai
+datatype.country.ve	Venezuela	Venezuela	Venezuela
+datatype.country.vn	Vietnam	Vietnam	Vietnã
+module.data.type1	Datos Personales		
+module.data.type2	Cultura General		
+module.data.type3	Políticas de Seguridad		
+module.data.type4	Seguridad Vehicular		
+module.data.type5	Otros		
+question.data.group	Agrupar Preguntas		
+module.question.group	Grupo	Group	
+module.question.nogroup	No Agrupada		
+question.group.error	Los grupos deben mantener el orden de las preguntas		
+generic.messages.accept	Aceptar		
+question.resultreport.title	Resultados de Pregunta	Question Results	
+question.resultreport.question	Pregunta		
+question.resultreport.answer	Respuesta	Answer	
+question.resultreport.count	Cantidad	Count	Quantidade
+generic.question.results	Por Pregunta	By Question	
+generic.data.questionresults	Reporte de Resultado de Preguntas	Questions Results	
+generic.questions.search	Preguntas	Questions	
+test.result.invalidnumber	Debe Ingresar un Número en la Pregunta 		
+test.result.invalidemail	Error en formato de email en la Pregunta 		
+report.error.selectassesment	Debe seleccionar un assessment		
+report.generalresult.title	Resultados del Assessment	Assessment Results	
+report.generalresult2.count	#*	#*	#*
+report.generalresult2.counttext	*Participantes que contestaron en este nivel	*Participants	*Participantes
+report.generalresult2.average	%**	%**	%**
+report.generalresult2.averagetext	**Porcentaje de respuestas correctas	 Correct answers precentage	Porcentaje de respuestas correctas
+report.generalresult.average	Promedio		
+report.generalresult.lowlevel	Nivel Bajo	Low Level	
+report.generalresult.meddiumlevel	Nivel Medio	Meddium Level	
+report.generalresult.highlevel	Nivel Alto	High Level	
+report.generalresult.total	Total	Total	Total
+report.generalresult.module	Módulo	Module	Modulo
+report.assesment.title	Preguntas de Assessment	Assessment Questions	
+report.assesment.questions	Preguntas		
+report.assesment.assesments	Assessment		
+report.userresult.title	Resultados de Usuario	User Result	Resultados do Usuário
+report.userresult.module	Módulo	Module	Modulo
+report.userresult.right	Correctas	Correct	Corretas
+report.userresult.wrong	Incorrectas	Incorrect	Incorretas
+report.userresult.user	Usuario	User	Usuário
+report.userresult.moduletitle	Resultados por Módulo	Module Results	Resultados por Modulo
+report.users.title	Usuarios del Assessment	Assessments Users	
+report.users.totalcount	Cantidad de Usuarios Habilitados		
+report.users.all	Realizaron todo el Assessment	Made All the Assessment	
+report.users.part	Realizaron parte del Assessment	Made Part of the Assessment	
+report.users.none	No Comenzaron el Assessment	Do Not Start the Assessment	
+report.users.name	Nombre	Name	
+report.users.answered	Contestadas	Answered	
+answer.units.kilometers	Kilometros		
+answer.units.miles	Millas		
+generic.messages.management	Mantenimiento	Management	
+generic.messages.createfromdc	Crear desde DataCenter	Create From DataCenter	
+user.corporation.name	Corporación		
+user.corporation.drivers	Cantidad de Conductores		
+user.corporations	Corporaciones en DataCenter		
+user.password.generate	Generar Aleatoriamente		
+user.password.insert	Insertar la Misma para Todos		
+user.corporation.password	Ingrese Password		
+user.corporation.generatefile	Generar Archivo con Datos		
+user.corporation.otherdata	Otros Datos		
+user.accesscode.emptynumber	Debe Ingresar Cantidad de Accesos		
+user.accesscode.wrongnumber	Número de Accesos Incorrecto		
+user.accesscode.emptyassesment	Debe Seleccionar Assessment		
+user.accesscode.shortaccesscode	Código de Acceso Demasiado Corto		
+user.accesscode.title	Ingreso de Código de Acceso		
+user.accesscode.data	Datos		
+user.accesscode.code	Código de Acceso		
+user.accesscode.number	Cantidad de Accesos		
+generic.messages.createaccesscode	Crear Código de Acceso		
+user.accesscode.list	Lista de Códigos de Acceso		
+user.accesscodes	Códigos de Acceso	Access Code	
+user.accesscode.used	Utilizados		
+user.accesscode.numberlessused	La cantidad de accesos no puede ser menor a la de utilizados		
+accesscode.error.emptycode	Ingrese Código de Acceso		
+accesscode.error.unknowncode	Código de Acceso desconocido		
+accesscode.error.nolicences	Este código no tiene más licencias		
+module.resultreport.title	Resultados del Módulo	Results by Module	
+module.resultreport.assesment	Assessment	Assessment	
+module.resultreport.module	Módulo	Module	
+module.resultreport.question	Pregunta	Question	
+module.resultreport.wrong	Incorrectas	Incorrect	Incorretas
+module.resultreport.right	Correctas	Wrong	Corretas
+generic.question.module.results	Por Módulo	By Module	
+web.user.resetpassword.resetpassword	Cambiar clave	Change Password	Mudar a senha
+generic.user.userdata.pass	Password	Password	Senha
+web.user.create.confirmpassword	Confirmar el password	Confirm password	Confirmar senha
+generic.messages.close	Cerrar	Close	Fechar
+web.user.resetpassword.resetpassword	Cambiar clave	Change Password	Mudar a senha
+generic.user.userdata.changepassword.success	La contraseña fue cambiada	The password was changed	A senha foi trocada
+generic.user.currentlanguage	Lenguaje actual	Current language	Idioma atual
+generic.messages.changeto	Cambiar a	Change to	Alterar para
+generic.user.userdata.pass.confir.different	La contraseña y su confirmación son diferentes	The password and its confirmation don't match	A senha e a confirmação da senha são diferentes
+generic.user.userdata.pass.isempty	La password es nula	Password is blank	O campo Senha está vazio
+assesment.error.emptycorporation	Debe Seleccionar Corporación		
+assesment.error.emptyname	Debe Ingresar Nombre del Assessment		
+assesment.error.wrongstartdate	Fecha de Inicio Incorrecta		
+assesment.error.wrongenddate	Fecha de Finalización Incorrecta		
+generic.user.userdata.country.isempty	Debe Ingresar País		
+generic.user.userdata.nationality.isempty	Debe Ingresar Nacionalidad		
+generic.user.userdata.loginname.isinvalid	Debe Ingresar Clave de Usuario		
+generic user.userdata.passconfirm	La Contraseña y su Confirmación deben ser Iguales		
+generic.user.userdata.firstname.isempty	Debe Ingresar Nombre de Usuario		
+generic.user.userdata.lastname.isempty	Debe Ingresar Apellido de Usuario		
+generic.user.userdata.language.isempty	Debe Ingresar Lenguaje		
+generic.user.userdata.birthdate.isempty	Debe Ingresar Fecha de Nacimiento		
+user.error.alreadyexist	El usuario ya existe	The user already exists	O usuário já existe
+psiquestion1.answer1.text	me irritan bastante las fallas del lugar	I feel annoyed by this lack of attention to detail 	fico bastante irritado(a) com as falhas do estabelecimento.
+psiquestion1.answer2.text	intermedio	Intermediate 	meio termo.
+psiquestion1.answer3.text	no me irritan las fallas del lugar	It does not bother me	não me irrito com as falhas do estabelecimento.
+psiquestion2.answer1.text	sí	Yes 	Sim.
+psiquestion2.answer2.text	intermedio	Intermediate 	Às vezes.
+psiquestion2.answer3.text	no	No	Não.
+psiquestion3.answer1.text	miro la escena	I stare at the scene	olho para a cena.
+psiquestion3.answer2.text	intermedio	Intermediate	meio termo. 
+psiquestion3.answer3.text	prefiero no mirar	I prefer not to look at the scene	prefiro não olhar.
+psiquestion4.answer1.text	quedo bastante conforme	I am pretty much satisfied with the result	fico satisfeito.
+psiquestion4.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion4.answer3.text	no quedo conforme	I am not satisfied at all with the result 	não fico satisfeito.
+psiquestion5.answer1.text	cierto	True	Correto.
+psiquestion5.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion5.answer3.text	falso, casi siempre tengo claro si lo que hacen es correcto	False. I am almost always certain of whether or not they are doing the right thing	Incorreto, quase sempre tenho certeza se o que fazem é o certo.
+psiquestion6.answer1.text	sí	Yes	Sim.
+psiquestion6.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion6.answer3.text	no pienso en esa posibilidad	That option never crosses my mind 	Não penso nessa possibilidade.
+psiquestion7.answer1.text	hago mis jugadas con rapidez	I quickly make my move 	faço minhas jogadas com rapidez.
+psiquestion7.answer2.text	intermedio	Intermediate 	meio termo.
+psiquestion7.answer3.text	demoro un poco, porque pienso bien cada jugada	It takes me some time to make my move, as I need to think carefully 	demoro um pouco, porque penso bastante em cada jogada.
+psiquestion8.answer1.text	mis opiniones son intermedias, ni del todo a favor ni del todo en contra	My opinions are quite neutral; I am neither all in favor nor all against 	minhas opiniões são intermediárias, nem completamente a favor, nem completamente contra. 
+psiquestion8.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion8.answer3.text	mis opiniones son definidas, estoy a favor o en contra	I stick to my guns	minhas opiniões são definidas, a favor ou contra.
+psiquestion9.answer1.text	que está muy ocupado o le surgió un imprevisto	S/he must be very busy or something must have come up at the last minute	que está muito ocupado ou que surgiu um imprevisto.
+psiquestion9.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion9.answer3.text	que debería calcular mejor sus horarios	S/he needs to work on scheduling her/his appointments 	que deveria calcular melhor seus horários.
+psiquestion10.answer1.text	sí	Yes	Sim.
+psiquestion10.answer2.text	intermedio	Intermediate 	Meio termo.
+psiquestion10.answer3.text	no	No	Não.
+psiquestion11.answer1.text	sí, un poco	Yes, a little	Sim, um pouco.
+psiquestion11.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion11.answer3.text	muy poco	Not really	Muito pouco.
+psiquestion12.answer1.text	la defiendo apasionadamente	I defend it passionately	defendo-a veementemente.
+psiquestion12.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion12.answer3.text	doy mi opinión, sin mucho calor emocional	I simple give my opinion, as objectively as possible 	dou minha opinião, sem muita exaltação.
+psiquestion13.answer1.text	sí, me lo pregunto	Yes, I do 	Sim, fico me perguntando.
+psiquestion13.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion13.answer3.text	no, supongo que se ríen de otra cosa	No, I assume they are laughing at or about something else 	Não, acho que estão rindo de outra coisa.
+psiquestion14.answer1.text	sí	Yes	Sim.
+psiquestion14.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion14.answer3.text	no	No	Não.
+psiquestion15.answer1.text	sí	Yes	Sim.
+psiquestion15.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion15.answer3.text	no, la mayoría de las veces no me formo una opinión definida	No, I do not usually have an immediate opinion of someone I have just met	Não, na maioria das vezes não formo uma opinião definida.
+psiquestion16.answer1.text	la mantengo el tiempo previsto	I continue for the agreed period 	continuo com a atividade pelo tempo previsto.
+psiquestion16.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion16.answer3.text	la suspendo	I quit the activity	interrompo a atividade.
+psiquestion17.answer1.text	sí	Yes	Sim.
+psiquestion17.answer2.text	intermedio	Intermediate	Às vezes.
+psiquestion17.answer3.text	no	No	Não.
+psiquestion18.answer1.text	me olvido enseguida	I forget right away	logo me esqueço.
+psiquestion18.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion18.answer3.text	lo tengo presente, por si se repite	I make a mental note, in case this happens again	não esqueço e fico atento para ver se a situação vai se repetir.
+psiquestion19.answer1.text	sí, me tomo un tiempo	Yes, I do take my time	Sim, perco um tempo.
+psiquestion19.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion19.answer3.text	no, contesto enseguida	No, I reply immediately	Não, respondo logo.
+psiquestion20.answer1.text	sí	Yes	Sim.
+psiquestion20.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion20.answer3.text	no	No	Não.
+psiquestion21.answer1.text	sí, bastante	Yes, quite a lot	Sim, bastante.
+psiquestion21.answer2.text	un poco	A little	Um pouco.
+psiquestion21.answer3.text	no, los tomo con resignación	No, I simply accept them as part of life	Não, enfrento esses momentos com paciência.
+psiquestion22.answer1.text	analizo brevemente las opciones y elijo la película, el bar o el restaurante	I briefly analyze the options and chose the movie, bar or restaurant	analiso rapidamente as opções e escolho logo o filme, bar ou restaurante.
+psiquestion22.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion22.answer3.text	analizo detenidamente las opciones, aunque me lleve un tiempo	I carefully analyze the options, even if it takes me some time	analiso em detalhes as opções, mesmo que tome mais tempo.
+psiquestion23.answer1.text	sí	Yes	Sim.
+psiquestion23.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion23.answer3.text	no me resulta divertida	No, I do not like it	Não as acho divertidas.
+psiquestion24.answer1.text	sí	Yes	Sim.
+psiquestion24.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion24.answer3.text	no, tengo la impresión de que me voy a caer	No, I feel that I am going to fall	Não, tenho a impressão de que vou cair.
+psiquestion25.answer1.text	se lo explico lentamente un par de veces	I explain it to them slowly and a couple of times, if necessary	explico lentamente várias vezes.
+psiquestion25.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion25.answer3.text	prefiero mostrarle yo mismo cómo se hace	I would rather show them myself how to do it	prefiro eu mesmo mostrar como se faz.
+psiquestion26.answer1.text	decido enseguida si me interesa o no	I can decide straight away whether it is interesting or not	decido logo se me interessa ou não.
+psiquestion26.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion26.answer3.text	me tomo un tiempo para ver si me interesa	It takes me some time to decide if it interests me	levo um tempo para ver se me interessa.
+psiquestion27.answer1.text	que no me vio o no me reconoció	S/he did not see or recognize me	que não me viu ou não me reconheceu.
+psiquestion27.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion27.answer3.text	que en ese momento prefirió no saludarme	S/he chose not to say ‘hi’	que naquele momento preferiu não me cumprimentar.
+psiquestion28.answer1.text	sí	Yes	Sim.
+psiquestion28.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion28.answer3.text	no	No	Não.
+psiquestion29.answer1.text	sí, en la mayoría de los casos	Yes, in most cases	Sim, na maioria dos casos.
+psiquestion29.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion29.answer3.text	sólo en algunos casos	Only in some cases	Somente em alguns casos.
+psiquestion30.answer1.text	prefiero pensarlo, aunque después tenga que volver	I prefer to think it over, even if I have to come back for it later	prefiro pensar antes de comprar, mesmo que tenha que voltar depois.
+psiquestion30.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion30.answer3.text	lo compro en el momento	I buy it there and then	compro naquele momento.
+psiquestion31.answer1.text	cierto	True	Correto
+psiquestion31.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion31.answer3.text	Falso	False	Incorreto.
+psiquestion32.answer1.text	señalo sus ventajas y desventajas	Point out its advantages and disadvantages	aponto suas vantagens e desvantagens.
+psiquestion32.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion32.answer3.text	digo si estoy de acuerdo o no con el proyecto	I state whether I agree with it or not	digo se estou ou não de acordo.
+psiquestion33.answer1.text	sí, a veces lo noto	Yes, I do	Sim, às vezes percebo.
+psiquestion33.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion33.answer3.text	no, no lo noto	No, I do not	Não, não percebo.
+psiquestion34.answer1.text	la compro	I buy it straight away	eu a compro.
+psiquestion34.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion34.answer3.text	prefiero mirar otras cosas o pensarlo mejor	I prefer to browse some more and think before I buy	prefiro olhar outras coisas ou pensar melhor.
+psiquestion35.answer1.text	sí	yes	Sim.
+psiquestion35.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion35.answer3.text	no	no	Não.
+psiquestion36.answer1.text	cierto	True	Correto.
+psiquestion36.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion36.answer3.text	falso, muchas veces lo noto	False, I have noticed many times	Incorreto, muitas vezes percebo.
+psiquestion37.answer1.text	sí, me irrita bastante	Yes, they do	Sim, fico bastante irritado(a).
+psiquestion37.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion37.answer3.text	me molesta un poco	They bother me a little	Fico só um pouco incomodado(a).
+psiquestion38.answer1.text	quiero que diga claramente si está de acuerdo o no	I want that person to clearly state whether they agree or not	quero que diga claramente se está ou não de acordo.
+psiquestion38.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion38.answer3.text	me alcanza con que diga qué le ve de bueno y de malo	It is enough for them to tell me the pros and cons	basta que me diga o que acha de positivo e negativo na idéia.
+psiquestion39.answer1.text	al rato lo pido de nuevo	I ask again later	depois de um tempo, peço novamente.
+psiquestion39.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion39.answer3.text	insisto enseguida	I ask again straight away 	insisto logo depois.
+psiquestion40.answer1.text	me fastidia un poco pero lo tomo bien	It bothers me a bit, but that’s OK	fico um pouco aborrecido, mas aceito bem.
+psiquestion40.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion40.answer3.text	me divierte	I find it funny	eu me divirto.
+psiquestion41.answer1.text	sí	Yes	Sim.
+psiquestion41.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion41.answer3.text	no	No	Não.
+psiquestion42.answer1.text	sí	Yes	Sim.
+psiquestion42.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion42.answer3.text	no, escucho la explicación	No, I listen to the full explanation	Não, escuto a explicação.
+psiquestion43.answer1.text	cierto	True	Correto.
+psiquestion43.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion43.answer3.text	falso, les reconozco virtudes y defectos sin llegar a una conclusión final	False, I recognize people’s virtues and defects without forming an immediate opinion	Incorreto, reconheço virtudes e defeitos sem chegar a uma conclusão final.
+psiquestion44.answer1.text	pienso un rato si me conviene comprarlo	I ponder whether I should buy it or not	penso um pouco se convém comprá-lo.
+psiquestion44.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion44.answer3.text	decido en el momento si lo compro o no	I decide straight away whether I will buy it or not	decido na hora se compro ou não.
+psiquestion45.answer1.text	sí	Yes	Sim.
+psiquestion45.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion45.answer3.text	no	No	Não.
+psiquestion46.answer1.text	voy igual	I go anyway	vou assim mesmo.
+psiquestion46.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion46.answer3.text	me disculpo y no voy	I apologize for not going	peço desculpas e não vou.
+psiquestion47.answer1.text	supongo que está ocupado	I assume s/he is busy	imagino que está ocupado.
+psiquestion47.answer2.text	intermedio	Intermediate	meio termo.
+psiquestion47.answer3.text	supongo que no tiene mucho apuro en contestarme	I assume they are not concerned with returning my call or message soon	imagino que não está com muita pressa para me responder.
+psiquestion48.answer1.text	sí, me cuido bastante	Yes, I am	Sim, tomo bastante cuidado.
+psiquestion48.answer2.text	intermedio	Intermediate	Meio termo.
+psiquestion48.answer3.text	no	No,I’m not	Não.
+psicotest.question1.text	Si en un bar el mozo no viene cuando lo llamo, o la comida no es como la he pedido	In a bar, if the waiter/waitress does not come when I call him/her, or if the food is not what I have ordered	Em um bar, se o garçom não me atende quando o chamo ou se a comida não vem conforme o pedido:
+psicotest.question2.text	Cuando debo esperar en un comercio o en una oficina, me siento ansioso o impaciente porque quiero seguir con mis cosas	When I need to wait to be attended in a store or office, I feel anxious or impatient because I want to get back to my chores	Quando tenho que esperar em uma loja ou escritório, fico ansioso(a) ou impaciente porque quero continuar a fazer minhas coisas.
+psicotest.question3.text	Cuando veo un accidente desagradable, con sangre y heridos	If I witness a terrible accident, with blood and injuries	Quando vejo um acidente desagradável, com sangue e feridos: 
+psicotest.question4.text	Cuando encargo un trabajo menor (arreglar zapatos, hacer fotocopias, revelar fotos, etc.) y queda bien pero con pequeños detalles	When I ask someone to do a trivial job (such as having a shoe mended, photocopies taken, photos developed, etc.), and the job is done, but not properly	Quando encomendo um trabalho pequeno (arrumar um sapato, tirar fotocópias, revelar fotos, etc.) e fica bom, porém com alguns detalhes:
+psicotest.question5.text	Muchas veces tengo dudas cuando juzgo la conducta de la gente no sé si lo que hacen es correcto	I often have doubts when judging people’s behavior, as I am not sure whether they are doing the right thing	Muitas vezes tenho dúvidas quando julgo o comportamento das pessoas: não sei se o que fazem é o certo.
+psicotest.question6.text	Si veo una persona violenta, a punto de agredir a otra, me cuido para que no me lastime a mí	If I see a violent person that is about to attack someone, I protect myself in order not to get hurt	Se vejo uma pessoa agindo com violência, a ponto de agredir outra, tomo cuidado para que não me machuque também. 
+psicotest.question7.text	En un juego de mesa (p. ej. una partida de cartas)	When playing a board game (e.g. a checkers)	Em um jogo de mesa (ex., uma partida de baralho):
+psicotest.question8.text	Cuando converso sobre un tema polémico, en una reunión social	When discussing a controversial topic at a social gathering or party	Quando converso sobre um tema polêmico numa reunião social:
+psicotest.question9.text	Cuando quedo en encontrarme con alguien y no llega en hora, lo primero que pienso es	If I have arranged to meet someone and this person is not on time, the first thing that comes to mind is	Quando combino de me encontrar com alguém e essa pessoa não chega na hora, a primeira coisa que penso é:
+psicotest.question10.text	Pienso hasta último momento lo que voy a hacer (invitar a alguien, ir a algún lugar, tomar un camino u otro) por si cambio de idea en el momento de hacerlo	I wait till the last minute to decide what I am going to do (such as inviting someone, going somewhere, or taking a certain route) just in case I change my mind 	Penso até o último momento no que vou fazer (convidar alguém, ir a algum lugar, pegar um caminho ou outro), pois posso mudar de idéia no momento de tomar a ação.
+psicotest.question11.text	Me pone tenso viajar en avión	I feel tense when I travel by plane	Fico tenso ao viajar de avião. 
+psicotest.question12.text	Si soy partidario de una persona, teoría, ideología, etc. y alguien la cuestiona	If I actively support a person, theory, or ideology and somebody questions it	Se sou a favor de uma pessoa, teoria, ideologia, etc., e alguém a questiona:
+psicotest.question13.text	Si la gente se ríe cuando entro a un lugar, me pregunto si algo de mí les divierte o les hace gracia	If people laugh when I walk into a room, I wonder whether there is something funny about me or if they are laughing at me 	Se as pessoas riem quando entro num lugar, fico me perguntando se algo em mim está engraçado ou os diverte.
+psicotest.question14.text	Si un joven no trabaja ni estudia, lo más probable es que "esté en la cómoda" y que deberían ser más estrictos con él	If a young person does not work or study, s/he is likely to be taking the easy way out and someone should probably be stricter with her/him 	Se um jovem não trabalha nem estuda, o mais provável é que esteja muito acomodado e que deveriam ser mais duros com ele. 
+psicotest.question15.text	Cuando recién conozco a una persona me formo una opinión definida de ella la considero sincera o falsa, inteligente o de pocas luces, etc.	When I meet someone, I immediately form an opinion of them: I can tell whether they are genuine or fake, intelligent or not very bright, etc.	Quando acabo de conhecer uma pessoa, já formo uma opinião definida sobre ela: considero-a sincera ou falsa, inteligente ou não muito esperta, etc.
+psicotest.question16.text	Si empiezo una actividad que no es obligatoria (por ej. gimnasia, curso, tratamiento) y al poco tiempo pierdo interés	If I start an activity that is not compulsory (such as going to the gym, doing a course or undergoing a treatment) and I soon lose interest	Se começo uma atividade que não é obrigatória (por exemplo: exercícios físicos, cursos, tratamentos) e logo perco o interesse:
+psicotest.question17.text	Me sobresalto cuando aparece alguien que no sentí llegar (o cuando me habla sin que supiera que estaba allí)	It startles me when someone I wasn’t expecting suddenly shows up (or when someone speaks to me without me knowing they were there in the first place)	Levo um susto quando aparece alguém que não percebi chegar (ou quando falam comigo sem que eu soubesse que a pessoa estava ali). 
+psicotest.question18.text	Si alguien me contesta mal o me habla en forma descortés	If someone is rude or impolite when speaking to me 	Se alguém me retruca em tom grosseiro ou se dirige a mim de forma mal-educada:
+psicotest.question19.text	Cuando me proponen un paseo por el día, me tomo un tiempo para pensar si vale la pena hacerlo	When I am invited out for the day, I take my time to ponder whether it is really worth going	Quando me convidam para um passeio de um dia, perco um tempo pensando se vale a pena fazê-lo. 
+psicotest.question20.text	Le doy más importancia que otras personas a las faltas de consideración o de cortesía	I give more importance to politeness and good manners than other people do	Dou mais importância a momentos de falta de consideração ou de educação que outras pessoas.
+psicotest.question21.text	Me irritan los pequeños contratiempos, como no encontrar las llaves, hacer una cola o trancarme en el tráfico.	Certain inconvenient situations such as misplacing the keys, waiting in line or getting stuck in traffic, really get on my nerves.	Fico irritado com pequenos contratempos, como não encontrar as chaves, ficar na fila ou ficar preso no trânsito.
+psicotest.question22.text	Cuando pienso salir a comer o al cine	If I am thinking of going out to eat or to the movies	Quando penso em sair para comer ou ir ao cinema:
+psicotest.question23.text	Me resulta simpática o divertida la gente un poco informal y que vive el presente, aunque no sea muy ordenada en su vida	I fancy people who live their lives in a casual, care-free way and live in the present, even though they might not be very organized 	Acho simpáticas ou divertidas as pessoas um pouco informais e descontraídas e que vivem o presente, mesmo que sua vida não seja muito organizada. 
+psicotest.question24.text	Puedo mirar hacia abajo desde un lugar alto, sin sentir que me puedo caer	I can look down from a high place without feeling I am going to fall	Consigo olhar para baixo a partir de um lugar alto sem ter a sensação de que posso cair. 
+psicotest.question25.text	Si alguien no entiende cómo se hace algo	If someone does not understand how to do something	Se alguém não entende como se faz algo:
+psicotest.question26.text	Al mirar una película, leer un libro o un artículo	When watching a movie, or reading a book/article	Quando assisto a um filme, leio um livro ou artigo:
+psicotest.question27.text	Si en una fiesta miro de lejos a un conocido, pero éste desvía la mirada, lo primero que pienso es	At a party, if I see someone I know from a distance but s/he looks away, the first thing I think is	Se numa festa vejo de longe um conhecido, mas ele desvia o olhar, a primeira coisa que penso é:
+psicotest.question28.text	Varias cosas me producen asco o repugnancia con sólo pensar en ellas	Many things make me feel sick or disgusted by the mere thought of them	Várias coisas me causam nojo ou aversão pelo simples fato de pensar nelas.
+psicotest.question29.text	Puedo catalogar a los profesionales que conozco como capaces o incapaces	I classify the professionals I know as capable or incapable	Posso qualificar os profissionais que conheço como capazes ou incapazes. 
+psicotest.question30.text	Si me interesa algo que veo en un comercio o en una feria	If I am interested in something I see in a store or market	Se me interesso por algo que vejo numa loja ou feira:
+psicotest.question31.text	Creo que la mayoría de la gente no hace su trabajo tan bien como debería, por falta de capacidad o de responsabilidad	I believe most people fail to do their jobs as well as they should, mainly due to lack of capacity or responsibility	Acredito que a maioria das pessoas não faz seu trabalho tão bem quanto deveria por falta de capacidade ou responsabilidade.
+psicotest.question32.text	Al opinar sobre una idea o un proyecto, en general	When discussing an idea, I generally	Quando opino sobre uma idéia, em geral:
+psicotest.question33.text	A veces noto que la gente se pone a susurrar cuando llego a una reunión, o que dejan de hablar cuando me acerco	Sometimes I notice that people start whispering when I arrive at a party or change the subject when I approach	Às vezes percebo que as pessoas começam a cochichar quando chego a uma reunião ou que param de falar quando me aproximo. 
+psicotest.question34.text	Cuando salgo a comprar ropa o calzado, y me gusta una de las primeras cosas que veo	When I go shopping for shoes or clothes and I like one of the first things I see	Quando saio para comprar roupas ou sapatos e gosto de uma das primeiras coisas que vejo
+psicotest.question35.text	Me pone tenso viajar en un ascensor o en un ómnibus repletos (aunque lo haga igual)	I feel tense when I am inside a full elevator or bus (in spite of this I still manage to get on it)	Fico tenso ao andar em um elevador ou ônibus muito cheio (mesmo que acabe andando).
+psicotest.question36.text	Casi nunca me doy cuenta de que un desconocido me mira fijamente (una persona de mi mismo sexo)	I rarely notice when a person I do not know -of the same gender- stares at me 	Quase nunca me dou conta de que um desconhecido me olha fixamente (uma pessoa do mesmo sexo).
+psicotest.question37.text	Me irrita mucho la desorganización y la incompetencia que veo en algunos comercios y oficinas	Stores and offices where people are disorganized and incompetent irritate me a lot	Fico muito irritado(a) com a desorganização e incompetência que vejo em algumas lojas e escritórios.
+psicotest.question38.text	Cuando le pregunto a alguien si está de acuerdo con una idea	When I ask someone if they agree with something	Quando pergunto a alguém se está de acordo com uma idéia:
+psicotest.question39.text	Cuando pido algo y no lo hacen (por ej. que me alcancen un objeto, que bajen el volumen del TV, que hagan un mandado)	When I ask someone to do something and they do not do it (for example, get me something, turn down the TV, or run an errand) 	Quando peço algo e não o fazem (por exemplo: que peguem um objeto, que abaixem o volume da TV, que dêem um recado):
+psicotest.question40.text	Cuando hacen muchas bromas a mi costa	When people make fun of me 	Quando fazem muitas brincadeiras à minha custa: 
+psicotest.question41.text	Cuando me visto para una fiesta o reunión, me tomo mi tiempo para elegir bien la ropa, aunque me cambie un par de veces	When I get dressed for a party or meeting, I take my time to choose the outfit even if I have to change it a couple of times 	Quando me visto para uma festa ou reunião, levo um tempo para escolher bem a roupa, mesmo que tenha que me trocar várias vezes no processo.
+psicotest.question42.text	Cuando me dan largas explicaciones, le pido a la gente que concrete la idea	When I hear a long explanation, I ask the person to get to the point	Quando me dão explicações longas, peço à pessoa que conclua a idéia.
+psicotest.question43.text	Suelo formarme una opinión global de las personas me caen bien o mal	I tend to form a general opinion of people: I either like them or not	Costumo formar uma opinião geral das pessoas: gosto ou não gosto delas. 
+psicotest.question44.text	Cuando veo un artículo que me gusta (una revista, un CD, un comestible, etc.)	When I see something I like (such as a magazine, CD, food, etc.)	Quando vejo um item que me agrada (uma revista, um CD, uma comida, etc.):
+psicotest.question45.text	Creo que la educación moderna de los niños es demasiado blanda (habría que ponerles más límites)	I believe modern education for children is too lenient (greater restrictions should be imposed)	Creio que a educação moderna das crianças é muito fraca (deveria haver mais limites).
+psicotest.question46.text	Si tengo un cumpleaños o una reunión con amigos, pero no tengo ganas de ir	If I have a birthday party or a gathering with friends, but I do not feel like going	Se tenho uma festa de aniversário ou reunião com amigos, mas não estou com vontade de ir:
+psicotest.question47.text	Si un conocido no me responde una llamada o un mensaje	If an acquaintance does not return my call or message	Se um conhecido não responde a um telefonema ou uma mensagem minha: 
+psicotest.question48.text	Tengo mucho cuidado con animales que pueden ser peligrosos (perros, arañas, abejas, etc.)	I am very cautious around animals that can be dangerous (such as dogs, spiders, bees, etc.)	Tenho muito cuidado com animais que podem ser perigosos (cachorros, aranhas, abelhas, etc.).
+generic.month.1	Enero	January	Janeiro
+generic.month.10	Octubre	October	Outubro
+generic.month.11	Noviembre	November	Novembro
+generic.month.12	Diciembre	December	Dezembro
+generic.month.2	Febrero	February	Fevereiro
+generic.month.3	Marzo	March	Março
+generic.month.4	Abril	April	Abril
+generic.month.5	Mayo	May	Maio
+generic.month.6	Junio	June	Junho
+generic.month.7	Julio	July	Julho
+generic.month.8	Agosto	August	Agosto
+generic.month.9	Setiembre	September	Setembro
+report.users.total.count	Total	Total	Total
+psiquestion.resulttype0	Intoler. Frustr.	Frustration Intolerance	
+psiquestion.resulttype1	Exigencia	Requirement	
+psiquestion.resulttype2	Radicalismo	Radicalism	
+psiquestion.resulttype3	Susceptibilidad	Susceptibility	
+psiquestion.resulttype4	Indecisión	Indecision	
+psiquestion.resulttype5	Nerviosismo	Nervousness	
+report.userresult.viewpsiresult	Ver Resultado de Test de Comportamiento		
+generic.user.results	Resultados de Usuario	User Results	
+generic.user.psiresults	Test de Comportamiento de Usuario	Users Behavorial Test	Test de Comportamento
+generic.results.all	Todo el Assessment	All Assessment	
+driver.result.psi	Test de Comportamiento	Behavorial Test	Test de Comportamento
+report.user.psiresults	Test de Comportamiento	Behavorial Test	Test de Comportamento
+user.expirytype.permanent	Permanente		
+user.expirytype.withexpiry	Con Vencimiento		
+user.data.expirytype	Tipo de Vencimiento		
+user.data.userwithoutexpiry	Usuario sin Vencimiento		
+user.data.expiry	Vencimiento		
+generic.user.invalidbirthdate	Fecha de Nacimiento Invalida		
+generic.user.invalidexpiry	Fecha de Vencimiento Invalida		se
+user.accesscode.emptyextension	Debe Ingresar Cantidad de días de Duración		
+accesscode.data.type	Tipo		
+accesscode.data.extension	Días de duración		
+report.userresult.viewpersonaldata	Ver Datos Personales		
+report.userresult.percent	Porcentaje	Percentage	Percentagem
+driver.result.personaldata	Datos Personales	Personal Data	
+generic.user.personaldataresults	Datos Personales de Usuario	User Personal Data	
+generic.error.selectassessment	Debe Seleccionar un Assessment		
+report.assesment.totalquestions	Cantidad Total de Preguntas	Total of Questions	
+user.psi.done	Usuarios que Realizaron el Test de Comportamiento	Users that Made the Behavorial Test	
+user.personaldata.done	Usuarios que Completaron sus Datos Personales	Users that complete Personal Data	
+report.error.selectuser	Debe Seleccionar un Usuario		
+question.resultreport.error	Debe Seleccionar una Pregunta		
+generic.data.moduleresults	Resultados por Módulo	Results by Module	
+generic.assessment.complacency	Autocomplacencia	Self-complacency	Complacência
+generic.assessment.nervous	Tensión Nerviosa	Nervous Tension	Tensão nervosa
+generic.assessment.psiresult	Resultado por Característica		
+assesment.data.instantfeedback	Mostrar Resultados Parciales al Usuario	Show Parcial Results	
+user.email.isempty	Debe Ingresar su Email		
+generic.results.error	Preguntas Incorrectas	Wrong anwsers	Preguntas Incorretas
+report.usererror.title	Preguntas Incorrectas	Wrong anwsers	Preguntas Incorretas
+report.usererror.redmessage1	Color rojo:	Red color:	Cor vermelha: 
+report.usererror.redmessage2	respuesta	answer	resposta incorreta
+report.usererror.greenmessage1	Color verde:	Green color:	Cor verde:
+report.usererror.greenmessage2	respuesta correcta	correct answer	resposta correta
+generic.corporation.corporationdata.logo	Logo	Logo	Logo
+generic.assesment.instantfeedback	Feedback Usuario	User Feedback	Feedback Usuario
+generic.assesment.feedback	Feedback	Feedback	Feedback
+generic.assesment.resultrange	Rango de Resultados	Result Range	
+report.generalresult.minhighlevel	Mínimo para Nivel Alto(%)	Min for High Level(%)	
+report.generalresult.minmeddiumlevel	Mínimo para Nivel Medio(%)	Min for Meddium Level(%)	
+assessment.action.addfeedback	Agregar Feedback	Add Feedback	
+assessment.feedback.sendreport	Reportes a Enviar	Reports to Send	
+assesment.feedback.report1	Resultados Generales	General Results	
+assesment.feedback.report2	Test de Comportamiento	Behavorial Test	Test de Comportamento
+assesment.feedback.report3	Preguntas contestadas incorrectamente	Questions incorrectly answered	
+assesment.feedback.report4	Datos Personales	Personal Data	
+assesment.data.email	E-mail de envío		
+feedback.error.email	Error en email a enviar		
+feedback.error.report	Debe seleccionar por lo menos 1 reporte		
+assesment.data.reportfeedback	Enviar Resultado Finales	Send Final Results	
+assesment.data.psifeedback	Enviar Resultados de Test de Comportamiento	Send Behaviour Results	
+assesment.data.errorfeedback	Enviar Reporte de Errores	Send Errors Report	
+assesment.report.footermessage1	Gracias por su colaboración, su aporte ha sido muy valioso !!!	Thank you for your support. Your input is greatly appreciated!	Obrigado por sua colaboração, sua contribuição foi muito valiosa!
+assesment.report.footermessage2	De ser necesario su participación en otras actividades nos estaremos comunicando con usted a la brevedad.	Should you be required to participate in other activities, we will get in touch shortly.	Caso sua participação em outras atividades se faça necessária, entraremos em contato em breve.
+assesment.reporthtml.footermessage1	Gracias por su colaboraci&oacute;n, su aporte ha sido muy valioso !!!	Thank you for your support. Your input is greatly appreciated!	Obrigado por sua colabora&ccedil;&atilde;o, sua contribui&ccedil;&atilde;o foi muito valiosa!
+assesment.reporthtml.footermessage2	De ser necesario su participaci&oacute;n en otras actividades nos estaremos comunicando con usted a la brevedad.	Should you be required to participate in other activities, we will get in touch shortly.	Caso sua participa&ccedil;&atilde;o em outras atividades se fa&ccedil;a necess&aacute;ria, entraremos em contato em breve.
+report.feedback.generalreport	Reporte General	General Report	Relat&oacute;rio Geral
+report.feedback.errorreport	Reporte de Errores	Error Report	Relat&oacute;rio de Erros
+report.feedback.psireport	Reporte de Perfil	Profile Report	Relat&oacute;rio de Perfil
+generic.userdata.invalidcountry	País y confirmación distintos	Country and confirmation are diferent	Pais y confirmação distintos
+generic.userdata.invalidcompany	Compañía y confirmación distintos	Company and confirmation are diferent	Compania y confirmação distintos
+assessment.reports	Reportes de Driver Assessment	Driver Assessment Reports	Reportes de Driver Assessment
+report.feedback.personaldatareport	Datos Personales	Personal Data	
+report.userresult.reference	Referencia	Reference	Referencia
+report.feedback.certificate	Certificado	Certificate	Certificado
+certificate.place	Lugar	Place	Lugar
+certificate.of	de	of	de
+report.advancejj.psi	Perfil	Behaviour	Perfil
+report.advancejj.result	Resultado	Result	Resultado
+report.advance.jj.all	Todos los champions	All champions	
+report.advance.jj.type	Seleccionar Champion	Select champion	
+report.newhire.title	Reporte del Assessment para Nuevos Contratados	New Hire Assessment Report	New Hire Assessment Report
+report.newhire.module0	ESTIMACION DE RIESGO POTENCIAL EN EL TRÁNSITO:	ESTIMATED POTENTIAL TRAFFIC RISK LEVEL	
+report.newhire.module1	Resultado de Preguntas	Quiz Result	
+generic.results.newhire	Nuevos Contratados	New Hire	
+report.newhire.note	* El grado de riesgo potencial  estimado por el sistema es un indicador primario de las características del conductor y en ningún caso debe entenderse como un juicio definitivo o excluyente del aspirante.	* The level of potential risk estimated by the system is a primary indicator of driver characteristic and should in no way be construed as a definitive or excluding judgment of a job applicant. 	
+report.feedback.newhirereport	Reporte Global	Global Report	
+user.data.confirmdata	Confirme los siguientes datos	Confirmation	Confirmação
+report.newhire.user	Nombre postulante	Applicant's name	
+user.newhire.mail	Email para enviar el reporte	Email to send report	
+user.newhire.mailconfirmation	Email para enviar el reporte(confirmación)	Email to send report(confirmation)	
+newhire.email.isempty	Email para envío de reportes vacío	Email to send report empty	
+newhire.emailconfirmation.isempty	Confirmación vacía	Confirmation empty	
+newhire.email.wrongconfirmation	Email y confirmación distintas	Email and confirmation are different	
+user.birthdate.wrongrange	La edad debe ser entre 18 y 100 años	The age should be between 18 and 100 years old	Os participantes devem ter idade entre 18 e 100 anos
+report.ranking.title	Ranking de preguntas incorrectas	Wrong Questions Ranking	
+generic.question.ranking	Ranking de incorrectas	Wrong Questions Ranking	
+assessment.action.associatetag	Asociar Tag		
+generic.assesment.tags	Tags del sistema		
+assesment.tags.lesson	Lección Asociada	Associated Lesson	
+assessment.action.associate	Asociar		
+assesment.associatetag.confirm	Confirma que desea asociar estos Tags?		
+assesment.associatedtags	Tags Asociado	Associated Tags	
+tag.lesson.min	Mínimo	Min	
+assesment.associatetag.deleteconfirm	Confirma que desea desasociar estos Tags?		
+assesment.tags.value	Valor	Value	
+generic.tag	Tag	Tag	Tag
+assesment.reporthtml.championmessage	Sr/a. Champion, adjunto le enviamos una serie de reportes que requieren su atención.	Mr/s Champion, attached you will find some reports that require your attention.	Sr/a Champion, anexo lhes encaminhamos vários reportes para sua apreciação.
+assesment.data.elearning	Con eLearning	With eLearning	Com eLearning
+assesment.elearning.lesson40	Interacción entre los Conductores y Peatones	Driver-Pedestrian Interaction	Interação entre Condutores e Pedestres
+assesment.elearning.lesson43	Velocidad	Speed	Velocidade
+assesment.elearning.lesson42	Intersecciones	Intersections	Cruzamentos
+assesment.elearning.lesson44	Seguridad Pasiva	Passive Safety	Segurança Passiva
+assesment.elearning.lesson41	Alcohol	Alcohol	Álcool
+assesment.elearning.lesson1	La Distancia de la Seguridad	Safe Distance	Distancia de Segurança
+assesment.elearning.lesson6	Intersecciones II	Intersections II	Interseções II
+assesment.elearning.lesson11	Luces Durante el Día	Headlights on During the Day	Farois Accesos Durante o Dia
+assesment.elearning.lesson16	Tránsito Pesado	Heavy Traffic	Trânsito Pesado
+assesment.elearning.lesson18	El Campo Visual y la Seguridad	Field of Vision& Safety	Campo de Visão e Segurança
+assesment.elearning.lesson2	Cambios de Carril y Giros	Changing Lanes & Merging	Mundaça de Fiaxa e Deslocamento Lateral
+assesment.elearning.lesson3	Colisiones al Estacionar	Field of Vision & Safety	Colisões em Estacionamentos
+assesment.elearning.lesson4	Resbalando bajo la lluvia	Slippery When Wet	Escorregando na Chuva
+assesment.elearning.lesson5	Resbalando bajo la lluvia II	Slippery When Wet II	Escorregando na Chuva II
+assesment.elearning.lesson7	Donde NO se ve, NO Conduzca	LIMITED visibility, DONT venture out	SEM Visibilidade, NAO se aventure
+assesment.elearning.lesson8	Seguridad Subjetiva	Subjective Safety	Segurança subjetiva
+assesment.elearning.lesson9	Conducción Racional	Driving Rationally	Condução Racional
+assesment.elearning.lesson10	Neumáticos	Tires	Pneus
+assesment.elearning.lesson12	Peatones	Tips Pedestrians	Pedestrians
+assesment.elearning.lesson13	Velocidad y Stress	Stress & Speed	Estresse e Velocidade
+assesment.elearning.lesson14	Prevención de Robo y Hurto de Automóviles	Preventing Auto-theft & Break-ins	Prevenção do Roubo e Furto de Automóveis
+assesment.elearning.lesson15	Multas y Accidentes	Tickets and Accidents	Multas e Acidentes
+assesment.elearning.lesson17	La Convivencia con Peatones y Automóviles	Sharing the Road with Pedestrians & Automobiles	Convivendo com Pedestres e Automóveis
+assesment.elearning.lesson19	La Fatiga	FATIGUE	A Fadiga 
+assesment.elearning.lesson20	Conducción y Comunicaciones	Phone calls while Driving	Direção e Comunicação
+assesment.elearning.lesson21	Cinturones de Seguridad Traseros	Rear Seat Belts	Cinto de Segurança no Banco Traseiro
+assesment.elearning.lesson22	Preservando al Medio Ambiente	Protecting the Environment	Preservando o Meio Ambiente
+assesment.elearning.lesson23	Futuras Mamás en el Automóvil	Safety Expectant Moms in the Vehicle	Segurança Futuras Mamães no Automóvel
+assesment.elearning.lesson24	Niños en el Automóvil	Children in the Vehicle Car Safety Seat	Crianças no Automóvel Assento de Segurança Infantil
+assesment.elearning.lesson25	Luces Durante el Día II	Headlights on During the Day II	Faróis Acesos Durante o Dia II
+assesment.elearning.lesson26	Iluminando el Camino	Lighting the Road Ahead	Iluminando a Via
+assesment.elearning.lesson27	Estrés sobre Ruedas	Stress on Wheels	Estresse sobre Rodas
+assesment.elearning.lesson30	VIDRIOS POLARIZADOS: ¿MEJORAN SU SEGURIDAD?	WINDOW TINTING FILM: DOES IS REALLY IMPROVE SECURITY?	VIDROS POLARIZADOS: REALMENTE MELHORAM A SEGURANÇA?
+assesment.elearning.lesson29	Sistema de Frenos ABS	Braking System ABS	Sistema de Freios ABS
+assesment.elearning.lesson45	DENTRO DEL VEHÍCULO	INSIDE THE VEHICLE	DENTRO DO VEÍCULO
+assesment.elearning.lesson32	Repostando Combustible	Refueling	Reabastecimento
+assesment.elearning.lesson33	EL TABACO Y LA CONDUCCIÓN	TOBACCO SMOKING AND DRIVING	O FUMO E A DIREÇÃO
+assesment.elearning.lesson34	Jóvenes al Volante	Young Drivers	Jovensao Volante
+assesment.elearning.lesson35	Exceso de Peso	Overload	Excesso de Peso
+assesment.elearning.lesson28	Las Fiestas de Navidad y Año Nuevo	Christmas & New Years Celebration	As Festas de Natal e Ano Novo
+assesment.elearning.lesson36	Neumáticos II	Tires II	Pneus II
+assesment.elearning.lesson37	Neumáticos III	Tires III	Pneus III
+assesment.elearning.lesson38	Conducción fuera del asfalto	Driving Off Paved Roads	Condução fora do asfalto
+assesment.elearning.lesson39	Conducir en las Vacaciones	Driving While on Vacation	Conduzindo nas Férias
+assesment.elearning.lesson31	Objetos Sueltos	Loose Objects	Objetos Soltos

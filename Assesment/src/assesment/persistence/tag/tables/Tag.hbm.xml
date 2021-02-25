@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.tag.tables" >
+
+	<class name="Tag" table="tags">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">Tag_Sequence</param>
+            </generator>
+		</id>
+	    
+	    <property name="lessonEs" column="lessones" type="java.lang.Integer" not-null="true"/>
+	    <property name="lessonEn" column="lessonen" type="java.lang.Integer" not-null="true"/>
+	    <property name="lessonPt" column="lessonpt" type="java.lang.Integer" not-null="true"/>
+  	</class>
+
+</hibernate-mapping>

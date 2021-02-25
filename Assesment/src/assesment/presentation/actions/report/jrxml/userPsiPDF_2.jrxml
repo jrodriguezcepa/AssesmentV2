@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="userPsiPDF_2" pageWidth="591" pageHeight="835" columnWidth="591" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/home/jrodriguez/projects/Assesment/src/assesment/report/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Title" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="UserText" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Logo" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Date" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="CorporationText" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="AssessmentText" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="LogoCEPA" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Average1Text1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Average2Text1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ResultText" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="average1" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="average2" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="FooterText1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="FooterText2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="allOK" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ReferenceText" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Background" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Average2Text2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="Average1Text2" class="java.lang.String" isForPrompting="false"/>
+	<field name="Title" class="java.lang.String"/>
+	<field name="Text" class="java.lang.String"/>
+	<field name="Title1" class="java.lang.String"/>
+	<field name="Text1" class="java.lang.String"/>
+	<field name="LastPage" class="java.lang.String"/>
+	<group name="modelGroup">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band splitType="Stretch"/>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band height="835" splitType="Stretch">
+			<image>
+				<reportElement key="image-3" x="0" y="0" width="591" height="835"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA[$P{Background}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="835" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-26" x="43" y="58" width="510" height="16">
+					<printWhenExpression><![CDATA[new Boolean($F{Title} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Title}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-27" x="44" y="93" width="510" height="565">
+					<printWhenExpression><![CDATA[new Boolean($F{Title} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Text}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-28" x="42" y="331" width="468" height="16">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Title1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-29" x="42" y="356" width="510" height="301">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{Text1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line-1" x="31" y="112" width="519" height="1" forecolor="#CC0000">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-31" x="116" y="85" width="294" height="21">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Verdana" size="14" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Title}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement key="image-4" mode="Transparent" x="43" y="58" width="68" height="48">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-32" x="43" y="131" width="247" height="18">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{CorporationText}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-33" x="307" y="131" width="238" height="18">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{AssessmentText}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-34" x="410" y="93" width="140" height="13">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Verdana"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Date}]]></textFieldExpression>
+			</textField>
+			<meterChart>
+				<chart isShowLegend="false">
+					<reportElement key="element-1" mode="Opaque" x="43" y="209" width="241" height="111" backcolor="#F2F2F2">
+						<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<valueDataset>
+					<dataset resetType="Report"/>
+					<valueExpression><![CDATA[$P{average1}]]></valueExpression>
+				</valueDataset>
+				<meterPlot shape="chord" tickInterval="1.0" meterColor="#FFFFFF" needleColor="#000000">
+					<plot backcolor="#F2F2F2"/>
+					<valueDisplay/>
+					<dataRange>
+						<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+						<highExpression><![CDATA[new Integer(5)]]></highExpression>
+					</dataRange>
+					<meterInterval color="#0EB561">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(1)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#0EB561">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(1)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(2)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#0EB561">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(2)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(3)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#EFF715">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(3)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(4)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#F51313">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(4)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(5)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+				</meterPlot>
+			</meterChart>
+			<meterChart>
+				<chart isShowLegend="false">
+					<reportElement key="element-2" mode="Opaque" x="307" y="209" width="241" height="111" backcolor="#F2F2F2">
+						<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<valueDataset>
+					<dataset resetType="Report"/>
+					<valueExpression><![CDATA[$P{average2}]]></valueExpression>
+				</valueDataset>
+				<meterPlot shape="chord" tickInterval="1.0" meterColor="#FFFFFF" needleColor="#000000">
+					<plot backcolor="#F2F2F2"/>
+					<valueDisplay/>
+					<dataRange>
+						<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+						<highExpression><![CDATA[new Integer(5)]]></highExpression>
+					</dataRange>
+					<meterInterval color="#0EB561">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(1)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#0EB561">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(1)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(2)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#0EB561">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(2)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(3)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#EFF715">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(3)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(4)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+					<meterInterval color="#F51313">
+						<dataRange>
+							<lowExpression><![CDATA[new Integer(4)]]></lowExpression>
+							<highExpression><![CDATA[new Integer(5)]]></highExpression>
+						</dataRange>
+					</meterInterval>
+				</meterPlot>
+			</meterChart>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-35" x="43" y="188" width="55" height="18">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Average1Text1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-36" x="307" y="188" width="55" height="18">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Average2Text1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-39" x="307" y="158" width="238" height="18">
+					<printWhenExpression><![CDATA[new Boolean($P{ReferenceText} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReferenceText}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-40" x="98" y="188" width="200" height="18">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Average1Text2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-41" x="362" y="188" width="189" height="18">
+					<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Verdana" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Average2Text2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

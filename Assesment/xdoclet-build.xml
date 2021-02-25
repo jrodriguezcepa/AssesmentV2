@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="XDoclet Generator" default="_xdoclet_generation_">
+<property file="xdoclet-build.properties"/>
+<property name="eclipse.home" value="C:/Users/Lenovo/eclipse/jee-oxygen/eclipse"/>
+<property name="xdoclet.basedir" value="${eclipse.home}/plugins/org.jboss.ide.eclipse.xdoclet.core_2.0.1.GA"/>
+<property name="jboss.net.version" value="4.0"/>
+<path id="project.classpath"><pathelement location="bin"/>
+<pathelement location="lib/activation.jar"/>
+<pathelement location="lib/antlr.jar"/>
+<pathelement location="lib/antlr-2.7.5H3.jar"/>
+<pathelement location="lib/asm.jar"/>
+<pathelement location="lib/asm-attrs.jar"/>
+<pathelement location="lib/bsf-2.3.0.jar"/>
+<pathelement location="lib/bsh-1.3.0.jar"/>
+<pathelement location="lib/cglib-2.1.jar"/>
+<pathelement location="lib/commons-beanutils.jar"/>
+<pathelement location="lib/commons-collections-2.1.1.jar"/>
+<pathelement location="lib/commons-digester.jar"/>
+<pathelement location="lib/commons-fileupload.jar"/>
+<pathelement location="lib/commons-logging.jar"/>
+<pathelement location="lib/commons-validator.jar"/>
+<pathelement location="lib/dom4j.jar"/>
+<pathelement location="lib/gnujaxp.jar"/>
+<pathelement location="lib/hibernate3.jar"/>
+<pathelement location="lib/hibernate-metadata.jar"/>
+<pathelement location="lib/itext-1.4.jar"/>
+<pathelement location="lib/jakarta-oro.jar"/>
+<pathelement location="lib/jbossall-client.jar"/>
+<pathelement location="lib/jboss-common-client.jar"/>
+<pathelement location="lib/jbosssx.jar"/>
+<pathelement location="lib/jboss-system.jar"/>
+<pathelement location="lib/jcommon-1.0.4.jar"/>
+<pathelement location="lib/jcommon-xml-1.0.4.jar"/>
+<pathelement location="lib/jlfgr-1_0.jar"/>
+<pathelement location="lib/jnp-client.jar"/>
+<pathelement location="lib/js.jar"/>
+<pathelement location="lib/libfonts-0.1.7.jar"/>
+<pathelement location="lib/libloader-0.1.1.jar"/>
+<pathelement location="lib/log4j.jar"/>
+<pathelement location="lib/mail.jar"/>
+<pathelement location="lib/odmg-3.0.jar"/>
+<pathelement location="lib/pixie-0.8.5.jar"/>
+<pathelement location="lib/poi-3.0-alpha1-20050704.jar"/>
+<pathelement location="lib/postgresql-8.0-315.jdbc3.jar"/>
+<pathelement location="lib/standard.jar"/>
+<pathelement location="lib/struts.jar"/>
+<pathelement location="lib/struts-el.jar"/>
+<pathelement location="lib/svgsalamander.jar"/>
+<pathelement location="lib/servlet-api.jar"/>
+<pathelement location="lib/jasperreports-2.0.1.jar"/>
+<pathelement location="lib/jxl-2.6.jar"/>
+</path>
+<path id="xdoclet.classpath">
+<path refid="project.classpath"/>
+<fileset dir="${xdoclet.basedir}">
+<include name="*.jar"/>
+<exclude name="xdoclet-module-jboss-net-*.jar"/>
+</fileset>
+<fileset dir="${xdoclet.basedir}">
+<include name="xdoclet-module-jboss-net-${jboss.net.version}*.jar"/>
+</fileset>
+</path>
+<target name="_xdoclet_generation_" depends="N65540"/>
+<target name="N65540" description="EJB">
+<taskdef name="ejbdoclet" classname="xdoclet.modules.ejb.EjbDocletTask" classpathref="xdoclet.classpath"/><ejbdoclet ejbSpec="2.0"  destDir="src"  mergeDir="src/META-INF" >
+	<deploymentdescriptor destDir="src/META-INF" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</deploymentdescriptor>
+	<fileset dir="src"  includes="**/*Bean.java" >
+
+
+
+	</fileset>
+	<jboss Version="3.0"  securityDomain="java:/jaas/assesment"  destDir="src/META-INF"  mergeDir="src/META-INF" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</jboss>
+	<homeinterface>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</homeinterface>
+	<localhomeinterface>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</localhomeinterface>
+	<remoteinterface>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</remoteinterface>
+	<localinterface>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</localinterface>
+	<session mergeDir="src/META-INF" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</session>
+	<utilobject>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</utilobject>
+	</ejbdoclet></target>
+	</project>

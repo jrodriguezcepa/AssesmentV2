@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserSpecificAnswer" table="specificanswers">
+
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">UserSpecificAnswer_Sequence</param>
+            </generator>
+		</id>
+	    
+		<many-to-one name="multianswer" column="multianswer" not-null="true"/>
+
+        <many-to-one name="question" 	class="assesment.persistence.question.tables.Question" column="question" />
+        <many-to-one name="answer" 		class="assesment.persistence.question.tables.Answer" column="answer" />
+	</class>
+
+</hibernate-mapping>

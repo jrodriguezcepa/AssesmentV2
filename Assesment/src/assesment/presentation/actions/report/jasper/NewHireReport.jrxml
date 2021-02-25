@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="newuserreport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="88"/>
+	<parameter name="logo_empresa" class="java.lang.String"/>
+	<parameter name="logo_cepa" class="java.lang.String"/>
+	<parameter name="header" class="java.lang.String"/>
+	<parameter name="footer" class="java.lang.String"/>
+	<parameter name="corporacion" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="usuario" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<parameter name="titulo_resultado" class="java.lang.String"/>
+	<parameter name="cantidad" class="java.lang.String"/>
+	<parameter name="porcentaje" class="java.lang.String"/>
+	<parameter name="correctas" class="java.lang.String"/>
+	<parameter name="incorrectas" class="java.lang.String"/>
+	<parameter name="titulo_personal" class="java.lang.String"/>
+	<parameter name="semaforo_personal" class="java.lang.String"/>
+	<parameter name="flecha_azul_personal" class="java.lang.String"/>
+	<parameter name="flecha_naranja_personal" class="java.lang.String"/>
+	<parameter name="flecha_roja_personal" class="java.lang.String"/>
+	<parameter name="titulo_cuestionario" class="java.lang.String"/>
+	<parameter name="semaforo_cuestionario" class="java.lang.String"/>
+	<parameter name="flecha_azul_cuestionario" class="java.lang.String"/>
+	<parameter name="flecha_naranja_cuestionario" class="java.lang.String"/>
+	<parameter name="flecha_roja_cuestionario" class="java.lang.String"/>
+	<parameter name="cantidad_correctas" class="java.lang.Integer"/>
+	<parameter name="cantidad_incorrectas" class="java.lang.Integer"/>
+	<parameter name="porcentaje_correctas" class="java.lang.Integer"/>
+	<parameter name="porcentaje_incorrectas" class="java.lang.Integer"/>
+	<parameter name="resultados_modulo" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="modulo" class="java.lang.String"/>
+	<parameter name="subreport1" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="sub1" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="subreport2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="sub2" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="subreport3" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="sub3" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="errores" class="java.lang.String"/>
+	<parameter name="imagen_rojo" class="java.lang.String"/>
+	<parameter name="imagen_verde" class="java.lang.String"/>
+	<parameter name="texto_rojo" class="java.lang.String"/>
+	<parameter name="texto_verde" class="java.lang.String"/>
+	<parameter name="psi1" class="java.lang.Double"/>
+	<parameter name="psi2" class="java.lang.Double"/>
+	<parameter name="psi_titulo" class="java.lang.String"/>
+	<parameter name="psi_subtitulo1" class="java.lang.String"/>
+	<parameter name="psi_subtitulo2" class="java.lang.String"/>
+	<parameter name="psi_texto1" class="java.lang.String"/>
+	<parameter name="psi_texto2" class="java.lang.String"/>
+	<parameter name="psi_texto21" class="java.lang.String"/>
+	<parameter name="psi_texto3" class="java.lang.String"/>
+	<parameter name="psi_texto4" class="java.lang.String"/>
+	<parameter name="psi_texto5" class="java.lang.String"/>
+	<parameter name="psi_texto6" class="java.lang.String"/>
+	<parameter name="psi_texto7" class="java.lang.String"/>
+	<parameter name="psi_texto71" class="java.lang.String"/>
+	<parameter name="psi_texto8" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<field name="texto_respuesta" class="java.lang.String"/>
+	<field name="porcentaje" class="java.lang.Integer"/>
+	<background>
+		<band height="842" splitType="Stretch">
+			<image>
+				<reportElement x="17" y="35" width="100" height="33" uuid="6b7cd859-9c4e-4c60-a9ac-cd2520af94ae"/>
+				<imageExpression><![CDATA[$P{logo_empresa}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="482" y="35" width="100" height="33" uuid="f342485a-88aa-4e02-90cc-a988fdd4128d"/>
+				<imageExpression><![CDATA[$P{logo_cepa}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="595" height="26" uuid="20f8cdea-2dde-48fb-9079-18ad5c7d2404"/>
+				<imageExpression><![CDATA[$P{header}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="416" y="70" width="166" height="20" uuid="8bacd943-23f4-4b07-906c-e4a8b8eeba3c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="830" width="595" height="12" uuid="479ff3c9-e530-4db7-80c2-06e1fed05862"/>
+				<imageExpression><![CDATA[$P{footer}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="842" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="17" y="104" width="565" height="22" backcolor="#F4F4F4" uuid="2497e1d1-652a-4415-8f5a-d65b06a51370"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{corporacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="126" width="565" height="22" backcolor="#FFFFFF" uuid="28ea9f78-7a73-4a98-a20d-ef71fa575365"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="149" width="565" height="22" backcolor="#F4F4F4" uuid="b0d2437d-d080-4616-b36f-7022ef3309f2"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="17" y="182" width="212" height="23" uuid="16d885ed-bf3f-44a5-af13-9648095fbf58"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo_personal}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="160" y="218" width="69" height="192" uuid="6739184a-e543-4a21-aeb6-9243d008cf21"/>
+				<imageExpression><![CDATA[$P{semaforo_personal}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="64" y="218" width="77" height="61" uuid="fb5459b8-f994-417c-ac79-3d694fe94349"/>
+				<imageExpression><![CDATA[$P{flecha_azul_personal}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="64" y="282" width="77" height="61" uuid="da2e1a49-0870-46d8-9e77-99a656d8a82e"/>
+				<imageExpression><![CDATA[$P{flecha_naranja_personal}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="64" y="349" width="77" height="61" uuid="0350a561-00e9-4dd5-8f7e-78a426139971"/>
+				<imageExpression><![CDATA[$P{flecha_roja_personal}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="320" y="182" width="212" height="23" uuid="b538e051-72df-4076-a5df-ee4e7a9f43bd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo_cuestionario}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="416" y="218" width="69" height="192" uuid="bee949f8-c19d-4f8c-a4fe-ed4b0b16f392"/>
+				<imageExpression><![CDATA[$P{semaforo_cuestionario}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="320" y="218" width="77" height="61" uuid="5ee8ea29-c241-4fae-aa42-a4151286b489"/>
+				<imageExpression><![CDATA[$P{flecha_azul_cuestionario}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="320" y="282" width="77" height="61" uuid="a1351d95-11ea-4af4-90ea-9ceb16dbd414"/>
+				<imageExpression><![CDATA[$P{flecha_naranja_cuestionario}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="320" y="349" width="77" height="61" uuid="830de12a-57d6-4ec2-b210-bc2e2e454b1f"/>
+				<imageExpression><![CDATA[$P{flecha_roja_cuestionario}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="17" y="481" width="565" height="23" uuid="51590660-84d2-4ab3-9cc3-6e7874c3770f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titulo_resultado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="17" y="516" width="177" height="22" backcolor="#F4F4F4" uuid="53be5e15-5062-40ef-901f-aaa151bb05d4"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="194" y="516" width="194" height="22" backcolor="#F4F4F4" uuid="a8520e8a-c29c-4c29-9927-92ab8044456a"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="388" y="516" width="194" height="22" backcolor="#F4F4F4" uuid="5d7d850f-308a-4f7b-b6ea-33f50bd14241"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{porcentaje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="538" width="177" height="22" backcolor="#FFFFFF" uuid="1e76db8b-9aa8-49ce-ab6e-42850e1a4809"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{correctas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="194" y="538" width="194" height="22" backcolor="#FFFFFF" uuid="d5157a35-4316-425d-89b1-e19acf6ef187"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cantidad_correctas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="388" y="538" width="194" height="22" backcolor="#FFFFFF" uuid="3f6d402b-80a2-4c3d-bd16-e3e691500e29"/>
+				<box leftPadding="40">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{porcentaje_correctas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="560" width="177" height="22" backcolor="#F4F4F4" uuid="b205a4e3-e8c5-4269-a7c3-f79a7afd5ca9"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{incorrectas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="194" y="560" width="194" height="22" backcolor="#F4F4F4" uuid="a88d9b91-ca36-4381-9db3-c199c150ab0e"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cantidad_incorrectas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="388" y="560" width="194" height="22" backcolor="#F4F4F4" uuid="641394b9-41b6-44df-93e9-f8155f8d0f32"/>
+				<box leftPadding="40">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{porcentaje_incorrectas}]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<pieChart>
+				<chart evaluationTime="Report" customizerClass="assesment.presentation.actions.report.chart.ChartPie">
+					<reportElement x="17" y="582" width="565" height="150" uuid="9f4d80f1-2308-4cec-a6f1-f519a2524baa"/>
+					<box>
+						<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+						<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+						<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+						<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					</box>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Right"/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{texto_respuesta}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+					<labelExpression><![CDATA[$F{texto_respuesta}]]></labelExpression>
+				</pieDataset>
+				<piePlot isShowLabels="false">
+					<plot>
+						<seriesColor seriesOrder="0" color="#50BF58"/>
+						<seriesColor seriesOrder="1" color="#C0504F"/>
+					</plot>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+			<line>
+				<reportElement x="17" y="740" width="565" height="1" forecolor="#CCCCCC" uuid="a87e1fce-15e1-4f8a-a8a7-20e979d11255"/>
+			</line>
+			<subreport>
+				<reportElement x="0" y="752" width="595" height="16" uuid="63b8bde2-fdfc-4cfd-a84b-f02d09e59e97">
+					<printWhenExpression><![CDATA[$P{subreport1} != null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="total">
+					<subreportParameterExpression><![CDATA[$P{total}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="incorrectas">
+					<subreportParameterExpression><![CDATA[$P{incorrectas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="correctas">
+					<subreportParameterExpression><![CDATA[$P{correctas}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="modulo">
+					<subreportParameterExpression><![CDATA[$P{modulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="resultados_modulo">
+					<subreportParameterExpression><![CDATA[$P{resultados_modulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imagen_verde">
+					<subreportParameterExpression><![CDATA[$P{imagen_verde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imagen_rojo">
+					<subreportParameterExpression><![CDATA[$P{imagen_rojo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="texto_verde">
+					<subreportParameterExpression><![CDATA[$P{texto_verde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="texto_rojo">
+					<subreportParameterExpression><![CDATA[$P{texto_rojo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="errores">
+					<subreportParameterExpression><![CDATA[$P{errores}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subreport2">
+					<subreportParameterExpression><![CDATA[$P{subreport2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub2">
+					<subreportParameterExpression><![CDATA[$P{sub2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subreport3">
+					<subreportParameterExpression><![CDATA[$P{subreport3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub3">
+					<subreportParameterExpression><![CDATA[$P{sub3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi1">
+					<subreportParameterExpression><![CDATA[$P{psi1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi2">
+					<subreportParameterExpression><![CDATA[$P{psi2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_titulo">
+					<subreportParameterExpression><![CDATA[$P{psi_titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_subtitulo1">
+					<subreportParameterExpression><![CDATA[$P{psi_subtitulo1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_subtitulo2">
+					<subreportParameterExpression><![CDATA[$P{psi_subtitulo2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto1">
+					<subreportParameterExpression><![CDATA[$P{psi_texto1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto2">
+					<subreportParameterExpression><![CDATA[$P{psi_texto2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto21">
+					<subreportParameterExpression><![CDATA[$P{psi_texto21}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto3">
+					<subreportParameterExpression><![CDATA[$P{psi_texto3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto4">
+					<subreportParameterExpression><![CDATA[$P{psi_texto4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto5">
+					<subreportParameterExpression><![CDATA[$P{psi_texto5}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto6">
+					<subreportParameterExpression><![CDATA[$P{psi_texto6}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto7">
+					<subreportParameterExpression><![CDATA[$P{psi_texto7}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto71">
+					<subreportParameterExpression><![CDATA[$P{psi_texto71}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto8">
+					<subreportParameterExpression><![CDATA[$P{psi_texto8}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{subreport1}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{sub1}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

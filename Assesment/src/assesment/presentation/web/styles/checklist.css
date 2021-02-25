@@ -1,0 +1,95 @@
+/*-----------------------------------------------------
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+-------------------------------------------------------*/
+/* Grid Settings
+---------------------------*/
+body {
+  min-width: 960px; }
+
+/* `Containers
+----------------------------------------------------------------------------------------------------*/
+/* `Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+/* `Grid >> Columns
+----------------------------------------------------------------------------------------------------*/
+/* `Prefix Extra Space
+----------------------------------------------------------------------------------------------------*/
+/* `Suffix Extra Space
+----------------------------------------------------------------------------------------------------*/
+/* `Push Space
+----------------------------------------------------------------------------------------------------*/
+/* `Pull Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+/****** main tags *******/
+#content {
+  padding: 90px 0 50px;
+  min-height: 500px; }
+  #content section.grid_container form {
+    zoom: 1;
+    margin-left: auto;
+    margin-right: auto;
+    width: 940px;
+    padding-right: 0; }
+    #content section.grid_container form:before, #content section.grid_container form:after {
+      content: '.';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      font-size: 0;
+      line-height: 0;
+      width: 0;
+      height: 0; }
+    #content section.grid_container form:after {
+      clear: both; }
+
+#content section.grid_container form {
+  background: white url("../images/stripes.gif") repeat; }
+  #content section.grid_container form > .card_number {
+    display: none; }
+  #content section.grid_container form > .button {
+    margin: 30px; }
+    #content section.grid_container form > .button[disabled] {
+      opacity: 0.5; }
+  #content section.grid_container form fieldset {
+    margin: 0;
+    padding-bottom: 10px;
+    background: none;
+    border-bottom: 1px solid #999999;
+    opacity: 1; }
+    #content section.grid_container form fieldset.title {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background-color: #999; }
+      #content section.grid_container form fieldset.title h3, #content section.grid_container form fieldset.title h4, #content section.grid_container form fieldset.title h5 {
+        color: #fff; }
+      #content section.grid_container form fieldset.title:before {
+        top: 0;
+        content: '';
+        height: 2px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        background: white url("../images/dashed_background.gif") left top repeat-x; }
+    #content section.grid_container form fieldset > div.narrow {
+      display: inline-block;
+      width: 411px;
+      margin-right: 26px; }
+      #content section.grid_container form fieldset > div.narrow input[type="text"], #content section.grid_container form fieldset > div.narrow input[type="email"], #content section.grid_container form fieldset > div.narrow input[type="password"], #content section.grid_container form fieldset > div.narrow input[type="number"], #content section.grid_container form fieldset > div.narrow input[type="date"], #content section.grid_container form fieldset > div.narrow select, #content section.grid_container form fieldset > div.narrow textarea {
+        width: 390px; }
+      #content section.grid_container form fieldset > div.narrow select {
+        width: 412px; }
+      #content section.grid_container form fieldset > div.narrow[data-type="6"] input[type="number"] {
+        width: 254px; }
+      #content section.grid_container form fieldset > div.narrow[data-type="6"] select.units {
+        width: 135px; }
+      #content section.grid_container form fieldset > div.narrow[data-type="7"] input[type="date"], #content section.grid_container form fieldset > div.narrow[data-type="7"] input[type="text"] {
+        width: 220px; }
+        #content section.grid_container form fieldset > div.narrow[data-type="7"] input[type="date"][disabled], #content section.grid_container form fieldset > div.narrow[data-type="7"] input[type="text"][disabled] {
+          color: #ccc; }
+      #content section.grid_container form fieldset > div.narrow[data-type="7"] label.checkbox {
+        display: inline-block !important;
+        margin-left: 15px;
+        width: 144px; }

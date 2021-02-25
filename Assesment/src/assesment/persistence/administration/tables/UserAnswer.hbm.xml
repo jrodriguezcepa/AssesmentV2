@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserAnswer" table="answerdata">
+
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">UserAnswer_Sequence</param>
+            </generator>
+		</id>
+       
+        <many-to-one name="question" 	class="assesment.persistence.question.tables.Question" column="question" />
+        <many-to-one name="answer" 		class="assesment.persistence.question.tables.Answer" column="answer" />
+        <property 	name="text"			type="java.lang.String"	column="text" />
+        <property 	name="date"			type="java.util.Date"	column="date" />
+        <property 	name="country"		type="java.lang.Integer"	column="country" />
+        <property 	name="distance"		type="java.lang.Integer"	column="distance" />
+        <property 	name="unit"			type="java.lang.Integer"	column="unit" />
+        <property 	name="never"/>
+	    
+    	<set name="multioptions" table="multioptions" cascade="none">
+			<key>
+				<column name="id" />
+			</key>
+	        <many-to-many column="answer" class="assesment.persistence.question.tables.Answer"/>
+	    </set>
+	</class>
+
+</hibernate-mapping>

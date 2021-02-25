@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_2.dtd">
+
+<web-app>
+   	<icon></icon>
+	<display-name>Assesment - CEPA</display-name>
+	<description>CEPA - Assesment</description>
+	
+	<!-- Quartz, tareas programadas, 
+		http://www.javisjava.com/blog/quartz 
+		http://www.docjar.com/docs/api/org/quartz/ee/servlet/QuartzInitializerListener.html
+	-->
+	<context-param>
+		<param-name>config-file</param-name>
+		<param-value>
+			WEB-INF/quartz.properties
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>shutdown-on-unload</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>start-scheduler-on-load</param-name>
+		<param-value>true</param-value>
+	</context-param>	
+    <!-- End Quartz -->
+    
+    <servlet>
+  		<servlet-name>action</servlet-name>
+  		<servlet-class>
+    			assesment.presentation.translator.web.util.ActionController
+  		</servlet-class>
+  		<init-param>
+    			<param-name>config</param-name>
+    			<param-value>
+      				/WEB-INF/struts-config.xml
+    			</param-value>
+  		</init-param>
+  		<init-param>
+    			<param-name>application</param-name>
+			<param-value>
+				assesment.communication.language.Text
+			</param-value>
+  		</init-param>
+		<init-param>
+    			<param-name>debug</param-name>
+    			<param-value>2</param-value>
+  		</init-param>
+  		<init-param>
+    			<param-name>mapping</param-name>
+    			<param-value>
+      				org.apache.struts.action.ActionMapping
+    			</param-value>
+  		</init-param>
+  		<load-on-startup>2</load-on-startup>
+ 	</servlet>
+	<servlet>
+    	<servlet-name>ResourcesServlet</servlet-name>
+    	<servlet-class>assesment.presentation.actions.servlets.ResourcesServlet</servlet-class>
+  	</servlet>
+	<servlet>
+    	<servlet-name>VServlet</servlet-name>
+    	<servlet-class>assesment.presentation.actions.servlets.VServlet</servlet-class>
+  	</servlet>
+ 	<servlet>
+  		<servlet-name>ImageServlet</servlet-name>
+  		<servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>
+
+ 	</servlet>
+	<servlet>
+	<servlet-name>Jersey</servlet-name>
+     <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+     <init-param>
+           <param-name>com.sun.jersey.config.property.packages</param-name>
+             <param-value>assesment.presentation.web.external;assesment.communication;</param-value>
+     </init-param>
+     <init-param>
+       <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+          <param-value>true</param-value>
+         </init-param> 
+         <init-param>
+          <param-name>com.sun.jersey.config.feature.DisableWADL</param-name>
+          <param-value>true</param-value>
+      </init-param>
+ </servlet>
+<servlet-mapping>
+     <servlet-name>Jersey</servlet-name>
+     <url-pattern>/webapi/*</url-pattern>
+ </servlet-mapping>
+	<servlet-mapping>
+     		<servlet-name>action</servlet-name>
+     		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+    	<servlet-name>ResourcesServlet</servlet-name>
+    	<url-pattern>/flash/*</url-pattern>
+  </servlet-mapping>
+	<servlet-mapping>
+    	<servlet-name>VServlet</servlet-name>
+    	<url-pattern>/videos/*</url-pattern>
+  	</servlet-mapping>
+	<servlet-mapping>
+	  		<servlet-name>ImageServlet</servlet-name>
+			<url-pattern>/image/*</url-pattern>
+	</servlet-mapping>
+
+ 
+    <!--
+    To use non XDoclet filters, create a filters.xml file that
+    contains the additional filters (eg Sitemesh) and place it in your
+    project's merge dir.  Don't include filter-mappings in this file,
+    include them in a file called filter-mappings.xml and put that in
+    the same directory.
+    -->
+
+    <!--
+    To use non XDoclet filter-mappings, create a filter-mappings.xml file that
+    contains the additional filter-mappings and place it in your
+    project's merge dir.
+    -->
+
+    <!--
+    To use non XDoclet listeners, create a listeners.xml file that
+    contains the additional listeners and place it in your
+    project's merge dir.
+    -->
+
+  <!--
+  To use non XDoclet servlets, create a servlets.xml file that
+  contains the additional servlets (eg Struts) and place it in your
+  project's merge dir.  Don't include servlet-mappings in this file,
+  include them in a file called servlet-mappings.xml and put that in
+  the same directory.
+  -->
+
+   <!--
+   To specify mime mappings, create a file named mime-mappings.xml, put it in your project's mergedir.
+   Organize mime-mappings.xml following this DTD slice:
+
+   <!ELEMENT mime-mapping (extension, mime-type)>
+   -->
+
+   <!--
+   To specify error pages, create a file named error-pages.xml, put it in your project's mergedir.
+   Organize error-pages.xml following this DTD slice:
+
+   <!ELEMENT error-page ((error-code | exception-type), location)>
+   -->
+
+  <!--
+  To add taglibs by xml, create a file called taglibs.xml and place it
+  in your merge dir.
+  -->
+
+   <!--
+   To set up security settings for your web app, create a file named web-security.xml, put it in your project's mergedir.
+   Organize web-security.xml following this DTD slice:
+
+   <!ELEMENT security-constraint (display-name?, web-resource-collection+, auth-constraint?, user-data-constraint?)>
+   <!ELEMENT web-resource-collection (web-resource-name, description?, url-pattern*, http-method*)>
+   <!ELEMENT web-resource-name (#PCDATA)>
+   <!ELEMENT url-pattern (#PCDATA)>
+   <!ELEMENT http-method (#PCDATA)>
+   <!ELEMENT user-data-constraint (description?, transport-guarantee)>
+   <!ELEMENT transport-guarantee (#PCDATA)>
+
+   <!ELEMENT login-config (auth-method?, realm-name?, form-login-config?)>
+   <!ELEMENT auth-method (#PCDATA)>
+   <!ELEMENT realm-name (#PCDATA)>
+   <!ELEMENT form-login-config (form-login-page, form-error-page)>
+   <!ELEMENT form-login-page (#PCDATA)>
+   <!ELEMENT form-error-page (#PCDATA)>
+   
+   
+   -->
+   
+	
+  	<session-config>
+    		<session-timeout>90</session-timeout>
+  	</session-config>
+ 	<welcome-file-list>
+  		<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error.jsp</location>
+	</error-page>   
+	<error-page>
+		<error-code>404</error-code>
+		<location>/exception.jsp</location>
+	</error-page>   
+	<error-page>
+		<error-code>500</error-code>
+		<location>/exception.jsp</location>
+	</error-page>   
+
+	<taglib>
+  		<taglib-uri>
+    			/WEB-INF/struts-bean.tld
+  		</taglib-uri>
+  		<taglib-location>
+    			/WEB-INF/struts-bean.tld
+  		</taglib-location>
+	</taglib>
+	<taglib>
+  		<taglib-uri>
+    			/WEB-INF/struts-html.tld
+  		</taglib-uri>
+  		<taglib-location>
+    			/WEB-INF/struts-html.tld
+  		</taglib-location>
+	</taglib>
+	<taglib>
+  		<taglib-uri>
+    			/WEB-INF/struts-logic.tld
+  		</taglib-uri>
+  		<taglib-location>
+    			/WEB-INF/struts-logic.tld
+  		</taglib-location>
+	</taglib>
+	<taglib>
+  		<taglib-uri>
+    			/WEB-INF/struts-template.tld
+  		</taglib-uri>
+  		<taglib-location>
+    			/WEB-INF/struts-template.tld
+  		</taglib-location>
+	</taglib>
+  	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Administrator Assesment</web-resource-name>
+			<description>Pagina de inicio</description>
+			<url-pattern>/index.jsp</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>accesscode</role-name>
+			<role-name>resetpassword</role-name>
+			<role-name>systemaccess</role-name>
+			<role-name>clientreporter</role-name>
+			<role-name>cepareporter</role-name>
+			<role-name>pepsico_candidatos</role-name>
+			<role-name>basf_assessment</role-name>
+			<role-name>administrator</role-name>
+			<role-name>webinar</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name></realm-name>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/loginError.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<role-name>administrator</role-name>
+	</security-role>
+	<security-role>
+		<role-name>systemaccess</role-name>
+	</security-role>
+    	<ejb-ref >
+      		<description><![CDATA[Reference to the fibo EJB]]></description>
+      		<ejb-ref-name>assesment/LangugeReport</ejb-ref-name>
+      		<ejb-ref-type>Session</ejb-ref-type>
+      		<home>assesment.persistence.language.LangReportHome</home>
+      		<remote>assesment.persistence.language.LangReport</remote>
+   	</ejb-ref>
+</web-app>

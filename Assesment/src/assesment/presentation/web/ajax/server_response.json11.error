@@ -1,0 +1,11 @@
+{
+	"valids": [
+	],
+	"errors": [
+		{
+			"id": "10562",
+			"error": "Debe ingresar un email valido"
+		}
+	],
+	"final_text": "<a href=\"http://elearning.cepasafedrive.com?user=prueba\">Usted tiene asociadas lecciones en el eLearning</a>"
+}

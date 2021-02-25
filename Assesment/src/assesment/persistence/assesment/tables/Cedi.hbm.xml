@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.assesment.tables" >
+
+	<class name="Cedi" table="cedi">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">cedi_id</param>
+            </generator>
+		</id>
+	    
+		
+	    <property name="name" column="name" type="java.lang.String" not-null="true"/>
+        <property name="accessCode"	 type="java.lang.String"	column="accessCode" length="4000"/>
+        <property name="uen" type="java.lang.String"	column="uen" length="4000"/>
+        <property name="drv"  type="java.lang.String"	column="drv" length="4000"/>
+	    <property name="manager" column="manager" type="java.lang.String" />
+	    <property name="managerMail" column="managermail" type="java.lang.String"/>
+
+        <property name="loginName"	column="loginname" type="java.lang.String" />
+
+        <property name="company"	column="company" type="java.lang.Integer" />
+       
+  	</class>
+
+</hibernate-mapping>

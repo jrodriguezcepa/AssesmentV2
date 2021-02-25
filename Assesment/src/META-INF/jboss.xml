@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss PUBLIC "-//JBoss//DTD JBOSS 3.0//EN" "http://www.jboss.org/j2ee/dtd/jboss_3_0.dtd">
+
+<jboss>
+
+   <security-domain>java:/jaas/assesment</security-domain>
+
+   <enterprise-beans>
+
+     <!--
+       To add beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called jboss-beans.xml that contains
+       the <session></session>, <entity></entity> and <message-driven></message-driven>
+       markup for those beans.
+     -->
+
+      <session>
+         <ejb-name>AssesmentReport</ejb-name>
+         <jndi-name>ejb/AssesmentReport</jndi-name>
+         <local-jndi-name>AssesmentReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>CorpReport</ejb-name>
+         <jndi-name>ejb/CorpReport</jndi-name>
+         <local-jndi-name>CorpReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>AssesmentABMFacade</ejb-name>
+         <jndi-name>ejb/AssesmentABMFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentABM</ejb-ref-name>
+            <jndi-name>ejb/AssesmentABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsABM</ejb-ref-name>
+            <jndi-name>ejb/UsABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleABMFacade</ejb-ref-name>
+            <jndi-name>ejb/ModuleABMFacade</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleReport</ejb-ref-name>
+            <jndi-name>ejb/ModuleReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangReport</ejb-ref-name>
+            <jndi-name>ejb/LangReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsABM</ejb-ref-name>
+            <jndi-name>ejb/UsABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsReport</ejb-ref-name>
+            <jndi-name>ejb/UsReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>LangABM</ejb-name>
+         <jndi-name>ejb/LangABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TagReportFacade</ejb-name>
+         <jndi-name>ejb/TagReportFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/TagReport</ejb-ref-name>
+            <jndi-name>ejb/TagReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>LangReport</ejb-name>
+         <jndi-name>ejb/LangReport</jndi-name>
+         <local-jndi-name>LangReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TagReport</ejb-name>
+         <jndi-name>ejb/TagReport</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>UsABM</ejb-name>
+         <jndi-name>ejb/UsABM</jndi-name>
+         <local-jndi-name>UsABMLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>QuestionReport</ejb-name>
+         <jndi-name>ejb/QuestionReport</jndi-name>
+         <local-jndi-name>QuestionReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ModuleReport</ejb-name>
+         <jndi-name>ejb/ModuleReport</jndi-name>
+         <local-jndi-name>ModuleReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>ModuleABMFacade</ejb-name>
+         <jndi-name>ejb/ModuleABMFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleABM</ejb-ref-name>
+            <jndi-name>ejb/ModuleABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleReport</ejb-ref-name>
+            <jndi-name>ejb/ModuleReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionABMFacade</ejb-ref-name>
+            <jndi-name>ejb/QuestionABMFacade</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangABM</ejb-ref-name>
+            <jndi-name>ejb/LangABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangReport</ejb-ref-name>
+            <jndi-name>ejb/LangReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>QuestionReportFacade</ejb-name>
+         <jndi-name>ejb/QuestionReportFacade</jndi-name>
+         <local-jndi-name>QuestionReportFacadeLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionReport</ejb-ref-name>
+            <jndi-name>ejb/QuestionReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleReport</ejb-ref-name>
+            <jndi-name>ejb/ModuleReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>PropertyABMFacade</ejb-name>
+         <jndi-name>ejb/PropertyABMFacade</jndi-name>
+         <local-jndi-name>PropertyABMFacadeLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/PropertyABM</ejb-ref-name>
+            <jndi-name>ejb/PropertyABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/PropertyReport</ejb-ref-name>
+            <jndi-name>ejb/PropertyReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>PropertyABM</ejb-name>
+         <jndi-name>ejb/PropertyABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>AssesmentABM</ejb-name>
+         <jndi-name>ejb/AssesmentABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>CorpABM</ejb-name>
+         <jndi-name>ejb/CorpABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>QuestionABM</ejb-name>
+         <jndi-name>ejb/QuestionABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>CorpReportFacade</ejb-name>
+         <jndi-name>ejb/CorpReportFacade</jndi-name>
+         <local-jndi-name>CorpReportFacadeLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/CorpReport</ejb-ref-name>
+            <jndi-name>ejb/CorpReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>LangReportFacade</ejb-name>
+         <jndi-name>ejb/LangReportFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangReport</ejb-ref-name>
+            <jndi-name>ejb/LangReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>UsReportFacade</ejb-name>
+         <jndi-name>ejb/UsReportFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsReport</ejb-ref-name>
+            <jndi-name>ejb/UsReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>LangABMFacade</ejb-name>
+         <jndi-name>ejb/LangABMFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangABM</ejb-ref-name>
+            <jndi-name>ejb/LangABM</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>UsReport</ejb-name>
+         <jndi-name>ejb/UsReport</jndi-name>
+         <local-jndi-name>UsReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>QuestionABMFacade</ejb-name>
+         <jndi-name>ejb/QuestionABMFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionABM</ejb-ref-name>
+            <jndi-name>ejb/QuestionABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionReport</ejb-ref-name>
+            <jndi-name>ejb/QuestionReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangABM</ejb-ref-name>
+            <jndi-name>ejb/LangABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/LangReport</ejb-ref-name>
+            <jndi-name>ejb/LangReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleReport</ejb-ref-name>
+            <jndi-name>ejb/ModuleReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>TagABM</ejb-name>
+         <jndi-name>ejb/TagABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>TagABMFacade</ejb-name>
+         <jndi-name>ejb/TagABMFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/TagABM</ejb-ref-name>
+            <jndi-name>ejb/TagABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionReport</ejb-ref-name>
+            <jndi-name>ejb/QuestionReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>ModuleABM</ejb-name>
+         <jndi-name>ejb/ModuleABM</jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>PropertyReportFacade</ejb-name>
+         <jndi-name>ejb/PropertyReportFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/PropertyReport</ejb-ref-name>
+            <jndi-name>ejb/PropertyReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>PropertyReport</ejb-name>
+         <jndi-name>ejb/PropertyReport</jndi-name>
+         <local-jndi-name>PropertyReportLocal</local-jndi-name>
+
+      </session>
+      <session>
+         <ejb-name>CorpABMFacade</ejb-name>
+         <jndi-name>ejb/CorpABMFacade</jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/CorpABM</ejb-ref-name>
+            <jndi-name>ejb/CorpABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/CorpReport</ejb-ref-name>
+            <jndi-name>ejb/CorpReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>UsABMFacade</ejb-name>
+         <jndi-name>ejb/UsABMFacade</jndi-name>
+         <local-jndi-name>UsABMFacadeLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsABM</ejb-ref-name>
+            <jndi-name>ejb/UsABM</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsReport</ejb-ref-name>
+            <jndi-name>ejb/UsReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>ModuleReportFacade</ejb-name>
+         <jndi-name>ejb/ModuleReportFacade</jndi-name>
+         <local-jndi-name>ModuleReportFacadeLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/ModuleReport</ejb-ref-name>
+            <jndi-name>ejb/ModuleReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionReport</ejb-ref-name>
+            <jndi-name>ejb/QuestionReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+      <session>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <jndi-name>ejb/AssesmentReportFacade</jndi-name>
+         <local-jndi-name>AssesmentReportFacadeLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/AssesmentReport</ejb-ref-name>
+            <jndi-name>ejb/AssesmentReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/QuestionReport</ejb-ref-name>
+            <jndi-name>ejb/QuestionReport</jndi-name>
+         </ejb-ref>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsReport</ejb-ref-name>
+            <jndi-name>ejb/UsReport</jndi-name>
+         </ejb-ref>
+
+      </session>
+
+    <!--
+      write a merge file jboss-webservices.ent for webservice-description 
+    -->
+
+   </enterprise-beans>
+
+   <resource-managers>
+   </resource-managers>
+
+  <!--
+    | for container settings, you can merge in jboss-container.xml
+    | this can contain <invoker-proxy-bindings/> and <container-configurations/>
+  -->
+
+</jboss>

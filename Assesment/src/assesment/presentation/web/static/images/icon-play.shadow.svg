@@ -1,0 +1,11 @@
+<svg class="icon-play" width="56px" height="56px" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -5 56 56">
+	<defs>
+	  <filter id="dropShadow" x="-5" y="-5" width="56" height="56">
+	    <feOffset result="offOut" in="SourceAlpha" dx="0" dy="2" />
+	    <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.0 0 0 0 0 0 0.0 0 0 0 0 0 0.0 0 0 0 0 0 0.4 0" />
+	    <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="1" />
+	    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+	  </filter>
+	</defs>
+	<path filter="url(#dropShadow)" fill="#ffffff" d="M34.9,22.4L18.1,10.9c-0.2-0.2-0.5-0.2-0.8,0c-0.3,0.1-0.4,0.4-0.4,0.7v23c0,0.3,0.2,0.6,0.4,0.7 c0.1,0.1,0.2,0.1,0.4,0.1c0.2,0,0.3,0,0.4-0.1l16.9-11.5c0.2-0.1,0.3-0.4,0.3-0.6C35.3,22.7,35.2,22.5,34.9,22.4z M18.4,33.1V12.9 L33.2,23L18.4,33.1z M23,0C10.3,0,0,10.3,0,23s10.3,23,23,23s23-10.3,23-23S35.7,0,23,0z M23,44.5C11.2,44.5,1.5,34.8,1.5,23 S11.2,1.5,23,1.5S44.5,11.2,44.5,23S34.8,44.5,23,44.5z"/>
+</svg>

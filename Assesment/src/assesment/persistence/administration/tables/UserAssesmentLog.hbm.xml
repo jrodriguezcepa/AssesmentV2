@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserAssesmentLog" table="userassesmentslog">
+
+        <composite-id>
+      	 	<key-property name="userid" column="userid" type="java.lang.String"/>	    
+	   		<key-property name="date" column="date" type="java.util.Date"/>	   
+        </composite-id>
+	   <property name="assesment" column="assesment" type="java.lang.Integer"/>	
+	   <property name="loginName" column="loginname" type="java.lang.String"/> 
+		<property name="psiresult1" column="psiresult1" type="java.lang.Integer"/>	    
+		<property name="psiresult2" column="psiresult2" type="java.lang.Integer"/>	    
+		<property name="psiresult3" column="psiresult3" type="java.lang.Integer"/>	    
+		<property name="psiresult4" column="psiresult4" type="java.lang.Integer"/>	    
+		<property name="psiresult5" column="psiresult5" type="java.lang.Integer"/>	    
+		<property name="psiresult6" column="psiresult6" type="java.lang.Integer"/>	    
+		
+		<property name="psiId" 		column="psiid" 		type="java.lang.Integer"/>	    
+		<property name="psiTestId" 	column="psitestid" 	type="java.lang.Integer"/>	    
+
+		<property name="newHire" 	column="newhire" 	type="java.lang.Integer"/>
+
+		<property name="elearningRedirect" column="elearningredirect" type="java.lang.String" />
+		<property name="elearningInstance" column="elearninginstance" type="java.lang.Integer" />
+		
+		<property name="elearningEnabled" type="java.lang.Boolean" not-null="true" >
+			<column name="elearningenabled" default="true" />
+		</property>
+		
+		<property name="endDate"	column="enddate" 	type="java.util.Date" />
+		<property name="reportSended" type="java.lang.Boolean" not-null="true" >
+			<column name="reportsendede" default="false" />
+		</property>
+		<property name="acceptTerms"	column="acceptTerms" 	type="java.util.Date" />
+			   <property name="comment" column="comment" type="java.lang.String"/>	    
+	   <property name="action" column="action" type="java.lang.Integer"/>	
+	</class>
+
+</hibernate-mapping>

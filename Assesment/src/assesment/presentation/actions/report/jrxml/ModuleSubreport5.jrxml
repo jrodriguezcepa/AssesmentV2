@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="module_subreport1" language="groovy" pageWidth="595" pageHeight="400" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="resultados_modulo" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="modulo" class="java.lang.String"/>
+	<parameter name="correctas" class="java.lang.String"/>
+	<parameter name="incorrectas" class="java.lang.String"/>
+	<parameter name="subreport2" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="sub2" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="subreport3" class="net.sf.jasperreports.engine.JRDataSource"/>
+	<parameter name="sub3" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="errores" class="java.lang.String"/>
+	<parameter name="imagen_rojo" class="java.lang.String"/>
+	<parameter name="imagen_verde" class="java.lang.String"/>
+	<parameter name="texto_rojo" class="java.lang.String"/>
+	<parameter name="texto_verde" class="java.lang.String"/>
+	<parameter name="psi1" class="java.lang.Double"/>
+	<parameter name="psi2" class="java.lang.Double"/>
+	<parameter name="psi_titulo" class="java.lang.String"/>
+	<parameter name="psi_subtitulo1" class="java.lang.String"/>
+	<parameter name="psi_subtitulo2" class="java.lang.String"/>
+	<parameter name="psi_texto1" class="java.lang.String"/>
+	<parameter name="psi_texto2" class="java.lang.String"/>
+	<parameter name="psi_texto21" class="java.lang.String"/>
+	<parameter name="psi_texto3" class="java.lang.String"/>
+	<parameter name="psi_texto4" class="java.lang.String"/>
+	<parameter name="psi_texto5" class="java.lang.String"/>
+	<parameter name="psi_texto6" class="java.lang.String"/>
+	<parameter name="psi_texto7" class="java.lang.String"/>
+	<parameter name="psi_texto71" class="java.lang.String"/>
+	<parameter name="psi_texto8" class="java.lang.String"/>
+	<field name="color" class="java.lang.Integer"/>
+	<field name="modulo" class="java.lang.String"/>
+	<field name="total" class="java.lang.Integer"/>
+	<field name="correctas" class="java.lang.Integer"/>
+	<field name="incorrectas" class="java.lang.Integer"/>
+	<field name="porcentaje" class="java.lang.Integer"/>
+	<field name="porcentaje_in" class="java.lang.Integer"/>
+	<field name="porcentaje_total" class="java.lang.Integer"/>
+	<field name="numero_modulo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement x="17" y="7" width="248" height="22"/>
+				<textElement>
+					<font size="14" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{resultados_modulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="35" width="183" height="22" backcolor="#F4F4F4"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{modulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="200" y="35" width="100" height="22" backcolor="#F4F4F4"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="300" y="35" width="100" height="22" backcolor="#F4F4F4"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{incorrectas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="400" y="35" width="100" height="22" backcolor="#F4F4F4"/>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{correctas}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="35" width="82" height="22" backcolor="#F4F4F4"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[%]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="17" y="0" width="183" height="22" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="200" y="0" width="100" height="22" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="300" y="0" width="100" height="22" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incorrectas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="400" y="0" width="100" height="22" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correctas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="500" y="0" width="82" height="22" backcolor="#FFFFFF">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 1]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{porcentaje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="17" y="0" width="183" height="22" backcolor="#F4F4F4">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<leftPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{modulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="200" y="0" width="100" height="22" backcolor="#F4F4F4">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="300" y="0" width="100" height="22" backcolor="#F4F4F4">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{incorrectas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="400" y="0" width="100" height="22" backcolor="#F4F4F4">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{correctas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="500" y="0" width="82" height="22" backcolor="#F4F4F4">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} % 2 == 0]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="10">
+					<topPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<bottomPen lineWidth="0.5" lineColor="#CCCCCC"/>
+					<rightPen lineWidth="0.5" lineColor="#CCCCCC"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{porcentaje}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT} < 4]]></printWhenExpression>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="176" splitType="Stretch">
+			<stackedBarChart>
+				<chart customizerClass="assesment.presentation.actions.report.chart.ChartBar">
+					<reportElement x="17" y="5" width="565" height="125"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend position="Top"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$P{correctas}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{numero_modulo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{porcentaje}]]></valueExpression>
+						<labelExpression><![CDATA[$P{correctas}]]></labelExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA[$P{incorrectas}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{numero_modulo}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{porcentaje_in}]]></valueExpression>
+						<labelExpression><![CDATA[$P{incorrectas}]]></labelExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot>
+						<seriesColor seriesOrder="0" color="#50BF58"/>
+						<seriesColor seriesOrder="1" color="#C0504F"/>
+					</plot>
+					<itemLabel/>
+				</barPlot>
+			</stackedBarChart>
+			<subreport>
+				<reportElement x="0" y="151" width="595" height="16" isPrintInFirstWholeBand="true">
+					<printWhenExpression><![CDATA[$P{subreport2} != null]]></printWhenExpression>
+				</reportElement>
+				<subreportParameter name="imagen_verde">
+					<subreportParameterExpression><![CDATA[$P{imagen_verde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="imagen_rojo">
+					<subreportParameterExpression><![CDATA[$P{imagen_rojo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="texto_verde">
+					<subreportParameterExpression><![CDATA[$P{texto_verde}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="texto_rojo">
+					<subreportParameterExpression><![CDATA[$P{texto_rojo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="errores">
+					<subreportParameterExpression><![CDATA[$P{errores}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi1">
+					<subreportParameterExpression><![CDATA[$P{psi1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi2">
+					<subreportParameterExpression><![CDATA[$P{psi2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_titulo">
+					<subreportParameterExpression><![CDATA[$P{psi_titulo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_subtitulo1">
+					<subreportParameterExpression><![CDATA[$P{psi_subtitulo1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_subtitulo2">
+					<subreportParameterExpression><![CDATA[$P{psi_subtitulo2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto1">
+					<subreportParameterExpression><![CDATA[$P{psi_texto1}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto2">
+					<subreportParameterExpression><![CDATA[$P{psi_texto2}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto21">
+					<subreportParameterExpression><![CDATA[$P{psi_texto21}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto3">
+					<subreportParameterExpression><![CDATA[$P{psi_texto3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto4">
+					<subreportParameterExpression><![CDATA[$P{psi_texto4}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto5">
+					<subreportParameterExpression><![CDATA[$P{psi_texto5}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto6">
+					<subreportParameterExpression><![CDATA[$P{psi_texto6}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto7">
+					<subreportParameterExpression><![CDATA[$P{psi_texto7}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto71">
+					<subreportParameterExpression><![CDATA[$P{psi_texto71}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="psi_texto8">
+					<subreportParameterExpression><![CDATA[$P{psi_texto8}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="subreport3">
+					<subreportParameterExpression><![CDATA[$P{subreport3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="sub3">
+					<subreportParameterExpression><![CDATA[$P{sub3}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{subreport2}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{sub2}]]></subreportExpression>
+			</subreport>
+		</band>
+	</summary>
+</jasperReport>

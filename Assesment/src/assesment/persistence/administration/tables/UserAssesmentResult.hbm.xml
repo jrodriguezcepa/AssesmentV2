@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserAssesmentResult" table="userassesmentresults">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">AssesmentResult_Sequence</param>
+            </generator>
+		</id>
+	    
+	    <property name="login" column="login" type="java.lang.String" not-null="true"/>
+
+        <property name="assesment"	 type="java.lang.Integer"	column="assesment"  not-null="true"/>
+
+        <property name="type"	 type="java.lang.Integer"	column="type"  not-null="true"/>
+
+        <property name="correct"	 type="java.lang.Integer"	column="correct" />
+
+        <property name="incorrect"	 type="java.lang.Integer"	column="incorrect" />
+	</class>
+
+</hibernate-mapping>

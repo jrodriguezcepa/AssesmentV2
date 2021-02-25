@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Packaging Generator" default="_packaging_generation_">
+	<target name="_packaging_generation_" depends="N65540,N65601,N65618,N65635,N65706,N65731"/>
+	<target name="N65540" description="EJBAssesment.jar">
+		<mkdir dir="packaged archives"/>
+		<jar destfile="packaged archives/EJBAssesment.jar">
+			<zipfileset dir="src/META-INF" prefix="META-INF">
+				<include name="ejb-jar.xml"/>
+			</zipfileset>
+			<zipfileset dir="src/META-INF" prefix="META-INF">
+				<include name="jboss.xml"/>
+			</zipfileset>
+			<zipfileset dir="bin" includes="**/*Bean.class,**/*Session.class" excludes="assesment/communication/*.class"/>
+			<zipfileset dir="bin" includes="assesment/persistence/user/tables/*.*,assesment/persistence/administration/tables/*.*,assesment/persistence/corporation/tables/*.*"/>
+		</jar>
+	</target>
+	<target name="N65601" description="CommunicationAssesment.jar">
+		<mkdir dir="packaged archives"/>
+		<jar destfile="packaged archives/CommunicationAssesment.jar">
+			<zipfileset dir="bin" includes="assesment/communication/*.class,assesment/communication/**/*.class"/>
+		</jar>
+	</target>
+	<target name="N65618" description="EJB-ClientAssesment.jar">
+		<mkdir dir="packaged archives"/>
+		<jar destfile="packaged archives/EJB-ClientAssesment.jar">
+			<zipfileset dir="bin" includes="assesment/business/**/*.class,assesment/persistence/**/*.class" excludes="**/*Bean.class,**/*Session.class,assesment/persistence/*/tables/*.class"/>
+		</jar>
+	</target>
+	<target name="N65635" description="PresentationAssesment.war">
+		<mkdir dir="packaged archives"/>
+		<jar destfile="packaged archives/PresentationAssesment.war">
+			<zipfileset dir="src/WEB-INF" prefix="WEB-INF">
+				<include name="web.xml"/>
+				<include name="jboss-web.xml"/>
+				<!-- Quartz, tareas programadas -->
+				<include name="quartz.properties" />
+				<include name="quartz_data.xml" />			
+			</zipfileset>
+			<zipfileset dir="src/assesment/presentation/web"/>
+			<zipfileset dir="bin" prefix="WEB-INF/classes" includes="assesment/presentation/*/*.class,assesment/presentation/*/*/*.class,assesment/presentation/*/*/*/*.class,assesment/presentation/*/*/*/*/*.class,assesment/presentation/*/*/*/*.xml,ws/elearning/assessment/*.class,assesment/presentation/actions/report/jasper/*.jasper"  />
+			<zipfileset dir="src/WEB-INF" prefix="WEB-INF"/>
+			<zipfileset dir="src/assesment/presentation/web/menu" includes="**/*.*, *.class"/>
+		</jar>
+	</target>
+	<target name="N65706" description="PersistenceAssesment.har">
+		<mkdir dir="packaged archives"/>
+		<jar destfile="packaged archives/PersistenceAssesment.har">
+			<zipfileset dir="src/META-INF" prefix="META-INF">
+				<include name="assesment-hibernate.xml"/>				
+			</zipfileset>
+			<zipfileset dir="bin" includes="assesment/persistence/**/tables/*.*,assesment/persistence/**/tables/**/*.*"/>
+		</jar>
+	</target>
+	<target name="N65731" description="Assesment.ear">
+		<mkdir dir="packaged archives"/>
+		<jar destfile="packaged archives/Assesment.ear">
+			<zipfileset dir="packaged archives">
+				<include name="PresentationAssesment.war"/>
+			</zipfileset>
+			<zipfileset dir="packaged archives">
+				<include name="EJBAssesment.jar"/>
+			</zipfileset>
+			<zipfileset dir="packaged archives">
+				<include name="EJB-ClientAssesment.jar"/>
+			</zipfileset>
+			<zipfileset dir="packaged archives">
+				<include name="CommunicationAssesment.jar"/>
+			</zipfileset>
+			<zipfileset dir="src/META-INF" prefix="META-INF">
+				<include name="application.xml"/>
+			</zipfileset>
+			<zipfileset dir="packaged archives">
+				<include name="PersistenceAssesment.har"/>
+			</zipfileset>
+			<zipfileset dir="src/META-INF" prefix="META-INF">
+				<include name="jboss-app.xml"/>
+			</zipfileset>
+		</jar>
+		<!-- copyfile  src="packaged archives/Assesment.ear" dest="C:/jboss-5.1.0.DA/server/default/deploy/Assesment.ear" -->
+		
+	</target>
+</project>

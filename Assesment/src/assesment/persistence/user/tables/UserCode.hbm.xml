@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.user.tables">
+
+    <class name="UserCode" table="usercodes">
+		<id	column="code"	name="code" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">UserCode_Sequence</param>
+            </generator>
+		</id>
+     	
+	    <property name="loginname" column="loginname" type="java.lang.String" not-null="true"/>
+    </class>
+
+</hibernate-mapping>

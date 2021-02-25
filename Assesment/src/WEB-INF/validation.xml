@@ -1,0 +1,31 @@
+<form-validation>
+ <formset>
+
+ <!-- Address form Validation-->
+<form name="VehicleCreateForm">
+    <field  property="colour"
+          depends="required">
+         <arg0 key="VehicleCreateForm.colour"/>          
+    </field>
+<!--    <field  property="address"
+         depends="required">
+         <arg key="AddressForm.address"/>
+     </field>
+     <field  property="emailAddress"
+         depends="required">
+        <arg key="AddressForm.emailAddress"/>
+     </field> -->
+</form>
+ </formset>
+</form-validation>
+
+
+
+
+
+
+
+
+
+
+

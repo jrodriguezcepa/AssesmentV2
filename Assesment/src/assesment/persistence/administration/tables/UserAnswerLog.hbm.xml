@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserAnswerLog" table="useranswerlog">
+
+        <composite-id>
+      	 	<key-property name="userid" column="userid" type="java.lang.String"/>
+      	    <key-property name="date" column="date" type="java.util.Date"/>
+      	    <key-property 	name="id"			type="java.lang.Integer"	column="id" />   
+        </composite-id>
+        <property name="loginName" column="loginname" type="java.lang.String"/> 
+        <property 	name="assesment" 	type="java.lang.Integer" column="assesment" />
+        <property 	name="question" 	type="java.lang.Integer" column="question" />
+        <property	 name="answer" 		type="java.lang.Integer" column="answer" />
+        <property 	name="text"			type="java.lang.String"	column="text" />
+        <property 	name="datead"		type="java.util.Date"	column="datead" />
+        <property 	name="country"		type="java.lang.Integer"	column="country" />
+        <property 	name="distance"		type="java.lang.Integer"	column="distance" />
+        <property 	name="unit"			type="java.lang.Integer"	column="unit" />
+        <property 	name="never" 		type="java.lang.Boolean" 	column="never"/>
+      <property name="comment" column="comment" type="java.lang.String"/>	    
+	   <property name="action" column="action" type="java.lang.Integer"/>	
+	</class>
+
+</hibernate-mapping>

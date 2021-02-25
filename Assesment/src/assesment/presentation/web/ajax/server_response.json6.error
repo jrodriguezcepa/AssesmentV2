@@ -1,0 +1,11 @@
+{
+	"valids": [
+	],
+	"errors": [
+		{
+			"id": "10531",
+			"error": "Apellido no puede contener números"
+		}
+	],
+	"final_text": "<a href=\"http://elearning.cepasafedrive.com?user=prueba\">Usted tiene asociadas lecciones en el eLearning</a>"
+}

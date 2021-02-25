@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 1.1//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.assesment.tables">
+
+    <class name="AssesmentDependency" table="assesmentdependencies">
+       <composite-id class="AssesmentDependencyPK" name="pk" >
+	        <key-property	name="assesment"	type="java.lang.Integer"	column="assesment"/>
+	        <key-property	name="previous"	type="java.lang.Integer"	column="previous"/>
+       </composite-id>
+    </class>
+
+</hibernate-mapping>

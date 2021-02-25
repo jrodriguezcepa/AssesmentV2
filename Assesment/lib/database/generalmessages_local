@@ -1,0 +1,1911 @@
+COPY generalmessages (labelkey, "language", text) FROM stdin;
+corporation.divorg.johnson.divorg1	es	Franquicias
+corporation.divorg.johnson.divorg2	es	Areas
+corporation.divorg.johnson.divorg1.level1	es	Opereiting Group
+corporation.divorg.johnson.divorg1.level2	es	Franquicia
+corporation.divorg.johnson.divorg2.level1	es	Area
+datatype.country.mt	es	Marruecos
+datatype.country.prn	es	Puerto Ríco NA
+datatype.country.ch	es	Suiza
+datatype.country.tw	es	Taiwan
+datatype.country.tr	es	Turquia
+datatype.country.ae	es	Emiratos Arabes Unidos
+datatype.country.vn	es	Vietnam
+datatype.country.zmb	es	Zimbabwe
+datatype.country.cam	es	Centroamerica
+datatype.country.crb	es	Caribe
+datatype.country.rdj	es	Rep.Dom./Jamaica
+datatype.country.see	es	South Eastern Europe
+datatype.country.me1	es	Middle East I
+datatype.country.me2	es	Middle East II
+datatype.country.pes	es	Países Escandinavos
+datatype.country.eyb	es	Eslovaquia y Bálticos
+datatype.country.cac	es	Centro América & Caribe
+datatype.country.nwt	es	NEWAAT
+datatype.country.mt	en	Morocco
+datatype.country.prn	en	Puerto Rico
+datatype.country.ch	en	Switzerland
+datatype.country.tw	en	Taiwan
+datatype.country.tr	en	Turkey
+datatype.country.ae	en	United Arab Emirates
+datatype.country.vn	en	Vietnam
+datatype.country.zmb	en	Zimbabwe
+datatype.country.cam	en	Central America
+datatype.country.crb	en	Caribean
+datatype.country.rdj	en	Rep.Dom./Jamaica
+datatype.country.see	en	South Eastern Europe
+datatype.country.me1	en	Middle East I
+datatype.country.me2	en	Middle East II
+datatype.country.pes	en	Escandinavian Countries
+datatype.country.eyb	en	Slovakia and Baltics
+datatype.country.cac	en	Central America and Caribean
+datatype.country.nwt	en	NEWAAT
+corporation.divorg.johnson.divorg1	en	Franchising
+corporation.divorg.johnson.divorg2.level1	en	Area
+corporation.divorg.johnson.divorg1.level1	en	Operating Group
+corporation.divorg.johnson.divorg1.level2	en	Franchising
+datatype.country.mt	pt	Marrocos
+datatype.country.prn	pt	Porto Rico
+datatype.country.ch	pt	Suiça
+datatype.country.tw	pt	Taiwan
+datatype.country.tr	pt	Turquia
+datatype.country.ae	pt	Emirados Árabes Unidos
+datatype.country.vn	pt	Vietnã
+datatype.country.zmb	pt	Zimbabwe
+datatype.country.cam	pt	América Central
+datatype.country.crb	pt	Caribe
+datatype.country.rdj	pt	Rep.Dom/Jamaica
+datatype.country.see	pt	South Eastern Europe
+datatype.country.me1	pt	Oriente Médio I
+datatype.country.me2	pt	Oriente Médio II
+datatype.country.pes	pt	Países Escandinavos
+datatype.country.eyb	pt	Eslováquia e Bálticos
+datatype.country.cac	pt	América Central e Caribe
+datatype.country.nwt	pt	NEWAAT
+corporation.divorg.johnson.divorg1	pt	Franquias
+corporation.divorg.johnson.divorg2.level1	pt	Área
+corporation.divorg.johnson.divorg1.level1	pt	Operating Group
+corporation.divorg.johnson.divorg1.level2	pt	Franquias
+datatype.country.at	es	Austria
+datatype.country.au	es	Australia
+datatype.country.bs	es	Bahamas
+datatype.country.cz	es	República Checa
+datatype.country.dk	es	Dinamarca
+datatype.country.ee	es	Estonia
+datatype.country.fi	es	Finlandia
+datatype.country.hu	es	Hungría
+datatype.country.id	es	Indonesia
+datatype.country.ie	es	Irlanda
+datatype.country.il	es	Israel
+datatype.country.ja	es	Jamaica
+datatype.country.lv	es	Letonia
+datatype.country.lt	es	Lituania
+datatype.country.my	es	Malasia
+datatype.country.nl	es	Holanda
+datatype.country.nz	es	Nueva Zelanda
+datatype.country.no	es	Noruega
+datatype.country.pk	es	Pakistan
+datatype.country.pl	es	Polonia
+datatype.country.pt	es	Portugal
+datatype.country.sa	es	Arabia Saudita
+datatype.country.hk	es	Hong Kong
+datatype.country.sg	es	Singapore
+datatype.country.sk	es	Eslovaquia
+datatype.country.za	es	Sudáfrica
+datatype.country.kr	es	Corea del Sur
+datatype.country.se	es	Suecia
+datatype.country.at	en	Austria
+datatype.country.au	en	Australia
+datatype.country.bb	en	Barbados
+datatype.country.be	en	Belgium
+datatype.country.bs	en	Bahamas
+datatype.country.cl	en	Chile
+datatype.country.co	en	Colombia
+datatype.country.cr	en	Costa Rica
+datatype.country.cu	en	Curaçao
+datatype.country.cz	en	Czech Republic
+datatype.country.dk	en	Denmark
+datatype.country.do	en	Dominican Republic
+datatype.country.ee	en	Estonia
+datatype.country.fi	en	Finland
+datatype.country.gc	en	Greece
+datatype.country.gt	en	Guatemala
+datatype.country.gu	en	Guadalupe
+datatype.country.ha	en	Haiti
+datatype.country.hk	en	Hong Kong
+datatype.country.hn	en	Honduras
+datatype.country.hu	en	Hungary
+datatype.country.id	en	Indonesia
+datatype.country.ie	en	Ireland
+datatype.country.il	en	Israel
+datatype.country.ja	en	Jamaica
+datatype.country.kr	en	South Coreia
+datatype.country.lt	en	Lithuania
+datatype.country.lv	en	Latvia
+datatype.country.my	en	Malaysia
+datatype.country.ni	en	Nicaragua
+datatype.country.nl	en	Holand
+datatype.country.no	en	Norway
+datatype.country.nz	en	New Zeland
+datatype.country.pa	en	Panama
+datatype.country.pe	en	Peru
+datatype.country.ph	en	Philippines
+datatype.country.pk	en	Pakistan
+datatype.country.pl	en	Poland
+datatype.country.pr	en	Porto Rico
+datatype.country.pt	en	Portugal
+datatype.country.sa	en	Saudi Arabia
+datatype.country.se	en	Sweden
+datatype.country.sg	en	Singapore
+datatype.country.sk	en	Slovakia
+datatype.country.sv	en	El Salvador
+datatype.country.th	en	Thailand
+datatype.country.tt	en	Trinidad and Tobago
+datatype.country.za	en	South Africa
+datatype.country.at	pt	Áustria
+datatype.country.au	pt	Austrália
+datatype.country.bb	pt	Barbados
+datatype.country.be	pt	Bélgica
+datatype.country.bs	pt	Bahamas
+datatype.country.cl	pt	Chile
+datatype.country.co	pt	Colômbia
+datatype.country.cr	pt	Costa Rica
+datatype.country.cu	pt	Curaçao
+datatype.country.cz	pt	República Checa
+datatype.country.dk	pt	Dinamarca
+datatype.country.do	pt	República Dominicana
+datatype.country.ee	pt	Estônia
+datatype.country.fi	pt	Finlândia
+datatype.country.gc	pt	Grécia
+datatype.country.gt	pt	Guatemala
+datatype.country.gu	pt	Guadalupe
+datatype.country.ha	pt	Haiti
+datatype.country.hk	pt	Hong Kong
+datatype.country.hn	pt	Honduras
+datatype.country.hu	pt	Hungria
+datatype.country.id	pt	Indonésia
+datatype.country.ie	pt	Irlanda
+datatype.country.il	pt	Israel
+datatype.country.ja	pt	Jamaica
+datatype.country.kr	pt	Coréia do Sul
+datatype.country.lt	pt	Lituânia
+datatype.country.lv	pt	Letônia
+datatype.country.my	pt	Malásia
+datatype.country.ni	pt	Nicarágua
+datatype.country.nl	pt	Holanda
+datatype.country.no	pt	Noruega
+datatype.country.nz	pt	Nova Zelândia
+datatype.country.pa	pt	Panamá
+datatype.country.pe	pt	Peru
+datatype.country.ph	pt	Filipinas
+datatype.country.pk	pt	Paquistão
+datatype.country.pl	pt	Polônia
+datatype.country.pr	pt	Porto Rico
+datatype.country.pt	pt	Portugal
+datatype.country.sa	pt	Arabia Saudita
+datatype.country.se	pt	Suécia
+datatype.country.sg	pt	Singapura
+datatype.country.sk	pt	Eslováquia
+datatype.country.sv	pt	El Salvador
+datatype.country.th	pt	Tailândia
+datatype.country.tt	pt	Trinidad e Tobago
+datatype.country.za	pt	África do Sul
+corporation.johnson.geolabel1	es	Región
+corporation.monsanto.geolabel1	es	Región
+datatype.country.be	es	Bélgica
+datatype.country.cl	es	Chile'
+datatype.country.co	es	Colombia
+datatype.country.cr	es	Costa Rica
+datatype.country.do	es	República Dominicana
+datatype.country.gc	es	Grecia
+datatype.country.gt	es	Guatemala
+datatype.country.ha	es	Haiti
+datatype.country.hn	es	Honduras
+datatype.country.ni	es	Nicaragua
+datatype.country.pa	es	Panamá
+datatype.country.pe	es	Perú
+datatype.country.ph	es	Filipinas
+datatype.country.pr	es	Puerto Rico
+datatype.country.sv	es	El Salvador
+datatype.country.th	es	Thailandia
+datatype.country.tt	es	Trinidad y Tobago
+datatype.country.bb	es	Barbados
+datatype.country.cu	es	Curacao
+datatype.country.gu	es	Guadalupe
+datatype.country.mr	es	Martinica
+corporation.divorg.monsanto.divorg1	es	Divisiones
+corporation.divorg.monsanto.divorg2	es	Unidades
+corporation.divorg.monsanto.divorg3	es	Areas
+corporation.divorg.monsanto.divorg1.level1	es	Divisiones
+corporation.divorg.monsanto.divorg1.level2	es	Subdivisiones
+corporation.divorg.monsanto.divorg2.level1	es	Unidades
+corporation.divorg.monsanto.divorg3.level1	es	Areas
+generic.messages.search	en	Search
+generic.messages.search	es	Buscar
+generic.messages.accept	en	Accept
+generic.messages.accept	es	Aceptar
+generic.messages.close	en	Close
+generic.messages.close	es	Cerrar
+generic.messages.myinfo	en	My Info
+generic.messages.myinfo	es	Mis datos
+generic.messages.end	en	End
+generic.messages.end	es	Finalizar
+generic.messages.notresult	en	Not Result
+generic.messages.notresult	es	No hay resultado
+generic.messages.all	en	all
+generic.messages.all	es	Todo
+generic.messages.reset	en	Reset
+generic.messages.reset	es	Limpiar
+generic.messages.save	en	Save
+generic.messages.save	es	Salvar
+generic.messages.confirm	en	Confirm
+generic.messages.confirm	es	Confirmar
+generic.messages.login.fail	es	El usuario o el password son incorrectos
+generic.messages.login.fail	en	Login fail, invalid name or password
+generic.messages.successful	es	La operación tuvo éxito!!
+generic.messages.successful	en	Operation successful!!
+generic.messages.options	en	Options
+generic.messages.options	es	Opciones
+generic.messages.adddriver	en	Add Driver
+generic.messages.adddriver	es	Agregar Conductor
+generic.messages.updatedriver	en	Update Driver
+generic.messages.updatedriver	es	Editar Conductor
+generic.messages.adduser	en	Add User
+generic.messages.adduser	es	Agregar Usuario
+generic.messages.delete	en	Delete
+generic.messages.delete	es	Borrar
+generic.messages.edit	en	Edit
+generic.messages.edit	es	Editar
+generic.messages.cancel	en	Cancel
+generic.messages.cancel	es	Cancelar
+generic.messages.add	en	Add
+generic.messages.add	es	Agregar
+generic.messages.addall	en	Add All
+generic.messages.addall	es	Agregar Todas
+generic.messages.modify	en	Modify
+generic.messages.modify	es	Modificar
+generic.messages.actions	en	Actions
+generic.messages.actions	es	Acciones
+generic.corporation.divorg.new	en	New
+generic.corporation.divorg.new	es	Nuevo
+generic.error.exception	es	Error desconocido, Exception
+generic.error.deslogued	es	Autentifiquese
+generic.error.remote	es	Ocurrio un error, RemoteException
+generic.user.userdata.isempty	es	Los datos del usuario son nulos
+generic.user.userdata.isinvalid	es	Los datas del usuario son inválidos
+generic.user.userdata.firstname.isempty	es	El nombre es nulo
+generic.user.userdata.lastname.isempty	es	El apellido es nulo
+generic.user.userdata.mail.isempty	es	El e-mail es nulo
+generic.user.userdata.pass.isempty	es	La password es nula
+generic.user.userdata.language.isempty	es	El atributo language es nulo
+generic user.userdata.passconfirm	es	Contraseña invalida
+generic.user.alreadyexist	es	El usuario ya existe
+generic.user.notexist	es	El usuario no existe
+generic.user.userdata.loginname.isinvalid	es	El atributo usuario es invalido
+generic.user.userdata.firstname.isinvalid	es	El atributo nombre es invalido
+generic.user.userdata.lastname.isinvalid	es	El atributo apellido es invalido
+generic.user.userdata.mail.isinvalid	es	El atributo e-mail es invalido
+generic.user.userdata.pass.isinvalid	es	El atributo password es invalido
+generic.user.userdata.language.isinvalid	es	El atributo language es invalido
+business.user.userreportfacade.finduserbylikeattribute.attributeunsuported	es	El valor del atributo no es soportado
+business.user.userreportfacade.notaccess.userreport	es	No se puede alcanzar la clase UserReport
+business.user.userabmfacde.notaccess.userabm	es	No se puede alcanzar la clase UserABM
+business.systemaccess.notaccess.userreportfacade	es	No se puede alcanzar la clase UserReportFacade
+business.systemaccess.notaccess.userabmfacade	es	No se puede alcanzar la clase UserABMFacade
+business.systemaccess.notaccess.corporationabmfacade	es	No se puede alcanzar la clase CorporationABMFacade
+business.systemaccess.notaccess.corporationreportfacade	es	No se puede alcanzar la clase CorporationReportFacade
+business.systemaccess.notaccess.geograficreportfacade	es	No se puede alcanzar la clase GeograficReportFacade
+generic.error.exception	en	Has ocurred error, Exception
+generic.error.deslogued	en	You need login for this operation
+generic.error.remote	en	Has ocurred error, RemoteException
+generic.user.userdata.isempty	en	User data is empty
+generic.user.userdata.isinvalid	en	User data is invalid
+generic.user.userdata.firstname.isempty	en	First name is empty
+generic.user.userdata.lastname.isempty	en	Last name is empty
+generic.user.userdata.mail.isempty	en	Mail is empty
+generic.user.userdata.pass.isempty	en	Password is empty
+generic.user.userdata.language.isempty	en	Language is empty
+generic user.userdata.passconfirm	en	Invalid Password
+generic.user.alreadyexist	en	User already exist
+generic.user.notexist	en	User not exist
+generic.user.userdata.firstname.isinvalid	en	First name is invalid
+generic.user.userdata.loginname.isinvalid	en	Login name is invalid
+generic.user.userdata.lastname.isinvalid	en	Last name is invalid
+generic.user.userdata.mail.isinvalid	en	Mail is invalid
+generic.user.userdata.pass.isinvalid	en	Pass is invalid
+generic.user.userdata.language.isinvalid	en	Language is invalid
+business.user.userreportfacade.finduserbylikeattribute.attributeunsuported	en	Attribute unsuported
+business.user.userreportfacade.notaccess.userreport	en	Can not access UserReport
+business.user.userabmfacde.notaccess.userabm	en	Can not access UserABM
+business.systemaccess.notaccess.userreportfacade	en	Can not access UserReportFacade
+business.systemaccess.notaccess.userabmfacade	en	Can not access UserABMFacade
+business.systemaccess.notaccess.corporationabmfacade	en	Can not access CorporationABMFacade
+business.systemaccess.notaccess.corporationreportfacade	en	Can not access CorporationReportFacade
+business.systemaccess.notaccess.geograficreportfacade	en	Can not access GeograficReportFacade
+generic.user.userdata.firstname	en	First Name
+generic.user.userdata.lastname	en	Last Name
+generic.user.userdata.pass	en	Password
+generic.user.userdata.nickname	en	Nick Name
+generic.user.userdata.language	en	Language
+generic.user.userdata.mail	en	Mail
+web.user.usernedlist.newuser	en	New User
+web.user.useredit.edituser	en	User Edit
+web.user.useredit.edituser	es	Editar Usuario
+web.user.usernedlist.systemusers	en	System Users
+web.user.resetpassword.resetpasswordforuser	en	Reset password for user
+web.user.resetpassword.resetpassword	en	Reset Password
+web.user.create.confirmpassword	en	Confirm password
+web.user.userview.systemuserdata	en	System user data
+generic.user.userdata.firstname	es	Nombre
+generic.user.userdata.lastname	es	Apellido
+generic.user.userdata.pass	es	Password
+generic.user.userdata.nickname	es	Usuario
+generic.user.userdata.language	es	Lenguaje
+generic.user.userdata.mail	es	Correo
+web.user.usernedlist.newuser	es	Nuevo usuario
+web.user.usernedlist.edituser	en	Edit user
+web.user.usernedlist.edituser	es	Editar usuario
+web.user.usernedlist.systemusers	es	Usuarios del sistema
+web.user.resetpassword.resetpasswordforuser	es	Cambiar clave del usuario 
+web.user.resetpassword.resetpassword	es	Cambiar clave
+web.user.create.confirmpassword	es	Confirmar el password
+web.user.userview.systemuserdata	es	Datos del usuario 
+web.user.usernedlist.updateuser	en	Update User
+web.user.usernedlist.updateuser	es	Editar usuario
+en	en	English
+en	es	Ingles
+es	es	Español
+es	en	Spanish
+pt	en	Portuguese
+pt	es	Porugés
+business.language.languagereportfacade.notaccess.languagereport	es	No se puede acceder a Language report desde LanguageReportFacade
+business.language.languagereportfacade.notaccess.languagereport	en	Not access LanguageReport in LanguageReportFacade
+business.systemaccess.notaccess.languagereportfacade	en	Not access LanguageReportFacade in SystemAccess
+business.systemaccess.notaccess.languagereportfacade	es	No se puede acceder a LanguageReportFacade desde SystemAccess
+persistence.language.languagereport.findmessages.findmessages.locale.isempty	en	Parameter locale is empty
+persistence.language.languagereport.findmessages.findmessages.locale.isempty	es	El parametro locale es vacio 
+persistence.user.userabm.notinittransaction	en	Not init transaction in UserABM
+persistence.user.userabm.notinittransaction	es	No se inicio la transacción en UserABM
+persistence.user.userreport.notinittransaction	es	No se inicio la transacion en UserReport
+persistence.user.userreport.notinittransaction	en	Not init transaction in UserReport
+business.user.userreportfacade.notacess.userreport	en	Not access UserReport in UserReportFacade
+business.user.userreportfacade.notacess.userreport	es	No se puede acceder a UserReport desde UserReportFacade
+business.user.userreport.finduserbylikeattribute.attribname.isempty	es	El nombre del atributo es vacio en UserReportFacade.findUserByLikeAttribute
+business.user.userreport.finduserbylikeattribute.attribname.isempty	en	The name of attribute is empty in UserReportFacade.findUserByLikeAttribute
+generic.driver.driverdata.firstname	es	Nombre
+generic.driver.driverdata.lastname	es	Apellido
+generic.driver.driverdata.birthdate	es	Fecha de Nacimiento
+generic.driver.driverdata.sex	es	Sexo
+generic.driver.driverdata.nationality	es	Nacionalidad
+generic.driver.driverdata.corporation	es	Corporación
+generic.driver.driverdata.division	es	División
+generic.driver.driverdata.subdivision	es	SubDivisión
+generic.driver.driverdata.country	es	País
+generic.driver.driverdata.city	es	Ciudad
+generic.driver.driverdata.licenseexpiry	es	Fecha de Expiración de Licencia
+generic.driver.driverdata.licensecategory	es	Categoría de Licencia
+generic.driver.driverdata.licenseget	es	Fecha de Obtención de Licencia
+generic.driver.driverdata.vehicleallowed	es	Vehículos Autorizados
+generic.driver.driverdata.area	es	Área
+generic.driver.driverdata.officeaddress	es	Dirección de Oficina
+generic.driver.driverdata.email	es	E-mail
+generic.driver.driverdata.personaladdress	es	Dirección Personal
+generic.driver.driverdata.firstname	en	First Name
+generic.driver.driverdata.lastname	en	Last Name
+generic.driver.driverdata.birthdate	en	Birth Date
+generic.driver.driverdata.sex	en	Sex
+generic.driver.driverdata.nationality	en	Nationality
+generic.driver.driverdata.corporation	en	Corporation
+generic.driver.driverdata.subdivision	en	SubDivision
+generic.driver.driverdata.country	en	Country
+generic.driver.driverdata.city	en	City
+generic.driver.driverdata.licenseexpiry	en	License Expiration Date
+generic.driver.driverdata.licensecategory	en	License Category
+generic.driver.driverdata.licenseget	en	License Get Date
+generic.driver.driverdata.vehicleallowed	en	Allowed Vehicles
+generic.driver.driverdata.area	en	Area
+generic.driver.driverdata.officeaddress	en	Office Address
+generic.driver.driverdata.email	en	E-mail
+generic.driver.driverdata.personaladdress	en	Personal Address
+generic.driver.driverdata.licenseGetInvalid	es	Fecha de Obtención de Licencia Invalida
+generic.driver.driverdata.licenseExpiryInvalid	en	License Expiration Date Invalid
+generic.driver.driverdata.licenseGetInvalid	en	License Get Date Invalid
+generic.driver.driverdata.licenseExpiryInvalid	es	Fecha de Expiración de Licencia Invalida
+web.driver.driverlist.systemdrivers	es	Conductores en el Sistema
+web.driver.driverlist.systemdrivers	en	System Drivers
+generic.driver.driverdata.valueempty	en	Empty value
+generic.driver.driverdata.valueempty	es	Valor vacío
+generic.driver.driverdata.invalidattribute	en	Invalid Attribute
+generic.driver.driverdata.invalidattribute	es	Atributo inválido
+generic.driver.driverdata.confirmdelete	es	Confirma que desea borrar este conductor ?
+generic.driver.driverdata.confirmdelete	en	Are you sure you want to delete this driver ?
+generic.user.userdata.confirmdelete	es	Confirma que desea borrar este usuario ?
+generic.user.userdata.confirmdelete	en	Are you sure you want to delete this user ?
+generic.messages.confirmdeleteitem	es	Confirma que desea borrar este item ?
+generic.messages.confirmdeleteitem	en	Are you sure you want to delete this item ?
+datatype.sex.male	es	Masculino
+datatype.sex.male	en	Male
+datatype.sex.female	es	Femenino
+datatype.sex.female	en	Female
+persistence.corporation.corporationreport.notinittransaction	es	No se inicio la transacción en CorporationReport
+persistence.corporation.corporationreport.notinittransaction	en	Not init transaction in CorporationReport
+persistence.corporation.alreadyexist	es	La corporacion ya existe
+persistence.corporation.alreadyexist	en	Corpooration already exist
+persistence.corporation.corporationabm.notinittransaction	es	No se inicio la transacción en CorpoorationABM
+persistence.corporation.corporationabm.notinittransaction	en	Not init transaction CorpoorationABM
+business.corporation.corporationabmfacade.notaccess.corporationabm	es	No se puede acceder a CorporationABM desde CorporationABMFacade
+business.corporation.corporationabmfacade.notaccess.corporationabm	en	Not access CorporationABM in class CorporationABMFacade
+business.corporation.corporationabmfacade.createexception	es	No se pudo crear CorporationABMFacade
+business.corporation.corporationabmfacade.createexception	en	Can't create CorporationABMFacade
+generic.error.permissions.insufficientexception	en	Insufficient permissions for this operation
+generic.error.permissions.insufficientexception	es	Permisos insuficientes para realizar la operación
+persistence.user.tables.user.corporation.isempty	en	Corporation is empty
+persistence.user.tables.user.corporation.isempty	es	La corporacion es vacia
+persistence.user.tables.user.diferentcorporation	en	Diferent corporations,  permission and corporation
+persistence.user.tables.user.diferentcorporation	es	El permiso es sobre una corporacion diferente
+persistence.user.tables.user.permission.corporation.isempty	en	The corporation permission is empty
+persistence.user.tables.user.permission.corporation.isempty	es	La corporacion a la que refiere el permiso es vacia
+generic.driver.driverdata.firstNameInvalid	en	Invalid First Name
+generic.driver.driverdata.lastNameInvalid	en	Invalid Last Name
+generic.driver.driverdata.birthDateInvalid	en	Invalid Birth Date
+generic.driver.driverdata.sexInvalid	en	You must choose sex
+generic.driver.driverdata.nationalityInvalid	en	Invalid Nationality
+generic.driver.driverdata.corporationInvalid	en	You are not working in a corporation
+generic.driver.driverdata.divisionInvalid	en	Invalid Division
+generic.driver.driverdata.subdivisionInvalid	en	Invalid SubDivision
+generic.driver.driverdata.countryInvalid	en	Invalid Country
+generic.driver.driverdata.firstNameInvalid	es	Nombre Incorrecto
+generic.driver.driverdata.lastNameInvalid	es	Apellido Incorrecto
+generic.driver.driverdata.birthDateInvalid	es	Fecha de Nacimiento Invalida
+generic.driver.driverdata.sexInvalid	es	Debe seleccionar sexo
+generic.driver.driverdata.nationalityInvalid	es	Nacionalidad Invalida
+generic.driver.driverdata.corporationInvalid	es	No está trabajando en una corporación
+generic.driver.driverdata.divisionInvalid	es	División Invalida
+generic.driver.driverdata.subdivisionInvalid	es	Subdivisión Invalida
+generic.driver.driverdata.countryInvalid	es	País Invalido
+web.driver.driveredit.viewdriver	es	Datos del Conductor - Ver
+web.driver.driveredit.viewdriver	en	Driver Data - View
+web.driver.driveredit.editdriver	es	Datos del Conductor - Editar
+web.driver.driveredit.editdriver	en	Driver Data - Edit
+generic.driver.driverdata.division	en	Division
+generic.corporation.corporationdata.data	es	Datos de la Corporación
+generic.corporation.corporationdata.data	en	Corporation Data
+generic.corporation.corporationdata.name	es	Corporación
+generic.corporation.corporationdata.name	en	Corporation name
+generic.corporation.corporationdata.isempty	es	Los datos de la corporación son vacios
+generic.corporation.corporationdata.isempty	en	Corporation data is empty 
+generic.corporation.corporationdata.isinvalid	en	Corporation data is empty 
+generic.corporation.corporationdata.isinvalid	es	Los datos de la corporación son invalidos
+generic.corporation.corporationdata.divorgcount	es	Cantidad de Divisiones Organizacionales
+generic.corporation.corporationdata.divorgcount	en	Organizational Divisions Count
+generic.corporation.corporationdata.divorg	es	Division Organizacional
+generic.corporation.corporationdata.divorg	en	Organizational Division
+generic.corporation.corporationdata.divorgname	es	Nombre
+generic.corporation.corporationdata.divorgname	en	Name
+generic.corporation.corporationdata.levelcount	es	Cantidad de Niveles
+generic.corporation.corporationdata.levelcount	en	Level Count
+generic.corporation.corporationdata.level	es	Nivel
+generic.corporation.corporationdata.level	en	Level
+generic.corporation.corporationdata.levelname	es	Nombre
+generic.corporation.corporationdata.levelname	en	Name
+generic.corporation.corporationdata.itemname	es	Item
+generic.corporation.corporationdata.itemname	en	Item
+generic.corporation.corporationdata.add	es	Agregar
+generic.corporation.corporationdata.add	en	Add
+generic.corporation.corporationdata.remove	es	Borrar
+generic.corporation.corporationdata.remove	en	Remove
+generic.corporation.error.emptyname	es	Nombre de la Corporación Vacío
+generic.corporation.error.emptyname	en	Empty Corporation Name
+generic.corporation.error.emptydivorgname	es	Nombre de División Organizacional Vacío
+generic.corporation.error.emptydivorgname	en	Empty Organizational Division Name
+generic.corporation.error.emptylevelname	es	Nombre de Nivel Vacío
+generic.corporation.error.emptylevelname	en	Empty Level Name
+generic.corporation.error.levelwithoutsublevel	es	Item sin ningún subitem
+generic.corporation.error.levelwithoutsublevel	en	Item without subitem
+generic.user.divorg.noasociations	es	No hay ninguna asociación
+generic.user.divorg.noasociations	en	No asociations
+generic.user.divorg.added	en	Added
+generic.user.divorg.added	es	Agregadas
+generic.user.divorg.notadded	en	not Added
+generic.user.divorg.notadded	es	no Agregadas
+corporation.divorg.divorg1	es	Divisiones
+corporation.divorg.divorg2	es	Unidades
+corporation.divorg.divorg3	es	Áreas
+corporation.divorg.divorg3.level1	es	Área
+corporation.divorg.divorg2.level2	es	Subunidad
+corporation.divorg.divorg2.level1	es	Unidad
+corporation.divorg.divorg1.level2	es	Subdivisión
+corporation.divorg.divorg1.level3	es	Subsubdivisión
+corporation.divorg.divorg1.level1	es	División
+corporation.divorg.divorg1	en	Divisions
+corporation.divorg.divorg2	en	Units
+corporation.divorg.divorg3	en	Areas
+corporation.divorg.divorg3.level1	en	Area
+corporation.divorg.divorg2.level2	en	Subunit
+corporation.divorg.divorg2.level1	en	Unit
+corporation.divorg.divorg1.level2	en	Subsubdivision
+corporation.divorg.divorg1.level3	en	Subdivision
+corporation.divorg.divorg1.level1	en	Division
+generic.messages.inactivate	en	Inactivate
+generic.messages.inactivate	es	Desactivar
+generic.messages.activate	en	Activate
+generic.messages.activate	es	Activar
+generic.user.divorg.inactiveitems	en	Inactive Items
+generic.user.divorg.inactiveitems	es	Items Inactivos
+generic.user.divorg.currentitems	en	Current Items
+generic.user.divorg.currentitems	es	Items Activos
+corporation.divgeo.countries	en	Countries
+corporation.divgeo.countries	es	Países
+corporation.country	en	Country
+corporation.country	es	País
+corporation.geolabel1	en	Geographic Division 1
+corporation.geolabel1	es	División Geográfica 1
+corporation.geolabel2	en	Geographic Division 2
+corporation.geolabel2	es	División Geográfica 2
+datatype.country.uy	en	Uruguay
+datatype.country.uy	es	Uruguay
+datatype.country.ar	en	Argentina
+datatype.country.ar	es	Argentina
+datatype.country.br	en	Brazil
+datatype.country.br	es	Brasil
+datatype.country.py	en	Paraguay
+datatype.country.py	es	Paraguay
+datatype.country.uk	en	United Kingdom
+datatype.country.uk	es	Reino Unido
+datatype.country.es	en	Spain
+datatype.country.es	es	España
+corporation.divgeo.modify_countries	en	Modify Countries
+corporation.divgeo.modify_countries	es	Modificar Países
+corporation.divgeo.active_countries	en	Active Countries Added
+corporation.divgeo.active_countries	es	Países activos agregados
+corporation.divgeo.inactive_countries	en	Inactive Countries Added
+corporation.divgeo.inactive_countries	es	Países inactivos agregados
+corporation.divgeo.not_added_countries	en	Not Added Countries
+corporation.divgeo.not_added_countries	es	Países no agregados
+corporation.divgeo.not_any_country	en	There are not any country added
+corporation.divgeo.not_any_country	es	No hay países agregados
+corporation.divgeo.any_country_to_add	en	There are not any country to add
+corporation.divgeo.any_country_to_add	es	No hay países para agregar
+corporation.divgeo.any_inactive_country_add	en	There are not any inactive country
+corporation.divgeo.any_inactive_country_add	es	No hay países inactivos agregados
+corporation.divgeo.any_item_added	en	There are not any item added
+corporation.divgeo.any_item_added	es	No hay items agregados
+corporation.divorg.modify	en	Modify
+corporation.divorg.modify	es	Modificar
+generic.user.divorg.noactiveitems	en	There is not any active item
+generic.user.divorg.noactiveitems	es	No hay items activos
+generic.user.divorg.noinactiveitems	en	There is not any inactive item
+generic.user.divorg.noinactiveitems	es	No hay items inactivos
+user.divorg.modify	en	Modify
+user.divorg.modify	es	Modificar
+user.divorg.addeditems	en	Added Items
+user.divorg.addeditems	es	Items Agregados
+user.divorg.notaddeditems	en	Not Added Items
+user.divorg.notaddeditems	es	Items No Agregados
+user.divorg.noitemsadded	en	There is not any item added
+user.divorg.noitemsadded	es	No hay items agregados
+user.divorg.noitemstoadd	en	There is not any item to add
+user.divorg.noitemstoadd	es	No hay items para agregar
+generic.driver.driverdata.licenseCategoryInvalid	es	Categoría de Licencia Invalida
+generic.driver.driverdata.vehiclesAllowedInvalid	es	Cantidad de Vehículos Autorizados Invalida
+generic.driver.driverdata.licenseCategoryInvalid	en	Invalid License Category
+generic.driver.driverdata.vehiclesAllowedInvalid	en	Invalid Vehicle Allowed Countr
+generic.messages.inactivate.confirm	en	Confirm to inactivate this item ?
+generic.messages.inactivate.confirm	es	Confirma que desea inactivar este item ?
+generic.messages.activate.confirm	en	Confirm to activate this item ?
+generic.messages.activate.confirm	es	Confirma que desea activar este item ?
+corporation.country.inactivate.confirm	en	Confirm to inactivate this country ?
+corporation.country.inactivate.confirm	es	Confirma que desea inactivar este país ?
+corporation.country.activate.confirm	en	Confirm to activate this country ?
+corporation.country.activate.confirm	es	Confirma que desea activar este país ?
+corporation.country.delete.confirm	en	Confirm to delete this country ?
+corporation.country.delete.confirm	es	Confirma que desea borrar este país ?
+corporation.country.add.confirm	en	Confirm to add this country ?
+corporation.country.add.confirm	es	Confirma que desea agregar este país ?
+corporation.additem.error.alreadyexistsdata	en	Already exist item
+corporation.additem.error.alreadyexistsdata	es	Item ya existente
+generic.user.changepassword	en	Change password
+generic.user.changepassword	es	Cambiar contraseña
+generic.user.changelanguage	en	Change language
+generic.user.changelanguage	es	Cambiar lenguaje
+generic.user.changecorporation	en	Change corporation
+generic.user.changecorporation	es	Cambiar corporación
+generic.user.change	en	Change
+generic.user.change	es	Cambiar
+generic.user.changecountry	en	Filter Country
+generic.user.changecountry	es	Filtrar País
+generic.user.changemypassword	en	Change my password
+generic.user.changemypassword	es	Cambiar mi contraseña
+generic.user.currentlanguage	en	Current language
+generic.user.currentlanguage	es	Lenguaje actual
+generic.messages.changeto	en	Change to
+generic.messages.changeto	es	Cambiar a
+generic.messages.change	en	Filter
+generic.messages.change	es	Filtrar
+generic.user.currentcorporation	en	Current corporation
+generic.user.currentcorporation	es	Corporación actual
+generic.data.user	en	User
+generic.data.user	es	Usuario
+generic.data.corporation	en	Corporation
+generic.data.corporation	es	Corporación
+generic.data.driver	en	Driver
+generic.data.driver	es	Conductor
+generic.messages.create	en	Create
+generic.messages.create	es	Crear
+generic.data.event	en	Event
+generic.data.event	es	Evento
+generic.event.individualinput	en	Individual Input
+generic.event.individualinput	es	Ingreso individual
+business.corporation.corporationabmfacade.createexception	pt	Não foi possível criar CorporationABMFacade
+business.corporation.corporationabmfacade.notaccess.corporationabm	pt	Sem acesso a CorporationABM in CorporationABMFacade
+business.language.languagereportfacade.notaccess.languagereport	pt	Sem acesso a LanguageReport em LanguageReportFacade 
+business.systemaccess.notaccess.corporationabmfacade	pt	Não foi possível accessar CorporationABMFacade
+business.systemaccess.notaccess.corporationreportfacade	pt	Não foi possível accessar CorporationReportFacade
+business.systemaccess.notaccess.geograficreportfacade	pt	Não foi possível accessar GeograficReportFacade
+business.systemaccess.notaccess.languagereportfacade	pt	Sem acesso a LanguageReportFacade em SystemAccess
+business.systemaccess.notaccess.userabmfacade	pt	Não foi possível accessar UserABMFacade
+business.systemaccess.notaccess.userreportfacade	pt	Não foi possível accessar UserReportFacade
+business.user.userabmfacde.notaccess.userabm	pt	Não foi possível accessar UserABM
+business.user.userreportfacade.finduserbylikeattribute.attributeunsuported	pt	Valor de atributo não suportado
+business.user.userreportfacade.notaccess.userreport	pt	Não foi possível acessar UserReport
+business.user.userreportfacade.notacess.userreport	pt	Sem acesso a UserReport em UserReportFacade
+business.user.userreport.finduserbylikeattribute.attribname.isempty	pt	O nome do atributo está vazio em UserReportFade.findUserByLikeAttribute
+corporation.additem.error.alreadyexistsdata	pt	Esse ítem já existe
+corporation.country	pt	país
+corporation.country.activate.confirm	pt	Deseja mesmo ativar esse país?
+corporation.country.add.confirm	pt	Deseja mesmo adicionar esse país?
+corporation.country.delete.confirm	pt	Deseja mesmo deletar esse país?
+corporation.country.inactivate.confirm	pt	Deseja mesmo desativar esse país?
+corporation.divgeo.active_countries	pt	Países ativos adicionados
+corporation.divgeo.any_country_to_add	pt	Não existem países para adicionar
+corporation.divgeo.any_inactive_country_add	pt	Não existe nenhum país inativo
+corporation.divgeo.any_item_added	pt	Não existe nenhum ítem adicionado
+corporation.divgeo.countries	pt	paises
+corporation.divgeo.inactive_countries	pt	Países inativos adicionados
+corporation.divgeo.modify_countries	pt	Modificar países
+corporation.divgeo.not_added_countries	pt	Países não adicionados
+corporation.divgeo.not_any_country	pt	Nenhum país adicionado
+corporation.divorg.divorg1	pt	Divisões
+corporation.divorg.divorg1.level1	pt	Divisão
+corporation.divorg.divorg1.level2	pt	Subdivisão
+corporation.divorg.divorg1.level3	pt	Subdivisão
+corporation.divorg.divorg2	pt	Unidades
+corporation.divorg.divorg2.level1	pt	Unidade
+corporation.divorg.divorg2.level2	pt	Subunidade
+corporation.divorg.divorg3	pt	áreas
+corporation.divorg.divorg3.level1	pt	área
+corporation.divorg.modify	pt	Modificar Divisão Organizacional
+corporation.geolabel1	pt	Divisão Geográfica 1
+corporation.geolabel2	pt	Divisão Geográfica 2
+datatype.country.ar	pt	Argentina
+datatype.country.br	pt	Brasil
+datatype.country.es	pt	Espanha
+datatype.country.py	pt	Paraguai
+datatype.country.uk	pt	Reino Unido
+datatype.country.uy	pt	Uruguai
+datatype.sex.female	pt	Feminino
+datatype.sex.male	pt	Masculino
+en	pt	Inglês
+es	pt	Espanhol
+generic.corporation.corporationdata.add	pt	adicionar
+generic.corporation.corporationdata.data	pt	Dados da Corporação
+generic.corporation.corporationdata.divorg	pt	Divisão Organizacional
+generic.corporation.corporationdata.divorgcount	pt	Quantidade de divisões organizacionais
+generic.corporation.corporationdata.divorgname	pt	Nome
+generic.corporation.corporationdata.isempty	pt	Os dados da corporação estão vazios
+generic.corporation.corporationdata.isinvalid	pt	Os dados da corporação são inválidos
+generic.corporation.corporationdata.itemname	pt	ítem
+generic.corporation.corporationdata.level	pt	Nível
+generic.corporation.corporationdata.levelcount	pt	Quantidade de níveis
+generic.corporation.corporationdata.levelname	pt	Nome
+generic.corporation.corporationdata.name	pt	Nome da corporação
+generic.corporation.corporationdata.remove	pt	Remover
+generic.corporation.divorg.new	pt	Novo
+generic.corporation.error.emptydivorgname	pt	O nome da divizão organizacional está vazio
+generic.corporation.error.emptylevelname	pt	O nome do nível está vazio
+generic.corporation.error.emptyname	pt	O nome da corporação está vazio
+generic.corporation.error.levelwithoutsublevel	pt	ítem sem subitem
+generic.driver.driverdata.area	pt	área
+generic.driver.driverdata.birthdate	pt	Data de nascimento
+generic.driver.driverdata.birthDateInvalid	pt	Data de Nascimento Inválida
+generic.driver.driverdata.city	pt	Cidade
+generic.driver.driverdata.confirmdelete	pt	Está certo que deseja deletar esse condutor?
+generic.driver.driverdata.corporation	pt	Corporação
+generic.driver.driverdata.corporationInvalid	pt	Você não está trabalhando em uma corporação
+generic.driver.driverdata.country	pt	país
+generic.driver.driverdata.countryInvalid	pt	país inválido
+generic.driver.driverdata.division	pt	divisão
+generic.driver.driverdata.divisionInvalid	pt	divisão inválida
+generic.driver.driverdata.email	pt	e-mail
+generic.driver.driverdata.firstname	pt	Nome
+generic.driver.driverdata.firstNameInvalid	pt	Nome inválido
+generic.driver.driverdata.invalidattribute	pt	Atributo inválido
+generic.driver.driverdata.lastname	pt	sobrenome
+generic.driver.driverdata.lastNameInvalid	pt	sobrenome inválido
+generic.driver.driverdata.licensecategory	pt	categoria de licensa
+generic.driver.driverdata.licenseCategoryInvalid	pt	categoria de licensa inválida
+generic.driver.driverdata.licenseexpiry	pt	Data de expiração da licensa
+generic.driver.driverdata.licenseExpiryInvalid	pt	Data de expiração de licensa inválida
+generic.driver.driverdata.licenseget	pt	Data de obtenção da licensa
+generic.driver.driverdata.licenseGetInvalid	pt	Data de obtenção da licensa inválida
+generic.driver.driverdata.nationality	pt	nacionalidade
+generic.driver.driverdata.nationalityInvalid	pt	nacionalidade inválida
+generic.driver.driverdata.officeaddress	pt	Endereço comercial
+generic.driver.driverdata.personaladdress	pt	Endereço pessoal
+generic.driver.driverdata.sex	pt	sexo
+generic.driver.driverdata.sexInvalid	pt	Um sexo deve ser selecionado
+generic.driver.driverdata.subdivision	pt	subdivisão
+generic.driver.driverdata.subdivisionInvalid	pt	subdivisão inválida
+generic.driver.driverdata.valueempty	pt	valor vazio
+generic.driver.driverdata.vehicleallowed	pt	veículos autorizados
+generic.driver.driverdata.vehiclesAllowedInvalid	pt	quantidade de veículos autorizados inválidos
+generic.error.deslogued	pt	Precisa estar logado para realizar essa operação
+generic.error.exception	pt	Erro desconhecido, exceção
+generic.error.hibernate	pt	Ocorreu um erro, HibernateException
+generic.error.permissions.insufficientexception	pt	Permissões insuficientes para realizar essa operação
+generic.error.remote	pt	Ocorreu um erro, RemoteException
+generic.messages.accept	pt	Aceitar
+generic.messages.actions	pt	Ações
+generic.messages.activate	pt	Ativar
+generic.messages.activate.confirm	pt	Deseja realmente ativar esse ítem?
+generic.messages.add	pt	adicionar
+generic.messages.addall	pt	adicionar todos
+generic.messages.adddriver	pt	adicionar condutor
+generic.messages.adduser	pt	adiconar usuário
+generic.messages.all	pt	todos
+generic.messages.cancel	pt	cancelar
+generic.messages.change	pt	mudar
+generic.messages.changeto	pt	mudar para
+generic.messages.close	pt	fechar
+generic.messages.confirm	pt	confirmar
+generic.messages.confirmdeleteitem	pt	está certo que deseja deletar esse ítem?
+generic.messages.delete	pt	deletar
+generic.messages.edit	pt	editar
+generic.messages.end	pt	finalizar
+generic.messages.inactivate	pt	desativar
+generic.messages.inactivate.confirm	pt	Deseja realmete desativar esse ítem?
+generic.messages.login.fail	pt	Usuário ou senha incorretos
+generic.messages.modify	pt	Modificar
+generic.messages.myinfo	pt	Meus dados
+generic.messages.notresult	pt	Sem resultado
+generic.messages.options	pt	Opções
+generic.messages.reset	pt	Limpar
+generic.messages.save	pt	Salvar
+generic.messages.search	pt	Buscar
+generic.messages.successful	pt	Operação realizada com sucesso!
+generic.messages.updatedriver	pt	editar condutor
+generic.user.alreadyexist	pt	Usuário existente
+generic.user.change	pt	mudar
+generic.user.changecorporation	pt	trocar de corporação
+generic.user.changecountry	pt	trocar de país
+generic.user.changelanguage	pt	trocar de idioma
+generic.user.changemypassword	pt	mudar minha senha
+generic.user.changepassword	pt	mudar senha
+generic.user.currentcorporation	pt	Corporação atual
+generic.user.currentlanguage	pt	Idioma atual
+generic.user.divorg.added	pt	adicionado
+generic.user.divorg.currentitems	pt	itens ativos
+generic.user.divorg.inactiveitems	pt	itens inativos
+generic.user.divorg.noactiveitems	pt	não existem itens ativos
+generic.user.divorg.noasociations	pt	não existe nenhuma associação
+generic.user.divorg.noinactiveitems	pt	não existem itens inativos
+generic.user.divorg.notadded	pt	não foi adicionado
+generic.user.notexist	pt	usuário não existe
+generic.user.userdata.confirmdelete	pt	Deseja realmente deletar esse usuário?
+generic.user.userdata.firstname	pt	Nome
+generic.user.userdata.firstname.isempty	pt	O campo nome está vazio
+generic.user.userdata.firstname.isinvalid	pt	O nome é inválido
+generic.user.userdata.isempty	pt	Os dados de usuários estão vazios
+generic.user.userdata.isinvalid	pt	Os dados de usuário são inválidos
+generic.user.userdata.language	pt	Idioma
+generic.user.userdata.language.isempty	pt	o campo idioma está vazio
+generic.user.userdata.language.isinvalid	pt	idioma inválido
+generic.user.userdata.lastname	pt	sobrenome
+generic.user.userdata.lastname.isempty	pt	o campo sobre nome está vazio
+generic.user.userdata.lastname.isinvalid	pt	o campo sobre nome é inválido
+generic.user.userdata.loginname.isinvalid	pt	o nome de usuário é inválido
+generic.user.userdata.mail	pt	endereço
+generic.user.userdata.mail.isempty	pt	o campo endereço está vazio
+generic.user.userdata.mail.isinvalid	pt	o campo endereço é inválido
+generic.user.userdata.nickname	pt	Usuário
+generic.user.userdata.pass	pt	Senha
+generic user.userdata.passconfirm	pt	Senha inválida
+generic.user.userdata.pass.isempty	pt	O campo senha está vazio
+generic.user.userdata.pass.isinvalid	pt	O campo senha é inválido
+persistence.corporation.alreadyexist	pt	Essa corporação já existe
+persistence.corporation.corporationabm.notinittransaction	pt	A transação não foi iniciada em CorporationABM
+persistence.corporation.corporationreport.notinittransaction	pt	A transação não foi iniciada em CorporationReport
+persistence.language.languagereport.findmessages.findmessages.locale.isempty	pt	O parâmetro local está vazio
+persistence.user.tables.user.corporation.isempty	pt	O campo corporação está vazio
+persistence.user.tables.user.diferentcorporation	pt	A permissão é sobre uma corporação diferente
+persistence.user.tables.user.permission.corporation.isempty	pt	O campo referente a permissão da corporação está vazio 
+persistence.user.userabm.notinittransaction	pt	Não se iniciou a transação em UserABM
+persistence.user.userreport.notinittransaction	pt	Não se iniciou a transação em UserReport
+pt	pt	Português
+user.divorg.addeditems	pt	itens adicionados
+user.divorg.modify	pt	Modificar divisão organizacional do usuário
+user.divorg.noitemsadded	pt	Não existem itens adicionados
+user.divorg.noitemstoadd	pt	Não existem itens para adicionar
+user.divorg.notaddeditems	pt	itens não adicionados
+web.driver.driveredit.editdriver	pt	Dados do condutor - Editar
+web.driver.driveredit.viewdriver	pt	Dados do Condutor - Visualizar
+web.driver.driverlist.systemdrivers	pt	Condutores no sistema
+web.user.create.confirmpassword	pt	Confirmar senha
+web.user.resetpassword.resetpassword	pt	Mudar senha
+web.user.resetpassword.resetpasswordforuser	pt	Mudar senha de usuário
+web.user.useredit.edituser	pt	Editar usuário
+web.user.usernedlist.edituser	pt	Editar usuário
+web.user.usernedlist.newuser	pt	Novo usuário
+web.user.usernedlist.systemusers	pt	Usuários do sistema
+web.user.usernedlist.updateuser	pt	Editar usuário
+web.user.userview.systemuserdata	pt	Dados de usuário 
+generic.messages.new	en	New
+generic.messages.new	es	Nuevo
+corporation.divorg.editing	en	Editing
+corporation.divorg.editing	es	Editando
+corporation.divorg.adding	en	Adding
+corporation.divorg.adding	es	Agregando
+generic.messages.finalize	en	Finalize
+generic.messages.finalize	es	Finalizar
+generic.corporation.divorg.newitem	en	New
+generic.corporation.divorg.newitem	es	Nuevo -
+generic.corporation.divorg.insertname	en	Insert name of the
+generic.corporation.divorg.insertname	es	Ingrese nombre de
+generic.messages.next	en	Next
+generic.messages.next	es	Siguiente
+corporation.divorg.additem.warning	en	Items wouldn't be saved until you add an item of the last level
+corporation.divorg.additem.warning	es	Los items no se salvarán hasta que agregue un item del último nivel
+generic.messages.wishtocontinue	en	Wish to continue ?
+generic.messages.wishtocontinue	es	Desea continuar ?
+general.messages.rename	en	Rename
+general.messages.rename	es	Renombrar
+corporation.divgeo.editing	en	Editing
+corporation.divgeo.editing	es	Editando
+corporation.divgeo.adding	en	Adding
+corporation.divgeo.adding	es	Agregando
+corporation.divgeo.editcountries	en	Edit Countries
+corporation.divgeo.editcountries	es	Editar Países
+corporation.divgeo.additem.warning	en	Items wouldn't be saved until you add an item of the last level
+corporation.divgeo.additem.warning	es	Los items no se salvarán hasta que agregue un item del último nivel
+generic.corporation.divgeo.insertname	en	Insert name of the
+generic.corporation.divgeo.insertname	es	Ingrese nombre de
+datatype.country.ec	es	Ecuador
+datatype.country.bo	es	Bolivia
+datatype.country.ve	es	Venezuela
+datatype.country.us	es	Estados Unidos
+datatype.country.ca	es	Canada
+datatype.country.mx	es	México
+datatype.country.fr	es	Francia
+datatype.country.it	es	Italia
+datatype.country.gr	es	Alemania
+datatype.country.ru	es	Rusia
+datatype.country.ag	es	Argelia
+datatype.country.eg	es	Egipto
+datatype.country.cn	es	China
+datatype.country.in	es	India
+datatype.country.jn	es	Japón
+datatype.country.ec	en	Ecuador
+datatype.country.bo	en	Bolivia
+datatype.country.ve	en	Venezuela
+datatype.country.us	en	United States
+datatype.country.ca	en	Canada
+datatype.country.mx	en	Mexico
+datatype.country.fr	en	France
+datatype.country.it	en	Italy
+datatype.country.gr	en	Germany
+datatype.country.ru	en	Russia
+datatype.country.mr	en	Moroco
+datatype.country.ag	en	Argelia
+datatype.country.eg	en	Egipt
+datatype.country.cn	en	China
+datatype.country.in	en	India
+datatype.country.jn	en	Japan
+generic.error.permissions	en	Your permissions in this corporation does not allow yor to access this page
+generic.error.permissions	es	Sus permisos en esta corporación no le permiten acceder a esta página
+permission.systemaccess.name	es	Usuario
+permission.userview.name	es	Ver Usuarios
+permission.usercreate.name	es	Crear Usuarios
+permission.useredit.name	es	Editar Usuarios
+permission.userdelete.name	es	Borrar Usuarios
+permission.userchangepassword.name	es	Cambiar clave de Usuarios
+permission.userupdate.name	es	Modificar Usuarios
+permission.userupdateaccess.name	es	Modificar acceso a datos de Usuario
+permission.corporationcreate.name	es	Crear Corporación
+permission.corporationedit.name	es	Editar Corporación
+permission.corporationmodify.name	es	Modificar Corporación
+permission.corporationdelete.name	es	Borrar Corporación
+permission.administrator.name	es	Administrador
+permission.driverview.name	es	Ver Conductor
+permission.drivercreate.name	es	Crear Conductor
+permission.driveredit.name	es	Editar Conductor
+permission.driverdelete.name	es	Borrar Conductor
+permission.driverupdate.name	es	Modificar Conductor
+permission.systemaccess.name	en	User
+permission.userview.name	en	View Users
+permission.usercreate.name	en	Create User
+permission.useredit.name	en	Edit User
+permission.userdelete.name	en	Delete User
+permission.userchangepassword.name	en	Change User's password
+permission.userupdate.name	en	Modify User
+permission.userupdateaccess.name	en	Change User's data access
+permission.corporationcreate.name	en	Create corporation
+permission.corporationedit.name	en	Edit Corporation
+permission.corporationmodify.name	en	Modify Corporation
+permission.corporationdelete.name	en	Delete Corporation
+permission.administrator.name	en	Administrator
+permission.driverview.name	en	View Drivers
+permission.drivercreate.name	en	Create Driver
+permission.driveredit.name	en	Edit Driver
+permission.driverdelete.name	en	Delete Driver
+permission.driverupdate.name	en	Modify Driver
+generic.messages.modify.permissions	en	Modify Permissions
+generic.messages.modify.permissions	es	Modificar Permisos
+user.permission.added	en	Let actions
+user.permission.added	es	Acciones permitidas
+user.permission.notadded	en	Not Let actions
+user.permission.notadded	es	Acciones no permitidas
+user.permission.removepermission	en	Remove Permission
+user.permission.removepermission	es	Quitar Permiso
+user.permission.addpermission	en	Add Permission
+user.permission.addpermission	es	Agregar Permiso
+web.user.changepermissions	en	Modify Permissions
+web.user.changepermissions	es	Modificar Permisos
+generic.user.userdata.role	en	Role
+generic.user.userdata.role	es	Rol
+role.administrator.name	en	Administrator
+role.administrator.name	es	Administrador
+role.consulting.name	en	Consulting
+role.consulting.name	es	Consultor
+role.champion.name	en	Champion
+role.champion.name	es	Champion
+role.accountmanager.name	en	Account Manager
+role.accountmanager.name	es	Encargado de Cuenta
+role.instructor.name	en	Instructor
+role.instructor.name	es	Instructor
+role.reporter.name	en	Reporter
+role.reporter.name	es	Reporter
+role.supervisor.name	en	Supervisor
+role.supervisor.name	es	Supervisor
+permission.userpermission.name	en	Modify Permissions
+permission.userpermission.name	es	Modificar Permisos
+generic.error.message	en	An error has happened in the aplication 
+generic.error.message	es	Ha ocurrido un error en la aplicación
+generic.messages.show	en	Show
+generic.messages.show	es	Mostrar
+generic.error.feedback	es	Feedback
+generic.error.feedback	en	Feedback
+generic.error.feedback	pt	Feedback
+generic.error.feedback.thanks	es	Gracias por confiar en nuestro sistema
+generic.error.feedback.body	es	Si desea reportar el error , ingrese la descripción del problema, acepte y se le enviara un mail al soporte tecnico.
+generic.messages.description	es	Descripción :
+generic.messages.moredetail	es	Mostrar detalle
+generic.messages.closedetail	es	Ocultar detalle
+generic.error.notinittransaction	es	Transacción no iniciada
+generic.error.notinittransaction	en	Not intiallized transaction
+generic.error.invaliddata	es	Datos inválidos
+generic.error.invaliddata	en	Invalid data
+generic.error.emptydata	es	Datos vacíos
+generic.error.emptydata	en	Empty data
+generic.error.notuserlogged	es	No hay un usuario logueado
+generic.error.notuserlogged	en	There isn't any logged user
+corporation.error.alreadyexit	es	Corporación ya existente
+corporation.error.alreadyexit	en	Already exist corporation
+generic.error.hibernate	es	Error en manejo de base de datos
+generic.error.hibernate	en	Error in handle of database
+generic.error.dataaccess	es	Problema en acceso a datos
+generic.error.dataaccess	en	Data access problem
+corporation.error.item.asociateduser	es	Hay usuarios asociados al item que desea borrar
+corporation.error.item.asociateduser	en	There are users asociated to that item
+corporation.messages.change	es	Cambiar corporación
+corporation.messages.change	en	Change corporation
+generic.driver.driverdata.id	es	Id
+generic.driver.driverdata.id	en	Id
+generic.driver.driverdata.status	es	Status
+generic.driver.driverdata.status	en	Status
+generic.messages.active	es	Activo
+generic.messages.active	en	Active
+generic.messages.excluded	es	Excluido
+generic.messages.excluded	en	Excluided
+generic.messages.all.pl	es	Todos
+generic.messages.all.pl	en	All
+driver.messages.advancedsearch	es	Búsqueda avanzada de Conductores
+driver.messages.advancedsearch	en	Driver advanced search
+generic.driver.driverdata.emptyDivOrg	es	Debe seleccionar División Organizacional
+generic.driver.driverdata.emptyDivOrg	en	You must select Organizational Division
+generic.messages.of	es	de
+generic.messages.of	en	of
+generic.driver.personaldata	es	Datos personales
+generic.driver.personaldata	en	Personal Data
+generic.driver.workinfo	es	Información ocupacional
+generic.driver.workinfo	en	Work information
+generic.driver.divorg	es	Divisiones Organizacionales
+generic.driver.divorg	en	Organizational Divisions
+generic.driver.divgeo	es	Divisiones Geográficas
+generic.driver.divgeo	en	Geographic Divisions
+generic.driver.driverdata.exclusiondate	es	Fecha de Exclusión
+generic.driver.driverdata.exclusiondate	en	Exclusion Date
+datatype.zone.populatedrural	es	Rural poblada
+datatype.zone.populatedrural	en	Populated rural
+datatype.zone.populatedrural	pt	Rural povado
+datatype.zone.unpopulatedrural	es	Rural no poblada
+datatype.zone.unpopulatedrural	en	Unpopulated rural
+datatype.zone.unpopulatedrural	pt	Rural no povoado
+datatype.zone.urban	es	Urbana
+datatype.zone.urban	en	Urban
+datatype.zone.urban	pt	Urbano
+datatype.zone.nodata	es	Sin datos
+datatype.zone.nodata	en	With out data
+datatype.zone.nodata	pt	Sem dados
+datatype.climate.goodweather	es	Buen tiempo
+datatype.climate.goodweather	en	Good weather
+datatype.climate.goodweather	pt	Tempo bom
+datatype.climate.rain	es	Lluvia
+datatype.climate.rain	en	Rain
+datatype.climate.rain	pt	Chuva
+datatype.climate.fog	es	Niebla
+datatype.climate.fog	en	Fog
+datatype.climate.fog	pt	Neblina
+datatype.climate.snow	es	Nieve
+datatype.climate.snow	en	Snow
+datatype.climate.snow	pt	Neve
+datatype.consequence.fatalities	es	Fallecidos
+datatype.consequence.fatalities	en	Fatalities
+datatype.consequence.fatalities	pt	Falecidos
+datatype.consequence.injured	es	Lesionados
+datatype.consequence.injured	en	Injured
+datatype.consequence.injured	pt	Feridos
+datatype.consequence.damage	es	Daños materiales
+datatype.consequence.damage	en	Material damage
+datatype.consequence.damage	pt	Danos materiais
+datatype.lighting.dusk	es	Penumbra
+datatype.lighting.dusk	en	Dusk
+datatype.lighting.dusk	pt	Penumbra
+datatype.lighting.daylight	es	Pleno día
+datatype.lighting.daylight	en	Day light
+datatype.lighting.daylight	pt	Pleno dia
+datatype.lighting.artificiallight	es	Luz artificial
+datatype.lighting.artificiallight	en	Artificial light
+datatype.lighting.artificiallight	pt	Luz artificial
+datatype.lighting.darknes	es	Oscuridad
+datatype.lighting.darknes	en	Darkness
+datatype.lighting.darknes	pt	Escuro
+datatype.circulationdirection.oneway	es	Único
+datatype.circulationdirection.oneway	en	One Way
+datatype.circulationdirection.oneway	pt	Mão única
+datatype.circulationdirection.twowaywith	es	Doble c/separación
+datatype.circulationdirection.twowaywith	en	Two-way w/separation
+datatype.circulationdirection.twowaywith	pt	Mão dupla c/separação
+datatype.circulationdirection.twowaywithout	es	Doble s/separación
+datatype.circulationdirection.twowaywithout	en	Two-way without separation
+datatype.circulationdirection.twowaywithout	pt	Mão dupla s/separação
+datatype.circulationdirection.nodata	es	Sin datos
+datatype.circulationdirection.nodata	en	Without data
+datatype.circulationdirection.nodata	pt	Sem Dados
+datatype.conditionrout.dry	es	Seco
+datatype.conditionrout.dry	en	Dry
+datatype.conditionrout.dry	pt	Seco
+datatype.conditionrout.humid	es	Húmeda
+datatype.conditionrout.humid	en	Humid
+datatype.conditionrout.humid	pt	Umido
+datatype.conditionrout.slipperly	es	Resbaladiza
+datatype.conditionrout.slipperly	en	Slippery
+datatype.conditionrout.slipperly	pt	Escorregadio
+datatype.conditionrout.inreparation	es	En reparación
+datatype.conditionrout.inreparation	en	Beeing Repaired
+datatype.conditionrout.inreparation	pt	Em Reparação
+generic.event.eventdata.driver	es	Participante del evento
+generic.event.eventdata.plate	es	Matrícula
+generic.event.eventdata.date	es	Fecha
+generic.event.eventdata.hour	es	Hora
+generic.event.eventdata.working	es	Trabajando
+generic.event.eventdata.shortdescription	es	Breve Descripción
+generic.event.eventdata.zone	es	Zona
+generic.event.eventdata.zone	en	Zone
+generic.event.eventdata.climate	es	Clima
+generic.event.eventdata.climate	en	Climate
+generic.event.eventdata.data	es	Datos del Evento
+generic.event.eventdata.data	en	Event Data
+generic.messages.addevent	es	Agregar Evento
+generic.messages.addevent	en	Add Event
+generic.driver.driverdata.firstorlastname	es	Nombre o Apellido
+generic.driver.driverdata.firstorlastname	en	Name or Last name
+web.driver.editing	es	Conductor
+web.driver.editing	en	Driver
+generic.driver.driverdata.corporationid	es	Id de Corporación
+generic.driver.driverdata.corporationid	en	Corporation id.
+generic.driver.driverdata.phonenumber	es	Número de teléfono
+generic.driver.driverdata.phonenumber	en	Phone number
+generic.driver.driverdata.licensenumber	es	Número de licencia
+generic.driver.driverdata.licensenumber	en	License number
+generic.driver.driverdata.startdate	es	Inicio de actividades
+generic.driver.driverdata.startdate	en	Start activities
+generic.driver.licenseinfo	es	Información de Licencia
+generic.driver.licenseinfo	en	License Information
+generic.data.input	es	Ingreso
+generic.data.input	en	Input
+generic.data.administration	es	Administración
+generic.data.administration	en	Administration
+generic.data.fleet	es	Flota
+generic.data.vehicle	es	Vehículo
+generic.vehicle.vehicledata.chasisNumber	es	Número del chasis
+generic.vehicle.vehicledata.colour	es	Color
+generic.vehicle.vehicledata.trade	es	Marca
+generic.vehicle.vehicledata.year	es	Año
+generic.vehicledata.ownership	es	Propietario
+generic.vehicledata.vehicletype	es	Tipo de vehículo
+generic.messages.addvehicle	es	Nuevo vehículo
+generic.vehicle.vehicledata.matricula	es	Matrícula
+generic.vehicle.vehicledata.country	es	País
+generic.messages.select	es	Elija una opción
+web.vehicle.vehiclelist.systemvehicles	es	Vehículos de la Flota 
+generic.messages.hidemenu	es	Ocultar Menú
+generic.messages.showmenu	es	Mostrar Menú
+generic.messages.preferences	es	Preferencias
+generic.messages.logout	es	Salir
+generic.vehicle.vehicledata.registrationNumber	es	Número de registro
+generic.messages.continue	es	Continuar
+generic.vehicle.vehicledata.permissionNumber	es	Número de permiso
+generic.vehicle.vehicledata.permissionExpiryDate	es	Fecha de expiración de Permiso
+generic.vehicle.vehicledata.purchaseDate	es	Fecha de compra
+generic.vehicle.vehicledata.engine	es	Motor
+generic.vehicle.vehicledata.fuel	es	Combustible
+generic.vehicle.vehicledata.tankCapacity	es	Capacidad del tanque
+generic.vehicle.vehicledata.volumeunit	es	Unidad de volumen
+generic.vehicle.vehicledata.cover	es	Cubierta
+generic.vehicle.vehicledata.distanceunit	es	Unidad de distancia
+generic.vehicle.vehicledata.abs	es	Frenos ABS
+generic.vehicle.vehicledata.airBag	es	Air Bag
+generic.vehicle.vehicledata.aireAcondicionado	es	Aire Acondicionado
+generic.messages.simplesearch	es	Búsqueda Simple
+generic.messages.simplesearch	en	Simple Search
+generic.messages.advancedsearch	es	Búsqueda Avanzada
+generic.messages.advancedsearch	en	Advanced Search
+generic.driver.exclude	es	Desactivar
+generic.driver.driverdata.confirmexclude	es	Confirma que desea dar de baja este conductor ?
+generic.data.fleet	pt	Frota
+generic.data.vehicle	pt	Veículo
+generic.vehicle.vehicledata.chasisNumber	pt	Número do Chasis
+generic.vehicle.vehicledata.colour	pt	Cor
+generic.vehicle.vehicledata.trade	pt	Marca
+generic.vehicle.vehicledata.year	pt	Ano
+generic.vehicledata.ownership	pt	Proprietário
+generic.vehicledata.vehicletype	pt	Tipo de veículo
+generic.messages.addvehicle	pt	Adicionar Veículo
+generic.vehicle.vehicledata.matricula	pt	Placa
+generic.vehicle.vehicledata.country	pt	País
+generic.driver.driverdata.exclusiondate	pt	Data de Exclusão
+generic.driver.driverdata.firstorlastname	pt	Nome ou sobrenome
+generic.driver.personaldata	pt	Dados Pessoais
+generic.driver.divorg	pt	Divisão Organizacional
+generic.messages.select	pt	Selecione a opção
+web.vehicle.vehiclelist.systemvehicles	pt	Veículos da Frota
+generic.messages.hidemenu	pt	Ocultar Menu
+generic.messages.showmenu	pt	Mostrar Menu
+generic.messages.preferences	pt	Preferências
+generic.messages.logout	pt	Sair
+generic.vehicle.vehicledata.registrationNumber	pt	Número de registro
+generic.messages.continue	pt	Continuar
+generic.vehicle.vehicledata.permissionNumber	pt	Número de CNH
+generic.vehicle.vehicledata.permissionExpiryDate	pt	Data vencimento da CNH
+generic.vehicle.vehicledata.purchaseDate	pt	Data de Compra
+generic.vehicle.vehicledata.engine	pt	Motor
+generic.vehicle.vehicledata.fuel	pt	Combustível
+generic.vehicle.vehicledata.tankCapacity	pt	Capacidade do Tanque
+generic.vehicle.vehicledata.volumeunit	pt	Unidade de Volume
+generic.vehicle.vehicledata.cover	pt	Pneu
+generic.vehicle.vehicledata.distanceunit	pt	Unidade de Distância
+generic.vehicle.vehicledata.abs	pt	Freios ABS
+generic.vehicle.vehicledata.airBag	pt	Air Bag
+generic.vehicle.vehicledata.aireAcondicionado	pt	Ar Condicionado
+generic.data.fleet	en	Fleet
+generic.data.vehicle	en	Vehicle
+generic.vehicle.vehicledata.chasisNumber	en	Chasis Number
+generic.vehicle.vehicledata.colour	en	Color
+generic.vehicle.vehicledata.trade	en	Make
+generic.vehicle.vehicledata.year	en	Year
+generic.vehicledata.ownership	en	Ownership
+generic.vehicledata.vehicletype	en	Vehicle Type
+generic.messages.addvehicle 	en	Add Vehicle
+generic.vehicle.vehicledata.matricula	en	Plate
+generic.vehicle.vehicledata.country	en	Country
+generic.messages.select	en	Select the option
+web.vehicle.vehiclelist.systemvehicles	en	Fleet vehicle's
+generic.messages.hidemenu	en	Hide Menu
+generic.messages.showmenu	en	Show Menu
+generic.messages.preferences	en	Preferences
+generic.messages.logout	en	Logout
+generic.vehicle.vehicledata.registrationNumber	en	Registration number
+generic.messages.continue	en	Continue
+generic.vehicle.vehicledata.permissionNumber	en	Permission number
+generic.vehicle.vehicledata.permissionExpiryDate	en	Permission expiry date
+generic.vehicle.vehicledata.purchaseDate	en	Purchase date
+generic.vehicle.vehicledata.engine	en	Engine
+generic.vehicle.vehicledata.fuel	en	Fuel
+generic.vehicle.vehicledata.tankCapacity	en	Tank capacity
+generic.vehicle.vehicledata.volumeunit	en	volume unit
+generic.vehicle.vehicledata.cover	en	Cover
+generic.vehicle.vehicledata.distanceunit	en	Distance unit
+generic.vehicle.vehicledata.abs	en	ABS
+generic.vehicle.vehicledata.airBag	en	Air Bag
+generic.vehicle.vehicledata.aireAcondicionado	en	Air conditioning
+corporation.divgeo.adding	pt	Adicionando
+corporation.divgeo.additem.warning	pt	Os itens não serão salvos até que adicione um item no último nível
+corporation.divgeo.editcountries	pt	Editar Países
+corporation.divgeo.editing	pt	Editando
+corporation.divorg.adding	pt	Adicionando
+corporation.divorg.additem.warning	pt	Os itens não serão salvos até que adicione um item no último nível
+corporation.divorg.editing	pt	Editando
+corporation.error.alreadyexit	pt	Corporação já existente
+corporation.error.item.asociateduser	pt	Há usuários associados ao item que deseja apagar
+corporation.messages.change	pt	Alterar Corporação
+datatype.country.ag	pt	Argélia
+datatype.country.bo	pt	Bolívia
+datatype.country.ca	pt	Canadá
+datatype.country.cn	pt	China
+datatype.country.ec	pt	Equador
+datatype.country.eg	pt	Egito
+datatype.country.fr	pt	França
+datatype.country.gr	pt	Alemanha
+datatype.country.in	pt	Índia
+datatype.country.it	pt	Itália
+datatype.country.jn	pt	Japão
+datatype.country.mr	pt	Marrocos
+datatype.country.mx	pt	México
+datatype.country.ru	pt	Rússia
+datatype.country.us	pt	Estados Unidos
+datatype.country.ve	pt	Venezuela
+driver.messages.advancedsearch	pt	Busca Avançada de Condutores
+general.messages.rename	pt	Renomear
+generic.corporation.divgeo.insertname	pt	Inserir nome de
+generic.corporation.divorg.insertname	pt	Inserir nome de
+generic.corporation.divorg.newitem	pt	Novo
+generic.data.corporation	pt	Corporação
+generic.data.driver	pt	Condutor
+generic.data.event	pt	Evento
+generic.data.user	pt	Usuário
+generic.driver.divgeo	pt	Divisões Geográficas
+generic.driver.driverdata.emptyDivOrg	pt	Deve selecionar Divisão Organizacional
+generic.driver.driverdata.id	pt	Id
+generic.driver.driverdata.status	pt	Status
+generic.driver.workinfo	pt	Info ocupacional
+generic.error.dataaccess	pt	Problema no acesso de dados
+generic.error.emptydata	pt	Dados vazios
+generic.error.invaliddata	pt	Dados Inválidos
+generic.error.message	pt	Ocorreu um erro na aplicação
+generic.error.notinittransaction	pt	Transação não iniciada
+generic.error.notuserlogged	pt	Não há usuário logado
+generic.error.permissions	pt	Suas permissões nesta corporação não lhe permitem acessar esta página
+generic.event.individualinput	pt	Ingresso Individual
+generic.messages.active	pt	Ativo
+generic.messages.all.pl	pt	Todos
+generic.messages.create	pt	Criar
+generic.messages.excluded	pt	Excluído
+generic.messages.finalize	pt	Finalizar
+generic.messages.modify.permissions	pt	Modificar Permissões
+generic.messages.new	pt	Novo
+generic.messages.next	pt	Seguinte
+generic.messages.of	pt	de
+generic.messages.show	pt	Mostrar
+generic.messages.wishtocontinue	pt	Deseja continuar?
+generic.user.userdata.role	pt	Função
+permission.administrator.name	pt	Administrador
+permission.corporationcreate.name	pt	Criar Corporação
+permission.corporationdelete.name	pt	Apagar Corporação
+permission.corporationedit.name	pt	Editar Corporação
+permission.corporationmodify.name	pt	Modificar Corporação
+permission.drivercreate.name	pt	Criar Condutor
+permission.driverdelete.name	pt	Apagar Condutor
+permission.driveredit.name	pt	Editar Condutor
+permission.driverupdate.name	pt	Modificar Condutor
+permission.driverview.name	pt	Ver Condutor
+permission.systemaccess.name	pt	Usuário
+permission.userchangepassword.name	pt	Alterar senha de usuários
+permission.usercreate.name	pt	Criar Usuários
+permission.userdelete.name	pt	Apagar Usuários
+permission.useredit.name	pt	Editar Usuários
+permission.userpermission.name	pt	Modificar Permissões
+permission.userupdateaccess.name	pt	Modificar acesso a dados do Usuário
+permission.userupdate.name	pt	Modificar Usuários
+permission.userview.name	pt	Ver Usuários
+role.accountmanager.name	pt	Administrador de Conta
+role.administrator.name	pt	Administrador
+role.consulting.name	pt	Consultor
+role.instructor.name	pt	Instrutor
+role.reporter.name	pt	Relatório
+role.supervisor.name	pt	Supervisor
+user.permission.added	pt	Ações permitidas
+user.permission.addpermission	pt	Adicionar Permissões
+user.permission.notadded	pt	Ações não permitidas
+user.permission.removepermission	pt	Remover Permissão
+web.user.changepermissions	pt	Modificar Permissões
+generic.driver.driverdata.confirmexclude	en	Confirma to exclude this driver ?
+generic.driver.exclude	en	Exclude
+generic.error.feedback.body	en	If you want to report this error, insert a description of the problem and accept, an email will be sent.
+generic.error.feedback.thanks	en	Thank you for trust in the system
+generic.event.eventdata.date	en	Date
+generic.event.eventdata.driver	en	Driver
+generic.event.eventdata.hour	en	Hour
+generic.event.eventdata.plate	en	Plate
+generic.event.eventdata.shortdescription	en	Short description
+generic.event.eventdata.working	en	Working
+generic.messages.addvehicle 	es	Agregar Vehículo
+generic.messages.closedetail	en	Hide detail
+generic.messages.description	en	Description :
+generic.messages.moredetail	en	Show detail
+generic.vehicle.vehicledata.vehicletype	en	Vehicle type
+generic.messages.addvehicle	en	New Vehicle
+generic.vehicle.vehicledata.vehicletype	pt	Tipo de Veículo
+generic.vehicle.vehicledata.vehicletype	es	Tipo de Vehículo
+generic.vehicle.vehicledata.ownership	es	Proprietario
+generic.vehicle.vehicledata.ownership	pt	ProprietÃ¡rio
+generic.vehicle.vehicledata.ownership	en	Ownership
+generic.vehicle.vehicledata.model	es	Modelo
+generic.vehicle.vehicledata.model	pt	Modelo
+generic.vehicle.vehicledata.model	en	Model
+persistence.datatype.typeuse.individual	es	Individual
+persistence.datatype.typeuse.individual	pt	Individual
+persistence.datatype.typeuse.individual	en	Individual
+persistence.datatype.typeuse.institutional	es	Institucional
+persistence.datatype.typeuse.institutional	pt	Institucional
+persistence.datatype.typeuse.institutional	en	Institutional
+generic.messages.administrativedata	es	Datos administrativos
+generic.messages.administrativedata	pt	Dados administrativos
+generic.messages.administrativedata	en	Administrative data
+generic.messages.technicaldata	es	Datos técnicos
+generic.messages.technicaldata	pt	Dados técnicos
+generic.messages.technicaldata	en	Technical data
+generic.messages.enginefuel	es	Combustible
+generic.messages.enginefuel	pt	Combustível
+generic.messages.enginefuel	en	Fuel
+generic.messages.odometer	es	Odómetro
+generic.messages.odometer	pt	Odômetro
+generic.messages.odometer	en	Odometer
+generic.messages.coverTypes	es	Tipo de cubierta
+generic.messages.coverTypes	pt	Tipo de pneu
+generic.messages.coverTypes	en	Tire type
+generic.messages.accesories	es	Accesorios
+generic.messages.accesories	pt	Acessórios
+generic.messages.accesories	en	Accessories
+generic.vehicle.divgeo	es	Divisón Geográfica
+generic.vehicle.divgeo	pt	Divisão Geográfica
+generic.vehicle.divgeo	en	Geographic division
+role.champion.name	pt	Champion
+generic.data.driver.pl	es	Conductores
+generic.data.event.pl	es	Eventos
+generic.data.fleet.pl	es	Flotas
+generic.data.vehicle.pl	es	Vehículos
+generic.data.user.pl	es	Usuarios
+generic.data.driver.pl	en	Drivers
+generic.data.event.pl	en	Events
+generic.data.fleet.pl	en	Fleets
+generic.data.vehicle.pl	en	Vehicles
+generic.data.user.pl	en	Users
+generic.data.driver.pl	pt	Condutores
+generic.data.event.pl	pt	Eventos
+generic.data.user.pl	pt	Usuários
+generic.data.fleet.pl	pt	Frotas
+generic.data.vehicle.pl	pt	Veículos
+generic.data.administration	pt	Administração
+generic.data.input	pt	Ingressar
+generic.driver.driverdata.confirmexclude	pt	Confirma a exclusão deste condutor?
+generic.driver.driverdata.corporationid	pt	Id da Corporação
+generic.driver.driverdata.licensenumber	pt	Número de Licença
+generic.driver.driverdata.phonenumber	pt	Número de Telefone
+generic.driver.driverdata.startdate	pt	Início de atividades
+generic.driver.exclude	pt	Desactivar
+generic.driver.licenseinfo	pt	Informação da Licença
+generic.error.feedback.body	pt	Se deseja relatar o erro, insera a descrição do problema e clique em aceitar. Um e-mail do suporte técnico lhe será enviado
+generic.error.feedback.thanks	pt	Obrigado por confiar no nosso sistema
+generic.event.eventdata.climate	pt	Clima
+generic.event.eventdata.data	pt	Dados do Evento
+generic.event.eventdata.date	pt	Data
+generic.event.eventdata.driver	pt	Condutor
+generic.event.eventdata.hour	pt	Hora
+generic.event.eventdata.plate	pt	Placa
+generic.event.eventdata.shortdescription	pt	Breve descrição
+generic.event.eventdata.working	pt	Trabalhando
+generic.event.eventdata.zone	pt	Zona
+generic.messages.addevent	pt	Adicionar Evento
+generic.messages.addvehicle 	pt	Adicionar Veículo
+generic.messages.advancedsearch	pt	Busca Avançada
+generic.messages.closedetail	pt	Ocultar detalhe
+generic.messages.description	pt	Descrição
+generic.messages.moredetail	pt	Mostrar detalhe
+generic.messages.simplesearch	pt	Busca Simples
+web.driver.editing	pt	Condutor
+generic.driver.driverdata.inclusiondateinvalid	es	Fecha de Incio de actividades inválida
+generic.driver.driverdata.inclusiondateinvalid	en	Invalid start date
+generic.driver.driverdata.inclusiondateinvalid	pt	Data de início de atividades inválida
+generic.driver.driverdata.corporationidinvalid	es	Id de Corporación inválida
+generic.driver.driverdata.corporationidinvalid	en	Invalid corporation id.
+generic.driver.driverdata.corporationidinvalid	pt	Id da Corporação inválida
+generic.driver.driverdata.licensenumberinvalid	es	Número de licencia inválida
+generic.driver.driverdata.licensenumberinvalid	en	Invalida license number
+generic.driver.driverdata.licensenumberinvalid	pt	Número de Licença inválida
+generic.user.userdata.confirmpass.isempty	es	La confirmación de contraseña es nula
+generic.user.userdata.confirmpass.isempty	en	The password confirmation is empty
+generic.user.userdata.confirmpass.isempty	pt	O campo confirma senha está vazio
+generic.user.userdata.pass.confir.different	es	La contraseña y su confirmación son diferentes
+generic.user.userdata.pass.confir.different	en	The password and its confirmation are diferents
+generic.user.userdata.pass.confir.different	pt	O campo confirma senha está vazio
+generic.user.userdata.changepassword.success	es	La contraseña fue cambiada
+generic.user.userdata.changepassword.success	en	The password was changed
+generic.user.userdata.changepassword.success	pt	La senha foi trocada
+generic.vehicle.vehicledata	es	Datos del vehículo
+generic.vehicle.vehicledata	en	Vehicle data
+generic.vehicle.vehicledata	pt	Dados de veículo
+generic.vehicle.vehicledata.firstnamedriver	es	Nombre del conductor
+generic.vehicle.vehicledata.firstnamedriver	en	Driver's first name
+generic.vehicle.vehicledata.firstnamedriver	pt	Nome de condutor
+generic.vehicle.vehicledata.lastnamedriver	es	Apellido del conductor
+generic.vehicle.vehicledata.lastnamedriver	en	Driver's last name
+generic.vehicle.vehicledata.lastnamedriver	pt	Sobrenome de condutor
+generic.messages.selectvehicleusetype	es	Seleccione el Tipo de Uso del Vehiculo que Desea Agregar
+generic.messages.selectvehicleusetype	en	Selet the Use Type of the Vehicle you Want to Add
+generic.messages.selectvehicleusetype	pt	Selecione o Tipo de Veículo que deseja adicionar
+generic.vehicle.institutionalvehicle	es	Vehículo Institucional
+generic.vehicle.institutionalvehicle	en	Institutional Vehicle
+generic.vehicle.institutionalvehicle	pt	Veículo Institucional
+datatype.vehicletype.motorcycle	es	Moto
+datatype.vehicletype.motorcycle	en	Motorcycle
+datatype.vehicletype.motorcycle	pt	Motocicleta
+datatype.vehicletype.bycycle	es	Bicicleta
+datatype.vehicletype.bycycle	en	Bicycle
+datatype.vehicletype.bycycle	pt	Bicicleta
+datatype.vehicletype.automobile	es	Automóvil
+datatype.vehicletype.automobile	en	Automobile
+datatype.vehicletype.automobile	pt	Automóvel
+datatype.vehicletype.minibus	es	Minibus
+datatype.vehicletype.minibus	en	Minibus
+datatype.vehicletype.minibus	pt	Microônibus
+datatype.vehicletype.pickup	es	Camioneta
+datatype.vehicletype.pickup	en	Pickup Truck
+datatype.vehicletype.pickup	pt	Caminhonete
+datatype.vehicletype.bus	es	Autobus
+datatype.vehicletype.bus	en	Bus
+datatype.vehicletype.bus	pt	Ônibus
+datatype.vehicletype.truck	es	Camión
+datatype.vehicletype.truck	en	Truck
+datatype.vehicletype.truck	pt	Caminhão
+datatype.vehicletype.tractortrailer	es	Camión con remolque
+datatype.vehicletype.tractortrailer	en	Tractor Trailer
+datatype.vehicletype.tractortrailer	pt	Caminhão c/reboque
+datatype.vehicletype.other	es	Otros
+datatype.vehicletype.other	en	Other
+datatype.vehicletype.other	pt	Outros
+datatype.vehicletype.all	es	Todos
+datatype.vehicletype.all	en	All
+datatype.vehicletype.all	pt	Todos
+datatype.volumeunit.liters	es	Litros
+datatype.volumeunit.liters	en	Liters
+datatype.volumeunit.liters	pt	Litros
+datatype.volumeunit.gallons	es	Galones
+datatype.volumeunit.gallons	en	Gallons
+datatype.volumeunit.gallons	pt	Galões
+datatype.fuel.gasoline	es	Gasolina
+datatype.fuel.gasoline	en	Gasoline
+datatype.fuel.gasoline	pt	Gasolina
+datatype.fuel.diesel	es	Gasoil
+datatype.fuel.diesel	en	Diesel
+datatype.fuel.diesel	pt	Diesel
+datatype.fuel.alcohol	es	Alconafta
+datatype.fuel.alcohol	en	Alcohol
+datatype.fuel.alcohol	pt	Álcool
+datatype.fuel.ngv	es	GNC
+datatype.fuel.ngv	en	NGV
+datatype.fuel.ngv	pt	GNV
+datatype.fuel.glp	es	GLP
+datatype.fuel.glp	en	GLP
+datatype.fuel.glp	pt	GLP
+datatype.ownership.companycar	es	Vehículo de la empresa
+datatype.ownership.companycar	en	Company Car
+datatype.ownership.companycar	pt	Company Car
+datatype.ownership.leasing	es	Leasing
+datatype.ownership.leasing	en	Leasing
+datatype.ownership.leasing	pt	Leasing
+datatype.ownership.owner	es	Propio
+datatype.ownership.owner	en	Employee-owned
+datatype.ownership.owner	pt	Própio
+datatype.ownership.withoutdata	es	Sin datos
+datatype.ownership.withoutdata	en	Without data
+datatype.ownership.withoutdata	pt	Sem dados
+datatype.ownership.contract	es	Contratista
+datatype.ownership.contract	en	Contract
+datatype.ownership.contract	pt	Contratista
+datatype.engine.normal	es	Normal
+datatype.engine.normal	en	Normal
+datatype.engine.normal	pt	Normal
+datatype.engine.turbo	es	Turbo
+datatype.engine.turbo	en	Turbo
+datatype.engine.turbo	pt	Turbo
+datatype.engine.injection	es	Inyección
+datatype.engine.injection	en	Injection
+datatype.engine.injection	pt	Injeção
+datatype.engine.other	es	Otros
+datatype.engine.other	en	Others
+datatype.engine.other	pt	Outros
+datatype.distanceunit.miles	es	Millas
+datatype.distanceunit.miles	en	Miles
+datatype.distanceunit.miles	pt	Milhas
+datatype.distanceunit.kilometers	es	Kilometros
+datatype.distanceunit.kilometers	en	Kilometers
+datatype.distanceunit.kilometers	pt	Quilômetros
+generic.vehicle.driverpersonaldata	es	Datos Personales
+generic.vehicle.driverpersonaldata	en	Personal Data
+generic.vehicle.driverpersonaldata	pt	Dados Pessoais
+generic.vehicle.driverdata.birthdate	es	Fecha de Nacimiento
+generic.vehicle.driverdata.birthdate	en	Birth Date
+generic.vehicle.driverdata.birthdate	pt	Data de nascimento
+corporation.divorg.monsanto.divorg1	en	Divisions
+corporation.divorg.monsanto.divorg1.level1	en	Divisions
+corporation.divorg.monsanto.divorg1.level2	en	Subdivisions
+corporation.divorg.monsanto.divorg2	en	Units
+corporation.divorg.monsanto.divorg2.level1	en	Units
+corporation.divorg.monsanto.divorg3	en	Areas
+corporation.divorg.monsanto.divorg3.level1	en	Areas
+corporation.johnson.geolabel1	en	Region
+corporation.monsanto.geolabel1	en	Region
+corporation.divorg.monsanto.divorg1	pt	Divisão
+corporation.divorg.monsanto.divorg1.level1	pt	Divisão
+corporation.divorg.monsanto.divorg1.level2	pt	Subdivisão
+corporation.divorg.monsanto.divorg2	pt	Unidades
+corporation.divorg.monsanto.divorg2.level1	pt	Unidades
+corporation.divorg.monsanto.divorg3	pt	Areas
+corporation.divorg.monsanto.divorg3.level1	pt	Areas
+corporation.johnson.geolabel1	pt	Região
+corporation.monsanto.geolabel1	pt	Região
+generic.vehicle.vehicledata.vehicletype 	es	Tipo de vehículo
+generic.event.selectdriver	es	Seleccionar Conductor del Evento
+generic.event.selectdriver	en	Select Event's Driver
+generic.messages.selectdriver	es	Find Driver
+generic.messages.selectdriver	en	Buscar Conductor
+generic.event.driverwithoutvehicles	es	El conductor no tiene vehículos asociados
+generic.event.driverwithoutvehicles	en	The driver has not any vehicle asociated
+generic.event.options.selectexistingvehicle	es	Deseo seleccionar un vehículo existente
+generic.event.options.selectexistingvehicle	en	Wish to select existing vehicle
+generic.event.options.insertvehicledata	es	Deseo ingresar solo datos básicos del vehículo
+generic.event.options.insertvehicledata	en	Wish to insert basic data of the vehicle
+generic.event.driversvehicles	es	Vehículos del Conductor
+generic.event.driversvehicles	en	Driver's vehicles
+generic.event.selectvehicle	es	Seleccionar Vehículo del Evento
+generic.event.selectvehicle	en	Select Event's Vehicle
+generic.event.driver.name	es	Nombre
+generic.event.driver.birthdate	es	Nacimiento
+generic.event.driver.startdate	es	Ingreso a la Cia.
+generic.event.vehicledata	es	Datos del Vehículo
+generic.event.vehicledata	en	Vehicle Data
+generic.event.driverdata	es	Datos del Conductor
+generic.event.driverdata	en	Driver Data
+generic.event.eventdata.model	es	Modelo
+generic.event.eventdata.model	en	Model
+generic.event.driver.extradata	es	Datos adicionales del Conductor
+generic.event.driver.extradata	en	Extra data of Driver
+generic.event.eventdata.cellular	es	Celular
+generic.event.eventdata.cellular	en	Cellular
+generic.event.eventdata.selfbelt	es	Cinturón de Seguridad
+generic.event.eventdata.alcohol	es	Consumo de Alcohol
+generic.event.eventdata.speed	es	Velocidad
+generic.event.eventdata.othervehicles	es	Otros vehículos de la compañía involucrados
+generic.event.eventdata.nonemployee	es	Conductor no empleado de la compañía
+generic.event.eventdata	es	Datos del Evento
+generic.event.eventdata	en	Event Data
+generic.event.eventdata.colisiontype	es	Clasificación de Colisión
+generic.event.eventdata.otherinvolved	es	Otros Involucrados
+generic.event.collision.betweenmotionvehicles	es	Colisión entre vehículos
+generic.event.collision.withstationaryobject	es	Colisión con un objeto fijo
+generic.event.collision.noncolision	es	Sin Colisión
+generic.event.collision.parcking.backing	es	Estacionando/Marcha atrás
+generic.event.collision.skidded	es	Skidded
+generic.event.collision.rollover	es	Vuelco
+generic.event.collision.pedestrian	es	Colisión con Peatón
+generic.event.involved.pedestrian	es	Peatones
+generic.event.involved.pedestrian	en	Pedestrians
+generic.event.involved.animals	es	Animales
+generic.event.involved.animals	en	Animals
+generic.event.eventdata.lighting	es	Iluminación
+generic.event.eventdata.lighting	en	Lighting
+datatype.way.straight	es	Recta
+datatype.way.straight	en	Straight section
+datatype.way.straight	pt	Reta
+datatype.way.bridge	es	Puente
+datatype.way.bridge	en	Bridge
+datatype.way.bridge	pt	Ponte
+datatype.way.curve	es	Curva
+datatype.way.curve	en	Curve
+datatype.way.curve	pt	Curva
+datatype.way.intersection	es	Intersección
+datatype.way.intersection	en	Intersection
+datatype.way.intersection	pt	Cruzamento
+datatype.way.roundabout	es	Rotonda
+datatype.way.roundabout	en	Round-about
+datatype.way.roundabout	pt	Rotatória
+datatype.way.other	es	Otro
+datatype.way.other	en	Other
+datatype.way.other	pt	Outros
+generic.event.eventdata.way	es	Vía
+generic.event.eventdata.way	en	Way
+generic.event.eventdata.circulationdirection	es	Sentido de Circulación
+generic.event.eventdata.circulationdirection	en	Circulation Direction
+generic.event.eventdata.trafficcontrol	es	Controles de Tránsito
+generic.event.eventdata.trafficcontrol	en	Traffic Controls
+datatype.trafficcontrols.lights	es	Semáforos
+datatype.trafficcontrols.lights	en	Lights Section
+datatype.trafficcontrols.lights	pt	Semaforos
+datatype.trafficcontrols.police	es	Policía
+datatype.trafficcontrols.police	en	Police
+datatype.trafficcontrols.police	pt	Ponte
+datatype.trafficcontrols.roadsigns	es	Carteles
+datatype.trafficcontrols.roadsigns	en	Road Signs
+datatype.trafficcontrols.roadsigns	pt	Señales
+datatype.trafficcontrols.other	es	Otro
+datatype.trafficcontrols.other	en	Other
+datatype.trafficcontrols.other	pt	Outros
+datatype.trafficcontrols.none	es	Ninguno
+datatype.trafficcontrols.none	en	None
+datatype.trafficcontrols.none	pt	Nenhum
+datatype.pavement.ok	es	En buen estado
+datatype.pavement.ok	en	Ok
+datatype.pavement.ok	pt	Em bom estado
+datatype.pavement.regular	es	En estado regular
+datatype.pavement.regular	en	Regular
+datatype.pavement.regular	pt	Em estado regular
+datatype.pavement.broken	es	En mal estado
+datatype.pavement.broken	en	Broken
+datatype.pavement.broken	pt	Em mal estado
+datatype.pavement.gravel	es	Tosca/Grava
+datatype.pavement.gravel	en	Gravel
+datatype.pavement.gravel	pt	Cascalho
+datatype.pavement.repair	es	En reparación
+datatype.pavement.repair	en	Under Repair
+datatype.pavement.repair	pt	Em manutenção/obras
+generic.event.eventdata.pavement	es	Pavimento
+generic.event.eventdata.pavement	en	Pavement
+generic.event.eventdata.type	es	Tipo
+generic.event.eventdata.type	en	Type
+generic.event.eventdata.status	es	Estado
+generic.event.eventdata.status	en	Status
+generic.event.eventdata.firstorlastname	es	Nombre o Apellido
+generic.event.eventdata.firstorlastname	en	First or Last Name
+generic.messages.addfine	es	Agregar Multa
+generic.messages.addfine	en	Add Fine
+generic.event.consequences	es	Consecuencias
+generic.event.consequences	en	Consequences
+generic.event.eventdata.conditionrout	es	Condición
+generic.event.eventdata.conditionrout	en	Condition
+generic.event.eventdata.pavement.state	es	Estado
+generic.event.eventdata.pavement.state	en	State
+generic.incident.add.success	es	Incidente agregado con éxito
+generic.messages.backtoeventlist	es	Volver a la Lista de Eventos
+datatype.accidentfactors.tooclose	es	Siguiendo de cerca
+datatype.accidentfactors.tooclose	en	Following too close
+datatype.accidentfactors.tooclose	pt	Não manteve distância de segurança
+datatype.accidentfactors.speed	es	Excesiva velocidad
+datatype.accidentfactors.speed	en	Excessive speed
+datatype.accidentfactors.speed	pt	Velocidade excessiva
+datatype.accidentfactors.ignoresigns	es	Sin respetar señales
+datatype.accidentfactors.ignoresigns	en	Ignored road signs
+datatype.accidentfactors.ignoresigns	pt	Não respeitou a sinalização
+datatype.accidentfactors.overtaking	es	Adelanto incorrecto
+datatype.accidentfactors.overtaking	en	Inadequate overtaking
+datatype.accidentfactors.overtaking	pt	Ultrapassagem incorreta
+datatype.accidentfactors.turn	es	Giro incorrecto
+datatype.accidentfactors.turn	en	Improper turn
+datatype.accidentfactors.turn	pt	Curva incorreta
+datatype.accidentfactors.lights	es	Sin luces
+datatype.accidentfactors.lights	en	Without lights
+datatype.accidentfactors.lights	pt	Sem farois
+datatype.accidentfactors.stop	es	Detención súbita
+datatype.accidentfactors.stop	en	Sudden stop
+datatype.accidentfactors.stop	pt	Parada súbita
+datatype.accidentfactors.others	es	Otras imprudencias
+datatype.accidentfactors.others	en	Other imprudent acts
+datatype.accidentfactors.others	pt	Outras Imprudências
+datatype.accidentfactors.changelane	es	Cambio de carril incorrecto
+datatype.accidentfactors.changelane	en	Incorrect chage of lane
+datatype.accidentfactors.changelane	pt	Incorreta mudança de faixa
+datatype.accidentfactors.alcohol	es	Conductor alcoholizado
+datatype.accidentfactors.alcohol	en	Driver under the influence of alcohol/drugs
+datatype.accidentfactors.alcohol	pt	Condutor Alcolizado
+datatype.vehiclebehaviour.forward	es	Hacia adelante en su carril
+datatype.vehiclebehaviour.forward	en	Moving Forward in your Lane
+datatype.vehiclebehaviour.forward	pt	Deslocamento Reto
+datatype.vehiclebehaviour.overtaking	es	Adelantamiento
+datatype.vehiclebehaviour.overtaking	en	Overtaking
+datatype.vehiclebehaviour.overtaking	pt	Ultrapassagem
+datatype.vehiclebehaviour.right	es	Giro a derecha
+datatype.vehiclebehaviour.right	en	Turning Right
+datatype.vehiclebehaviour.right	pt	Curva á Direita
+datatype.vehiclebehaviour.left	es	Giro a  izquierda
+datatype.vehiclebehaviour.left	en	Turning left
+datatype.vehiclebehaviour.left	pt	Curva á esquerda
+datatype.vehiclebehaviour.inout	es	Entrando/saliendo de calzada
+datatype.vehiclebehaviour.inout	en	Entering or leaving driveway
+datatype.vehiclebehaviour.inout	pt	Entrando ou saindo da calçada
+datatype.vehiclebehaviour.uturn	es	Giro en U
+datatype.vehiclebehaviour.uturn	en	"U" turn
+datatype.vehiclebehaviour.uturn	pt	Curva em "U"
+datatype.vehiclebehaviour.backing	es	Retroceso
+datatype.vehiclebehaviour.backing	en	Backing
+datatype.vehiclebehaviour.backing	pt	Ré
+datatype.vehiclebehaviour.stuck	es	Detenido
+datatype.vehiclebehaviour.stuck	en	Stuck in trafic
+datatype.vehiclebehaviour.stuck	pt	Detido
+datatype.vehiclebehaviour.rightparked	es	Correctamente estacionado
+datatype.vehiclebehaviour.rightparked	en	Correctly parked
+datatype.vehiclebehaviour.rightparked	pt	Corretamente estacionado
+datatype.vehiclebehaviour.wrongparked	es	Mal estacionado
+datatype.vehiclebehaviour.wrongparked	en	Incorrectly parked
+datatype.vehiclebehaviour.wrongparked	pt	Incorretamente estacionado
+datatype.vehiclebehaviour.lane	es	Cambio de carril
+datatype.vehiclebehaviour.lane	en	Changing Lane
+datatype.vehiclebehaviour.lane	pt	Mudança de Pista
+generic.event.vehicle	es	Vehículo
+generic.event.eventdata.vehicletype	es	Tipo
+generic.event.eventdata.previous	es	Actuación Previa
+generic.event.eventdata.factors	es	Factores Contribuyentes
+generic.event.vehicle.count	es	Total de otros vehículos involucrados
+generic.event.eventdata.driverInvalid	es	Conductor inválido
+generic.event.eventdata.emptyDivOrg	es	La División Organizacional no puede ser vacía
+generic.event.eventdata.emptyDivGeo	es	La División Geográfica no puede ser vacía
+generic.event.eventdata.vehicleInvalid	es	Vehículo inválido
+generic.event.eventdata.vehicle.plateEmpty	es	La matrícula del vehículo no puede ser vacía
+generic.event.eventdata.vehicle.tradeEmpty	es	La marca del vehículo  no puede ser vacía
+generic.event.eventdata.vehicle.modelEmpty	es	El modelo del vehículo  no puede ser vacío
+generic.event.eventdata.vehicle.yearEmpty	es	El año del vehículo  no puede ser vacío
+generic.event.eventdata.vehicle.yearInvalid	es	Año del vehículo inválido
+generic.event.eventdata.speedInvalid	es	Velocidad inválida
+generic.event.eventdata.dateEmpty	es	Fecha vacía
+generic.event.eventdata.dateInvalid	es	Fecha inválida
+generic.event.eventdata.timeEmpty	es	Hora inválida
+generic.event.eventdata.timeInvalid	es	Hora vacía
+generic.event.eventdata.descriptionEmpty	es	El relato del evento no puede ser vacío
+generic.event.eventdata.collisionEmpty	es	Debe marcar el tipo de colisión
+generic.event.eventdata.collision.pedestrian.inconsistent	es	Si la colisión es con un peatón debe seleccionar la opción Peatones en 'Otros involucrados'
+generic.event.driver.licensecategory	es	Categoría de Licencia
+generic.event.driver.licenseexpiry	es	Expiración de Licencia
+generic.event.othervehicles	es	Otros vehículos involucrados
+generic.event.otherpedestrian	es	Peatones involucrados
+generic.event.pedestrian.count	es	Total de peatones involucrados
+generic.event.eventdata.pedestrianaction	es	Acción del peatón
+generic.event.pedestrian	es	Peatón
+generic.event.companycar	es	Vehículo de la corporación
+generic.event.eventdata.handle	es	Maniobra
+generic.event.way	es	Ruta
+generic.event.environment	es	Medio Ambiente
+generic.event.eventdata.causal	es	Causal
+generic.event.vehicletype.empty	es	Tipo del vehículo involucrado no puede ser vacío
+generic.event.vehiclebehaviour.empty	es	Actuación del vehículo involucrado no puede ser vacía
+generic.event.pedestrian.action.empty	es	Debe ingresar la acción del peatón
+generic.event.way.empty	es	Debe ingresar tipo de vía
+generic.event.direction.empty	es	Debe ingresar sentido de circulación
+generic.event.control.empty	es	Debe ingresar si existían controles de tráfico
+generic.event.climate.empty	es	Debe ingresar estado del clima
+generic.event.pavement.empty	es	Debe ingresar estado del pavimento
+generic.event.condition.empty	es	Debe ingresar condición del pavimento
+generic.event.lighting.empty	es	Debe ingresar la iluminación existente
+generic.event.causal.empty	es	Debe ingresar causal del accidente
+generic.event.handle.empty	es	Debe ingresar maniobra del conductor de la corporación
+generic.event.eventdata.accidentincomplete	es	Datos incompletos
+generic.event.eventdata.pendingsupervision	es	Pendiente de supervisión
+generic.event.eventdata.supervised	es	Supervisado
+generic.event.finedata.plate	es	Matrícula
+generic.event.finedata.trade	es	Marca
+generic.event.finedata.model	es	Modelo
+generic.event.finedata.year	es	Año
+generic.event.finedata	es	Datos de la Multa
+generic.event.finedata.type	es	Tipo
+generic.event.finedata.qualify	es	Calificación
+generic.event.finedata.points	es	Puntos
+generic.event.finedata.cost	es	Costo
+generic.event.finedata.observations	es	Observaciones
+generic.event.accident	es	Accidente
+generic.event.incident	es	Incidente
+generic.event.fine	es	Multa
+generic.event.eventdata.vehicletrade	es	Vehículo
+generic.driver.history	es	Historial
+generic.event.nohistory	es	No hay datos en el historial
+generic.event.novehicles	es	No tiene vehículos asociados
+generic.driver.vehicles	es	Vehículos
+generic.driver.observations	es	Observaciones
+generic.driver.observation.date	es	Fecha
+generic.driver.observation.action	es	Acción
+generic.driver.observation.user	es	Usuario
+generic.driver.observation.comment	es	Comentario
+generic.log.create	es	Crear
+generic.log.update	es	Modificar
+generic.log.delete	es	Borrar
+generic.messages.no	es	No
+generic.messages.no	en	No
+generic.messages.yes	es	Si
+generic.messages.yes	en	Yes
+generic.event.eventdata.otherdata	es	Otros Datos
+generic.event.eventdata.otherdata	en	Other Data
+generic.messages.editfine	es	Editar Multa
+generic.messages.editfine	en	Edit Fine
+generic.messages.editincident	es	Editar Incidente
+generic.messages.editincident	en	Edit Incident
+generic.messages.editaccident	es	Editar Accidente
+generic.messages.editaccident	en	Edit Accident
+generic.messages.supervise	es	Supervisar
+generic.messages.supervise	en	Supervise
+generic.event.accident.completedata	es	Completar Datos
+generic.event.accident.completedata	en	Complete Data
+web.event.eventlist	es	Lista de Eventos
+web.event.eventlist	en	Evento List
+generic.incident.add.success	en	incident added
+generic.messages.backtoeventlist	en	Back to events list
+generic.fine.add.success	es	Multa agregada con éxito
+generic.event.finedata.observationsEmpty	es	Observaciones no pueden ser vacías
+generic.event.finedata.typeEmpty	es	Tipo de multa no puede ser vacío
+generic.event.finedata.typeInvalid	es	Tipo de multa inválido
+generic.event.finedata.pointsEmpty	es	Puntos no puede ser vacío
+generic.event.finedata.pointsInvalid	es	Puntos inválidos
+generic.event.finedata.qualifyEmpty	es	Calificación no puede ser vacía
+generic.event.finedata.qualifyInvalid	es	Calificación inválida
+generic.event.finedata.costEmpty	es	Costo no puede ser vacío
+generic.event.finedata.costInvalid	es	Costo inválido
+generic.messages.accidentdata	es	Datos del accidente
+accident.causal.message1	es	Conductor no pudo ver con claridad
+accident.causal.message1	en	Driver failed to observe clearence
+accident.causal.message4	es	Nuestro conductor chocó y huyó (En movimiento), tercero conocido
+accident.causal.message4	en	Hit and run (Moving) other party known
+accident.causal.message5	es	Nuestro conductor chocó y huyó (En movimiento), tercero desconocido
+accident.causal.message5	en	Hit and run (Moving) other party unknown
+accident.causal.message10	es	Tercero perdió el control
+accident.causal.message10	en	Other party lost control
+accident.causal.message11	es	Otro
+accident.causal.message11	en	Other
+accident.causal.message11	pt	Outro
+accident.causal.message8	es	Tercero no cedió el paso
+accident.causal.message8	en	Other party failed to yield
+accident.causal.message8	pt	Terceiros não deu passagem
+accident.causal.message7	es	Tercero estacionando/en retroceso
+accident.causal.message7	en	Other party parking/backing
+accident.causal.message7	pt	Terceiros estacionando/dando ré
+accident.causal.message2	es	Nuestro conductor no cedió el paso
+accident.causal.message2	en	Our driver failed to yield
+accident.causal.message2	pt	Nosso motorista não deu passagem
+accident.causal.message3	es	Nuestro conductor perdió el control
+accident.causal.message3	en	Our driver lost control
+accident.causal.message3	pt	Nosso motorista perdeu o controle
+accident.causal.message12	es	Tercero chocó y huyó
+accident.causal.message12	en	Other party hit and run
+accident.causal.message12	pt	Terceiros bateram e fugiram
+accident.causal.message9	es	Tercero choca de atrás
+accident.causal.message9	en	Other party hit rear of driver
+accident.causal.message9	pt	Terceiros bateram na traseira do motorista
+accident.causal.message6	es	Nuestro conductor choca de atrás
+accident.causal.message6	en	Hit Rear of Other Party
+accident.causal.message6	pt	Nosso motorista bateram na traseira do terceiros
+generic.accident.add.success	es	Accidente Ingresado con éxito
+generic.messages.nodata	es	Sin Datos
+generic.messages.nodata	en	Without Data
+generic.driver.comment	es	Comentario
+generic.driver.comment	en	Comment
+generic.messages.include	es	Reactivar
+web.driver.include	es	Reactivar Conductor
+web.driver.exclude	es	Desactivar Conductor
+web.driver.delete	es	Borrar Conductor
+web.driver.message.include	es	Reactivar
+web.driver.message.exclude	es	Desactivar
+web.driver.message.delete	es	Borrar
+generic.driver.driverdata.drives	es	Conduce
+generic.driver.driverdata.employee	es	Empleado
+generic.driver.driverdata.contact	es	Vínculo
+datatype.contract.permanent	es	Permanente
+datatype.contract.eventual	es	Eventual
+datatype.contract.zafral	es	Zafral
+datatype.contract.relative	es	Familiar
+datatype.contract.third.drives	es	Tercero habilitado a conducir
+datatype.contract.third.nodrives	es	Tercero no habilitado a conducir
+generic.data.management	es	Mantenimiento
+generic.data.management	en	Management
+driver.create.message	es	Conductor ingresado con éxito
+driver.create.link	es	./DriverList.jsp
+driver.create.next	es	Volver a la lista de conductores
+vehicle.create.message	es	Vehiculo ingresado con éxito
+vehicle.create.link	es	./VehicleList.jsp
+vehicle.create.next	es	Volver a la lista de vehiculos
+\.
+
+

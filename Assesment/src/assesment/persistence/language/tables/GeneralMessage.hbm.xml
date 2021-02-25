@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.language.tables">
+    <class
+        name="GeneralMessage"
+        table="generalmessages"
+    >
+		<composite-id name="primaryKey" class="GeneralMessagePK">
+			<key-property
+				 name="labelKey"
+				 column="labelkey" 
+				 type="java.lang.String"
+				 length="100"
+			/>
+			<key-many-to-one 
+				class="Language"
+				name="language" 
+				column="language"
+			/>
+	 	</composite-id>    	
+	 	
+	 	<property 
+	 		name="text" 
+	 		column="text"
+	 		type="java.lang.String"
+	 		not-null="true"
+	 		length="500"
+	 	/>
+
+	 	<property 
+	 		name="assessment" 
+	 		column="assessment"
+	 		type="java.lang.Integer"
+	 	/>
+    </class>
+
+</hibernate-mapping>

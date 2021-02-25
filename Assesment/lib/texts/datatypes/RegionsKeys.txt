@@ -1,0 +1,6 @@
+persistence.administration.corporation.tables.regions.ap	1
+persistence.administration.corporation.tables.regions.emea	2
+persistence.administration.corporation.tables.regions.la&c	3
+persistence.administration.corporation.tables.regions.na	4
+\.
+

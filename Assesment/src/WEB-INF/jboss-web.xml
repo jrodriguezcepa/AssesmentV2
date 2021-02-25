@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss-web PUBLIC "-//JBoss//DTD Web Application 2.3//EN" "http://www.jboss.org/j2ee/dtd/jboss-web_3_2.dtd">
+
+<jboss-web>
+
+   <!-- Resource Environment References -->
+   <!--
+     For additional resouce-env-ref tags add a merge file called jbossweb-resource-env-ref.xml
+   -->
+
+   <!-- Resource references -->
+   <!--
+     For additional resouce-ref tags add a merge file called jbossweb-resource-ref.xml
+   -->
+
+   <!-- EJB References -->
+   <!--
+     For additional ejb-ref tags add a merge file called jbossweb-ejb-ref.xml
+   -->
+
+  <!-- EJB Local References -->
+
+	<security-domain>java:/jaas/assesment</security-domain>
+	<!-- virtual-host>da.cepasafedrive.com</virtual-host -->
+	<ejb-ref>
+  		<ejb-ref-name>assesment/LangugeReport</ejb-ref-name>
+	  	<jndi-name>assesment/LangugeReport</jndi-name>
+	</ejb-ref>
+
+</jboss-web>
+

@@ -1,0 +1,1720 @@
+<%@page language="java"
+   errorPage="../exception.jsp"
+   import="java.util.*"
+   import="assesment.business.*"
+   import="assesment.communication.language.*"
+   import="assesment.communication.security.*"
+   import="assesment.communication.language.tables.*"
+   import="assesment.communication.administration.user.tables.*"
+   import="assesment.communication.question.*"
+   import="assesment.communication.module.*"
+   import="assesment.presentation.translator.web.util.*"
+   import="assesment.presentation.actions.user.*"
+%>
+
+<%@ taglib uri="/WEB-INF/struts-html.tld"
+        prefix="html" 
+%>
+
+<%@ taglib uri="/WEB-INF/struts-bean.tld"
+        prefix="bean" 
+%>
+
+
+<%@page import="assesment.communication.util.CountryConstants"%>
+<%@page import="assesment.communication.util.CountryData"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html:html>
+<%
+   AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
+   Text messages = sys.getText();
+   
+   RequestDispatcher dispatcher=request.getRequestDispatcher("/util/jsp/message.jsp");
+   dispatcher.include(request,response);
+
+   String check = Util.checkPermission(sys,SecurityConstants.ACCESS_TO_SYSTEM);
+   if(check!=null) {
+      response.sendRedirect(request.getContextPath()+check);
+   }else {
+       
+%>
+
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+      <title>Assessment</title>
+      <style type="text/css">
+<!--
+.style14 {font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 12px; }
+.style17 {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 12;
+   font-weight: bold;
+}
+.style25 {font-size: 12px; font-family: Arial, Helvetica, sans-serif;}
+.style26 {font-family: Arial, Helvetica, sans-serif}
+.style27 {color: #FFFFFF; font-weight: bold; font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+.style28 {
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 16px;
+   font-weight: bold;
+}
+.style29 {
+   font-size: 14px;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+}
+.style31 {font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #000000; }
+.style34 {font-size: 14px}
+.style35 {font-weight: bold; font-family: Arial, Helvetica, sans-serif;}
+.style36 {
+   font-size: 11px;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: bold;
+}
+body {
+   background-image: url(fondo.gif);
+   background-repeat: repeat;
+}
+.style37 {color: #F7F7F7}
+.style38 {font-size: 18px}
+.style39 {font-family: "Times New Roman", Times, serif}
+-->
+</style>
+
+      <script type="text/javascript">
+         function loadCities(form) {
+            var comboCountry = form.elements['question1492'];
+            var value = comboCountry.options[comboCountry.options.selectedIndex].value;
+            var comboCity = form.elements['question1555'];
+            document.getElementById('othercity').style.visibility = 'hidden';
+            if(value == -1) {
+               comboCity.options.length = 1;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+            }else if(value == 6185) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6178";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6178.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6186) {
+               comboCity.options.length = 11;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6170";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6170.text")%>";
+               comboCity.options[2].value = "6183";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6183.text")%>";
+               comboCity.options[3].value = "6176";
+               comboCity.options[3].text = "<%=messages.getText("question1555.answer6176.text")%>";
+               comboCity.options[4].value = "6169";
+               comboCity.options[4].text = "<%=messages.getText("question1555.answer6169.text")%>";
+               comboCity.options[5].value = "6164";
+               comboCity.options[5].text = "<%=messages.getText("question1555.answer6164.text")%>";
+               comboCity.options[6].value = "6179";
+               comboCity.options[6].text = "<%=messages.getText("question1555.answer6179.text")%>";
+               comboCity.options[7].value = "6168";
+               comboCity.options[7].text = "<%=messages.getText("question1555.answer6168.text")%>";
+               comboCity.options[8].value = "6173";
+               comboCity.options[8].text = "<%=messages.getText("question1555.answer6173.text")%>";
+               comboCity.options[9].value = "6225";
+               comboCity.options[9].text = "<%=messages.getText("question1555.answer6225.text")%>";
+               comboCity.options[10].value = "6227";
+               comboCity.options[10].text = "<%=messages.getText("question1555.answer6227.text")%>";
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6187) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6172";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6172.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6188) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6167";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6167.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6189) {
+               comboCity.options.length = 4;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6184";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6184.text")%>";
+               comboCity.options[2].value = "6174";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6174.text")%>";
+               comboCity.options[3].value = "6227";
+               comboCity.options[3].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6190) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6165";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6165.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6191) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6226";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6226.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6192) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6162";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6162.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6193) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6177";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6177.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6195) {
+               comboCity.options.length = 4;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6182";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6182.text")%>";
+               comboCity.options[2].value = "6175";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6175.text")%>";
+               comboCity.options[3].value = "6227";
+               comboCity.options[3].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6194) {
+               comboCity.options.length = 4;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6163";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6163.text")%>";
+               comboCity.options[2].value = "6181";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6181.text")%>";
+               comboCity.options[3].value = "6227";
+               comboCity.options[3].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6196) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6166";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6166.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }else if(value == 6197) {
+               comboCity.options.length = 3;
+               comboCity.options[0].value = "-1";
+               comboCity.options[0].text = "<%=messages.getText("messages.emea.writesite")%>";
+               comboCity.options[1].value = "6171";
+               comboCity.options[1].text = "<%=messages.getText("question1555.answer6171.text")%>";
+               comboCity.options[2].value = "6227";
+               comboCity.options[2].text = "<%=messages.getText("question1555.answer6227.text")%>";               
+               comboCity.options.selectedIndex = 0;               
+            }
+         }
+         function loadModels(form) {
+            var comboTrade = form.elements['question1531'];
+            var value = comboTrade.options[comboTrade.options.selectedIndex].value;
+            var comboModel = form.elements['question1532'];
+            document.getElementById('othermodel').style.visibility = 'hidden';
+            if(value == 6206) {
+               comboModel.options.length = 6;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6500";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6500.text")%>";
+               comboModel.options[2].value = "6501";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6501.text")%>";
+               comboModel.options[3].value = "6502";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6502.text")%>";
+               comboModel.options[4].value = "6503";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6503.text")%>";
+               comboModel.options[5].value = "6269";
+               comboModel.options[5].text = "<%=messages.getText("question1532.answer6269.text")%>";
+            }else if(value == 6207) {
+               comboModel.options.length = 14;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6504";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6504.text")%>";
+               comboModel.options[2].value = "6505";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6505.text")%>";
+               comboModel.options[3].value = "6255";
+               comboModel.options[3].text = "<%=messages.getText("question1532.answer6255.text")%>";
+               comboModel.options[4].value = "6506";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6506.text")%>";
+               comboModel.options[5].value = "6507";
+               comboModel.options[5].text = "<%=messages.getText("question1532,answer6507.text")%>";
+               comboModel.options[6].value = "6508";
+               comboModel.options[6].text = "<%=messages.getText("question1532,answer6508.text")%>";
+               comboModel.options[7].value = "6509";
+               comboModel.options[7].text = "<%=messages.getText("question1532,answer6509.text")%>";
+               comboModel.options[8].value = "6510";
+               comboModel.options[8].text = "<%=messages.getText("question1532,answer6510.text")%>";
+               comboModel.options[9].value = "6511";
+               comboModel.options[9].text = "<%=messages.getText("question1532,answer6511.text")%>";
+               comboModel.options[10].value = "6513";
+               comboModel.options[10].text = "<%=messages.getText("question1532,answer6513.text")%>";
+               comboModel.options[11].value = "6514";
+               comboModel.options[11].text = "<%=messages.getText("question1532,answer6514.text")%>";
+               comboModel.options[12].value = "6515";
+               comboModel.options[12].text = "<%=messages.getText("question1532,answer6515.text")%>";
+               comboModel.options[13].value = "6269";
+               comboModel.options[13].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6208) {
+               comboModel.options.length = 9;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6516";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6516.text")%>";
+               comboModel.options[2].value = "6250";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6250.text")%>";
+               comboModel.options[3].value = "6517";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6517.text")%>";
+               comboModel.options[4].value = "6251";
+               comboModel.options[4].text = "<%=messages.getText("question1532.answer6251.text")%>";
+               comboModel.options[5].value = "6252";
+               comboModel.options[5].text = "<%=messages.getText("question1532.answer6252.text")%>";
+               comboModel.options[6].value = "6253";
+               comboModel.options[6].text = "<%=messages.getText("question1532.answer6253.text")%>";
+               comboModel.options[7].value = "6254";
+               comboModel.options[7].text = "<%=messages.getText("question1532.answer6254.text")%>";                                            
+               comboModel.options[8].value = "6269";
+               comboModel.options[8].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6209) {
+               comboModel.options.length = 3;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = 6518;
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6518.text")%>";
+               comboModel.options[2].value = 6519;
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6519.text")%>";
+               comboModel.options[3].value = "6269";
+               comboModel.options[3].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6210) {  
+               comboModel.options.length = 15;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6520";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6520.text")%>";
+               comboModel.options[2].value = "6521";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6521.text")%>";
+               comboModel.options[3].value = "6522";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6522.text")%>";
+               comboModel.options[4].value = "6523";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6523.text")%>";
+               comboModel.options[5].value = "6524";
+               comboModel.options[5].text = "<%=messages.getText("question1532,answer6524.text")%>";
+               comboModel.options[6].value = "6525";
+               comboModel.options[6].text = "<%=messages.getText("question1532,answer6525.text")%>";
+               comboModel.options[7].value = "6526";
+               comboModel.options[7].text = "<%=messages.getText("question1532,answer6526.text")%>";
+               comboModel.options[8].value = "6527";
+               comboModel.options[8].text = "<%=messages.getText("question1532,answer6527.text")%>";
+               comboModel.options[9].value = "6528";
+               comboModel.options[9].text = "<%=messages.getText("question1532,answer6528.text")%>";
+               comboModel.options[10].value = "6529";
+               comboModel.options[10].text = "<%=messages.getText("question1532,answer6529.text")%>";
+               comboModel.options[11].value = "6531";
+               comboModel.options[11].text = "<%=messages.getText("question1532,answer6531.text")%>";
+               comboModel.options[12].value = "6530";
+               comboModel.options[12].text = "<%=messages.getText("question1532,answer6530.text")%>";
+               comboModel.options[13].value = "6532";
+               comboModel.options[13].text = "<%=messages.getText("question1532,answer6532.text")%>";
+               comboModel.options[14].value = "6269";
+               comboModel.options[14].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6211) {  
+               comboModel.options.length = 3;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6536";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6536.text")%>";
+               comboModel.options[2].value = "6269";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6212) {  
+               comboModel.options.length = 3;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6260";
+               comboModel.options[1].text = "<%=messages.getText("question1532.answer6260.text")%>";
+               comboModel.options[2].value = "6269";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6213) {  
+               comboModel.options.length = 3;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6537";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6537.text")%>";
+               comboModel.options[2].value = "6269";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6214) {  
+               comboModel.options.length = 3;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6538";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6538.text")%>";
+               comboModel.options[2].value = "6269";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6215) {  
+               comboModel.options.length = 3;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6539";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6539.text")%>";
+               comboModel.options[2].value = "6269";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6216) {  
+               comboModel.options.length = 20;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6494";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6494.text")%>";
+               comboModel.options[2].value = "6495";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6495.text")%>";
+               comboModel.options[3].value = "6496";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6496.text")%>";
+               comboModel.options[4].value = "6497";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6497.text")%>";
+               comboModel.options[5].value = "6498";
+               comboModel.options[5].text = "<%=messages.getText("question1532,answer6498.text")%>";
+               comboModel.options[6].value = "6499";
+               comboModel.options[6].text = "<%=messages.getText("question1532,answer6499.text")%>";
+               comboModel.options[7].value = "6540";
+               comboModel.options[7].text = "<%=messages.getText("question1532,answer6540.text")%>";
+               comboModel.options[8].value = "6541";
+               comboModel.options[8].text = "<%=messages.getText("question1532,answer6541.text")%>";
+               comboModel.options[9].value = "6542";
+               comboModel.options[9].text = "<%=messages.getText("question1532,answer6542.text")%>";
+               comboModel.options[10].value = "6543";
+               comboModel.options[10].text = "<%=messages.getText("question1532,answer6543.text")%>";
+               comboModel.options[11].value = "6544";
+               comboModel.options[11].text = "<%=messages.getText("question1532,answer6544.text")%>";
+               comboModel.options[12].value = "6545";
+               comboModel.options[12].text = "<%=messages.getText("question1532,answer6545.text")%>";
+               comboModel.options[13].value = "6546";
+               comboModel.options[13].text = "<%=messages.getText("question1532,answer6546.text")%>";
+               comboModel.options[14].value = "6547";
+               comboModel.options[14].text = "<%=messages.getText("question1532,answer6547.text")%>";
+               comboModel.options[15].value = "6548";
+               comboModel.options[15].text = "<%=messages.getText("question1532,answer6548.text")%>";
+               comboModel.options[16].value = "6549";
+               comboModel.options[16].text = "<%=messages.getText("question1532,answer6549.text")%>";
+               comboModel.options[17].value = "6550";
+               comboModel.options[17].text = "<%=messages.getText("question1532,answer6550.text")%>";
+               comboModel.options[18].value = "6551";
+               comboModel.options[18].text = "<%=messages.getText("question1532,answer6551.text")%>";
+               comboModel.options[19].value = "6269";
+               comboModel.options[19].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6217) {  
+               comboModel.options.length = 6;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6552";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6552.text")%>";
+               comboModel.options[2].value = "6553";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6553.text")%>";
+               comboModel.options[3].value = "6554";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6554.text")%>";
+               comboModel.options[4].value = "6555";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6555.text")%>";
+               comboModel.options[5].value = "6269";
+               comboModel.options[5].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6218) {  
+               comboModel.options.length = 4;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6556";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6556.text")%>";
+               comboModel.options[2].value = "6557";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6557.text")%>";
+               comboModel.options[3].value = "6269";
+               comboModel.options[3].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6219) {  
+               comboModel.options.length = 8;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6558";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6558.text")%>";
+               comboModel.options[2].value = "6559";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6559.text")%>";
+               comboModel.options[3].value = "6560";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6560.text")%>";
+               comboModel.options[4].value = "6561";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6561.text")%>";
+               comboModel.options[5].value = "6562";
+               comboModel.options[5].text = "<%=messages.getText("question1532,answer6562.text")%>";
+               comboModel.options[6].value = "6563";
+               comboModel.options[6].text = "<%=messages.getText("question1532,answer6563.text")%>";
+               comboModel.options[7].value = "6269";
+               comboModel.options[7].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else if(value == 6220) {  
+               comboModel.options.length = 6;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6564";
+               comboModel.options[1].text = "<%=messages.getText("question1532,answer6564.text")%>";
+               comboModel.options[2].value = "6565";
+               comboModel.options[2].text = "<%=messages.getText("question1532,answer6565.text")%>";
+               comboModel.options[3].value = "6566";
+               comboModel.options[3].text = "<%=messages.getText("question1532,answer6566.text")%>";
+               comboModel.options[4].value = "6567";
+               comboModel.options[4].text = "<%=messages.getText("question1532,answer6567.text")%>";
+               comboModel.options[5].value = "6269";
+               comboModel.options[5].text = "<%=messages.getText("question1532.answer6269.text")%>";
+            }else if(value == 6221) {  
+               comboModel.options.length = 22;
+               comboModel.options[0].value = "-1";
+               comboModel.options[0].text = "<%=messages.getText("messages.emea.selectmodel")%>";
+               comboModel.options[1].value = "6261";
+               comboModel.options[1].text = "<%=messages.getText("question1532.answer6261.text")%>";
+               comboModel.options[2].value = "6262";
+               comboModel.options[2].text = "<%=messages.getText("question1532.answer6262.text")%>";
+               comboModel.options[3].value = "6263";
+               comboModel.options[3].text = "<%=messages.getText("question1532.answer6263.text")%>";
+               comboModel.options[4].value = "6264";
+               comboModel.options[4].text = "<%=messages.getText("question1532.answer6264.text")%>";
+               comboModel.options[5].value = "6265";
+               comboModel.options[5].text = "<%=messages.getText("question1532.answer6265.text")%>";
+               comboModel.options[6].value = "6266";
+               comboModel.options[6].text = "<%=messages.getText("question1532.answer6266.text")%>";
+               comboModel.options[7].value = "6267";
+               comboModel.options[7].text = "<%=messages.getText("question1532.answer6267.text")%>";
+               comboModel.options[8].value = "6268";
+               comboModel.options[8].text = "<%=messages.getText("question1532.answer6268.text")%>";
+               comboModel.options[9].value = "6269";
+               comboModel.options[9].text = "<%=messages.getText("question1532,answer6568.text")%>";
+               comboModel.options[10].value = "6269";
+               comboModel.options[10].text = "<%=messages.getText("question1532,answer6569.text")%>";
+               comboModel.options[11].value = "6269";
+               comboModel.options[11].text = "<%=messages.getText("question1532,answer6570.text")%>";
+               comboModel.options[12].value = "6269";
+               comboModel.options[12].text = "<%=messages.getText("question1532,answer6571.text")%>";
+               comboModel.options[13].value = "6269";
+               comboModel.options[13].text = "<%=messages.getText("question1532,answer6572.text")%>";
+               comboModel.options[14].value = "6269";
+               comboModel.options[14].text = "<%=messages.getText("question1532,answer6573.text")%>";
+               comboModel.options[15].value = "6269";
+               comboModel.options[15].text = "<%=messages.getText("question1532,answer6574.text")%>";
+               comboModel.options[16].value = "6269";
+               comboModel.options[16].text = "<%=messages.getText("question1532,answer6575.text")%>";
+               comboModel.options[17].value = "6269";
+               comboModel.options[17].text = "<%=messages.getText("question1532,answer6576.text")%>";
+               comboModel.options[18].value = "6269";
+               comboModel.options[18].text = "<%=messages.getText("question1532,answer6577.text")%>";
+               comboModel.options[19].value = "6269";
+               comboModel.options[19].text = "<%=messages.getText("question1532,answer6578.text")%>";
+               comboModel.options[20].value = "6269";
+               comboModel.options[20].text = "<%=messages.getText("question1532,answer6579.text")%>";
+               comboModel.options[21].value = "6269";
+               comboModel.options[21].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               comboModel.options.selectedIndex = 0;
+            }else {
+               if(value == 6232) {
+                  document.getElementById('othermake').style.visibility = 'visible';
+               }else {
+                  document.getElementById('othermake').style.visibility = 'hidden';
+               }                                
+               comboModel.options.length = 1;
+               comboModel.options[0].value = "6269";
+               comboModel.options[0].text = "<%=messages.getText("question1532.answer6269.text")%>";
+               document.getElementById('othermodel').style.visibility = 'visible';
+            }
+         }
+         function loadOtherCity(form) {
+            var comboCity = form.elements['question1555'];
+            var value = comboCity.options[comboCity.options.selectedIndex].value;
+            if(value == 6227) {
+               document.getElementById('othercity').style.visibility = 'visible';
+            }else {
+               document.getElementById('othercity').style.visibility = 'hidden';
+            }
+         }
+         function loadCity(form,value) {
+            var comboCity = form.elements['question1555'];
+            for(i = 0; i < comboCity.options.length; i++) {
+               if(comboCity.options[i].value == value) {
+                  comboCity.options.selectedIndex = i;
+               }
+            }
+            if(value == 6227) {
+               document.getElementById('othercity').style.visibility = 'visible';
+            }
+         }
+         function loadModel(form,value) {
+            var comboCity = form.elements['question1532'];
+            for(i = 0; i < comboCity.options.length; i++) {
+               if(comboCity.options[i].value == value) {
+                  comboCity.options.selectedIndex = i;
+               }
+            }
+            if(value == 6269) {
+               document.getElementById('othercity').style.visibility = 'visible';
+            }
+         }
+         function loadOtherModel(form) {
+            var comboModel = form.elements['question1532'];
+            var value = comboModel.options[comboModel.options.selectedIndex].value;
+            if(value == 6269) {
+               document.getElementById('othermodel').style.visibility = 'visible';
+            }else {
+               document.getElementById('othermodel').style.visibility = 'hidden';
+            }
+         }
+      </script>
+   </head>
+   <body scroll="auto" onload="loadCities(document.forms['EmeaForm']);loadCity(document.forms['EmeaForm'],'<%=String.valueOf(request.getParameter("question1555"))%>');loadModels(document.forms['EmeaForm']);loadModel(document.forms['EmeaForm'],'<%=String.valueOf(request.getParameter("question1532"))%>')">
+      <form name="logout" action="./logout.jsp" method="post"></form>
+      <html:form action="/Emea">
+         <div align="center">
+         <table width="850" border="0" cellpadding="0" cellspacing="0" bgcolor="#99CC99">
+               <tr bgcolor="#FFFFFF">
+               <td width="16%" height="100" align="center" valign="middle" bgcolor="#FFFFFF"><p align="center" class="style28">
+                  <img src="./util/imgs/LOGO.gif" width="88" height="88" border="0" /></p>
+               </td>
+               <td height="125" align="center" valign="bottom" bgcolor="#FFFFFF">
+                  <p align="center" class="style28">
+                     <span class="style38"><%=messages.getText("messages.emea.thirdtitle")%></span>
+                     </p>
+                     <p align="center" class="style28">&nbsp;</p>
+                  <p align="center" class="style29">          <%=messages.getText("assesment.emea.title") %>:</p>
+               </td>
+               <td width="14%" height="100" align="center" valign="middle" bgcolor="#FFFFFF">
+                  <p><img src="./util/imgs/cepa logo 1.jpg" width="94" height="73" border="0"/></p>
+               </td>
+               </tr>
+               <tr bgcolor="#FFFFFF">
+               <td height="50" colspan="3" align="center" valign="middle" bgcolor="#FFFFFF">
+                  <div align="center">
+                     <span class="style31">
+                        <%=messages.getText("assesment.emea.explanation")%>
+                     </span>
+                  </div>
+               </td>
+               </tr>
+         </table>
+         <table width="850" border="1" cellspacing="0" cellpadding="0">
+               <tr>
+               <td height="30" colspan="5" align="left" bgcolor="#004C38"><p class="style27">&nbsp;&nbsp;<%=messages.getText("messages.emea.driverdetails")%></p></td>
+               </tr>
+               <tr>
+               <td width="20%" height="32" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<strong><%=messages.getText("module81.question1492.text")%></strong></span>
+               </td>
+<%    String value = (request.getParameter("question1492") == null) ? "" : request.getParameter("question1492");
+%>             <td width="21%" align="left" bgcolor="#FFFFFF">
+                  <select name="question1492" onchange="loadCities(document.forms['EmeaForm']);" size="1">
+                        <option value="-1"><%=messages.getText("messages.emea.selectcountry")%>..........</option>
+<%    for(int i = 6185; i < 6197; i++) {  
+%>                      <option value="<%=i%>" <%=(value.equals(String.valueOf(i))) ? "selected" : "" %>><%=messages.getText("question1492.answer"+i+".text") %></option>
+<%    }
+%>                   <option value="6231" <%=(value.equals("6231")) ? "selected" : "" %>><%=messages.getText("question1492.answer6231.text") %></option>
+                  </select>
+               </td>
+               <td width="6%" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1555.text")%></span>
+               </td>
+               <td width="25%" align="left" bgcolor="#FFFFFF">
+                  <select name="question1555" onchange="loadOtherCity(document.forms['EmeaForm']);" size="1">
+                        <option value="-1"><%=messages.getText("messages.emea.selectsite")%>.....</option>
+                  </select>
+               </td>
+               <td width="28%" align="left" bgcolor="#FFFFFF">
+                  <div id="othercity" style="visibility:hidden;">
+                     <label>
+                        <input name="question1556" type="text" value="<%=(request.getParameter("question1556") == null || request.getParameter("question1556").equals(messages.getText("messages.emea.writesite"))) ? messages.getText("messages.emea.writesite") : request.getParameter("question1556")%>" />
+                     </label>
+                  </div>
+               </td>
+               </tr>
+               <tr>
+               <td height="34" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1530.text")%></span>
+               </td>
+<%    value = (request.getParameter("question1530") == null) ? "" : request.getParameter("question1530");
+%>             <td colspan="4" align="left" bgcolor="#FFFFFF">
+                  <select name="question1530" size="1">
+                        <option value="-1"><%=messages.getText("messages.emea.selectgroup")%>..........</option>
+<%    for(int i = 6198; i < 6202; i++) {  
+%>                   <option value="<%=i%>" <%=(value.equals(String.valueOf(i))) ? "selected" : "" %>><%=messages.getText("question1530.answer"+i+".text") %></option>
+<%    }
+%>                </select>
+               </td>
+               </tr>
+         </table>
+         <table width="850" border="1" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+               <tr>
+               <td height="30" colspan="6" align="left" bgcolor="#004c38">
+                  <p class="style27">&nbsp;&nbsp;<%=messages.getText("messages.emea.vehicledetails")%></p>
+               </td>
+               </tr>
+               <tr>
+               <td width="20%" height="33" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1531.text")%></span>
+               </td>
+<%    value = (request.getParameter("question1531") == null) ? "" : request.getParameter("question1531");
+%>             <td width="14%" align="left" bgcolor="#FFFFFF">
+                  <select name="question1531" onchange="loadModels(document.forms['EmeaForm']);" size="1">
+                        <option value="-1"><%=messages.getText("messages.emea.selectmake")%></option>
+<%    for(int i = 6206; i <= 6221; i++) { 
+%>                      <option value="<%=i%>" <%=(value.equals(String.valueOf(i))) ? "selected" : "" %>><%=messages.getText("question1531.answer"+i+".text") %></option>
+<%    }
+%>
+                     <option value="6232" <%=(value.equals("6232")) ? "selected" : "" %>><%=messages.getText("question1531.answer6232.text") %></option>
+                  </select>
+               </td>
+               <td width="19%" align="left" bgcolor="#FFFFFF">
+                     <div id="othermake" style="visibility:hidden;">
+                     <span class="style14">
+                        <input name="question1558" type="text" value="<%=(request.getParameter("question1558") == null || request.getParameter("question1558").equals(messages.getText("messages.emea.writemake"))) ? messages.getText("messages.emea.writemake") : request.getParameter("question1558")%>" />
+                     </span>
+                  </div>
+                  </td>
+               <td width="8%" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1532.text")%></span>
+               </td>
+               <td width="16%" align="left">
+                  <select name="question1532" onchange="loadOtherModel(document.forms['EmeaForm']);" size="1" id="question1532">
+                        <option value="-1"><%=messages.getText("messages.emea.selectmodel")%></option>
+                  </select>
+               </td>
+               <td width="23%" align="left" bgcolor="#F7F7F7">
+                  <div id="othermodel" style="visibility:hidden;">
+                     <span class="style14">&nbsp;&nbsp;
+                           <input type="text" name="question1557" id="question1557" value="<%=(request.getParameter("question1557") == null || request.getParameter("question1557").equals(messages.getText("messages.emea.writemodel"))) ? messages.getText("messages.emea.writemodel") : request.getParameter("question1557")%>" />
+                     </span>
+                  </div>
+               </td>
+               </tr>
+               <tr>
+               <td height="36" align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1554.text")%></td>
+               <td colspan="5" align="left" valign="middle" bgcolor="#FFFFFF">
+<%    value = (request.getParameter("question1554") == null) ? "" : request.getParameter("question1554");
+%>                <select name="question1554"  size="1">
+                        <option value="-1"><%=messages.getText("messages.emea.selectyear") %></option>
+                        <option value="6157" <%=(value.equals("6157")) ? "selected" : "" %>><%=messages.getText("question1554.answer6157.text") %></option>
+                        <option value="6159" <%=(value.equals("6159")) ? "selected" : "" %>><%=messages.getText("question1554.answer6159.text") %></option>
+                        <option value="6158" <%=(value.equals("6158")) ? "selected" : "" %>><%=messages.getText("question1554.answer6158.text") %></option>
+                        <option value="6153" <%=(value.equals("6153")) ? "selected" : "" %>><%=messages.getText("question1554.answer6153.text") %></option>
+                        <option value="6161" <%=(value.equals("6161")) ? "selected" : "" %>><%=messages.getText("question1554.answer6161.text") %></option>
+                        <option value="6156" <%=(value.equals("6156")) ? "selected" : "" %>><%=messages.getText("question1554.answer6156.text") %></option>
+                        <option value="6154" <%=(value.equals("6154")) ? "selected" : "" %>><%=messages.getText("question1554.answer6154.text") %></option>
+                        <option value="6160" <%=(value.equals("6160")) ? "selected" : "" %>><%=messages.getText("question1554.answer6160.text") %></option>
+                        <option value="6152" <%=(value.equals("6152")) ? "selected" : "" %>><%=messages.getText("question1554.answer6152.text") %></option>
+                        <option value="6155" <%=(value.equals("6155")) ? "selected" : "" %>><%=messages.getText("question1554.answer6155.text") %></option>
+                        <option value="6151" <%=(value.equals("6151")) ? "selected" : "" %>><%=messages.getText("question1554.answer6151.text") %></option>
+                  </select>
+               </td>
+               </tr>
+               <tr>
+               <td height="36" align="left" bgcolor="#E2E2E2" class="style14">
+                  <span class="style17">&nbsp;&nbsp;<%=messages.getText("module81.question1533.text")%></span>
+               </td>
+<%    value = (request.getParameter("question1533") == null) ? "" : request.getParameter("question1533");
+      String unit = (request.getParameter("unit1533") == null) ? "" : request.getParameter("unit1533");
+%>             <td colspan="5" align="left" valign="middle" bgcolor="#FFFFFF">
+                  <input type="text" name="question1533" value="<%=value%>"/>
+                     <select name="unit1533" size="1" >
+                     <option value="0" <%=(value.equals("0")) ? "selected" : "" %>><%=messages.getText("answer.units.kilometers") %></option>
+                     <option value="1" <%=(value.equals("1")) ? "selected" : "" %>><%=messages.getText("answer.units.miles") %></option>
+                  </select>
+               </td>
+               </tr>
+               <tr>
+               <td height="34" align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1534.text")%> </td>
+               <td colspan="5" align="left" bgcolor="#FFFFFF">
+<%    value = (request.getParameter("question1534") == null) ? "" : request.getParameter("question1534");
+%>                  <select name="question1534" size="1">
+                        <option value="-1"><%=messages.getText("messages.emea.selectcateogry")%></option>
+                     <option value="6016" <%=(value.equals("6016")) ? "selected" : "" %>><%=messages.getText("question1534.answer6016.text")%></option>
+                     <option value="6017" <%=(value.equals("6017")) ? "selected" : "" %>><%=messages.getText("question1534.answer6017.text")%></option>
+                     <option value="6014" <%=(value.equals("6014")) ? "selected" : "" %>><%=messages.getText("question1534.answer6014.text")%></option>
+                     <option value="6024" <%=(value.equals("6024")) ? "selected" : "" %>><%=messages.getText("question1534.answer6024.text")%></option>
+                     <option value="6025" <%=(value.equals("6025")) ? "selected" : "" %>><%=messages.getText("question1534.answer6025.text")%></option>
+                     <option value="6021" <%=(value.equals("6021")) ? "selected" : "" %>><%=messages.getText("question1534.answer6021.text")%></option>
+                     <option value="6022" <%=(value.equals("6022")) ? "selected" : "" %>><%=messages.getText("question1534.answer6022.text")%></option>
+                     <option value="6026" <%=(value.equals("6026")) ? "selected" : "" %>><%=messages.getText("question1534.answer6026.text")%></option>
+                  </select>
+               </td>
+               </tr>
+               <tr>
+               <td align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1535.text")%></td>
+               <td colspan="5">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6031.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6029.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6028.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6033.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6027.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6032.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1535.answer6030.text")%> </span></div></td>
+                        </tr>
+  <%    value = (request.getParameter("question1535") == null) ? "" : request.getParameter("question1535");
+%>                      <tr>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6031"  <%=(value.equals("6031")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6029" <%=(value.equals("6029")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6028" <%=(value.equals("6028")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6033" <%=(value.equals("6033")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6027" <%=(value.equals("6027")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6032" <%=(value.equals("6032")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6030" <%=(value.equals("6030")) ? "checked" : "" %>/>
+                              </label>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+               <td align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1536.text")%></td>
+               <td colspan="5">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1536.answer6036.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1536.answer6038.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1536.answer6037.text")%> </span></div></td>
+                           <td width="15%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1536.answer6035.text")%> </span></div></td>
+                           <td width="43%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1536.answer6034.text")%> </span></div></td>
+                        </tr>
+                        <tr>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6036"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6038"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6037"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6035"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6034"/>
+                              </label>
+                           </td>
+                        </tr>
+                     </table> 
+                  </td>
+               </tr>
+               <tr>
+               <td align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;
+                  <p>&nbsp;&nbsp;<%=messages.getText("module81.question1537.text")%></p>        
+               </td>
+               <td colspan="5">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6056"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6056.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6055"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6055.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6039"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6039.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6047"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6047.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6049"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6049.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6057"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6057.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6053"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6053.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6040"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6040.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6060"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6060.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6058"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6058.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6044"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6044.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6041"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6041.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6050"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6050.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6045"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6045.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6042"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6042.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6054"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6054.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6043"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6043.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6046"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6046.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6048"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6048.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6059"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6059.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6052"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6052.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6061"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6061.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6051"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6051.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6581"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6581.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6582"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1537.answer6582.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6583"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1537.answer6583.text")%></td>
+                        </tr>
+                  </table>
+               </td>
+            </tr>
+         </table>          
+         <table width="850" border="1" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+               <tr>
+               <td height="30" colspan="2" align="left" bgcolor="#004C38">
+                  <p class="style27"><strong>&nbsp;&nbsp;<%=messages.getText("messages.emea.useperformance") %></strong></p>
+               </td>
+               </tr>
+               <tr>
+               <td width="20%" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<strong><%=messages.getText("module81.question1538.text")%></strong></span>
+               </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr bgcolor="#E2E2E2">
+                           <td width="14%" bgcolor="#F7F7F7">  
+                              <div align="center">
+                                 <label></label>
+                                 <input name="question1538" value="6066" type="radio" />
+                              </div>
+                           </td>
+                           <td width="28%" align="left" bgcolor="#F7F7F7">
+                              <span class="style25"><%=messages.getText("question1538.answer6066.text")%></span>
+                           </td>
+                           <td width="15%" bgcolor="#F7F7F7">  
+                              <div align="center">
+                                 <label></label>
+                                 <input name="question1538" value="6063" type="radio" />
+                              </div>
+                           </td>
+                           <td colspan="2" align="left" bgcolor="#F7F7F7" class="style25">
+                              <%=messages.getText("question1538.answer6063.text")%>
+                           </td>
+                           <td width="15%">
+                              <label></label>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <label></label>
+                              <div align="center">
+                                 <label>
+                                    <input name="question1538" value="6065" type="radio" />
+                                 </label>
+                              </div>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1538.answer6065.text")%></td>
+                           <td>
+                              <label></label>
+                              <div align="center">
+                                 <label></label>
+                                 <input name="question1538" value="6067" type="radio" />
+                              </div>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1538.answer6067.text")%></td>
+                        </tr>
+                        <tr bgcolor="#E2E2E2">
+                           <td width="14%" bgcolor="#F7F7F7">  
+                              <div align="center">
+                                 <label></label>
+                                 <input name="question1538" value="6066" type="radio" />
+                              </div>
+                           </td>
+                           <td width="28%" align="left" bgcolor="#F7F7F7">
+                              <span class="style25"><%=messages.getText("question1538.answer6066.text")%></span>
+                           </td>
+                           <td width="15%" bgcolor="#F7F7F7">  
+                              <div align="center">
+                                 <label></label>
+                                 <input name="question1538" value="6064" type="radio" />
+                              </div>
+                           </td>
+                           <td colspan="2" align="left" bgcolor="#F7F7F7" class="style25">
+                              <%=messages.getText("question1538.answer6064.text")%>
+                           </td>
+                           <td width="15%">
+                              <label></label>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <label></label>
+                              <div align="center">
+                                 <label>
+                                    <input name="question1538" value="6270" type="radio" />
+                                 </label>
+                              </div>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1538.answer6270.text")%></td>
+                           <td><div align="center"></div></td>
+                           <td align="left" class="style25">&nbsp;</td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+               <tr>
+               <td height="46" align="left" bgcolor="#E2E2E2">
+                  <strong class="style25">&nbsp;&nbsp;<%=messages.getText("module81.question1539.text")%></strong>
+               </td>
+               <td align="left" valign="middle">
+                  <input name="question1539" type="text" />
+                     <select name="unit1539" size="1" >
+                     <option value="0"><%=messages.getText("answer.units.kilometers") %></option>
+                     <option value="1"><%=messages.getText("answer.units.miles") %></option>
+                  </select>
+               </td>
+            </tr>
+               <tr>
+               <td height="62" align="left" bgcolor="#E2E2E2">
+                  <strong class="style25">
+                     &nbsp;&nbsp;<%=messages.getText("module81.question1541.text")%>
+                  </strong>
+               </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="13%" bgcolor="#F7F7F7">
+                              <div align="center">
+                                 <label>
+                                    <input type="checkbox" name="answer6075" />
+                                 </label>
+                              </div>
+                           </td>
+                           <td width="29%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1541.answer6075.text")%></td>
+                           <td width="15%" bgcolor="#F7F7F7" class="style25">
+                              <div align="center">
+                                 <label>
+                                    <input type="checkbox" name="answer6074" />
+                                 </label>
+                              </div>
+                           </td>
+                           <td width="43%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1541.answer6074.text")%></td>
+                        </tr>
+                        <tr>
+                           <td>
+                              <div align="center">
+                                 <label>
+                                    <input type="checkbox" name="answer6076" />
+                                 </label>
+                              </div>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1541.answer6076.text")%></td>
+                           <td class="style25">
+                              <div align="center">
+                                 <label>
+                                    <input type="checkbox" name="answer6073" />
+                                 </label>
+                              </div>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1541.answer6073.text")%></td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+               <tr>
+               <td height="21" align="left" bgcolor="#E2E2E2" class="style36">
+                  &nbsp;&nbsp;<%=messages.getText("module81.question1542.text")%>
+                  </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="13%" align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input type="radio" name="question1542" value="6077"  />
+                              </label>
+                           </td>
+                           <td width="29%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1542.answer6077.text")%></td>
+                           <td width="15%" align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input type="radio" name="question1542" value="6079"  />
+                              </label>
+                           </td>
+                           <td width="43%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1542.answer6079.text")%></td>
+                        </tr>
+                        <tr>
+                           <td align="center">
+                              <label>
+                                 <input type="radio" name="question1542" value="6080"  />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1542.answer6080.text")%></td>
+                           <td align="center">
+                              <label>
+                                 <input type="radio" name="question1542" value="6081"  />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1542.answer6081.text")%></td>
+                        </tr>
+                        <tr>
+                           <td align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input type="radio" name="question1542" value="6078"  />
+                              </label>
+                           </td>
+                           <td align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1542.answer6078.text")%></td>
+                           <td align="center" bgcolor="#F7F7F7"><label></label></td>
+                           <td align="left" bgcolor="#F7F7F7" class="style25">&nbsp;</td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+               <tr>
+               <td height="21" align="left" bgcolor="#E2E2E2" class="style14">
+                  <strong class="style25">&nbsp;&nbsp;<%=messages.getText("module81.question1543.text")%></strong>
+               </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="13%" align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input type="radio" name="question1543" value="6085"  />
+                              </label>
+                           </td>
+                           <td width="29%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1543.answer6085.text")%>Not important</td>
+                           <td width="15%" align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                                 <input type="radio" name="question1543" value="6082"  />
+                              </label>
+                           </td>
+                           <td width="43%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1543.answer6082.text")%>Important</td>
+                        </tr>
+                        <tr>
+                           <td height="35" align="center">
+                              <label>
+                                 <input type="radio" name="question1543" value="6083"  />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1543.answer6083.text")%></td>
+                           <td align="center" class="style14">
+                              <label>
+                                 <input type="radio" name="question1543" value="6084"  />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1543.answer6084.text")%></td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+               <tr>
+               <td height="21" align="left" bgcolor="#E2E2E2" class="style14">
+                  <strong class="style25">&nbsp;&nbsp;<%=messages.getText("module81.question1544.text")%></strong>
+               </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="13%" align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input type="radio" name="question1544" value="6089"  />
+                              </label>
+                           </td>
+                           <td width="29%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1544.answer6089.text")%></td>
+                           <td width="15%" align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                                 <input type="radio" name="question1544" value="6086"  />
+                              </label>
+                           </td>
+                           <td width="43%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1544.answer6086.text")%></td>
+                        </tr>
+                        <tr>
+                           <td height="35" align="center">
+                              <label>
+                                 <input type="radio" name="question1544" value="6088"  />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1544.answer6088.text")%></td>
+                           <td align="center" class="style14">
+                              <label>
+                                 <input type="radio" name="question1544" value="6087"  />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1544.answer6087.text")%></td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+               <tr>
+               <td height="21" align="left" bgcolor="#E2E2E2">
+                  <strong class="style25">&nbsp;&nbsp;<%=messages.getText("module81.question1545.text")%></strong>
+               </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="13%" align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                                 <input type="checkbox" name="answer6093" />
+                              </label>
+                           </td>
+                           <td width="29%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1545.answer6093.text")%></td>
+                           <td width="15%" align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                              <input type="checkbox" name="answer6095" />
+                              </label>
+                           </td>
+                           <td width="43%" align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1545.answer6095.text")%></td>
+                        </tr>
+                        <tr>
+                           <td align="center" class="style14">
+                              <label>
+                                 <input type="checkbox" name="answer6091" />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1545.answer6091.text")%></td>
+                           <td align="center" class="style14">
+                              <label>
+                                 <input type="checkbox" name="answer6092" />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1545.answer6092.text")%></td>
+                        </tr>
+                        <tr>
+                           <td align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                                 <input type="checkbox" name="answer6090" />
+                              </label>
+                           </td>
+                           <td align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1545.answer6090.text")%></td>
+                           <td align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                                 <input type="checkbox" name="answer6094" />
+                              </label>
+                           </td>
+                           <td align="left" bgcolor="#F7F7F7" class="style25"><%=messages.getText("question1545.answer6094.text")%></td>
+                        </tr>
+                        <tr>
+                           <td height="25" align="center" class="style14">
+                              <label>
+                                 <input type="checkbox" name="answer6096" />
+                              </label>
+                           </td>
+                           <td align="left" class="style25"><%=messages.getText("question1545.answer6096.text")%></td>
+                           <td align="center" class="style25">&nbsp;</td>
+                           <td align="left" class="style25">&nbsp;</td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+               <tr>
+               <td height="21" align="left" bgcolor="#E2E2E2">
+                  <strong class="style25">&nbsp;&nbsp;Satisfaction with vehicle <br />&nbsp;        performance </strong>
+               </td>
+               <td>
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="13%" align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input name="question1547" type="radio" value="6102" />
+                              </label>
+                           </td>
+                           <td width="29%" align="left" bgcolor="#F7F7F7" class="style25">Unsatisfied</td>
+                           <td width="15%" align="center" bgcolor="#F7F7F7" class="style14">
+                              <label>
+                                 <input name="question1547" type="radio" value="6104" />
+                              </label>
+                           </td>
+                           <td width="43%" align="left" bgcolor="#F7F7F7" class="style25">Highly satisfied</td>
+                        </tr>
+                        <tr>
+                           <td align="center" bgcolor="#FFFFFF">
+                              <label>
+                                 <input name="question1547" type="radio" value="6105" />
+                              </label>
+                           </td>
+                           <td align="left" bgcolor="#FFFFFF" class="style25">Slightly satisfied</td>
+                           <td align="center" bgcolor="#FFFFFF" class="style14">
+                              <label>
+                                 <input name="question1547" type="radio" value="6271" />
+                              </label>
+                           </td>
+                           <td align="left" bgcolor="#FFFFFF" class="style25">Excellent</td>
+                        </tr>
+                        <tr>
+                           <td align="center" bgcolor="#F7F7F7">
+                              <label>
+                                 <input name="question1547" type="radio" value="6103" />
+                              </label>
+                           </td>
+                           <td align="left" bgcolor="#F7F7F7" class="style25">Satisfied</td>
+                           <td align="center" bgcolor="#F7F7F7" class="style25">&nbsp;</td>
+                           <td align="left" bgcolor="#F7F7F7" class="style25">&nbsp;</td>
+                        </tr>
+                  </table>
+               </td>
+               </tr>
+         </table>
+         <table width="850" border="1" cellspacing="0" cellpadding="0">
+               <tr>
+               <td height="30" colspan="2" align="left" bgcolor="#004c38">
+                  <p class="style27">&nbsp;&nbsp;<strong><%=messages.getText("messages.emea.suitablevehicle")%> </strong></p>
+               </td>
+               </tr>
+               <tr>
+               <td width="20%" height="34" align="left" bgcolor="#E2E2E2">
+                  <span class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1548.text")%></span>
+               </td>
+               <td align="left" bgcolor="#FFFFFF">
+                  <select name="question1548"  size="1">
+                     <option value="-1" ><%=messages.getText("messages.emea.selectcateogry")%></option>
+                     <option value="6110" ><%=messages.getText("question1548.answer6110.text")%></option>
+                     <option value="6111" ><%=messages.getText("question1548.answer6111.text")%></option>
+                     <option value="6106" ><%=messages.getText("question1548.answer6106.text")%></option>
+                     <option value="6113" ><%=messages.getText("question1548.answer6113.text")%></option>
+                     <option value="6108" ><%=messages.getText("question1548.answer6108.text")%></option>
+                     <option value="6109" ><%=messages.getText("question1548.answer6109.text")%></option>
+                     <option value="6112" ><%=messages.getText("question1548.answer6112.text")%></option>
+                     <option value="6107" ><%=messages.getText("question1548.answer6107.text")%></option>
+                  </select>
+               </td>
+               </tr>
+               <tr>
+               <td align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1549.text")%></td>
+               <td colspan="5">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6116.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6115.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6114.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6117.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6119.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6118.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1549.answer6120.text")%> </span></div></td>
+                        </tr>
+                        <tr>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6116"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6115"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6114"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6117"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6119"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6118"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="radiobutton" type="radio" value="6120"/>
+                              </label>
+                           </td>
+                        </tr>
+                     </table> 
+                  </td>
+               </tr>
+               <tr>
+               <td align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1550.text")%></td>
+               <td colspan="5">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1550.answer6125.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1550.answer6122.text")%> </span></div></td>
+                           <td width="14%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1550.answer6121.text")%> </span></div></td>
+                           <td width="15%" bgcolor="#F7F7F7"><div align="center"><span class="style25"><%=messages.getText("question1550.answer6124.text")%> </span></div></td>
+                           <td width="43%" bgcolor="#FFFFFF"><div align="center"><span class="style25"><%=messages.getText("question1550.answer6123.text")%> </span></div></td>
+                        </tr>
+                        <tr>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6125"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6122"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6121"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#F7F7F7" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6124"/>
+                              </label>
+                           </td>
+                           <td bgcolor="#FFFFFF" align="center">
+                              <label>
+                                 <input name="question1536" type="radio" value="6123"/>
+                              </label>
+                           </td>
+                        </tr>
+                     </table> 
+                  </td>
+               </tr>
+               <tr>
+               <td align="left" bgcolor="#E2E2E2" class="style14">&nbsp;&nbsp;
+                  <p>&nbsp;&nbsp;<%=messages.getText("module81.question1551.text")%></p>        
+               </td>
+               <td colspan="5">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6145"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6145.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6133"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6133.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6134"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6134.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6132"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6132.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6128"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6128.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6148"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6148.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6143"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6143.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6142"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6142.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6136"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6136.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6138"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6138.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6140"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6140.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6129"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6129.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6135"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6135.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6139"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6139.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6147"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6147.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6127"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6127.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6144"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6144.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6130"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6130.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6131"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6131.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6137"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6137.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6141"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6141.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6146"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6146.text")%></td>
+                        </tr>
+                        <tr bgcolor="#FFFFFF">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6126"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6126.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6584"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6584.text")%></td>
+                        </tr>
+                        <tr bgcolor="#F7F7F7">
+                           <td width="14%" align="center" valign="middle">
+                              <label><input type="checkbox" name="answer6585"/></label>
+                           </td>
+                           <td width="28%" align="left"><span class="style25"><%=messages.getText("question1551.answer6585.text")%></span></td>
+                           <td width="15%" align="center">
+                              <label><input type="checkbox" name="answer6586"/></label>
+                              <label></label>
+                           </td>
+                           <td width="43%" align="left" class="style25"><%=messages.getText("question1551.answer6586.text")%></td>
+                        </tr>
+                  </table>
+               </td>
+            </tr>
+         </table>          
+         <table width="850" border="1" cellspacing="0" cellpadding="0">
+               <tr>
+               <td height="30" colspan="3" align="left" bgcolor="#004C38"><p class="style27"><strong>&nbsp;&nbsp;<%=messages.getText("messages.emea.comments")%>&nbsp; </strong></p></td>
+               </tr>
+               <tr>
+               <td width="20%" height="93" align="left" bgcolor="#E2E2E2">
+                  <p class="style14">&nbsp;&nbsp;<%=messages.getText("module81.question1552.text")%></p>        
+               </td>
+               <td colspan="2" align="left" bgcolor="#FFFFFF">
+                  <label>
+                        <textarea name="question1552" cols="38" rows="5"></textarea>
+                  </label>
+               </td>
+               </tr>
+               <tr>
+               <td height="30" bgcolor="#E2E2E2">
+                  <p class="style25"><strong>&nbsp;&nbsp; </strong></p>
+               </td>
+               <td width="27%" align="left" bgcolor="#FFFFFF">
+                  <p class="style34">
+                        <label></label>
+                        <label></label>
+                     <span class="style35"><%=messages.getText("messages.emea.thanks")%>&nbsp;&nbsp; </span>
+                  </p>
+               </td>          
+               <td width="53%" height="30" align="left" bgcolor="#FFFFFF">&nbsp;&nbsp;
+                     <html:submit value="Submit" />
+                     <input type="button" value="Cancel" onclick="javascript:document.forms['logout'].submit();" />
+                  </td>
+               </tr>
+         </table>       
+         <table width="850" border="1" cellspacing="0" cellpadding="0">
+            <tr>
+               <td bgcolor="#E2E2E2"><div align="center">
+                  <span class="style39">Powered by CEPA  International&nbsp;&nbsp;2009&nbsp;&nbsp;</span></div>
+               </td>
+            </tr>
+            <tr><td align="left" valign="middle">&nbsp;</td></tr>
+         </table>
+      </div>
+      </html:form>
+   </body>
+<% }  %>
+</html:html>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserGroup" table="usergroups">
+
+       <composite-id class="UserGroupPK" name="pk" >
+       		<key-many-to-one
+       			 name="groupId"
+       			 column="groupId"
+       			 class="assesment.persistence.assesment.tables.Group"
+       	 	/>
+       	 	<key-many-to-one
+       	 		 name="user"
+       	 		 column="loginname"
+       	 		 class="assesment.persistence.user.tables.User"
+       	 	/>
+       </composite-id>
+
+		<property name="active" type="java.lang.Boolean" not-null="true" >
+			<column name="active" default="true" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserPsiAnswerLog" table="userpsianswerlog">
+
+        <composite-id>
+      	 	<key-property name="userid" column="userid" type="java.lang.String"/>
+      	    <key-property name="date" column="date" type="java.util.Date"/>
+      	    <key-property 	name="id"			type="java.lang.Integer"	column="id" />   
+        </composite-id>
+        <property name="loginName" column="loginname" type="java.lang.String"/> 
+        <property 	name="assesment" 	type="java.lang.Integer" column="assesment" />
+        <property 	name="psiquestion" 	type="java.lang.Integer" column="psiquestion" />
+        <property	 name="psianswer" 		type="java.lang.Integer" column="psianswer" />
+		<property name="comment" column="comment" type="java.lang.String"/>	    
+	   <property name="action" column="action" type="java.lang.Integer"/>	
+	</class>
+
+</hibernate-mapping>

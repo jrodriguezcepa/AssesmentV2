@@ -1,0 +1,787 @@
+/* CSS Document */
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.contain {
+	width: 100%; 
+	height: 100%;
+}
+#header {
+	width:100%;
+	font-family:Roboto-Thin,Verdana,Arial, Helvetica, sans-serif;
+}
+ul, ol {
+	list-style:none;
+}
+.nav > li {
+	float:left;
+}
+.nav li a {
+	background-color:#868686;
+	color:#fff;
+	text-decoration:none;
+	padding:10px 12px;
+	display:block;
+}
+.nav li a:hover {
+	background-color:#434343;
+}
+.nav li ul {
+	display:none;
+	position:absolute;
+	min-width:140px;
+}
+.nav li:hover > ul {
+	display:block;
+}
+.nav li ul li {
+	position:relative;
+}
+.nav li ul li a {
+	background-color:#666666;
+	color:#fff;
+	text-decoration:none;
+	padding:10px 12px;
+	display:block;
+}
+.nav li ul li ul {
+	right:-140px;
+	top:0px;
+}
+.nav li ul li ul li a {
+	background-color:#565656;
+	color:#fff;
+	text-decoration:none;
+	padding:10px 12px;
+	display:block;
+}
+.red {
+	
+}
+.table{
+	background-color:#FFFFFF;
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tablelogin{
+	background-image:url(/assesment/util/imgs/login.gif);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tablelogin2{
+	background-image:url(/assesment/util/imgs/login.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tablereloadAnglo{
+	background-image:url(/assesment/util/imgs/reloadAnglo.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscode{
+	background-image:url(/assesment/util/imgs/accesscode.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscodePepsico{
+	background-image:url(/assesment/util/imgs/accesscode_pepsico.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccessBasf{
+	background-image:url(/assesment/util/imgs/accesscode_basf_br.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccessBasf2{
+	background-image:url(/assesment/util/imgs/basfOut.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscodeImesevi{
+	background-image:url(/assesment/util/imgs/accesscode_imesevi.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscodeDNB{
+	background-image:url(/assesment/util/imgs/accesscode_DNB.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscodeAbitab{
+	background-image:url(/assesment/util/imgs/accesscode_Abitab.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscodeAnglo{
+	background-image:url(/assesment/util/imgs/accesscode_anglo.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableaccesscodeAZ{
+	background-image:url(/assesment/util/imgs/accesscode_astrazence_mx.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tablereloadSessionAbitab{
+	background-image:url(/assesment/util/imgs/reload_Abitab.jpg);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tablelanguage{
+	background-image:url(/assesment/util/imgs/backLanguageEMEA.gif);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.tableEMEA{
+	background-image:url(/assesment/util/imgs/backEMEA.gif);
+    border-bottom:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:12px;
+}
+
+.txtlogin{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:13px;
+    font-weight:bold;
+	color:#ffffff;    
+}
+
+.txtlanguage{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:13px;
+    font-weight:bold;
+	color:#000000;    
+}
+
+.txtloginBig{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+	color:#ffffff;    
+}
+.txtloginBig A:link{color:white}
+.txtloginBig A:visited{color:silver}
+.txtloginBig A:active{color:silver}
+
+
+.msglogin{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+
+}
+
+.space,whitespace,spaceSearch{ /* 4px to separate a table*/
+    font-size:5px;
+    
+
+} 
+.input{
+	border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+	-moz-border-radius: 0.2em;
+	-ms-border-radius: 0.2em;
+	/* W3C */
+	transition-property: all;
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	-ms-transition-property: all;
+	transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+	-moz-transition-timing-function: ease-in-out;
+	-o-transition-timing-function: ease-in-out;
+	-ms-transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	-ms-transition-duration: 0.3s;
+	border: 1px solid #999;
+	text-decoration: none;
+	margin-top: .3em;
+	display: inline-block;
+	color: #555;
+	padding: .4em .8em;
+	font-size: 14px;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+}
+
+.button{
+	border-radius: 0.2em;
+	-webkit-border-radius: 0.2em;
+	-moz-border-radius: 0.2em;
+	-ms-border-radius: 0.2em;
+	/* W3C */
+	transition-property: all;
+	-webkit-transition-property: all;
+	-moz-transition-property: all;
+	-o-transition-property: all;
+	-ms-transition-property: all;
+	transition-timing-function: ease-in-out;
+	-webkit-transition-timing-function: ease-in-out;
+	-moz-transition-timing-function: ease-in-out;
+	-o-transition-timing-function: ease-in-out;
+	-ms-transition-timing-function: ease-in-out;
+	transition-duration: 0.3s;
+	-webkit-transition-duration: 0.3s;
+	-moz-transition-duration: 0.3s;
+	-o-transition-duration: 0.3s;
+	-ms-transition-duration: 0.3s;
+	border: 1px solid #999;
+	text-decoration: none;
+	margin-top: .3em;
+	color: #555;
+	padding: .4em .8em;
+	font-size: 16px;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+   	background-color:#C8C8C8;
+}
+
+.inputPepsico{
+   font-size:10px;
+   font-family:Arial, Helvetica, sans-serif;
+   background-color:#F8F8F8;
+}
+
+.inputSelect{
+   font-size:10px;
+   font-family:Arial, Helvetica, sans-serif;
+   background-color:#FFFFFF;
+}
+.inputBig{
+   font-size:12px;
+   font-family:Arial, Helvetica, sans-serif;
+   background-color:#F8F8F8;
+}
+
+.cursor{
+   cursor:pointer;
+
+}
+
+/*css class for user */
+
+.guide1{
+color:white;
+background-image:url(/assesment/util/imgs/center.jpg);
+font-family:Arial, Helvetica, sans-serif;
+font-size:16;
+font-weight:bold;
+
+}
+
+.guide{
+color:black;
+background-image:url(/assesment/util/imgs/center_op.jpg);
+font-family:Arial, Helvetica, sans-serif;
+font-size:16;
+font-weight:bold;
+
+}
+
+.menu{
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:16;
+font-weight:bold;
+}
+
+.guide2{
+	background-color: #797979;
+    color: #e9e9e9;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13;
+    font-weight: bold;
+    height: 22;
+}
+
+.header{
+background-color:#E9E9E9;
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:13;
+font-weight:bold;
+
+}
+
+.guide3{
+background-color:#898F92;
+color:white;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight:bold;
+
+}
+
+.guide5{
+background-color:#999999;
+color:white;
+font-family:Arial, Helvetica, sans-serif;
+font-size:11;
+font-weight:bold;
+
+}
+
+.guide4{
+background-color:#696969;
+color:white;
+font-family:Arial, Helvetica, sans-serif;
+font-size:11;
+font-weight:bold;
+
+}
+
+
+
+.default{
+background-color:#FFFFFF;
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+}
+
+.big{
+background-color:#FFFFFF;
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:20;
+}
+.input2{
+font-size:10px;
+color:#000000;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+.specialarea{
+font-size:10px;
+color:#000000;
+font-family:Arial, Helvetica, sans-serif;
+
+
+}
+
+/*lineone and linetwo are the lines of all list  */
+
+.lineone{
+	background-color:#F7F7F7;
+	color:black;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13;
+}
+.linetwo{
+	background-color:#FFFFFF;
+	color:black;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13;
+}
+.line{
+	color:black;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14;
+}
+
+.userdata{
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:10;
+}
+
+.userdataPepsico{
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:9;
+}
+
+.userdataAnglo{
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:11;
+}
+
+.linethree{
+background-color:#F8F8F8;
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+}
+.linefour{
+background-color:#A8A8A8;
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+}
+.texts{
+color:black;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+font-size:13;
+font-weight: bold;
+}
+.textNoAssesment{
+color:black;
+font-family:Arial, Helvetica, sans-serif;
+font-size:18;
+font-weight: bold;
+}
+.red{
+color:red;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+.redBig{
+color:red;
+font-family:Arial, Helvetica, sans-serif;
+font-size:14;
+font-weight: bold;
+}
+.red2{
+color:red;
+background-color:#F7F7F7;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+.yellow{
+color:E3E133;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+.blue{
+color:blue;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+.simpleblue{
+color:blue;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+}
+.green{
+color:green;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+.green2{
+color:green;
+background-color:#F7F7F7;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+
+.texts1{
+color:#1a4896;
+font-family:Arial, Helvetica, sans-serif;
+font-size:13;
+font-weight: bold;
+background-color:#E9E8E8;
+}
+
+
+.required{
+color:red;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12;
+font-weight: bold;
+}
+.title2{
+    color: #FFFFFF;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	height: 30px;
+    background-color:#333;
+}
+
+/* New layout standard  */
+
+
+.Main{
+width:600px;
+border:0px;
+padding:0px;
+border-spacing:0px;
+
+}
+.halfSecondary{
+width:292px;
+border:0px;
+padding:0px;
+border-spacing:0px;
+}
+.quarterSecondary{
+width:138px;
+border:0px;
+padding:0px;
+border-spacing:0px;
+}
+.divisor{
+width:16px;
+border:0px;
+padding:0px;
+border-spacing:0px;
+}
+.tableDefault{
+width:100%;
+border:0px;
+padding:0px;
+border-spacing:0px;
+}
+.leftLine{
+background-image:url(/assesment/util/imgs/left_line.gif);
+width:19px;
+}
+
+.leftLine1{
+background-image:url(/assesment/util/imgs/left_line_op.gif);
+width:19px;
+}
+
+.rightLine{
+background-image:url(/assesment/util/imgs/right_line.gif);
+width:19px;
+}
+
+.rightLine1{
+background-image:url(/assesment/util/imgs/right_line_op.gif);
+width:19px;
+}
+
+.centerBase{
+background-image:url(/assesment/util/imgs/center_base.gif);
+height:11px;
+}
+
+.centerBase1{
+background-image:url(/assesment/util/imgs/center_base_op.gif);
+height:11px;
+}
+
+/* home */
+
+.bgTop{
+	background-image:url(/assesment/menu/imgs/top_bg.gif);
+	height:21px;
+}
+
+.style1 {
+	color: #FFFFFF;
+	font-size: 4px;
+}
+
+.style2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333333;
+}
+
+.style3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #DDDDDD;
+}
+
+body {
+	margin-left: 0px;
+	margin-top: 10px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+
+
+.leftLineSearch{
+background-image:url(/assesment/util/imgs/left_line_search.jpg);
+width:19px;
+}
+
+.rightLineSearch{
+background-image:url(/assesment/util/imgs/right_line_search.jpg);
+width:19px;
+}
+
+.centerBaseSearch{
+background-image:url(/assesment/util/imgs/center_base_search.jpg);
+height:11px;
+}
+.guideSearch{
+	display: block;
+    width: 98%;
+	padding-left: 15px;
+	font-family: Roboto-Thin, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #333;
+    border: 0;
+	border-bottom: 1px solid #656565;
+}
+.answerText{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 13px;
+font-weight: bold;
+color: #003C77;
+}
+.success{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+font-weight: bold;
+color: #486b91;
+	
+}
+.linksuccess{
+cursor:pointer;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+color:#000000;
+}
+.SearchBack{
+background-color:#F9F9F9;
+font-family:Arial, Helvetica, sans-serif;
+font-size:11;
+}
+.succesback{
+background-color:#F9F9F9;
+color: #003C77;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 13px;
+font-weight: bold;
+}
+.myinfoConfig{
+	color:#003C77;
+	font-family:Arial, Helvetica, sans-serif;
+    font-size:11px;
+}
+
+.prueba6{
+	color:#FFFFFF;	
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:6px;
+}
+
+.prueba8{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:8px;
+}
+
+.pruebablack10{
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:10px;
+}
+
+.prueba10{
+	color:#FFFFFF;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:10px;
+}
+
+.prueba9{
+	color:#FFFFFF;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:9px;
+}
+
+.prueba8blanco{
+	color:#FFFFFF;	
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:8px;
+}
+.simpleTitle{
+   font-size:14px;
+   font-family:Arial, Helvetica, sans-serif;
+}

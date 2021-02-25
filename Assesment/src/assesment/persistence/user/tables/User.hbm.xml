@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.user.tables">
+    <class name="User" table="users">
+
+        <id name="loginName" column="loginname" type="java.lang.String">
+            <generator class="assigned">
+            </generator>
+        </id>
+        <property	name="password"		type="java.lang.String"	column="password"				not-null="true"/>
+
+        <property	name="firstName"		type="java.lang.String"		column="firstName" 		not-null="true"/>
+        <property	name="lastName" 		type="java.lang.String" 	column="lastname"		not-null="true"/>
+        <property	name="birthDate" 		type="java.util.Date" 		column="brithdate"      />
+        <property 	name="email"			type="java.lang.String" 	column="email"/>
+        <property	name="sex" 				type="java.lang.Integer" 	column="sex"			/>
+        <property 	name="country" 			type="java.lang.Integer" 	column="country"		/>
+        <property 	name="nationality"		type="java.lang.Integer" 	column="nationality"	/>
+       	<property 	name="language"			type="java.lang.String" 	column="language"		not-null="true"/>
+        <property	name="startDate" 		type="java.util.Date" 		column="startdate"		/>
+        <property	name="licenseExpiry"	type="java.util.Date" 		column="licenseexpiry"	/>
+        <property 	name="vehicle"			type="java.lang.String" 	column="vehicle"		/>
+        <property 	name="location"			type="java.lang.Integer" 	column="location"		/>
+        
+		<property 	name="role" 			type="java.lang.String"	 	column="role" 			not-null="true"/>
+        <property	name="expiry"			type="java.util.Date" 		column="expiry"			/>
+		<property 	name="extraData" 		type="java.lang.String"	 	column="extradata" 		/>
+		<property 	name="extraData2" 		type="java.lang.String"	 	column="extradata2" 		/>
+		<property 	name="extraData3" 		type="java.lang.String"	 	column="extradata3" 		/>
+		
+        <property 	name="datacenter"			type="java.lang.Integer" 	column="datacenter"		/>
+        <property 	name="telematics"			type="java.lang.Integer" 	column="telematics"		/>
+		<property 	name="coaching"  type="java.lang.Boolean"  not-null="true" >
+			<column name="coaching" default="false" />
+		</property>
+        <property name="acceptTerms"	column="acceptTerms" 	type="java.util.Date" />
+        
+    </class>
+
+</hibernate-mapping>

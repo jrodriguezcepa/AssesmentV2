@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="userPsiHTML"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="1000"
+		 columnWidth="555"
+		 columnSpacing="0"
+		 leftMargin="20"
+		 rightMargin="20"
+		 topMargin="30"
+		 bottomMargin="30"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="SUBREPORT_DIR" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA["/home/jrodriguez/projects/Assesment/src/assesment/report/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Title" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="UserText" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="Logo" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="Date" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="CorporationText" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="AssessmentText" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="Average1Text" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="Average2Text" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="average1" isForPrompting="false" class="java.lang.Double"/>
+	<parameter name="average2" isForPrompting="false" class="java.lang.Double"/>
+	<queryString><![CDATA[(select a.city, am.model from aircraft a, aircraft_models am where city='NEW YORK' and state='NY' and a.aircraft_model_code = am.aircraft_model_code order by model)
+                 UNION ALL
+                 (select a.city, am.model from aircraft a, aircraft_models am where city='WASHINGTON' and state='DC' and a.aircraft_model_code = am.aircraft_model_code order by model)]]></queryString>
+
+	<field name="Title" class="java.lang.String"/>
+	<field name="Title1" class="java.lang.String"/>
+	<field name="Text" class="java.lang.String"/>
+	<field name="Text1" class="java.lang.String"/>
+
+	<variable name="totalAircraft" class="java.lang.Integer" resetType="Group" resetGroup="modelGroup" calculation="Count">
+		<variableExpression><![CDATA[
+		]]></variableExpression>
+		<initialValueExpression><![CDATA[
+		]]></initialValueExpression>
+	</variable>
+
+		<group  name="modelGroup" >
+			<groupExpression><![CDATA[
+		]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="349"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="15"
+						y="146"
+						width="510"
+						height="18"
+						key="textField-19"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Verdana" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{UserText}]]></textFieldExpression>
+				</textField>
+				<line direction="TopDown">
+					<reportElement
+						x="3"
+						y="71"
+						width="519"
+						height="2"
+						forecolor="#CC0000"
+						key="line-6"/>
+					<graphicElement stretchType="NoStretch" pen="2Point"/>
+				</line>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="88"
+						y="44"
+						width="308"
+						height="21"
+						key="textField-20"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Verdana" pdfFontName="Helvetica-Bold" size="14" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{Title}]]></textFieldExpression>
+				</textField>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="15"
+						y="17"
+						width="68"
+						height="48"
+						key="image-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA[$P{Logo}]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="15"
+						y="82"
+						width="510"
+						height="18"
+						key="textField-21"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Verdana" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{CorporationText}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="15"
+						y="114"
+						width="510"
+						height="18"
+						key="textField-22"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Verdana" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{AssessmentText}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="396"
+						y="52"
+						width="126"
+						height="13"
+						key="textField-23"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right">
+						<font fontName="Verdana"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{Date}]]></textFieldExpression>
+				</textField>
+				<meterChart>
+					<chart isShowLegend="false"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="28"
+						y="203"
+						width="235"
+						height="127"
+						backcolor="#FFFFFF"
+						key="element-3"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					</chart>
+					<valueDataset>
+						<dataset >
+						</dataset>
+						<valueExpression><![CDATA[$P{average1}]]></valueExpression>
+					</valueDataset>
+					<meterPlot shape="chord" tickInterval="1.0" meterColor="#FFFFFF" needleColor="#000000" >
+						<plot backcolor="#FFFFFF" />
+							<valueDisplay >
+							</valueDisplay>
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(5)]]></highExpression>
+							</dataRange>
+							<meterInterval color="#0EB561" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(1)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#0EB561" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(1)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(2)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#0EB561" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(2)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(3)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#EFF715" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(3)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(4)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#F51313" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(4)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(5)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+					</meterPlot>
+				</meterChart>
+				<meterChart>
+					<chart isShowLegend="false"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Opaque"
+						x="285"
+						y="203"
+						width="226"
+						height="127"
+						backcolor="#FFFFFF"
+						key="element-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					</chart>
+					<valueDataset>
+						<dataset >
+						</dataset>
+						<valueExpression><![CDATA[$P{average2}]]></valueExpression>
+					</valueDataset>
+					<meterPlot shape="chord" tickInterval="1.0" meterColor="#FFFFFF" needleColor="#000000" >
+						<plot backcolor="#FFFFFF" />
+							<valueDisplay >
+							</valueDisplay>
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(5)]]></highExpression>
+							</dataRange>
+							<meterInterval color="#0EB561" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(0)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(1)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#0EB561" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(1)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(2)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#0EB561" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(2)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(3)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#EFF715" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(3)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(4)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+							<meterInterval color="#F51313" >
+							<dataRange>
+								<lowExpression><![CDATA[new Integer(4)]]></lowExpression>
+								<highExpression><![CDATA[new Integer(5)]]></highExpression>
+							</dataRange>
+							</meterInterval>
+					</meterPlot>
+				</meterChart>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="28"
+						y="179"
+						width="241"
+						height="18"
+						key="textField-24"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Verdana" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{Average1Text}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="285"
+						y="179"
+						width="241"
+						height="18"
+						key="textField-26"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Verdana" pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$P{Average2Text}]]></textFieldExpression>
+				</textField>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="465"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="28"
+						y="6"
+						width="510"
+						height="16"
+						key="textField-27">
+							<printWhenExpression><![CDATA[new Boolean($F{Title} != null)]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isUnderline="true"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Title}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="28"
+						y="33"
+						width="510"
+						height="426"
+						key="textField-28">
+							<printWhenExpression><![CDATA[new Boolean($F{Title} != null)]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Text}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="28"
+						y="6"
+						width="468"
+						height="16"
+						key="textField-29">
+							<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font isUnderline="false"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Title1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="28"
+						y="33"
+						width="510"
+						height="380"
+						key="textField-30">
+							<printWhenExpression><![CDATA[new Boolean($F{Title1} != null)]]></printWhenExpression>
+						</reportElement>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{Text1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.language.tables">
+    <class
+        name="CorporationMessage"
+        table="corporationmessages"
+    >
+		<composite-id name="primaryKey" class="CorporationMessagePK">
+			<key-property
+				 name="labelKey"
+				 column="labelkey" 
+				 type="java.lang.String"
+				 length="100"
+			/>
+			<key-many-to-one
+				class="assesment.persistence.corporation.tables.Corporation"
+				column="corporationname"
+				name="corporation"
+			/>
+			<key-many-to-one 
+				class="Language"
+				name="language" 
+				column="language"
+			/>
+	 	</composite-id>    	
+	 	
+	 	<property 
+	 		name="text" 
+	 		column="text"
+	 		type="java.lang.String"	
+	 		not-null="true"
+	 		length="500"
+	 	/>
+
+    </class>
+
+</hibernate-mapping>

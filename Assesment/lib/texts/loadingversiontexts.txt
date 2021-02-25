@@ -1,0 +1,19 @@
+delete from versiontexts;
+
+copy versiontexts from 'C:/proyectos JAVA/Assesment/lib/texts/versionTexts.csv';
+
+delete from generalmessages
+where labelkey in (select labelkey from versiontexts);
+
+insert into generalmessages
+(select labelkey,'es',es
+from versiontexts
+)
+union
+(select labelkey,'en',en
+from versiontexts
+)
+union
+(select labelkey,'pt',pt
+from versiontexts
+);

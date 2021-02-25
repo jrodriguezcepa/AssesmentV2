@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables">
+
+    <class name="AccessCode" table="accesscodes">
+        <id name="code" column="code" type="java.lang.String">
+            <generator class="assigned">
+            </generator>
+        </id>
+     	
+     	<many-to-one name="assesment" column="assesment" class="assesment.persistence.assesment.tables.Assesment" />
+
+ 		<property	name="number"		type="java.lang.Integer"	column="number"/>
+ 		<property	name="used"			type="java.lang.Integer"	column="used"/>
+ 		<property	name="extension"	type="java.lang.Integer"	column="extension"/>
+
+ 		<property	name="language"	type="java.lang.String"	column="language"/>
+    </class>
+
+</hibernate-mapping>

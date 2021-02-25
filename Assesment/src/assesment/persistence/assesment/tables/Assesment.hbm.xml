@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.assesment.tables" >
+
+	<class name="Assesment" table="assesments">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">Assesment_Sequence</param>
+            </generator>
+		</id>
+	    
+		<many-to-one name="corporation" column="corporation" not-null="true"/>
+		
+	    <property name="name" column="name" type="java.lang.String" not-null="true"/>
+        <property name="description"	 type="java.lang.String"	column="description" length="4000"/>
+	    
+	    <property name="start" column="astart" type="java.util.Date" not-null="true"/>
+	    <property name="end" column="aend" type="java.util.Date" not-null="true"/>
+
+        <property name="status"	 type="java.lang.Integer"	column="status" />
+
+        <property name="elearning"/>
+
+        <property name="psitest"/>
+
+        <property name="instantFeedback"/>
+        <property name="reportFeedback"/>
+        <property name="errorFeedback"/>
+        <property name="psiFeedback"/>
+
+        <property name="green"	 type="java.lang.Integer"	column="green" />
+        <property name="yellow"	 type="java.lang.Integer"	column="yellow" />
+
+		<set inverse="true" name="ModuleSet"  cascade="all-delete-orphan">
+			<key column="assesment" not-null="true"/>
+			<one-to-many class="assesment.persistence.module.tables.Module" />
+		</set>
+
+        <property name="certificate"/>
+        <property name="certificateImageES" type="java.lang.String" column="certificateimagees" />
+        <property name="certificateImageEN" type="java.lang.String" column="certificateimageen" />
+        <property name="certificateImagePT" type="java.lang.String" column="certificateimagept" />
+
+        <property name="archived"/>
+        <property name="showEmailWRT" type="java.lang.Boolean" not-null="true" >
+			<column name="showemailwrt" default="true" />
+		</property>
+        <property name="dcActivity" type="java.lang.String" column="dcactivity" />
+        <property name="terms" type="java.lang.Integer" column="terms" />
+        
+        <property name="link_es" type="java.lang.String" column="link_es" />
+        <property name="link_en" type="java.lang.String" column="link_en" />
+        <property name="link_pt" type="java.lang.String" column="link_pt" />
+        
+        <property name="icon" />
+
+        <property name="attachesPDF" />
+        <property name="attachenPDF" />
+        <property name="attachptPDF" />
+        
+        <property name="untilApproved" type="java.lang.Boolean" not-null="true" >
+			<column name="untilApproved" default="false" />
+		</property>
+        <property name="link" type="java.lang.String" column="link" />
+        
+  	</class>
+
+</hibernate-mapping>

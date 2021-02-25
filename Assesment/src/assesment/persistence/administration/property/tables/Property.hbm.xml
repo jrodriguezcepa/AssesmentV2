@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.property.tables">
+
+    <class name="Property" table="properties">
+        <id name="name" column="name" type="java.lang.String">
+            <generator class="assigned">
+            </generator>
+        </id>
+     	
+     	<property name="value" type="java.lang.String" column="value"/>
+ 	</class>
+
+</hibernate-mapping>

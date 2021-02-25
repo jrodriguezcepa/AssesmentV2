@@ -1,0 +1,138 @@
+1	2	3	4	5	6	7	8	9	10	11	12	13	14	15							22	23	24	25	26	27
+Dados do Condutor			Localização do Evento		Dados do Veículo	Dados da Multa								Observações												
+Nome *	Sobrenome * 	Data de nascimento (dd/mm/aaaa)	Estado do Evento	Cidade/Local do Evento	Placa *	Data (dd/mm/aaaa) *	Horário (hh:mm) *	Tipo *	Artigo	Pontos *	Custo *	Classificação *	Auto de Infração	Observações												
+MARIA EDUARDA	MASCARENHAS KERTESZ				EJA3317	03/01/2011	0:00	Sin Datos		0	86	Multa por no identificación del conductor	4402983745	CADIN												
+MARIA EDUARDA	MASCARENHAS KERTESZ				EJA3317	17/02/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402841779	CADIN												
+DANILO COMARIN	BITENCOURT				ELG5787	04/03/2011	0:00	Sin Datos		0	258	Multa por no identificación del conductor	4402803788	CADIN												
+RODRIGO	COSTA DE MORAIS SARMENTO				EQK5634	04/03/2011	0:00	Sin Datos		0	86	Multa por no identificación del conductor	4402804182	CADIN												
+LEANDRO	LIMA DA CUNHA				EQA9454	05/03/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402793375	CADIN												
+ROBSON EMIDIO	LUZZI				EQV9759	05/03/2011	10:55	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	R228654254													
+DANILO COMARIN	BITENCOURT				ELG5787	08/03/2011	0:00	Sin Datos		0	214	Multa por no identificación del conductor	4402789113	CADIN												
+DANIELLE REGINA	DA FONSECA				EQA9514	09/03/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402777310	CADIN												
+DANILO COMARIN	BITENCOURT				ELG5787	10/03/2011	0:00	Sin Datos		0	301	Multa por no identificación del conductor	4402780261	CADIN												
+GABRIELA	BOEHM DIAS				EQV9789	10/03/2011	0:00	Sin Datos		0	86	Multa por no identificación del conductor	4402786207	CADIN												
+RODRIGO	COSTA DE MORAIS SARMENTO				EQK5634	15/03/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402767739	CADIN												
+GIORDANA	MARQUES				EEO2147	21/01/2013	6:43	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	A23518704													
+LEANDRO	LIMA DA CUNHA				EQA9454	16/03/2011	0:00	Sin Datos		0	86	Multa por no identificación del conductor	4402772775	CADIN												
+DANIELLE REGINA	DA FONSECA				EQA9514	16/03/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402767694	CADIN												
+ERICA	MARTINS PESSOA AZEVEDO PIRES				EEX9443	02/01/2013	11:00	Gravisima		7	97	Avanzar con luz roja	A004051066													
+VILMA	ALVES DO CARMO DE CARVALH				EFB8309	05/08/2010	17:39	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	3852613													
+VILMA	ALVES DO CARMO DE CARVALH				EFB8309	28/04/2010	11:55	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	3720334													
+MARCIA	DA FONSECA TRINDADE				EQK5637	19/03/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402760134	CADIN												
+APARECIDO TADEU	ALVES MARIANO				EQV9897	23/03/2011	0:00	Sin Datos		0	107	Multa por no identificación del conductor	4402751718													
+LEANDRO	LIMA DA CUNHA				EQA9454	25/03/2011	0:00	Sin Datos		0	27	Multa por no identificación del conductor	4402722106	CADIN												
+EPAMINONDAS	FEITOSA NEVES				EJD2689	07/01/2013	16:52	Media		4	43	Conducir con Auriculares o Teléfono Celular	A013105898													
+LUIZA CECILIA	BRETO BUENO				EFB8359	01/04/2011	0:00	Sin Datos		0	0	Multa por no identificación del conductor	4402714701	CADIN												
+JURACIARA	CACHUTE DE VILHEINA				EKX2136	09/01/2013	19:46	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U5345473													
+ANDREI	NICOLAIEVITCH SEVCIUC				EQA5794	01/04/2011	0:00	Sin Datos		0	129	Multa por no identificación del conductor	4402728574	CADIN												
+SIMONE	VIEIRA MENDES				EQK5624	01/04/2011	0:00	Sin Datos		0	86	Multa por no identificación del conductor	4402728615	CADIN												
+PAULO ERALDO	DA SILVA				ELN4741	14/01/2013	10:17	Grave		5	64	Transitando a velocidad superior a la pemitida en más del 20% hasta el 50%	1U5674003													
+CRISTIANO	REBOUÇAS P. DA SILVA				EQK5508	02/04/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402722173													
+GABRIELA	BOEHM DIAS				EQV9789	02/04/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402708515	CADIN												
+APARECIDO TADEU	ALVES MARIANO				EQV9897	02/04/2011	0:00	Sin Datos		0	64	Multa por no identificación del conductor	4402716262	CADIN												
+CARMEN SILVIA	DE SOUZA				EEG4537	29/04/2011	0:00	Sin Datos		0	43	Multa por no identificación del conductor	4402628219	CADIN												
+CAROLINA FERREIRA	ALEIXO				EQA5793	13/01/2013	21:57	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U5523853													
+FABIO HENRIQUE	AKIDANES BRANDT				EQA9524	02/01/2013	8:34	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U4869493													
+VANESSA	OPITZ ALVES DE FRANCA GUERRA				EFB8329	08/06/2011	0:00	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1034750598													
+FERNANDA	RAMOS FERREIRA NAPOLITANO				EQF7853	10/01/2013	18:57	Grave		5	64	Parar/Estacionar en Lugares Prohibidos	A97966854													
+KATIA	FERREIRA DA CRUZ				EUG7591	30/09/2011	13:48	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	V072096925													
+JOAQUIM 	ALVES DA FONSECA FILHO 				EUL9954	07/10/2011	10:00	Sin Datos		0	64	Multa por no identificación del conductor	N010229951	A011596051												
+CAROLINA	MARQUES OLIVERA				EQV9796	06/01/2013	12:06	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	J189460477													
+RODRIGO	CALEGARO DA SILVA				EQV9901	17/01/2013	16:44	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1301723775													
+MATIAS	PAIVA				ETA4825	20/10/2013	17:15	Sin Datos		0	64	Multa por no identificación del conductor	1A2292562													
+MAYRA	GONCALVES				ETI2612	12/01/2013	21:43	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U5499453													
+GISELY	RAMOS CORREA				EUI4119	01/01/2013	12:38	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	X34742274													
+THIAGO	GRANVILLE CARVALHO				EUI4249	06/01/2013	22:05	Grave		5	64	Parar/Estacionar en Lugares Prohibidos	S502725200													
+JOAO HENRIQUE	SILVEIRA CAMPANA				EUK9908	13/01/2013	14:08	Media		4	43	Conducir con Auriculares o Teléfono Celular	3B2904104													
+CARLOS AUGUSTO	RELVAS DIAS DA SILVA				EUL1692	06/01/2013	16:03	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	Z29972626													
+FERNANDA	M ROL				EUL9905	07/01/2013	9:55	Media		4	43	Conducir con Auriculares o Teléfono Celular	A99500690													
+CARLOS	WESTIN				EUL9965	16/01/2013	8:00	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U5747653													
+FELIPPO	COVIELLO				EUL9979	08/01/2013	16:56	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	A12654740													
+DECIO	DA SILVA				EUS6569	11/01/2013	9:45	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U5703123													
+BRUNO 	BARROS DOS SANTOS				evv9078	06/01/2013	1:38	Leve		3	27	Conducir el Vehículo Sin el Equipamiento Obligatorio o en Mal Estado de Conservación	C33648379													
+CLAUDIO	SOARES NASCIMENTO				EYR7664	09/01/2013	18:41	Grave		5	64	Transitando a velocidad superior a la pemitida en más del 20% hasta el 50%	1U5344893													
+LUCIANE	SANTOS FURLAN				EZB1933	11/01/2013	11:02	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1301451759													
+THALES	DALLA REK				EZC2426	14/01/2013	13:59	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	1U5660653													
+THIAGO	RODRIGUES PINTO				EZK6240	01/01/2013	8:54	Media		4	43	Transitando a velocidad superior a la pemitida en hasta el 20%	RE0089782													
+GUILHERME	RIETMANN DE FIGUEIREDO				FGD9654	03/01/2013	8:02	Media		4		Transitando a velocidad superior a la pemitida en hasta el 20%	1U4991023													
+TULIUS VINICIUS	PISSOLATO RODRIGUES				fgg0068	09/01/2013	10:00	Grave		5		Otras	3B7071479	SEGUNDO FABIO NAO HAVERA INDICAÇÃO. - NÃO DESCONTAR EM FOLHA DE PAGAMENTO												
+FERNANDO	MARTINS MOURA				fgi9034	15/01/2013	19:14	Media		4		Transitando a velocidad superior a la pemitida en hasta el 20%	1U5736293													
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+																										
+Opciones para las celdas																										
+Tipo de Multa	Clasificacion de Multas																									
+Grave	Avançar sinal vermelho ou o de parada obrigatória																									
+Gravíssima	Conduzir o veículo sem equip. obrigatório ou em mau estado de conservação																									
+Leve	Conduzir veículo com placa s/condições de legibilidade																									
+Média	Conduzir veículo sem possuir CNH																									
+Outro	Conversão em locais proibidos pela sinalização																									
+Sem Dados	Deixar o condutor ou passageiro de usar o cinto de segurança																									
+	Dirigir com fones de ouvido ou tel. celular																									
+	Dirigir sem CNH ou com CNH irregular																									
+	Dirigir sob a influência de álcool																									
+	Multa por não identificação do condutor infrator																									
+	Outras																									
+	Parar/Estacionar em locais e hor. proibidos pela sinalização																									
+	Trans. em velocidade superior a máx.permitida em até 20%																									
+	Trans. em velocidade superior a máx.permitida em até 50%																									
+	Trans. em velocidade superior a máx.permitida em mais de 20%																									
+	Trans. em velocidade superior a máx.permitida em mais de 50%																									
+	Transitar em marcha à ré																									
+	Transitar pela contramão																									
+	Transitar por locais e hor. não permitidos pela regulamentação																									
+	Transportar crianças sem observar as normas de segurança																									
+	Ultrapassar pela contramão outro veículo em local proibido																									
+	Utilizar a buzina de forma irregular																									

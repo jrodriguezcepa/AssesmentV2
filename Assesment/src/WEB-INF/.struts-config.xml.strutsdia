@@ -1,0 +1,947 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="StrutsProcess">
+ <PROCESS-ITEM ID="insufficientpermissions" NAME="forward0"
+  PATH="/insufficientpermissions.jsp" SHAPE="32,17,0,0" TARGET="page0"
+  TITLE="insufficientpermissions" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="home" NAME="forward1" PATH="/menu/home.jsp"
+  SHAPE="32,129,0,0" TARGET="page1" TITLE="home" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="menu" NAME="forward2" PATH="/menu/menu.jsp"
+  SHAPE="32,241,0,0" TARGET="page2" TITLE="menu" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="exception" NAME="forward3" PATH="/exception.jsp"
+  SHAPE="32,353,0,0" TARGET="page3" TITLE="exception" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="login" NAME="forward4" PATH="/login.jsp"
+  SHAPE="32,609,0,0" TARGET="page4" TITLE="login" TYPE="forward" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#UserCreate" NAME="action0" PATH="/UserCreate"
+  SHAPE="32,1217,0,0" TITLE="UserCreateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/create.jsp?type=create" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/list.jsp" TARGET="page5" TITLE="list"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ModuleChangeOrder" NAME="action1"
+  PATH="/ModuleChangeOrder" SHAPE="32,1425,0,0"
+  TITLE="ModuleChangeOrderForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/changeOrder.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ModuleCopy" NAME="action2" PATH="/ModuleCopy"
+  SHAPE="32,1537,0,0" TITLE="ModuleCopyForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AccessCode" NAME="action3" PATH="/AccessCode"
+  SHAPE="32,4353,0,0" TITLE="AccessCodeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="nextNewHire" NAME="forward0"
+   PATH="/userDataNewHire.jsp" TARGET="page6" TITLE="nextNewHire"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logout" NAME="forward1" PATH="/logout.jsp"
+   TARGET="page7" TITLE="logout" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error1" NAME="forward2"
+   PATH="/accesscode.jsp?error=emptycode" TARGET="page8" TITLE="error1"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nextJJ" NAME="forward3"
+   PATH="/userDataAC.jsp" TARGET="page41" TITLE="nextJJ" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error2" NAME="forward4"
+   PATH="/accesscode.jsp?error=unknowncode" TARGET="page8"
+   TITLE="error2" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error3" NAME="forward5"
+   PATH="/accesscode.jsp?error=nolicences" TARGET="page8" TITLE="error3"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward6" PATH="/userDataAC.jsp"
+   TARGET="page41" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="emeaMonsanto" NAME="forward7"
+   PATH="/emeaLanguage.jsp" TARGET="page21" TITLE="emeaMonsanto"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nextMonsantoBR" NAME="forward8"
+   PATH="/userDataMonsantoBR.jsp" TARGET="page24" TITLE="nextMonsantoBR"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nextPepsico" NAME="forward9"
+   PATH="/userDataPepsico.jsp" TARGET="page25" TITLE="nextPepsico"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nextDNB" NAME="forward10"
+   PATH="/userDataDNB.jsp" TARGET="page26" TITLE="nextDNB"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nextAbitab" NAME="forward11"
+   PATH="/userDataAbitab.jsp" TARGET="page27" TITLE="nextAbitab"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nextPepsicoCandidatos" NAME="forward12"
+   PATH="/userDataPepsicoCandidatos.jsp" TARGET="page34"
+   TITLE="nextPepsicoCandidatos" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserPsiResults" NAME="action4"
+  PATH="/UserPsiResults" SHAPE="32,1681,0,0" TITLE="UserPsiResultForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/userpsiresults.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#DeleteFeedback" NAME="action5"
+  PATH="/DeleteFeedback" SHAPE="32,1825,0,0" TITLE="DeleteFeedbackForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ModuleResults" NAME="action6" PATH="/ModuleResults"
+  SHAPE="32,1937,0,0" TITLE="ModuleResultReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/moduleresults.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionResults" NAME="action7"
+  PATH="/QuestionResults" SHAPE="32,2081,0,0"
+  TITLE="QuestionResultReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/questionresults.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AssesmentDelete" NAME="action8"
+  PATH="/AssesmentDelete" SHAPE="32,2225,0,0"
+  TITLE="AssesmentDeleteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/list.jsp" TARGET="page5"
+   TITLE="list" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="corporation" NAME="forward2"
+   PATH="/layout.jsp?refer=/corporation/view.jsp" TARGET="page5"
+   TITLE="corporation" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionCreate" NAME="action9"
+  PATH="/QuestionCreate" SHAPE="32,2401,0,0" TITLE="QuestionCreateForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancelAssesment" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="cancelAssesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancelModule" NAME="forward3"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="cancelModule" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionDelete" NAME="action10"
+  PATH="/QuestionDelete" SHAPE="32,2609,0,0" TITLE="QuestionDeleteForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backModule" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="backModule" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backAssesment" NAME="forward3"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="backAssesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backQuestion" NAME="forward4"
+   PATH="/layout.jsp?refer=/question/view.jsp" TARGET="page5"
+   TITLE="backQuestion" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ModuleUpdate" NAME="action11" PATH="/ModuleUpdate"
+  SHAPE="32,2849,0,0" TITLE="ModuleUpdateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/create.jsp?type=edit" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericModuleCreate" NAME="action12"
+  PATH="/GenericModuleCreate" SHAPE="32,3025,0,0"
+  TITLE="GenericModuleCreateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/genericcreate.jsp?type=create"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/genericlist.jsp" TARGET="page5"
+   TITLE="list" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/genericlist.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericModuleUpdate" NAME="action13"
+  PATH="/GenericModuleUpdate" SHAPE="32,3201,0,0"
+  TITLE="GenericModuleUpdateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/genericcreate.jsp?type=edit"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UpdateFeedback" NAME="action14"
+  PATH="/UpdateFeedback" SHAPE="32,3377,0,0"
+  TITLE="AssessmentFeedbackForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/feedback.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GeneralResults" NAME="action15"
+  PATH="/GeneralResults" SHAPE="32,3521,0,0" TITLE="GeneralResultsForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/results.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#DeleteAssesmentTag" NAME="action16"
+  PATH="/DeleteAssesmentTag" SHAPE="32,3665,0,0"
+  TITLE="DeleteAssesmentTagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserAssesment" NAME="action17" PATH="/UserAssesment"
+  SHAPE="32,3777,0,0" TITLE="UserAssesmentForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/view.jsp" TARGET="page5" TITLE="view"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionCopy" NAME="action18" PATH="/QuestionCopy"
+  SHAPE="32,3889,0,0" TITLE="QuestionCopyForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancelAssesment" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="cancelAssesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancelModule" NAME="forward3"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="cancelModule" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AdvanceJJ" NAME="action19" PATH="/AdvanceJJ"
+  SHAPE="32,4097,0,0" TITLE="AdvanceJJReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/questionresults.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#DeleteAccessCode" NAME="action20"
+  PATH="/DeleteAccessCode" SHAPE="32,4241,0,0"
+  TITLE="UserDeleteAccessCodeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/accesscodelist.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ResetPasswordUser" NAME="action21"
+  PATH="/ResetPasswordUser" SHAPE="32,1217,0,0" TITLE="UserCreateForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="message" NAME="forward0"
+   PATH="/changePassword.jsp?level=1" TARGET="page11" TITLE="message"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="home" NAME="forward1"
+   PATH="/changePassword.jsp?level=-1" TARGET="page11" TITLE="home"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward2"
+   PATH="/layout.jsp?refer=/exception.jsp" TARGET="page5" TITLE="error"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CreateAccessCode" NAME="action22"
+  PATH="/CreateAccessCode" SHAPE="32,1217,0,0"
+  TITLE="UserAccessCodeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="home" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/accesscodelist.jsp" TARGET="page5"
+   TITLE="home" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/createaccesscode.jsp?type=create"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward2"
+   PATH="/layout.jsp?refer=/user/accesscodelist.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CorporationCreate" NAME="action23"
+  PATH="/CorporationCreate" SHAPE="32,1217,0,0"
+  TITLE="CorporationCreateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/corporation/create.jsp?type=create"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward1"
+   PATH="/layout.jsp?refer=/corporation/list.jsp" TARGET="page5"
+   TITLE="list" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/corporation/list.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionGroup" NAME="action24" PATH="/QuestionGroup"
+  SHAPE="32,1217,0,0" TITLE="QuestionGroupForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/group.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5" TITLE="view"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#login" NAME="action25" PATH="/login"
+  SHAPE="32,721,0,0" TITLE="LoginForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="home" NAME="forward0" PATH="/translate.html"
+   TARGET="page12" TITLE="home" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="login" NAME="forward1" PATH="/login.jsp"
+   TARGET="page4" TITLE="login" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#NewHireResults" NAME="action26"
+  PATH="/NewHireResults" SHAPE="32,1217,0,0" TITLE="UserNewHireForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/newhire.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UpdateAnswerTag" NAME="action27"
+  PATH="/UpdateAnswerTag" SHAPE="32,1217,0,0"
+  TITLE="UpdateAnswerTagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/view.jsp" TARGET="page5"
+   TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/question/questiontag.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#DeleteQuestionTag" NAME="action28"
+  PATH="/DeleteQuestionTag" SHAPE="32,1217,0,0"
+  TITLE="DeleteQuestionTagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/view.jsp" TARGET="page5"
+   TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericQuestionDeleteList" NAME="action29"
+  PATH="/GenericQuestionDeleteList" SHAPE="32,1217,0,0"
+  TITLE="GenericQuestionDeleteListForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionRanking" NAME="action30"
+  PATH="/QuestionRanking" SHAPE="32,1217,0,0"
+  TITLE="RankingQuestionReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/ranking.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AssesmentReport" NAME="action31"
+  PATH="/AssesmentReport" SHAPE="32,1217,0,0"
+  TITLE="AssesmentReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/assesment.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserDelete" NAME="action32" PATH="/UserDelete"
+  SHAPE="32,1217,0,0" TITLE="UserDeleteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/view.jsp" TARGET="page5" TITLE="back"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/list.jsp" TARGET="page5" TITLE="list"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericQuestionCreate" NAME="action33"
+  PATH="/GenericQuestionCreate" SHAPE="32,1217,0,0"
+  TITLE="GenericQuestionCreateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/question/genericcreate.jsp?type=create"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ModuleCreate" NAME="action34" PATH="/ModuleCreate"
+  SHAPE="32,1217,0,0" TITLE="ModuleCreateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/create.jsp?type=create"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AssesmentCreate" NAME="action35"
+  PATH="/AssesmentCreate" SHAPE="32,1217,0,0"
+  TITLE="AssesmentCreateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/create.jsp?type=create"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward2"
+   PATH="/layout.jsp?refer=/assesment/list.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ModuleDelete" NAME="action36" PATH="/ModuleDelete"
+  SHAPE="32,1217,0,0" TITLE="ModuleDeleteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="assesment" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="assesment" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5" TITLE="view"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserResults" NAME="action37" PATH="/UserResults"
+  SHAPE="32,1217,0,0" TITLE="UserResultForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/userresults.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#Resultado" NAME="action38" PATH="/Resultado"
+  SHAPE="32,5553,0,0" TITLE="ResultadoForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="menu" NAME="forward0" PATH="/test.jsp"
+   TARGET="page13" TITLE="menu" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1" PATH="/answer.jsp"
+   TARGET="page14" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="menuAZ" NAME="forward2" PATH="/az.jsp"
+   TARGET="page35" TITLE="menuAZ" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backAZ" NAME="forward3" PATH="/answerAZ.jsp"
+   TARGET="page36" TITLE="backAZ" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logout" NAME="forward4" PATH="/logout.jsp"
+   TARGET="page7" TITLE="logout" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="menuMoviles" NAME="forward5"
+   PATH="/moviles.jsp" TARGET="page37" TITLE="menuMoviles"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backMoviles" NAME="forward6"
+   PATH="/answerMoviles.jsp" TARGET="page39" TITLE="backMoviles"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserResetPassword" NAME="action39"
+  PATH="/UserResetPassword" SHAPE="32,1217,0,0"
+  TITLE="UserResetPasswordForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/resetPassword.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/view.jsp" TARGET="page5" TITLE="view"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericQuestionChangeOrder" NAME="action40"
+  PATH="/GenericQuestionChangeOrder" SHAPE="32,1217,0,0"
+  TITLE="GenericQuestionChangeOrderForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/genericChangeOrder.jsp"
+   TARGET="page5" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserErrors" NAME="action41" PATH="/UserErrors"
+  SHAPE="32,1217,0,0" TITLE="UserErrorForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/usererrors.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UsersReport" NAME="action42" PATH="/UsersReport"
+  SHAPE="32,1217,0,0" TITLE="UsersReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/users.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CorporationUpdate" NAME="action43"
+  PATH="/CorporationUpdate" SHAPE="32,1217,0,0"
+  TITLE="CorporationUpdateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/corporation/create.jsp?type=edit"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/corporation/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward2"
+   PATH="/layout.jsp?refer=/corporation/view.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionChangeOrder" NAME="action44"
+  PATH="/QuestionChangeOrder" SHAPE="32,1217,0,0"
+  TITLE="QuestionChangeOrderForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/changeOrder.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CorporationDelete" NAME="action45"
+  PATH="/CorporationDelete" SHAPE="32,1217,0,0"
+  TITLE="CorporationDeleteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward0"
+   PATH="/layout.jsp?refer=/corporation/list.jsp" TARGET="page5"
+   TITLE="list" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward1"
+   PATH="/layout.jsp?refer=/corporation/view.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CreateUsersDC" NAME="action46" PATH="/CreateUsersDC"
+  SHAPE="32,1217,0,0" TITLE="UserCreateDCForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="home" NAME="forward0" PATH="/layout.jsp"
+   TARGET="page5" TITLE="home" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/createfromdc.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward2"
+   PATH="/layout.jsp?refer=/user/success_create.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericQuestionGroup" NAME="action47"
+  PATH="/GenericQuestionGroup" SHAPE="32,1217,0,0"
+  TITLE="GenericQuestionGroupForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/genericGroup.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward2"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserDeleteAssesment" NAME="action48"
+  PATH="/UserDeleteAssesment" SHAPE="32,1217,0,0"
+  TITLE="UserDeleteAssesmentForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/view.jsp" TARGET="page5" TITLE="view"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AssociateAssesmentTag" NAME="action49"
+  PATH="/AssociateAssesmentTag" SHAPE="32,1217,0,0"
+  TITLE="AssociateAssesmentTagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/tags.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionDeleteList" NAME="action50"
+  PATH="/QuestionDeleteList" SHAPE="32,1217,0,0"
+  TITLE="QuestionDeleteListForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/view.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#Switchlanguageuser" NAME="action51"
+  PATH="/Switchlanguageuser" SHAPE="32,465,0,0"
+  TITLE="UserSwitchLanguageForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="home" NAME="forward0"
+   PATH="/user/changeLanguage.jsp?level=-1" TARGET="page15" TITLE="home"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward1" PATH="/exception.jsp"
+   TARGET="page3" TITLE="error" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserData" NAME="action52" PATH="/UserData"
+  SHAPE="32,4657,0,0" TITLE="UserDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="backNewHire" NAME="forward0"
+   PATH="/userDataNewHire.jsp" TARGET="page6" TITLE="backNewHire"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logout" NAME="forward1" PATH="/logout.jsp"
+   TARGET="page7" TITLE="logout" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward2" PATH="/relogin.jsp"
+   TARGET="page16" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="confirmation" NAME="forward3"
+   PATH="/confirmation.jsp" TARGET="page17" TITLE="confirmation"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward4" PATH="/userDataAC.jsp"
+   TARGET="page41" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backJJ" NAME="forward5"
+   PATH="/userDataAC.jsp" TARGET="page41" TITLE="backJJ" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backMonsantoBR" NAME="forward6"
+   PATH="/userDataMonsantoBR.jsp" TARGET="page24" TITLE="backMonsantoBR"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backPepsico" NAME="forward7"
+   PATH="/userDataPepsico.jsp" TARGET="page25" TITLE="backPepsico"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backAbitab" NAME="forward8"
+   PATH="/userDataAbitab.jsp" TARGET="page27" TITLE="backAbitab"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="reloadSession" NAME="forward9"
+   PATH="/reloadSessionAbitab.jsp" TARGET="page29" TITLE="reloadSession"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backDNB" NAME="forward10"
+   PATH="/userDataDNB.jsp" TARGET="page26" TITLE="backDNB"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="logoutAnglo" NAME="forward11"
+   PATH="/logout.jsp?assessment=anglo" TARGET="page7"
+   TITLE="logoutAnglo" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backAnglo" NAME="forward12"
+   PATH="/userDataAnglo.jsp" TARGET="page31" TITLE="backAnglo"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backImesevi" NAME="forward13"
+   PATH="/userDataImesevi.jsp" TARGET="page32" TITLE="backImesevi"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backAZ" NAME="forward14"
+   PATH="/userDataAZ.jsp" TARGET="page33" TITLE="backAZ" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="backPepsicoCandidatos" NAME="forward15"
+   PATH="/userDataPepsicoCandidatos.jsp" TARGET="page34"
+   TITLE="backPepsicoCandidatos" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#EditAccessCode" NAME="action53"
+  PATH="/EditAccessCode" SHAPE="32,1217,0,0"
+  TITLE="UserUpdateAccessCodeForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="home" NAME="forward0" PATH="/layout.jsp"
+   TARGET="page5" TITLE="home" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/createaccesscode.jsp?type=edit"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward2"
+   PATH="/layout.jsp?refer=/user/accesscodelist.jsp" TARGET="page5"
+   TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#Resetpassword" NAME="action54" PATH="/Resetpassword"
+  SHAPE="32,865,0,0" TITLE="ResetPasswordForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="newuser" NAME="forward0"
+   PATH="/resetPasswordSuccess.jsp?type=2" TARGET="page18"
+   TITLE="newuser" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="reset" NAME="forward1"
+   PATH="/resetPasswordSuccess.jsp?type=1" TARGET="page18" TITLE="reset"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward2"
+   PATH="/resetPassword.jsp?message=1" TARGET="page19" TITLE="back"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward3" PATH="/login.jsp"
+   TARGET="page4" TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="nouser" NAME="forward4"
+   PATH="/resetPassword.jsp?message=2" TARGET="page19" TITLE="nouser"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#QuestionUpdate" NAME="action55"
+  PATH="/QuestionUpdate" SHAPE="32,1217,0,0" TITLE="QuestionUpdateForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/create.jsp?type=edit"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/question/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward2"
+   PATH="/layout.jsp?refer=/question/view.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericModuleDelete" NAME="action56"
+  PATH="/GenericModuleDelete" SHAPE="32,1217,0,0"
+  TITLE="GenericModuleDeleteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="list" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/genericlist.jsp" TARGET="page5"
+   TITLE="list" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserUpdate" NAME="action57" PATH="/UserUpdate"
+  SHAPE="32,1217,0,0" TITLE="UserUpdateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/user/create.jsp?type=edit" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward1"
+   PATH="/layout.jsp?refer=/user/view.jsp" TARGET="page5" TITLE="view"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericQuestionUpdate" NAME="action58"
+  PATH="/GenericQuestionUpdate" SHAPE="32,1217,0,0"
+  TITLE="GenericQuestionUpdateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/genericcreate.jsp?type=edit"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward1"
+   PATH="/layout.jsp?refer=/question/genericview.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward2"
+   PATH="/layout.jsp?refer=/question/genericview.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AssesmentUpdate" NAME="action59"
+  PATH="/AssesmentUpdate" SHAPE="32,1217,0,0"
+  TITLE="AssesmentUpdateForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="cancel" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#logout" NAME="action60" PATH="/logout"
+  SHAPE="32,5809,0,0" TITLE="LogoutForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="init" NAME="forward0" PATH="/end.jsp"
+   TARGET="page20" TITLE="init" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#AssociateQuestionTag" NAME="action61"
+  PATH="/AssociateQuestionTag" SHAPE="32,1217,0,0"
+  TITLE="AssociateQuestionTagForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0"
+   PATH="/layout.jsp?refer=/question/view.jsp" TARGET="page5"
+   TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/question/tags.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#UserPersonalDataResults" NAME="action62"
+  PATH="/UserPersonalDataResults" SHAPE="32,1217,0,0"
+  TITLE="UserPersonalDataResultForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/userpersonaldataresults.jsp"
+   TARGET="page5" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#GenericQuestionDelete" NAME="action63"
+  PATH="/GenericQuestionDelete" SHAPE="32,1217,0,0"
+  TITLE="GenericQuestionDeleteForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="module" NAME="forward0"
+   PATH="/layout.jsp?refer=/module/genericview.jsp" TARGET="page5"
+   TITLE="module" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/question/genericview.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#Confirmation" NAME="action64" PATH="/Confirmation"
+  SHAPE="32,4929,0,0" TITLE="UserDataForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="logout" NAME="forward0" PATH="/logout.jsp"
+   TARGET="page7" TITLE="logout" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward1" PATH="/relogin.jsp"
+   TARGET="page16" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward2" PATH="/userDataJJ.jsp"
+   TARGET="page9" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page0" PATH="/insufficientpermissions.jsp"
+  SHAPE="240,34,0,0" SUBTYPE="jsp" TITLE="insufficientpermissions.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page1" PATH="/menu/home.jsp" SHAPE="240,146,0,0"
+  SUBTYPE="jsp" TITLE="home.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page2" PATH="/menu/menu.jsp" SHAPE="240,258,0,0"
+  SUBTYPE="jsp" TITLE="menu.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page3" PATH="/exception.jsp" SHAPE="256,370,0,0"
+  SUBTYPE="jsp" TITLE="exception.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page4" PATH="/login.jsp" SHAPE="304,626,0,0"
+  SUBTYPE="jsp" TITLE="login.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page5" PATH="/layout.jsp" SHAPE="304,1234,0,0"
+  SUBTYPE="jsp" TITLE="layout.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page6" PATH="/userDataNewHire.jsp"
+  SHAPE="304,4370,0,0" SUBTYPE="jsp" TITLE="userDataNewHire.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page7" PATH="/logout.jsp" SHAPE="304,4674,0,0"
+  SUBTYPE="jsp" TITLE="logout.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page8" PATH="/accesscode.jsp" SHAPE="304,5458,0,0"
+  SUBTYPE="jsp" TITLE="accesscode.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page9" PATH="/userDataJJ.jsp" SHAPE="304,5122,0,0"
+  SUBTYPE="jsp" TITLE="userDataJJ.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page11" PATH="/changePassword.jsp"
+  SHAPE="304,1442,0,0" SUBTYPE="jsp" TITLE="changePassword.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page12" PATH="/translate.html" SHAPE="304,738,0,0"
+  SUBTYPE="html" TITLE="translate.html" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page13" PATH="/test.jsp" SHAPE="256,5570,0,0"
+  SUBTYPE="jsp" TITLE="test.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page14" PATH="/answer.jsp" SHAPE="256,5714,0,0"
+  SUBTYPE="jsp" TITLE="answer.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page15" PATH="/user/changeLanguage.jsp"
+  SHAPE="256,482,0,0" SUBTYPE="jsp" TITLE="changeLanguage.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page16" PATH="/relogin.jsp" SHAPE="304,4946,0,0"
+  SUBTYPE="jsp" TITLE="relogin.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page17" PATH="/confirmation.jsp"
+  SHAPE="304,5234,0,0" SUBTYPE="jsp" TITLE="confirmation.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page18" PATH="/resetPasswordSuccess.jsp"
+  SHAPE="304,882,0,0" SUBTYPE="jsp" TITLE="resetPasswordSuccess.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page19" PATH="/resetPassword.jsp"
+  SHAPE="304,1122,0,0" SUBTYPE="jsp" TITLE="resetPassword.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page20" PATH="/end.jsp" SHAPE="240,5826,0,0"
+  SUBTYPE="jsp" TITLE="end.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page21" PATH="/emeaLanguage.jsp"
+  SHAPE="240,4465,0,0" SUBTYPE="jsp" TITLE="emeaLanguage.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#CreateUserEMEA" NAME="action65"
+  PATH="/CreateUserEMEA" SHAPE="32,6593,0,0" TITLE="UserDataForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward1" PATH="/relogin.jsp"
+   TARGET="page16" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#Emea" NAME="action66" PATH="/Emea"
+  SHAPE="32,7521,0,0" TITLE="EmeaForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1" PATH="/emea.jsp"
+   TARGET="page23" TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/emeaEndMessage.jsp" TARGET="page22" TITLE="success"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page23" PATH="/emea.jsp" SHAPE="256,7682,0,0"
+  SUBTYPE="jsp" TITLE="emea.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page22" PATH="/emeaEndMessage.jsp"
+  SHAPE="240,7521,0,0" SUBTYPE="jsp" TITLE="emeaEndMessage.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page24" PATH="/userDataMonsantoBR.jsp"
+  SHAPE="448,4353,0,0" SUBTYPE="jsp" TITLE="userDataMonsantoBR.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#EmeaAccessCode" NAME="action67"
+  PATH="/EmeaAccessCode" SHAPE="32,6993,0,0" TITLE="EmeaAccessCodeForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward0"
+   PATH="/accesscode.jsp?error=emptycode" TARGET="page8" TITLE="error"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward1" PATH="/emea.jsp"
+   TARGET="page23" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CompleteUser" NAME="action68" PATH="/CompleteUser"
+  SHAPE="32,1537,0,0" TITLE="CompleteUserReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="report" NAME="forward0"
+   PATH="/layout.jsp?refer=/util/report.jsp" TARGET="page5"
+   TITLE="report" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/questionresults.jsp" TARGET="page5"
+   TITLE="back" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#CreateELearning" NAME="action69"
+  PATH="/CreateELearning" SHAPE="32,1537,0,0" TITLE="UserELearningForm"
+  TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="success" NAME="forward0"
+   PATH="/layout.jsp?refer=/success.jsp?entity=elearning.create"
+   TARGET="page5" TITLE="success" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page25" PATH="/userDataPepsico.jsp"
+  SHAPE="240,4577,0,0" SUBTYPE="jsp" TITLE="userDataPepsico.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page26" PATH="/userDataDNB.jsp"
+  SHAPE="448,4465,0,0" SUBTYPE="jsp" TITLE="userDataDNB.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page27" PATH="/userDataAbitab.jsp"
+  SHAPE="656,4353,0,0" SUBTYPE="jsp" TITLE="userDataAbitab.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page29" PATH="/reloadSessionAbitab.jsp"
+  SHAPE="448,4657,0,0" SUBTYPE="jsp" TITLE="reloadSessionAbitab.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#ReloadSession" NAME="action70" PATH="/ReloadSession"
+  SHAPE="32,7777,0,0" TITLE="ReloadSessionForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0" PATH="/relogin.jsp"
+   TARGET="page16" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="select" NAME="forward2"
+   PATH="/selectSessionAbitab.jsp" TARGET="page28" TITLE="select"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="error" NAME="forward1"
+   PATH="/errorReload.jsp" TARGET="page30" TITLE="error" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="cancel" NAME="forward3"
+   PATH="/userDataAbitab.jsp" TARGET="page27" TITLE="cancel"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page28" PATH="/selectSessionAbitab.jsp"
+  SHAPE="240,7889,0,0" SUBTYPE="jsp" TITLE="selectSessionAbitab.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page30" PATH="/errorReload.jsp"
+  SHAPE="448,7777,0,0" SUBTYPE="jsp" TITLE="errorReload.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page31" PATH="/userDataAnglo.jsp"
+  SHAPE="240,4769,0,0" SUBTYPE="jsp" TITLE="userDataAnglo.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page32" PATH="/userDataImesevi.jsp"
+  SHAPE="240,4881,0,0" SUBTYPE="jsp" TITLE="userDataImesevi.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page33" PATH="/userDataAZ.jsp" SHAPE="448,4769,0,0"
+  SUBTYPE="jsp" TITLE="userDataAZ.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#JavaReport" NAME="action71" PATH="/JavaReport"
+  SHAPE="32,1537,0,0" TITLE="JavaReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward1"
+   PATH="/layout.jsp?refer=/report/java.jsp" TARGET="page5" TITLE="back"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page34" PATH="/userDataPepsicoCandidatos.jsp"
+  SHAPE="448,4577,0,0" SUBTYPE="jsp"
+  TITLE="userDataPepsicoCandidatos.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page35" PATH="/az.jsp" SHAPE="448,5553,0,0"
+  SUBTYPE="jsp" TITLE="az.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page36" PATH="/answerAZ.jsp" SHAPE="448,5665,0,0"
+  SUBTYPE="jsp" TITLE="answerAZ.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#BasfNewUser" NAME="action72" PATH="/BasfNewUser"
+  SHAPE="32,9841,0,0" TITLE="BasfNewUser" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward1" PATH="/reloginBasf.jsp"
+   TARGET="page38" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page38" PATH="/reloginBasf.jsp"
+  SHAPE="240,9953,0,0" SUBTYPE="jsp" TITLE="reloginBasf.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#BasfExistingUser" NAME="action73"
+  PATH="/BasfExistingUser" SHAPE="32,12177,0,0"
+  TITLE="BasfExistingUserForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="next" NAME="forward0" PATH="/reloginBasf.jsp"
+   TARGET="page38" TITLE="next" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page37" PATH="/moviles.jsp" SHAPE="656,5553,0,0"
+  SUBTYPE="jsp" TITLE="moviles.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM NAME="page39" PATH="/answerMoviles.jsp"
+  SHAPE="240,5889,0,0" SUBTYPE="jsp" TITLE="answerMoviles.jsp"
+  TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#DeleteUsersAssesment" NAME="action74"
+  PATH="/DeleteUsersAssesment" SHAPE="32,1537,0,0"
+  TITLE="UserAssesmentForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="view" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/view.jsp" TARGET="page5"
+   TITLE="view" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+  <PROCESS-ITEM-OUTPUT ID="users" NAME="forward1"
+   PATH="/layout.jsp?refer=/assesment/users.jsp" TARGET="page5"
+   TITLE="users" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM ID="#ResendUserAssesmentResults" NAME="action75"
+  PATH="/ResendUserAssesmentResults" SHAPE="32,1537,0,0"
+  TITLE="UserAssesmentForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="users" NAME="forward0"
+   PATH="/layout.jsp?refer=/assesment/users.jsp" TARGET="page5"
+   TITLE="users" TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="page41" PATH="/userDataAC.jsp" SHAPE="864,4353,0,0"
+  SUBTYPE="jsp" TITLE="userDataAC.jsp" TYPE="page" model-entity="StrutsProcessItem"/>
+ <PROCESS-ITEM ID="#DownloadUserResult" NAME="action76"
+  PATH="/DownloadUserResult" SHAPE="32,1505,0,0"
+  TITLE="DownloadUserReportForm" TYPE="action" model-entity="StrutsProcessItem">
+  <PROCESS-ITEM-OUTPUT ID="back" NAME="forward0"
+   PATH="/layout.jsp?refer=/report/java.jsp" TARGET="page5" TITLE="back"
+   TYPE="forward" model-entity="StrutsProcessItemOutput"/>
+ </PROCESS-ITEM>
+</PROCESS>

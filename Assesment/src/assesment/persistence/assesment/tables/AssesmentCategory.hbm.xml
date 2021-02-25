@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.assesment.tables" >
+    <class name="AssesmentCategory" table="assesmentcategories">
+
+       <composite-id class="AssesmentCategoryPK" name="pk" >
+       		<key-property name="category" column="category" type="java.lang.Integer" />
+       	 	<key-property name="assesment" column="assesment" type="java.lang.Integer" />
+       </composite-id>
+       
+	    <property name="start" column="astart" type="java.util.Date" not-null="true"/>
+	    <property name="end" column="aend" type="java.util.Date" not-null="true"/>
+		<property name="changeName" type="java.lang.Boolean" not-null="true" >
+			<column name="changeName" default="false" />
+		</property>
+       
+	</class>
+
+</hibernate-mapping>

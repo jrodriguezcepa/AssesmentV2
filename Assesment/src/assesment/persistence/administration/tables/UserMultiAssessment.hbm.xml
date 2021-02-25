@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserMultiAssessment" table="usermultiassessments">
+
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">UserMultiAnswer_Sequence</param>
+            </generator>
+		</id>
+       
+        <many-to-one name="loginname" 	class="assesment.persistence.user.tables.User" 				column="loginname" />
+        <many-to-one name="assessment" 	class="assesment.persistence.assesment.tables.Assesment"	column="assessment" />
+
+        <property 	name="startDate"	type="java.util.Date"	column="startdate" />
+        <property 	name="endDate"		type="java.util.Date"	column="enddate" />
+	    
+		<set inverse="true" name="answers"  cascade="all-delete-orphan">
+			<key column="multianswer" not-null="true"/>
+			<one-to-many class="assesment.persistence.administration.tables.UserSpecificAnswer" />
+		</set>
+	</class>
+
+</hibernate-mapping>

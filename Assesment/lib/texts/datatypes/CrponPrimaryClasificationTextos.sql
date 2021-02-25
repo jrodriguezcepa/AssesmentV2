@@ -1,0 +1,53 @@
+﻿persistence.datatype.crponprimaryclasification.collisionbetween	es	Colisión entre vehiculos en mov.
+persistence.datatype.crponprimaryclasification.collisionbetween	en	Collision between vehicles in motion
+persistence.datatype.crponprimaryclasification.collisionbetween	pt	Colision com vehículo"
+persistence.datatype.crponprimaryclasification.collisionfixedobject	es	Colisión con Objeto Fijo
+persistence.datatype.crponprimaryclasification.collisionfixedobject	en	Collision with fixed object
+persistence.datatype.crponprimaryclasification.collisionfixedobject	pt	Colision com objeto
+persistence.datatype.crponprimaryclasification.noncollisionaccident	es	Accidente de no colisión
+persistence.datatype.crponprimaryclasification.noncollisionaccident	en	Non collision accident
+persistence.datatype.crponprimaryclasification.noncollisionaccident	pt	Acidente sem colision
+persistence.datatype.crponprimaryclasification.injury	es	es	Atropellamiento de peatón
+persistence.datatype.crponprimaryclasification.injury	es	en	Injury to Pedestrian or bystanders
+persistence.datatype.crponprimaryclasification.injury	es	pt	Atropell
+persistence.datatype.crponprimaryclasification.contactwithanimal	es	Contacto con animales, etc.
+persistence.datatype.crponprimaryclasification.contactwithanimal	en	Contact with animal, gravel, etc
+persistence.datatype.crponprimaryclasification.contactwithanimal	pt	''
+persistence.datatype.crponprimaryclasification.twocompanyvehicles	es	Dos vehículos de la cía.
+persistence.datatype.crponprimaryclasification.twocompanyvehicles	en	Two company vehicles
+persistence.datatype.crponprimaryclasification.twocompanyvehicles	pt	''
+persistence.datatype.crponprimaryclasification.drivenbynonemployee	es	Conducido por no funcionario
+persistence.datatype.crponprimaryclasification.drivenbynonemployee	en	Driven by non employee
+persistence.datatype.crponprimaryclasification.drivenbynonemployee	pt	''
+persistence.datatype.crponprimaryclasification.other	es	Otro
+persistence.datatype.crponprimaryclasification.other	en	Other
+persistence.datatype.crponprimaryclasification.other	pt	Outro
+persistence.datatype.crponprimaryclasification.nearmiss	es	Near Miss
+persistence.datatype.crponprimaryclasification.nearmiss	en	Near Miss
+persistence.datatype.crponprimaryclasification.nearmiss	pt	Near Miss
+persistence.datatype.crponprimaryclasification.ourdriverlostcontrol	es	Nuestro conductor perdió el control
+persistence.datatype.crponprimaryclasification.ourdriverlostcontrol	en	Our driver lost control
+persistence.datatype.crponprimaryclasification.ourdriverlostcontrol	pt	Nosso motorista perdeu o controle
+persistence.datatype.crponprimaryclasification.ourdriverfailedtoyeld	es	Nuestro conductor no cedió el paso
+persistence.datatype.crponprimaryclasification.ourdriverfailedtoyeld	en	Our driver failed to yield
+persistence.datatype.crponprimaryclasification.ourdriverfailedtoyeld	pt	Nosso motorista não deu passagem
+persistence.datatype.crponprimaryclasification.ourdriverparkingbacking	es	Nuestro conductor estacionando/en retroceso
+persistence.datatype.crponprimaryclasification.ourdriverparkingbacking	en	Our driver parking/backing
+persistence.datatype.crponprimaryclasification.ourdriverparkingbacking	pt	Nosso motorista estacionando/dando ré
+persistence.datatype.crponprimaryclasification.ourdriverhitrearotherparty	es	Nuestro conductor choca de atrás
+persistence.datatype.crponprimaryclasification.ourdriverhitrearotherparty	en	Our driver hit rear of other party
+persistence.datatype.crponprimaryclasification.ourdriverhitrearotherparty	pt	Nosso motorista bateu na traseira de terceiros
+persistence.datatype.crponprimaryclasification.collisionwithstationaryobject	es	Colisión con objeto fijo
+persistence.datatype.crponprimaryclasification.collisionwithstationaryobject	en	Collision with stationary object
+persistence.datatype.crponprimaryclasification.collisionwithstationaryobject	pt	Colisão com objeto parado
+persistence.datatype.crponprimaryclasification.slickpavement	es	Pavimento resbaladizo
+persistence.datatype.crponprimaryclasification.slickpavement	en	Slick pavement
+persistence.datatype.crponprimaryclasification.slickpavement	pt	Asfalto escorregadio
+persistence.datatype.crponprimaryclasification. rollover	es	Vuelco
+persistence.datatype.crponprimaryclasification. rollover	en	Roll-over
+persistence.datatype.crponprimaryclasification. rollover	pt	Capotamento
+persistence.datatype.crponprimaryclasification. runofftheroad	es	Salida de pista
+persistence.datatype.crponprimaryclasification. runofftheroad	en	Run-off the road
+persistence.datatype.crponprimaryclasification. runofftheroad	pt	Saída de pista
+\.
+

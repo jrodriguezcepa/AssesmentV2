@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "/WEB-INF/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<form-beans>
+
+		<form-bean name="ResultadoForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="resultado" type="java.lang.String" />
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="EmeaForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>
+
+		<form-bean name="LoginForm"
+			type="assesment.presentation.translator.web.user.LoginForm" />
+
+		<form-bean name="LogoutForm"
+			type="org.apache.struts.action.DynaActionForm" />
+
+		<form-bean name="ResetPasswordForm"
+			type="assesment.presentation.translator.web.user.ResetPasswordForm" />
+
+		<form-bean name="AccessCodeForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="accesscode" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="WebinarForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="code" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="AssesmentSaveAnswersForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="questions" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="AlRiyadahSaveAnswersForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="questions" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="VeibrasForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="code" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CediAccessForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="code" type="java.lang.String" />
+			<form-property name="company" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CediRegisterForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="loginname" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+			<form-property name="rePassword" type="java.lang.String" />
+			<form-property name="cedi" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+			<form-property name="firstName" type="java.lang.String" />
+			<form-property name="lastName" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="ebtw" type="java.lang.String" />
+			<form-property name="idnumber" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CediAsociateAssessmentForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="login" type="java.lang.String" />
+			<form-property name="list" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+		</form-bean>
+			
+		<form-bean name="DaimlerForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="firstName" type="java.lang.String" />
+			<form-property name="lastName" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+			<form-property name="extra" type="java.lang.String" />
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserAccessForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="prefix" type="java.lang.String" />
+			<form-property name="code" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CharlaUPMForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="code" type="java.lang.String" />
+			<form-property name="action" type="java.lang.String" />
+			<form-property name="firstName" type="java.lang.String" />
+			<form-property name="lastName" type="java.lang.String" />
+			<form-property name="company" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="SelectAssessmentForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assessment" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="EmeaAccessCodeForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="accesscode" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserSwitchLanguageForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="language" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+			<form-property name="window" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserDataForm" type="assesment.presentation.actions.user.UserCreateForm" />
+		
+		<form-bean name="ReloadSessionForm"
+			type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="loginname" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+		</form-bean>
+        <!-- MODULE USER -->      
+        
+		<form-bean name="UserCreateForm" type="assesment.presentation.actions.user.UserCreateForm" />
+
+		<form-bean name="UserUpdateForm" type="assesment.presentation.actions.user.UserCreateForm" />
+
+		<form-bean name="UserResetPasswordForm" type="assesment.presentation.actions.user.UserCreateForm" />
+
+		<form-bean name="UserGroupForm" type="assesment.presentation.actions.user.UserCreateForm" />
+
+		<form-bean name="UserChangeGroupForm" type="assesment.presentation.actions.user.UserCreateForm" />
+
+		<form-bean name="UserAssociateAssessmentForm" type="assesment.presentation.actions.user.UserCreateForm" />
+
+		<form-bean name="UserDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="users" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UserAssesmentForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UpdateUserCodeForm" type="assesment.presentation.actions.user.UpdateUserCodeForm">
+		</form-bean>
+		
+		<form-bean name="UserAssesmentFDMForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="fdm" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UserDeleteAssesmentForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="assesments" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UserCreateDCForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="corporation" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+			<form-property name="passwordtext" type="java.lang.String" />
+			<form-property name="rePasswordtext" type="java.lang.String" />
+			<form-property name="generatefile" type="java.lang.String" />
+		</form-bean>
+				
+		<form-bean name="UserCreateFileForm" type="assesment.presentation.actions.user.UserCreateFileForm">
+		</form-bean>
+
+		<form-bean name="DownloadCreatedUserFileForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>
+		<form-bean name="SendEmailUsersForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="users" type="java.lang.String" />
+		</form-bean>
+		
+
+		<form-bean name="UserAccessCodeForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="accesscode" type="java.lang.String" />
+			<form-property name="number" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="extension" type="java.lang.String" />
+			<form-property name="language" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UserUpdateAccessCodeForm" type="assesment.presentation.actions.user.UserCreateForm">
+			<form-property name="accesscode" type="java.lang.String" />
+			<form-property name="number" type="java.lang.String" />
+			<form-property name="used" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="extension" type="java.lang.String" />
+			<form-property name="language" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserDeleteAccessCodeForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>
+		
+		<form-bean name="UserELearningForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="BasfNewUser" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>
+
+		<form-bean name="BasfExistingUserForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+		</form-bean>
+        <!-- MODULE CORPORATION -->      
+
+		<form-bean name="GroupCreateForm" type="assesment.presentation.actions.assesment.GroupForm" />
+
+		<form-bean name="GroupUpdateForm" type="assesment.presentation.actions.assesment.GroupForm" />
+
+		<form-bean name="CategoryCreateForm" type="assesment.presentation.actions.assesment.CategoryForm" />
+
+		<form-bean name="CategoryUpdateForm" type="assesment.presentation.actions.assesment.CategoryForm" />
+
+		<form-bean name="CategoryAssessmentDeleteForm" type="assesment.presentation.actions.assesment.CategoryForm" />
+
+		<form-bean name="CategoryAssessmentAddForm" type="assesment.presentation.actions.assesment.CategoryForm" />
+
+		<form-bean name="CategoryDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="categoryId" type="java.lang.String" />
+			<form-property name="group" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CorporationCreateForm" type="assesment.presentation.actions.corporation.CorporationForm" />
+
+		<form-bean name="CorporationUpdateForm" type="assesment.presentation.actions.corporation.CorporationForm" />
+
+		<form-bean name="CorporationDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="corporation" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CediCreateForm" type="assesment.presentation.actions.corporation.CediForm" />
+		<form-bean name="CediUpdateForm" type="assesment.presentation.actions.corporation.CediForm" />
+		
+		<form-bean name="CediDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="cedi" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+		</form-bean>
+
+        <!-- MODULE ASSESMENT -->      
+        
+		<form-bean name="AssesmentCreateForm" type="assesment.presentation.actions.assesment.AssesmentForm" />
+
+		<form-bean name="AssesmentUpdateForm" type="assesment.presentation.actions.assesment.AssesmentForm" />
+
+		<form-bean name="AssesmentDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="corporation" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="AssesmentChangeDatesForm" type="assesment.presentation.actions.assesment.AssesmentForm" />
+
+		<form-bean name="AssociateAssesmentTagForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="tags" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="DeleteAssesmentTagForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="tags" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="AssesmentLinkForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assessment" type="java.lang.String" />
+			<form-property name="language" type="java.lang.String" />
+			<form-property name="firstNameES" type="java.lang.String" />
+			<form-property name="lastNameES" type="java.lang.String" />
+			<form-property name="firstNameEN" type="java.lang.String" />
+			<form-property name="lastNameEN" type="java.lang.String" />
+			<form-property name="firstNamePT" type="java.lang.String" />
+			<form-property name="lastNamePT" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="AssociateQuestionTagForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="tags" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="DeleteQuestionTagForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="tags" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UpdateAnswerTagForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="answer" type="java.lang.String" />
+			<form-property name="tag" type="java.lang.String" />
+			<form-property name="value" type="java.lang.String" />
+		</form-bean>
+
+        <!-- MODULE MODULE -->      
+		<form-bean name="ModuleCreateForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="es_name" type="java.lang.String" />
+			<form-property name="en_name" type="java.lang.String" />
+			<form-property name="pt_name" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="ModuleUpdateForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="module" type="java.lang.String" />
+			<form-property name="es_name" type="java.lang.String" />
+			<form-property name="en_name" type="java.lang.String" />
+			<form-property name="pt_name" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="ModuleDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="module" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+		</form-bean>
+			
+		<form-bean name="GenericModuleCreateForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="es_name" type="java.lang.String" />
+			<form-property name="en_name" type="java.lang.String" />
+			<form-property name="pt_name" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="GenericModuleUpdateForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="module" type="java.lang.String" />
+			<form-property name="es_name" type="java.lang.String" />
+			<form-property name="en_name" type="java.lang.String" />
+			<form-property name="pt_name" type="java.lang.String" />
+			<form-property name="type" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="GenericModuleDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="modules" type="java.lang.String" />
+		</form-bean>
+			
+		<form-bean name="ModuleCopyForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="modules" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="ModuleChangeOrderForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="moduleDown" type="java.lang.String" />
+			<form-property name="moduleUp" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="AssessmentFeedbackForm" type="assesment.presentation.actions.assesment.FeedbackForm" />
+		
+		<form-bean name="DeleteFeedbackForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+		</form-bean>
+
+        <!-- MODULE QUESTION -->      
+        
+		<form-bean name="QuestionCreateForm" type="assesment.presentation.actions.question.QuestionForm" />
+
+		<form-bean name="QuestionUpdateForm" type="assesment.presentation.actions.question.QuestionForm" />
+
+		<form-bean name="QuestionDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="QuestionDeleteListForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="questions" type="java.lang.String" />
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="QuestionCopyForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="module" type="java.lang.String" />
+			<form-property name="target" type="java.lang.String" />
+			<form-property name="questions" type="java.lang.String" />
+		</form-bean>
+
+
+		<form-bean name="GenericQuestionCreateForm" type="assesment.presentation.actions.question.QuestionForm" />
+
+		<form-bean name="GenericQuestionUpdateForm" type="assesment.presentation.actions.question.QuestionForm" />
+
+		<form-bean name="GenericQuestionDeleteForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="question" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="GenericQuestionDeleteListForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="questions" type="java.lang.String" />
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="QuestionChangeOrderForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="questionDown" type="java.lang.String" />
+			<form-property name="questionUp" type="java.lang.String" />
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="GenericQuestionChangeOrderForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="questionDown" type="java.lang.String" />
+			<form-property name="questionUp" type="java.lang.String" />
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="QuestionGroupForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="GenericQuestionGroupForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="module" type="java.lang.String" />
+		</form-bean>
+        <!-- MODULE REPORT -->      
+        
+		<form-bean name="AssesmentReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UsersReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="GeneralResultsForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UserResultForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="value" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserErrorForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="value" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserPsiResultForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="value" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="UserPersonalDataResultForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="value" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="UserNewHireForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="value" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="ModuleResultReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="module" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="QuestionResultReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="question" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="RankingQuestionReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="AdvanceJJReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="champion" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="CompleteUserReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="startDate" type="java.lang.String" />
+			<form-property name="startMonth" type="java.lang.String" />
+			<form-property name="startYear" type="java.lang.String" />
+			<form-property name="endDate" type="java.lang.String" />
+			<form-property name="endMonth" type="java.lang.String" />
+			<form-property name="endYear" type="java.lang.String" />
+			<form-property name="output" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="JavaReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="type" type="java.lang.String" />
+			<form-property name="assessment1" type="java.lang.String" />
+			<form-property name="assessment2" type="java.lang.String" />
+			<form-property name="assessment3" type="java.lang.String" />
+			<form-property name="fromDay" type="java.lang.String" />
+			<form-property name="fromMonth" type="java.lang.String" />
+			<form-property name="fromYear" type="java.lang.String" />
+			<form-property name="toDay" type="java.lang.String" />
+			<form-property name="toMonth" type="java.lang.String" />
+			<form-property name="toYear" type="java.lang.String" />
+			<form-property name="typeBasf" type="java.lang.String" />
+			<form-property name="typeResult" type="java.lang.String" />
+		</form-bean>
+		
+		<form-bean name="DownloadUserReportForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>		
+		<form-bean name="DownloadMutualReportForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>
+		<form-bean name="DownloadGroupReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="group" type="java.lang.String" />
+		</form-bean>		
+		<form-bean name="DownloadCediReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="group" type="java.lang.String" />
+			<form-property name="cedi" type="java.lang.String" />
+			
+		</form-bean>
+		<form-bean name="DownloadMultiReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assessment" type="java.lang.String" />
+		</form-bean>		
+
+		<form-bean name="DownloadResultReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assessment" type="java.lang.String" />
+			<form-property name="login" type="java.lang.String" />
+			<form-property name="reportType" type="java.lang.String" />
+		</form-bean>		
+
+		<form-bean name="UploadFileForm" type="assesment.presentation.actions.user.UploadFileForm" />
+		
+	</form-beans>
+
+	<global-forwards>
+		<forward name="login" path="/login.jsp" />
+		<forward name="home" path="/menu/home.jsp" redirect="true" />
+		<forward name="insufficientpermissions"
+			path="/insufficientpermissions.jsp" redirect="true" />
+		<forward name="exception" path="/exception.jsp" redirect="true" />
+		<forward name="menu" path="/menu/menu.jsp" redirect="true" />
+
+	</global-forwards>
+
+	<action-mappings>
+
+		<!--TEST FOR BACKBASE INTEGRATION-->
+
+	  	<action path="/Switchlanguageuser" type="assesment.presentation.translator.web.administration.user.UserSwitchLanguageAction" name="UserSwitchLanguageForm" scope="request">
+	  		<forward name="home" path="/user/changeLanguage.jsp?level=-1" />
+	  		<forward name="next" path="/webinarList.jsp" />
+	  		<forward name="error" path="/exception.jsp"/>
+	  	</action>
+
+		<action path="/Resultado" type="assesment.presentation.actions.administration.UserAnswerAction" name="ResultadoForm" scope="request">
+			<forward name="logout" path="/logout.jsp" />
+			<forward name="menu" path="/test.jsp" />
+			<forward name="menuAZ" path="/az.jsp" />
+			<forward name="menuMoviles" path="/moviles.jsp" />
+			<forward name="back" path="/answer.jsp" />
+			<forward name="backAZ" path="/answerAZ.jsp" />
+			<forward name="backMoviles" path="/answerMoviles.jsp" />
+		</action>
+
+		<action path="/Emea" type="assesment.presentation.actions.administration.EmeaUserAnswerAction" name="EmeaForm" scope="request">
+			<forward name="success" path="/emeaEndMessage.jsp" />
+			<forward name="back" path="/emea.jsp" />
+		</action>
+
+		<!-- LOGIN, ACTION DEFINITIONS -->
+
+
+		<action path="/login"
+			type="assesment.presentation.translator.web.user.LoginAction" name="LoginForm"
+			scope="request" input="/login.jsp">
+			<forward name="home" path="/translate.html" />
+			<forward name="login" path="/login.jsp" />
+		</action>
+
+		<action path="/logout"
+			type="assesment.presentation.translator.web.user.LogoutAction"
+			name="LogoutForm" scope="request" input="/home.jsp">
+			<forward name="init" path="/end.jsp" />
+		</action>
+
+		<action path="/Resetpassword"
+			type="assesment.presentation.translator.web.user.ResetPasswordAction"
+			name="ResetPasswordForm" scope="request"
+			input="/resetPassword.jsp">
+			<forward name="cancel" path="/login.jsp" />
+			<forward name="nouser" path="/resetPassword.jsp?message=2" />
+			<forward name="back" path="/resetPassword.jsp?message=1" />
+			<forward name="reset"
+				path="/resetPasswordSuccess.jsp?type=1" />
+			<forward name="newuser"
+				path="/resetPasswordSuccess.jsp?type=2" />
+		</action>
+
+  	<action path="/Resetpassword" type="assesment.presentation.translator.web.user.ResetPasswordAction" name="ResetPasswordForm" 
+  				 scope="request" input="/resetPassword.jsp">
+  		<forward name="cancel" path="/login.jsp"/>
+  		<forward name="nouser" path="/resetPassword.jsp?message=2"/>
+  		<forward name="back" path="/resetPassword.jsp?message=1"/>
+  		<forward name="reset" path="/resetPasswordSuccess.jsp?type=1"/>
+  		<forward name="newuser" path="/resetPasswordSuccess.jsp?type=2"/>
+  	</action>
+  	
+ 
+ 
+ 		<action path="/ResetPasswordUser" type="assesment.presentation.translator.web.administration.user.UserResetOwnPasswordAction" name="UserCreateForm" scope="request">
+	  		<forward name="home" path="/changePassword.jsp?level=-1" />
+  			<forward name="message" path="/changePassword.jsp?level=1" />
+  			<forward name="error" path="/layout.jsp?refer=/exception.jsp"/>
+	  	</action>
+ 
+		<action path="/EmeaAccessCode" type="assesment.presentation.actions.user.EmeaAccessCodeAction" name="EmeaAccessCodeForm" scope="request">
+			<forward name="next" path="/emea.jsp" />
+			<forward name="error" path="/accesscode.jsp?error=emptycode" />
+		</action>
+
+		<action path="/BasfNewUser" type="assesment.presentation.actions.user.BasfCreateUserAction" name="BasfNewUser" scope="request">
+			<forward name="next" path="/reloginBasf.jsp" />
+		</action>
+
+		<action path="/BasfExistingUser" type="assesment.presentation.actions.user.BasfReloadUserAction" name="BasfExistingUserForm" scope="request">
+			<forward name="next" path="/reloginBasf.jsp" />
+		</action>
+
+		<action path="/SelectAssessment" type="assesment.presentation.actions.user.SelectUserAssessmentAction" name="SelectAssessmentForm" scope="request">
+			<forward name="next" path="/module_da.jsp" />
+		</action>
+		
+		<action path="/AccessCode" type="assesment.presentation.actions.user.AccessCodeAction" name="AccessCodeForm" scope="request">
+			<forward name="logout" path="/logout.jsp" />
+			<forward name="next" path="/userDataAC.jsp" />
+			<forward name="nextMonsantoBR" path="/userDataMonsantoBR.jsp" />
+			<forward name="nextNewHire" path="/userDataNewHire.jsp" />
+			<forward name="nextJJ" path="/userDataAC.jsp" />
+			<forward name="nextPepsico" path="/userDataPepsico.jsp" />
+			<forward name="nextPepsicoCandidatos" path="/userDataPepsicoCandidatos.jsp" />
+			<forward name="nextDNB" path="/userDataDNB.jsp" />
+			<forward name="nextAbitab" path="/userDataAbitab.jsp" />
+			<forward name="emeaMonsanto" path="/emeaLanguage.jsp" />
+			<forward name="error1" path="/accesscode.jsp?error=emptycode" />
+			<forward name="error2" path="/accesscode.jsp?error=unknowncode" />
+			<forward name="error3" path="/accesscode.jsp?error=nolicences" />
+		</action>
+		
+		<action path="/Webinar" type="assesment.presentation.actions.user.WebinarAction" name="WebinarForm" scope="request">
+			<forward name="error" path="/webinar.jsp" />
+			<forward name="next" path="/reloginWebinar.jsp" />
+		</action>
+
+		<action path="/AlRiyadah" type="assesment.presentation.actions.user.AlRiyadahAction" name="WebinarForm" scope="request">
+			<forward name="error1" path="/webinar.alriyadahFinal?type=1" />
+			<forward name="error2" path="/webinar.alriyadahFinal?type=2" />
+			<forward name="error3" path="/webinar.alriyadahFinal?type=3" />
+			<forward name="next" path="/relogin.jsp" />
+		</action>
+		
+		<action path="/AlRiyadahSaveAnswers" type="assesment.presentation.actions.user.AlRiyadahSaveAnswersAction" name="AlRiyadahSaveAnswersForm" scope="request">
+			<forward name="error" path="/index.jsp" />
+			<forward name="next" path="/webinarSuccess.jsp"/>
+		</action>
+		
+		<action path="/AssesmentSaveAnswers" type="assesment.presentation.actions.user.AssesmentSaveAnswersAction" name="AssesmentSaveAnswersForm" scope="request">
+			<forward name="error" path="/webinarForm.jsp" />
+			<forward name="next" path="/webinarSuccess.jsp"/>
+		</action>
+		
+
+		<action path="/Veibras" type="assesment.presentation.actions.user.VeibrasAction" name="VeibrasForm" scope="request">
+			<forward name="error" path="/veibras.jsp" />
+			<forward name="next" path="/relogin.jsp" />
+		</action>
+		
+		<action path="/CediAccess" type="assesment.presentation.actions.user.CediAccessAction" name="CediAccessForm" scope="request">
+			<forward name="logout" path="/logout.jsp" />
+			<forward name="error" path="/grupom_code.jsp" />
+			<forward name="next" path="/grupom_register.jsp" />
+		</action>
+
+		<action path="/CediRegister" type="assesment.presentation.actions.user.CediRegisterAction" name="CediRegisterForm" scope="request">
+			<forward name="cancel" path="/grupom_code.jsp" />
+			<forward name="error" path="/grupom_register.jsp" />
+			<forward name="next" path="/grupom_success.jsp" />
+		</action>
+
+		<action path="/CediAsociateAssessment" type="assesment.presentation.actions.user.CediAsociateAssessmentAction" name="CediAsociateAssessmentForm" scope="request">
+			<forward name="next" path="/reportgrupomodelo.jsp" />
+		</action>
+
+		<action path="/DaimlerRegister" type="assesment.presentation.actions.user.DaimlerRegisterAction" name="DaimlerForm" scope="request">
+			<forward name="error" path="/daimler.jsp" />
+			<forward name="next" path="/relogin.jsp" />
+			<forward name="cancel" path="/logout.jsp" />
+		</action>
+		
+		<action path="/UserAccess" type="assesment.presentation.actions.user.UserAccessAction" name="UserAccessForm" scope="request">
+			<forward name="error_tmc" path="/timac.jsp" />
+			<forward name="next" path="/relogin.jsp" />
+		</action>
+		
+		<action path="/RegisterUPM" type="assesment.presentation.actions.user.RegisterUPMAction" name="CharlaUPMForm" scope="request">
+			<forward name="error" path="/register_upm.jsp" />
+			<forward name="register" path="/register_upm.jsp?action=1" />
+			<forward name="next" path="/success_upm.jsp" />
+		</action>
+
+		<action path="/HabilitarUPM" type="assesment.presentation.actions.user.HabilitarUPMAction" name="CharlaUPMForm" scope="request">
+			<forward name="next" path="/habilitar_upm.jsp" />
+		</action>
+		
+		<action path="/UPM" type="assesment.presentation.actions.user.UPMAction" name="CharlaUPMForm" scope="request">
+			<forward name="error" path="/charla_upm.jsp" />
+			<forward name="next" path="/relogin.jsp" />
+		</action>
+		
+	 	<action path="/UserData" type="assesment.presentation.actions.user.UserACCreateAction" name="UserDataForm"  scope="session">
+	  		<forward name="next" path="/relogin.jsp" />
+  			<forward name="back" path="/userDataAC.jsp" />
+			<forward name="backNewHire" path="/userDataNewHire.jsp" />
+			<forward name="backMonsantoBR" path="/userDataMonsantoBR.jsp" />
+			<forward name="backPepsico" path="/userDataPepsico.jsp" />
+			<forward name="backPepsicoCandidatos" path="/userDataPepsicoCandidatos.jsp" />
+			<forward name="backJJ" path="/userDataAC.jsp" />
+			<forward name="backAbitab" path="/userDataAbitab.jsp" />
+			<forward name="backDNB" path="/userDataDNB.jsp" />
+			<forward name="backAnglo" path="/userDataAnglo.jsp" />
+			<forward name="backImesevi" path="/userDataImesevi.jsp" />
+			<forward name="backAZ" path="/userDataAZ.jsp" />
+  			<forward name="confirmation" path="/confirmation.jsp" />
+	  		<forward name="logout" path="/logout.jsp" />
+	  		<forward name="logoutAnglo" path="/logout.jsp?assessment=anglo" />
+	  		<forward name="reloadSession" path="/reloadSessionAbitab.jsp" />
+  		</action>
+
+	 	<action path="/ReloadSession" type="assesment.presentation.actions.user.ReloadSessionAction" name="ReloadSessionForm"  scope="session">
+	  		<forward name="next" path="/relogin.jsp" />
+	  		<forward name="error" path="/errorReload.jsp" />
+	  		<forward name="cancel" path="/userDataAbitab.jsp" />
+	  		<forward name="select" path="/selectSessionAbitab.jsp" />
+	 	</action>
+
+	 	<action path="/Confirmation" type="assesment.presentation.actions.user.ConfirmationAction" name="UserDataForm"  scope="request">
+	  		<forward name="next" path="/relogin.jsp" />
+  			<forward name="back" path="/userDataJJ.jsp" />
+	  		<forward name="logout" path="/logout.jsp" />
+  		</action>
+
+	 	<action path="/CreateUserEMEA" type="assesment.presentation.actions.user.UserMonsantoEMEAAction" name="UserDataForm"  scope="request">
+	  		<forward name="next" path="/relogin.jsp" />
+  		</action>
+
+        <!-- MODULE USER, START -->      
+      
+	  	<action path="/UserCreate" type="assesment.presentation.actions.user.UserCreateAction" name="UserCreateForm" scope="request">
+	  		<forward name="back" path="/layout.jsp?refer=/user/create.jsp?type=create"/>		 
+	  		<forward name="list" path="/layout.jsp?refer=/user/list.jsp"/>		 
+	  	</action>
+	 
+  		<action path="/UserUpdate" type="assesment.presentation.actions.user.UserUpdateAction" name="UserUpdateForm" scope="session" >
+  			<forward name="back" path="/layout.jsp?refer=/user/create.jsp?type=edit"/>
+  			<forward name="view" path="/layout.jsp?refer=/user/view.jsp"/>
+  		</action>
+  	
+	  	<action path="/UserDelete" type="assesment.presentation.actions.user.UserDeleteAction" name="UserDeleteForm" scope="request">
+	  		<forward name="list" path="/layout.jsp?refer=/user/list.jsp"/>		 
+	  		<forward name="back" path="/layout.jsp?refer=/user/view.jsp"/>		 
+	  	</action>
+
+		<action path="/UserResetPassword" type="assesment.presentation.actions.user.UserResetPasswordAction" name="UserResetPasswordForm" scope="request">
+			<forward name="view" path="/layout.jsp?refer=/user/view.jsp" />
+			<forward name="back" path="/layout.jsp?refer=/user/resetPassword.jsp" />
+		</action>
+
+  		<action path="/UserAssesment" type="assesment.presentation.actions.user.UserAssesmentAction" name="UserAssociateAssessmentForm" scope="session">
+  			<forward name="view" path="/layout.jsp?refer=/user/view.jsp"/>
+  		</action>
+  		
+  		<action path="/UserAssesmentFDM" type="assesment.presentation.actions.user.UserAssesmentFDMAction" name="UserAssesmentFDMForm" scope="session">
+  			<forward name="view" path="/layout.jsp?refer=/user/view.jsp"/>
+			<forward name="back" path="/layout.jsp?refer=/user/linkFDM.jsp" />
+  		</action>
+  		
+	  	<action path="/CreateUserGroup" type="assesment.presentation.actions.user.UserGroupCreateAction" name="UserGroupForm" scope="request">
+	  		<forward name="back" path="/ml.jsp"/>		 
+	  		<forward name="next" path="/relogin.jsp" />
+	  	</action>
+  		
+	  	<action path="/CreateUserMutual" type="assesment.presentation.actions.user.UserMutualCreateAction" name="UserGroupForm" scope="request">
+	  		<forward name="back" path="/mutual.jsp"/>		 
+	  		<forward name="next" path="/relogin.jsp" />
+	  	</action>  		
+  		
+	  	<action path="/UserChangeGroup" type="assesment.presentation.actions.user.UserChangeGroupAction" name="UserChangeGroupForm" scope="request">
+	  		<forward name="back" path="/layout.jsp?refer=/user/changeGroup.jsp"/>		 
+	  		<forward name="next" path="/layout.jsp?refer=/user/view.jsp"/>
+	  	</action>
+	 
+  		<action path="/DeleteUsersGroup" type="assesment.presentation.actions.user.DeleteUserGroupAction" name="UserGroupForm" scope="session">
+  			<forward name="users" path="/layout.jsp?refer=/assesment/userGroups.jsp"/>
+  			<forward name="users" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+  		</action>
+	 
+  		<action path="/DeleteUsersAssesment" type="assesment.presentation.actions.user.DeleteUserAssesmentAction" name="UserAssesmentForm" scope="session">
+  			<forward name="view" path="/layout.jsp?refer=/assesment/view.jsp"/>
+  			<forward name="users" path="/layout.jsp?refer=/assesment/users.jsp"/>
+  		</action>
+
+  		<action path="/ResendUserAssesmentResults" type="assesment.presentation.actions.user.ResendUserAssesmentResultAction" name="UserAssesmentForm" scope="session">
+  			<forward name="users" path="/layout.jsp?refer=/assesment/users.jsp"/>
+  		</action>
+
+  		<action path="/UserDeleteAssesment" type="assesment.presentation.actions.user.UserDeleteAssesmentAction" name="UserDeleteAssesmentForm" scope="session">
+  			<forward name="view" path="/layout.jsp?refer=/user/view.jsp"/>
+  		</action>
+  		
+  		<action path="/CreateUsersDC" type="assesment.presentation.actions.user.UserCreateDCAction" name="UserCreateDCForm" scope="session">
+  			<forward name="home" path="/layout.jsp"/>
+  			<forward name="back" path="/layout.jsp?refer=/user/createfromdc.jsp"/>
+  			<forward name="success" path="/layout.jsp?refer=/user/success_create.jsp"/>
+  		</action>
+
+  		<action path="/CreateUsersFile" type="assesment.presentation.actions.user.UserCreateFileAction" name="UserCreateFileForm" scope="request">
+  			<forward name="home" path="/layout.jsp" />
+  			<forward name="back" path="/layout.jsp?refer=/user/createfromfile.jsp" />
+  			<forward name="success" path="/layout.jsp?refer=/user/success_createfromfile.jsp" />
+  		</action>
+
+  		<action path="/CreateTimacUsersFile" type="assesment.presentation.actions.user.TimacUserCreateFileAction" name="UserCreateFileForm" scope="request">
+  			<forward name="home" path="/layout.jsp" />
+  			<forward name="back" path="/layout.jsp?refer=/user/createtimacusers.jsp" />
+  			<forward name="success" path="/layout.jsp?refer=/user/success_createtimac.jsp" />
+  		</action>
+
+  		<action path="/DownloadCreateUsersFile" type="assesment.presentation.actions.user.DownloadCreatedUsersAction" name="DownloadCreatedUserFileForm" scope="session">
+  			<forward name="home" path="/layout.jsp" />
+  		</action>
+  				  		
+  		<action path="/SendEmail" type="assesment.presentation.actions.user.SendEmailUsersAction" name="SendEmailUsersForm" scope="session">
+  			<forward name="success" path="/layout.jsp?refer=/user/createfromfile.jsp"/>
+  		</action>
+  		
+  		
+  		<action path="/CreateAccessCode" type="assesment.presentation.actions.user.UserAccessCodeAction" name="UserAccessCodeForm" scope="session">
+  			<forward name="home" path="/layout.jsp?refer=/user/accesscodelist.jsp"/>
+  			<forward name="back" path="/layout.jsp?refer=/user/createaccesscode.jsp?type=create"/>
+  			<forward name="success" path="/layout.jsp?refer=/user/accesscodelist.jsp"/>
+  		</action>
+  		
+  		<action path="/EditAccessCode" type="assesment.presentation.actions.user.UserUpdateAccessCodeAction" name="UserUpdateAccessCodeForm" scope="session">
+  			<forward name="home" path="/layout.jsp"/>
+  			<forward name="back" path="/layout.jsp?refer=/user/createaccesscode.jsp?type=edit"/>
+  			<forward name="success" path="/layout.jsp?refer=/user/accesscodelist.jsp"/>
+  		</action>
+
+  		<action path="/DeleteAccessCode" type="assesment.presentation.actions.user.UserDeleteAccessCodeAction" name="UserDeleteAccessCodeForm" scope="session">
+  			<forward name="success" path="/layout.jsp?refer=/user/accesscodelist.jsp"/>
+  		</action>
+  		
+  		<action path="/UpdateUserCode" type="assesment.presentation.actions.user.UpdateUserCodeAction" name="UpdateUserCodeForm" scope="session" >
+  			<forward name="back" path="/layout.jsp?refer=/user/updateusercode.jsp?type=edit"/>
+  			<forward name="view" path="/layout.jsp?refer=/user/viewusercode.jsp"/>
+  		</action>
+  	
+
+  		<action path="/CreateELearning" type="assesment.presentation.actions.user.eLearningAction" name="UserELearningForm" scope="session">
+  			<forward name="success" path="/layout.jsp?refer=/success.jsp?entity=elearning.create"/>
+  		</action>
+        <!-- MODULE USER, END -->      
+
+    <!-- MODULE CORPORATION, START -->      
+    <action path="/GroupCreate" type="assesment.presentation.actions.assesment.GroupCreateAction" name="GroupCreateForm" scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/assesment/createGroup.jsp?type=create"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/groupList.jsp"/>
+        <forward name="list" path="/layout.jsp?refer=/assesment/groupList.jsp"/>
+	</action>
+
+    <action path="/GroupUpdate" type="assesment.presentation.actions.assesment.GroupUpdateAction" name="GroupUpdateForm" scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/assesment/createGroup.jsp?type=edit"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+	</action>
+
+    <action path="/CategoryCreate" type="assesment.presentation.actions.assesment.CategoryCreateAction" name="CategoryCreateForm" scope="request">
+    	<forward name="back" path="/layout.jsp?refer=/assesment/createCategory.jsp?type=create"/>         
+        <forward name="next" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+	</action>
+ 
+    <action path="/CategoryUpdate" type="assesment.presentation.actions.assesment.CategoryUpdateAction" name="CategoryUpdateForm" scope="session">
+    	<forward name="next" path="/layout.jsp?refer=/assesment/updateCategory.jsp"/>         
+	</action>
+
+    <action path="/CategoryDelete" type="assesment.presentation.actions.assesment.CategoryDeleteAction" name="CategoryDeleteForm" scope="session">
+        <forward name="success" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+	</action> 
+
+    <action path="/CategoryAssessmentDelete" type="assesment.presentation.actions.assesment.CategoryAssessmentDeleteAction" name="CategoryAssessmentDeleteForm" scope="request">
+    	<forward name="next" path="/layout.jsp?refer=/assesment/updateCategory.jsp?type=create"/>         
+	</action>
+
+    <action path="/CategoryAssessmentAdd" type="assesment.presentation.actions.assesment.CategoryAssessmentAddAction" name="CategoryAssessmentAddForm" scope="request">
+    	<forward name="next" path="/layout.jsp?refer=/assesment/updateCategory.jsp?type=create"/>         
+	</action>
+ 
+ 
+    <action path="/CorporationUpdate" type="assesment.presentation.actions.corporation.CorporationUpdateAction" name="CorporationUpdateForm" 
+                        scope="request">
+    	<forward name="back" path="/layout.jsp?refer=/corporation/create.jsp?type=edit"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/corporation/view.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/corporation/view.jsp"/>
+   	</action>
+
+    <action path="/CorporationCreate" type="assesment.presentation.actions.corporation.CorporationCreateAction" name="CorporationCreateForm" 
+                        scope="request">
+    	<forward name="back" path="/layout.jsp?refer=/corporation/create.jsp?type=create"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/corporation/list.jsp"/>
+        <forward name="list" path="/layout.jsp?refer=/corporation/list.jsp"/>
+	</action>
+ 
+    <action path="/CorporationUpdate" type="assesment.presentation.actions.corporation.CorporationUpdateAction" name="CorporationUpdateForm" 
+                        scope="request">
+    	<forward name="back" path="/layout.jsp?refer=/corporation/create.jsp?type=edit"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/corporation/view.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/corporation/view.jsp"/>
+   	</action>
+ 
+	<action path="/CorporationDelete" type="assesment.presentation.actions.corporation.CorporationDeleteAction" name="CorporationDeleteForm" 
+					scope="session">
+		<forward name="list" path="/layout.jsp?refer=/corporation/list.jsp" />
+		<forward name="view" path="/layout.jsp?refer=/corporation/view.jsp" />
+	</action>
+    <!-- MODULE CORPORATION, END -->      
+
+	<action path="/CediCreate" type="assesment.presentation.actions.corporation.CediCreateAction" name="CediCreateForm" scope="request">
+    	<forward name="back" path="/layout.jsp?refer=/corporation/createCedi.jsp?type=create"/>         
+        <forward name="listCedi" path="/layout.jsp?refer=/corporation/cediList.jsp"/>
+        <forward name="listMutual" path="/layout.jsp?refer=/corporation/mutualCompanyList.jsp"/>
+	</action>
+	
+	<action path="/CediUpdate" type="assesment.presentation.actions.corporation.CediUpdateAction" name="CediUpdateForm" scope="request">
+    	<forward name="back" path="/layout.jsp?refer=/corporation/createCedi.jsp?type=edit"/>         
+        <forward name="listCedi" path="/layout.jsp?refer=/corporation/cediList.jsp"/>
+        <forward name="listMutual" path="/layout.jsp?refer=/corporation/mutualCompanyList.jsp"/>
+   	</action>
+ 
+	<action path="/CediDelete" type="assesment.presentation.actions.corporation.CediDeleteAction" name="CediDeleteForm" scope="session">
+		<forward name="list" path="/layout.jsp?refer=/corporation/cediList.jsp" />
+		<forward name="view" path="/layout.jsp?refer=/corporation/viewCedi.jsp" />
+	</action>
+
+    <action path="/AssesmentCreate" type="assesment.presentation.actions.assesment.AssesmentCreateAction" name="AssesmentCreateForm" 
+                        scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/assesment/create.jsp?type=create"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/list.jsp"/>
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+ 
+    <action path="/AssesmentUpdate" type="assesment.presentation.actions.assesment.AssesmentUpdateAction" name="AssesmentUpdateForm" 
+                        scope="session">
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/assesment/view.jsp"/>
+   	</action>
+
+	<action path="/AssesmentDelete" type="assesment.presentation.actions.assesment.AssesmentDeleteAction" name="AssesmentDeleteForm" 
+					scope="session">
+		<forward name="corporation" path="/layout.jsp?refer=/corporation/view.jsp" />
+		<forward name="list" path="/layout.jsp?refer=/assesment/list.jsp" />
+		<forward name="view" path="/layout.jsp?refer=/assesment/view.jsp" />
+	</action>
+	
+ 
+    <action path="/ChangeDates" type="assesment.presentation.actions.assesment.AssesmentChangeDateAction" name="AssesmentChangeDatesForm" scope="session">
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+   	</action>
+	
+
+	<action path="/AssociateAssesmentTag" type="assesment.presentation.actions.assesment.AssociateAssesmentTagAction" name="AssociateAssesmentTagForm" 
+					scope="session">
+		<forward name="back" path="/layout.jsp?refer=/assesment/tags.jsp" />
+		<forward name="next" path="/layout.jsp?refer=/assesment/view.jsp" />
+	</action>
+
+	<action path="/DeleteAssesmentTag" type="assesment.presentation.actions.assesment.DeleteAssesmentTagAction" name="DeleteAssesmentTagForm" 
+					scope="session">
+		<forward name="next" path="/layout.jsp?refer=/assesment/view.jsp" />
+	</action>
+
+	<action path="/CreateAssessmentLink" type="assesment.presentation.actions.assesment.CreateAssessmentLinkAction" name="AssesmentLinkForm" scope="session">
+		<forward name="next" path="/layout.jsp?refer=/assesment/view.jsp" />
+	</action>
+		
+	<action path="/AssociateQuestionTag" type="assesment.presentation.actions.question.AssociateQuestionTagAction" name="AssociateQuestionTagForm" 
+					scope="session">
+		<forward name="back" path="/layout.jsp?refer=/question/tags.jsp" />
+		<forward name="next" path="/layout.jsp?refer=/question/view.jsp" />
+	</action>
+
+	<action path="/DeleteQuestionTag" type="assesment.presentation.actions.question.DeleteQuestionTagAction" name="DeleteQuestionTagForm" 
+					scope="session">
+		<forward name="next" path="/layout.jsp?refer=/question/view.jsp" />
+	</action>
+
+	<action path="/UpdateAnswerTag" type="assesment.presentation.actions.question.UpdateAnswerTagAction" name="UpdateAnswerTagForm" 
+					scope="session">
+		<forward name="back" path="/layout.jsp?refer=/question/questiontag.jsp" />
+		<forward name="next" path="/layout.jsp?refer=/question/view.jsp" />
+	</action>
+
+    <action path="/UpdateFeedback" type="assesment.presentation.actions.assesment.FeedbackAction" name="AssessmentFeedbackForm"  scope="session">
+        <forward name="success" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/assesment/feedback.jsp"/>
+	</action>
+
+    <action path="/DeleteFeedback" type="assesment.presentation.actions.assesment.DeleteFeedbackAction" name="DeleteFeedbackForm"  scope="session">
+        <forward name="success" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+    <!-- MODULE ASSESMENT, END -->      
+
+    <!-- MODULE MODULE, START -->      
+
+    <action path="/ModuleCreate" type="assesment.presentation.actions.module.ModuleCreateAction" name="ModuleCreateForm" 
+                        scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/module/create.jsp?type=create"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+	
+    <action path="/ModuleUpdate" type="assesment.presentation.actions.module.ModuleUpdateAction" name="ModuleUpdateForm" 
+                        scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/module/create.jsp?type=edit"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/module/view.jsp"/>
+        <forward name="module" path="/layout.jsp?refer=/module/view.jsp"/>
+	</action>
+	
+    <action path="/ModuleDelete" type="assesment.presentation.actions.module.ModuleDeleteAction" name="ModuleDeleteForm" 
+                        scope="session">
+    	<forward name="view" path="/layout.jsp?refer=/module/view.jsp"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+
+    <action path="/GenericModuleCreate" type="assesment.presentation.actions.module.GenericModuleCreateAction" name="GenericModuleCreateForm" 
+                        scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/module/genericcreate.jsp?type=create"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/module/genericlist.jsp"/>
+        <forward name="list" path="/layout.jsp?refer=/module/genericlist.jsp"/>
+	</action>
+	
+    <action path="/GenericModuleUpdate" type="assesment.presentation.actions.module.GenericModuleUpdateAction" name="GenericModuleUpdateForm" 
+                        scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/module/genericcreate.jsp?type=edit"/>         
+        <forward name="cancel" path="/layout.jsp?refer=/module/genericview.jsp"/>
+        <forward name="module" path="/layout.jsp?refer=/module/genericview.jsp"/>
+	</action>
+
+    <action path="/GenericModuleDelete" type="assesment.presentation.actions.module.GenericModuleDeleteAction" name="GenericModuleDeleteForm" 
+                        scope="session">
+    	<forward name="list" path="/layout.jsp?refer=/module/genericlist.jsp"/>         
+	</action>
+
+    <action path="/ModuleCopy" type="assesment.presentation.actions.module.ModuleCopyAction" name="ModuleCopyForm" 
+                        scope="session">
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+
+    <action path="/ModuleChangeOrder" type="assesment.presentation.actions.module.ModuleChangeOrderAction" name="ModuleChangeOrderForm" 
+                        scope="session">
+        <forward name="success" path="/layout.jsp?refer=/module/changeOrder.jsp"/>
+	</action>
+
+    <!-- MODULE MODULE, END -->      
+
+    <!-- MODULE QUESTION, START -->      
+    
+    <action path="/QuestionCreate" type="assesment.presentation.actions.question.QuestionCreateAction" name="QuestionCreateForm" 
+                        scope="session">
+        <forward name="back" path="/layout.jsp?refer=/question/create.jsp?type=create" />
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>         
+    	<forward name="module" path="/layout.jsp?refer=/module/view.jsp"/>         
+        <forward name="cancelAssesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="cancelModule" path="/layout.jsp?refer=/module/view.jsp"/>
+	</action>
+
+    <action path="/QuestionUpdate" type="assesment.presentation.actions.question.QuestionUpdateAction" name="QuestionUpdateForm" 
+                        scope="session">
+    	<forward name="view" path="/layout.jsp?refer=/question/view.jsp"/>         
+        <forward name="back" path="/layout.jsp?refer=/question/create.jsp?type=edit"/>
+        <forward name="cancel" path="/layout.jsp?refer=/question/view.jsp"/>
+	</action>
+
+    <action path="/QuestionDelete" type="assesment.presentation.actions.question.QuestionDeleteAction" name="QuestionDeleteForm" 
+                        scope="session">
+    	<forward name="backQuestion" path="/layout.jsp?refer=/question/view.jsp"/>         
+    	<forward name="backModule" path="/layout.jsp?refer=/module/view.jsp"/>         
+    	<forward name="backAssesment" path="/layout.jsp?refer=/assesment/view.jsp"/>         
+        <forward name="module" path="/layout.jsp?refer=/module/view.jsp"/>
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+	
+    <action path="/QuestionDeleteList" type="assesment.presentation.actions.question.QuestionDeleteListAction" name="QuestionDeleteListForm" 
+                        scope="session">
+        <forward name="module" path="/layout.jsp?refer=/module/view.jsp"/>
+	</action>
+
+    <action path="/GenericQuestionCreate" type="assesment.presentation.actions.question.GenericQuestionCreateAction" name="GenericQuestionCreateForm" 
+                        scope="session">
+    	<forward name="module" path="/layout.jsp?refer=/module/genericview.jsp"/>         
+        <forward name="back" path="/layout.jsp?refer=/question/genericcreate.jsp?type=create"/>
+        <forward name="cancel" path="/layout.jsp?refer=/module/genericview.jsp"/>
+	</action>
+
+    <action path="/GenericQuestionUpdate" type="assesment.presentation.actions.question.GenericQuestionUpdateAction" name="GenericQuestionUpdateForm" 
+                        scope="session">
+    	<forward name="view" path="/layout.jsp?refer=/question/genericview.jsp"/>         
+        <forward name="back" path="/layout.jsp?refer=/question/genericcreate.jsp?type=edit"/>
+        <forward name="cancel" path="/layout.jsp?refer=/question/genericview.jsp"/>
+	</action>
+
+    <action path="/GenericQuestionDelete" type="assesment.presentation.actions.question.GenericQuestionDeleteAction" name="GenericQuestionDeleteForm" 
+                        scope="session">
+    	<forward name="back" path="/layout.jsp?refer=/question/genericview.jsp"/>         
+        <forward name="module" path="/layout.jsp?refer=/module/genericview.jsp"/>
+	</action>
+
+    <action path="/GenericQuestionDeleteList" type="assesment.presentation.actions.question.GenericQuestionDeleteListAction" name="GenericQuestionDeleteListForm" 
+                        scope="session">
+        <forward name="module" path="/layout.jsp?refer=/module/genericview.jsp"/>
+	</action>
+
+    <action path="/QuestionCopy" type="assesment.presentation.actions.question.QuestionCopyAction" name="QuestionCopyForm" 
+                        scope="session">
+        <forward name="cancelModule" path="/layout.jsp?refer=/module/view.jsp"/>
+        <forward name="cancelAssesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+        <forward name="module" path="/layout.jsp?refer=/module/view.jsp"/>
+        <forward name="assesment" path="/layout.jsp?refer=/assesment/view.jsp"/>
+	</action>
+
+    <action path="/QuestionChangeOrder" type="assesment.presentation.actions.question.QuestionChangeOrderAction" name="QuestionChangeOrderForm" 
+                        scope="session">
+        <forward name="success" path="/layout.jsp?refer=/question/changeOrder.jsp"/>
+	</action>
+
+    <action path="/GenericQuestionChangeOrder" type="assesment.presentation.actions.question.GenericQuestionChangeOrderAction" name="GenericQuestionChangeOrderForm" 
+                        scope="session">
+        <forward name="success" path="/layout.jsp?refer=/question/genericChangeOrder.jsp"/>
+	</action>
+	
+    <action path="/QuestionGroup" type="assesment.presentation.actions.question.QuestionGroupAction" name="QuestionGroupForm" 
+                        scope="session">
+        <forward name="cancel" path="/layout.jsp?refer=/module/view.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/module/view.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/question/group.jsp"/>
+	</action>
+
+    <action path="/GenericQuestionGroup" type="assesment.presentation.actions.question.GenericQuestionGroupAction" name="GenericQuestionGroupForm" 
+                        scope="session">
+        <forward name="cancel" path="/layout.jsp?refer=/module/genericview.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/module/genericview.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/question/genericGroup.jsp"/>
+	</action>
+	
+    <!-- MODULE QUESTION, END -->      
+    
+    <!-- MODULE REPORT, START -->      
+    
+    <action path="/AssesmentReport" type="assesment.presentation.actions.report.AssesmentReportAction" name="AssesmentReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/assesment.jsp"/>
+	</action>
+	
+    <action path="/UsersReport" type="assesment.presentation.actions.report.UsersReportAction" name="UsersReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/users.jsp"/>
+	</action>
+	
+    <action path="/GeneralResults" type="assesment.presentation.actions.report.ResultAction" name="GeneralResultsForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/results.jsp"/>
+	</action>
+	
+    <action path="/UserResults" type="assesment.presentation.actions.report.UserResultAction" name="UserResultForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/userresults.jsp"/>
+	</action>
+
+    <action path="/UserErrors" type="assesment.presentation.actions.report.UserErrorAction" name="UserErrorForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/usererrors.jsp"/>
+	</action>
+
+    <action path="/UserPsiResults" type="assesment.presentation.actions.report.UserPsiResultAction" name="UserPsiResultForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/userpsiresults.jsp"/>
+	</action>
+
+    <action path="/UserPersonalDataResults" type="assesment.presentation.actions.report.UserPersonalDataResultAction" name="UserPersonalDataResultForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/userpersonaldataresults.jsp"/>
+	</action>
+
+    <action path="/NewHireResults" type="assesment.presentation.actions.report.NewHireReportAction" name="UserNewHireForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/newhire.jsp"/>
+	</action>
+
+    <action path="/ModuleResults" type="assesment.presentation.actions.report.ModuleResultAction" name="ModuleResultReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/moduleresults.jsp"/>
+	</action>
+
+    <action path="/QuestionResults" type="assesment.presentation.actions.report.QuestionResultAction" name="QuestionResultReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/questionresults.jsp"/>
+	</action>
+
+    <action path="/QuestionRanking" type="assesment.presentation.actions.report.QuestionRankingReportAction" name="RankingQuestionReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/ranking.jsp"/>
+	</action>
+
+    <action path="/AdvanceJJ" type="assesment.presentation.actions.report.AdvanceJJReportAction" name="AdvanceJJReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/questionresults.jsp"/>
+	</action>
+
+    <action path="/CompleteUser" type="assesment.presentation.actions.report.CompleteUserResultAction" name="CompleteUserReportForm" scope="session">
+        <forward name="report" path="/layout.jsp?refer=/util/report.jsp"/>
+        <forward name="back" path="/layout.jsp?refer=/report/questionresults.jsp"/>
+	</action>
+
+    <action path="/JavaReport" type="assesment.presentation.actions.report.JavaReportAction" name="JavaReportForm" scope="session">
+        <forward name="back" path="/layout.jsp?refer=/report/java.jsp"/>
+	</action>
+	
+    <action path="/DownloadUserResult" type="assesment.presentation.actions.report.DownloadUserReportAction" name="DownloadUserReportForm" scope="session">
+        <forward name="back" path="/layout.jsp?refer=/report/java.jsp"/>
+	</action>
+	   <action path="/DownloadMutualReport" type="assesment.presentation.actions.report.DownloadMutualReportAction" name="DownloadMutualReportForm" scope="session">
+        <forward name="back" path="/mutualReport.jsp"/>
+	</action>
+
+    <action path="/DownloadGroup" type="assesment.presentation.actions.report.DownloadGroupReportAction" name="DownloadGroupReportForm" scope="session">
+        <forward name="back" path="/reportgroup.jsp"/>
+	</action>
+	    <action path="/DownloadCedi" type="assesment.presentation.actions.report.DownloadCediReportAction" name="DownloadCediReportForm" scope="session">
+        <forward name="back" path="/index.jsp"/>
+	</action>
+
+    <action path="/DownloadMulti" type="assesment.presentation.actions.report.DownloadMultiReportAction" name="DownloadMultiReportForm" scope="session">
+        <forward name="back" path="/reportmultianswer.jsp"/>
+	</action>
+
+    <action path="/DownloadResult" type="assesment.presentation.actions.report.DownloadResultReportAction" name="DownloadResultReportForm" scope="session">
+        <forward name="back" path="/layout.jsp?refer=/report/java.jsp"/>
+	</action>
+
+    <action path="/UploadFile" type="assesment.presentation.actions.user.UploadFileAction" name="UploadFileForm" scope="session">
+        <forward name="back" path="/uploadmodule.jsp"/>
+	</action>
+    	
+    <!-- MODULE REPORT, END -->      
+		
+
+	</action-mappings>
+
+
+
+	<!-- INTERNACIONALIZATION FOR STRUTS -->
+	<message-resources parameter="mismensajes" />
+
+	<!--  Validator plugin -->
+
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+
+
+
+</struts-config>
+
+
+
+
+
+
+
+
+
+

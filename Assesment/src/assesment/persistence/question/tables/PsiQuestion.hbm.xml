@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.question.tables" >
+
+	<class name="PsiQuestion" table="psiquestions">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="sequence">
+            	<param name="sequence">PsiQuestion_Sequence</param>
+            </generator>
+		</id>
+	    
+	    <property name="key" column="key" type="java.lang.String" not-null="true"/>
+	    <property name="order" column="questionorder" type="java.lang.Integer" not-null="true"/>
+		<set inverse="true" name="answerSet"  cascade="all-delete-orphan">
+			<key column="psiquestion" not-null="true"/>
+			<one-to-many class="assesment.persistence.question.tables.PsiAnswer" />
+		</set>
+
+  	</class>
+
+</hibernate-mapping>

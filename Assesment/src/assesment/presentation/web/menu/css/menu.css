@@ -1,0 +1,51 @@
+div.clCEPAMenu{ /* All CEPAMenu2 DIV elements */
+	position:absolute;
+	font-family:verdana,arial,helvetica;
+	font-size:10px;
+	overflow:hidden;
+	width:150;
+	height:17;
+}
+
+
+a.clA0{ /* All top level links */
+	color:#000000;
+	font-family:verdana,arial,helvetica;
+    font-size:12px;
+	text-decoration:none;
+}
+a.clA1{ /* All sub level links */
+	color:black;
+	font-family:verdana,arial,helvetica;
+    font-size:11px;
+	text-decoration:none;
+	
+}
+a.clA2{ /* All sub2 level links */
+	color:black;
+	font-family:verdana,arial,helvetica;
+    font-size:11px;
+	text-decoration:none;
+	
+}
+a.clA3{ /* All sub3 level links */
+    color:black;
+	font-family:verdana,arial,helvetica;
+    font-size:11px;
+	text-decoration:none;	
+   }
+a.clA4{ /* All sub4 level links */
+    color:black;
+	font-family:verdana,arial,helvetica;
+    font-size:11px;
+	text-decoration:none;
+	
+}
+
+/* NEEDED STYLES */
+div.CEPAMenuBG{position:absolute; left:0; top:0; z-index:1}
+div.CEPAMenuText{position:absolute; left:5; top:2; z-index:200;}
+/* NEEDED ----- This class should be named like this:
+	#NAME_OF_YOUR_MENUcont
+*/
+#slideMenucont{position:absolute;	height:1000; width:200; visibility:hidden;}

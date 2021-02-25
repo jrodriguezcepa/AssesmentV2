@@ -1,0 +1,24 @@
+{
+	"valids": [
+		"10519", "10521", "10523", "10525"
+	],
+	"errors": [
+		{
+			"id": "10520",
+			"error": "Ciudad"
+		},
+		{
+			"id": "10522",
+			"error": "Apellido no puede contener números"
+		},
+		{
+			"id": "10524",
+			"error": "Fecha incorrecta"
+		},
+		{
+			"id": "10563",
+			"error": "Debe ingresar un email valido"
+		}
+	],
+	"final_text": "<a href=\"http://elearning.cepasafedrive.com?user=prueba\">Usted tiene asociadas lecciones en el eLearning</a>"
+}

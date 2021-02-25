@@ -1,0 +1,14 @@
+{
+	"valids": [
+		"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"
+	],
+	"errors": [
+		{
+			"id": "12",
+			"error": "Ciudad"
+		}
+	],
+	"final_text": "<a href=\"http://elearning.cepasafedrive.com?user=prueba\">Usted tiene asociadas lecciones en el eLearning</a>"
+}
+
+
