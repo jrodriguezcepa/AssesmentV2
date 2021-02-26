@@ -104,7 +104,7 @@ public class UserSessionData implements Serializable{
 	public void setPsiAccept(boolean psiAccept) {
 		this.psiAccept = psiAccept;
 	}
-
+//prueba git 
 	public boolean isMutual() {
 		if(filter != null && filter.getAssesment() != null) {
 			return filter.getAssesment().equals(AssesmentData.MUTUAL_DA);
