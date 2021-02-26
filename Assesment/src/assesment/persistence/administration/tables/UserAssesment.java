@@ -47,6 +47,9 @@ public class UserAssesment implements Serializable {
     
     private boolean reportSended;
     private Date acceptTerms;
+    private Date creationDate;
+    private Integer fdmRegistry; 
+
     
     public UserAssesment(){}
 	
@@ -356,6 +359,24 @@ public class UserAssesment implements Serializable {
 	public UserAssesmentData getUserAssesmentData() {
 		return new UserAssesmentData(pk.getUser().getUserData(), pk.getAssesment().getData(), answers.size(), endDate);
 	}
+	
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Integer getFdmRegistry() {
+		return fdmRegistry;
+	}
+
+	public void setFdmRegistry(Integer fdmRegistry) {
+		this.fdmRegistry = fdmRegistry;
+	}
+
 
 	
 }
