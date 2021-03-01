@@ -53,7 +53,8 @@ public class WebinarAction extends AbstractAction {
         }
         code = code.trim().toUpperCase();
         
-        Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
+        boolean server = true;
+        Connection connDC = (server || SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
         Statement stDC = connDC.createStatement();
 
         ResultSet set = stDC.executeQuery("SELECT type, state, corporation FROM cepaactivity WHERE code = '"+code+"'");
@@ -117,6 +118,9 @@ public class WebinarAction extends AbstractAction {
 		        	} else if(isMonitores(activityType)) {
 		        		session.setAttribute("g", String.valueOf(AssesmentData.MONITORES_WEBINAR));
 		        		session.setAttribute("p","7188682edca7c522284a66214fbb668b");
+		        	} else if(isTritren(activityType)) {
+		        		session.setAttribute("g", String.valueOf(AssesmentData.TRITREN_WEBINAR));
+		        		session.setAttribute("p","29573138f81d34ddb6c64976d321faed");
 		        	}else{
 		        		session.setAttribute("g", String.valueOf(AssesmentData.BTWPLUS_WEBINAR));
 		        		session.setAttribute("p","424bc7ad54c3c02020fff287374827ae");
@@ -132,6 +136,10 @@ public class WebinarAction extends AbstractAction {
             return mapping.findForward("error");
         }
     }
+
+	private boolean isTritren(String activity) {
+		return activity.equals("tablet.form.tritren");
+	}
 
 	private boolean isMonitores(String activity) {
 		return activity.toLowerCase().contains("monitor") || activity.contains("multipli");

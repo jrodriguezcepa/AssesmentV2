@@ -30,7 +30,7 @@ public class CopiarModuloAssessment {
 
             Statement st6 = conn.createStatement();
 
-            int[] assessmentId = {1600};
+            int[] assessmentId = {1644};
             /*ResultSet set = st1.executeQuery("SELECT MAX(moduleorder) FROM modules WHERE assesment = "+assessmentId);
             set.next();*/
             int moduleOrder = 1;//set.getInt(1)+1;
@@ -53,7 +53,7 @@ public class CopiarModuloAssessment {
             String sql = "";
 
             for(int i = 0; i < assessmentId.length; i++) {
-	            set = st1.executeQuery("SELECT * FROM modules WHERE assesment IN (1396,1398,1399,1400,1401,1402)");
+	            set = st1.executeQuery("SELECT * FROM modules WHERE id IN (3642)");
 	        	while(set.next()) {
 	        		String oldModuleId = set.getString("id");
 	        		String newKey = "assesment"+assessmentId[i]+".module"+moduleId+".name"; 
@@ -78,7 +78,7 @@ public class CopiarModuloAssessment {
 	            		String oldQuestionId = set3.getString("id");
 	            		newKey = "module"+moduleId+".question"+questionId+".text"; 
 	            		String image = (set3.getString(6) != null) ? "'"+set3.getString(6)+"'" : "NULL";
-	            		sql = "INSERT INTO questions VALUES ("+questionId+", "+moduleId+", '"+newKey+"', "+set3.getString(4)+", "+set3.getString(5)+", "+image+", "+set3.getString(7)+", "+set3.getString(8)+");\n";
+	            		sql = "INSERT INTO questions VALUES ("+questionId+", "+moduleId+", '"+newKey+"', "+set3.getString(4)+", "+set3.getString(5)+", "+image+", "+set3.getString(7)+", "+set3.getString(8)+",'f');\n";
 	                    fos.write(sql.getBytes());
 	
 	                    set2 = st2.executeQuery("SELECT * FROM generalmessages WHERE labelkey = '"+set3.getString("key")+"' ");

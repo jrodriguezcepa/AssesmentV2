@@ -235,6 +235,7 @@ public class AssesmentData extends AssesmentAttributes {
 
 	public static final int BTW2_REFRESH_WEBINAR = 1504;
 	public static final int MONITORES_WEBINAR = 1517;
+	public static final int TRITREN_WEBINAR = 1644;
 
 	public static final int GUINEZ_INGENIERIA = 1531;
 	public static final int LIGHT_VEHICLES_2020 = 1597;
@@ -250,6 +251,7 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int ALRIYADAH_INITIALA = 1634;
 	public static final int ALRIYADAH_INITIALB = 1635;
 	public static final int ALRIYADAH_FINAL = 1636;
+
 	
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;
