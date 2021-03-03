@@ -1656,6 +1656,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 								query = session.createSQLQuery(q).addScalar("correct", Hibernate.INTEGER).addScalar("incorrect", Hibernate.INTEGER);
 								query.setMaxResults(1);
 								if(query.list()!=null && query.list().size() > 0) {
+									System.out.println("**********");
 									Object[] results=(Object[]) query.list().get(0);
 									ret[pos+1]=String.valueOf(results[0]);
 									ret[pos+2]=String.valueOf(results[1]);

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.administration.tables" >
+    <class name="UserAssesmentBKP" table="userassesmentsbkp">
+		<composite-id>
+       		<key-many-to-one
+       			 name="assesment"
+       			 column="assesment"
+       			 class="assesment.persistence.assesment.tables.AssesmentBKP"
+       	 	/>
+       	 	<key-many-to-one
+       	 		 name="user"
+       	 		 column="loginname"
+       	 		 class="assesment.persistence.user.tables.User"
+       	 	/> 
+        </composite-id>
+       	     
+    	<set name="answers" table="useranswersbkp" cascade="all">
+			<key>
+					<column name="assesment" /> 
+					<column name="loginname" />
+			</key>
+	        <many-to-many column="answer" class="assesment.persistence.administration.tables.UserAnswerBKP"/>
+	    </set>
+	    
+    	<set name="psianswers" table="userpsianswersbkp" cascade="all">
+			<key>
+					<column name="assesment" /> 
+					<column name="loginname" />
+			</key>
+	        <many-to-many column="psianswer" class="assesment.persistence.administration.tables.UserPsiAnswerBKP"/>
+	    </set>
+
+		<property name="psiresult1" column="psiresult1" type="java.lang.Integer"/>	    
+		<property name="psiresult2" column="psiresult2" type="java.lang.Integer"/>	    
+		<property name="psiresult3" column="psiresult3" type="java.lang.Integer"/>	    
+		<property name="psiresult4" column="psiresult4" type="java.lang.Integer"/>	    
+		<property name="psiresult5" column="psiresult5" type="java.lang.Integer"/>	    
+		<property name="psiresult6" column="psiresult6" type="java.lang.Integer"/>	    
+		
+		<property name="psiId" 		column="psiid" 		type="java.lang.Integer"/>	    
+		<property name="psiTestId" 	column="psitestid" 	type="java.lang.Integer"/>	    
+
+		<property name="newHire" 	column="newhire" 	type="java.lang.Integer"/>
+
+		<property name="elearningRedirect" column="elearningredirect" type="java.lang.String" />
+		<property name="elearningInstance" column="elearninginstance" type="java.lang.Integer" />
+		
+		<property name="elearningEnabled" type="java.lang.Boolean" not-null="true" >
+			<column name="elearningenabled" default="true" />
+		</property>
+		
+		<property name="endDate"	column="enddate" 	type="java.util.Date" />
+		<property name="reportSended" type="java.lang.Boolean" not-null="true" >
+			<column name="reportsendede" default="false" />
+		</property>
+		<property name="acceptTerms"	column="acceptTerms" 	type="java.util.Date" />
+		
+	</class>
+
+</hibernate-mapping>

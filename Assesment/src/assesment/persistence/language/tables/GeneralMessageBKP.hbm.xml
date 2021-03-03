@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 1.1//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.language.tables">
+    <class
+        name="GeneralMessageBKP"
+        table="generalmessagesbkp">
+
+		<id 
+	 		name="labelKey" 
+	 		column="labelKey"
+	 		type="java.lang.String"
+	 		length="100">
+	 		<generator class="assigned"></generator></id>
+	 	
+	 	<many-to-one name="language" column="language"  class="assesment.persistence.language.tables.Language" not-null="true"/>
+
+	 	<property 
+	 		name="text" 
+	 		column="text"
+	 		type="java.lang.String"
+	 		not-null="true"
+	 		length="500"
+	 	/>
+
+	 	<property 
+	 		name="assessment" 
+	 		column="assessment"
+	 		type="java.lang.Integer"
+	 	/>
+    </class>
+
+</hibernate-mapping>

@@ -141,9 +141,6 @@ public abstract class UsABMBean implements SessionBean {
             	session.save(reporterAssesment);
             }else {
                 UserAssesment userAssesment = new UserAssesment(userCreating,assesmentAsociated);
-                userAssesment.setCreationDate(new Date());
-                userAssesment.setFdmRegistry(null);
-
                 session.save(userAssesment);
                 
                 if(assesmentAsociated.getCorporation().getId().intValue() == CorporationData.JJ) {
@@ -179,8 +176,6 @@ public abstract class UsABMBean implements SessionBean {
 			if(assesment != null) {
 	            Assesment assesmentAsociated = (Assesment)session.load(Assesment.class,assesment);
 	            UserAssesment userAssesment = new UserAssesment(userCreating,assesmentAsociated);
-                userAssesment.setCreationDate(new Date());
-                userAssesment.setFdmRegistry(null);
 	            session.save(userAssesment);
 	        }
         }
@@ -227,8 +222,6 @@ public abstract class UsABMBean implements SessionBean {
 	            	session.save(reporterAssesment);
 	            }else {
 	                UserAssesment userAssesment = new UserAssesment(userCreating,assesmentAsociated);
-	                userAssesment.setCreationDate(new Date());
-	                userAssesment.setFdmRegistry(null);
 	                session.save(userAssesment);
 	                
 	                if(assesmentAsociated.getCorporation().getId().intValue() == CorporationData.JJ) {
@@ -263,8 +256,6 @@ public abstract class UsABMBean implements SessionBean {
             	session.save(reporterAssesment);
             }else {
                 UserAssesment userAssesment = new UserAssesment(user,assesmentAsociated);
-                userAssesment.setCreationDate(new Date());
-                userAssesment.setFdmRegistry(null);
                 session.save(userAssesment);
                 
                 if(assesmentAsociated.getCorporation().getId().intValue() == CorporationData.JJ) {
@@ -611,8 +602,6 @@ public abstract class UsABMBean implements SessionBean {
             Integer count = (Integer)query.uniqueResult();
             if (count==0) {
                 UserAssesment userAssesment = new UserAssesment(userObj,assesmentObj);
-                userAssesment.setCreationDate(new Date());
-                userAssesment.setFdmRegistry(null);
                 session.save(userAssesment);	
             }
 
@@ -1025,8 +1014,6 @@ public abstract class UsABMBean implements SessionBean {
 	    	session.save(user);
 	    	
 	    	UserAssesment userA = new UserAssesment(user,(Assesment)session.load(Assesment.class, assesment));
-	    	userA.setCreationDate(new Date());
-	    	userA.setFdmRegistry(null);
 	    	session.save(userA);
 	        return user.getUserData();
         } catch (Exception e) {
@@ -1044,8 +1031,6 @@ public abstract class UsABMBean implements SessionBean {
 	        Session session = HibernateAccess.currentSession();
 	        User user = (User)session.load(User.class, login);
 	    	UserAssesment userA = new UserAssesment(user,(Assesment)session.load(Assesment.class, assesment));
-	    	userA.setCreationDate(new Date());
-	    	userA.setFdmRegistry(null);
 	    	session.save(userA);
 	    	
 	    	return user.getUserData();
@@ -1198,8 +1183,6 @@ public abstract class UsABMBean implements SessionBean {
     		while(it.hasNext()) {
     			Integer assesmentId = (Integer)it.next();
     			UserAssesment ua = new UserAssesment(user,assesmentId);
-    	    	ua.setCreationDate(new Date());
-    	    	ua.setFdmRegistry(null);
     			session.save(ua);
     		}
     	}catch (Exception e) {
@@ -1238,8 +1221,6 @@ public abstract class UsABMBean implements SessionBean {
 		while(it.hasNext()) {
 			Integer assesmentId = (Integer)it.next();
 			UserAssesment ua = new UserAssesment(user,assesmentId);
-	    	ua.setCreationDate(new Date());
-	    	ua.setFdmRegistry(null);
 			session.save(ua);
 		}
 	}

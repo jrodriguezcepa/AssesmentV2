@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="assesment.persistence.question.tables" >
+
+	<class name="QuestionBKP" table="questionsbkp">
+		<id	column="id"	name="id" type="java.lang.Integer">
+            <generator class="assigned">
+            </generator>
+		</id>
+	    
+		<many-to-one name="module" column="module" class="assesment.persistence.module.tables.ModuleBKP" not-null="true"/>
+		
+	    <property name="key" column="key" type="java.lang.String" not-null="true"/>
+
+	    <property name="order" column="questionorder" type="java.lang.Integer" not-null="true"/>
+	    <property name="type" column="type" type="java.lang.Integer" not-null="true"/>
+	    
+	    <property name="image" column="image" type="java.lang.String" />
+	    <property name="testType" column="testtype" type="java.lang.Integer"/>
+
+	    <property name="groupId" column="groupid" type="java.lang.Integer"/>
+	    <property name="wrt" />
+
+		<set inverse="true" name="answerSet"  cascade="all-delete-orphan">
+			<key column="question" not-null="true"/>
+			<one-to-many class="assesment.persistence.question.tables.AnswerBKP" />
+		</set>
+
+  	</class>
+
+</hibernate-mapping>
