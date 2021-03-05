@@ -107,7 +107,7 @@ public class UserSessionData implements Serializable{
 //prueba git 
 	public boolean isMutual() {
 		if(filter != null && filter.getAssesment() != null) {
-			return filter.getAssesment().equals(AssesmentData.MUTUAL_DA);
+			return filter.getAssesment().equals(AssesmentData.MUTUAL_DA) || filter.getAssesment().equals(AssesmentData.MUTUAL_RSMM);
 		}
 		return false;
 	}

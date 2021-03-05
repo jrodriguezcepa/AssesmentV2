@@ -864,4 +864,18 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	        }
 	        return null;
 	    }
+
+
+		/**
+		 * @ejb.interface-method
+		 * @ejb.permission role-name = "administrator,systemaccess"
+		 */
+		public Collection getWebinarPersonalData(String login, UserSessionData userSessionData) throws Exception {
+	        try {
+	            return AssesmentReportUtil.getHome().create().getWebinarPersonalData(login, userSessionData);
+	        }catch (Exception e) {
+	            handler.handleException("getWebinarPersonalData",e);
+	        }
+	        return new LinkedList();
+	    }
 }

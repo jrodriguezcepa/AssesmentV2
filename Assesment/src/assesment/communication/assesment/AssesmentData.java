@@ -251,6 +251,8 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int ALRIYADAH_INITIALA = 1634;
 	public static final int ALRIYADAH_INITIALB = 1635;
 	public static final int ALRIYADAH_FINAL = 1636;
+	
+    public static final int MUTUAL_RSMM = 1703;
 
 	
     private Collection<ModuleData> modules;

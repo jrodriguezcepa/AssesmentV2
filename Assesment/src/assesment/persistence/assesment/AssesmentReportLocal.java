@@ -72,6 +72,8 @@ public interface AssesmentReportLocal
 
    public java.lang.String[] getWebinarAdvance( java.lang.String wbCode,java.lang.String assesmentId,java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.Collection getWebinarPersonalData( java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
    public java.util.HashMap getUserCediResults( java.lang.Integer[] cediId,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public java.lang.Integer getAssesmentId( java.lang.String user,java.lang.String webinarCode,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;

@@ -41,7 +41,9 @@
 	  	String firstName = (Util.empty(request.getParameter("firstName"))) ? "" : request.getParameter("firstName");
 	  	String lastName = (Util.empty(request.getParameter("lastName"))) ? "" : request.getParameter("lastName");
 	  
-		Collection users = sys.getUserReportFacade().findAllWebinarParticipants(wbCode, firstName, lastName, sys.getUserSessionData());
+	  	Collection users = null;
+	  	if(!Util.empty(wbCode) || !Util.empty(firstName) || !Util.empty(lastName))
+	  		users = sys.getUserReportFacade().findAllWebinarParticipants(wbCode, firstName, lastName, sys.getUserSessionData());
 %>
 <script language="javascript" src='../util/js/Prepared_Parameters.js' type='text/javascript' ></script>
 
@@ -125,7 +127,7 @@ function deleteIFConfirm(form,msg){
 				        	<td class="guide2" width="10%" align="left"></td>
 				        
 				        </tr>
-<%			if(users.size() == 0) {
+<%			if(users == null || users.size() == 0) {
 %>		      			<tr class="linetwo">
 			            	<td colspan="5"><%=messages.getText("generic.messages.notresult")%></td>
             			</tr>
@@ -133,27 +135,25 @@ function deleteIFConfirm(form,msg){
 		    	Iterator it = users.iterator();
 				boolean linetwo = false;
 				while(it.hasNext()){
-
+					linetwo = !linetwo;	
 					AssessmentUserData user = (AssessmentUserData)it.next();
 					String [] progress=sys.getAssesmentReportFacade().getWebinarAdvance(user.getExtraData3(), String.valueOf(user.getAssesment()), user.getLoginname(), sys.getUserSessionData());
 
 %>	            		<tr class='<%=(linetwo)?"linetwo":"lineone"%>'>
-<%					linetwo = !linetwo;	
-%>
 					        <td width="5%" align="left"></td>
 	          	    		<td width="25%" align="left">
-	          	    		<a href='layout.jsp?refer=/assesment/webinarUserView.jsp?loginname=<%=user.getLoginname()%>&code=<%=user.getExtraData3()%>&assesment=<%= String.valueOf(user.getAssesment())%>' >
-	        			        	<%=user.getFirstname()%>
+	          	    			<a href='layout.jsp?refer=/assesment/webinarUserView.jsp?loginname=<%=user.getLoginname()%>&code=<%=user.getExtraData3()%>&assesment=<%= String.valueOf(user.getAssesment())%>' >
+	        			        	<%=user.getFirstname()+" "+user.getLastname()%>
 	                			</a>
 							</td>
 							<td width="25%" align="left">
-							
-	          	    		<a href='layout.jsp?refer=/assesment/webinarUserView.jsp?loginname=<%=user.getLoginname()%>&code=<%=user.getExtraData3()%>&assesment=<%=String.valueOf(user.getAssesment())%>' >
-	        			        	<%=user.getLastname()%>
+								<a href='<%="layout.jsp?refer=/assesment/webinarView.jsp?code="+user.getExtraData3()+"&type=assessment"+user.getAssesment()+".name&assesment="+user.getAssesment()%>' >
+	        			        	<%=user.getExtraData3()%>
 	                			</a>
-							</td>            				<td width="20%" align="left"><%=user.getExtraData3()%></td>
-            				 <td width="20%" align="left"><%=progress[4] %></td>
-            				 <td width="5%" align="left"></td>
+							</td>            				
+							<td width="20%" align="left"><%=messages.getText("assessment"+user.getAssesment()+".name")%></td>
+            				<td width="20%" align="left"><%=user.getWebinarStatus(messages)%></td>
+            				<td width="5%" align="left"></td>
             				 
             				
 		    	    	</tr>

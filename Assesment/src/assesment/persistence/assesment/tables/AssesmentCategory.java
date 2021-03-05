@@ -13,6 +13,7 @@ public class AssesmentCategory {
     private Date start;
     private Date end;
     private Boolean changeName;
+    private Boolean showReport;
     
     public AssesmentCategory() {
     }
@@ -52,6 +53,14 @@ public class AssesmentCategory {
 
 	public void setChangeName(Boolean changeName) {
 		this.changeName = changeName;
+	}
+
+	public Boolean getShowReport() {
+		return showReport;
+	}
+
+	public void setShowReport(Boolean showReport) {
+		this.showReport = showReport;
 	}
 
 }

@@ -614,9 +614,10 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 				throw new DeslogedException("findWebinarParticipants", "userSessionData = null");
 			}
 			
-            SQLQuery query = session.createSQLQuery("SELECT firstname, lastname, u.loginname, u.email, u.extradata3, enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate " +
+            SQLQuery query = session.createSQLQuery("SELECT firstname, lastname, u.loginname, u.email, u.extradata3, enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate, ua.assesment, uar.correct, uar.incorrect " +
             		"FROM userassesments ua " +
             		"LEFT JOIN sendedreports sr ON sr.login = ua.loginname AND sr.assessment = ua.assesment " +
+            		"LEFT JOIN userassesmentresults uar on uar.login = ua.loginname AND uar.assesment = ua.assesment " + 
             		"JOIN users u ON u.loginname = ua.loginname " +
             		"WHERE u.extradata3='"+code+"' and  ua.assesment = "+assesment);
             query.addScalar("firstname", Hibernate.STRING);
@@ -629,7 +630,10 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             query.addScalar("id", Hibernate.INTEGER);
             query.addScalar("sended", Hibernate.BOOLEAN);
             query.addScalar("certificate", Hibernate.BOOLEAN);
-            
+            query.addScalar("assesment", Hibernate.INTEGER);
+            query.addScalar("correct", Hibernate.INTEGER);
+            query.addScalar("incorrect", Hibernate.INTEGER);
+
             HashMap<String, AssessmentUserData> values = new HashMap<String, AssessmentUserData>();
             Iterator it = query.list().iterator();
             while(it.hasNext()) {
@@ -646,7 +650,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	}
             }
             
-            query = session.createSQLQuery("SELECT loginname, count(*) AS c FROM useranswers ua " +
+          /*  query = session.createSQLQuery("SELECT loginname, count(*) AS c FROM useranswers ua " +
             		"JOIN answerdata ad ON ad.id = ua.answer " +
             		"JOIN questions q ON ad.question = q.id " +
             		"JOIN answers a ON a.id = ad.answer " +
@@ -658,7 +662,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	if(values.containsKey(data[0])) {
             		values.get(data[0]).setCorrect((Integer) data[1]);
             	}
-            }
+            }*/
 
             list.addAll(values.values());
 		} catch (Exception e) {
@@ -673,7 +677,6 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 	 *                 "administrator,systemaccess,accesscode,pepsico_candidatos,basf_assessment,clientreporter,cepareporter"
 	 */
 	public Collection findAllWebinarParticipants(String wbCode,String firstName,String lastName,UserSessionData userSessionData) throws Exception {
-		String[] assesments = {"1149","1270", "1324","1327", "1471"};
     	LinkedList<AssessmentUserData> list = new LinkedList<AssessmentUserData>();
 
 		try {
@@ -683,16 +686,25 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 			if (userSessionData == null) {
 				throw new DeslogedException("findAllWebinarParticipants", "userSessionData = null");
 			}
+			
+			String extra = "AND u.extradata3 IS NOT NULL ";
+			if(!Util.empty(wbCode)) {
+				extra += "AND UPPER(u.extradata3) LIKE '%"+wbCode.toUpperCase()+"%' ";
+			}
+			if(!Util.empty(firstName)) {
+				extra += "AND UPPER(u.firstname) LIKE '%"+firstName.toUpperCase()+"%' ";
+			}
+			if(!Util.empty(lastName)) {
+				extra += "AND UPPER(u.lastName) LIKE '%"+lastName.toUpperCase()+"%' ";
+			}
 			Session session = HibernateAccess.currentSession();
-			String assesment="";
-			String sql="SELECT firstname, lastname, u.loginname, u.email, u.extradata3, ua.assesment,enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate " + 
+			String sql="SELECT firstname, lastname, u.loginname, u.email, u.extradata3, ua.assesment,enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate, uar.correct, uar.incorrect " + 
 					            		"FROM userassesments ua " + 
 					            		"LEFT JOIN sendedreports sr ON sr.login = ua.loginname AND sr.assessment = ua.assesment " + 
+					            		"LEFT JOIN userassesmentresults uar on uar.login = ua.loginname AND uar.assesment = ua.assesment " +
 					            		"JOIN users u ON u.loginname = ua.loginname " + 
-					            		"WHERE  ua.enddate IS NOT NULL AND u.extradata3 IS NOT NULL AND u.extradata3 LIKE '%"+wbCode+"%' AND firstname LIKE '%"+firstName+"%' AND lastname LIKE '%"+lastName+"%' AND ua.assesment in (1149, 1270, 1324, 1327, 1471) ";
-			if (wbCode.equals("")&&firstName.equals("")&&lastName.equals("")) {
-				sql+= " order by ua.enddate desc limit 30";
-			}
+					            		"WHERE ua.assesment in (1149, 1270, 1324, 1327, 1471) " + extra;
+			sql+= " ORDER BY ua.enddate DESC";
 			SQLQuery query = session.createSQLQuery(sql);
             query.addScalar("firstname", Hibernate.STRING);
             query.addScalar("lastname", Hibernate.STRING);
@@ -705,6 +717,8 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             query.addScalar("sended", Hibernate.BOOLEAN);
             query.addScalar("certificate", Hibernate.BOOLEAN);
             query.addScalar("assesment", Hibernate.INTEGER);
+            query.addScalar("correct", Hibernate.INTEGER);
+            query.addScalar("incorrect", Hibernate.INTEGER);
 
             HashMap<String, AssessmentUserData> values = new HashMap<String, AssessmentUserData>();
             Iterator it = query.list().iterator();
@@ -713,7 +727,12 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	values.put((String)data[2], new AssessmentUserData(data));
             }
             
-            query = session.createSQLQuery("SELECT ua.loginname, COUNT(*) AS c FROM useranswers ua JOIN users u ON u.loginname=ua.loginname WHERE assesment in (1149, 1270, 1324, 1327, 1471) AND u.extradata3 IS NOT NULL AND u.extradata3 LIKE '%"+wbCode+"%' AND u.firstname LIKE '%"+firstName+"%' OR u.lastname LIKE '%"+lastName+"%' GROUP BY ua.loginname").addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
+            /*sql = "SELECT ua.loginname, COUNT(*) AS c "
+            		+ "FROM useranswers ua "
+            		+ "JOIN users u ON u.loginname=ua.loginname "
+            		+ "WHERE assesment in (1149, 1270, 1324, 1327, 1471) AND enddate IS NULL " 
+            		+ "AND u.extradata3 IS NOT NULL " + extra +" GROUP BY ua.loginname";
+            query = session.createSQLQuery(sql).addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
 			if(wbCode.equals("")&&firstName.equals("")&&lastName.equals("")) {
 	            query.setMaxResults(5);
 			}
@@ -724,23 +743,8 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	if(values.containsKey(data[0])) {
             		values.get(data[0]).setAnswers((Integer) data[1]);
             	}
-            }
+            }*/
             
-            query = session.createSQLQuery("SELECT ua.loginname, count(*) AS c FROM useranswers ua " +
-            		"JOIN answerdata ad ON ad.id = ua.answer " +
-            		"JOIN questions q ON ad.question = q.id " +
-            		"JOIN answers a ON a.id = ad.answer " +
-            		"JOIN users u ON u.loginname=ua.loginname "+
-            		"WHERE assesment in (1149, 1270, 1324, 1327, 1471) AND q.testtype = 1 AND a.type = 0 AND u.extradata3 IS NOT NULL AND u.extradata3 LIKE '%"+wbCode+"%' AND u.firstname LIKE '%"+firstName+"%' AND u.lastname LIKE '%"+lastName+"%' "+ 
-            		"GROUP BY ua.loginname limit 10").addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
-            it = query.list().iterator();
-            while(it.hasNext()) {
-            	Object[] data = (Object[])it.next();
-            	if(values.containsKey(data[0])) {
-            		values.get(data[0]).setCorrect((Integer) data[1]);
-            	}
-            }
-
             list.addAll(values.values());
 			
 			} catch (Exception e) {
@@ -2894,7 +2898,10 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             query.addScalar("id", Hibernate.INTEGER);
             query.addScalar("sended", Hibernate.BOOLEAN);
             query.addScalar("certificate", Hibernate.BOOLEAN);
-            
+            query.addScalar("assesment", Hibernate.INTEGER);
+            query.addScalar("correct", Hibernate.INTEGER);
+            query.addScalar("incorrect", Hibernate.INTEGER);
+
             HashMap<String, AssessmentUserData> values = new HashMap<String, AssessmentUserData>();
             Iterator it = query.list().iterator();
             while(it.hasNext()) {
@@ -2902,7 +2909,11 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	values.put((String)data[2], new AssessmentUserData(data));
             }
             
-            query = session.createSQLQuery("SELECT loginname, COUNT(*) AS c FROM useranswers WHERE assesment = "+assesment+" and loginname='"+user+"' GROUP BY loginname").addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
+            query = session.createSQLQuery("SELECT ua.loginname, COUNT(*) AS c "
+            		+ "FROM useranswers ua "
+            		+ "JOIN users u ON u.loginngame = ua.loginname "
+            		+ "JOIN userassesments uas ON uas.assesment = ua.assesment AND uas.loginname = ua.loginname "
+            		+ "WHERE uas.enddate IS NULL AND u.extradata3='"+code+"' AND assesment = "+assesment+" and ua.loginname='"+user+"' GROUP BY ua.loginname").addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
             it = query.list().iterator();
             while(it.hasNext()) {
             	Object[] data = (Object[])it.next();
@@ -2911,7 +2922,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	}
             }
             
-            query = session.createSQLQuery("SELECT loginname, count(*) AS c FROM useranswers ua " +
+           /* query = session.createSQLQuery("SELECT loginname, count(*) AS c FROM useranswers ua " +
             		"JOIN answerdata ad ON ad.id = ua.answer " +
             		"JOIN questions q ON ad.question = q.id " +
             		"JOIN answers a ON a.id = ad.answer " +
@@ -2923,7 +2934,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	if(values.containsKey(data[0])) {
             		values.get(data[0]).setCorrect((Integer) data[1]);
             	}
-            }
+            }*/
 
             list.addAll(values.values());
 		} catch (Exception e) {

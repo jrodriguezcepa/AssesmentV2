@@ -17,6 +17,9 @@
 		<property name="changeName" type="java.lang.Boolean" not-null="true" >
 			<column name="changeName" default="false" />
 		</property>
+		<property name="showReport" type="java.lang.Boolean" not-null="true" >
+			<column name="showReport" default="true" />
+		</property>
        
 	</class>
 

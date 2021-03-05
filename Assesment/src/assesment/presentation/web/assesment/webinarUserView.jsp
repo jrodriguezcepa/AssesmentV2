@@ -1,3 +1,4 @@
+<%@page import="assesment.communication.question.QuestionData"%>
 <%@page language="java"
 	import="assesment.business.*"
 	import="assesment.communication.language.*"
@@ -126,7 +127,39 @@ function deleteIFConfirm(form,msg){
 					<jsp:include page="../component/utilityboxbottom.jsp" />
 				</td>
 			</tr>
-<%		if(advance[0].equals("Completo")) {
+<%		Collection personalData = sys.getAssesmentReportFacade().getWebinarPersonalData(loginName, sys.getUserSessionData());
+		if(personalData != null && personalData.size() > 0) {
+%>	  		<tr>
+	  			<td>
+			  		<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.data.personaldata")%>' />
+				    	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+<%			Iterator it = personalData.iterator();
+			while(it.hasNext()) {
+				Object[] data = (Object[])it.next();
+%>					  		<tr class="line">
+			    				<td align="right">
+									<%=messages.getText((String)data[1])%>
+								</td>
+<%				String value = "---";
+				switch(((Integer)data[2]).intValue()) {
+				case QuestionData.EXCLUDED_OPTIONS:
+					value = messages.getText("question"+data[0]+".answer"+data[4]+".text");
+					break;
+				case QuestionData.DATE:
+					value = Util.formatDate((Date)data[6]);
+					break;
+				case QuestionData.EMAIL: case QuestionData.TEXT:
+					value = (String)data[5];
+					break;
+				}
+%>								
+			    				<td align="left">
+									<%=value%>
+								</td>
+							</tr>
+<%			}
+		}
+		if(advance[0].equals("Completo")) {
 %>	
 			<tr>
 				<td colspan="2">

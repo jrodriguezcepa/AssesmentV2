@@ -206,7 +206,6 @@
 %>
 <%		if(!userSessionData.isMutual()) {
 %>		       <div class="cepa_logo">CEPA Safe Drive</div>
-<%		} %>
                <span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
 <%		}
 %>             <span class="exit"><a href="logout.jsp"><%=messages.getText("generic.messages.logout")%></a></span>

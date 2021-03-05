@@ -103,6 +103,9 @@ public interface AssesmentReport
    public java.lang.String[] getWebinarAdvance( java.lang.String wbCode,java.lang.String assesmentId,java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getWebinarPersonalData( java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.HashMap getUserCediResults( java.lang.Integer[] cediId,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 

@@ -53,7 +53,7 @@ public class WebinarAction extends AbstractAction {
         }
         code = code.trim().toUpperCase();
         
-        boolean server = true;
+        boolean server = false;
         Connection connDC = (server || SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
         Statement stDC = connDC.createStatement();
 

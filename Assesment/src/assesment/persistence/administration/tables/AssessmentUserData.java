@@ -40,7 +40,9 @@ public class AssessmentUserData implements Comparable<AssessmentUserData> {
         	assesment = (Integer) data[10];
 
         if(data[4] != null)
-        extraData3 = ((String) data[4]).toUpperCase();
+        	extraData3 = ((String) data[4]).toUpperCase();
+        answers = 0;
+        correct = 0;
         if(data.length == 6) {
 	        ended = (Date) data[5];
         }else {
@@ -49,9 +51,9 @@ public class AssessmentUserData implements Comparable<AssessmentUserData> {
 	        id = (Integer) data[7];
 	        sended = (data[8] == null) ? false : ((Boolean) data[8]).booleanValue();
 	        certificate = (data[9] == null) ? false : ((Boolean) data[9]).booleanValue();
+	        correct = (data[11] == null) ? 0 : ((Integer) data[11]).intValue();
+	        answers = (data[12] == null) ? correct : ((Integer) data[12]).intValue() + correct;
         }
-        answers = 0;
-        correct = 0;
 	}
 
 	public String getFirstname() {
@@ -149,6 +151,16 @@ public class AssessmentUserData implements Comparable<AssessmentUserData> {
 		return v;
 	}
 	
+	public String getWebinarStatus(Text messages) {
+		if(!finished) {
+			return messages.getText("assesment.status.pending");
+		}
+		if(answers == 0) {
+			return messages.getText("report.users.total.notstarted");
+		}
+		return String.valueOf(correct * 100 / answers)+"%";
+	}
+
 	public boolean isNotStarted() {
 		return answers == 0;
 	}

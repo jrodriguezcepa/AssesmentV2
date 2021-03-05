@@ -127,6 +127,16 @@ public class CategoryData implements Comparable<CategoryData> {
 	public Collection<AssesmentAttributes> getAssesments() {
 		return assesments;
 	}
+	
+	public int getShowAssesmentsSize() {
+		int i = 0;
+		Iterator<AssesmentAttributes> it = assesments.iterator();
+		while(it.hasNext()) {
+			if(it.next().getShowReport())
+				i++;
+		}
+		return i;
+	}
 
 	public void setAssesments(Collection<AssesmentAttributes> assesments) {
 		this.assesments = assesments;

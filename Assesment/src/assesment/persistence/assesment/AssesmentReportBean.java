@@ -1333,6 +1333,42 @@ public abstract class AssesmentReportBean implements SessionBean {
 		return result;
 	}
 
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,systemaccess"
+	 */
+	public Collection getWebinarPersonalData(String login, UserSessionData userSessionData) throws Exception {
+		Session session = null;
+		String[] result = new String[5];
+		
+		try {
+			session = HibernateAccess.currentSession();
+			String sql = "select q.id, q.key,  q.type, ad.question, ad.answer, ad.text, ad.date, uas.fdmregistry " + 
+					"from useranswers ua " + 
+					"join userassesments uas on uas.assesment = ua.assesment and ua.loginname = uas.loginname " + 
+					"join answerdata ad on ad.id = ua.answer " + 
+					"join questions q on q.id = ad.question " + 
+					"join modules m on m.id = q.module " + 
+					"where ua.loginname = '"+login+"' " + 
+					"and m.moduleorder = 1 ORDER BY questionorder";
+			SQLQuery query = session.createSQLQuery(sql);
+			query.addScalar("id", Hibernate.INTEGER);
+			query.addScalar("key", Hibernate.STRING);
+			query.addScalar("type", Hibernate.INTEGER);
+			query.addScalar("question", Hibernate.INTEGER);
+			query.addScalar("answer", Hibernate.INTEGER);
+			query.addScalar("text", Hibernate.STRING);
+			query.addScalar("date", Hibernate.DATE);
+			query.addScalar("text", Hibernate.STRING);
+			query.addScalar("fdmregistry", Hibernate.INTEGER);
+
+			return query.list();
+		} catch (Exception e) {
+			handler.getException(e, "getWebinarPersonalData", userSessionData.getFilter().getLoginName());
+		}
+		return new LinkedList();
+	}
+
 	  /**
 	   * @ejb.interface-method 
 	   * @ejb.permission role-name = "administrator,systemaccess"

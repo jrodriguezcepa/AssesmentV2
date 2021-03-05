@@ -55,6 +55,7 @@ public class AssesmentAttributes implements Comparable<AssesmentAttributes> {
 	private boolean untilApproved;
 
 	private String link;
+	private Boolean showReport;
 
 	public AssesmentAttributes() {
     }
@@ -441,4 +442,13 @@ public class AssesmentAttributes implements Comparable<AssesmentAttributes> {
 	public void setLink(String link) {
 		this.link = link;
 	}
+
+	public void setShowReport(Boolean showReport) {
+		this.showReport = showReport;
+	}
+
+	public Boolean getShowReport() {
+		return showReport;
+	}
+
 }

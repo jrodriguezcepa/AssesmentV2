@@ -304,15 +304,21 @@
 			if(mercadolivre || mercadolibre) {
 				if(itC.hasNext()) {
 					CategoryData c = itC.next();
-					lenA += c.getAssesments().size();
-%>					<td colspan="<%=String.valueOf(c.getAssesments().size())%>" class="cell"><%=messages.getText(c.getKey()) %></td>				
-<%				}
+					int s = c.getShowAssesmentsSize();
+					if(s > 0) {
+						lenA += s;
+%>						<td colspan="<%=String.valueOf(s)%>" class="cell"><%=messages.getText(c.getKey()) %></td>				
+<%					}
+				}
 			} else {
 				while(itC.hasNext()) {
 					CategoryData c = itC.next();
-					lenA += c.getAssesments().size() ;
-%>					<td colspan="<%=String.valueOf(c.getAssesments().size())%>" class="cell"><%=messages.getText(c.getKey()) %></td>				
-<%				}
+					int s = c.getShowAssesmentsSize();
+					if(s > 0) {
+						lenA += s;
+%>					<td colspan="<%=String.valueOf(s)%>" class="cell"><%=messages.getText(c.getKey()) %></td>				
+<%					}
+				}
 			}
 %>				</tr>
 				<tr>
@@ -339,11 +345,12 @@
 				Iterator<AssesmentAttributes> itA = c.getOrderedAssesments();
 				while(itA.hasNext()) {
 					AssesmentAttributes a = itA.next();
-					assessmentIds[index] = a;
-					graphs.put(a.getId(), new int[]{0, 0, 0, 0});
-					String link = "report.jsp?id="+a.getId()+"&group="+idGroup;
-					String link2 = "javascript:openGraph("+a.getId()+",'"+messages.getText(a.getName())+"')";
-					index++;
+					if(a.getShowReport()) {
+						assessmentIds[index] = a;
+						graphs.put(a.getId(), new int[]{0, 0, 0, 0});
+						String link = "report.jsp?id="+a.getId()+"&group="+idGroup;
+						String link2 = "javascript:openGraph("+a.getId()+",'"+messages.getText(a.getName())+"')";
+						index++;
 %>					<td class="cell">
 						<a href="<%=link2%>" style="text-decoration: none;">
 							<img src="./imgs/graph.png"  width=15>
@@ -354,7 +361,8 @@
 							</span>
 						</a>
 					</td>				
-<%				}
+<%					}
+				}
 			}
 %>				</tr>
 <%			HashMap<String, HashMap<Integer, Object[]>> userResults = assessmentReport.getUserGroupResults(group.getId(), sys.getUserSessionData());
@@ -378,29 +386,30 @@
 <%				}
 				for(int i = 0; i < assessmentIds.length; i++) {
 					AssesmentAttributes assAtt = assessmentIds[i];
-					if(values.containsKey(assAtt.getId())) {
-						Object[] data = values.get(assAtt.getId());
-						if(((Integer)data[0]).intValue() == 0) {
-							graphs.get(assAtt.getId())[3]++;
+					if(assAtt.getShowReport()) {
+						if(values.containsKey(assAtt.getId())) {
+							Object[] data = values.get(assAtt.getId());
+							if(((Integer)data[0]).intValue() == 0) {
+								graphs.get(assAtt.getId())[3]++;
 %>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
-<%						} else {
-							String className = "cellGreen";
-							int percent = 0;
-							if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
-								percent = 100;
-								graphs.get(assAtt.getId())[2]++;
-							}else {
-								percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
-								if(percent < assAtt.getYellow()) {
-									className = "cellRed";
-									graphs.get(assAtt.getId())[0]++;
-								} else if(percent < assAtt.getGreen()) {
-									className = "cellYellow";
-									graphs.get(assAtt.getId())[1]++;
-								} else {
+<%							} else {
+								String className = "cellGreen";
+								int percent = 0;
+								if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
+									percent = 100;
 									graphs.get(assAtt.getId())[2]++;
+								}else {
+									percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
+									if(percent < assAtt.getYellow()) {
+										className = "cellRed";
+										graphs.get(assAtt.getId())[0]++;
+									} else if(percent < assAtt.getGreen()) {
+										className = "cellYellow";
+										graphs.get(assAtt.getId())[1]++;
+									} else {
+										graphs.get(assAtt.getId())[2]++;
+									}
 								}
-							}
 %>					<td class="<%=className%>">
 						<table>
 							<tr>
@@ -409,21 +418,22 @@
 										<%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%>
 									</a>
 								</td>
-<%							if(assAtt.isCertificate() && className.equals("cellGreen")) {
+<%								if(assAtt.isCertificate() && className.equals("cellGreen")) {
 %>								<td width="25%">
 									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+assAtt.getId()+",2);"%>'>
 										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
 									</a>
 								</td>
-<%							}	
+<%								}	
 %>							</tr>
 						</table>
 					</td>
-<%						}
-					} else {
-						graphs.get(assAtt.getId())[3]++;
+<%							}
+						} else {
+							graphs.get(assAtt.getId())[3]++;
 %>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
-<%					}
+<%						}
+					}
 				}
 %>				</tr>						
 <%			}

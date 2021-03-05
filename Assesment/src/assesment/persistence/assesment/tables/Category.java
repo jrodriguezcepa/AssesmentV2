@@ -118,7 +118,7 @@ public class Category {
 				c.setPtInitialText((String)data[0]);
 		}
 
-		SQLQuery q2 = session.createSQLQuery("SELECT id, name, ac.astart, ac.aend, status, yellow, green, certificate, untilapproved, link, changename FROM assesments a " + 
+		SQLQuery q2 = session.createSQLQuery("SELECT id, name, ac.astart, ac.aend, status, yellow, green, certificate, untilapproved, link, changename, showreport FROM assesments a " + 
 				"JOIN assesmentcategories ac ON ac.assesment = a.id " + 
 				"WHERE category = "+c.getId());
 		Iterator it2 = q2.list().iterator();
@@ -138,6 +138,7 @@ public class Category {
 			assessment.setCertificate((Boolean)data[7]);
 			assessment.setUntilApproved((Boolean)data[8]);
 			assessment.setLink((String)data[9]);
+			assessment.setShowReport((Boolean)data[11]);
 			c.addAssessment(assessment);
 		}
 		
@@ -159,7 +160,7 @@ public class Category {
 				c.setPtInitialText((String)data[0]);
 		}
 
-		SQLQuery q2 = session.createSQLQuery("SELECT id, name, ac.astart, ac.aend, status, yellow, green, certificate, untilapproved, link, changename FROM assesments a " + 
+		SQLQuery q2 = session.createSQLQuery("SELECT id, name, ac.astart, ac.aend, status, yellow, green, certificate, untilapproved, link, changename, showreport FROM assesments a " + 
 				"JOIN assesmentcategories ac ON ac.assesment = a.id JOIN userassesments ua ON ua.assesment = a.id " + 
 				"WHERE ua.loginname = '"+user+"' AND category = "+c.getId());
 		Iterator it2 = q2.list().iterator();
@@ -179,6 +180,7 @@ public class Category {
 			assessment.setCertificate((Boolean)data[7]);
 			assessment.setUntilApproved((Boolean)data[8]);
 			assessment.setLink((String)data[9]);
+			assessment.setShowReport((Boolean)data[11]);
 			c.addAssessment(assessment);
 		}
 		

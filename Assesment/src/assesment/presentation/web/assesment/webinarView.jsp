@@ -131,18 +131,25 @@ function deleteIFConfirm(form,msg){
 				boolean linetwo = false;
 				while(it.hasNext()){
 					AssessmentUserData user = (AssessmentUserData)it.next();
-
 					String[] advance= sys.getAssesmentReportFacade().getWebinarAdvance(code, assesmentId, user.getLoginname(),sys.getUserSessionData());
-
+					String link = "layout.jsp?refer=/assesment/webinarUserView.jsp?loginname="+user.getLoginname()+"&code="+code+"&assesment="+assesmentId;
 %>	            				<tr class='<%=(linetwo)?"linetwo":"lineone"%>'>
 <%					linetwo = !linetwo;	
 %>          	    				<td width="5%" align="left">
 									</td>
 				              		<td width="50%" align="left">
-							        	<%=user.getFirstname() %>
+					              		<a href='<%=link%>'>
+								        	<%=user.getFirstname() %>
+								        </a>
 									</td>
-		            				<td width="20%" align="left">	<%=user.getLastname() %></td>
-		        	    	      	<td width="20%" align="left"><%=advance[0]%></td>
+		            				<td width="20%" align="left">	
+					              		<a href='<%=link%>'>
+			            					<%=user.getLastname() %>
+								        </a>
+		            				</td>
+		        	    	      	<td width="20%" align="left">
+		        	    	      		<%=advance[0]%>
+		        	    	      	</td>
 				    	    	</tr>
 <%				}
  			}
