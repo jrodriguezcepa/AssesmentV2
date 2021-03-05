@@ -182,6 +182,15 @@ public class GroupData {
 	public boolean isRepeatable() {
 		return repeatable;
 	}
+
+	public int getVisibleAssessmentCount() {
+		int c = 0;
+		Iterator<CategoryData> it = categories.iterator();
+		while(it.hasNext()) {
+			c +=  it.next().getShowAssesmentsSize();
+		}
+		return c;
+	}
 	
 	
 }

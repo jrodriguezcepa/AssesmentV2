@@ -90,35 +90,35 @@ function deleteIFConfirm(form,msg){
 	  		<tr>
 	  			<td>
 			  		<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.data.webinar")%>' />
-				    	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+				    	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
 					  		<tr class="line">
-				    			<td align="left">
+				    			<th align="left">
 									<%=messages.getText("report.users.name")+": "%>
-								</td>
+								</th>
 				    			<td align="right">
 									<%=user.getFirstName()%>
 								</td>
 							</tr>
 					  		<tr class="line">
-				    			<td align="left" valign="top">
+				    			<th align="left" valign="top">
 									<%=messages.getText("user.data.lastname")+": "%>
-								</td>
+								</th>
 				    			<td align="right">
 										<%=user.getLastName()%>
 								</td>
 							</tr>
 					  		<tr class="line">
-				    			<td align="left" valign="top">
+				    			<th align="left" valign="top">
 									<%=messages.getText("generic.messages.webinarcode")+": "%>
-								</td>
+								</th>
 				    			<td align="right">
 										<%=code%>
 								</td>
 							</tr>
 					  		<tr class="line">
-				    			<td align="left" valign="top">
+				    			<th align="left" valign="top">
 									<%=messages.getText("generic.results.advance")+": "%>
-								</td>
+								</th>
 				    			<td align="right">
 										<%=advance[0]%>
 								</td>
@@ -132,14 +132,14 @@ function deleteIFConfirm(form,msg){
 %>	  		<tr>
 	  			<td>
 			  		<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.data.personaldata")%>' />
-				    	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+				    	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
 <%			Iterator it = personalData.iterator();
 			while(it.hasNext()) {
 				Object[] data = (Object[])it.next();
 %>					  		<tr class="line">
-			    				<td align="right">
-									<%=messages.getText((String)data[1])%>
-								</td>
+			    				<th align="left">
+									<%=messages.getText((String)data[1])+":"%>
+								</th>
 <%				String value = "---";
 				switch(((Integer)data[2]).intValue()) {
 				case QuestionData.EXCLUDED_OPTIONS:
@@ -153,7 +153,7 @@ function deleteIFConfirm(form,msg){
 					break;
 				}
 %>								
-			    				<td align="left">
+			    				<td align="right">
 									<%=value%>
 								</td>
 							</tr>

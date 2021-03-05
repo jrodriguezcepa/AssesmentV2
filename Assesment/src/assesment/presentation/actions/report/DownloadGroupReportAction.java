@@ -73,7 +73,7 @@ public class DownloadGroupReportAction  extends AbstractAction {
 	 	        row.add(new Object[] {"Fecha de nacimiento", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
 	        }
 	        Iterator<CategoryData> itC = group.getOrderedCategories();
-			AssesmentAttributes[] assessmentIds = (mercadolivre || mercadolibre) ? new AssesmentAttributes[1] : new AssesmentAttributes[group.getAssessmentCount()];
+			AssesmentAttributes[] assessmentIds = (mercadolivre || mercadolibre) ? new AssesmentAttributes[1] : new AssesmentAttributes[group.getVisibleAssessmentCount()];
 			int index = 0;
 			if(mercadolivre || mercadolibre) {
 				if(itC.hasNext()) {
@@ -81,9 +81,11 @@ public class DownloadGroupReportAction  extends AbstractAction {
 					Iterator<AssesmentAttributes> itA = c.getOrderedAssesments();
 					while(itA.hasNext()) {
 						AssesmentAttributes a = itA.next();
-						assessmentIds[index] = a;
-						row.add(new Object[] {messages.getText(a.getName()), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-						index++;
+						if(a.getShowReport()) {
+							assessmentIds[index] = a;
+							row.add(new Object[] {messages.getText(a.getName()), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+							index++;
+						}
 					}
 				}
 			}else {
@@ -92,9 +94,11 @@ public class DownloadGroupReportAction  extends AbstractAction {
 					Iterator<AssesmentAttributes> itA = c.getOrderedAssesments();
 					while(itA.hasNext()) {
 						AssesmentAttributes a = itA.next();
-						assessmentIds[index] = a;
-						row.add(new Object[] {messages.getText(a.getName()), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-						index++;
+						if(a.getShowReport()) {
+							assessmentIds[index] = a;
+							row.add(new Object[] {messages.getText(a.getName()), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+							index++;
+						}
 					}
 				}
 			}
@@ -143,28 +147,30 @@ public class DownloadGroupReportAction  extends AbstractAction {
 					rowUser.add(user.getExtraData().toUpperCase());
 				for(int i = 0; i < assessmentIds.length; i++) {
 					AssesmentAttributes assAtt = assessmentIds[i]; 
-					if(values.containsKey(assAtt.getId())) {
-						Object[] data = values.get(assAtt.getId());
-						if(((Integer)data[0]).intValue() == 0) {
-							rowUser.add("---");
-						} else {
-							Short s = new Short(new HSSFColor.GREEN().getIndex());
-							if(data[2] == null || data[3] == null)
-								System.out.println("aca");
-							if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
-								rowUser.add(new Object[] {Util.formatDate((Date)data[1])+" (100%)", s});
-							}else {
-								int percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
-								if(percent < assAtt.getYellow()) {
-									s = new Short(new HSSFColor.RED().getIndex());
-								} else if(percent < assAtt.getGreen()) {
-									s = new Short(new HSSFColor.YELLOW().getIndex());
-								} 
-								rowUser.add(new Object[] {Util.formatDate((Date)data[1])+" ("+percent+"%)", s});
+					if(assAtt.getShowReport()) {
+						if(values.containsKey(assAtt.getId())) {
+							Object[] data = values.get(assAtt.getId());
+							if(((Integer)data[0]).intValue() == 0) {
+								rowUser.add("---");
+							} else {
+								Short s = new Short(new HSSFColor.GREEN().getIndex());
+								if(data[2] == null || data[3] == null)
+									System.out.println("aca");
+								if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
+									rowUser.add(new Object[] {Util.formatDate((Date)data[1])+" (100%)", s});
+								}else {
+									int percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
+									if(percent < assAtt.getYellow()) {
+										s = new Short(new HSSFColor.RED().getIndex());
+									} else if(percent < assAtt.getGreen()) {
+										s = new Short(new HSSFColor.YELLOW().getIndex());
+									} 
+									rowUser.add(new Object[] {Util.formatDate((Date)data[1])+" ("+percent+"%)", s});
+								}
 							}
+						}else {
+							rowUser.add("---");
 						}
-					}else {
-						rowUser.add("---");
 					}
 				}
 				rows.add(rowUser);

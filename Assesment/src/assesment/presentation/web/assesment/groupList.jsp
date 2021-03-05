@@ -21,7 +21,7 @@
 	sys=(AssesmentAccess)session.getAttribute("AssesmentAccess");
 	String check = Util.checkPermission(sys,SecurityConstants.ADMINISTRATOR);
 	
-	RequestDispatcher dispatcher=request.getRequestDispatcher("./util/jsp/message.jsp");
+	RequestDispatcher dispatcher=request.getRequestDispatcher("/util/jsp/message.jsp");
 	dispatcher.include(request,response);
 
 	if(check!=null) {

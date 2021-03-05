@@ -256,6 +256,13 @@
 		
 		<form-bean name="AssesmentChangeDatesForm" type="assesment.presentation.actions.assesment.AssesmentForm" />
 
+		<form-bean name="AssessmentShowReportForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="group" type="java.lang.String" />
+			<form-property name="category" type="java.lang.String" />
+			<form-property name="assesment" type="java.lang.String" />
+			<form-property name="show" type="java.lang.String" />
+		</form-bean>
+
 		<form-bean name="AssociateAssesmentTagForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="assesment" type="java.lang.String" />
 			<form-property name="tags" type="java.lang.String" />
@@ -979,6 +986,10 @@
         <forward name="view" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
    	</action>
 	
+    <action path="/AssessmentShowReport" type="assesment.presentation.actions.assesment.AssessmentShowReportAction" name="AssessmentShowReportForm" scope="session">
+        <forward name="cancel" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+        <forward name="view" path="/layout.jsp?refer=/assesment/viewGroup.jsp"/>
+   	</action>
 
 	<action path="/AssociateAssesmentTag" type="assesment.presentation.actions.assesment.AssociateAssesmentTagAction" name="AssociateAssesmentTagForm" 
 					scope="session">
