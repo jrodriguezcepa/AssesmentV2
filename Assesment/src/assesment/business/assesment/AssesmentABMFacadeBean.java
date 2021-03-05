@@ -598,4 +598,20 @@ public abstract class AssesmentABMFacadeBean implements SessionBean {
             handler.handleException("changeAssesmentGroupDate",e);
 		}
    }
+
+   /**
+    * @ejb.interface-method
+    * @ejb.permission role-name = "administrator"
+    * Create a corporation  
+    * @param data - Contains the data of the new corporation
+    * @param userRequest - Logged user
+    * @throws Exception
+    */
+   public void changeAssesmentReportView(Integer category, Integer assesment, Integer show, UserSessionData userSessionData) throws Exception {
+		try {
+            AssesmentABMUtil.getHome().create().changeAssesmentReportView(category, assesment, show, userSessionData);
+		} catch (Exception e) {
+            handler.handleException("changeAssesmentGroupDate",e);
+		}
+   }
 }

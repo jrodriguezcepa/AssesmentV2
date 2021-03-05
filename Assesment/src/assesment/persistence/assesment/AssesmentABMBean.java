@@ -570,4 +570,24 @@ public abstract class AssesmentABMBean implements SessionBean {
 	           handler.getException(e,"changeAssesmentGroupDate",userSessionData.getFilter().getLoginName());
 		}
    }
+
+
+   /**
+    * @ejb.interface-method
+    * @ejb.permission role-name = "administrator"
+    * Create a corporation  
+    * @param data - Contains the data of the new corporation
+    * @param userRequest - Logged user
+    * @throws Exception
+    */
+   public void changeAssesmentReportView(Integer assessmentId, Integer categoryId, Integer show, UserSessionData userSessionData) throws Exception {
+		try {
+			Session session = HibernateAccess.currentSession();
+    	   	AssesmentCategory ac = (AssesmentCategory)session.load(AssesmentCategory.class, new AssesmentCategoryPK(assessmentId, categoryId));
+    	   	ac.setShowReport(show.intValue() == 1);
+    	   	session.update(ac);
+		} catch (Exception e) {
+			handler.getException(e,"changeAssesmentReportView",userSessionData.getFilter().getLoginName());
+		}
+   }
 }

@@ -67,4 +67,7 @@ public interface AssesmentABMFacade
    public void changeAssesmentGroupDate( java.lang.Integer assessmentId,java.lang.Integer categoryId,java.util.Date start,java.util.Date end,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public void changeAssesmentReportView( java.lang.Integer category,java.lang.Integer assesment,java.lang.Integer show,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

@@ -60,6 +60,15 @@
 			form.assesment.value = assessment;
 			form.submit();
 		}
+		function showReport(msg, assessmentId, categoryId, show) {
+			if(confirm(msg)) {
+				var form = document.forms['AssessmentShowReportForm'];
+				form.assesment.value = assessmentId;
+				form.category.value = categoryId;
+				form.show.value = show;
+				form.submit();
+			}
+		}
 	</script>
 	<form action="./layout.jsp?refer=/assesment/createGroup.jsp" name='edit' method="post">
 		<input type="hidden" name="id" 		value='<%=id%>' />
@@ -88,7 +97,13 @@
 	<html:form action="/CategoryDelete">
 		<input type="hidden" name="categoryId" />
 		<input type="hidden" name="group" 	value='<%=id%>' />
-	</html:form>		
+	</html:form>
+	<html:form action="/AssessmentShowReport">
+		<input type="hidden" name="assesment" />
+		<input type="hidden" name="category" />
+		<input type="hidden" name="show" />
+		<input type="hidden" name="group" 	value='<%=id%>' />
+	</html:form>
 		<body>
 			<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.group")%>' />
 		  		<tr>			  		
@@ -190,6 +205,7 @@
 											        <td class="guide2" width="59%" align="left"><%=messages.getText("assesment.data.name")%></td>
 											        <td class="guide2" width="20%" align="center"><%=messages.getText("assesment.data.start")%></td>
 											        <td class="guide2" width="20%" align="center"><%=messages.getText("assesment.data.end")%></td>
+											        <td class="guide2" width="20%" align="center"><%=messages.getText("assesment.data.showreport")%></td>
 										        </tr>
 <%				Iterator<AssesmentAttributes> itA = category.getOrderedAssesments();
 				boolean linetwo = false;
@@ -197,6 +213,7 @@
 				while(itA.hasNext()) {
 					AssesmentAttributes assessmentData = itA.next();
 					empty = false;
+					String link = (assessmentData.getShowReport()) ? "javascript:showReport('Confirma que desea no mostrar en el reporte ?',"+assessmentData.getId()+","+category.getId()+",0)" : "javascript:showReport('Confirma que desea mostrar en el reporte ?',"+assessmentData.getId()+","+category.getId()+",1)";
 %>						            			<tr class='<%=(linetwo)?"linetwo":"lineone"%>'>
 													<td align="left"></td>
 													<td align="left">
@@ -206,6 +223,11 @@
 													</td>
 													<td align="center"><%=Util.formatDate(assessmentData.getStart()) %></td>
 													<td align="center"><%=Util.formatDate(assessmentData.getEnd()) %></td>
+													<td align="center">
+														<a href="<%=link%>">
+															<%=(assessmentData.getShowReport()) ? messages.getText("generic.messages.yes") : messages.getText("generic.messages.no")%>
+														</a>
+													</td>
 												</tr>
 <%					linetwo = !linetwo;	
 				}
