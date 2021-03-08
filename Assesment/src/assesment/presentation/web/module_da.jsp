@@ -202,8 +202,6 @@
             <h1 class="customer_logo" style="background-image: url('<%=logoName%>');">Driver Assessment</h1>
 <%		} %>
             <div class="toolbar">
-<%		if(!telematics) {	
-%>
 <%		if(!userSessionData.isMutual()) {
 %>		       <div class="cepa_logo">CEPA Safe Drive</div>
                <span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
