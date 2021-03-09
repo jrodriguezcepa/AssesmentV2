@@ -28,6 +28,9 @@ public class Module {
     private Integer order;
     private Integer type;
     
+    private Integer green;
+    private Integer yellow;
+
     private Set<Question> questionSet; 
     
     public Module() {
@@ -40,6 +43,8 @@ public class Module {
         key = attributes.getKey();
         order = attributes.getOrder();
         type = attributes.getType();
+        green = attributes.getGreen();
+        yellow = attributes.getYellow();
     }
 
     public Integer getId() {
@@ -88,11 +93,15 @@ public class Module {
         while(it.hasNext()) {
             questions.add(it.next().getData());
         }
-        return new ModuleData(id,key,order,assesment.getId(),type,questions);
+        int greenV = (green != null) ? green : assesment.getGreen();
+        int yellowV = (yellow != null) ? yellow : assesment.getYellow();
+        return new ModuleData(id,key,order,assesment.getId(),type,questions, greenV, yellowV);
     }
 
     public ModuleAttribute getAttributes() {
-        return new ModuleAttribute(id,key,order,assesment.getId(),type);
+        int greenV = (green != null) ? green : assesment.getGreen();
+        int yellowV = (yellow != null) ? yellow : assesment.getYellow();
+        return new ModuleAttribute(id,key,order,assesment.getId(),type,greenV,yellowV);
     }
 
     public Integer getType() {
@@ -102,5 +111,21 @@ public class Module {
     public void setType(Integer type) {
         this.type = type;
     }
+
+	public Integer getGreen() {
+		return green;
+	}
+
+	public void setGreen(Integer green) {
+		this.green = green;
+	}
+
+	public Integer getYellow() {
+		return yellow;
+	}
+
+	public void setYellow(Integer yellow) {
+		this.yellow = yellow;
+	}
 
 }

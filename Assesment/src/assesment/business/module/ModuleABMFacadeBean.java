@@ -121,7 +121,7 @@ public abstract class ModuleABMFacadeBean implements SessionBean {
      * @ejb.transaction type="Required" 
      * @ejb.permission role-name = "administrator"
 	 */
-	public Integer create(String[] texts,Integer assesment,Integer type,UserSessionData userSessionData) throws Exception{
+	public Integer create(String[] texts,Integer assesment, Integer type, Integer green, Integer yellow, UserSessionData userSessionData) throws Exception{
 		if (userSessionData == null) {
 			throw new DeslogedException("create","session = null");
 		}
@@ -136,7 +136,7 @@ public abstract class ModuleABMFacadeBean implements SessionBean {
 
             ModuleABMHome home = ModuleABMUtil.getHome();
             ModuleABM moduleABM = home.create();
-            ModuleAttribute data = new ModuleAttribute(null,"",new Integer(size+1),assesment,type);
+            ModuleAttribute data = new ModuleAttribute(null,"",new Integer(size+1), assesment, type, green, yellow);
             Integer id = moduleABM.create(data, userSessionData);
 
             data.setId(id);
@@ -162,7 +162,7 @@ public abstract class ModuleABMFacadeBean implements SessionBean {
      * @ejb.transaction type="Required" 
      * @ejb.permission role-name = "administrator"
      */
-    public Integer create(String[] texts,Integer assesment,Integer type,int size,UserSessionData userSessionData) throws Exception{
+    public Integer create(String[] texts,Integer assesment,Integer type,Integer green, Integer yellow, int size,UserSessionData userSessionData) throws Exception{
         if (userSessionData == null) {
             throw new DeslogedException("create","session = null");
         }
@@ -173,7 +173,7 @@ public abstract class ModuleABMFacadeBean implements SessionBean {
             
             ModuleABMHome home = ModuleABMUtil.getHome();
             ModuleABM moduleABM = home.create();
-            ModuleAttribute data = new ModuleAttribute(null,"",new Integer(size+1),assesment,type);
+            ModuleAttribute data = new ModuleAttribute(null, "", new Integer(size+1), assesment, type, green, yellow);
             Integer id = moduleABM.create(data, userSessionData);
 
             data.setId(id);
@@ -207,7 +207,7 @@ public abstract class ModuleABMFacadeBean implements SessionBean {
             
             ModuleABMHome home = ModuleABMUtil.getHome();
             ModuleABM moduleABM = home.create();
-            ModuleAttribute data = new ModuleAttribute(null,"",null,null,type);
+            ModuleAttribute data = new ModuleAttribute(null,"",null,null,type,null,null);
             Integer id = moduleABM.createGeneric(data, userSessionData);
 
             data.setId(id);
@@ -360,7 +360,7 @@ public abstract class ModuleABMFacadeBean implements SessionBean {
                 languageReport = LangReportUtil.getHome().create();
             }
             String[] texts = getTexts(moduleData.getKey(),languageReport,userSessionData);
-            Integer newModuleId = create(texts,assesment,moduleData.getType(),size,userSessionData);
+            Integer newModuleId = create(texts,assesment,moduleData.getType(),moduleData.getGreen(),moduleData.getYellow(),size,userSessionData);
             
             Iterator questions = moduleData.getQuestionIterator();
             int index = 1;

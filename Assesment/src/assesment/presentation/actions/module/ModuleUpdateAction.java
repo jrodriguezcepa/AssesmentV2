@@ -50,14 +50,30 @@ public class ModuleUpdateAction extends AbstractAction {
         }
         String[] texts = {moduleForm.getString("es_name"),moduleForm.getString("en_name"),moduleForm.getString("pt_name")};
         Integer module = new Integer(moduleForm.getString("module"));
+        String greenStr = moduleForm.getString("green");
+        if(Util.empty(greenStr)) {
+            session.setAttribute("Msg",messages.getText("assesment.error.emptygreen"));
+            return mapping.findForward("back");
+        }else if(!Util.isNumber(greenStr)){
+            session.setAttribute("Msg",messages.getText("assesment.error.wronggreen"));
+            return mapping.findForward("back");
+        }
+        String yellowStr = moduleForm.getString("yellow");
+        if(Util.empty(yellowStr)) {
+            session.setAttribute("Msg",messages.getText("assesment.error.emptyred"));
+            return mapping.findForward("back");
+        }else if(!Util.isNumber(yellowStr)){
+            session.setAttribute("Msg",messages.getText("assesment.error.wrongred"));
+            return mapping.findForward("back");
+        }
         ModuleAttribute moduleAttribute = sys.getModuleReportFacade().findModuleAttributes(module,sys.getUserSessionData());
         sys.getLanguageABMFacade().updateTexts(texts,moduleAttribute.getKey(),sys.getUserSessionData());
 
         Integer type = new Integer(moduleForm.getString("type"));
-        if(moduleAttribute.getType().intValue() != type.intValue()) {
-            moduleAttribute.setType(type);
-            sys.getModuleABMFacade().update(moduleAttribute,sys.getUserSessionData(),ModuleData.NORMAL);
-        }
+        moduleAttribute.setType(type);
+        moduleAttribute.setGreen(new Integer(greenStr));
+        moduleAttribute.setYellow(new Integer(yellowStr));
+        sys.getModuleABMFacade().update(moduleAttribute,sys.getUserSessionData(),ModuleData.NORMAL);
         
         sys.reloadText();
         session.setAttribute("module",moduleForm.getString("module"));

@@ -43,10 +43,26 @@ public class ModuleCreateAction extends AbstractAction {
             session.setAttribute("Msg",messages.getText("module.name.empty"));
             return mapping.findForward("back");
         }
+        String greenStr = moduleForm.getString("green");
+        if(Util.empty(greenStr)) {
+            session.setAttribute("Msg",messages.getText("assesment.error.emptygreen"));
+            return mapping.findForward("back");
+        }else if(!Util.isNumber(greenStr)){
+            session.setAttribute("Msg",messages.getText("assesment.error.wronggreen"));
+            return mapping.findForward("back");
+        }
+        String yellowStr = moduleForm.getString("yellow");
+        if(Util.empty(yellowStr)) {
+            session.setAttribute("Msg",messages.getText("assesment.error.emptyred"));
+            return mapping.findForward("back");
+        }else if(!Util.isNumber(yellowStr)){
+            session.setAttribute("Msg",messages.getText("assesment.error.wrongred"));
+            return mapping.findForward("back");
+        }
         String[] texts = {moduleForm.getString("es_name"),moduleForm.getString("en_name"),moduleForm.getString("pt_name")};
         Integer assesment = new Integer(moduleForm.getString("assesment"));
         Integer type = new Integer(moduleForm.getString("type"));
-        sys.getModuleABMFacade().create(texts,assesment,type,sys.getUserSessionData());
+        sys.getModuleABMFacade().create(texts,assesment,type,new Integer(greenStr),new Integer(yellowStr),sys.getUserSessionData());
         
         sys.reloadText();
         session.setAttribute("assesment",moduleForm.getString("assesment"));

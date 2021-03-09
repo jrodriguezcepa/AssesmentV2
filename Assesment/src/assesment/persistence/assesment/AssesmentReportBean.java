@@ -561,9 +561,10 @@ public abstract class AssesmentReportBean implements SessionBean {
     	LinkedList<AssessmentUserData> list = new LinkedList<AssessmentUserData>();
     	try {
             Session session = HibernateAccess.currentSession();
-            SQLQuery query = session.createSQLQuery("SELECT firstname, lastname, u.loginname, u.email, u.extraData3, enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate " +
+            SQLQuery query = session.createSQLQuery("SELECT firstname, lastname, u.loginname, u.email, u.extraData3, enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate, ua.assesment, uar.correct, uar.incorrect " +
             		"FROM userassesments ua " +
             		"LEFT JOIN sendedreports sr ON sr.login = ua.loginname AND sr.assessment = ua.assesment " +
+            		"LEFT JOIN userassesmentresults uar on uar.login = ua.loginname AND uar.assesment = ua.assesment " + 
             		"JOIN users u ON u.loginname = ua.loginname " +
             		"WHERE ua.assesment = "+assessment);
             query.addScalar("firstname", Hibernate.STRING);
@@ -576,6 +577,9 @@ public abstract class AssesmentReportBean implements SessionBean {
             query.addScalar("id", Hibernate.INTEGER);
             query.addScalar("sended", Hibernate.BOOLEAN);
             query.addScalar("certificate", Hibernate.BOOLEAN);
+            query.addScalar("assesment", Hibernate.INTEGER);
+            query.addScalar("correct", Hibernate.INTEGER);
+            query.addScalar("incorrect", Hibernate.INTEGER);
             
             HashMap<String, AssessmentUserData> values = new HashMap<String, AssessmentUserData>();
             Iterator it = query.list().iterator();

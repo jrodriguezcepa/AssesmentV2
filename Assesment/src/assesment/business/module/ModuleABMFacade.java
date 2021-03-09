@@ -10,10 +10,10 @@ public interface ModuleABMFacade
    extends javax.ejb.EJBObject
 {
 
-   public java.lang.Integer create( java.lang.String[] texts,java.lang.Integer assesment,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.lang.Integer create( java.lang.String[] texts,java.lang.Integer assesment,java.lang.Integer type,java.lang.Integer green,java.lang.Integer yellow,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.lang.Integer create( java.lang.String[] texts,java.lang.Integer assesment,java.lang.Integer type,int size,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.lang.Integer create( java.lang.String[] texts,java.lang.Integer assesment,java.lang.Integer type,java.lang.Integer green,java.lang.Integer yellow,int size,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public void createGeneric( java.lang.String[] texts,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )

@@ -309,6 +309,8 @@
 			<form-property name="en_name" type="java.lang.String" />
 			<form-property name="pt_name" type="java.lang.String" />
 			<form-property name="type" type="java.lang.String" />
+			<form-property name="green" type="java.lang.String" />
+			<form-property name="yellow" type="java.lang.String" />
 		</form-bean>
 		
 		<form-bean name="ModuleUpdateForm" type="org.apache.struts.action.DynaActionForm">
@@ -317,6 +319,8 @@
 			<form-property name="en_name" type="java.lang.String" />
 			<form-property name="pt_name" type="java.lang.String" />
 			<form-property name="type" type="java.lang.String" />
+			<form-property name="green" type="java.lang.String" />
+			<form-property name="yellow" type="java.lang.String" />
 		</form-bean>
 		
 		<form-bean name="ModuleDeleteForm" type="org.apache.struts.action.DynaActionForm">

@@ -73,7 +73,7 @@ public interface AssesmentABM
    public void changeAssesmentGroupDate( java.lang.Integer assessmentId,java.lang.Integer categoryId,java.util.Date start,java.util.Date end,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public void changeAssesmentReportView( java.lang.Integer categoryId,java.lang.Integer assessmentId,java.lang.Integer show,assesment.communication.administration.user.UserSessionData userSessionData )
+   public void changeAssesmentReportView( java.lang.Integer assessmentId,java.lang.Integer categoryId,java.lang.Integer show,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
 }

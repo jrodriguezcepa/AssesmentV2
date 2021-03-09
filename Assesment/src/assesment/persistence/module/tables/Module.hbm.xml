@@ -18,6 +18,9 @@
 	    <property name="order" 	column="moduleorder" 	type="java.lang.Integer" 	not-null="true"/>
 	    <property name="type" 	column="type" 			type="java.lang.Integer" 	/>
 	    
+        <property name="green"	 type="java.lang.Integer"	column="green" />
+        <property name="yellow"	 type="java.lang.Integer"	column="yellow" />
+
 		<set inverse="true" name="questionSet"  cascade="all-delete-orphan">
 			<key column="module" not-null="true"/>
 			<one-to-many class="assesment.persistence.question.tables.Question" />

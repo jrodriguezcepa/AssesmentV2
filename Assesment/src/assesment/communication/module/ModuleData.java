@@ -39,8 +39,8 @@ public class ModuleData extends ModuleAttribute {
      * @param type 
      * @param questions
      */
-    public ModuleData(Integer id,String key,Integer order,Integer assesment,Integer type, Collection<QuestionData> questions) {
-        super(id,key,order,assesment,type);
+    public ModuleData(Integer id,String key,Integer order,Integer assesment,Integer type, Collection<QuestionData> questions, Integer green, Integer yellow) {
+        super(id,key,order,assesment,type,green,yellow);
         this.questions = questions;
     }
 

@@ -123,6 +123,8 @@ public abstract class ModuleABMBean implements SessionBean {
                 module.setKey(attributes.getKey());
                 module.setOrder(attributes.getOrder());
                 module.setType(attributes.getType());
+                module.setGreen(attributes.getGreen());
+                module.setYellow(attributes.getYellow());
                 session.update(module);
             }else {
                 GenericModule module = (GenericModule)session.load(GenericModule.class,attributes.getId());

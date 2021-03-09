@@ -15,15 +15,20 @@ public class ModuleAttribute implements Comparable {
     private Integer assesment;
     private Integer type;
     
+    private Integer green;
+    private Integer yellow;
+
     public ModuleAttribute() {
     }
 
-    public ModuleAttribute(Integer id, String key, Integer order, Integer assesment, Integer type) {
+    public ModuleAttribute(Integer id, String key, Integer order, Integer assesment, Integer type, Integer green, Integer yellow) {
         this.id = id;
         this.key = key;
         this.order = order;
         this.type = type;
         this.assesment = assesment;
+        this.green = green;
+        this.yellow = yellow;
     }
 
     public Integer getId() {
@@ -75,5 +80,21 @@ public class ModuleAttribute implements Comparable {
     public void setType(Integer type) {
         this.type = type;
     }
+
+	public Integer getGreen() {
+		return green;
+	}
+
+	public void setGreen(Integer green) {
+		this.green = green;
+	}
+
+	public Integer getYellow() {
+		return yellow;
+	}
+
+	public void setYellow(Integer yellow) {
+		this.yellow = yellow;
+	}
 
 }

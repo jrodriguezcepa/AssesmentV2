@@ -54,11 +54,11 @@ public class GenericModule {
         while(it.hasNext()) {
             questions.add(it.next().getData());
         }
-        return new ModuleData(id,key,null,null,type,questions);
+        return new ModuleData(id,key,null,null,type,questions,null, null);
     }
 
     public ModuleAttribute getAttributes() {
-        return new ModuleAttribute(id,key,null,null,type);
+        return new ModuleAttribute(id,key,null,null,type,null, null);
     }
 
     public Set<GenericQuestion> getQuestionSet() {

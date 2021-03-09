@@ -358,7 +358,7 @@ public abstract class AssesmentABMFacadeBean implements SessionBean {
         String[] texts = languageReport.getCompleteText(moduleData.getKey(),userSessionData);
 
         ModuleABMFacade moduleABM = ModuleABMFacadeUtil.getHome().create();
-        Integer newModuleId = moduleABM.create(texts,assesment,moduleData.getType(),size,userSessionData);
+        Integer newModuleId = moduleABM.create(texts,assesment,moduleData.getType(),moduleData.getGreen(),moduleData.getYellow(),size,userSessionData);
             
         Iterator questions = moduleData.getQuestionIterator();
         int index = 1;

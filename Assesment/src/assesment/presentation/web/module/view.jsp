@@ -160,6 +160,32 @@
 						<jsp:include  page="../component/utilitybox2bottom.jsp" />
 					</td>
 				</tr>
+				<tr>
+					<td valign="top">
+						<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.assesment.resultrange")%>' />
+	    				<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" height="100">
+							<tr class="line">
+	    						<td align="left"> <%=messages.getText("report.generalresult.lowlevel")%></td>
+		   						<td align="right">
+							   		<%="0% - "+String.valueOf(module.getYellow())+"%"%>              
+			  					</td>
+	      					</tr>
+							<tr class="line">
+	    						<td align="left"> <%=messages.getText("report.generalresult.meddiumlevel")%></td>
+		   						<td align="right">
+							   		<%=String.valueOf(module.getYellow())+"% - "+String.valueOf(module.getGreen())+"%"%>              
+			  					</td>
+	      					</tr>
+							<tr class="line">
+	    						<td align="left"> <%=messages.getText("report.generalresult.highlevel")%></td>
+		   						<td align="right">
+							   		<%=String.valueOf(module.getGreen())+"% - 100%"%>              
+			  					</td>
+	      					</tr>
+	      				</table>
+						<jsp:include page="../component/utilitybox2bottom.jsp" />
+	      			</td>
+				</tr>
 		  		<tr>
 					<td colspan="2">
 						<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("module.data.questions")%>' />
