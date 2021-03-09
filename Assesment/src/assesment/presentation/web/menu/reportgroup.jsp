@@ -75,6 +75,13 @@
 			if(mercadolibre)
 				colspan = 6;
 			Collection<UserData> users = usReport.findGroupUsers(group.getId(), sys.getUserSessionData());
+			if(request.getParameter("sort")!=null){
+				String criteria=(String)request.getParameter("sort");
+				System.out.println("****** sort es "+ criteria);
+				//UserMutualReportData u=new UserMutualReportData();
+				//u.sortCollection(results, criteria);
+			}
+			
 %>
 		<head>
 		<meta charset="iso-8859-1">
@@ -91,6 +98,47 @@
 	    <!-- script type="text/javascript" src="https://www.google.com/jsapi"></script -->
 		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       	<script type="text/javascript">
+      	function sortTable(n) {
+      	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+      	  table = document.getElementById("myTable2");
+      	  switching = true;
+      	  dir = "asc";
+      	  while (switching) {
+      	    switching = false;
+      	    rows = table.rows;
+      	   
+      	    for (i = 2; i < (rows.length - 1); i++) {
+      	      shouldSwitch = false;
+      	    
+      	      x = rows[i].getElementsByTagName("TD")[n];
+      	      y = rows[i + 1].getElementsByTagName("TD")[n];
+      	   
+      	      if (dir == "asc") {
+      	        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+      	          shouldSwitch = true;
+      	          break;
+      	        }
+      	      } else if (dir == "desc") {
+      	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+      	          shouldSwitch = true;
+      	          break;
+      	        }
+      	      }
+      	    }
+      	    if (shouldSwitch) {
+      	   
+      	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      	      switching = true;
+      	      switchcount ++;
+      	    } else {
+      	    
+      	      if (switchcount == 0 && dir == "asc") {
+      	        dir = "desc";
+      	        switching = true;
+      	      }
+      	    }
+      	  }
+      	}
 
       // Load the Visualization API and the piechart package.
 	      google.charts.load('current', {'packages':['corechart','table']});
@@ -159,6 +207,14 @@
 				width:98%;
 				padding: 0;
 				border-spacing: 0;
+				text-decoration: none;
+				
+			}
+			.tabla img{
+				float:right;
+                width: 20px;
+                padding-right: 10px;
+				height: auto;
 			}
 			.cell {
 				min-width: 130px;
@@ -227,6 +283,7 @@
 			}
 		</style>
 	</head>
+	
 	<body>
 		<html:form action="/DownloadResult" target="_blank">
 			<html:hidden property="assessment" />
@@ -296,7 +353,7 @@
 		</div>
 		<br>
 		<div>
-			<table class="tabla">
+			<table class="tabla" id="myTable2">
 				<tr>
 					<td colspan='<%=String.valueOf(colspan)%>'></td>
 <%			Iterator<CategoryData> itC = group.getOrderedCategories();
@@ -320,24 +377,30 @@
 <%					}
 				}
 			}
+			int cont=0;
 %>				</tr>
 				<tr>
-					<td><%=messages.getText("user.data.nickname").toUpperCase()%></td>
+					<th><a href="javascript:sortTable(0);"><%=messages.getText("user.data.nickname").toUpperCase()%></a></th>
 <%			if(mercadolibre) {
+				cont=1;
 %>					<td>CURP</td>
 <%			}
-%>					<td><%=messages.getText("user.data.firstname").toUpperCase()%></td>
-					<td><%=messages.getText("user.data.lastname").toUpperCase()%></td>
-					<td><%=messages.getText("user.data.mail").toUpperCase()%></td>
-<%			if(mercadolivre) {
+%>					<th><a href='<%="javascript:sortTable("+(cont+1)+");"%>'><%=messages.getText("user.data.firstname").toUpperCase()%></a></th>
+					<th><a href='<%="javascript:sortTable("+(cont+2)+");"%>'><%=messages.getText("user.data.lastname").toUpperCase()%></a></th>
+					<th><a href='<%="javascript:sortTable("+(cont+3)+");"%>'><%=messages.getText("user.data.mail").toUpperCase()%></a></th>
+<%			cont=cont+3;
+			if(mercadolivre) {
+				cont++;
 %>					<td>Companhia/MLP</td>
 <%			}
 			if(mercadolibre) {
+				cont++;
 %>					<td>Compañía/MLP</td>
 <%			}
  			itC = group.getOrderedCategories();
 			AssesmentAttributes[] assessmentIds = new AssesmentAttributes[lenA];
 			int index = 0;
+			
 			HashMap<Integer, int[]> graphs = new HashMap<Integer, int[]>();
 			graphs.put(0, new int[]{0, 0, 0, 0});
 			while(itC.hasNext() && index < lenA) {
@@ -351,7 +414,9 @@
 						String link = "report.jsp?id="+a.getId()+"&group="+idGroup;
 						String link2 = "javascript:openGraph("+a.getId()+",'"+messages.getText(a.getName())+"')";
 						index++;
-%>					<td class="cell">
+						cont++; 
+						String sort="javascript:sortTable("+cont+");" ;
+%>					<th class="cell">
 						<a href="<%=link2%>" style="text-decoration: none;">
 							<img src="./imgs/graph.png"  width=15>
 						</a>
@@ -360,7 +425,8 @@
 								<%=messages.getText(a.getName()) %>
 							</span>
 						</a>
-					</td>				
+						<a href='<%=sort%>' ><img src="images/group_filter.png" alt="filter"></a>
+					</th>				
 <%					}
 				}
 			}
