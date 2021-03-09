@@ -74,7 +74,7 @@
 %>		        									</td>
 					          						<td class="default">
 <%				if(pageNum<pageMax && !all){
-%>											        	<a href='<%=link%>&pageNum=<%=pageMax%>'>>></a>
+%>											        	<a href='<%=link%>&pageNum=<%=pageMax%>'></a>
 <%				}else {
 %>														>>	 
 <%				}

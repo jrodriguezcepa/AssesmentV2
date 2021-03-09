@@ -82,7 +82,7 @@
 %>		        									</td>
 					          						<td class="default">
 <%				if(pageNum<pageMax && !all){
-%>											        	<a href='<%="javascript:submitPagination("+pageMax+",false)"%>'>>></a>
+%>											        	<a href='<%="javascript:submitPagination("+pageMax+",false)"%>'></a>
 <%				}else {
 %>														>>	 
 <%				}
