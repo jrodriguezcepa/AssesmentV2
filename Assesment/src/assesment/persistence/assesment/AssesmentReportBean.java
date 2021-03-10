@@ -1651,39 +1651,56 @@ public abstract class AssesmentReportBean implements SessionBean {
 		 * @ejb.interface-method
 		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
 		 */
-		public Collection findMutualAssesmentResults(Integer cedi, UserSessionData userSessionData) throws Exception {
+		public Collection findMutualAssesmentResults(Integer assesment, Integer cedi, UserSessionData userSessionData) throws Exception {
 			Session session = null;
 			Collection result = new LinkedList();
 			try {
 				session = HibernateAccess.currentSession();
-				String[] modules= {"4354", "4356", "4355", "4357"};
+				Query qryMod = session.createSQLQuery("select id from modules where assesment="+assesment+" order by moduleorder").addScalar("id", Hibernate.INTEGER);
+				List listModules = qryMod.list();
+				int size=0;
+				if (listModules != null && listModules.size() > 0) {
+					size=listModules.size();
+				}
+				String[] modules=new String[size];
+				if (listModules != null && listModules.size() > 0) {				
+					Iterator iter = listModules.iterator();
+					int pos=0;
+					while (iter.hasNext()) {
+						Integer data=(Integer) iter.next();
+						modules[pos]=String.valueOf(data);
+						pos++;
+					}
+				}
+				Integer lengthRes=(size*2)+7;
+			
 				String queryStr="";
-				if(cedi!=null) {
-					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour "+
+				if(cedi!=null||assesment==AssesmentData.ABBOTT_NEWDRIVERS) {
+					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
-							+ "WHERE assesment = " + AssesmentData.MUTUAL_DA
+							+ "WHERE assesment = " + assesment;
 						//	+ " AND ua.enddate IS NOT NULL "
 						//	+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL "
-							+ " AND u.location="+cedi; 
+					if(cedi!=null) queryStr+= " AND u.location="+cedi; 
 				}else {
 					
-					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,c.name AS location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour "+
+					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,c.name AS location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country  "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
 							+ "JOIN cedi c ON c.id=u.location "
-							+ "WHERE assesment = " + AssesmentData.MUTUAL_DA;
+							+ "WHERE assesment = " + assesment;
 							//+ " AND ua.enddate IS NOT NULL "
 							//+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL"; 
 				}
-				Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING).addScalar("email", Hibernate.STRING).addScalar("loginname", Hibernate.STRING).addScalar("location", Hibernate.STRING).addScalar("behaviour", Hibernate.STRING);
+				Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING).addScalar("email", Hibernate.STRING).addScalar("loginname", Hibernate.STRING).addScalar("location", Hibernate.STRING).addScalar("behaviour", Hibernate.STRING).addScalar("country", Hibernate.STRING);
 				
 				List list = query.list();
 				if (list != null && list.size() > 0) {
 					Iterator iter = list.iterator();
 					while (iter.hasNext()) {
-						int pos=5;
-						String[] ret=new String[14];
+						int pos=6;
+						String[] ret=new String[lengthRes];
 						Object[] data=(Object[]) iter.next();
 						String loginName=(String)data[3];
 						if(loginName!=null) {
@@ -1692,11 +1709,10 @@ public abstract class AssesmentReportBean implements SessionBean {
 								ret[i]=(String)data[i];
 							}
 							for(int i=0; i<modules.length; i++) {
-								String q = "SELECT uar.correct, uar.incorrect from userassesmentresults uar WHERE uar.login='"+loginName+"' AND uar.type="+modules[i]+" AND uar.assesment=1613";
+								String q = "SELECT uar.correct, uar.incorrect from userassesmentresults uar WHERE uar.login='"+loginName+"' AND uar.type="+modules[i]+" AND uar.assesment="+assesment;
 								query = session.createSQLQuery(q).addScalar("correct", Hibernate.INTEGER).addScalar("incorrect", Hibernate.INTEGER);
 								query.setMaxResults(1);
 								if(query.list()!=null && query.list().size() > 0) {
-									System.out.println("**********");
 									Object[] results=(Object[]) query.list().get(0);
 									ret[pos+1]=String.valueOf(results[0]);
 									ret[pos+2]=String.valueOf(results[1]);
@@ -1711,8 +1727,10 @@ public abstract class AssesmentReportBean implements SessionBean {
 									noResult=false;
 								}
 							}
-							if(!noResult) {
+							if(!noResult&&assesment==AssesmentData.MUTUAL_DA) {
 								result.add(new UserMutualReportData(ret));	
+							}else if(!noResult&&assesment==AssesmentData.ABBOTT_NEWDRIVERS) {
+								result.add(new UserMutualReportData(ret, true));	
 							}
 						}
 					}

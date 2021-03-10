@@ -1,4 +1,7 @@
 <!doctype html>
+<%@page import="assesment.business.assesment.AssesmentReportFacade"%>
+<%@page import="assesment.communication.assesment.CategoryData"%>
+<%@page import="assesment.communication.assesment.GroupData"%>
 <%@page import="assesment.communication.security.SecurityConstants"%>
 <%@page import="assesment.presentation.translator.web.administration.user.LogoutAction"%>
 <%@page import="assesment.presentation.translator.web.util.Util"%>
@@ -9,6 +12,8 @@
 <%@page import="assesment.communication.user.UserData"%>
 <%@page import="assesment.communication.language.Text"%>
 <%@page import="java.util.*"%>
+<%@page import="assesment.communication.assesment.AssesmentAttributes"%>
+
 
 	
 
@@ -23,6 +28,23 @@
 <%
 	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	String language = (sys != null) ? sys.getUserSessionData().getLenguage() : System.getProperty("user.language");
+	UserSessionData userSessionData = sys.getUserSessionData();
+
+	AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
+	String groupId = "123";
+	String role = userSessionData.getRole(); 
+	GroupData group = (role.equals(SecurityConstants.ADMINISTRATOR)) ? assessmentReport.findGroup(new Integer(groupId),sys.getUserSessionData()) : assessmentReport.getUserGroup(userSessionData.getFilter().getLoginName(),userSessionData);
+	Iterator it=group.getCategories().iterator();
+	while(it.hasNext()){
+		CategoryData cat= (CategoryData)it.next();
+		Iterator it2=cat.getAssesments().iterator();
+		while(it2.hasNext()){
+			AssesmentAttributes as= (AssesmentAttributes)it2.next();
+			System.out.println(as.getName());
+			System.out.println("*******");
+
+		}
+	}
 
 %>
 

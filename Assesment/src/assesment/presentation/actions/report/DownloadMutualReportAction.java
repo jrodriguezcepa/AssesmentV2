@@ -44,30 +44,48 @@ public class DownloadMutualReportAction  extends AbstractAction {
 	        HttpSession session = request.getSession();
 	    	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	        Text messages = sys.getText();
-			Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(null, sys.getUserSessionData());
+	        String assesmentId=(String)session.getAttribute("assesmentId");
+			Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),null, sys.getUserSessionData());
 
 	    	
 	        response.setHeader("Content-Type", "application/vnd.ms-excel");
+	        if(Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA) {
 	        response.setHeader("Content-Disposition", "inline; filename=ReporteMutualSeguridad.xls");
-	        
+	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBOTT_NEWDRIVERS) {
+		        response.setHeader("Content-Disposition", "inline; filename=ReportAbbottNewdrivers.xls");
+	        }
 	        WritableWorkbook w = Workbook.createWorkbook(response.getOutputStream());
 	        WritableSheet s = w.createSheet("Mutual de Seguridad", 0);
-
+	        int length=0;
 	        s.addCell(new Label(0,0,messages.getText("user.data.firstname")));
 	        s.addCell(new Label(1,0,messages.getText("user.data.lastname")));
 	        s.addCell(new Label(2,0,messages.getText("user.data.mail")));
 	        s.addCell(new Label(3,0,messages.getText("generic.data.username")));
-	        s.addCell(new Label(4,0,messages.getText("assesment1613.module4354.name")));
-	        s.addCell(new Label(5,0,messages.getText("assesment1613.module4356.name")));
-	        s.addCell(new Label(6,0,messages.getText("assesment1613.module4355.name")));
-	        s.addCell(new Label(7,0,messages.getText("assesment1613.module4357.name")));
-	        s.addCell(new Label(8,0,messages.getText("assessment.psi")));
-	        s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
-	        s.addCell(new Label(10,0,messages.getText("assesment1613.module4354.name")+messages.getText("generic.data.recommendation")));
-	        s.addCell(new Label(11,0,messages.getText("assesment1613.module4356.name")+messages.getText("generic.data.recommendation")));
-	        s.addCell(new Label(12,0,messages.getText("assesment1613.module4355.name")+messages.getText("generic.data.recommendation")));
-	        s.addCell(new Label(13,0,messages.getText("assesment1613.module4357.name")+messages.getText("generic.data.recommendation")));
-			int length = 13;
+	        if(Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA) {
+		        s.addCell(new Label(4,0,messages.getText("assesment1613.module4354.name")));
+		        s.addCell(new Label(5,0,messages.getText("assesment1613.module4356.name")));
+		        s.addCell(new Label(6,0,messages.getText("assesment1613.module4355.name")));
+		        s.addCell(new Label(7,0,messages.getText("assesment1613.module4357.name")));
+		        s.addCell(new Label(8,0,messages.getText("assessment.psi")));
+		        s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
+		        s.addCell(new Label(10,0,messages.getText("assesment1613.module4354.name")+messages.getText("generic.data.recommendation")));
+		        s.addCell(new Label(11,0,messages.getText("assesment1613.module4356.name")+messages.getText("generic.data.recommendation")));
+		        s.addCell(new Label(12,0,messages.getText("assesment1613.module4355.name")+messages.getText("generic.data.recommendation")));
+		        s.addCell(new Label(13,0,messages.getText("assesment1613.module4357.name")+messages.getText("generic.data.recommendation")));
+				length=13;
+	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBOTT_NEWDRIVERS) {
+	        	  s.addCell(new Label(4,0,messages.getText("user.data.country")));
+	        	  s.addCell(new Label(5,0,messages.getText("assesment1707.module4472.name")));
+			      s.addCell(new Label(6,0,messages.getText("assesment1707.module4466.name")));
+			      s.addCell(new Label(7,0,messages.getText("assesment1707.module4468.name")));
+			      s.addCell(new Label(8,0,messages.getText("assesment1707.module4469.name")));
+			      s.addCell(new Label(9,0,messages.getText("assesment1707.module4470.name")));
+			      s.addCell(new Label(10,0,messages.getText("assesment1707.module4471.name")));
+			      s.addCell(new Label(11,0,messages.getText("assessment.psi")));
+			      s.addCell(new Label(12,0,messages.getText("generic.data.ranking")));
+				  length=12;
+
+	        }
 
 	    	Iterator it = r.iterator();
 
@@ -75,7 +93,7 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			while(it.hasNext()) {
 				UserMutualReportData result = (UserMutualReportData)it.next();
 				for(int i = 0; i <= length; i++) {
-					s.addCell(new Label(i,index, result.getValue(i,messages)));
+					s.addCell(new Label(i,index, result.getValue(i,messages, Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA)));
 				}
 				index++;
 			}

@@ -88,7 +88,7 @@ public interface AssesmentReportFacade
    public assesment.communication.assesment.AssesmentData findAssesmentByModule( java.lang.Integer moduleId,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.HashMap getUserGroupResults( java.lang.Integer groupId,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.HashMap getUserGroupResults(java.lang.Integer groupId,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.util.HashMap getUserCediResults( java.lang.Integer groupId,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
@@ -118,7 +118,7 @@ public interface AssesmentReportFacade
    public java.lang.Integer getAssesmentId( java.lang.String user,java.lang.String webinarCode,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection findMutualAssesmentResults( java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.Collection findMutualAssesmentResults(java.lang.Integer assesment, java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.util.Collection getWebinarPersonalData( java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData )

@@ -896,7 +896,7 @@ public abstract class UsABMBean implements SessionBean {
                 session.save(result);
             }
             
-            if(assesmentId.intValue() == AssesmentData.MUTUAL_DA) {
+            if(assesmentId.intValue() == AssesmentData.MUTUAL_DA ||assesmentId.intValue() == AssesmentData.ABBOTT_NEWDRIVERS) {
                 right = 0;
                 wrong = 0;
                 int module = 0;

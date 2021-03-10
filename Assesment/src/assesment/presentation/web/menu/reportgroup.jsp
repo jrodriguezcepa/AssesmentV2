@@ -65,7 +65,7 @@
 				response.sendRedirect("./reportgrupomodelo.jsp");		
 			}
 		} else if(idGroup == GroupData.MUTUAL) {
-			response.sendRedirect("./mutualReport.jsp");		
+			response.sendRedirect("./assesmentReport.jsp");		
 		} else {
 			boolean mercadolivre = (idGroup == GroupData.MERCADOLIVRE);
 			boolean mercadolibre = (idGroup == GroupData.MERCADOLIBRE);
@@ -77,7 +77,6 @@
 			Collection<UserData> users = usReport.findGroupUsers(group.getId(), sys.getUserSessionData());
 			if(request.getParameter("sort")!=null){
 				String criteria=(String)request.getParameter("sort");
-				System.out.println("****** sort es "+ criteria);
 				//UserMutualReportData u=new UserMutualReportData();
 				//u.sortCollection(results, criteria);
 			}

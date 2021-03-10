@@ -1964,6 +1964,36 @@
          <description><![CDATA[]]></description>
          <ejb-name>AssesmentReport</ejb-name>
          <method-intf>Local</method-intf>
+         <method-name>getWebinarPersonalData</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getWebinarPersonalData</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReport</ejb-name>
+         <method-intf>Local</method-intf>
          <method-name>getUserCediResults</method-name>
          <method-params>
             <method-param>java.lang.Integer[]</method-param>
@@ -2030,6 +2060,7 @@
          <method-name>findMutualAssesmentResults</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -2045,6 +2076,7 @@
          <method-intf>Remote</method-intf>
          <method-name>findMutualAssesmentResults</method-name>
          <method-params>
+            <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
@@ -2654,6 +2686,22 @@
             <method-param>java.lang.Integer</method-param>
             <method-param>java.util.Date</method-param>
             <method-param>java.util.Date</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentABMFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>changeAssesmentReportView</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -5119,6 +5167,8 @@
             <method-param>java.lang.String[]</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -5133,6 +5183,8 @@
          <method-name>create</method-name>
          <method-params>
             <method-param>java.lang.String[]</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>int</method-param>
@@ -6164,6 +6216,22 @@
             <method-param>java.lang.Integer</method-param>
             <method-param>java.util.Date</method-param>
             <method-param>java.util.Date</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentABM</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>changeAssesmentReportView</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -14735,6 +14803,7 @@
          <method-name>findMutualAssesmentResults</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -14751,6 +14820,37 @@
          <method-name>findMutualAssesmentResults</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getWebinarPersonalData</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getWebinarPersonalData</method-name>
+         <method-params>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -14966,6 +15066,8 @@
             <method-param>java.lang.String[]</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -14978,6 +15080,8 @@
          <method-name>create</method-name>
          <method-params>
             <method-param>java.lang.String[]</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>int</method-param>

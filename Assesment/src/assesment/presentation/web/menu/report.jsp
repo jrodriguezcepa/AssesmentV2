@@ -58,8 +58,11 @@
 	
 	if(check) {
 		if(Integer.parseInt(assessmentId) == AssesmentData.MUTUAL_DA) {
-			response.sendRedirect("./mutualReport.jsp");		
-		}else {
+			response.sendRedirect("./assesmentReport.jsp?id=1613");		
+		}else if(Integer.parseInt(assessmentId) == AssesmentData.ABBOTT_NEWDRIVERS) {
+			response.sendRedirect("./assesmentReport.jsp?id=1707");		
+		}
+		else {
 			UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 			AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
 			AssessmentReportData dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReport(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReport(new Integer(assessmentId),sys.getUserSessionData());

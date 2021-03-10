@@ -82,7 +82,7 @@ public interface AssesmentReportFacadeLocal
 
    public java.lang.Integer getAssesmentId( java.lang.String user,java.lang.String webinarCode,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
-   public java.util.Collection findMutualAssesmentResults( java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+   public java.util.Collection findMutualAssesmentResults( java.lang.Integer assesment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public java.util.Collection getWebinarPersonalData( java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 

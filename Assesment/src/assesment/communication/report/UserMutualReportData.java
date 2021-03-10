@@ -12,23 +12,28 @@ import assesment.communication.assesment.AssesmentData;
 import assesment.communication.language.Text;
 import assesment.communication.question.AnswerData;
 import assesment.communication.question.QuestionData;
+import assesment.communication.util.CountryConstants;
 
 public class UserMutualReportData {
 	
+	private Integer assesment;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String login;
 	private String location;
-
 	private int module1;
 	private int module2;
 	private int module3;
 	private int module4;
+	private int module5;
+	private int module6;
 	private boolean module1Completed;
 	private boolean module2Completed;
 	private boolean module3Completed;
 	private boolean module4Completed;
+	private boolean module5Completed;
+	private boolean module6Completed;
 	private boolean behaviourCompleted;
 	private int correctM1;
 	private int incorrectM1;
@@ -38,6 +43,10 @@ public class UserMutualReportData {
 	private int incorrectM3;
 	private int correctM4;
 	private int incorrectM4;
+	private int correctM5;
+	private int incorrectM5;
+	private int correctM6;
+	private int incorrectM6;
 	private int behaviour;
 	private int ranking;
 	private String totalColor;
@@ -45,53 +54,116 @@ public class UserMutualReportData {
 	private String colorM2;
 	private String colorM3;
 	private String colorM4;
+	private String colorM5;
+	private String colorM6;
 	private String mod1Recommendation;
 	private String mod2Recommendation;
 	private String mod3Recommendation;
 	private String mod4Recommendation;
-
+	private String mod5Recommendation;
+	private String mod6Recommendation;
+	private String country;
 	
 	public UserMutualReportData() {
 	}
 
 	public UserMutualReportData(String[] data) {
+		this.assesment=new Integer(1613);
 		this.firstName = (data[0] == null) ? "" : data[0];
 		this.lastName = (data[1] == null) ? "" : data[1];
 		this.email = (data[2] == null) ? "" : data[2];
 		this.login = (data[3] == null) ? "" : data[3];
-		this.module1Completed=(data[6]==null)?false:true;
-		this.module2Completed=(data[8]==null)?false:true;
-		this.module3Completed=(data[10]==null)?false:true;
-		this.module4Completed=(data[12]==null)?false:true;
+		this.module1Completed=(data[7]==null)?false:true;
+		this.module2Completed=(data[9]==null)?false:true;
+		this.module3Completed=(data[12]==null)?false:true;
+		this.module4Completed=(data[14]==null)?false:true;
 		this.behaviourCompleted=(data[5]==null)?false:true;
 		this.location = (data[3] == null) ? "" : data[4];
 		this.behaviour= (data[5]==null)?0:Integer.parseInt(data[5]);
-		this.correctM1 = (data[6]==null)?0:Integer.parseInt(data[6]);
-		this.incorrectM1 = (data[7]==null)?0: Integer.parseInt(data[7]);
-		this.correctM2 = (data[8]==null)?0:Integer.parseInt(data[8]);
-		this.incorrectM1 = (data[9]==null)?0:Integer.parseInt(data[9]);
-		this.correctM3 = (data[10]==null)?0:Integer.parseInt(data[10]);
-		this.incorrectM1 =(data[11]==null)?0: Integer.parseInt(data[11]);
-		this.correctM4 = (data[12]==null)?0:Integer.parseInt(data[12]);
-		this.incorrectM1 = (data[6]==null)?0:Integer.parseInt(data[13]);
-		this.module1 = (data[6]==null)?0:((Integer.parseInt(data[6])*100)/(Integer.parseInt(data[6])+Integer.parseInt(data[7])));
-		this.module2 =(data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9])));
-		this.module3 =(data[10]==null)?0: (data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11])));
-		this.module4 = (data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13])));
-		this.colorM1 = getModuleColor( (data[6]==null)?0:((Integer.parseInt(data[6])*100)/(Integer.parseInt(data[6])+Integer.parseInt(data[7]))));
-		this.colorM2 = getModuleColor((data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9]))));
-		this.colorM3 = getModuleColor((data[10]==null)?0: (data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11]))));
-		this.colorM4 = getModuleColor((data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13]))));
-		this.ranking = ((data[6]==null)?0:((Integer.parseInt(data[6])*100)/(Integer.parseInt(data[6])+Integer.parseInt(data[7]))))
-		+ ((data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9]))))
-		+ ((data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11]))))
-		+ ((data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13]))));
+		this.correctM1 = (data[7]==null)?0:Integer.parseInt(data[7]);
+		this.incorrectM1 = (data[8]==null)?0: Integer.parseInt(data[8]);
+		this.correctM2 = (data[9]==null)?0:Integer.parseInt(data[9]);
+		this.incorrectM2 = (data[10]==null)?0:Integer.parseInt(data[10]);
+		this.correctM3 = (data[11]==null)?0:Integer.parseInt(data[11]);
+		this.incorrectM3 =(data[12]==null)?0: Integer.parseInt(data[12]);
+		this.correctM4 = (data[13]==null)?0:Integer.parseInt(data[13]);
+		this.incorrectM4 = (data[14]==null)?0:Integer.parseInt(data[14]);
+		this.module1 = (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8])));
+		this.module2 =(data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10])));
+		this.module3 =(data[11]==null)?0: (data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12])));
+		this.module4 = (data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14])));
+		this.colorM1 = getModuleColor( (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))));
+		this.colorM2 = getModuleColor((data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))));
+		this.colorM3 = getModuleColor((data[11]==null)?0: (data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))));
+		this.colorM4 = getModuleColor((data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))));
+		this.ranking = ((data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))))
+		+ ((data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))))
+		+ ((data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))))
+		+ ((data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))));
 		this.totalColor = getModuleColor(ranking/4);
-		this.mod1Recommendation=getTextRecommendation(1, (data[6]==null)?0:((Integer.parseInt(data[6])*100)/(Integer.parseInt(data[6])+Integer.parseInt(data[7]))) );
-		this.mod2Recommendation=getTextRecommendation(2,(data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9]))));
-		this.mod3Recommendation=getTextRecommendation(3,(data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11]))));
-		this.mod4Recommendation=getTextRecommendation(4,(data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13]))));
+		this.mod1Recommendation=getTextRecommendation(1, (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))) );
+		this.mod2Recommendation=getTextRecommendation(2,(data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))));
+		this.mod3Recommendation=getTextRecommendation(3,(data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))));
+		this.mod4Recommendation=getTextRecommendation(4,(data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))));
+		this.country=data[6];
 	}
+	public UserMutualReportData(String[] data, Boolean bool) {
+		this.assesment=new Integer(1707);
+		this.firstName = (data[0] == null) ? "" : data[0];
+		this.lastName = (data[1] == null) ? "" : data[1];
+		this.email = (data[2] == null) ? "" : data[2];
+		this.login = (data[3] == null) ? "" : data[3];
+		this.module1Completed=(data[8]==null)?false:true;
+		this.module2Completed=(data[10]==null)?false:true;
+		this.module3Completed=(data[12]==null)?false:true;
+		this.module4Completed=(data[14]==null)?false:true;
+		this.module5Completed=(data[16]==null)?false:true;
+		this.module6Completed=(data[18]==null)?false:true;
+		this.behaviourCompleted=(data[5]==null)?false:true;
+		this.location = (data[3] == null) ? "" : data[4];
+		this.behaviour= (data[5]==null)?0:Integer.parseInt(data[5]);
+		this.correctM1 = (data[7]==null)?0:Integer.parseInt(data[7]);
+		this.incorrectM1 = (data[8]==null)?0: Integer.parseInt(data[8]);
+		this.correctM2 = (data[9]==null)?0:Integer.parseInt(data[9]);
+		this.incorrectM2 = (data[10]==null)?0:Integer.parseInt(data[10]);
+		this.correctM3 = (data[11]==null)?0:Integer.parseInt(data[11]);
+		this.incorrectM3 =(data[12]==null)?0: Integer.parseInt(data[12]);
+		this.correctM4 = (data[13]==null)?0:Integer.parseInt(data[13]);
+		this.incorrectM4 = (data[14]==null)?0:Integer.parseInt(data[14]);
+		this.correctM5 = (data[15]==null)?0:Integer.parseInt(data[15]);
+		this.incorrectM5 =(data[16]==null)?0: Integer.parseInt(data[16]);
+		this.correctM6 = (data[17]==null)?0:Integer.parseInt(data[17]);
+		this.incorrectM6 = (data[18]==null)?0:Integer.parseInt(data[18]);
+		this.module1 = (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8])));
+		this.module2 =(data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10])));
+		this.module3 =(data[11]==null)?0: (data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12])));
+		this.module4 = (data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14])));
+		this.module5 = (data[15]==null)?0:((Integer.parseInt(data[15])*100)/(Integer.parseInt(data[15])+Integer.parseInt(data[16])));
+		this.module6 = (data[17]==null)?0:((Integer.parseInt(data[17])*100)/(Integer.parseInt(data[17])+Integer.parseInt(data[18])));
+		
+		this.colorM1 = getModuleColor( (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))), new Integer(1));
+		this.colorM2 = getModuleColor((data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))), new Integer(2));
+		this.colorM3 = getModuleColor((data[11]==null)?0: (data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))), new Integer(3));
+		this.colorM4 = getModuleColor((data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))),new Integer(4));
+		this.colorM5 = getModuleColor((data[15]==null)?0:((Integer.parseInt(data[15])*100)/(Integer.parseInt(data[15])+Integer.parseInt(data[16]))), new Integer(5));
+		this.colorM6 = getModuleColor((data[17]==null)?0:((Integer.parseInt(data[17])*100)/(Integer.parseInt(data[17])+Integer.parseInt(data[18]))), new Integer(6));
+		
+		this.ranking = ((data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))))
+		+ ((data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))))
+		+ ((data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))))
+		+ ((data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))))
+		+ ((data[15]==null)?0:((Integer.parseInt(data[15])*100)/(Integer.parseInt(data[15])+Integer.parseInt(data[16]))))
+		+ ((data[17]==null)?0:((Integer.parseInt(data[17])*100)/(Integer.parseInt(data[17])+Integer.parseInt(data[18]))));
+		this.totalColor = getModuleColor(ranking/6);
+		this.mod1Recommendation=getTextRecommendation(1, (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))) );
+		this.mod2Recommendation=getTextRecommendation(2,(data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))));
+		this.mod3Recommendation=getTextRecommendation(3,(data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))));
+		this.mod4Recommendation=getTextRecommendation(4,(data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))));
+		this.mod5Recommendation=getTextRecommendation(5,(data[15]==null)?0:((Integer.parseInt(data[15])*100)/(Integer.parseInt(data[15])+Integer.parseInt(data[16]))));
+		this.mod6Recommendation=getTextRecommendation(6,(data[17]==null)?0:((Integer.parseInt(data[17])*100)/(Integer.parseInt(data[17])+Integer.parseInt(data[18]))));
+		this.country=data[6];
+	}
+
 
 	public String getLogin() {
 		return login;
@@ -276,6 +348,23 @@ public class UserMutualReportData {
 		}
 	}
 	
+	public String getModuleColor(Integer module, Integer order) {
+		if (order<5) {
+			if(module==100) {
+				return "background-color: rgb(30, 209, 105);";
+			}else {
+				return "background-color: rgb(231, 84, 92);";
+			}		
+		}else {
+			if(module>75) {
+				return "background-color: rgb(30, 209, 105);";
+			}else {
+				return "background-color: rgb(231, 84, 92);";
+			}	
+		}
+
+	}
+	
 	public String getPsiColor() {
 		if(this.behaviour<3) {
 			return "background-color: rgb(30, 209, 105);";
@@ -307,14 +396,19 @@ public class UserMutualReportData {
 			Collections.sort(results, new SortbyModule3());
 		}else if(criteria.equals("module4")){
 			Collections.sort(results, new SortbyModule4());
+		}else if(criteria.equals("module5")){
+			Collections.sort(results, new SortbyModule5());
+		}else if(criteria.equals("module6")){
+			Collections.sort(results, new SortbyModule6());
 		}else if(criteria.equals("ranking")){
 			Collections.sort(results, new Sortbyranking());
 		}else if(criteria.equals("behaviour")){
 			Collections.sort(results, new Sortbybehaviour());
 		}
 	}
-	public String getValue(int i, Text messages) {
-		switch(i) {
+	public String getValue(int i, Text messages, boolean mutual) {
+		if(mutual) {
+			switch(i) {
 			case 0:
 				return firstName;
 			case 1:
@@ -344,7 +438,215 @@ public class UserMutualReportData {
 			case 13:
 				return messages.getText(getMod4Recommendation());
 		}
+		}else {
+			switch(i) {
+			case 0:
+				return firstName;
+			case 1:
+				return lastName;
+			case 2:
+				return email;
+			case 3:
+				return login;
+			case 4:
+				CountryConstants c= new CountryConstants();
+				c.setLAData(messages);
+				return c.find(country);
+			case 5:
+				return String.valueOf(module1);
+			case 6:
+				return String.valueOf(module2);
+			case 7:
+				return String.valueOf(module3);
+			case 8:
+				return String.valueOf(module4);
+			case 9:
+				return String.valueOf(module5);
+			case 10:
+				return String.valueOf(module6);
+			case 11:
+				return  messages.getText(getPsiText());
+			case 12:
+				return String.valueOf(ranking);
+		}
+		}
 		return null;
+	}
+
+	public Integer getAssesment() {
+		return assesment;
+	}
+
+	public void setAssesment(Integer assesment) {
+		this.assesment = assesment;
+	}
+
+	public boolean getModule5Completed() {
+		return module5Completed;
+	}
+
+	public void setModule5Completed(boolean module5Completed) {
+		this.module5Completed = module5Completed;
+	}
+
+	public boolean getModule6Completed() {
+		return module6Completed;
+	}
+
+	public void setModule6Completed(boolean module6Completed) {
+		this.module6Completed = module6Completed;
+	}
+
+	public int getCorrectM1() {
+		return correctM1;
+	}
+
+	public void setCorrectM1(int correctM1) {
+		this.correctM1 = correctM1;
+	}
+
+	public int getIncorrectM1() {
+		return incorrectM1;
+	}
+
+	public void setIncorrectM1(int incorrectM1) {
+		this.incorrectM1 = incorrectM1;
+	}
+
+	public int getCorrectM2() {
+		return correctM2;
+	}
+
+	public void setCorrectM2(int correctM2) {
+		this.correctM2 = correctM2;
+	}
+
+	public int getIncorrectM2() {
+		return incorrectM2;
+	}
+
+	public void setIncorrectM2(int incorrectM2) {
+		this.incorrectM2 = incorrectM2;
+	}
+
+	public int getCorrectM3() {
+		return correctM3;
+	}
+
+	public void setCorrectM3(int correctM3) {
+		this.correctM3 = correctM3;
+	}
+
+	public int getIncorrectM3() {
+		return incorrectM3;
+	}
+
+	public void setIncorrectM3(int incorrectM3) {
+		this.incorrectM3 = incorrectM3;
+	}
+
+	public int getCorrectM4() {
+		return correctM4;
+	}
+
+	public void setCorrectM4(int correctM4) {
+		this.correctM4 = correctM4;
+	}
+
+	public int getIncorrectM4() {
+		return incorrectM4;
+	}
+
+	public void setIncorrectM4(int incorrectM4) {
+		this.incorrectM4 = incorrectM4;
+	}
+
+	public int getCorrectM5() {
+		return correctM5;
+	}
+
+	public void setCorrectM5(int correctM5) {
+		this.correctM5 = correctM5;
+	}
+
+	public int getIncorrectM5() {
+		return incorrectM5;
+	}
+
+	public void setIncorrectM5(int incorrectM5) {
+		this.incorrectM5 = incorrectM5;
+	}
+
+	public int getCorrectM6() {
+		return correctM6;
+	}
+
+	public void setCorrectM6(int correctM6) {
+		this.correctM6 = correctM6;
+	}
+
+	public int getIncorrectM6() {
+		return incorrectM6;
+	}
+
+	public void setIncorrectM6(int incorrectM6) {
+		this.incorrectM6 = incorrectM6;
+	}
+
+	public String getColorM5() {
+		return colorM5;
+	}
+
+	public void setColorM5(String colorM5) {
+		this.colorM5 = colorM5;
+	}
+
+	public String getColorM6() {
+		return colorM6;
+	}
+
+	public void setColorM6(String colorM6) {
+		this.colorM6 = colorM6;
+	}
+
+	public String getMod5Recommendation() {
+		return mod5Recommendation;
+	}
+
+	public void setMod5Recommendation(String mod5Recommendation) {
+		this.mod5Recommendation = mod5Recommendation;
+	}
+
+	public String getMod6Recommendation() {
+		return mod6Recommendation;
+	}
+
+	public void setMod6Recommendation(String mod6Recommendation) {
+		this.mod6Recommendation = mod6Recommendation;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public int getModule5() {
+		return module5;
+	}
+
+	public void setModule5(int module5) {
+		this.module5 = module5;
+	}
+
+	public int getModule6() {
+		return module6;
+	}
+
+	public void setModule6(int module6) {
+		this.module6 = module6;
 	}
 }
 
@@ -408,6 +710,24 @@ class SortbyModule4 implements Comparator<UserMutualReportData>
 	return b.getModule4() - a.getModule4();
 	}
 }
+class SortbyModule5 implements Comparator<UserMutualReportData>
+{
+
+	public int compare(UserMutualReportData a, UserMutualReportData b)
+	{
+	return b.getModule5() - a.getModule5();
+	}
+}
+
+class SortbyModule6 implements Comparator<UserMutualReportData>
+{
+
+	public int compare(UserMutualReportData a, UserMutualReportData b)
+	{
+	return b.getModule6() - a.getModule6();
+	}
+}
+
 
 class Sortbyranking implements Comparator<UserMutualReportData>
 {
