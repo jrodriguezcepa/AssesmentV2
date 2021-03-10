@@ -21,6 +21,7 @@ public class AssesmentCategory {
     public AssesmentCategory(Integer assesment, Integer category) {
         pk = new AssesmentCategoryPK(assesment, category);
         changeName = false;
+        showReport = true;
     }
 
     public AssesmentCategoryPK getPk() {

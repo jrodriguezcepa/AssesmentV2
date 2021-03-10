@@ -1093,11 +1093,7 @@ public class AnswerUtil {
 	                    moduleData = sys.getModuleReportFacade().getPsicoModule(userSessionData);
 	                    try {
 	                    	int assessmentId = assesment.getId().intValue(); 
-	                    	if(assessmentId == AssesmentData.MINCIVIL_COLOMBIA || assessmentId == AssesmentData.CCFC || 
-	                    			assessmentId == AssesmentData.SAFEFLEET_MEX || assessmentId == AssesmentData.SAFEFLEET_LATAM || 
-   	                    			assessmentId == AssesmentData.MONDELEZ_DA || assessmentId == AssesmentData.GUINEZ_INGENIERIA || 
-	                    			assessmentId == AssesmentData.TIMAC_BRASIL_DA_2020 || assessmentId == AssesmentData.UPL_NEWHIRE
-	                    			|| assessmentId == AssesmentData.LIGHT_VEHICLES_2020 || assessmentId == AssesmentData.MUTUAL_DA) {
+	                    	if(assesment.isPsi()) {
 			                    psicoId = createUser(sys);
 			                    if(psicoId > 0) {
 			                        String[] personalData = sys.getQuestionReportFacade().getAgenSex(user,assesment.getId(),userSessionData);

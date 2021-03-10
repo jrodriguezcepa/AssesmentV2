@@ -254,6 +254,8 @@ public class AssesmentData extends AssesmentAttributes {
 	
     public static final int MUTUAL_RSMM = 1703;
 
+	private static final int ABBOTT_NEWDRIVERS = 1707;
+
 	
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;
@@ -443,6 +445,20 @@ public class AssesmentData extends AssesmentAttributes {
 				 id.intValue() == SAFEFLEET_WEBINARMONITORS ||
 				 id.intValue() == SAFEFLEET_WEBINARPLUS ||
 				 id.intValue() == SAFEFLEET_WEBINARPLUS2);
+	}
+
+	public boolean isPsi() {
+		return (id.intValue() == AssesmentData.MINCIVIL_COLOMBIA || 
+				id.intValue() == AssesmentData.CCFC || 
+				id.intValue() == AssesmentData.SAFEFLEET_MEX || 
+				id.intValue() == AssesmentData.SAFEFLEET_LATAM || 
+				id.intValue() == AssesmentData.MONDELEZ_DA || 
+				id.intValue() == AssesmentData.GUINEZ_INGENIERIA || 
+				id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2020 || 
+				id.intValue() == AssesmentData.UPL_NEWHIRE || 
+     			id.intValue() == AssesmentData.LIGHT_VEHICLES_2020 || 
+     	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
+     			id.intValue() == AssesmentData.MUTUAL_DA);
 	}
 	
 }
