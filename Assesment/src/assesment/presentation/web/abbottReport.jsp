@@ -29,7 +29,6 @@
 	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	String language = (sys != null) ? sys.getUserSessionData().getLenguage() : System.getProperty("user.language");
 	UserSessionData userSessionData = sys.getUserSessionData();
-
 	AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
 	String groupId = "123";
 	String role = userSessionData.getRole(); 
@@ -42,10 +41,8 @@
 			AssesmentAttributes as= (AssesmentAttributes)it2.next();
 			System.out.println(as.getName());
 			System.out.println("*******");
-
 		}
 	}
-
 %>
 
 <%@page import="java.util.HashMap"%>
@@ -70,7 +67,6 @@
         body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
         #charts { max-width: 100%;
             margin:auto;  }
-
         #charts td { 
             padding:10px;
             background:#ffffff;
@@ -98,39 +94,29 @@
                   border-top: 0px;
                   border-left: 0px;
                   border-bottom: 0px;
-
                  border-style: solid;
                  padding-top: 7px;
                  padding-bottom: 7px;}
 			.col-3 {width: 16.66%; border-right: 1px rgb(218, 215, 215);
                   border-top: 0px black;                text-align: center;
-
                   border-left: 0px black;
                   border-bottom: 0px black;
-
                  border-style: solid;}
 			.col-4 {width: 16.66%;border-right: 1px rgb(218, 215, 215);
                   border-top: 0px black;                text-align: center;
-
                   border-left: 0px black;
                   border-bottom: 0px black;
-
                  border-style: solid;}
 			.col-5 {width: 16.66%;border-right: 1px rgb(218, 215, 215);
                   border-top: 0px black;                text-align: center;
-
                   border-left: 0px black;
                   border-bottom: 0px black;
-
                  border-style: solid;}
 			.col-6 {width: 16.66%;border-right: 1px rgb(218, 215, 215);
                   border-top: 0px black;                text-align: center;
-
                   border-left: 0px black;
                   border-bottom: 0px black;
-
                  border-style: solid;}
-
 			
 			[class*="col-"] {
 				float: left;
@@ -189,10 +175,8 @@
 				border-top:0.5px solid #918d8d;
 				border-left:0.5px solid #a39999;
 				border-right:0.5px solid #9c9c9c;
-
 			
             }
-
             .table3 img {
 				float:left;
                 width: 20px;
@@ -204,14 +188,12 @@
 				font-weight:600;
                 padding:10px;
                 font-size: 1vw;
-
 				color: rgb(255, 255, 255);
 				background-color: #7682c9;
 				text-align:center;
 				
 				border-bottom: 1px solid #d6d6d6;
 				white-space:normal;
-
             }
             .table3 th {
 				
@@ -222,19 +204,16 @@
 				text-align:left;
 				border-bottom: 0.5px solid #7e7b7b;
 				white-space:normal;
-
             }
             .table3{
                 width:90%;
 				margin-bottom:1.5%;
-
                 margin-left: 5%;
                 margin-right: 5%;
             }
             canvas{
                 clear:both;
                 width: 200px;}
-
             a.button {
 				width: -moz-fit-content;
 				width: fit-content;
@@ -296,7 +275,7 @@
     <!--TOTAL DE PARTICIPANTES-->
     <div>
         <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Total de Participantes (licencias de uso) Disponibles</span>
-        <span style="float:right; margin-right: 130px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades por pa韘, divisi髇</span>
+        <span style="float:right; margin-right: 130px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades por pa铆s, divisi贸n</span>
 
     </div>
     <table  style="clear:both;float:left;" class="table">
@@ -310,7 +289,7 @@
         </tr>
         
         <tr>
-            <td style="color:#444496;font-weight: bold;">Divisi髇 1</td>
+            <td style="color:#444496;font-weight: bold;">Divisi贸n 1</td>
             <td >15</td>
             <td >25</td>
             <td >9</td>
@@ -319,7 +298,7 @@
         </tr>
        
         <tr>
-            <td style="color:#444496;font-weight: bold;">Divisi髇 2</td>
+            <td style="color:#444496;font-weight: bold;">Divisi贸n 2</td>
             <td>5</td>
             <td>12</td>
             <td>0</td>
@@ -328,7 +307,7 @@
         </tr>
         
         <tr>
-            <td style="color:#444496;font-weight: bold;">Divisi髇 3</td>
+            <td style="color:#444496;font-weight: bold;">Divisi贸n 3</td>
             <td>5</td>
             <td>13</td>
             <td>1</td>
@@ -354,7 +333,7 @@
         </thead>
         <tr>
             <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Argentina</td>
-            <td>Divisi髇</td>
+            <td>Divisi贸n</td>
             <td>Intersecciones</td>
             <td>Velocidad</td>
             <td>Distancia</td>
@@ -367,7 +346,7 @@
                    <div class="row">
                     <div class=col-1></div>
 
-                       <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 1</div>
+                       <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 1</div>
 
                        <div class=col-3 > <span style="color:#3dad39;font-weight: bold;">15</span></div>
 
@@ -392,7 +371,7 @@
                    <div class="row odd">
                     <div class=col-1></div>
 
-                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 2 </div>
+                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 2 </div>
 
                     <div class=col-3>                        
                         <span style="color:#3dad39;font-weight: bold;"></span> 
@@ -417,7 +396,7 @@
                 </div>  
                 <div class="row">
                     <div class=col-1></div>
-                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 3</div>
+                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 3</div>
 
                     <div class=col-3>
                         <span style="color:#3dad39;font-weight: bold;">5</span> 
@@ -446,7 +425,7 @@
         </tr>
         <tr>
             <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Brasil</td>
-            <td>Divisi髇</td>
+            <td>Divisi贸n</td>
             <td>Intersecciones</td>
             <td>Velocidad</td>
             <td>Distancia</td>
@@ -459,7 +438,7 @@
                    <div class="row">
                     <div class=col-1></div>
 
-                       <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 1</div>
+                       <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 1</div>
 
                        <div class=col-3 > <span style="color:#3dad39;font-weight: bold;">15</span></div>
 
@@ -484,7 +463,7 @@
                    <div class="row odd">
                     <div class=col-1></div>
 
-                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 2 </div>
+                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 2 </div>
 
                     <div class=col-3>                        
                         <span style="color:#3dad39;font-weight: bold;">4</span> | 
@@ -513,7 +492,7 @@
         </tr>
         <tr>
             <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Chile</td>
-            <td>Divisi髇</td>
+            <td>Divisi贸n</td>
             <td>Intersecciones</td>
             <td>Velocidad</td>
             <td>Distancia</td>
@@ -526,7 +505,7 @@
                    <div class="row">
                     <div class=col-1></div>
 
-                       <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 1</div>
+                       <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 1</div>
 
                        <div class=col-3 > <span style="color:#3dad39;font-weight: bold;">15</span></div>
 
@@ -551,7 +530,7 @@
                    <div class="row odd">
                     <div class=col-1></div>
 
-                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 2 </div>
+                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 2 </div>
 
                     <div class=col-3>                        
                         <span style="color:#3dad39;font-weight: bold;"></span> 
@@ -576,7 +555,7 @@
                 </div>  
                 <div class="row">
                     <div class=col-1></div>
-                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 3</div>
+                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 3</div>
 
                     <div class=col-3>
                         <span style="color:#3dad39;font-weight: bold;">5</span> 
@@ -602,7 +581,7 @@
                 </div> 
                 <div class="row">
                     <div class=col-1></div>
-                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 4</div>
+                    <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 4</div>
 
                     <div class=col-3>
                         <span style="color:#3dad39;font-weight: bold;">5</span> 
@@ -631,7 +610,7 @@
         </tr>
         <tr>
             <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Uruguay</td>
-            <td>Divisi髇</td>
+            <td>Divisi贸n</td>
             <td>Intersecciones</td>
             <td>Velocidad</td>
             <td>Distancia</td>
@@ -643,7 +622,7 @@
                 <div>
                     <div class="row">
                         <div class=col-1></div>
-                        <div class=col-2 style="color:#444496;font-weight: bold;">Divisi髇 3</div>
+                        <div class=col-2 style="color:#444496;font-weight: bold;">Divisi贸n 3</div>
     
                         <div class=col-3>
                             <span style="color:#3dad39;font-weight: bold;">5</span> 
@@ -727,8 +706,8 @@
     <tr>
         <th>Nombre</th>
         <th>Email</th>
-        <th>Pa韘</th>
-        <th>Divisi髇</th>
+        <th>Pa铆s</th>
+        <th>Divisi贸n</th>
         <th>Intersecciones</th>
         <th>Velocidad</th>
         <th>eBtw+</th>
@@ -747,7 +726,7 @@
         <td>Carla </td>
         <td>carla@demo.com</td>
         <td style="font-weight: 600;">Argentina</td>
-        <td style="font-weight: 600;">Divisi髇 1</td>
+        <td style="font-weight: 600;">Divisi贸n 1</td>
         <td>Pendiente</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td>Pendiente</td>
@@ -756,7 +735,7 @@
         <td>Carolina </td>
         <td>carolina@demo.com</td>
         <td style="font-weight: 600;">Brasil</td>
-        <td style="font-weight: 600;">Divisi髇 2</td>
+        <td style="font-weight: 600;">Divisi贸n 2</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td style="background-color:#f03232;color:white">No aprobado</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
@@ -765,7 +744,7 @@
         <td>Federico </td>
         <td>federico@demo.com</td>
         <td style="font-weight: 600;">Uruguay</td>
-        <td style="font-weight: 600;">Divisi髇 2</td>
+        <td style="font-weight: 600;">Divisi贸n 2</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td style="background-color:#f03232;color:white">No aprobado</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
@@ -774,7 +753,7 @@
         <td>Fernando </td>
         <td>fernando@demo.com</td>
         <td style="font-weight: 600;">Argentina</td>
-        <td style="font-weight: 600;">Divisi髇 1</td>
+        <td style="font-weight: 600;">Divisi贸n 1</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td style="background-color:#f03232;color:white">No aprobado</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
@@ -783,7 +762,7 @@
         <td>Francisco </td>
         <td>francisco@demo.com</td>
         <td style="font-weight: 600;">Brasil</td>
-        <td style="font-weight: 600;">Divisi髇 3</td>
+        <td style="font-weight: 600;">Divisi贸n 3</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
@@ -793,16 +772,16 @@
         <td>Juan </td>
         <td>juan@demo.com</td>
         <td style="font-weight: 600;">Chile</td>
-        <td style="font-weight: 600;">Divisi髇 1</td>
+        <td style="font-weight: 600;">Divisi贸n 1</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td>Pendiente</td>
         <td style="background-color:#f03232;color:white">No aprobado</td>
     </tr>
     <tr>
-        <td>Luc韆 </td>
+        <td>Luc铆a </td>
         <td>lucia@demo.com</td>
         <td style="font-weight: 600;">Chile</td>
-        <td style="font-weight: 600;">Divisi髇 1</td>
+        <td style="font-weight: 600;">Divisi贸n 1</td>
         <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
         <td>Pendiente</td>
         <td style="background-color:#f03232;color:white">No aprobado</td>
@@ -820,7 +799,6 @@ var chart = new Chart(ctx, {
     data:{
 	datasets: [{
         data: [85,15],
-
 		backgroundColor: ['green', 'red'],
 		label: ''}],
 		labels: ['Finalizado','No finalizado']},
@@ -853,7 +831,6 @@ var chart2 = new Chart(ctx2, {
     data:{
 	datasets: [{
         data: [50,50],
-
 		backgroundColor: ['green', 'red'],
 		label: ''}],
 		labels: ['Finalizado','No finalizado']},
@@ -887,7 +864,6 @@ var chart3 = new Chart(ctx3, {
     data:{
 	datasets: [{
         data: [20,80],
-
 		backgroundColor: ['green', 'red'],
 		label: ''}],
 		labels: ['Finalizado','No finalizado']},
@@ -921,7 +897,6 @@ var chart4 = new Chart(ctx4, {
     data:{
 	datasets: [{
         data: [47,53],
-
 		backgroundColor: ['green', 'red'],
 		label: ''}],
 		labels: ['Finalizado','No finalizado']},
@@ -955,7 +930,6 @@ var chart5 = new Chart(ctx5, {
     data:{
 	datasets: [{
         data: [45,55],
-
 		backgroundColor: ['green', 'red'],
 		label: ''}],
 		labels: ['Finalizado','No finalizado']},
@@ -989,7 +963,6 @@ var chart6 = new Chart(ctx6, {
     data:{
 	datasets: [{
         data: [30,70],
-
 		backgroundColor: ['green', 'red'],
 		label: ''}],
 		labels: ['Finalizado','No finalizado']},

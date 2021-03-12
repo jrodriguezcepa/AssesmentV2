@@ -24,6 +24,7 @@ import assesment.communication.assesment.AssesmentData;
 import assesment.communication.assesment.CategoryData;
 import assesment.communication.assesment.FeedbackData;
 import assesment.communication.assesment.GroupData;
+import assesment.communication.assesment.GroupUsersData;
 import assesment.communication.exception.DeslogedException;
 import assesment.communication.exception.InvalidDataException;
 import assesment.communication.language.Text;
@@ -877,5 +878,29 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	            handler.handleException("getWebinarPersonalData",e);
 	        }
 	        return new LinkedList();
+	    }
+		
+	    /**
+	     * @ejb.interface-method 
+	     * @ejb.permission role-name = "administrator,systemaccess"
+	     * @param id
+	     * @return
+	     * @throws Exception
+	     */
+	    public GroupUsersData getGroupUsersResults(Integer groupId,UserSessionData userSessionData) throws Exception {
+	        if (userSessionData == null) {
+	            throw new DeslogedException("getUserGroupUsersResults   s","userSessionData = null");
+	        }
+	        if (groupId == null) {
+	            throw new InvalidDataException("getUserGroupUsersResults","id = null");
+	        }
+	        try {
+	        	AssesmentReport report = AssesmentReportUtil.getHome().create();
+	        	return report.getGroupUsersResults(groupId, userSessionData);
+	        
+	        }catch (Exception e) {
+	            handler.handleException("getGroupUsersResults",e);
+	        }
+	        return null;
 	    }
 }

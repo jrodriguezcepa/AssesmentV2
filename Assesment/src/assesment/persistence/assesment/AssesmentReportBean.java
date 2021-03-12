@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -36,6 +37,7 @@ import assesment.communication.assesment.AssesmentData;
 import assesment.communication.assesment.CategoryData;
 import assesment.communication.assesment.FeedbackData;
 import assesment.communication.assesment.GroupData;
+import assesment.communication.assesment.GroupUsersData;
 import assesment.communication.assesment.ResultLine;
 import assesment.communication.assesment.ResultLineJJ;
 import assesment.communication.exception.DeslogedException;
@@ -1741,5 +1743,85 @@ public abstract class AssesmentReportBean implements SessionBean {
 			return result;
 		}
 
+		 /**
+		   * @ejb.interface-method 
+		   * @ejb.permission role-name = "administrator,systemaccess"
+		   * @param id
+		   * @return
+		   * @throws Exception
+		   */
+		  public GroupUsersData getGroupUsersResults(Integer groupId,UserSessionData userSessionData) throws Exception {
+		      Session session = null;
+		      GroupUsersData results = new GroupUsersData();
+		      ArrayList<ArrayList<String>> auxiliar= new ArrayList<ArrayList<String>>();
+		      
+		      try {
+		          session = HibernateAccess.currentSession();
+		          
+		          String sql1 = "SELECT DISTINCT u.country FROM users u "+
+		        		  		"JOIN usergroups g ON g.loginname=u.loginname "+
+		        		  		"WHERE g.groupid="+groupId;
+		          		 
+		          Query q = session.createSQLQuery(sql1).addScalar("country", Hibernate.STRING);
+		          Iterator it = q.list().iterator();
+		          ArrayList<String> countries=new ArrayList<String>();
+		          while(it.hasNext()) {
+		        	  String c = (String)it.next();
+		        	  if(!countries.contains(c)) {
+		        		  countries.add(c);
+		        	  }
+		          }
+		          
+		          String sql2 = "SELECT DISTINCT u.extradata2 FROM users u "+
+	        		  		"JOIN usergroups g ON g.loginname=u.loginname "+
+	        		  		"WHERE g.groupid="+groupId+
+	        		  		" ORDER BY u.extradata2";
+		            Query q2 = session.createSQLQuery(sql2).addScalar("divisions", Hibernate.STRING);
+		            it = q2.list().iterator();
+			          ArrayList<String> divisions=new ArrayList<String>();
+			          while(it.hasNext()) {
+			        	  String d = (String)it.next();
+			        	  if(!divisions.contains(d)) {
+			        		  divisions.add(d);
+			        	  }
+			          }
+		            
+		            Query q3 = session.createSQLQuery("SELECT DISTINCT ac.assesment FROM assesmentcategories ac "
+		            		+ "JOIN categories c ON c.id = ac.category "
+		            		+ "WHERE c.groupid = "+groupId+" AND ac.assesment NOT IN (SELECT DISTINCT m.assesment "
+		            				+ "FROM questions q JOIN modules m ON m.id = q.module WHERE testtype = 1)").addScalar("assesment", Hibernate.INTEGER);
+		            it = q3.list().iterator();
+		            if(it.hasNext()) {
+		            	String ids = String.valueOf(it.next());
+		                while(it.hasNext()) {
+		                	ids += " ,"+it.next();
+		                }
+		                
+		                String sql4 = "SELECT DISTINCT u.loginname, ua.assesment, ua.enddate, "+AnswerData.CORRECT+" AS type, COUNT(*) AS c " +
+		              		    "FROM usergroups ug " + 
+		                		"JOIN users u ON u.loginname = ug.loginname " + 
+		                		"JOIN userassesments ua ON u.loginname = ua.loginname " + 
+		                		"JOIN useranswers uas ON uas.loginname = ua.loginname AND uas.assesment = ua.assesment " + 
+		                		"JOIN assesmentcategories ac ON ua.assesment = ac.assesment " + 
+		                		"JOIN categories c ON c.id = ac.category " + 
+		                		"WHERE ug.groupid = " + groupId +
+		                		" AND c.groupid = c.groupid " + 
+		                		"AND u.role = '"+SecurityConstants.GROUP_ASSESSMENT+"' " + 
+		                		"AND enddate IS NOT NULL AND ua.assesment IN ("+ids+")"+
+		                		" GROUP BY u.loginname, ua.assesment, ua.enddate"; 
+		                Query q4 = session.createSQLQuery(sql4).addScalar("loginname", Hibernate.STRING).addScalar("assesment", Hibernate.INTEGER).addScalar("enddate", Hibernate.DATE).addScalar("type", Hibernate.INTEGER).addScalar("c", Hibernate.INTEGER);
+		                it = q4.list().iterator();
+		                while(it.hasNext()) {
+		              	 
+		                }
+		            }
+		            
+
+
+		      } catch (Exception e) {
+		          handler.getException(e,"getUserGroupResults",userSessionData.getFilter().getLoginName());
+		      }
+		      return results;
+		  }
 	
 }

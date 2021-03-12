@@ -80,4 +80,6 @@ public interface AssesmentReportLocal
 
    public java.util.Collection findMutualAssesmentResults( java.lang.Integer assesment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public assesment.communication.assesment.GroupUsersData getGroupUsersResults( java.lang.Integer groupId,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

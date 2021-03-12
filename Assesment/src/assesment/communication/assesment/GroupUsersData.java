@@ -20,7 +20,7 @@ public class GroupUsersData {
     private Collection<String> countries;
     private Collection<UserData> users;
 	private Collection<String> divisions;
-	
+	private HashMap<String, HashMap<Integer, Object[]>> results;
 	public GroupUsersData() {
 		
 	}
