@@ -677,7 +677,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
     }
 
     private boolean isNewGroup(int groupId) {
-		return groupId == GroupData.ACHE || groupId == GroupData.MERCADOLIBRE || groupId == GroupData.MERCADOLIVRE;
+		return groupId == GroupData.ACHE || groupId == GroupData.MERCADOLIBRE || groupId == GroupData.MERCADOLIVRE || groupId >= 65;
 	}
     /**
      * @ejb.interface-method 

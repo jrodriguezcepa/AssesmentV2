@@ -111,5 +111,13 @@ public class UserSessionData implements Serializable{
 		}
 		return false;
 	}
+	
+	public boolean isDidiGroup() {
+		if(filter.getGroup() != null) {
+			return filter.getGroup().intValue() == 21 || filter.getGroup().intValue() == 100 || 
+					filter.getGroup().intValue() == 128 || filter.getGroup().intValue() == 74;
+		}
+		return false;
+	}
 }
 

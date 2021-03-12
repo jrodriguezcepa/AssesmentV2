@@ -435,6 +435,8 @@
 			boolean line = true;
 			while(it.hasNext()) {
 				UserData user = it.next();
+				if(user.getLoginName().equals("c.gonzalez.beat"))
+					System.out.println("s");
 				HashMap<Integer, Object[]> values = (userResults.containsKey(user.getLoginName())) ? userResults.get(user.getLoginName()) : new HashMap<Integer, Object[]>();
 				String cellName = (line) ? "cellData1" : "cellData";
 				line = !line;

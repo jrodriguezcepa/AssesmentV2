@@ -1124,7 +1124,7 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
      		if(usReport.userExist(login, userSessionData)) {
      			return 2;
      		}else {
-	     		UserData user = new UserData(login, new MD5().encriptar(id), firstName, lastName, "pt", email, UserData.MULTIASSESSMENT, null);
+	     		UserData user = new UserData(login, new MD5().encriptar(login), firstName, lastName, "pt", email, UserData.MULTIASSESSMENT, null);
 	     		user.setStartDate(Calendar.getInstance().getTime());
 	     		
 	     		String[] assesments = {String.valueOf(AssesmentData.TIMAC_BRASIL_DA_2020), String.valueOf(AssesmentData.TIMAC_BRASIL_EBTW_2020)};

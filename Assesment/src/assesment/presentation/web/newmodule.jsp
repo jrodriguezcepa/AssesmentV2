@@ -21,22 +21,6 @@
 
 <!doctype html>
 	<html lang="en">
-  		<head>
-    		<meta charset="utf-8"/>
-    		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    		<link rel="shortcut icon" href="favicon.ico"/>
-    		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-    		<meta name="theme-color" content="#405959"/>
-    		<title>Driver Assessment</title>
-		    <link rel="manifest" href="manifest.json"/>
-    		<link href="static/css/fonts/roboto.css" rel="stylesheet"/>
-    		<link href="static/css/fonts/font-awesome.min.css" rel="stylesheet"/>
-    		<script src="static/js/jquery-3.4.1.min.js"></script>
-    		<script src="static/js/bootstrap.bundle.min.js"></script>
-    		<style>#assessment{display:none}</style>
-			<link href="./static/css/main.css" rel="stylesheet">
-  		</head>
-		<body class="questions">
 
 <%
 	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
@@ -49,6 +33,11 @@
 		String user = userSessionData.getFilter().getLoginName();
 		UsReportFacade userReport = sys.getUserReportFacade();
 		UserData userData = userReport.findUserByPrimaryKey(user,userSessionData);
+
+		String style = "./static/css/main.css";
+		if(userSessionData.isDidiGroup()) {
+			style = "./static/css/mainDidi.css";
+		}
 
 		String assessmentId = request.getParameter("id");
 
@@ -63,6 +52,22 @@
 		Integer moduleId = (request.getParameter("module") == null) ? null : new Integer(request.getParameter("module"));
 	    AssesmentData assesment = sys.getAssesmentReportFacade().findAssesment(new Integer(assessmentId), userSessionData);
 %>	    
+  		<head>
+    		<meta charset="utf-8"/>
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    		<link rel="shortcut icon" href="favicon.ico"/>
+    		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+    		<meta name="theme-color" content="#405959"/>
+    		<title>Driver Assessment</title>
+		    <link rel="manifest" href="manifest.json"/>
+    		<link href="static/css/fonts/roboto.css" rel="stylesheet"/>
+    		<link href="static/css/fonts/font-awesome.min.css" rel="stylesheet"/>
+    		<script src="static/js/jquery-3.4.1.min.js"></script>
+    		<script src="static/js/bootstrap.bundle.min.js"></script>
+    		<style>#assessment{display:none}</style>
+		    <link href="<%=style%>" rel="stylesheet">
+  		</head>
+		<body class="questions">
 			<noscript>You need to enable JavaScript to run this app.</noscript>
 			<nav class="navbar bg-transparent-light fixed-top navbar-light shadow-sm">
       			<div class="container">

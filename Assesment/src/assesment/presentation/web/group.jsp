@@ -1,3 +1,4 @@
+<%@page import="assesment.presentation.translator.web.util.Util"%>
 <%@page import="assesment.business.administration.user.UsReportFacade"%>
 <%@page import="assesment.communication.assesment.CategoryData"%>
 <%@page import="assesment.communication.assesment.GroupData"%>
@@ -38,6 +39,10 @@
 		UserData userData = report.findUserByPrimaryKey(login,userSessionData);
 		HashMap<Integer, Date> map = report.getUserAssessmentStatus(login,userSessionData);
 	
+		String style = "./static/css/main.css";
+		if(userSessionData.isDidiGroup()) {
+			style = "./static/css/mainDidi.css";
+		}
 
 %>
 
@@ -60,7 +65,8 @@
 	    <script src="static/js/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
 	    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-	    <link href="./static/css/main.css" rel="stylesheet">
+	    <!--  link href="./static/css/main.css" rel="stylesheet"-->
+	    <link href="<%=style%>" rel="stylesheet">
 		<script type="text/javascript">
 			function enterDA(assessmentId) {
 				var form = document.forms['SelectAssessmentForm'];
@@ -116,7 +122,7 @@
     	<main class="container main-content">
 	      	<section id="inicio" class="row bg-image" <%=(group.getImage() != null) ?  "style='background-image: url(./flash/images/"+group.getImage()+");'" : ""%>>
         		<div class="col text">
-<%		if(gId != GroupData.GALDERMA && gId != GroupData.DAIMLER && gId != GroupData.FMB_MENTORIA) {
+<%		if(gId != GroupData.GALDERMA && gId != GroupData.DAIMLER && gId != GroupData.FMB_MENTORIA && !userSessionData.isDidiGroup()) {
 			if(gId == GroupData.ACHE) {
 
 %> 		  			<h4>
