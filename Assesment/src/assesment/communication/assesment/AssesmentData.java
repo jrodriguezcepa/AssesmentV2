@@ -255,6 +255,8 @@ public class AssesmentData extends AssesmentAttributes {
     public static final int MUTUAL_RSMM = 1703;
 
 	public static final int ABBOTT_NEWDRIVERS = 1707;
+	public static final int ABBEVIE_LATAM = 1712;
+	
 
 	
     private Collection<ModuleData> modules;

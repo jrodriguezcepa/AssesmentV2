@@ -53,6 +53,8 @@ public class DownloadMutualReportAction  extends AbstractAction {
 	        response.setHeader("Content-Disposition", "inline; filename=ReporteMutualSeguridad.xls");
 	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBOTT_NEWDRIVERS) {
 		        response.setHeader("Content-Disposition", "inline; filename=ReportAbbottNewdrivers.xls");
+	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM) {
+		        response.setHeader("Content-Disposition", "inline; filename=ReportAbbevieLatam.xls");
 	        }
 	        WritableWorkbook w = Workbook.createWorkbook(response.getOutputStream());
 	        WritableSheet s = w.createSheet("Mutual de Seguridad", 0);
@@ -85,6 +87,15 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			      s.addCell(new Label(12,0,messages.getText("generic.data.ranking")));
 				  length=12;
 
+	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM) {
+	        	  s.addCell(new Label(4,0,messages.getText("user.data.country")));
+	        	  s.addCell(new Label(5,0,messages.getText("assesment1712.module4476.name")));
+			      s.addCell(new Label(6,0,messages.getText("assesment1712.module4480.name")));
+			      s.addCell(new Label(7,0,messages.getText("assesment1712.module4481.name")));
+			      s.addCell(new Label(8,0,messages.getText("assessment.psi")));
+			      s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
+				  length=9;
+
 	        }
 
 	    	Iterator it = r.iterator();
@@ -93,7 +104,7 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			while(it.hasNext()) {
 				UserMutualReportData result = (UserMutualReportData)it.next();
 				for(int i = 0; i <= length; i++) {
-					s.addCell(new Label(i,index, result.getValue(i,messages, Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA)));
+					s.addCell(new Label(i,index, result.getValue(i,messages, Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA, Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM)));
 				}
 				index++;
 			}

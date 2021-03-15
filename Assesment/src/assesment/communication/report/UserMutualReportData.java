@@ -107,6 +107,39 @@ public class UserMutualReportData {
 		this.mod4Recommendation=getTextRecommendation(4,(data[13]==null)?0:((Integer.parseInt(data[13])*100)/(Integer.parseInt(data[13])+Integer.parseInt(data[14]))));
 		this.country=data[6];
 	}
+	public UserMutualReportData(String[] data, boolean b1, boolean b2) {
+		this.assesment=new Integer(1613);
+		this.firstName = (data[0] == null) ? "" : data[0];
+		this.lastName = (data[1] == null) ? "" : data[1];
+		this.email = (data[2] == null) ? "" : data[2];
+		this.login = (data[3] == null) ? "" : data[3];
+		this.module1Completed=(data[7]==null)?false:true;
+		this.module2Completed=(data[9]==null)?false:true;
+		this.module3Completed=(data[12]==null)?false:true;
+		this.behaviourCompleted=(data[5]==null)?false:true;
+		this.location = (data[3] == null) ? "" : data[4];
+		this.behaviour= (data[5]==null)?0:Integer.parseInt(data[5]);
+		this.correctM1 = (data[7]==null)?0:Integer.parseInt(data[7]);
+		this.incorrectM1 = (data[8]==null)?0: Integer.parseInt(data[8]);
+		this.correctM2 = (data[9]==null)?0:Integer.parseInt(data[9]);
+		this.incorrectM2 = (data[10]==null)?0:Integer.parseInt(data[10]);
+		this.correctM3 = (data[11]==null)?0:Integer.parseInt(data[11]);
+		this.incorrectM3 =(data[12]==null)?0: Integer.parseInt(data[12]);
+		this.module1 = (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8])));
+		this.module2 =(data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10])));
+		this.module3 =(data[11]==null)?0: (data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12])));
+		this.colorM1 = getModuleColor( (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))));
+		this.colorM2 = getModuleColor((data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))));
+		this.colorM3 = getModuleColor((data[11]==null)?0: (data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))));
+		this.ranking = ((data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))))
+		+ ((data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))))
+		+ ((data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))));
+		this.totalColor = getModuleColor(ranking/3);
+		this.mod1Recommendation=getTextRecommendation(1, (data[7]==null)?0:((Integer.parseInt(data[7])*100)/(Integer.parseInt(data[7])+Integer.parseInt(data[8]))) );
+		this.mod2Recommendation=getTextRecommendation(2,(data[9]==null)?0:((Integer.parseInt(data[9])*100)/(Integer.parseInt(data[9])+Integer.parseInt(data[10]))));
+		this.mod3Recommendation=getTextRecommendation(3,(data[11]==null)?0:((Integer.parseInt(data[11])*100)/(Integer.parseInt(data[11])+Integer.parseInt(data[12]))));
+		this.country=data[6];
+	}
 	public UserMutualReportData(String[] data, Boolean bool) {
 		this.assesment=new Integer(1707);
 		this.firstName = (data[0] == null) ? "" : data[0];
@@ -406,7 +439,7 @@ public class UserMutualReportData {
 			Collections.sort(results, new Sortbybehaviour());
 		}
 	}
-	public String getValue(int i, Text messages, boolean mutual) {
+	public String getValue(int i, Text messages, boolean mutual, boolean abbevie) {
 		if(mutual) {
 			switch(i) {
 			case 0:
@@ -437,6 +470,34 @@ public class UserMutualReportData {
 				return messages.getText(getMod3Recommendation());
 			case 13:
 				return messages.getText(getMod4Recommendation());
+			}
+		}else if(abbevie) {
+			switch(i) {
+			case 0:
+				return firstName;
+			case 1:
+				return lastName;
+			case 2:
+				return email;
+			case 3:
+				return login;
+			case 4:
+				return String.valueOf(module1);
+			case 5:
+				return String.valueOf(module2);
+			case 6:
+				return String.valueOf(module3);
+			case 7:
+				return  messages.getText(getPsiText());
+			case 8:
+				return String.valueOf(ranking);
+			case 9:
+				return messages.getText(getMod1Recommendation());
+			case 10:
+				return messages.getText(getMod2Recommendation());
+			case 11:
+				return messages.getText(getMod3Recommendation());
+
 		}
 		}else {
 			switch(i) {

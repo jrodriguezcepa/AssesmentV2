@@ -1677,7 +1677,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 				Integer lengthRes=(size*2)+7;
 			
 				String queryStr="";
-				if(cedi!=null||assesment==AssesmentData.ABBOTT_NEWDRIVERS) {
+				if(cedi!=null ||assesment==AssesmentData.ABBOTT_NEWDRIVERS ||assesment==AssesmentData.ABBEVIE_LATAM) {
 					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
@@ -1685,7 +1685,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 						//	+ " AND ua.enddate IS NOT NULL "
 						//	+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL "
 					if(cedi!=null) queryStr+= " AND u.location="+cedi; 
-				}else {
+				}else if(assesment==AssesmentData.MUTUAL_DA ) {
 					
 					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,c.name AS location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country  "+
 							"FROM userassesments ua "
@@ -1733,6 +1733,9 @@ public abstract class AssesmentReportBean implements SessionBean {
 								result.add(new UserMutualReportData(ret));	
 							}else if(!noResult&&assesment==AssesmentData.ABBOTT_NEWDRIVERS) {
 								result.add(new UserMutualReportData(ret, true));	
+							}
+							else if(!noResult&&assesment==AssesmentData.ABBEVIE_LATAM) {
+								result.add(new UserMutualReportData(ret, true, true));	
 							}
 						}
 					}
