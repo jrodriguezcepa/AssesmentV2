@@ -2601,13 +2601,13 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		Collection<UserData> users = new LinkedList<UserData>();
 		try {
 			Session session = HibernateAccess.currentSession();
-			String sql = "SELECT DISTINCT loginname, firstname, lastname, email, language, role, extradata, extradata2 FROM users "
-					+ "WHERE loginname IN (SELECT loginname FROM usergroups WHERE groupid = "+GroupData.GRUPO_MODELO+") AND extradata2 = '"+cedi+"' AND role = '"+UserData.GROUP_ASSESSMENT+"'";
+			String sql = "SELECT DISTINCT loginname, firstname, lastname, email, language, role, extradata, extradata2, location FROM users "
+					+ "WHERE loginname IN (SELECT loginname FROM usergroups WHERE groupid = "+GroupData.GRUPO_MODELO+") AND location = '"+cedi+"' AND role = '"+UserData.GROUP_ASSESSMENT+"'";
 			sql += " ORDER BY firstname, lastname";
 			Query q = session.createSQLQuery(sql).addScalar("loginname", Hibernate.STRING)
 					.addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING)
 					.addScalar("email", Hibernate.STRING).addScalar("language", Hibernate.STRING)
-					.addScalar("role", Hibernate.STRING).addScalar("extradata", Hibernate.STRING).addScalar("extradata2", Hibernate.STRING);
+					.addScalar("role", Hibernate.STRING).addScalar("extradata", Hibernate.STRING).addScalar("extradata2", Hibernate.STRING).addScalar("location", Hibernate.INTEGER);
 			List list = q.list();
 			if (list != null) {
 				Iterator it = list.iterator();
