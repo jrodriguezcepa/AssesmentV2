@@ -45,11 +45,6 @@
 
 	RequestDispatcher dispatcher=request.getRequestDispatcher("/util/jsp/message.jsp");
 	dispatcher.include(request,response);
-	UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
-	String webinar="";
-	if((String)session.getAttribute("webinarcode")!=null){
-		webinar=(String)session.getAttribute("webinarcode");	
-	}
 	HashMap <Integer, String> answers=new HashMap<Integer, String>();
 
 %>
@@ -153,9 +148,8 @@
 			<div class=center2> 
 				<label><h4>ИТОГОВЫЙ КОНТРОЛЬ ДЛЯ ТРЕНЕРОВ Опросный бланк</h4></label>
 			</div>
-			<html:form action="/AlRiyadahSaveAnswers">
-				<html:hidden property="assesment" value='<%=String.valueOf(AssesmentData.ALRIYADAH_INITIALA)%>'/>
-				<html:hidden property="user" value='<%=userData.getLoginName()%>'/>
+			<html:form action="/GDCSaveAnswers">
+				<html:hidden property="assesment" value='<%=String.valueOf(AssesmentData.GDC)%>'/>
 
 				<section>
 				<div class="center2"> 
@@ -380,7 +374,7 @@
 	<div class="center2">
 
 		<div>
-			<br><label>Два фактора, часто вызывающие смерть на дорогах, это:</label>
+			<br><label>4.Два фактора, часто вызывающие смерть на дорогах, это:</label>
 		</div>
 		<!-- Option 1 -->
 		<div>
@@ -2746,43 +2740,46 @@
 	</div>
 	<!-- Option 1 -->
 	<div>
-<%				if(answers.containsKey(new Integer(51680)) && answers.get(new Integer(51680)).equals("163903")){
+<%				if(answers.containsKey(new Integer(51680)) && answers.get(new Integer(51680)).equals("163922")){
 %>					<label class="radio">
-						<input type="radio" name='51680'  value="163903" checked/>
+						<input type="radio" name='51680'  value="163922" checked/>Это зона рядом с автомобилем, в которой водитель не видит определенных опасностей
 					</label>
 				</br>	
 <%				}else{
 %>					<label class="radio">
-						<input type="radio" name='51680'  value="163903"/>
+						<input type="radio" name='51680'  value="163922"/>Это зона рядом с автомобилем, в которой водитель не видит определенных опасностей
 					</label>
 				</br>
 <%				}  
 %>				<!-- Option 2 -->				
-<%				if(answers.containsKey(new Integer(51680)) && answers.get(new Integer(51680)).equals("163901")){
+<%				if(answers.containsKey(new Integer(51680)) && answers.get(new Integer(51680)).equals("163921")){
 %>					<label class="radio">
-						<input type="radio" name='51680'  value="163901" checked/>
+						<input type="radio" name='51680'  value="163921" checked/>Это зона вокруг пешеходов, животных, которые могут пойти в любом направлении
+равна, примерно, одному метру
 					</label>
 				</br>	
 <%				}else{
 %>					<label class="radio">
-						<input type="radio" name='51680'  value="163901"/>
+						<input type="radio" name='51680'  value="163921"/>Это зона вокруг пешеходов, животных, которые могут пойти в любом направлении
+равна, примерно, одному метру
 					</label>
 				</br>
 <%				}  
 %>				<!-- Option 3 -->
-<%				if(answers.containsKey(new Integer(51680)) && answers.get(new Integer(51680)).equals("163902")){
+<%				if(answers.containsKey(new Integer(51680)) && answers.get(new Integer(51680)).equals("163920")){
 %>					<label class="radio">
-						<input type="radio" name='51680'  value="163902" checked/>
+						<input type="radio" name='51680'  value="163920" checked/>Это зона в которой водитель еще не определился, что для него опасно
 					</label>
 				</br>	
 <%				}else{
 %>					<label class="radio">
-						<input type="radio" name='51680'  value="163902"/>
+						<input type="radio" name='51680'  value="163920"/>Это зона в которой водитель еще не определился, что для него опасно
 					</label>
 				</br>
 <%				}
 
 %>
+
 	</div>
 </div>	
 <div>

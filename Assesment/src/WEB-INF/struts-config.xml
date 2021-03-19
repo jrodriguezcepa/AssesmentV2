@@ -38,6 +38,10 @@
 			<form-property name="questions" type="java.lang.String" />
 		</form-bean>
 		
+		<form-bean name="GDCSaveAnswersForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assesment" type="java.lang.String" />
+		</form-bean>
+		
 		<form-bean name="AlRiyadahSaveAnswersForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="user" type="java.lang.String" />
 			<form-property name="assesment" type="java.lang.String" />
@@ -682,7 +686,10 @@
 			<forward name="error" path="/webinarForm.jsp" />
 			<forward name="next" path="/webinarSuccess.jsp"/>
 		</action>
-		
+		<action path="/GDCSaveAnswers" type="assesment.presentation.actions.user.GDCSaveAnswersAction" name="GDCSaveAnswersForm" scope="request">
+			<forward name="error" path="/GDCForm.jsp" />
+			<forward name="next" path="/webinarSuccess.jsp"/>
+		</action>
 
 		<action path="/Veibras" type="assesment.presentation.actions.user.VeibrasAction" name="VeibrasForm" scope="request">
 			<forward name="error" path="/veibras.jsp" />

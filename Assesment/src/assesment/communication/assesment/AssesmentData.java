@@ -256,6 +256,8 @@ public class AssesmentData extends AssesmentAttributes {
 
 	public static final int ABBOTT_NEWDRIVERS = 1707;
 	public static final int ABBEVIE_LATAM = 1712;
+	public static final int GDC = 1711;
+
 	
 
 	

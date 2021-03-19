@@ -172,10 +172,12 @@
 	    String logoName = "../flash/images/logo2.png";
 	    
 	    String login = (String)session.getAttribute("webinaruser");
+	    if(login==null){
+			login=userSessionData.getFilter().getLoginName();
+	    }
 	    session.removeAttribute("webinaruser");
 	    String assessmentId = (String)session.getAttribute("assesment");
 	    session.removeAttribute("assessmentId");
-	
 	    boolean red = sys.getUserReportFacade().isResultRed(login, new Integer(assessmentId), userSessionData);
 %>   
    	<body>
@@ -184,6 +186,9 @@
 	  	</header>
 		<form name="logout" action="./logout.jsp" method="post"></form>
 		<form name="repeat" action="./webinarForm.jsp" method="post">
+			<input type="hidden" name="assesment" value="<%=assessmentId%>" />	
+		</form>
+		<form name="repeatGDC" action="./GDCForm.jsp" method="post">
 			<input type="hidden" name="assesment" value="<%=assessmentId%>" />	
 		</form>
 		<br><br><br>
@@ -196,6 +201,7 @@
 				<div class="center2">
 			
 <%		if(red) {
+	System.out.println("entro a rojo");
 %>					<h2 class="title">
 						<%=messages.getText("assesment.webinar.notapprouved")%>
 					</h2>
@@ -205,6 +211,7 @@
 						<%=messages.getText("assesment.webinar.notapprouved2")%>
 					</h2>
 <%		}else {
+			System.out.println("entro a otro color");
 			if(Integer.parseInt(assessmentId) == AssesmentData.HRD_WEBINAR) {
 %>					<h2 class="title">
 						<%=messages.getText("assesment.report.footermessage1")%>
@@ -228,7 +235,13 @@
 %>					<br><br>
 					<div align="center">
 <%		if(red) {
-%>					    <input type="button" value='<%=messages.getText("generic.messages.repeat")%>' class="buttonRed" onclick="document.forms['repeat'].submit();"/>
+			if(Integer.parseInt(assessmentId)==AssesmentData.GDC){
+%>			
+				<input type="button" value='<%=messages.getText("generic.messages.repeat")%>' class="buttonRed" onclick="document.forms['repeatGDC'].submit();"/>	
+<%			}else{
+%>				<input type="button" value='<%=messages.getText("generic.messages.repeat")%>' class="buttonRed" onclick="document.forms['repeat'].submit();"/>				
+<%			}
+%>					    
 <%		}
 %>			    		<input type="button" value='<%=messages.getText("generic.messages.logout")%>' class="button" onclick="document.forms['logout'].submit();"/>
 					</div>

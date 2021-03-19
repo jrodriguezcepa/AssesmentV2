@@ -329,7 +329,7 @@
 				int terms = userReport.terms(login, sys.getUserSessionData()).intValue();
 				System.out.println("terms "+terms);
 				if(terms > 0 && assId != AssesmentData.UPM_CHARLA && assId != AssesmentData.UPM_CHARLA_V2 && assId != AssesmentData.ALRIYADAH_INITIALA
-						 && assId != AssesmentData.ALRIYADAH_INITIALB  && assId != AssesmentData.ALRIYADAH_FINAL) {
+						 && assId != AssesmentData.ALRIYADAH_INITIALB  && assId != AssesmentData.ALRIYADAH_FINAL&& assId != AssesmentData.GDC) {
 					response.sendRedirect("terms_"+terms+".jsp");
 				}else {
 					switch(assId) {
@@ -341,6 +341,9 @@
 					    	break;
 						case AssesmentData.ALRIYADAH_FINAL:
 					    	response.sendRedirect("alriyadahFinalT.jsp");
+					    	break;
+						case AssesmentData.GDC:
+					    	response.sendRedirect("GDCForm.jsp");
 					    	break;
 						case AssesmentData.ASTRAZENECA_2:
 						case AssesmentData.ASTRAZENECA_2013:
