@@ -125,10 +125,11 @@
 		}
 		</style>
 		<script>
-		function enterDA(assessmentId) {
-			var form = document.forms['SelectAssessmentForm'];
-			form.assessment.value = assessmentId;
-			form.submit();
+		function salir() {
+			var form = document.forms['logout'];
+			if(confirm('Вы подтверждаете, что хотите выйти без сохранения данных?')) {
+				form.submit();
+			}
 		}
 		
 		</script>
@@ -3112,8 +3113,8 @@
 			
 				<br>
 				<div align="center">
-			       	<html:submit value='Save' styleClass="button"/>
-			       	<input type="button" value='Cancel' class="buttonRed" onclick="javascript:document.forms['logout'].submit();"/>
+			       	<html:submit value='Держать' styleClass="button"/>
+			       	<input type="button" value='Отмена' class="buttonRed" onclick="javascript:salir();"/>
 				</div>
 			</html:form>
 		</section>

@@ -688,7 +688,7 @@
 		</action>
 		<action path="/GDCSaveAnswers" type="assesment.presentation.actions.user.GDCSaveAnswersAction" name="GDCSaveAnswersForm" scope="request">
 			<forward name="error" path="/GDCForm.jsp" />
-			<forward name="next" path="/webinarSuccess.jsp"/>
+			<forward name="next" path="/GDCSuccess.jsp"/>
 		</action>
 
 		<action path="/Veibras" type="assesment.presentation.actions.user.VeibrasAction" name="VeibrasForm" scope="request">

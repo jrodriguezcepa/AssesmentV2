@@ -6,10 +6,6 @@
  */
 package assesment.presentation.actions.user;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -30,17 +26,12 @@ import org.apache.struts.action.DynaActionForm;
 import assesment.business.AssesmentAccess;
 import assesment.business.administration.user.UsABMFacade;
 import assesment.business.administration.user.UsReportFacade;
-import assesment.business.assesment.AssesmentReportFacade;
-import assesment.communication.administration.AccessCodeData;
 import assesment.communication.administration.UserAnswerData;
 import assesment.communication.administration.user.UserSessionData;
 import assesment.communication.assesment.AssesmentData;
 import assesment.communication.exception.InvalidDataException;
-import assesment.communication.language.Text;
 import assesment.communication.module.ModuleData;
 import assesment.communication.question.QuestionData;
-import assesment.communication.security.SecurityConstants;
-import assesment.communication.user.UserData;
 import assesment.presentation.translator.web.util.AbstractAction;
 import assesment.presentation.translator.web.util.Util;
 
@@ -56,7 +47,6 @@ public class GDCSaveAnswersAction extends AbstractAction {
         HttpSession session = request.getSession();
         AssesmentAccess sys = ((AssesmentAccess)session.getAttribute("AssesmentAccess"));
         UserSessionData userSessionData = sys.getUserSessionData();
-        Text messages = sys.getText();
         
         DynaActionForm answerData = (DynaActionForm) answers;
         String assesmentId = answerData.getString("assesment");
@@ -89,7 +79,7 @@ public class GDCSaveAnswersAction extends AbstractAction {
                      		usrAnswerData.setAnswer(new Integer(answerId));
                  		} else {
                  			if(!message) {
-                     			session.setAttribute("Msg", messages.getText("report.userresult.pending")+" '"+messages.getText(question.getKey())+"'");
+                     			session.setAttribute("Msg", "У вас остались вопросы без ответа.");
                      			message=true;
                  			}
                  		}
@@ -103,7 +93,7 @@ public class GDCSaveAnswersAction extends AbstractAction {
 
 	                			}else {
 	                     			if(!message) {
-		                     			session.setAttribute("Msg", messages.getText("report.userresult.wrong")+" '"+messages.getText(question.getKey())+"'");
+		                     			session.setAttribute("Msg", "Неправильный формат");
 	                         			message=true;
 	                     			}
 	                			}
@@ -113,14 +103,14 @@ public class GDCSaveAnswersAction extends AbstractAction {
 		                	}
 	                	}else {
 	                		if(!message) {
-	                 			session.setAttribute("Msg", messages.getText("report.userresult.pending")+" '"+messages.getText(question.getKey())+"'");
+	                 			session.setAttribute("Msg", "У вас остались вопросы без ответа.");
                      			message=true;
                  			}
 	                	}
                 	} else if(questionType == QuestionData.EMAIL){
                 		if(Util.empty(answerId)) {
 	                		if(!message) {
-	                			session.setAttribute("Msg", messages.getText("report.userresult.pending")+" '"+messages.getText(question.getKey())+"'");
+	                			session.setAttribute("Msg", "У вас остались вопросы без ответа.");
                      			message=true;
                  			}
                 		}
@@ -129,7 +119,7 @@ public class GDCSaveAnswersAction extends AbstractAction {
                  			answersForm.put(question.getId(), String.valueOf(answerId));
                 		}else {
 	                		if(!message) {
-	                 			session.setAttribute("Msg", messages.getText("report.userresult.wrong")+": '"+messages.getText(question.getKey())+"'");
+	                 			session.setAttribute("Msg", "Неправильный формат");
                      			message=true;
                  			}
                 		}
@@ -140,7 +130,7 @@ public class GDCSaveAnswersAction extends AbstractAction {
                 	} else {
                 		if(Util.empty(answerId)) {
 	                		if(!message) {
-	                 			session.setAttribute("Msg", messages.getText("report.userresult.pending")+" '"+messages.getText(question.getKey())+"'");
+	                			session.setAttribute("Msg", "У вас остались вопросы без ответа.");
                      			message=true;
                  			}
                 		}
