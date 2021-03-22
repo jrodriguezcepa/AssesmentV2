@@ -241,4 +241,7 @@ public interface UsReportFacade
    public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName,java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

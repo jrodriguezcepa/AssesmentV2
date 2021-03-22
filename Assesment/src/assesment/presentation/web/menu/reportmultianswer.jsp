@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.Collections"%>
 <%@page import="assesment.presentation.translator.web.util.Util"%>
 <%@page import="assesment.communication.administration.UserMultiAnswerData"%>
 <%@page import="assesment.communication.administration.MultiAnswerUserData"%>
@@ -239,7 +241,7 @@
 			<table width="100%">
 				<tr>
 					<td class="title" width="50%" align="left">
-						<%=assessment.getName()%>
+						<%=messages.getText(assessment.getName())%>
 					</td>
 					<td width="25%" align="center">
 						<a href="javascript:document.forms['DownloadMultiReportForm'].submit()" style="text-decoration: none;">
@@ -276,7 +278,8 @@
 					<td><%=messages.getText("assessment.enddate").toUpperCase()%></td>
 					<td><%=messages.getText("assessment.result").toUpperCase()%></td>
 				</tr>
-<%			Iterator<MultiAnswerUserData> it = users.iterator();
+<%			Collections.sort((List<MultiAnswerUserData>)users);
+			Iterator<MultiAnswerUserData> it = users.iterator();
 			boolean line = true;
 			int index = 0;
 			while(it.hasNext()) {

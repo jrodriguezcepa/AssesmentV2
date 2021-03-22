@@ -272,4 +272,7 @@ public interface UsReport
    public assesment.persistence.administration.tables.AssessmentUserData getAssessmentUserData( java.lang.String user,java.lang.String code,java.lang.String assesment,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

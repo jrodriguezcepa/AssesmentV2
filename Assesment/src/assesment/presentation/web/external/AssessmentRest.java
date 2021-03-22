@@ -129,17 +129,17 @@ public class AssessmentRest {
 	@Path("timacexistuser")
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Integer existTimacUser(@QueryParam("user") String user,@QueryParam("password") String password, @QueryParam("id") String id) throws RemoteException {
+	public Object[] existTimacUser(@QueryParam("user") String user,@QueryParam("password") String password, @QueryParam("id") String id) throws RemoteException {
 		try{
 			User userSys =new User(user,password);
 			AssesmentAccessRemote sys = CacheManager.getInstance().login(userSys);
 			if(id != null && id.length() > 0){
-				return sys.getUserABMFacade().existTimacUser(id, sys.getUserSessionData());
+				return sys.getUserReportFacade().existTimacUser(id, sys.getUserSessionData());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return 0;
+		return new Object[] {0,null,null,null};
 	}
 
 	@GET

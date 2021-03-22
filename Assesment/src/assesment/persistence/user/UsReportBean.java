@@ -2942,4 +2942,60 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		}
 		return list.get(0);
 	}
+
+
+    /**
+	 * @ejb.interface-method
+     * @ejb.permission role-name = "administrator"
+	 * @param data
+	 * @param userRequest
+	 * @throws Exception
+	 */
+ 	public Object[] existTimacUser(String id, UserSessionData userSessionData) throws Exception {
+ 		Object[] values = {0, null, null, 0};
+     	try {
+     		Session session = HibernateAccess.currentSession();
+     		SQLQuery q = session.createSQLQuery("SELECT u.loginname, ua.assesment, ua.enddate, uar.correct, uar.incorrect, a.green FROM users u " + 
+     						"JOIN userassesments ua ON u.loginname = ua.loginname " + 
+     						"JOIN assesments a ON a.id = ua.assesment " +
+     						"LEFT JOIN userassesmentresults uar ON uar.login = ua.loginname AND uar.assesment = ua.assesment " + 
+     						"WHERE u.loginname LIKE 'tmc_%"+id+"' ORDER BY u.loginname, ua.assesment");
+     		q.addScalar("loginname", Hibernate.STRING);
+     		q.addScalar("assesment", Hibernate.INTEGER);
+     		q.addScalar("enddate", Hibernate.DATE);
+     		q.addScalar("correct", Hibernate.INTEGER);
+     		q.addScalar("incorrect", Hibernate.INTEGER);
+     		q.addScalar("green", Hibernate.INTEGER);
+     		
+     		String lastLogin = "";
+     		Iterator it = q.list().iterator();
+     		while(it.hasNext()) {
+     			Object[] data = (Object[])it.next();
+     			String login = (String)data[0];
+     			if(!lastLogin.equals(login)) {
+         			values[0] = 1;
+         			values[1] = null;
+         			values[2] = null;
+     				values[3] = ((Integer)values[3]).intValue() + 1;
+     				lastLogin = login;
+     			}
+     			Integer assesment = (Integer)data[1];
+     			Date end = (Date)data[2];
+     			if(assesment.equals(AssesmentData.TIMAC_BRASIL_DA_2020) && end != null) {
+     				int percent = ((Integer)data[3]).intValue() * 100 / (((Integer)data[3]).intValue() + ((Integer)data[4]).intValue());
+     				if(percent >= ((Integer)data[5]).doubleValue()) {
+             			values[0] = 2;
+     				}else {
+             			values[0] = 3;
+     				}
+         			values[1] = end;
+         			values[2] = percent;
+     			}
+     		}
+     		
+     	}catch (Exception e) {
+			handler.getException(e, "existTimacUser", userSessionData.getFilter().getLoginName());
+     	}
+     	return values;
+	}
 }

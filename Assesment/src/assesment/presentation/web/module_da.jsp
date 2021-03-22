@@ -529,7 +529,7 @@
 							</h3>
 							<br>
 <%					}
-					if(finished && assesment.isReportFeedback() && assessmentId != AssesmentData.ANTP_MEXICO_RSMM) {
+					if(finished && assesment.isReportFeedback() && assessmentId != AssesmentData.ANTP_MEXICO_RSMM && assessmentId != AssesmentData.MUTUAL_RSMM) {
 %>							<br>
 							<h3 class="title">
 				  				<%=messages.getText("generic.messages.viewresult1")%> 

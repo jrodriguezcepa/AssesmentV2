@@ -63,7 +63,7 @@
 		<html:form action="DeleteUsersAssesment">
 			<html:hidden property="user" value="<%=strUser%>"/>
 			<html:hidden property="assesment" value="<%=strAssesment%>"/>
-			<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+data.getName()%>' />
+			<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+messages.getText(data.getName())%>' />
 		  		<tr>
 	    			<td width="100%">
 						<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.data.users")%>' />

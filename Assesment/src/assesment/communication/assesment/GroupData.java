@@ -35,6 +35,7 @@ public class GroupData {
 
 	public static final int MERCADOLIVRE = 11;
 	public static final int MERCADOLIBRE = 12;
+	public static final int ECOLAB = 27;
 	public static final int GALDERMA = 52;
 	public static final int VEIBRAS = 61;
 	public static final int BAT = 69;

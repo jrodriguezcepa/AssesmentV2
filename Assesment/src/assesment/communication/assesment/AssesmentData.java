@@ -180,8 +180,8 @@ public class AssesmentData extends AssesmentAttributes {
 	
 	public static final int HOJA_RUTA_2019 = 501;
 
-	public static final int UPM_CHARLA = 1583;
-	public static final int UPM_CHARLA_V2 = 1584;
+	public static final int UPM_CHARLA = 1709;
+	public static final int UPM_CHARLA_V2 = 1710;
 
 	public static final int GRUPO_MODELO_FOTO = 1586;
 	public static final int GRUPO_MODELO_EBTW = 1614;

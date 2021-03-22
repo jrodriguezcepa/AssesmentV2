@@ -1537,4 +1537,22 @@ public abstract class UsReportFacadeBean implements SessionBean {
         }
         return new LinkedList<UserData>();
 	}
+
+
+    /**
+	 * @ejb.interface-method
+     * @ejb.permission role-name = "administrator"
+	 * @param data
+	 * @param userRequest
+	 * @throws Exception
+	 */
+ 	public Object[] existTimacUser(String id, UserSessionData userSessionData) throws Exception {
+ 		Object[] values = {0, null, null, 0};
+        try{
+        	values = UsReportUtil.getHome().create().existTimacUser(id,userSessionData);
+        } catch (Exception e) {
+            handler.handleException("findUserByParent", e);
+        }
+        return values;
+ 	}
 }

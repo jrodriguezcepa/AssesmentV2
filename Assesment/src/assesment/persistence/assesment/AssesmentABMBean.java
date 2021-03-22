@@ -20,6 +20,7 @@ import assesment.communication.question.QuestionData;
 import assesment.persistence.administration.tables.AccessCode;
 import assesment.persistence.administration.tables.UserAnswer;
 import assesment.persistence.administration.tables.UserAssesment;
+import assesment.persistence.administration.tables.UserAssesmentResult;
 import assesment.persistence.assesment.tables.Assesment;
 import assesment.persistence.assesment.tables.AssesmentCategory;
 import assesment.persistence.assesment.tables.AssesmentCategoryPK;
@@ -311,6 +312,13 @@ public abstract class AssesmentABMBean implements SessionBean {
 	        		}
         		}
         	}
+        	
+        	sqlUpdate = session.createQuery("SELECT ua from UserAssesmentResult ua where ua.login = '"+user+"' AND ua.assesment = "+assessment);
+        	it = sqlUpdate.list().iterator();
+        	while(it.hasNext()) {
+        		UserAssesmentResult ua = (UserAssesmentResult)it.next();
+        		session.delete(ua);
+        	}
         }catch (Exception e) {
             handler.getException(e,"createFeedback",userSessionData.getFilter().getLoginName());
         }
@@ -349,6 +357,15 @@ public abstract class AssesmentABMBean implements SessionBean {
                 	session.delete(u);
         		}
         	}
+        	
+        	
+        	sqlUpdate = session.createQuery("SELECT ua from UserAssesmentResult ua where ua.login = '"+user+"'");
+        	it = sqlUpdate.list().iterator();
+        	while(it.hasNext()) {
+        		UserAssesmentResult ua = (UserAssesmentResult)it.next();
+        		session.delete(ua);
+        	}
+
         }catch (Exception e) {
             handler.getException(e,"deleteResults",userSessionData.getFilter().getLoginName());
         }

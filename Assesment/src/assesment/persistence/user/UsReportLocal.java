@@ -185,4 +185,6 @@ public interface UsReportLocal
 
    public assesment.persistence.administration.tables.AssessmentUserData getAssessmentUserData( java.lang.String user,java.lang.String code,java.lang.String assesment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

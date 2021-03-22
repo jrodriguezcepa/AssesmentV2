@@ -51,6 +51,9 @@ public class Util {
 
     public static boolean isRegistrable() {
     	Calendar c = Calendar.getInstance();
+    	int day = c.get(Calendar.DATE);
+    	if(day < 22 || day > 26)
+    		return false;
     	int hour = c.get(Calendar.HOUR_OF_DAY);
     	int minute = c.get(Calendar.MINUTE);
     	switch(hour) {
@@ -67,7 +70,7 @@ public class Util {
 			case 15:
 				return minute >= 15 && minute <= 40;
     	}
-    	return true ;
+    	return false;
     }
     
 	public static String getInValue(HttpServletRequest request,HttpSession session,String name) {
