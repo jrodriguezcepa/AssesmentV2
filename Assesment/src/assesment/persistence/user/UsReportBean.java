@@ -2359,14 +2359,14 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		Collection<UserData> users = new LinkedList<UserData>();
 		try {
 			Session session = HibernateAccess.currentSession();
-			String sql = "SELECT DISTINCT loginname, firstname, lastname, email, language, role, extradata, extradata2 FROM users "
+			String sql = "SELECT DISTINCT loginname, firstname, lastname, email, language, role, extradata, extradata2, country FROM users "
 					+ "WHERE role = '" + SecurityConstants.GROUP_ASSESSMENT + "' "
 					+ "AND loginname IN (SELECT loginname FROM usergroups WHERE groupid = "+group+")";
 			sql += " ORDER BY firstname, lastname";
 			Query q = session.createSQLQuery(sql).addScalar("loginname", Hibernate.STRING)
 					.addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING)
 					.addScalar("email", Hibernate.STRING).addScalar("language", Hibernate.STRING)
-					.addScalar("role", Hibernate.STRING).addScalar("extradata", Hibernate.STRING).addScalar("extradata2", Hibernate.STRING);
+					.addScalar("role", Hibernate.STRING).addScalar("extradata", Hibernate.STRING).addScalar("extradata2", Hibernate.STRING).addScalar("country", Hibernate.INTEGER);
 			List list = q.list();
 			if (list != null) {
 				Iterator it = list.iterator();

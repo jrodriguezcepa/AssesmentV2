@@ -2,6 +2,7 @@
 <%@page import="assesment.business.assesment.AssesmentReportFacade"%>
 <%@page import="assesment.communication.assesment.CategoryData"%>
 <%@page import="assesment.communication.assesment.GroupData"%>
+<%@page import="assesment.communication.assesment.GroupUsersData"%>
 <%@page import="assesment.communication.security.SecurityConstants"%>
 <%@page import="assesment.presentation.translator.web.administration.user.LogoutAction"%>
 <%@page import="assesment.presentation.translator.web.util.Util"%>
@@ -13,9 +14,7 @@
 <%@page import="assesment.communication.language.Text"%>
 <%@page import="java.util.*"%>
 <%@page import="assesment.communication.assesment.AssesmentAttributes"%>
-
-
-	
+<%@page import=" assesment.communication.util.CountryConstants"%>
 
 <%@ taglib uri="/WEB-INF/struts-html.tld"
         prefix="html" 
@@ -34,8 +33,12 @@
 	AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
 	String groupId = "123";
 	String role = userSessionData.getRole(); 
-	GroupData group = (role.equals(SecurityConstants.ADMINISTRATOR)) ? assessmentReport.findGroup(new Integer(groupId),sys.getUserSessionData()) : assessmentReport.getUserGroup(userSessionData.getFilter().getLoginName(),userSessionData);
-
+	GroupData group = assessmentReport.findGroup(new Integer(groupId),sys.getUserSessionData());
+	GroupUsersData groupResults= assessmentReport.getGroupUsersResults(new Integer(groupId),sys.getUserSessionData());
+	groupResults.setUsers(sys.getUserReportFacade().findGroupUsers(groupResults.getId(), sys.getUserSessionData()));
+	CountryConstants countries= new CountryConstants();
+	countries.setLAData(messages);
+	int cont=3;	
 
 %>
 
@@ -81,9 +84,9 @@
         #report div.arrow { background:transparent url(images/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
         #report div.up { background-position:0px 0px;}
      
-        .col-1 {width: 10.66%;
+        .col-1 {width: 15%;
         }
-            .col-2 {width: 16.66%; 
+        .col-2 {width: 20%; 
                 text-align: center;
                   border-right: 1px rgb(218, 215, 215);
                   border-top: 0px;
@@ -93,7 +96,7 @@
                  border-style: solid;
                  padding-top: 7px;
                  padding-bottom: 7px;}
-			.col-3 {width: 12.66%; border-right: 1px rgb(218, 215, 215);
+			.col-3 {width: 15%; border-right: 1px rgb(218, 215, 215);
                   border-top: 0px black;                text-align: center;
 
                   border-left: 0px black;
@@ -180,7 +183,7 @@
 			
             }  
             .table{
-                width:45%;
+                width:25%;
             }
                         
             .table3 th, td, .table3 th,td{
@@ -232,7 +235,6 @@
             .table3{
                 width:90%;
 				margin-bottom:1.5%;
-
                 margin-left: 5%;
                 margin-right: 5%;
             }
@@ -300,55 +302,46 @@
     </header>
     <!--TOTAL DE PARTICIPANTES-->
     <div>
-        <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Total de Participantes (licencias de uso) Disponibles</span>
-        <span style="float:right; margin-right: 130px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades por país, división</span>
+        <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Total de Participantes <br>(licencias de uso) Disponibles</span>
+        <span style="float:right; margin-right: 300px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades<br> por país, división</span>
 
     </div>
     <table  style="clear:both;float:left;" class="table">
         <tr>
             <th style="background-color: #ffffff;"></th>
-            <th>Argentina</th>
-            <th>Brasil</th>
-            <th>Chile</th>
-            <th>Uruguay</th>
-            <th style="background-color: #342997;">Total</th>
+<%			Iterator itCountries= groupResults.getCountries().iterator();
+			while (itCountries.hasNext()){
+				Integer c= (Integer)itCountries.next();
+%>				<th><%=countries.find(String.valueOf(c)) %></th>
+<%			}
+%>				
+<%			
+%>
+           <th style="background-color: #342997;"><%=messages.getText("report.generalresult.total") %></th>
         </tr>
-        
-        <tr>
-            <td style="color:#444496;font-weight: bold;">División 1</td>
-            <td >15</td>
-            <td >25</td>
-            <td >9</td>
-            <td >10</td>
-            <td >59</td>
-        </tr>
-       
-        <tr>
-            <td style="color:#444496;font-weight: bold;">División 2</td>
-            <td>5</td>
-            <td>12</td>
-            <td>0</td>
-            <td>10</td>
-            <td>27</td>
-        </tr>
-        
-        <tr>
-            <td style="color:#444496;font-weight: bold;">División 3</td>
-            <td>5</td>
-            <td>13</td>
-            <td>1</td>
-            <td>10</td>
-            <td>29</td>
-        </tr>
-        <tr >
+<% 		Iterator itDivisions=groupResults.getDivisions().iterator();
+			while (itDivisions.hasNext()){
+				String division=(String)itDivisions.next();
+%>  	<tr>
+            <td style="color:#444496;font-weight: bold;"><%=division%></td>
+<% 				itCountries= groupResults.getCountries().iterator();
+				while (itCountries.hasNext()){
+					Integer country= (Integer)itCountries.next();
+%>			<td ><%=groupResults.getParticipants(division, country) %></td>
+<%				}
+%>			 <td ><%=groupResults.getTotalByDivision(division) %></td>
+         </tr>
+<%			}
+%>
+ 	<tr>
             <td style="color:#444496;font-weight: bold;">Todas las divisiones</td>
-            <td>25</td>
-            <td>50</td>
-            <td>10</td>
-            <td>30</td>
-            <td>115</td>
-        </tr>
-        
+<% 				itCountries= groupResults.getCountries().iterator();
+				while (itCountries.hasNext()){
+					Integer country= (Integer)itCountries.next();
+%>			<td ><%=groupResults.getTotalByCountry(country) %></td>
+<%				}
+%>			 <td ><%=groupResults.getTotal() %></td>
+         </tr>
     </table>
     <!--ACTIVIDADES POR PAIS-->
 
@@ -357,365 +350,57 @@
             <th colspan="7" style="display: none;"></th>
             
         </thead>
-        <tr>
-            <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Argentina</td>
+<%      itCountries=groupResults.getCountries().iterator();
+		while (itCountries.hasNext()){
+			Integer country=(Integer)itCountries.next();
+%>		   <tr>
+            <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;"><%=countries.find(String.valueOf(country)) %></td>
             <td>División</td>
             <!-- for con las actividades del grupo -->
-<%			Iterator it=group.getCategories().iterator();
+<%			Iterator it=groupResults.getAssesments().iterator();
 				while(it.hasNext()){
-					CategoryData cat= (CategoryData)it.next();
-					Iterator it2=cat.getAssesments().iterator();
-					while(it2.hasNext()){
-						AssesmentAttributes as= (AssesmentAttributes)it2.next();
-%>						<td><%=messages.getText(as.getName())%></td>
-<%
-	}
-}
-
+					AssesmentAttributes as= (AssesmentAttributes)it.next();
+					cont++;
+%>					<td><%=as.getId()%></td>
+<%			}
 %>
-            
-            <td>Velocidad</td>
-            <td>Distancia</td>
-            <td >ebtw+</td>
-                   <!--termina for -->
+ 			 <!--termina for -->
             <td><div class="arrow"></div></td>
-        </tr>
+        </tr>	
+
+				
         <tr>
-            <td colspan="9">
+            <td colspan='<%=cont%>'>
                 <div >
-                   <div class="row">
+<%			    itDivisions=groupResults.getDivisions().iterator();
+		  		while(itDivisions.hasNext()){
+		  			String division= (String)itDivisions.next();
+		  			boolean odd=false;
+		  			String row=(odd)?"row":"row odd";
+		  			odd=!odd;
+%>		  		<div class='<%=row%>'>
                     <div class=col-1></div>
 
-                       <div class=col-2 style="color:#444496;font-weight: bold;">División 1</div>
-
-                       <div class=col-3 > <span style="color:#3dad39;font-weight: bold;">15</span></div>
-
-                       <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">10</span> |
-                        <span style="color:#d31111;font-weight: bold;">5</span>                       
-                      
-                     </div>
-
-                       <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> |
-                        <span style="color:#d31111;font-weight: bold;">10</span>    
-                       </div>
-
-                       <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-                       <div class=col-7>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-                       <div class=col-8>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-
-
-                   </div>  
-                   <div class="row odd">
-                    <div class=col-1></div>
-
-                    <div class=col-2 style="color:#444496;font-weight: bold;">División 2 </div>
-
-                    <div class=col-3>                        
-                        <span style="color:#3dad39;font-weight: bold;"></span> 
-                        <span style="color:#d31111;font-weight: bold;">5</span>  
-                    </div>
-
-                    <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">4</span> |
-                        <span style="color:#d31111;font-weight: bold;">1</span>  
-                    </div>
-
-                    <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                    <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-                                           <div class=col-7>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-                       <div class=col-8>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-
-                    
-
-                </div>  
-                <div class="row">
-                    <div class=col-1></div>
-                    <div class=col-2 style="color:#444496;font-weight: bold;">División 3</div>
-
-                    <div class=col-3>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                    <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">4</span> |
-                        <span style="color:#d31111;font-weight: bold;">1</span> 
-                    </div>
-
-                    <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">2</span> |
-                        <span style="color:#d31111;font-weight: bold;">3</span> 
-                    </div>
-
-                    <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">3</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span> 
-                    </div>
-                       <div class=col-7>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-                       <div class=col-8>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-
-
-
-                </div> 
+                       <div class=col-2 style="color:#444496;font-weight: bold;"><%=division %></div>
+<%						Iterator itAssesment=groupResults.getAssesments().iterator();
+						while(itAssesment.hasNext()){
+							AssesmentAttributes as=(AssesmentAttributes)itAssesment.next();
+ %>                     <div class=col-3>
+	                        <span style="color:#3dad39;font-weight: bold;"><%=groupResults.getResultsByDivision(country, division, as.getId())[0] %></span> |
+	                        <span style="color:#d31111;font-weight: bold;"><%=groupResults.getResultsByDivision(country, division,  as.getId())[1] %></span>                       
+                     	</div>							
+<%						}
+%>						
+      			 </div> 
+<%		  		}
+%>               
+ 
                 </div> 
             </td>
         </tr>
-        <tr>
-            <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Brasil</td>
-            <td>División</td>
-            <td>Intersecciones</td>
-            <td>Velocidad</td>
-            <td>Distancia</td>
-            <td >ebtw+</td>
-            <td><div class="arrow"></div></td>
-        </tr>
-        <tr>
-            <td colspan="7">
-                <div >
-                   <div class="row">
-                    <div class=col-1></div>
-
-                       <div class=col-2 style="color:#444496;font-weight: bold;">División 1</div>
-
-                       <div class=col-3 > <span style="color:#3dad39;font-weight: bold;">15</span></div>
-
-                       <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">10</span> |
-                        <span style="color:#d31111;font-weight: bold;">5</span>                       
-                      
-                     </div>
-
-                       <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> |
-                        <span style="color:#d31111;font-weight: bold;">10</span>    
-                       </div>
-
-                       <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-
-
-                   </div>  
-                   <div class="row odd">
-                    <div class=col-1></div>
-
-                    <div class=col-2 style="color:#444496;font-weight: bold;">División 2 </div>
-
-                    <div class=col-3>                        
-                        <span style="color:#3dad39;font-weight: bold;">4</span> | 
-                        <span style="color:#d31111;font-weight: bold;">2</span>  
-                    </div>
-
-                    <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">8</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>  
-                    </div>
-
-                    <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">1</span>  
-                    </div>
-
-                    <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                </div>  
-                 
-                </div> 
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Chile</td>
-            <td>División</td>
-            <td>Intersecciones</td>
-            <td>Velocidad</td>
-            <td>Distancia</td>
-            <td >ebtw+</td>
-            <td><div class="arrow"></div></td>
-        </tr>
-        <tr>
-            <td colspan="7">
-                <div >
-                   <div class="row">
-                    <div class=col-1></div>
-
-                       <div class=col-2 style="color:#444496;font-weight: bold;">División 1</div>
-
-                       <div class=col-3 > <span style="color:#3dad39;font-weight: bold;">15</span></div>
-
-                       <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">10</span> |
-                        <span style="color:#d31111;font-weight: bold;">5</span>                       
-                      
-                     </div>
-
-                       <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> |
-                        <span style="color:#d31111;font-weight: bold;">10</span>    
-                       </div>
-
-                       <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">13</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span>    
-                       </div>
-
-
-                   </div>  
-                   <div class="row odd">
-                    <div class=col-1></div>
-
-                    <div class=col-2 style="color:#444496;font-weight: bold;">División 2 </div>
-
-                    <div class=col-3>                        
-                        <span style="color:#3dad39;font-weight: bold;"></span> 
-                        <span style="color:#d31111;font-weight: bold;">5</span>  
-                    </div>
-
-                    <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">4</span> |
-                        <span style="color:#d31111;font-weight: bold;">1</span>  
-                    </div>
-
-                    <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                    <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                </div>  
-                <div class="row">
-                    <div class=col-1></div>
-                    <div class=col-2 style="color:#444496;font-weight: bold;">División 3</div>
-
-                    <div class=col-3>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                    <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">4</span> |
-                        <span style="color:#d31111;font-weight: bold;">1</span> 
-                    </div>
-
-                    <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">2</span> |
-                        <span style="color:#d31111;font-weight: bold;">3</span> 
-                    </div>
-
-                    <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">3</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span> 
-                    </div>
-
-
-                </div> 
-                <div class="row">
-                    <div class=col-1></div>
-                    <div class=col-2 style="color:#444496;font-weight: bold;">División 4</div>
-
-                    <div class=col-3>
-                        <span style="color:#3dad39;font-weight: bold;">5</span> 
-                        <span style="color:#d31111;font-weight: bold;"></span>  
-                    </div>
-
-                    <div class=col-4>
-                        <span style="color:#3dad39;font-weight: bold;">4</span> |
-                        <span style="color:#d31111;font-weight: bold;">1</span> 
-                    </div>
-
-                    <div class=col-5>
-                        <span style="color:#3dad39;font-weight: bold;">2</span> |
-                        <span style="color:#d31111;font-weight: bold;">3</span> 
-                    </div>
-
-                    <div class=col-6>
-                        <span style="color:#3dad39;font-weight: bold;">3</span> |
-                        <span style="color:#d31111;font-weight: bold;">2</span> 
-                    </div>
-
-
-                </div> 
-                </div> 
-            </td>
-        </tr>
-        <tr>
-            <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;">Uruguay</td>
-            <td>División</td>
-            <td>Intersecciones</td>
-            <td>Velocidad</td>
-            <td>Distancia</td>
-            <td >ebtw+</td>
-            <td><div class="arrow"></div></td>
-        </tr>
-        <tr>
-            <td colspan="7">
-                <div>
-                    <div class="row">
-                        <div class=col-1></div>
-                        <div class=col-2 style="color:#444496;font-weight: bold;">División 3</div>
-    
-                        <div class=col-3>
-                            <span style="color:#3dad39;font-weight: bold;">5</span> 
-                            <span style="color:#d31111;font-weight: bold;"></span>  
-                        </div>
-    
-                        <div class=col-4>
-                            <span style="color:#3dad39;font-weight: bold;">4</span> |
-                            <span style="color:#d31111;font-weight: bold;">1</span> 
-                        </div>
-    
-                        <div class=col-5>
-                            <span style="color:#3dad39;font-weight: bold;">2</span> |
-                            <span style="color:#d31111;font-weight: bold;">3</span> 
-                        </div>
-    
-                        <div class=col-6>
-                            <span style="color:#3dad39;font-weight: bold;">3</span> |
-                            <span style="color:#d31111;font-weight: bold;">2</span> 
-                        </div>
-    
-    
-                    </div>                   
-                </div> 
-            </td>
-        </tr>
+<% 		}
+%>  
+  
     </table>
 <div style="clear:both;">  </div>
 <div style="width: 100%; font-weight: bold;text-align: center; padding-top: 30px; font-size: 1.5vw;">
@@ -723,44 +408,58 @@
     <br>
 </div>
 <table id="charts">
-    <tr>
-        <td colspan="4"><canvas id="chart1"></canvas></td>
-        <td colspan="4"><canvas id="chart2"></canvas></td>
-        <td colspan="4"><canvas id="chart3"></canvas></td>
-        <td colspan="4"><canvas id="chart4"></canvas></td>
-        <td colspan="4"><canvas id="chart5"></canvas></td>
-        <td colspan="4"><canvas id="chart6"></canvas></td>
-    </tr>
-    <tr>
-        <td colspan="4" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
-        <td colspan="4" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
-        <td colspan="4" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
-        <td colspan="4" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
-        <td colspan="4" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
-        <td colspan="4" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
+<%	
+	int assesments=cont-3;
+	Iterator as=groupResults.getAssesments().iterator();
+	int td=1;
+	int chartId=1;
+	while (as.hasNext()){
+		AssesmentAttributes assesment=(AssesmentAttributes)as.next();
+		Integer[] chartValues=groupResults.getChartValues(sys.getUserReportFacade(), assesment.getId(), userSessionData);
+
+		if(td==1){
+%>			<tr>
+<%		}
+		if(td<7){
+			String id="chart"+chartId;
+%>				<td colspan="5"><canvas id='<%=id%>'></canvas></td>
+<%		}if(td==6 || chartId==assesments){
+%>			</tr>
+			<tr>
+<%			for(int i=1; i<=td; i++){
+%>				<td colspan="5" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
+<% 			}
+%>			</tr>
+ 			<tr>
+<%			for(int i=1; i<=td; i++){
+%>				<td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">Reprobado</td>
+				<td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
+			    <td  colspan="1" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Pendiente</td>
+				
+<% 			}
+%>			</tr>  			 
+ 			<tr>
+<%			for(int i=1; i<=td; i++){
+				int div=chartValues[0]+chartValues[1]+chartValues[2];
+				
+%>				<td style="background-color:#ffffff;"></td> 
+				<td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;"><%= (div>0?(chartValues[1]/div):0)*100%>%</td> 
+				<td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;"><%= (div>0?(chartValues[0]/div):0)*100%>%</td>
+				<td style="background-color:#DCDCDC;font-weight: bolder;color:white; text-align: center;"><%= (div>0?(chartValues[2]/div):0)*100%>%</td>
+				<td style="background-color:#ffffff;"></td>
+				
+<% 			}
+%>			</tr> 				        
+<%			td=0;
+
+		}
+		chartId++;
+		td++;
+	}
+%>
 
 
-    </tr>
-    <tr>
-        <td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">No aprobado</td><td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
-        <td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">No aprobado</td><td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
-        <td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">No aprobado</td><td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
-        <td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">No aprobado</td><td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
-        <td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">No aprobado</td><td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
-        <td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">No aprobado</td><td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
 
-    </tr>
-    <tr>
-        <td style="background-color:#ffffff;"></td> <td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;">15%</td> <td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;">85%</td><td style="background-color:#ffffff;"></td>
-        <td style="background-color:#ffffff;"></td> <td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;">50%</td> <td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;">50%</td><td style="background-color:#ffffff;"></td>
-        <td style="background-color:#ffffff;"></td> <td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;">80%</td> <td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;">20%</td><td style="background-color:#ffffff;"></td>
-        <td style="background-color:#ffffff;"></td> <td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;">55%</td> <td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;">45%</td><td style="background-color:#ffffff;"></td>
-        <td style="background-color:#ffffff;"></td> <td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;">68%</td> <td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;">32%</td><td style="background-color:#ffffff;"></td>
-        <td style="background-color:#ffffff;"></td> <td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;">70%</td> <td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;">30%</td><td style="background-color:#ffffff;"></td>
-
-
-      
-    </tr>
 
 </table>
 <div style="clear:both;">  </div>
@@ -775,84 +474,64 @@
         <th>Email</th>
         <th>País</th>
         <th>División</th>
-        <th>Intersecciones</th>
-        <th>Velocidad</th>
-        <th>eBtw+</th>
+<%		 as=groupResults.getAssesments().iterator();
+		while (as.hasNext()){
+			AssesmentAttributes assesment=(AssesmentAttributes)as.next();			
+%>
+        	<th><%=messages.getText(assesment.getName()) %></th>
+<%		}
+%>
     </tr>
     <tr>
         <th></th>
         <th></th>
         <th></th>
         <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="" ><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
+<%  	as=groupResults.getAssesments().iterator();
+		while (as.hasNext()){
+			AssesmentAttributes assesment=(AssesmentAttributes)as.next();			
+%>
         <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="" ><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="" ><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="" ><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
-
+<%		}
+%>
     </tr>
-    <tr>
-        <td>Carla </td>
-        <td>carla@demo.com</td>
-        <td style="font-weight: 600;">Argentina</td>
-        <td style="font-weight: 600;">División 1</td>
-        <td>Pendiente</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td>Pendiente</td>
-    </tr>
-    <tr>
-        <td>Carolina </td>
-        <td>carolina@demo.com</td>
-        <td style="font-weight: 600;">Brasil</td>
-        <td style="font-weight: 600;">División 2</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td style="background-color:#f03232;color:white">No aprobado</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-    </tr>
-    <tr>
-        <td>Federico </td>
-        <td>federico@demo.com</td>
-        <td style="font-weight: 600;">Uruguay</td>
-        <td style="font-weight: 600;">División 2</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td style="background-color:#f03232;color:white">No aprobado</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-    </tr>
-    <tr>
-        <td>Fernando </td>
-        <td>fernando@demo.com</td>
-        <td style="font-weight: 600;">Argentina</td>
-        <td style="font-weight: 600;">División 1</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td style="background-color:#f03232;color:white">No aprobado</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-    </tr>
-    <tr>
-        <td>Francisco </td>
-        <td>francisco@demo.com</td>
-        <td style="font-weight: 600;">Brasil</td>
-        <td style="font-weight: 600;">División 3</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-
-    </tr>
-    <tr>
-        <td>Juan </td>
-        <td>juan@demo.com</td>
-        <td style="font-weight: 600;">Chile</td>
-        <td style="font-weight: 600;">División 1</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td>Pendiente</td>
-        <td style="background-color:#f03232;color:white">No aprobado</td>
-    </tr>
-    <tr>
-        <td>Lucía </td>
-        <td>lucia@demo.com</td>
-        <td style="font-weight: 600;">Chile</td>
-        <td style="font-weight: 600;">División 1</td>
-        <td style="background-color:#29c05b;color:white"><div style="display:flex;align-items: center;"><span class="thText">Aprobado</span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div></td>
-        <td>Pendiente</td>
-        <td style="background-color:#f03232;color:white">No aprobado</td>
-    </tr>
+<%		Iterator users=groupResults.getUsers().iterator();
+		while (users.hasNext()){
+			UserData user=(UserData)users.next();
+%>		<tr>
+	        <td><%=user.getFirstName()+" "+user.getLastName() %> </td>
+	        <td><%=(user.getEmail()==null)?"--":user.getEmail() %></td>
+	        <td style="font-weight: 600;"><%=countries.find(String.valueOf(user.getCountry())) %></td>
+	        <td style="font-weight: 600;"><%=user.getExtraData2() %></td>
+<%  	as=groupResults.getAssesments().iterator();
+		while (as.hasNext()){
+			AssesmentAttributes assesment=(AssesmentAttributes)as.next();
+			String[] results=groupResults.getAssesmentResult(sys.getUserReportFacade(), assesment.getId(), user.getLoginName(), sys.getUserSessionData());
+%>
+ 			<td style='<%=results[0]%>'>
+<%			if(results[1].equals("")){
+%>				--
+<% 			} 
+%>
+<%			if(results[1].equals("Aprobado")){
+%>				<div style="display:flex;align-items: center;"><span class="thText"><%=results[1] %></span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div>
+<% 			} 
+%>
+<%			if(results[1].equals("No aprobado")){
+%>				No aprobado
+<% 			} 
+%>
+<%			if(results[1].equals("generic.report.pending")){
+%>				<%=messages.getText("generic.report.pending") %>
+<% 			} 
+%>
+ 			</td>
+<%		}
+%>
+	    </tr>
+<%		}
+%>
+    
 </table>
 <div>
     <a href="images/abbott_xls.xls" class="button">Descargar .xls</a>
@@ -860,209 +539,52 @@
     
 <script src="chart.js"></script>
 <script>
-var ctx = document.getElementById('chart1').getContext('2d');
-var chart = new Chart(ctx, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-        data: [85,15],
-
-		backgroundColor: ['green', 'red'],
-		label: ''}],
-		labels: ['Finalizado','No finalizado']},
-    options: {cutoutPercentage: 80, layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 0,
-                bottom: 10
-            }},tooltip:{enabled:false},
-             legend: { 
-                                display: false,
-                                position: 'bottom',
-                                align: 'left',
-                                labels: {
-                                    fontSize: 10,
-                                } }
-                ,title: { 
+<%
+	as=groupResults.getAssesments().iterator();
+	chartId=1;
+	String ctx="ctx";
+	while(as.hasNext()){
+		AssesmentAttributes assesment=(AssesmentAttributes)as.next();
+		Integer[] chartValues=groupResults.getChartValues(sys.getUserReportFacade(), assesment.getId(), userSessionData);
+		String id="chart"+chartId;
+%>      var <%=ctx+chartId%> = document.getElementById('<%="chart"+chartId%>').getContext('2d');
+		var chart<%=chartId%> = new Chart(<%=ctx+chartId%>, {
+		    type: 'doughnut',
+		    data:{
+			datasets: [{
+		        data: [<%=chartValues[0]%>,<%=chartValues[1]%>,<%=chartValues[2]%>],
+		
+				backgroundColor: ['green', 'red', 'grey'],
+				label: ''}],
+				labels: ['Aprobado','No aprobado', 'Pendiente']},
+		    options: {cutoutPercentage: 80, layout: {
+		            padding: {
+	                left: 10,
+	                right: 10,
+	                top: 0,
+	                bottom: 10
+		            }},tooltip:{enabled:false},
+		             legend: { 
+                         display: false,
+                         position: 'bottom',
+                         align: 'left',
+                         labels: {
+                         fontSize: 10,
+		                                } }
+		                ,title: { 
                                 display: true,
                                 position: 'top',
                                 align: 'center',
                                 color:'black',
-                                text:"Programa Avance",
+                                text:'<%= messages.getText(assesment.getName())%>',
                                 fontSize: 20
-                                 }}
-});
-var ctx2 = document.getElementById('chart2').getContext('2d');
-var chart2 = new Chart(ctx2, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-        data: [50,50],
+		                                 }}
+		});
+<%		chartId++;
 
-		backgroundColor: ['green', 'red'],
-		label: ''}],
-		labels: ['Finalizado','No finalizado']},
-    options: {cutoutPercentage: 80, layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 0,
-                bottom: 10
-            }},tooltip:{enabled:false},
-             legend: { 
-                                display: false,
-                                position: 'bottom',
-                                align: 'left',
-                                labels: {
-                                    boxWidth:100,
-                                    fontSize: 20,
-                                } }
-                ,title: { 
-                                display: true,
-                                position: 'top',
-                                align: 'center',
-                                color:'black',
-                                text:"Interacciones",
-                                fontSize: 20
-                                 }}
-});
-var ctx3 = document.getElementById('chart3').getContext('2d');
-var chart3 = new Chart(ctx3, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-        data: [20,80],
+	}
+%>
 
-		backgroundColor: ['green', 'red'],
-		label: ''}],
-		labels: ['Finalizado','No finalizado']},
-    options: {cutoutPercentage: 80, layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 0,
-                bottom: 10
-            }},tooltip:{enabled:false},
-             legend: { 
-                                display: false,
-                                position: 'bottom',
-                                align: 'left',
-                                labels: {
-                                    boxWidth:100,
-                                    fontSize: 80,
-                                } }
-                ,title: { 
-                                display: true,
-                                position: 'top',
-                                align: 'center',
-                                color:'black',
-                                text:"Velocidad",
-                                fontSize: 20
-                                 }}
-});
-var ctx4 = document.getElementById('chart4').getContext('2d');
-var chart4 = new Chart(ctx4, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-        data: [47,53],
-
-		backgroundColor: ['green', 'red'],
-		label: ''}],
-		labels: ['Finalizado','No finalizado']},
-    options: {cutoutPercentage: 80, layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 0,
-                bottom: 10
-            }},tooltip:{enabled:false},
-             legend: { 
-                                display: false,
-                                position: 'bottom',
-                                align: 'left',
-                                labels: {
-                                    boxWidth:100,
-                                    fontSize: 80,
-                                } }
-                ,title: { 
-                                display: true,
-                                position: 'top',
-                                align: 'center',
-                                color:'black',
-                                text:"Distancia",
-                                fontSize: 20
-                                 }}
-});
-var ctx5 = document.getElementById('chart5').getContext('2d');
-var chart5 = new Chart(ctx5, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-        data: [45,55],
-
-		backgroundColor: ['green', 'red'],
-		label: ''}],
-		labels: ['Finalizado','No finalizado']},
-    options: {cutoutPercentage: 80, layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 0,
-                bottom: 10
-            }},tooltip:{enabled:false},
-             legend: { 
-                                display: false,
-                                position: 'bottom',
-                                align: 'left',
-                                labels: {
-                                    boxWidth:100,
-                                    fontSize: 80,
-                                } }
-                ,title: { 
-                                display: true,
-                                position: 'top',
-                                align: 'center',
-                                color:'black',
-                                text:"eBTW+",
-                                fontSize: 20
-                                 }}
-});
-var ctx6 = document.getElementById('chart6').getContext('2d');
-var chart6 = new Chart(ctx6, {
-    type: 'doughnut',
-    data:{
-	datasets: [{
-        data: [30,70],
-
-		backgroundColor: ['green', 'red'],
-		label: ''}],
-		labels: ['Finalizado','No finalizado']},
-    options: {cutoutPercentage: 80, layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 0,
-                bottom: 10
-            }},tooltip:{enabled:false},
-             legend: { 
-                                display: false,
-                                position: 'bottom',
-                                align: 'left',
-                                labels: {
-                                    boxWidth:100,
-                                    fontSize: 80,
-                                } }
-                ,title: { 
-                                display: true,
-                                position: 'top',
-                                align: 'center',
-                                color:'black',
-                                text:"Pack",
-                                fontSize: 20
-                                 }}
-});
 </script>
     </body>
 

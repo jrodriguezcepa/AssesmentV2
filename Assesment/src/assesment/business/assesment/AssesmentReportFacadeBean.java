@@ -581,7 +581,6 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 		return null;
 	}
 
-
   /**
    * @ejb.interface-method
    * @ejb.permission role-name = "administrator,systemaccess"

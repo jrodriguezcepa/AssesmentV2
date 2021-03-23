@@ -659,6 +659,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 		}
    		return group;
    }
+  
 
 	  /**
 	   * @ejb.interface-method
@@ -1755,7 +1756,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 		   */
 		  public GroupUsersData getGroupUsersResults(Integer groupId,UserSessionData userSessionData) throws Exception {
 		      Session session = null;
-		      GroupUsersData results = new GroupUsersData();
+		      GroupUsersData results = null;
 		      ArrayList<ArrayList<String>> auxiliar= new ArrayList<ArrayList<String>>();
 		      
 		      try {
@@ -1765,11 +1766,11 @@ public abstract class AssesmentReportBean implements SessionBean {
 		        		  		"JOIN usergroups g ON g.loginname=u.loginname "+
 		        		  		"WHERE g.groupid="+groupId;
 		          		 
-		          Query q = session.createSQLQuery(sql1).addScalar("country", Hibernate.STRING);
+		          Query q = session.createSQLQuery(sql1).addScalar("country", Hibernate.INTEGER);
 		          Iterator it = q.list().iterator();
-		          ArrayList<String> countries=new ArrayList<String>();
+		          ArrayList<Integer> countries=new ArrayList<Integer>();
 		          while(it.hasNext()) {
-		        	  String c = (String)it.next();
+		        	  Integer c = (Integer)it.next();
 		        	  if(!countries.contains(c)) {
 		        		  countries.add(c);
 		        	  }
@@ -1779,7 +1780,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 	        		  		"JOIN usergroups g ON g.loginname=u.loginname "+
 	        		  		"WHERE g.groupid="+groupId+
 	        		  		" ORDER BY u.extradata2";
-		            Query q2 = session.createSQLQuery(sql2).addScalar("divisions", Hibernate.STRING);
+		            Query q2 = session.createSQLQuery(sql2).addScalar("extradata2", Hibernate.STRING);
 		            it = q2.list().iterator();
 			          ArrayList<String> divisions=new ArrayList<String>();
 			          while(it.hasNext()) {
@@ -1788,38 +1789,19 @@ public abstract class AssesmentReportBean implements SessionBean {
 			        		  divisions.add(d);
 			        	  }
 			          }
-		            
-		            Query q3 = session.createSQLQuery("SELECT DISTINCT ac.assesment FROM assesmentcategories ac "
-		            		+ "JOIN categories c ON c.id = ac.category "
-		            		+ "WHERE c.groupid = "+groupId+" AND ac.assesment NOT IN (SELECT DISTINCT m.assesment "
-		            				+ "FROM questions q JOIN modules m ON m.id = q.module WHERE testtype = 1)").addScalar("assesment", Hibernate.INTEGER);
+			        String sql3 = "select a.id from categories  c join assesmentcategories ac on c.id=ac.category join assesments a on a.id= ac.assesment where groupid="+groupId;
+		            Query q3 = session.createSQLQuery(sql3).addScalar("id", Hibernate.INTEGER);
 		            it = q3.list().iterator();
-		            if(it.hasNext()) {
-		            	String ids = String.valueOf(it.next());
-		                while(it.hasNext()) {
-		                	ids += " ,"+it.next();
-		                }
-		                
-		                String sql4 = "SELECT DISTINCT u.loginname, ua.assesment, ua.enddate, "+AnswerData.CORRECT+" AS type, COUNT(*) AS c " +
-		              		    "FROM usergroups ug " + 
-		                		"JOIN users u ON u.loginname = ug.loginname " + 
-		                		"JOIN userassesments ua ON u.loginname = ua.loginname " + 
-		                		"JOIN useranswers uas ON uas.loginname = ua.loginname AND uas.assesment = ua.assesment " + 
-		                		"JOIN assesmentcategories ac ON ua.assesment = ac.assesment " + 
-		                		"JOIN categories c ON c.id = ac.category " + 
-		                		"WHERE ug.groupid = " + groupId +
-		                		" AND c.groupid = c.groupid " + 
-		                		"AND u.role = '"+SecurityConstants.GROUP_ASSESSMENT+"' " + 
-		                		"AND enddate IS NOT NULL AND ua.assesment IN ("+ids+")"+
-		                		" GROUP BY u.loginname, ua.assesment, ua.enddate"; 
-		                Query q4 = session.createSQLQuery(sql4).addScalar("loginname", Hibernate.STRING).addScalar("assesment", Hibernate.INTEGER).addScalar("enddate", Hibernate.DATE).addScalar("type", Hibernate.INTEGER).addScalar("c", Hibernate.INTEGER);
-		                it = q4.list().iterator();
-		                while(it.hasNext()) {
-		              	 
-		                }
-		            }
-		            
+			         ArrayList<AssesmentAttributes> assesments=new ArrayList<AssesmentAttributes>();
 
+			         while(it.hasNext()) {
+			        	Integer id= (Integer)it.next();
+			            Assesment assesment = (Assesment)session.load(Assesment.class,id);
+			            assesments.add(assesment.getAssesment());
+			          }
+		          
+		        //select a.id from categories  c join assesmentcategories ac on c.id=ac.category join assesments a on a.id= ac.assesment where groupid=123
+		            results=new GroupUsersData(groupId,countries, divisions, getUserGroupResults(groupId,userSessionData), assesments);
 
 		      } catch (Exception e) {
 		          handler.getException(e,"getUserGroupResults",userSessionData.getFilter().getLoginName());

@@ -141,6 +141,8 @@ public class UserData implements Serializable, Comparable<UserData> {
         	this.extraData = (String)data[6];
         if(data.length > 7)
         	this.extraData2 = (String)data[7];
+        if(data.length > 8)
+        	this.country = (Integer)data[8];
 	}
 
 
