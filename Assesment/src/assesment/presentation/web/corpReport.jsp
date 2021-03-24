@@ -31,11 +31,22 @@
 	Text messages = sys.getText(); 
 
 	AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
-	String groupId = "123";
+	String groupId =request.getParameter("id");
 	String role = userSessionData.getRole(); 
 	GroupData group = assessmentReport.findGroup(new Integer(groupId),sys.getUserSessionData());
+	 Collection<AssesmentAttributes> a= new LinkedList<AssesmentAttributes>();
+	 Iterator itCategories= group.getCategories().iterator();
+	 while(itCategories.hasNext()){
+		 CategoryData c=(CategoryData)itCategories.next();
+		 Iterator as= c.getAssesments().iterator();
+		 while(as.hasNext()){
+			 AssesmentAttributes assesm = (AssesmentAttributes)as.next();
+			 a.add(assesm);
+		 }
+	 }
 	GroupUsersData groupResults= assessmentReport.getGroupUsersResults(new Integer(groupId),sys.getUserSessionData());
 	groupResults.setUsers(sys.getUserReportFacade().findGroupUsers(groupResults.getId(), sys.getUserSessionData()));
+	groupResults.setAssesments(a);
 	CountryConstants countries= new CountryConstants();
 	countries.setLAData(messages);
 	int cont=3;	
@@ -86,7 +97,7 @@
      
         .col-1 {width: 15%;
         }
-        .col-2 {width: 20%; 
+        .col-2 {width: 15%; 
                 text-align: center;
                   border-right: 1px rgb(218, 215, 215);
                   border-top: 0px;
@@ -178,12 +189,12 @@
 				border-collapse: collapse;
 				border-bottom: 1px solid #d6d6d6;
                 margin-top: 20px;
-                margin-left: 10px;
+                margin-left: 20px;
                 margin-right: 10px;
 			
             }  
             .table{
-                width:25%;
+                width:45%;
             }
                         
             .table3 th, td, .table3 th,td{
@@ -233,14 +244,14 @@
 
             }
             .table3{
-                width:90%;
+                max-width:100%;
 				margin-bottom:1.5%;
-                margin-left: 5%;
-                margin-right: 5%;
+                margin-left: 1px;
+                table-layout: fixed;
             }
             canvas{
                 clear:both;
-                width: 200px;}
+                width: 220 px;}
 
             a.button {
 				width: -moz-fit-content;
@@ -300,10 +311,16 @@
     <header>
         <img src="images/main_logo_large.png">
     </header>
+   	<html:form action="/DownloadResult" target="_blank">
+		<html:hidden property="assessment"/>
+		<html:hidden property="login"/>
+	    <html:hidden property="reportType"/>
+		
+	</html:form>	
     <!--TOTAL DE PARTICIPANTES-->
     <div>
-        <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Total de Participantes <br>(licencias de uso) Disponibles</span>
-        <span style="float:right; margin-right: 300px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades<br> por país, división</span>
+        <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Total de Participantes (licencias de uso) Disponibles</span>
+        <span style="float:right; margin-right: 170px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades por país, división</span>
 
     </div>
     <table  style="clear:both;float:left;" class="table">
@@ -360,9 +377,11 @@
 <%			Iterator it=groupResults.getAssesments().iterator();
 				while(it.hasNext()){
 					AssesmentAttributes as= (AssesmentAttributes)it.next();
-					cont++;
-%>					<td><%=as.getId()%></td>
-<%			}
+					if(as.getShowReport()){
+						cont++;
+%>					<td><%=messages.getText(as.getName())%></td>
+<%					}
+				}
 %>
  			 <!--termina for -->
             <td><div class="arrow"></div></td>
@@ -385,14 +404,16 @@
 <%						Iterator itAssesment=groupResults.getAssesments().iterator();
 						while(itAssesment.hasNext()){
 							AssesmentAttributes as=(AssesmentAttributes)itAssesment.next();
+							if(as.getShowReport()){
  %>                     <div class=col-3>
 	                        <span style="color:#3dad39;font-weight: bold;"><%=groupResults.getResultsByDivision(country, division, as.getId())[0] %></span> |
 	                        <span style="color:#d31111;font-weight: bold;"><%=groupResults.getResultsByDivision(country, division,  as.getId())[1] %></span>                       
                      	</div>							
-<%						}
-%>						
+<%						
+							}}
+%>					
       			 </div> 
-<%		  		}
+<%		  }		
 %>               
  
                 </div> 
@@ -413,17 +434,19 @@
 	Iterator as=groupResults.getAssesments().iterator();
 	int td=1;
 	int chartId=1;
+	ArrayList<Integer[]> res=new ArrayList<Integer[]>();
 	while (as.hasNext()){
 		AssesmentAttributes assesment=(AssesmentAttributes)as.next();
+		if(assesment.getShowReport()){
 		Integer[] chartValues=groupResults.getChartValues(sys.getUserReportFacade(), assesment.getId(), userSessionData);
-
+		res.add(chartValues);
 		if(td==1){
 %>			<tr>
 <%		}
-		if(td<7){
+		if(td<5){
 			String id="chart"+chartId;
 %>				<td colspan="5"><canvas id='<%=id%>'></canvas></td>
-<%		}if(td==6 || chartId==assesments){
+<%		}if(td==4 || !as.hasNext()){
 %>			</tr>
 			<tr>
 <%			for(int i=1; i<=td; i++){
@@ -439,14 +462,15 @@
 <% 			}
 %>			</tr>  			 
  			<tr>
-<%			for(int i=1; i<=td; i++){
-				int div=chartValues[0]+chartValues[1]+chartValues[2];
-				
+<%			
+			for(int i=1; i<=td; i++){
+				int div=res.get(i-1)[0]+res.get(i-1)[1]+res.get(i-1)[2];
+
 %>				<td style="background-color:#ffffff;"></td> 
-				<td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;"><%= (div>0?(chartValues[1]/div):0)*100%>%</td> 
-				<td style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;"><%= (div>0?(chartValues[0]/div):0)*100%>%</td>
-				<td style="background-color:#DCDCDC;font-weight: bolder;color:white; text-align: center;"><%= (div>0?(chartValues[2]/div):0)*100%>%</td>
-				<td style="background-color:#ffffff;"></td>
+				<td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;"><%= ((float)res.get(i-1)[1]/div)*100%>%</td> 
+				<td colspan="2" style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;"><%= ((float)res.get(i-1)[0]/div)*100%>%</td>
+				<td  style="background-color:#DCDCDC;font-weight: bolder;color:white; text-align: center;"><%= ((float)res.get(i-1)[2]/div)*100%>%</td>
+				
 				
 <% 			}
 %>			</tr> 				        
@@ -455,6 +479,8 @@
 		}
 		chartId++;
 		td++;
+		}
+		
 	}
 %>
 
@@ -468,7 +494,7 @@
     <br>
 </div>
 
-<table class="table3">
+<table class="table3" id="myTable2">
     <tr>
         <th>Nombre</th>
         <th>Email</th>
@@ -476,36 +502,41 @@
         <th>División</th>
 <%		 as=groupResults.getAssesments().iterator();
 		while (as.hasNext()){
-			AssesmentAttributes assesment=(AssesmentAttributes)as.next();			
+			AssesmentAttributes assesment=(AssesmentAttributes)as.next();	
+			if(assesment.getShowReport()){
 %>
         	<th><%=messages.getText(assesment.getName()) %></th>
-<%		}
+<%		}}
 %>
     </tr>
     <tr>
         <th></th>
         <th></th>
         <th></th>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="" ><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
-<%  	as=groupResults.getAssesments().iterator();
+        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(3);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
+<%  	int columna=4;
+		as=groupResults.getAssesments().iterator();
 		while (as.hasNext()){
-			AssesmentAttributes assesment=(AssesmentAttributes)as.next();			
+			AssesmentAttributes assesment=(AssesmentAttributes)as.next();	
+			if(assesment.getShowReport()){
 %>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="" ><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
-<%		}
+        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(<%=columna%>);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
+<%			columna++;}
+		}
 %>
     </tr>
 <%		Iterator users=groupResults.getUsers().iterator();
 		while (users.hasNext()){
 			UserData user=(UserData)users.next();
+			as=groupResults.getAssesments().iterator();
 %>		<tr>
 	        <td><%=user.getFirstName()+" "+user.getLastName() %> </td>
-	        <td><%=(user.getEmail()==null)?"--":user.getEmail() %></td>
+	        <td style="word-wrap: break-word;"><%=(user.getEmail()==null)?"--":user.getEmail() %></td>
 	        <td style="font-weight: 600;"><%=countries.find(String.valueOf(user.getCountry())) %></td>
 	        <td style="font-weight: 600;"><%=user.getExtraData2() %></td>
-<%  	as=groupResults.getAssesments().iterator();
-		while (as.hasNext()){
+<%  	while (as.hasNext()){
 			AssesmentAttributes assesment=(AssesmentAttributes)as.next();
+			if(assesment.getShowReport()){
 			String[] results=groupResults.getAssesmentResult(sys.getUserReportFacade(), assesment.getId(), user.getLoginName(), sys.getUserSessionData());
 %>
  			<td style='<%=results[0]%>'>
@@ -514,7 +545,7 @@
 <% 			} 
 %>
 <%			if(results[1].equals("Aprobado")){
-%>				<div style="display:flex;align-items: center;"><span class="thText"><%=results[1] %></span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="images/abbott_pdf2.pdf"><img src="images/abbott_star.png" alt="filter"></a><a href="images/abbott_pdf.pdf"><img src="images/abbott_file.png" alt="filter"></a></div>
+%>				<div style="display:flex;align-items: center;"><span class="thText"><%=results[1] %></span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="javascript:openReport('<%=user.getLoginName() %>', '<%=String.valueOf(assesment.getId())%>', 2)"><img src="images/abbott_star.png" alt="filter"></a><a href="javascript:openReport('<%=user.getLoginName() %>', '<%=String.valueOf(assesment.getId())%>', 1)"><img src="images/abbott_file.png" alt="filter"></a></div>
 <% 			} 
 %>
 <%			if(results[1].equals("No aprobado")){
@@ -526,7 +557,7 @@
 <% 			} 
 %>
  			</td>
-<%		}
+<%		}}
 %>
 	    </tr>
 <%		}
@@ -539,12 +570,62 @@
     
 <script src="chart.js"></script>
 <script>
+	function sortTable(n) {
+    	  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    	  table = document.getElementById("myTable2");
+    	  switching = true;
+    	  dir = "asc";
+    	  while (switching) {
+    	    switching = false;
+    	    rows = table.rows;
+    	   
+    	    for (i = 2; i < (rows.length - 1); i++) {
+    	      shouldSwitch = false;
+    	    
+    	      x = rows[i].getElementsByTagName("TD")[n];
+    	      y = rows[i + 1].getElementsByTagName("TD")[n];
+    	   
+    	      if (dir == "asc") {
+    	        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+    	          shouldSwitch = true;
+    	          break;
+    	        }
+    	      } else if (dir == "desc") {
+    	        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+    	          shouldSwitch = true;
+    	          break;
+    	        }
+    	      }
+    	    }
+    	    if (shouldSwitch) {
+    	   
+    	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    	      switching = true;
+    	      switchcount ++;
+    	    } else {
+    	    
+    	      if (switchcount == 0 && dir == "asc") {
+    	        dir = "desc";
+    	        switching = true;
+    	      }
+    	    }
+    	  }
+    	}
+	function openReport(login, assesment, type) {
+		var form = document.forms['DownloadResultReportForm'];
+		form.login.value = login;
+		form.assessment.value = assesment;
+		form.reportType.value = type;
+		form.submit();
+  	}
 <%
 	as=groupResults.getAssesments().iterator();
 	chartId=1;
 	String ctx="ctx";
 	while(as.hasNext()){
 		AssesmentAttributes assesment=(AssesmentAttributes)as.next();
+		if(assesment.getShowReport()){
+
 		Integer[] chartValues=groupResults.getChartValues(sys.getUserReportFacade(), assesment.getId(), userSessionData);
 		String id="chart"+chartId;
 %>      var <%=ctx+chartId%> = document.getElementById('<%="chart"+chartId%>').getContext('2d');
@@ -580,9 +661,10 @@
                                 fontSize: 20
 		                                 }}
 		});
-<%		chartId++;
 
-	}
+<%	chartId++;}
+		}
+	
 %>
 
 </script>
