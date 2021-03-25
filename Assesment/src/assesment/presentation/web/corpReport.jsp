@@ -251,7 +251,7 @@
             }
             canvas{
                 clear:both;
-                width: 220 px;}
+                width: 200 px;}
 
             a.button {
 				width: -moz-fit-content;
@@ -316,11 +316,14 @@
 		<html:hidden property="login"/>
 	    <html:hidden property="reportType"/>
 		
+	</html:form>
+	<html:form action="/DownloadGroup">
+		<html:hidden property="group" value="<%=groupId%>" />
 	</html:form>	
     <!--TOTAL DE PARTICIPANTES-->
     <div>
-        <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Total de Participantes (licencias de uso) Disponibles</span>
-        <span style="float:right; margin-right: 170px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;">Detalle de actividades por país, división</span>
+        <span style="float:left;margin-left: 60px;margin-top: 50px;font-weight: bold; font-size: 1.5vw;"><%=messages.getText("assesment.report.totalparticipants") %></span>
+        <span style="float:right; margin-right: 170px; margin-top: 50px;font-weight: bold; font-size: 1.5vw;"><%=messages.getText("assesment.report.activitybycountry") %></span>
 
     </div>
     <table  style="clear:both;float:left;" class="table">
@@ -351,7 +354,7 @@
 <%			}
 %>
  	<tr>
-            <td style="color:#444496;font-weight: bold;">Todas las divisiones</td>
+            <td style="color:#444496;font-weight: bold;"><%=messages.getText("assesment.report.totaldivision") %></td>
 <% 				itCountries= groupResults.getCountries().iterator();
 				while (itCountries.hasNext()){
 					Integer country= (Integer)itCountries.next();
@@ -372,7 +375,7 @@
 			Integer country=(Integer)itCountries.next();
 %>		   <tr>
             <td style="background-color: #342997; color:#f4f4f5;font-weight: bold;"><%=countries.find(String.valueOf(country)) %></td>
-            <td>División</td>
+            <td><%=messages.getText("assesment.report.division") %></td>
             <!-- for con las actividades del grupo -->
 <%			Iterator it=groupResults.getAssesments().iterator();
 				while(it.hasNext()){
@@ -425,7 +428,7 @@
     </table>
 <div style="clear:both;">  </div>
 <div style="width: 100%; font-weight: bold;text-align: center; padding-top: 30px; font-size: 1.5vw;">
-    Usuarios Activos - Porcentaje
+    <%=messages.getText("assesment.report.activeusers") %>
     <br>
 </div>
 <table id="charts">
@@ -450,14 +453,14 @@
 %>			</tr>
 			<tr>
 <%			for(int i=1; i<=td; i++){
-%>				<td colspan="5" style="font-weight: bolder; color:black;text-align: center;">Resultados</td>
+%>				<td colspan="5" style="font-weight: bolder; color:black;text-align: center;"><%=messages.getText("generic.results") %></td>
 <% 			}
 %>			</tr>
  			<tr>
 <%			for(int i=1; i<=td; i++){
-%>				<td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;">Reprobado</td>
-				<td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Aprobado</td>
-			    <td  colspan="1" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;">Pendiente</td>
+%>				<td colspan="2"  style="font-weight: bolder; color:black;text-align: center; padding: 3px;"><%=messages.getText("assesment.report.notapprouved") %></td>
+				<td  colspan="2" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;"><%=messages.getText("result.approuved") %></td>
+			    <td  colspan="1" style="font-weight: bolder; color:black;text-align: center; padding-top: 3px;  padding-bottom: 3px;"><%=messages.getText("generic.report.pending") %></td>
 				
 <% 			}
 %>			</tr>  			 
@@ -490,16 +493,16 @@
 </table>
 <div style="clear:both;">  </div>
 <div style="width: 100%; font-weight: bold;text-align: center; padding-top: 5%; font-size: 1.5vw;">
-    Dashboard de Actividades y Resultados
+   <%=messages.getText("assesment.report.activitydashboard") %>
     <br>
 </div>
 
 <table class="table3" id="myTable2">
     <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>País</th>
-        <th>División</th>
+        <th><%=messages.getText("report.users.name") %></th>
+        <th><%=messages.getText("user.data.mail") %></th>
+        <th><%=messages.getText("user.data.country") %></th>
+        <th><%=messages.getText("generic.report.division") %></th>
 <%		 as=groupResults.getAssesments().iterator();
 		while (as.hasNext()){
 			AssesmentAttributes assesment=(AssesmentAttributes)as.next();	
@@ -513,14 +516,14 @@
         <th></th>
         <th></th>
         <th></th>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(3);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
+        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(3);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("generic.report.sort") %></span></div></th>
 <%  	int columna=4;
 		as=groupResults.getAssesments().iterator();
 		while (as.hasNext()){
 			AssesmentAttributes assesment=(AssesmentAttributes)as.next();	
 			if(assesment.getShowReport()){
 %>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(<%=columna%>);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText">Ordenar</span></div></th>
+        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(<%=columna%>);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("generic.report.sort") %></span></div></th>
 <%			columna++;}
 		}
 %>
@@ -544,12 +547,12 @@
 %>				--
 <% 			} 
 %>
-<%			if(results[1].equals("Aprobado")){
-%>				<div style="display:flex;align-items: center;"><span class="thText"><%=results[1] %></span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="javascript:openReport('<%=user.getLoginName() %>', '<%=String.valueOf(assesment.getId())%>', 2)"><img src="images/abbott_star.png" alt="filter"></a><a href="javascript:openReport('<%=user.getLoginName() %>', '<%=String.valueOf(assesment.getId())%>', 1)"><img src="images/abbott_file.png" alt="filter"></a></div>
+<%			if(results[1].equals("result.approuved")){
+%>				<div style="display:flex;align-items: center;"><span class="thText"><%=messages.getText("result.approuved") %></span><a href="" style="width:100%;padding-left: 10px; padding-right: 0;"></a><a href="javascript:openReport('<%=user.getLoginName() %>', '<%=String.valueOf(assesment.getId())%>', 2)"><img src="images/abbott_star.png" alt="filter"></a><a href="javascript:openReport('<%=user.getLoginName() %>', '<%=String.valueOf(assesment.getId())%>', 1)"><img src="images/abbott_file.png" alt="filter"></a></div>
 <% 			} 
 %>
-<%			if(results[1].equals("No aprobado")){
-%>				No aprobado
+<%			if(results[1].equals("assesment.report.notapprouved")){
+%>				<%=messages.getText("assesment.report.notapprouved") %>
 <% 			} 
 %>
 <%			if(results[1].equals("generic.report.pending")){
@@ -565,7 +568,7 @@
     
 </table>
 <div>
-    <a href="images/abbott_xls.xls" class="button">Descargar .xls</a>
+    <a href="javascript:document.forms['DownloadGroupReportForm'].submit()" class="button"><%=messages.getText("generic.data.downloadxls") %></a>
 </div>
     
 <script src="chart.js"></script>
