@@ -194,7 +194,7 @@ public class GroupUsersData {
 				}else {
 					if(usFacade.isResultRed(user, new Integer(assesment), userSessionData)) {
 						values[0]="background-color:#f03232;color:white";
-						values[1]="generic.report.notapprouved";
+						values[1]="assesment.report.notapprouved";
 					}else {
 						values[0]="background-color:#29c05b;color:white";
 						values[1]="result.approuved";							

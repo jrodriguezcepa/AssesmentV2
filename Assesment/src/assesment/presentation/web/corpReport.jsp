@@ -95,9 +95,9 @@
         #report div.arrow { background:transparent url(images/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
         #report div.up { background-position:0px 0px;}
      
-        .col-1 {width: 15%;
+        .col-1 {width: 10%;
         }
-        .col-2 {width: 15%; 
+        .col-2 {width: 20%; 
                 text-align: center;
                   border-right: 1px rgb(218, 215, 215);
                   border-top: 0px;
@@ -107,7 +107,7 @@
                  border-style: solid;
                  padding-top: 7px;
                  padding-bottom: 7px;}
-			.col-3 {width: 15%; border-right: 1px rgb(218, 215, 215);
+			.col-3 {width: 20%; border-right: 1px rgb(218, 215, 215);
                   border-top: 0px black;                text-align: center;
 
                   border-left: 0px black;
@@ -246,7 +246,8 @@
             .table3{
                 max-width:100%;
 				margin-bottom:1.5%;
-                margin-left: 1px;
+                margin-left: auto;
+                margin-right: auto;
                 table-layout: fixed;
             }
             canvas{
@@ -470,9 +471,9 @@
 				int div=res.get(i-1)[0]+res.get(i-1)[1]+res.get(i-1)[2];
 
 %>				<td style="background-color:#ffffff;"></td> 
-				<td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;"><%= ((float)res.get(i-1)[1]/div)*100%>%</td> 
-				<td colspan="2" style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;"><%= ((float)res.get(i-1)[0]/div)*100%>%</td>
-				<td  style="background-color:#DCDCDC;font-weight: bolder;color:white; text-align: center;"><%= ((float)res.get(i-1)[2]/div)*100%>%</td>
+				<td style="background-color:#f03232;font-weight: bolder;color:white; text-align: center;"><%= (res.get(i-1)[1]*100/div)%>%</td> 
+				<td colspan="2" style="background-color:#29c05b;font-weight: bolder;color:white; text-align: center;"><%= (res.get(i-1)[0]*100/div)%>%</td>
+				<td  style="background-color:#808080;font-weight: bolder;color:white; text-align: center;"><%= res.get(i-1)[2]*100/div%>%</td>
 				
 				
 <% 			}
@@ -502,7 +503,7 @@
         <th><%=messages.getText("report.users.name") %></th>
         <th><%=messages.getText("user.data.mail") %></th>
         <th><%=messages.getText("user.data.country") %></th>
-        <th><%=messages.getText("generic.report.division") %></th>
+        <th><%=messages.getText("assesment.report.division") %></th>
 <%		 as=groupResults.getAssesments().iterator();
 		while (as.hasNext()){
 			AssesmentAttributes assesment=(AssesmentAttributes)as.next();	
@@ -516,14 +517,14 @@
         <th></th>
         <th></th>
         <th></th>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(3);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("generic.report.sort") %></span></div></th>
+        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(3);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment.report.sort") %></span></div></th>
 <%  	int columna=4;
 		as=groupResults.getAssesments().iterator();
 		while (as.hasNext()){
 			AssesmentAttributes assesment=(AssesmentAttributes)as.next();	
 			if(assesment.getShowReport()){
 %>
-        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(<%=columna%>);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("generic.report.sort") %></span></div></th>
+        <th style="font-weight: 500; padding:5px"><div style="display:flex;align-items: center;"><a href="javascript:sortTable(<%=columna%>);"><img src="images/abbott_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment.report.sort") %></span></div></th>
 <%			columna++;}
 		}
 %>
