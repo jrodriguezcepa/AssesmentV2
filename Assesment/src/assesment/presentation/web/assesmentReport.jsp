@@ -342,6 +342,8 @@
 		if(cedi!=null){
 			cediName=cedi.getName();
 		}
+		if(cedi!=null) session.setAttribute("cedi", cedi.getId());
+		
 		String refresh="assesmentReport.jsp?id="+assesmentId;
 		String report="reportAssesment.jsp?id="+assesmentId;
 

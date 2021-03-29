@@ -22,8 +22,6 @@ public class Language {
 	public Language(){
 	}
 	
-
-	
 	public String getName() {
 		return name;
 	}

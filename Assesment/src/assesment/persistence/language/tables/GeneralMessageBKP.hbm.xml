@@ -9,15 +9,20 @@
         name="GeneralMessageBKP"
         table="generalmessagesbkp">
 
-		<id 
-	 		name="labelKey" 
-	 		column="labelKey"
-	 		type="java.lang.String"
-	 		length="100">
-	 		<generator class="assigned"></generator></id>
+		<composite-id name="primaryKey" class="GeneralMessageBKPPK">
+			<key-property
+				 name="labelKey"
+				 column="labelkey" 
+				 type="java.lang.String"
+				 length="100"
+			/>
+			<key-many-to-one 
+				class="Language"
+				name="language" 
+				column="language"
+			/>
+	 	</composite-id>    	
 	 	
-	 	<many-to-one name="language" column="language"  class="assesment.persistence.language.tables.Language" not-null="true"/>
-
 	 	<property 
 	 		name="text" 
 	 		column="text"

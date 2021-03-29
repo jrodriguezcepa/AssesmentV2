@@ -25,6 +25,11 @@ public class UserPsiAnswerBKP {
     public UserPsiAnswerBKP() {
     }
 
+    public UserPsiAnswerBKP(Object[] d) {
+    	this.id=(Integer)d[0];
+    	this.psiquestion=(PsiQuestionBKP)d[1];
+    	this.psianswer=(PsiAnswerBKP)d[2];
+    }
 
     public Integer getId() {
         return id;

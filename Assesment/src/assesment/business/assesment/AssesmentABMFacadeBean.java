@@ -614,4 +614,20 @@ public abstract class AssesmentABMFacadeBean implements SessionBean {
             handler.handleException("changeAssesmentGroupDate",e);
 		}
    }
+   
+   /**
+    * @ejb.interface-method
+    * @ejb.permission role-name = "administrator"
+    * Create a corporation  
+    * @param data - Contains the data of the new corporation
+    * @param userRequest - Logged user
+    * @throws Exception
+    */
+   public void backUpAssessment(Integer assesment, UserSessionData userSessionData) throws Exception {
+		try {
+            AssesmentABMUtil.getHome().create().backUpAssessment(assesment, userSessionData);
+		} catch (Exception e) {
+            handler.handleException("changeAssesmentGroupDate",e);
+		}
+   }
 }

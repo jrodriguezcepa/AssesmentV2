@@ -719,6 +719,89 @@ public abstract class UsABMBean implements SessionBean {
                 }
             }
             
+            if(assesment.intValue() == AssesmentData.MUTUAL_DA ||assesment.intValue() == AssesmentData.ABBOTT_NEWDRIVERS ||assesment.intValue() == AssesmentData.ABBEVIE_LATAM) {
+            	int right = 0;
+                int wrong = 0;
+                int module = 0;
+                String modules="select distinct(id) from modules where assesment="+ assesment;
+                Query q2 = session.createSQLQuery(modules).addScalar("id", Hibernate.INTEGER);
+                Iterator it2 = q2.list().iterator();
+                while(it2.hasNext()) {
+                	Object d=(Object)it2.next();
+                	Integer m=(Integer)d;
+                	
+                String sqlTotal = "SELECT COUNT(*) AS totaluser, (select count (*) from questions where module="+m+"  AND testtype =" +QuestionData.TEST_QUESTION+") AS totalquestion "
+                		+ "FROM useranswers ua " + 
+                		"JOIN answerdata ad ON ad.id = ua.answer " + 
+                		"JOIN questions q ON q.id = ad.question " + 
+                		"JOIN answers a ON a.id = ad.answer " + 
+                		"WHERE loginname = '"+user+"' AND assesment = " +assesment + " AND q.module="+m+ 
+                		" AND q.testtype = " +QuestionData.TEST_QUESTION; 
+                		
+                q2 = session.createSQLQuery(sqlTotal).addScalar("totaluser", Hibernate.INTEGER).addScalar("totalquestion", Hibernate.INTEGER);
+                Iterator it4 = q2.list().iterator();
+               while (it4.hasNext()) {
+            	   Object[] dataq=(Object[])it4.next();
+            	   Integer totalusers=(Integer)dataq[0];
+            	   Integer totalquestions=(Integer)dataq[1];
+
+                if(totalusers.equals(totalquestions)) {
+                String sqlResult = "SELECT q.module, a.type, COUNT(*) AS c "
+                		+ "FROM useranswers ua " + 
+                		"JOIN answerdata ad ON ad.id = ua.answer " + 
+                		"JOIN questions q ON q.id = ad.question " + 
+                		"JOIN answers a ON a.id = ad.answer " + 
+                		"WHERE loginname = '"+user+"' AND q.module="+m+" AND assesment = " +assesment + 
+                		" AND q.testtype = " +QuestionData.TEST_QUESTION + 
+                		" GROUP BY q.module, a.type" +
+                		" ORDER BY q.module, a.type";
+                Query q = session.createSQLQuery(sqlResult).addScalar("module", Hibernate.INTEGER).addScalar("type", Hibernate.INTEGER).addScalar("c", Hibernate.INTEGER);
+                Iterator it = q.list().iterator();
+                while(it.hasNext()) {
+                	Object[] data = (Object[]) it.next();
+                	int moduleId = ((Integer)data[0]).intValue(); 
+                	
+                    	if(moduleId != module) {
+                    		if(module != 0) {
+                                Query q3 = session.createQuery("SELECT r FROM UserAssesmentResult r WHERE r.assesment = "+assesment+" AND r.login = '"+user+"' AND r.type = "+module);
+                                Iterator it3 = q3.list().iterator();
+                                if(it3.hasNext()) {
+                                	UserAssesmentResult r = (UserAssesmentResult)it3.next();
+                                	r.setCorrect(right);
+                                	r.setIncorrect(wrong);
+                                	session.update(r);
+                                }else {
+                    	            UserAssesmentResult result = new UserAssesmentResult(user, assesment, module, right, wrong);
+                    	            session.save(result);
+                                }
+                                right = 0;
+                                wrong = 0;
+                    		}
+                    		module = moduleId;
+                    	}
+                    	if(((Integer)data[1]).intValue() == AnswerData.CORRECT) {
+                    		right = ((Integer)data[2]).intValue();
+                    	}
+                    	if(((Integer)data[1]).intValue() == AnswerData.INCORRECT) {
+                    		wrong = ((Integer)data[2]).intValue();
+                    	}
+                    }
+                    Query q3 = session.createQuery("SELECT r FROM UserAssesmentResult r WHERE r.assesment = "+assesment+" AND r.login = '"+user+"' AND r.type = "+module);
+                    Iterator it3 = q3.list().iterator();
+                    if(it3.hasNext()) {
+                    	UserAssesmentResult r = (UserAssesmentResult)it3.next();
+                    	r.setCorrect(right);
+                    	r.setIncorrect(wrong);
+                    	session.update(r);
+                    }else {
+        	            UserAssesmentResult result = new UserAssesmentResult(user, assesment, module, right, wrong);
+        	            session.save(result);
+                    }
+                    }
+                    } }
+                	
+            }
+            
         } catch (Exception e) {
             handler.getException(e, "saveAnswer", userSessionData.getFilter().getLoginName());
         }
@@ -896,7 +979,7 @@ public abstract class UsABMBean implements SessionBean {
                 session.save(result);
             }
             
-            if(assesmentId.intValue() == AssesmentData.MUTUAL_DA ||assesmentId.intValue() == AssesmentData.ABBOTT_NEWDRIVERS ||assesmentId.intValue() == AssesmentData.ABBEVIE_LATAM) {
+  /*          if(assesmentId.intValue() == AssesmentData.MUTUAL_DA ||assesmentId.intValue() == AssesmentData.ABBOTT_NEWDRIVERS ||assesmentId.intValue() == AssesmentData.ABBEVIE_LATAM) {
                 right = 0;
                 wrong = 0;
                 int module = 0;
@@ -950,7 +1033,7 @@ public abstract class UsABMBean implements SessionBean {
     	            UserAssesmentResult result = new UserAssesmentResult(userId, assesmentId, module, right, wrong);
     	            session.save(result);
                 }
-            }
+            }*/
         } catch (Exception e) {
             handler.getException(e, "setEndDate", userSessionData.getFilter().getLoginName());
         }

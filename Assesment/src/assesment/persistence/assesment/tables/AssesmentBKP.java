@@ -17,6 +17,7 @@ import assesment.communication.assesment.AssesmentData;
 import assesment.communication.module.ModuleData;
 import assesment.persistence.corporation.tables.Corporation;
 import assesment.persistence.hibernate.HibernateAccess;
+import assesment.persistence.module.tables.Module;
 import assesment.persistence.module.tables.ModuleBKP;
 
 public class AssesmentBKP {
@@ -70,6 +71,44 @@ public class AssesmentBKP {
 
     public AssesmentBKP() {
     }
+    
+    public AssesmentBKP(Assesment assessment) {
+    	this.id=assessment.getId();
+    	this.corporation=assessment.getCorporation();	
+    	this.name=assessment.getName();	
+    	this.description=assessment.getDescription();
+    	this.start=assessment.getStart();    	
+    	this.end=assessment.getEnd();	
+    	this.status=assessment.getStatus();	
+    	this.psitest=assessment.isPsitest();	
+    	this.elearning=assessment.isElearning();	
+    	this.instantFeedback=assessment.isInstantFeedback();	
+    	this.reportFeedback=assessment.isReportFeedback();	
+    	this.errorFeedback=assessment.isErrorFeedback();	
+    	this.psiFeedback=assessment.isPsiFeedback();	
+    	this.green=assessment.getGreen();	
+    	this.yellow=assessment.getYellow();	
+    	this.certificate=assessment.isCertificate();	
+    	this.certificateImageES=assessment.getCertificateImageES();	
+    	this.certificateImageEN=assessment.getCertificateImageEN();	
+    	this.certificateImagePT=assessment.getCertificateImagePT();	
+    	//this.moduleSet=assessment.getModuleSet();	
+    	this.archived=assessment.isArchived();	
+    	this.showEmailWRT=assessment.isShowEmailWRT();	
+    	this.dcActivity=assessment.getDcActivity();	
+    	this.terms=assessment.getTerms();	
+    	this.link_es=assessment.getLink_es();	
+    	this.link_en=assessment.getLink_en();	
+    	this.link_pt=assessment.getLink_pt();	
+    	this.icon=assessment.isIcon();	
+    	this.attachesPDF=assessment.isAttachesPDF();	
+    	this.attachenPDF=assessment.isAttachenPDF();	
+    	this.attachptPDF=assessment.isAttachptPDF();	
+    	this.untilApproved=assessment.isUntilApproved();	
+    	this.link=assessment.getLink();	
+
+    }
+
 
     public Integer getId() {
         return id;

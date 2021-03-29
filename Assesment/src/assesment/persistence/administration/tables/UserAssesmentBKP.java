@@ -50,6 +50,29 @@ public class UserAssesmentBKP implements Serializable {
     private Date acceptTerms;
     
     public UserAssesmentBKP(){}
+    
+    public UserAssesmentBKP(UserAssesment ua, AssesmentBKP assesment){
+    	this.user=ua.getPk().getUser(); 
+    	this.assesment=assesment;
+    	this.psiresult1=ua.getPsiresult1();
+    	this.psiresult2=ua.getPsiresult2();
+    	this.psiresult3=ua.getPsiresult3();
+    	this.psiresult4=ua.getPsiresult4();
+    	this.psiresult5=ua.getPsiresult5();
+    	this.psiresult6=ua.getPsiresult6();
+        
+    	this.psiId=ua.getPsiId();
+    	this.psiTestId=ua.getPsiTestId();
+        
+    	this.newHire=ua.getNewHire();
+        
+    	this.elearningRedirect=ua.getElearningRedirect();
+    	this.elearningInstance=ua.getElearningInstance(); 
+    	this.endDate=ua.getEndDate();
+    	this.reportSended=ua.isReportSended();
+    	this.acceptTerms=ua.isAcceptTerms();
+    }
+
 	
 	public void setUser(User user) {
 		this.user = user;

@@ -27,6 +27,11 @@ public class AnswersUserBKP implements Serializable{
     public AnswersUserBKP() {
     	
     }
+    public AnswersUserBKP(Object[] data) {
+    	this.assesment=(Integer)data[0];
+    	this.loginName=(String)data[1];
+    	this.answer=(Integer)data[2];
+    }
 	
     public Integer getAssesment() {
 		return assesment;

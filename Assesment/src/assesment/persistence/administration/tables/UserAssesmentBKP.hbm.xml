@@ -29,8 +29,8 @@
 	    
     	<set name="psianswers" table="userpsianswersbkp" cascade="all">
 			<key>
-					<column name="assesment" /> 
-					<column name="loginname" />
+				<column name="assesment" /> 
+				<column name="loginname" />
 			</key>
 	        <many-to-many column="psianswer" class="assesment.persistence.administration.tables.UserPsiAnswerBKP"/>
 	    </set>

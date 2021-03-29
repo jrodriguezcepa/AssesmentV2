@@ -37,6 +37,18 @@ public class QuestionBKP {
     
     public QuestionBKP() {
     }
+    
+    public QuestionBKP(Question question, ModuleBKP module) {
+    	this.id=question.getId();
+    	this.module=module;
+    	this.key=question.getKey();
+    	this.order=question.getOrder();
+    	this.type=question.getType();
+    	this.image=question.getImage();
+    	this.testType=question.getTestType();
+    	this.groupId=question.getGroupId();
+    	this.wrt=question.isWrt();
+    }
 
     public Integer getId() {
         return id;

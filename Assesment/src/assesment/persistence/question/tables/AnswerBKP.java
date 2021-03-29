@@ -18,6 +18,14 @@ public class AnswerBKP {
     
     public AnswerBKP() {
     }
+    
+    public AnswerBKP(Answer answer, QuestionBKP question) {
+    	this.id=answer.getId();
+    	this.question=question;
+    	this.key=answer.getKey();
+    	this.order=answer.getOrder();
+    	this.resultType=answer.getResultType();
+    }
 
 
     public Integer getId() {

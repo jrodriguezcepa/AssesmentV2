@@ -15,6 +15,8 @@ import org.hibernate.classic.Session;
 import assesment.communication.administration.UserAnswerData;
 import assesment.persistence.hibernate.HibernateAccess;
 import assesment.persistence.question.tables.AnswerBKP;
+import assesment.persistence.question.tables.PsiAnswerBKP;
+import assesment.persistence.question.tables.PsiQuestionBKP;
 import assesment.persistence.question.tables.QuestionBKP;
 
 public class UserAnswerBKP {
@@ -33,6 +35,17 @@ public class UserAnswerBKP {
     public UserAnswerBKP() {
     }
 
+    public UserAnswerBKP(Object[] data) {
+        this.id=(Integer)data[0];
+        this.question=(QuestionBKP)data[1];
+        this.answer=(AnswerBKP)data[2];
+        this.text=(String)data[3];
+        this.date=(Date)data[4];
+        this.distance=(Integer)data[5];
+        this.unit=(Integer)data[6];
+        this.country=(Integer)data[7];
+        this.never=(Boolean)data[8];
+    }
 
     public AnswerBKP getAnswer() {
         return answer;

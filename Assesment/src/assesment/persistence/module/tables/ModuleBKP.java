@@ -33,6 +33,14 @@ public class ModuleBKP {
     public ModuleBKP() {
     }
 
+    public ModuleBKP(Module module, AssesmentBKP assesment) {
+    	this.id=module.getId();
+    	this.assesment=assesment;
+    	this.key=module.getKey();
+    	this.order=module.getOrder();
+    	this.type=module.getType();
+    }
+
     public Integer getId() {
         return id;
     }

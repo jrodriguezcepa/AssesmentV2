@@ -21,12 +21,21 @@ public class GeneralMessageBKP {
     private String text;
 	private Integer assessment; 
 	
-    private String labelKey;
-	private Language language;	
+	private GeneralMessageBKPPK primaryKey;
+	
 	public GeneralMessageBKP(){
 		
 	}
 
+	public GeneralMessageBKP(GeneralMessage gm){
+		this.text=gm.getText();
+		this.assessment=gm.getAssessment();
+		GeneralMessageBKPPK pk=new GeneralMessageBKPPK();
+		pk.setLabelKey(gm.getPrimaryKey().getLabelKey());
+		pk.setLanguage(gm.getPrimaryKey().getLanguage());
+		this.primaryKey= pk;
+		
+	}
 
     public String getText() {
 		return text;
@@ -35,20 +44,6 @@ public class GeneralMessageBKP {
 		this.text = text;
 	}
 
-    public String getLabelKey() {
-		return labelKey;
-	}
-	public void setLabelKey(String labelKey) {
-		this.labelKey = labelKey;
-	}
-
-	public Language getLanguage() {
-		return language;
-	}
-	public void setLanguage(Language language) {
-		this.language = language;
-	}
-		
 
 	public Integer getAssessment() {
 		return assessment;
@@ -56,5 +51,13 @@ public class GeneralMessageBKP {
 
 	public void setAssessment(Integer assessment) {
 		this.assessment = assessment;
+	}
+
+	public GeneralMessageBKPPK getPrimaryKey() {
+		return primaryKey;
+	}
+
+	public void setPrimaryKey(GeneralMessageBKPPK primaryKey) {
+		this.primaryKey = primaryKey;
 	}
 }
