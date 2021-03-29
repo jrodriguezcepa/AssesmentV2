@@ -127,7 +127,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
      */
     public AssesmentData findAssesment(Integer id,UserSessionData userSessionData) throws Exception {
         if (userSessionData == null) {
-            throw new DeslogedException("findAssesment","userSessionData = null");
+            throw new DeslogedException("findAssesment","userSessionData is null");
         }
         if (id == null) {
             throw new InvalidDataException("findAssesment","id = null");
