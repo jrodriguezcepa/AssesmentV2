@@ -30,6 +30,11 @@
 <%@ taglib uri="/WEB-INF/struts-bean.tld"
         prefix="bean" 
 %>
+
+51639
+51670
+51683
+
 <%@ page pageEncoding="UTF-8" %>
 
 <%
@@ -170,7 +175,7 @@
 
 				<div>
 					
-					<br><label>1. Какими качествами должен обладать тренер? </label>
+					<br><label>Какими качествами должен обладать тренер? </label>
 				</div>
 				<!-- Option 1 -->
 				<div>
@@ -256,7 +261,7 @@
 			<div class="center2">
 
 				<div>
-					<br><label> 2. Какой из следующих вариантов лучше всего описывает составляющие,
+					<br><label>Какой из следующих вариантов лучше всего описывает составляющие,
 						позволяющие Тренеру эффективнее влиять на водителя?</label>
 				</div>
 				<!-- Option 1 -->
@@ -314,7 +319,7 @@
 	<div class="center2">
 
 		<div>
-			<br><label>3. Эффективная коммуникация во время обучения это:</label>
+			<br><label>Эффективная коммуникация во время обучения это:</label>
 		</div>
 		<!-- Option 1 -->
 		<div>
@@ -370,77 +375,12 @@
 <div>
 <img src="images/lineWebinar.png" style="width: 100%">
 </div>		
-	<!-- Question 3 ends -->
-	<!-- Question 4  -->
-	<div class="center2">
-
-		<div>
-			<br><label>4.Два фактора, часто вызывающие смерть на дорогах, это:</label>
-		</div>
-		<!-- Option 1 -->
-		<div>
-<%				if(answers.containsKey(new Integer(1111)) && answers.get(new Integer(1111)).equals("1111")){
-%>			<label class="radio">
-				<input type="radio" name='11111'  value="1111" checked/>Плохие погодные условия
-			</label>
-			</br>	
-<%				}else{
-%>			<label class="radio">
-				<input type="radio" name='11111'  value="11111"/>Плохие погодные условия
-			</label>
-			</br>
-<%				}  
-%>				<!-- Option 2 -->				
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
-%>			<label class="radio">
-				<input type="radio" name='11111'  value="11111" checked/>Плохая дорога
-			</label>
-			</br>	
-<%				}else{
-%>			<label class="radio">
-				<input type="radio" name='11111'  value="11111"/>Плохая дорога
-			</label>
-			</br>
-<%				}  
-%>		<!-- Option 3 -->
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
-%>			<label class="radio">
-				<input type="radio" name='11111'  value="11111" checked/>Высокая скорость
-			</label>
-			</br>	
-<%				}else{
-%>			<label class="radio">
-				<input type="radio" name='11111'  value="11111"/>Высокая скорость
-			</label>
-			</br>
-<%				}
-
-%>
-		<!-- Option 4 -->
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
-	%>			<label class="radio">
-					<input type="radio" name='11111'  value="11111" checked/>Пренебрежение средствами безопасности
-				</label>
-				</br>	
-	<%				}else{
-	%>			<label class="radio">
-					<input type="radio" name='11111'  value="11111"/>Пренебрежение средствами безопасности
-				</label>
-				</br>
-	<%				}
-	
-	%>
-		</div>
-</div>	
-<div>
-<img src="images/lineWebinar.png" style="width: 100%">
-</div>		
 	<!-- Question 4 ends -->	
 	<!-- Question 5  -->
 			<div class="center2">
 
 				<div>
-					<br><label> 5. Эмпатия означает:</label>
+					<br><label>Эмпатия означает:</label>
 				</div>
 				<!-- Option 1 -->
 				<div>
@@ -496,7 +436,7 @@
 			<div class="center2">
 
 				<div>
-					<br><label>6. Тренер постоянно коммуницирует с водителем</label>
+					<br><label>Тренер постоянно коммуницирует с водителем</label>
 					
 				</div>
 				<!-- Option 1 -->
@@ -548,7 +488,7 @@
 		<div class="center2">
 
 		<div>
-			<br><label>7. Из всех каналов, по которым идут процессы восприятия и обучения, какие являются
+			<br><label>Из всех каналов, по которым идут процессы восприятия и обучения, какие являются
 				главными?</label><br>	
 		</div>
 		<!-- Option 1 -->
@@ -601,7 +541,7 @@
 
 		<div>
 		
-			<br><label>8. Люди запоминают лучше:</label>
+			<br><label>Люди запоминают лучше:</label>
 		</div>
 		<!-- Option 1 -->
 		<div>
@@ -652,7 +592,7 @@
 		<div class="center2">
 
 		<div>
-			<br><label> 9.Что такое «вождение с комментариями»?</label>
+			<br><label>Что такое «вождение с комментариями»?</label>
 		</div>
 		<!-- Option 1 -->
 		<div>
@@ -719,7 +659,7 @@
 		<div class="center2">
 
 		<div>			
-			<br><label>10. Почему важно знать краткие биографические сведения о тех людях, которые будут
+			<br><label>Почему важно знать краткие биографические сведения о тех людях, которые будут
 				обучаться? </label>
 		</div>
 		<!-- Option 1 -->
@@ -775,7 +715,7 @@
 		<div class="center2">
 
 			<div>			
-				<br><label>11. Тренер не только должен в совершенстве владеть программой СЕРА, но и
+				<br><label>Тренер не только должен в совершенстве владеть программой СЕРА, но и
 					должен правильно понимать трудности водителя, чтобы найти адекватное решение.</label>
 			</div>
 			<!-- Option 1 -->
@@ -814,7 +754,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>12. Применяя систему, предлагаемую программой СЕРА, водители могут повысить
+		<br><label>Применяя систему, предлагаемую программой СЕРА, водители могут повысить
 			экономичность (уменьшить расход топлива и износа ТС и пр.) и лучше контролировать
 			уровень загрязнения окружающей среды.</label>
 	</div>
@@ -854,7 +794,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>13. Чтобы добиться большей эффективности в процессе обучения по программе СЕРА,
+		<br><label>Чтобы добиться большей эффективности в процессе обучения по программе СЕРА,
 			удобно дать водителям возможность комментировать и выражать свои собственные
 			оценки, чувства и эмоции. </label>
 	</div>
@@ -894,7 +834,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>14. Согласно статистики кто из водителей более опасно управляет своим транспортным
+		<br><label>Согласно статистики кто из водителей более опасно управляет своим транспортным
 			средством на скорости 90 км/ч? </label>
 	</div>
 	<!-- Option 1 -->
@@ -946,7 +886,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>15. Езда на скорости, соответствующей правилам, гарантирует безопасность?</label>
+		<br><label>Езда на скорости, соответствующей правилам, гарантирует безопасность?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1003,7 +943,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>16. Если загорелся индикатор аккумуляторной батареи на приборной панели, что
+		<br><label>Если загорелся индикатор аккумуляторной батареи на приборной панели, что
 			необходимо делать?</label>
 	</div>
 	<!-- Option 1 -->
@@ -1061,7 +1001,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>17. Какой эффект на человека оказывает усталость?</label>
+		<br><label>Какой эффект на человека оказывает усталость?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1112,7 +1052,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>18. Каковы факторы, которые нужно принимать во внимание во время прохождения
+		<br><label>Каковы факторы, которые нужно принимать во внимание во время прохождения
 			поворота?</label>
 	</div>
 	<!-- Option 1 -->
@@ -1166,7 +1106,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>19. Тормозной путь зависит от:</label>
+		<br><label>Тормозной путь зависит от:</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1219,7 +1159,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>20. На скорости 50 км/ч перед вами возникает препятствие. Сколько метров проедет
+		<br><label>На скорости 50 км/ч перед вами возникает препятствие. Сколько метров проедет
 			ваш автомобиль до того, как вы нажмете на тормоз?</label>
 	</div>
 	<!-- Option 1 -->
@@ -1284,7 +1224,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>21. Среднее время реакции человека</label>
+		<br><label>Среднее время реакции человека</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1348,7 +1288,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>22. В отношении давления в шинах, как бы вы поступили, если температура воздуха и
+		<br><label>В отношении давления в шинах, как бы вы поступили, если температура воздуха и
 			температура асфальта высокая?</label>
 	</div>
 	<!-- Option 1 -->
@@ -1400,7 +1340,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>23. Какова допустимая минимальная остаточная высота рисунка протектора летней
+		<br><label>Какова допустимая минимальная остаточная высота рисунка протектора летней
 			шины в соответствии с правилами?</label>
 	</div>
 	<!-- Option 1 -->
@@ -1452,7 +1392,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>24. Пассивная безопасность автомобиля состоит из элементов, систем или
+		<br><label>Пассивная безопасность автомобиля состоит из элементов, систем или
 			компонентов, которые</label>
 	</div>
 	<!-- Option 1 -->
@@ -1506,7 +1446,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>25. Использование мобильного телефона влияет на</label>
+		<br><label>Использование мобильного телефона влияет на</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1570,7 +1510,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>26. Безопасная скорость – это скорость…</label>
+		<br><label>Безопасная скорость – это скорость…</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1625,7 +1565,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>27. Безопасная дистанция следования между двумя автомобилями должна быть не менее</label>
+		<br><label>Безопасная дистанция следования между двумя автомобилями должна быть не менее</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1676,7 +1616,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>28. При остановке за впередистоящим автомобилем, я должен видеть</label>
+		<br><label>При остановке за впередистоящим автомобилем, я должен видеть</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1727,7 +1667,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>29. Слепая зона автомобиля это</label>
+		<br><label>Слепая зона автомобиля это</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1783,7 +1723,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>30. Неправильное положение водителя за рулем может в основном повлиять на...</label>
+		<br><label>Неправильное положение водителя за рулем может в основном повлиять на...</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -1834,7 +1774,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>31. Использование коробки передач и контроль уровня давления в шинах влияют на
+		<br><label>Использование коробки передач и контроль уровня давления в шинах влияют на
 			экологию и экономичность?</label>
 	</div>
 	<!-- Option 1 -->
@@ -1898,7 +1838,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>32. Важно, чтобы водитель помнил и действовал таким образом, чтобы снизить
+		<br><label>Важно, чтобы водитель помнил и действовал таким образом, чтобы снизить
 			нагрузку на двигатель от</label>
 	</div>
 	<!-- Option 1 -->
@@ -1950,7 +1890,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>33. Время отклика тормозного механизма легкового автомобиля в среднем равно</label>
+		<br><label>Время отклика тормозного механизма легкового автомобиля в среднем равно</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2014,7 +1954,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>34. Периферическое (боковое) зрение дает вам понятие о</label>
+		<br><label>Периферическое (боковое) зрение дает вам понятие о</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2065,7 +2005,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>35. Какое количество граммов спирта на литр крови, уже серьезно влияет на
+		<br><label>Какое количество граммов спирта на литр крови, уже серьезно влияет на
 			рефлексы водителя?</label>
 	</div>
 	<!-- Option 1 -->
@@ -2126,77 +2066,12 @@
 <div>
 	<img src="images/lineWebinar.png" style="width: 100%">
 </div>
-<!-- Question 35 ends -->
-<!-- Question 36  -->
-<div class="center2">
-
-	<div>			
-		<br><label>36. Укажите техники защитного вождения</label>
-	</div>
-	<!-- Option 1 -->
-	<div>
-<%				if(answers.containsKey(new Integer(1111)) && answers.get(new Integer(1111)).equals("1111")){
-%>					<label class="radio">
-						<input type="radio" name='1111'  value="1111" checked/>Сканировать дорогу вертикально, смотреть далеко
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='1111'  value="1111"/>Сканировать дорогу вертикально, смотреть далеко
-					</label>
-				</br>
-<%				}  
-%>				<!-- Option 2 -->				
-<%				if(answers.containsKey(new Integer(1111)) && answers.get(new Integer(1111)).equals("1111")){
-%>					<label class="radio">
-						<input type="radio" name='1111'  value="1111" checked/>Следить за дорожными знаками и светофорами
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='1111'  value="1111"/>Следить за дорожными знаками и светофорами
-					</label>
-				</br>
-<%				}  
-%>				<!-- Option 3 -->
-<%				if(answers.containsKey(new Integer(1111)) && answers.get(new Integer(1111)).equals("1111")){
-%>					<label class="radio">
-						<input type="radio" name='1111'  value="1111" checked/>Прогнозировать и оставлять себе запасной путь для выхода из ситуации
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='1111'  value="1111"/>Прогнозировать и оставлять себе запасной путь для выхода из ситуации
-					</label>
-				</br>
-<%				}
-
-%>
-				<!-- Option 4 -->
-				<%				if(answers.containsKey(new Integer(1111)) && answers.get(new Integer(1111)).equals("1111")){
-					%>					<label class="radio">
-											<input type="radio" name='1111'  value="1111" checked/>Сканировать дорогу взглядом горизонтально, часто смотреть в зеркала
-										</label>
-									</br>	
-					<%				}else{
-					%>					<label class="radio">
-											<input type="radio" name='1111'  value="1111"/>Сканировать дорогу взглядом горизонтально, часто смотреть в зеркала
-										</label>
-									</br>
-					<%				}
-					
-					%>
-	</div>
-</div>	
-<div>
-	<img src="images/lineWebinar.png" style="width: 100%">
-</div>
 <!-- Question 36 ends -->
 <!-- Question 37  -->
 <div class="center2">
 
 	<div>			
-		<br><label>37. Въезжая в зону, где есть дети/животные, я должен</label>
+		<br><label>Въезжая в зону, где есть дети/животные, я должен</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2268,7 +2143,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>38. При подъезде к перекрестку со встречным транспортом я должен</label>
+		<br><label>При подъезде к перекрестку со встречным транспортом я должен</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2340,7 +2215,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>39. При въезде в пешеходную (дворовую) зону</label>
+		<br><label>При въезде в пешеходную (дворовую) зону</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2412,7 +2287,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>40. О чём сообщают водителю сигнальные лампы красного цвета на приборной панели
+		<br><label>О чём сообщают водителю сигнальные лампы красного цвета на приборной панели
 			автомобиля?</label>
 	</div>
 	<!-- Option 1 -->
@@ -2477,7 +2352,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>41. Какую опасность представляют не закрепленные предметы в салоне автомобиля?</label>
+		<br><label>Какую опасность представляют не закрепленные предметы в салоне автомобиля?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2545,7 +2420,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>42. Что такое «прогнозирование»?</label>
+		<br><label>Что такое «прогнозирование»?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2609,7 +2484,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>43. От чего зависит возможность водителя «прогнозировать»?</label>
+		<br><label>От чего зависит возможность водителя «прогнозировать»?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2673,7 +2548,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>44. Что мешает водителю определить важность возникающей перед ним дорожной ситуации?</label>
+		<br><label>Что мешает водителю определить важность возникающей перед ним дорожной ситуации?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2737,7 +2612,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>45.Что такое «Зона неопределенности»</label>
+		<br><label>Что такое «Зона неопределенности»</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2786,66 +2661,51 @@
 <div>
 	<img src="images/lineWebinar.png" style="width: 100%">
 </div>
-<!-- Question 45 ends -->
 <!-- Question 46  -->
 <div class="center2">
 
 	<div>			
-		<br><label>46. Что такое полный остановочный путь?</label>
+		<br><label>Что такое полный остановочный путь?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
+<%				if(answers.containsKey(new Integer(51681)) && answers.get(new Integer(51681)).equals("163923")){
 %>					<label class="radio">
-						<input type="radio" name='11111'  value="11111" checked/>Это путь, пройденный за время реакции водителя и тормозной путь
+						<input type="radio" name='51681'  value="163923" checked/>Это путь, пройденный за время реакции водителя и тормозной путь
 					</label>
 				</br>	
 <%				}else{
 %>					<label class="radio">
-						<input type="radio" name='11111'  value="11111"/>Это путь, пройденный за время реакции водителя и тормозной путь
+						<input type="radio" name='51681'  value="163923"/>Это путь, пройденный за время реакции водителя и тормозной путь
 					</label>
 				</br>
 <%				}  
 %>				<!-- Option 2 -->				
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
+<%				if(answers.containsKey(new Integer(51681)) && answers.get(new Integer(51681)).equals("163924")){
 %>					<label class="radio">
-						<input type="radio" name='11111'  value="11111" checked/>Это путь, пройденный за время торможения
+						<input type="radio" name='51681'  value="163924" checked/>Это путь, пройденный за время торможения
 					</label>
 				</br>	
 <%				}else{
 %>					<label class="radio">
-						<input type="radio" name='11111'  value="11111"/>Это путь, пройденный за время торможения
+						<input type="radio" name='51681'  value="163924"/>Это путь, пройденный за время торможения
 					</label>
 				</br>
 <%				}  
 %>				<!-- Option 3 -->
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
+<%				if(answers.containsKey(new Integer(51681)) && answers.get(new Integer(51681)).equals("163925")){
 %>					<label class="radio">
-						<input type="radio" name='11111'  value="11111" checked/>Это путь, пройденный за время реакции водителя, за время срабатывания тормозного
+						<input type="radio" name='51681'  value="163925" checked/>Это путь, пройденный за время реакции водителя, за время срабатывания тормозного
 						механизма и тормозной путь
 					</label>
 				</br>	
 <%				}else{
 %>					<label class="radio">
-						<input type="radio" name='11111'  value="11111"/>Это путь, пройденный за время реакции водителя, за время срабатывания тормозного
+						<input type="radio" name='51681'  value="163925"/>Это путь, пройденный за время реакции водителя, за время срабатывания тормозного
 						механизма и тормозной путь
 					</label>
 				</br>
 <%				}
-
-%>				<!-- Option 4 -->
-<%				if(answers.containsKey(new Integer(11111)) && answers.get(new Integer(11111)).equals("11111")){
-%>					<label class="radio">
-						<input type="radio" name='11111'  value="11111" checked/>Это путь, пройденный за время срабатывания тормозного механизма и тормозной путь
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='11111'  value="11111"/>Это путь, пройденный за время срабатывания тормозного механизма и тормозной путь
-					</label>
-				</br>
-<%				}
-
 %>
 	</div>
 </div>	
@@ -2857,7 +2717,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>47. Во сколько раз возрастает тормозной путь автомобиля при увеличении скорости в 2 раза</label>
+		<br><label>Во сколько раз возрастает тормозной путь автомобиля при увеличении скорости в 2 раза</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -2917,75 +2777,11 @@
 	<img src="images/lineWebinar.png" style="width: 100%">
 </div>
 <!-- Question 47 ends -->
-<!-- Question 48  -->
-<div class="center2">
-
-	<div>			
-		<br><label>48.Что влияет на вероятность опрокидывания автомобиля в повороте?</label>
-	</div>
-	<!-- Option 1 -->
-	<div>
-<%				if(answers.containsKey(new Integer(51683)) && answers.get(new Integer(51683)).equals("163932")){
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163932" checked/>Давление в шинах автомобиля
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163932"/>Давление в шинах автомобиля
-					</label>
-				</br>
-<%				}  
-%>				<!-- Option 2 -->				
-<%				if(answers.containsKey(new Integer(51683)) && answers.get(new Integer(51683)).equals("163933")){
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163933" checked/>Скорость движения
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163933"/>Скорость движения
-					</label>
-				</br>
-<%				}  
-%>				<!-- Option 3 -->
-<%				if(answers.containsKey(new Integer(51683)) && answers.get(new Integer(51683)).equals("163931")){
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163931" checked/>Высокий центр тяжести (его смещение)
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163931"/>Высокий центр тяжести (его смещение)
-					</label>
-				</br>
-<%				}
-
-%>				<!-- Option 4 -->
-<%				if(answers.containsKey(new Integer(51683)) && answers.get(new Integer(51683)).equals("163930")){
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163930" checked/>Радиус поворота
-					</label>
-				</br>	
-<%				}else{
-%>					<label class="radio">
-						<input type="radio" name='51683'  value="163930"/>Радиус поворота
-					</label>
-				</br>
-<%				}
-
-%>
-	</div>
-</div>	
-<div>
-	<img src="images/lineWebinar.png" style="width: 100%">
-</div>
-<!-- Question 48 ends -->
 <!-- Question 49  -->
 <div class="center2">
 
 	<div>			
-		<br><label>49. Что такое первичное средство пассивной безопасности?</label>
+		<br><label>Что такое первичное средство пассивной безопасности?</label>
 	</div>
 	<!-- Option 1 -->
 	<div>
@@ -3049,7 +2845,7 @@
 <div class="center2">
 
 	<div>			
-		<br><label>50. Ремни безопасности предотвращают водителя и пассажиров от …</label>
+		<br><label>Ремни безопасности предотвращают водителя и пассажиров от …</label>
 	</div>
 	<!-- Option 1 -->
 	<div>

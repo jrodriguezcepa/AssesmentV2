@@ -462,7 +462,7 @@
 <%							} else {
 								String className = "cellGreen";
 								int percent = 0;
-								if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
+								if((data[2] == null && data[3] == null) || (((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0)) {
 									percent = 100;
 									graphs.get(assAtt.getId())[2]++;
 								}else {

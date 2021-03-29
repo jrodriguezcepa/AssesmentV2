@@ -71,6 +71,12 @@
 					boolean done = userReport.isAssessmentDone(login,assessmentId,userSessionData,assesment.isPsitest());
 					if(answerMap.size() > 0 && !done) {
 						AnswerUtil answerUtil = AnswerUtil.getInstance(assesment);
+						System.out.println("------------EMPIEZO SALVO PREGUNTAS-------------------");
+						System.out.println("Usuario: "+login);
+		                Iterator it = answerMap.keySet().iterator();
+		                while(it.hasNext()) {
+							System.out.println("Pregunta("+login+"): "+it.next());
+		                }
 						Object[] values = answerUtil.saveAnswers(sys,assesment, module,answerMap,true);
 						Integer answered = userReport.getQuestionCount(login,new Integer(module),assessmentId,userSessionData);
 						assesment.setAnswered(new Integer(module),answered);
@@ -97,13 +103,14 @@
 						}
 						String finalText = "";
 						done = userReport.isAssessmentDone(login,assessmentId,userSessionData,assesment.isPsitest());
-						
+						System.out.println("Done("+login+"): "+done);						
 				        if(done) {
 			        		if(assessmentId.intValue() == AssesmentData.BAYERMX_RIESGO_TRASERO) {
 								if(sys.getUserReportFacade().isResultGreen(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData)) {
 						        	sys.getUserABMFacade().setEndDate(login,assessmentId,userSessionData);
 								}
 			        		}else {
+								System.out.println("Cargo fecha final: "+login);
 					        	sys.getUserABMFacade().setEndDate(login,assessmentId,userSessionData);
 			        		}
 				        	String redirect = null;
@@ -129,7 +136,7 @@
 					        	finalText = "\"final_text\": \""+messages.getText("assesment.reporthtml.waitmessage")+"\"";
 					        }
 				        }
-				        System.out.println(finalText);
+						System.out.println("------------TERMINO SALVO PREGUNTAS-------------------");
 						response.getWriter().print("]");
 						if(finalText.length() > 0) {
 							response.getWriter().print(",");

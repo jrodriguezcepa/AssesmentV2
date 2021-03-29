@@ -154,9 +154,7 @@ public class DownloadGroupReportAction  extends AbstractAction {
 								rowUser.add("---");
 							} else {
 								Short s = new Short(new HSSFColor.GREEN().getIndex());
-								if(data[2] == null || data[3] == null)
-									System.out.println("aca");
-								if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
+								if((data[2] == null && data[3] == null) || (((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0)) {
 									rowUser.add(new Object[] {Util.formatDate((Date)data[1])+" (100%)", s});
 								}else {
 									int percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());

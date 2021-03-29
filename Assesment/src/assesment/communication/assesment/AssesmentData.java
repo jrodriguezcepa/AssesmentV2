@@ -254,13 +254,11 @@ public class AssesmentData extends AssesmentAttributes {
 	
     public static final int MUTUAL_RSMM = 1703;
 
+    public static final int BAYER_ARGENTINA_DEMO = 1704;
 	public static final int ABBOTT_NEWDRIVERS = 1707;
 	public static final int ABBEVIE_LATAM = 1712;
 	public static final int GDC = 1711;
 
-	
-
-	
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;
 
@@ -462,6 +460,8 @@ public class AssesmentData extends AssesmentAttributes {
 				id.intValue() == AssesmentData.UPL_NEWHIRE || 
      			id.intValue() == AssesmentData.LIGHT_VEHICLES_2020 || 
      	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
+     	     	id.intValue() == AssesmentData.ABBEVIE_LATAM || 
+     	     	id.intValue() == AssesmentData.BAYER_ARGENTINA_DEMO || 
      			id.intValue() == AssesmentData.MUTUAL_DA);
 	}
 	

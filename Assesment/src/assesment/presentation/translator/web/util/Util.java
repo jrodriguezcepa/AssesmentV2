@@ -52,23 +52,19 @@ public class Util {
     public static boolean isRegistrable() {
     	Calendar c = Calendar.getInstance();
     	int day = c.get(Calendar.DATE);
-    	if(day < 22 || day > 26)
+    	if(day != 31)
     		return false;
     	int hour = c.get(Calendar.HOUR_OF_DAY);
     	int minute = c.get(Calendar.MINUTE);
     	switch(hour) {
-			case 7:
-				return minute >= 45;
 			case 8:
-				return minute <= 10;
-			case 10:
-				return minute >= 15 && minute <= 40;
-			case 12:
 				return minute >= 45;
-			case 13:
+			case 9:
 				return minute <= 10;
-			case 15:
-				return minute >= 15 && minute <= 40;
+			case 13:
+				return minute >= 45;
+			case 14:
+				return minute <= 10;
     	}
     	return false;
     }
