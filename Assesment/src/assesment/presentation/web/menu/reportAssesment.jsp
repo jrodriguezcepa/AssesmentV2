@@ -49,6 +49,7 @@
 	String refresh="assesmentReport.jsp?id="+assessmentId;
 	String report="reportAssesment.jsp?id="+assessmentId;
 	String groupId = request.getParameter("group");
+	Integer cedi=(Integer)session.getAttribute("cedi");
 	Collection c = new LinkedList();
 	if(userSessionData.getRole().equals(SecurityConstants.ADMINISTRATOR) || userSessionData.getRole().equals(SecurityConstants.CEPA_REPORTER) || userSessionData.getRole().equals(SecurityConstants.CLIENT_REPORTER)) {
 		check = true;
@@ -83,9 +84,9 @@
 		<![endif]-->
 
 		<style type="text/css">	
-			.col-1 {width: 15%;}
-			.col-2 {width: 15%;}
-			.col-3 {width: 15%;}
+			.col-1 {width: 12%;}
+			.col-2 {width: 12%;margin-top:13px;}
+			.col-3 {width: 15%;margin-left:10px; }
 			.col-4 {width: 15%;}
 			.col-5 {width: 15%;}
 			.col-6 {width: 2%;}
