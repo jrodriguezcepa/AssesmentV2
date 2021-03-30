@@ -4770,6 +4770,42 @@
          <description><![CDATA[]]></description>
          <ejb-name>QuestionReport</ejb-name>
          <method-intf>Local</method-intf>
+         <method-name>getQuestionReportByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>QuestionReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getQuestionReportByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>QuestionReport</ejb-name>
+         <method-intf>Local</method-intf>
          <method-name>getQuestionReport</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
@@ -10208,6 +10244,42 @@
          <description><![CDATA[]]></description>
          <ejb-name>UsReport</ejb-name>
          <method-intf>Local</method-intf>
+         <method-name>getUsersReportByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>UsReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getUsersReportByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>UsReport</ejb-name>
+         <method-intf>Local</method-intf>
          <method-name>getUsersReport</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
@@ -10369,6 +10441,42 @@
          <method-intf>Remote</method-intf>
          <method-name>getWRTUserAnswers</method-name>
          <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>UsReport</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getWRTUserAnswersByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>UsReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getWRTUserAnswersByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
@@ -14322,6 +14430,42 @@
          <method-intf>Remote</method-intf>
          <method-name>getAssessmentReport</method-name>
          <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getAssessmentReportByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>clientreporter</role-name>
+         <role-name>cepareporter</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getAssessmentReportByCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>

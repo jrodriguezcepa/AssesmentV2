@@ -57,7 +57,7 @@
 	if(check) {
 		UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 		AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
-		AssessmentReportData dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReport(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReport(new Integer(assessmentId),sys.getUserSessionData());
+		AssessmentReportData dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),cedi,sys.getUserSessionData());
 		sys.setValue(dataSource);
 	    AssesmentData assesment = dataSource.getAssessment();
 	    String action=request.getParameter("action");

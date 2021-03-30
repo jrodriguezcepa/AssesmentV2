@@ -46,6 +46,8 @@ public interface AssesmentReportFacadeLocal
 
    public assesment.communication.report.AssessmentReportData getAssessmentReport( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public assesment.communication.report.AssessmentReportData getAssessmentReportByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
    public assesment.communication.report.AssessmentReportData getAssessmentReport( java.lang.Integer assessment,java.lang.Integer group,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public java.util.Collection getAssessmentUsers( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;

@@ -32,6 +32,8 @@ public interface QuestionReportLocal
 
    public java.util.Collection getQuestionReport( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.Collection getQuestionReportByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
    public java.util.Collection getQuestionReport( java.lang.Integer assessment,java.lang.Integer group,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public java.util.HashMap getFullAnswers( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;

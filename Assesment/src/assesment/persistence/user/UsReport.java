@@ -176,6 +176,9 @@ public interface UsReport
    public java.util.Collection getUsersReport( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getUsersReportByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.Collection getUsersReport( java.lang.Integer assessment,java.lang.Integer group,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
@@ -190,6 +193,9 @@ public interface UsReport
 
    public java.util.HashMap getWRTUserAnswers( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
+   
+   public java.util.HashMap getWRTUserAnswersByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
+		      throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.util.HashMap getWRTUserAnswers( java.lang.Integer assessment,java.lang.Integer group,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;

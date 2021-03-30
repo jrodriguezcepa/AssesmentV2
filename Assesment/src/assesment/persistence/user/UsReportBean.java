@@ -1930,6 +1930,51 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		}
 		return new LinkedList();
 	}
+	
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+	 */
+	public Collection getUsersReportByCedi(Integer assessment, Integer cedi, UserSessionData userSessionData) throws Exception {
+		try {
+			String filter = cedi==null?"":(" AND location="+cedi);
+			String sql = "select u.loginname,u.firstname,u.lastname,u.email,ua.enddate,q.module,a.type,count(*) AS c,ua.psiresult1,ua.psiresult2,ua.psiresult3,ua.psiresult4,ua.psiresult5,ua.psiresult6 "
+					+ "from userassesments ua " + "join users u on u.loginname = ua.loginname "
+					+ "join useranswers uas on uas.loginname = ua.loginname and uas.assesment = ua.assesment "  
+					+ "join answerdata ad on ad.id = uas.answer " + "join questions q on ad.question = q.id "
+					+ "join answers a on ad.answer = a.id " + "where ua.assesment = " + assessment + filter
+					+ " and q.testtype = " + QuestionData.TEST_QUESTION + "  "
+					+ "group by u.loginname,u.firstname,u.lastname,u.email,ua.enddate,q.module,a.type,ua.psiresult1,ua.psiresult2,ua.psiresult3,ua.psiresult4,ua.psiresult5,ua.psiresult6 "
+					+ "UNION (select distinct u.loginname,u.firstname,u.lastname,u.email,ua.enddate,q.module,0 AS type,0,ua.psiresult1,ua.psiresult2,ua.psiresult3,ua.psiresult4,ua.psiresult5,ua.psiresult6 "
+					+ "from users u " + "join userassesments ua on u.loginname = ua.loginname "
+					+ "join useranswers uas on u.loginname = uas.loginname and uas.assesment = ua.assesment  "
+					+ "join answerdata ad on ad.id = uas.answer " + "join questions q on ad.question = q.id "
+					+ "where  ua.assesment = " + assessment + filter
+					+ " and u.loginname not in (select loginname from useranswers ua join answerdata ad on ad.id = ua.answer join questions q on q.id = ad.question where ua.assesment = "
+					+ assessment + " and q.testtype = " + QuestionData.TEST_QUESTION + ")) "
+					+ "order by loginname,type";
+			Session session = HibernateAccess.currentSession();
+			SQLQuery question = session.createSQLQuery(sql);
+			question.addScalar("loginname", Hibernate.STRING);
+			question.addScalar("firstname", Hibernate.STRING);
+			question.addScalar("lastname", Hibernate.STRING);
+			question.addScalar("email", Hibernate.STRING);
+			question.addScalar("enddate", Hibernate.DATE);
+			question.addScalar("module", Hibernate.INTEGER);
+			question.addScalar("type", Hibernate.INTEGER);
+			question.addScalar("c", Hibernate.INTEGER);
+			question.addScalar("psiresult1", Hibernate.INTEGER);
+			question.addScalar("psiresult2", Hibernate.INTEGER);
+			question.addScalar("psiresult3", Hibernate.INTEGER);
+			question.addScalar("psiresult4", Hibernate.INTEGER);
+			question.addScalar("psiresult5", Hibernate.INTEGER);
+			question.addScalar("psiresult6", Hibernate.INTEGER);
+			return question.list();
+		} catch (Exception e) {
+			handler.getException(e, "getUsersReport", userSessionData.getFilter().getLoginName());
+		}
+		return new LinkedList();
+	}
 
 	/**
 	 * @ejb.interface-method
@@ -2135,6 +2180,58 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		}
 		return values;
 	}
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+	 */
+	public HashMap<String, HashMap<Integer, String>> getWRTUserAnswersByCedi(Integer assessment,Integer cedi, UserSessionData userSessionData) throws Exception {
+		HashMap<String, HashMap<Integer, String>> values = new HashMap<String, HashMap<Integer, String>>();
+		try {
+			String filter = cedi==null?"":(" AND location="+cedi);
+			String sql = "SELECT ua.loginname,ad.question,ad.text,ad.date,ad.distance, ad.unit, ad.country, ad.never, a.key "
+					+ "FROM answerdata ad " + "JOIN useranswers ua ON ua.answer = ad.id "+ "JOIN users u ON ua.loginname =u.loginname  "
+					+ "JOIN questions q ON q.id = ad.question " + "LEFT JOIN answers a ON a.id = ad.answer "
+					+ "WHERE ua.assesment = " + assessment + filter + " AND q.wrt";
+			Session session = HibernateAccess.currentSession();
+			SQLQuery question = session.createSQLQuery(sql);
+			question.addScalar("loginname", Hibernate.STRING);
+			question.addScalar("question", Hibernate.INTEGER);
+			question.addScalar("text", Hibernate.STRING);
+			question.addScalar("date", Hibernate.DATE);
+			question.addScalar("distance", Hibernate.INTEGER);
+			question.addScalar("unit", Hibernate.INTEGER);
+			question.addScalar("country", Hibernate.INTEGER);
+			question.addScalar("never", Hibernate.BOOLEAN);
+			question.addScalar("key", Hibernate.STRING);
+			Iterator it = question.list().iterator();
+			while (it.hasNext()) {
+				Object[] data = (Object[]) it.next();
+				String txt = "";
+				if (data[2] != null) {
+					txt = (String) data[2];
+				} else if (data[8] != null) {
+					txt = (String) data[8];
+				} else if (data[3] != null) {
+					txt = Util.formatDate((Date) data[3]);
+				} else if (data[4] != null) {
+					txt = String.valueOf(data[4]);
+				} else if (data[6] != null) {
+					txt = new CountryConstants().find(String.valueOf(data[4]));
+				}
+				if (values.containsKey(data[0])) {
+					values.get(data[0]).put((Integer) data[1], txt);
+				} else {
+					HashMap<Integer, String> v = new HashMap<Integer, String>();
+					v.put((Integer) data[1], txt);
+					values.put((String) data[0], v);
+				}
+			}
+		} catch (Exception e) {
+			handler.getException(e, "getUsersReport", userSessionData.getFilter().getLoginName());
+		}
+		return values;
+	}
+
 
 
 	/**

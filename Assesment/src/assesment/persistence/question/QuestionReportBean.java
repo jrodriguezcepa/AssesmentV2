@@ -483,6 +483,41 @@ public abstract class QuestionReportBean implements SessionBean {
 		}
     	return null;
     }
+    /**
+     * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+     */
+    public Collection getQuestionReportByCedi(Integer assessment,Integer cedi, UserSessionData userSessionData) throws Exception {
+    	try {
+			String filter = cedi==null?"":(" AND location="+cedi);
+		
+            String sql = "select m.id AS mid,m.key AS mkey,m.moduleorder,q.id AS qid,q.key AS qkey,q.questionorder,a.type, count(*) AS count " +
+            		"from userassesments ua " +
+            		"join users u on u.loginname = ua.loginname " +
+            		"join useranswers uas on uas.loginname = ua.loginname " +
+            		"join answerdata ad on ad.id = uas.answer " +
+            		"join questions q on ad.question = q.id " +
+            		"join answers a on ad.answer = a.id " +
+            		"join modules m on m.id = q.module " +
+            		"where ua.assesment = "+assessment+" and uas.assesment = ua.assesment and ua.enddate is not null " + filter +
+            		"and q.testtype = "+QuestionData.TEST_QUESTION+
+            		" group by m.id,m.key,m.moduleorder,q.id,q.key,q.questionorder,a.type";
+            Session session = HibernateAccess.currentSession();
+            SQLQuery q = session.createSQLQuery(sql);
+            q.addScalar("mid",Hibernate.INTEGER);
+            q.addScalar("mkey",Hibernate.STRING);
+            q.addScalar("moduleorder",Hibernate.INTEGER);
+            q.addScalar("qid",Hibernate.INTEGER);
+            q.addScalar("qkey",Hibernate.STRING);
+            q.addScalar("questionorder",Hibernate.INTEGER);
+            q.addScalar("type",Hibernate.INTEGER);
+            q.addScalar("count",Hibernate.INTEGER);
+            return q.list();
+    	}catch (Exception e) {
+            handler.getException(e,"getQuestionReport",userSessionData.getFilter().getLoginName());
+		}
+    	return null;
+    }
 
     /**
      * @ejb.interface-method 

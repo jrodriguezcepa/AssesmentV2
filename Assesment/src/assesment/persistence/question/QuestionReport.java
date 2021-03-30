@@ -43,6 +43,9 @@ public interface QuestionReport
    public java.util.Collection getQuestionReport( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getQuestionReportByCedi( java.lang.Integer assessment,java.lang.Integer cedi, assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.Collection getQuestionReport( java.lang.Integer assessment,java.lang.Integer group,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
