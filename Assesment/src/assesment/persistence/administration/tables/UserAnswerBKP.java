@@ -22,8 +22,8 @@ import assesment.persistence.question.tables.QuestionBKP;
 public class UserAnswerBKP {
 
     private Integer id;
-    private QuestionBKP question;
-    private AnswerBKP answer;
+    private Integer question;
+    private Integer answer;
     private String text;
     private Date date;
     private Integer distance;
@@ -37,8 +37,8 @@ public class UserAnswerBKP {
 
     public UserAnswerBKP(Object[] data) {
         this.id=(Integer)data[0];
-        this.question=(QuestionBKP)data[1];
-        this.answer=(AnswerBKP)data[2];
+        this.question=(Integer)data[1];
+        this.answer=(Integer)data[2];
         this.text=(String)data[3];
         this.date=(Date)data[4];
         this.distance=(Integer)data[5];
@@ -47,7 +47,7 @@ public class UserAnswerBKP {
         this.never=(Boolean)data[8];
     }
 
-    public AnswerBKP getAnswer() {
+    public Integer getAnswer() {
         return answer;
     }
 
@@ -63,7 +63,7 @@ public class UserAnswerBKP {
         return id;
     }
 
-    public QuestionBKP getQuestion() {
+    public Integer getQuestion() {
         return question;
     }
 
@@ -75,7 +75,7 @@ public class UserAnswerBKP {
         return unit;
     }
 
-    public void setAnswer(AnswerBKP answer) {
+    public void setAnswer(Integer answer) {
         this.answer = answer;
     }
 
@@ -91,7 +91,7 @@ public class UserAnswerBKP {
         this.id = id;
     }
 
-    public void setQuestion(QuestionBKP question) {
+    public void setQuestion(Integer question) {
         this.question = question;
     }
 

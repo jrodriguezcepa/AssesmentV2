@@ -12,8 +12,8 @@
             </generator>
 		</id>
        
-        <many-to-one name="question" 	class="assesment.persistence.question.tables.QuestionBKP" column="question" />
-        <many-to-one name="answer" 		class="assesment.persistence.question.tables.AnswerBKP" column="answer" />
+        <property name="question" 	type="java.lang.Integer" column="question" />
+        <property name="answer" 		type="java.lang.Integer" column="answer" />
         <property 	name="text"			type="java.lang.String"	column="text" />
         <property 	name="date"			type="java.util.Date"	column="date" />
         <property 	name="country"		type="java.lang.Integer"	column="country" />

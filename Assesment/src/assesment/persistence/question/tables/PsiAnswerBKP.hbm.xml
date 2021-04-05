@@ -10,7 +10,7 @@
             <generator class="assigned">
             </generator>
 		</id>
-		<many-to-one name="psiquestion" column="psiquestion" class="assesment.persistence.question.tables.PsiQuestionBKP" not-null="true"/>
+		<property name="psiquestion" column="psiquestion" type="java.lang.Integer" not-null="true"/>
 	    <property name="key" column="key" type="java.lang.String" not-null="true"/>
 	    <property name="order" column="answerorder" type="java.lang.Integer" not-null="true"/>
   	</class>

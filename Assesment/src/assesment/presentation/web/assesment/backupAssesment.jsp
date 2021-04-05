@@ -26,8 +26,8 @@
 		response.sendRedirect(request.getContextPath()+check);
 	}else {
 	String id=request.getParameter("id");
-      //  AssesmentABMFacade assessmentABM = sys.getAssesmentABMFacade();
-       // assessmentABM.backUpAssessment(Integer.parseInt(id),sys.getUserSessionData());
+        AssesmentABMFacade assessmentABM = sys.getAssesmentABMFacade();
+        assessmentABM.backUpAssessment(Integer.parseInt(id),sys.getUserSessionData());
 %>
 	<head/>
 	<script type="text/javascript">

@@ -6,7 +6,7 @@
 
 <hibernate-mapping package="assesment.persistence.administration.tables" >
     <class name="UserAssesmentBKP" table="userassesmentsbkp">
-		<composite-id>
+		<composite-id class="UserAssesmentBKPPK" name="pk" >
        		<key-many-to-one
        			 name="assesment"
        			 column="assesment"
@@ -16,8 +16,8 @@
        	 		 name="user"
        	 		 column="loginname"
        	 		 class="assesment.persistence.user.tables.User"
-       	 	/> 
-        </composite-id>
+       	 	/>
+       </composite-id>
        	     
     	<set name="answers" table="useranswersbkp" cascade="all">
 			<key>

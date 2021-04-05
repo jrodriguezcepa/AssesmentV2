@@ -11,8 +11,8 @@
             <generator class="assigned">
             </generator>
 		</id>
-        <many-to-one name="psiquestion" class="assesment.persistence.question.tables.PsiQuestionBKP" column="psiquestion" />
-        <many-to-one name="psianswer" class="assesment.persistence.question.tables.PsiAnswerBKP" column="psianswer" />
+           <property name="psiquestion" type="java.lang.Integer" column="psiquestion" />
+          <property name="psianswer" type="java.lang.Integer" column="psianswer" />
 	</class>
 
 </hibernate-mapping>

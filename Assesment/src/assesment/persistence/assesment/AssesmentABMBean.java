@@ -24,6 +24,7 @@ import assesment.persistence.administration.tables.UserAnswer;
 import assesment.persistence.administration.tables.UserAnswerBKP;
 import assesment.persistence.administration.tables.UserAssesment;
 import assesment.persistence.administration.tables.UserAssesmentBKP;
+import assesment.persistence.administration.tables.UserAssesmentPK;
 import assesment.persistence.administration.tables.UserAssesmentResult;
 import assesment.persistence.administration.tables.UserPsiAnswer;
 import assesment.persistence.administration.tables.UserPsiAnswerBKP;
@@ -43,6 +44,8 @@ import assesment.persistence.module.tables.Module;
 import assesment.persistence.module.tables.ModuleBKP;
 import assesment.persistence.question.tables.Answer;
 import assesment.persistence.question.tables.AnswerBKP;
+import assesment.persistence.question.tables.PsiAnswerBKP;
+import assesment.persistence.question.tables.PsiQuestionBKP;
 import assesment.persistence.question.tables.Question;
 import assesment.persistence.question.tables.QuestionBKP;
 import assesment.persistence.user.tables.User;
@@ -635,10 +638,10 @@ public abstract class AssesmentABMBean implements SessionBean {
     */
    public void backUpAssessment(Integer assessmentId, UserSessionData userSessionData) throws Exception {
        if (userSessionData == null) {
-           throw new DeslogedException("create","session = null");
+           throw new DeslogedException("backUpAssessment","session = null");
        }
        if (assessmentId == null) {
-           throw new InvalidDataException("create","data = null");
+           throw new InvalidDataException("backUpAssessment","data = null");
        }
        try {
     	   String[] languages= {"es","pt","en"};
@@ -646,70 +649,56 @@ public abstract class AssesmentABMBean implements SessionBean {
            Assesment assessment = (Assesment) session.load(Assesment.class, assessmentId);
            AssesmentBKP assessmentBKP=new AssesmentBKP(assessment);
            session.save(assessmentBKP);
-           if(assessment.isPsitest()) {
-        	   Query psianswers = session.createSQLQuery("SELECT psa from userpsianswers psa WHERE assesment="+assessment.getId()).addScalar("assesment",Hibernate.INTEGER).addScalar("loginname",Hibernate.STRING).addScalar("psianswer", Hibernate.INTEGER);
-        	   Iterator it = psianswers.list().iterator();
-	           	while(it.hasNext()) {
-	           		Object[] data= (Object[])it.next();
-	           		PsiAnswersUserBKP answer =new PsiAnswersUserBKP(data);
-	           		session.save(answer);
-	           		Query psianswerdata = session.createSQLQuery("SELECT psd from psianswerdata psd WHERE psianswer="+answer.getPsianswer()).addScalar("id",Hibernate.INTEGER).addScalar("psiquestion",Hibernate.STRING).addScalar("psianswer", Hibernate.INTEGER);
-	           		Iterator iter = psianswerdata.list().iterator();
-	           		while(it.hasNext()) {
-		           		Object[] d= (Object[])iter.next();
-		           		UserPsiAnswerBKP upa=new UserPsiAnswerBKP(d);
-		           		session.save(upa);
-		           	}
-	           	}
-           }
-    	   Query useranswers = session.createSQLQuery("SELECT * from useranswers usa WHERE assesment="+assessment.getId()).addScalar("assesment",Hibernate.INTEGER).addScalar("loginname",Hibernate.STRING).addScalar("answer", Hibernate.INTEGER);
-    	   Iterator it = useranswers.list().iterator();
-           	while(it.hasNext()) {
-           		System.out.println("******");
-           		Object[] data= (Object[])it.next();
-           		AnswersUserBKP answerusr =new AnswersUserBKP(data);
-           		session.save(answerusr);
-           		Query answerdata = session.createSQLQuery("SELECT ad from answerdata ad WHERE answer="+answerusr.getAnswer()).addScalar("id",Hibernate.INTEGER).addScalar("question",Hibernate.STRING)
-           							.addScalar("answer", Hibernate.INTEGER).addScalar("text", Hibernate.STRING).addScalar("DATE", Hibernate.DATE).addScalar("distance", Hibernate.INTEGER)
-           							.addScalar("unit", Hibernate.INTEGER).addScalar("country", Hibernate.INTEGER).addScalar("never", Hibernate.BOOLEAN);
-           		Iterator iter = answerdata.list().iterator();
-           		while(it.hasNext()) {
-	           		Object[] d= (Object[])iter.next();
-	           		UserAnswerBKP usan=new UserAnswerBKP(d);
-	           		session.save(usan);
-	           	}
-           	}   
-          
+           //respaldo registros de userassesments
+	       Query userassesments = session.createSQLQuery("SELECT * from userassesments ua WHERE assesment="+assessment.getId()).addScalar("assesment",Hibernate.INTEGER).addScalar("loginname",Hibernate.STRING)
+						.addScalar("psiresult1", Hibernate.INTEGER).addScalar("psiresult2", Hibernate.INTEGER).addScalar("psiresult3", Hibernate.INTEGER).addScalar("psiresult4", Hibernate.INTEGER).addScalar("psiresult5", Hibernate.INTEGER)
+						.addScalar("psiresult6", Hibernate.INTEGER).addScalar("psiid", Hibernate.INTEGER).addScalar("psitestid", Hibernate.INTEGER).addScalar("newhire", Hibernate.INTEGER).addScalar("elearningredirect", Hibernate.STRING)
+						.addScalar("elearninginstance", Hibernate.INTEGER).addScalar("enddate", Hibernate.DATE).addScalar("elearningenabled", Hibernate.BOOLEAN).addScalar("reportsendede", Hibernate.BOOLEAN).addScalar("acceptterms", Hibernate.DATE)
+						.addScalar("creationdate", Hibernate.DATE).addScalar("fdmregistry", Hibernate.INTEGER);
+	       Iterator it = userassesments.list().iterator();
+          	while(it.hasNext()) {
+          		Object[] uaData=(Object[])it.next();
+          		UserAssesment ua= (UserAssesment)session.load(UserAssesment.class, new UserAssesmentPK((String)uaData[1], assessment.getId()));
+          		UserAssesmentBKP uabkp =new UserAssesmentBKP(ua, assessmentBKP);
+          		session.save(uabkp);
+          	}
+           //respaldo key de assesment
            for(int i=0; i<languages.length; i++) {
                GeneralMessage assesmentName = (GeneralMessage)session.load(GeneralMessage.class,new GeneralMessagePK(assessment.getName(),languages[i]));
                GeneralMessageBKP assesmentNameBKP=new GeneralMessageBKP(assesmentName);
                session.save(assesmentNameBKP);
            }
+           //respaldo de modules
 	       	it=assessment.getModuleSet().iterator();
 	       	while (it.hasNext()) {
 	       		Module module=(Module)it.next();
 	       		ModuleBKP moduleBKP=new ModuleBKP(module, assessmentBKP);
 	            session.save(moduleBKP);
+	            //respaldo keys modules
 	            for(int i=0; i<languages.length; i++) {
 	                GeneralMessage moduleName = (GeneralMessage)session.load(GeneralMessage.class,new GeneralMessagePK(module.getKey(),languages[i]));
 	                GeneralMessageBKP moduleNameBKP=new GeneralMessageBKP(moduleName);
 	                session.save(moduleNameBKP);
 	            }
+	            //respaldo questions
 		       	Iterator itQ=module.getQuestionSet().iterator();
 		       	while (itQ.hasNext()) {
 		       		Question question=(Question)itQ.next();
 		       		QuestionBKP questionBKP=new QuestionBKP(question, moduleBKP);
 		            session.save(questionBKP);
+		            //respaldo keys de questions
 		            for(int i=0; i<languages.length; i++) {
 		                GeneralMessage questionKey = (GeneralMessage)session.load(GeneralMessage.class,new GeneralMessagePK(question.getKey(),languages[i]));
 		                GeneralMessageBKP questionKeyBKP=new GeneralMessageBKP(questionKey);
 		                session.save(questionKeyBKP);
 		            }
 			       	Iterator itA=question.getAnswerSet().iterator();
+		            //respaldo answers
 			       	while (itA.hasNext()) {
 			       		Answer answer=(Answer)itA.next();
 			       		AnswerBKP answerBKP=new AnswerBKP(answer, questionBKP);
 			            session.save(answerBKP);
+			            //respaldo keys de answers
 			            for(int i=0; i<languages.length; i++) {
 			                GeneralMessage answerKey = (GeneralMessage)session.load(GeneralMessage.class,new GeneralMessagePK(answer.getKey(),languages[i]));
 			                GeneralMessageBKP answerKeyBKP=new GeneralMessageBKP(answerKey);
@@ -718,14 +707,79 @@ public abstract class AssesmentABMBean implements SessionBean {
 			       	}
 		       	}
 		    }
-	        Query userassesments = session.createSQLQuery("SELECT ua from userassesments ua WHERE assesment="+assessment);
-        	it = userassesments.list().iterator();
+	       	
+	       	//ejecutar solo una vez para cargar psiquestions y psianswers
+	       	
+    	  /* Query psiquestions = session.createSQLQuery("SELECT * from psiquestions").addScalar("id",Hibernate.INTEGER).addScalar("key",Hibernate.STRING).addScalar("questionorder", Hibernate.INTEGER);
+    	   it = psiquestions.list().iterator();
            	while(it.hasNext()) {
-           		UserAssesment ua= (UserAssesment)it.next();
-           		UserAssesmentBKP uabkp =new UserAssesmentBKP(ua, assessmentBKP);
-           		session.save(uabkp);
+           		Object[] data= (Object[])it.next();
+           		PsiQuestionBKP pq =new PsiQuestionBKP(data);
+           		session.save(pq);
            	}
-           
+     	   Query psiAnswers = session.createSQLQuery("SELECT * from psianswers").addScalar("id",Hibernate.INTEGER).addScalar("psiquestion",Hibernate.INTEGER).addScalar("key",Hibernate.STRING).addScalar("answerorder", Hibernate.INTEGER);
+     	   it = psiAnswers.list().iterator();
+        	while(it.hasNext()) {
+        		Object[] data= (Object[])it.next();
+        		PsiAnswerBKP psa =new PsiAnswerBKP(data);
+        		session.save(psa);
+        	}*/
+	       	if(assessment.isPsitest()) {
+	        	   Query psianswers = session.createSQLQuery("SELECT * from userpsianswers psa WHERE assesment="+assessment.getId()).addScalar("assesment",Hibernate.INTEGER).addScalar("loginname",Hibernate.STRING).addScalar("psianswer", Hibernate.INTEGER);
+	        	   it = psianswers.list().iterator();
+		           	while(it.hasNext()) {
+		           		Object[] data= (Object[])it.next();
+		           		PsiAnswersUserBKP answer =new PsiAnswersUserBKP(data);
+		           		Query psianswerdata = session.createSQLQuery("SELECT * from psianswerdata psd WHERE id="+answer.getPsianswer()).addScalar("id",Hibernate.INTEGER).addScalar("psiquestion",Hibernate.INTEGER).addScalar("psianswer", Hibernate.INTEGER);
+		           		Iterator iter = psianswerdata.list().iterator();
+		           		while(iter.hasNext()) {
+			           		Object[] d= (Object[])iter.next();
+			           		UserPsiAnswerBKP upa=new UserPsiAnswerBKP(d);
+			           		session.save(upa);
+			           	}
+		           		session.save(answer);
+		           	}
+	           }
+	    	   Query useranswers = session.createSQLQuery("SELECT * from useranswers usa WHERE assesment="+assessment.getId()).addScalar("assesment",Hibernate.INTEGER).addScalar("loginname",Hibernate.STRING).addScalar("answer", Hibernate.INTEGER);
+	    	   it = useranswers.list().iterator();
+		       	//respaldo useranswers
+	           	while(it.hasNext()) {
+	           		Object[] data= (Object[])it.next();
+	           		AnswersUserBKP answerusr =new AnswersUserBKP(data);
+	           		Query answerdata = session.createSQLQuery("SELECT * from answerdata ad WHERE id="+answerusr.getAnswer()).addScalar("id",Hibernate.INTEGER).addScalar("question",Hibernate.INTEGER)
+	           							.addScalar("answer", Hibernate.INTEGER).addScalar("text", Hibernate.STRING).addScalar("DATE", Hibernate.DATE).addScalar("distance", Hibernate.INTEGER)
+	           							.addScalar("unit", Hibernate.INTEGER).addScalar("country", Hibernate.INTEGER).addScalar("never", Hibernate.BOOLEAN);
+	           		Iterator iter = answerdata.list().iterator();
+	    	       	//respaldo answerdata
+	           		while(iter.hasNext()) {
+		           		Object[] d= (Object[])iter.next();
+		           		UserAnswerBKP usan=new UserAnswerBKP(d);
+		           		session.save(usan);
+		           		//respaldo multioptions
+		           		Query multioptions = session.createSQLQuery("SELECT * from multioptions mo WHERE mo.id="+usan.getId()).addScalar("id",Hibernate.INTEGER).addScalar("answer",Hibernate.INTEGER);
+		           		Iterator iterMo = multioptions.list().iterator();
+		           		while(iterMo.hasNext()) {
+		           			Object[] multioption=(Object[]) iterMo.next();
+		           			Query q = session.createSQLQuery("insert into multioptionsbkp values ("+(Integer)multioption[0]+", "+(Integer)multioption[1]+")");
+		                    q.executeUpdate();
+		           		}
+		               
+		           	}
+	           		session.save(answerusr);
+	    	     
+	           	}   
+	          
+	      /* 	Query q = session.createSQLQuery("delete from useranswers where answer in (select id from answerdata where question in (select id from  questions where module in (select id from modules where assesment="+assessmentId+")))");
+            q.executeUpdate();
+	       	q = session.createSQLQuery("delete from multioptions mo where mo.id in (select id from answerdata where question in (select id from  questions where  module in (select id from modules where assesment="+assessmentId+")))");
+            q.executeUpdate();
+            q=session.createSQLQuery("delete from answerdata where question in (select id from  questions where module  in (select id from modules where assesment="+assessmentId+"))");
+            q.executeUpdate();
+	       	q = session.createSQLQuery("delete from answers where question in (select id from  questions where module  in (select id from modules where assesment="+assessmentId+"))");
+            q.executeUpdate();
+            q=session.createSQLQuery("delete from questions where module in (select id from modules where assesment="+assessmentId+")");
+            q.executeUpdate();
+           */
 	       	}
 	    catch (Exception e) {
            handler.getException(e,"backUpAssessment",userSessionData.getFilter().getLoginName());

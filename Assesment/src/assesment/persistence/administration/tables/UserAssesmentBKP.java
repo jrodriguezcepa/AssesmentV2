@@ -23,8 +23,7 @@ public class UserAssesmentBKP implements Serializable {
 	
     private static final long serialVersionUID = 1L;
 
-    private User user; 
-	private AssesmentBKP assesment;
+    private UserAssesmentBKPPK pk; 
     private Set answers;
     private Set psianswers;
     
@@ -52,8 +51,10 @@ public class UserAssesmentBKP implements Serializable {
     public UserAssesmentBKP(){}
     
     public UserAssesmentBKP(UserAssesment ua, AssesmentBKP assesment){
-    	this.user=ua.getPk().getUser(); 
-    	this.assesment=assesment;
+    	UserAssesmentBKPPK pk=new UserAssesmentBKPPK();
+    	pk.setUser(ua.getPk().getUser());
+    	pk.setAssesment(assesment);
+    	this.pk=pk; 
     	this.psiresult1=ua.getPsiresult1();
     	this.psiresult2=ua.getPsiresult2();
     	this.psiresult3=ua.getPsiresult3();
@@ -73,20 +74,6 @@ public class UserAssesmentBKP implements Serializable {
     	this.acceptTerms=ua.isAcceptTerms();
     }
 
-	
-	public void setUser(User user) {
-		this.user = user;
-	}
-	public User getUser() {
-		return user;
-	}
-
-	public void setAssesment(AssesmentBKP assesment) {
-		this.assesment = assesment;
-	}
-	public AssesmentBKP getAssesment() {
-		return assesment;
-	}
 	
 	public Set getAnswers() {
 		if(answers == null) {
@@ -348,6 +335,14 @@ public class UserAssesmentBKP implements Serializable {
 
 	public void setAcceptTerms(Date acceptTerms) {
 		this.acceptTerms = acceptTerms;
+	}
+
+	public UserAssesmentBKPPK getPk() {
+		return pk;
+	}
+
+	public void setPk(UserAssesmentBKPPK pk) {
+		this.pk = pk;
 	}
 
 }

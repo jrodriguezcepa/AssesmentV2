@@ -28,7 +28,13 @@ public class PsiQuestionBKP {
     
     public PsiQuestionBKP() {
     }
+    public PsiQuestionBKP(Object[] data) {
+    	this.id=(Integer)data[0];
+    	this.key=(String)data[1];
+    	this.order=(Integer)data[2];
 
+
+    }
 
     public Integer getId() {
         return id;

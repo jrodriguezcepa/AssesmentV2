@@ -19,27 +19,27 @@ import assesment.persistence.question.tables.QuestionBKP;
 public class UserPsiAnswerBKP {
 
     private Integer id;
-    private PsiQuestionBKP psiquestion;
-    private PsiAnswerBKP psianswer;
+    private Integer psiquestion;
+    private Integer psianswer;
     
     public UserPsiAnswerBKP() {
     }
 
     public UserPsiAnswerBKP(Object[] d) {
     	this.id=(Integer)d[0];
-    	this.psiquestion=(PsiQuestionBKP)d[1];
-    	this.psianswer=(PsiAnswerBKP)d[2];
+    	this.psiquestion=(Integer)d[1];
+    	this.psianswer=(Integer)d[2];
     }
 
     public Integer getId() {
         return id;
     }
 
-    public PsiQuestionBKP getPsiquestion() {
+    public Integer getPsiquestion() {
         return psiquestion;
     }
 
-    public void setPsianswer(PsiAnswerBKP psianswer) {
+    public void setPsianswer(Integer psianswer) {
         this.psianswer = psianswer;
     }
 
@@ -47,11 +47,11 @@ public class UserPsiAnswerBKP {
         this.id = id;
     }
 
-    public void setPsiquestion(PsiQuestionBKP psiquestion) {
+    public void setPsiquestion(Integer psiquestion) {
         this.psiquestion = psiquestion;
     }
 
-    public PsiAnswerBKP getPsianswer() {
+    public Integer getPsianswer() {
         return psianswer;
     }
 

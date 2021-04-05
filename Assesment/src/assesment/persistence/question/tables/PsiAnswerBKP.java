@@ -10,19 +10,28 @@ public class PsiAnswerBKP {
 
     private Integer id;
     
-    private PsiQuestionBKP psiquestion;
+    private Integer psiquestion;
     
     private String key;
     private Integer order;
     
     public PsiAnswerBKP() {
     }
+    
+    public PsiAnswerBKP(Object[] data) {
+    	this.id=(Integer)data[0];
+    	this.psiquestion=(Integer)data[1];
+    	this.key=(String)data[2];
+    	this.order=(Integer)data[3];
+
+
+    }
 
     public Integer getId() {
         return id;
     }
 
-    public PsiQuestionBKP getPsiquestion() {
+    public Integer getPsiquestion() {
         return psiquestion;
     }
 
@@ -38,7 +47,7 @@ public class PsiAnswerBKP {
         this.id = id;
     }
 
-    public void setPsiquestion(PsiQuestionBKP psiquestion) {
+    public void setPsiquestion(Integer psiquestion) {
         this.psiquestion = psiquestion;
     }
 
