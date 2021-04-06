@@ -1352,7 +1352,7 @@ public class JavaReportAction  extends AbstractAction {
 	     setFDM.close();
 	     connFDM.close();
 	     
-	     Connection conn1 = DriverManager.getConnection("jdbc:postgresql://177.71.248.87:5432/assesment","postgres","pr0v1s0r1A");
+	     Connection conn1 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/assesment","postgres","pr0v1s0r1A");
 	     
 	     Statement st = conn1.createStatement();
 		 

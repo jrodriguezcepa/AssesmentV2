@@ -406,7 +406,7 @@
             	<div class="toolbar">
                		<span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
                		<span class="exit">
-<%		if(userSessionData.getRole().equals(SecurityConstants.CLIENTGROUP_REPORTER)){
+<%		if(userSessionData.getRole().equals(SecurityConstants.CLIENTGROUP_REPORTER) && !new Integer(groupId).equals(GroupData.GUINEZ_ADMINISTRACION) && !new Integer(groupId).equals(GroupData.GUINEZ_FAENA)){
 %>               			<a href='reportgroup.jsp'><%=messages.getText("generic.messages.back")%></a>
 <%		} else {
 %>               			<a href="logout.jsp"><%=messages.getText("generic.messages.logout")%></a>

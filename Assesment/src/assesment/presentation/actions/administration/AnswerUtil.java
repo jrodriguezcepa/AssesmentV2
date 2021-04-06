@@ -1265,8 +1265,7 @@ public class AnswerUtil {
             String[] valid = (String[])valids.toArray(new String[0]);
             String[][] error = (String[][])errors.toArray(new String[0][0]);
 
-            System.out.println("PREGUNTA CONTESTADA "+String.valueOf(System.currentTimeMillis() - v));
-        return  new Object[]{valid,error};
+            return  new Object[]{valid,error};
         }catch(Exception e) {
         	throw new InvalidDataException(moduleId,moduleId);
         }

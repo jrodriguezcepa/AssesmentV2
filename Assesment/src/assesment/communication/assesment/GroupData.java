@@ -43,6 +43,8 @@ public class GroupData {
 	public static final int MUTUAL = 94;
 	public static final int GRUPO_MODELO = 97;
 	public static final int FMB_MENTORIA = 110;
+	public static final int GUINEZ_ADMINISTRACION = 131;
+	public static final int GUINEZ_FAENA = 132;
 	
 	public GroupData(Integer id, Integer corporation, String name, boolean initialText, String image, Integer layout, boolean repeatable) {
 		this.id = id;

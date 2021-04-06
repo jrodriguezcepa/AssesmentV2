@@ -341,7 +341,7 @@
 					<th><%=messages.getText("user.data.lastname").toUpperCase()%></th>
 					<th><%=messages.getText("user.data.mail").toUpperCase()%></th>
 					<th>CEDI</th>
-					<th>Posición</th>
+					<th>Posici&oacute;n</th>
 					<th>Tipo de licencia</th>
 					<th>Vigencia de la licencia</th>
 					<th>Fecha de nacimiento</th>
@@ -388,6 +388,7 @@
 %>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
 <%					} else {
 						String className = "cellGreen";
+						String color = "white";
 						int percent = 0;
 						if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
 							percent = 100;
@@ -399,6 +400,7 @@
 								graphs.get(1)[0]++;
 							} else if(percent < 70) {
 								className = "cellYellow";
+								color = "#1D272D";
 								graphs.get(1)[1]++;
 							} else {
 								graphs.get(1)[2]++;
@@ -407,14 +409,18 @@
 %>					<td class="<%=className%>">
 						<table>
 							<tr>
-								<td class="cellText" width="75%">
-									<%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%>
-								</td>
-								<td width="25%">
-									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\",1516,2);"%>'>
-										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
+								<td width="75%" class="cellText">
+									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
+										<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
 									</a>
 								</td>
+								<td width="25%"  class="cellText">
+<%						if(className.equals("cellGreen")) {
+%>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",2);"%>'>
+										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
+									</a>
+<%						}
+%>								</td>
 							</tr>
 						</table>
 					</td>
@@ -432,6 +438,7 @@
 %>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
 <%					} else {
 						String className = "cellGreen";
+						String color = "white";
 						int percent = 0;
 						if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
 							percent = 100;
@@ -443,6 +450,7 @@
 								graphs.get(2)[0]++;
 							} else if(percent < 70) {
 								className = "cellYellow";
+								color = "#1D272D";
 								graphs.get(2)[1]++;
 							} else {
 								graphs.get(2)[2]++;
@@ -451,14 +459,18 @@
 %>					<td class="<%=className%>">
 						<table>
 							<tr>
-								<td class="cellText" width="75%">
-									<%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%>
-								</td>
-								<td width="25%">
-									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\",1516,2);"%>'>
-										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
+								<td width="75%" class="<%=className%>">
+									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
+										<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
 									</a>
 								</td>
+								<td width="25%" class="<%=className%>">
+<%						if(className.equals("cellGreen")) {
+%>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\",1516,2);"%>'>
+										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
+									</a>
+<%						}
+%>								</td>
 							</tr>
 						</table>
 					</td>

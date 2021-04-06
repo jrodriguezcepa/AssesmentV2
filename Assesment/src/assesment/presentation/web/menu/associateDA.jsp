@@ -95,7 +95,7 @@
       					if(list==""){
       						list=element.value;
       					} else {
-      						list=element.value+"<"+lList;
+      						list=element.value+"<"+list;
       					}	
       				}	
       			} 

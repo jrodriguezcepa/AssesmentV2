@@ -1414,12 +1414,13 @@ public abstract class AssesmentReportBean implements SessionBean {
 	        	  if(((Integer)data[1]).equals(AssesmentData.GRUPO_MODELO_EBTW)) {
 		        	  if(data[5] == null || ((Integer)data[5]).intValue() == 1) {
 		        		  String user = (String) data[0];
+		        		  Integer da = (Integer)data[1];
 		        		  Date end = (Date) data[2];
 		        		  Integer correct = (Integer) data[3];
 		        		  Integer incorrect = (Integer) data[4];
 		        		  
 		        		  int r = (end == null) ? 0 : 1;
-		          		  Object[] values = {new Integer(r), end, correct, incorrect};
+		          		  Object[] values = {new Integer(r), end, correct, incorrect, da};
 		            	  if(!results.containsKey(user)) {
 		            		  HashMap<Integer, Object[]> result = new HashMap<Integer, Object[]>();
 		            		  result.put(2, values);
@@ -1431,12 +1432,13 @@ public abstract class AssesmentReportBean implements SessionBean {
 	        	  }else {
 		        	  if(data[5] == null || ((Integer)data[5]).intValue() == 1) {
 		        		  String user = (String) data[0];
+		        		  Integer da = (Integer)data[1];
 		        		  Date end = (Date) data[2];
 		        		  Integer correct = (Integer) data[3];
 		        		  Integer incorrect = (Integer) data[4];
 		        		  
 		        		  int r = (end == null) ? 0 : 1;
-		          		  Object[] values = {new Integer(r), end, correct, incorrect};
+		          		  Object[] values = {new Integer(r), end, correct, incorrect, da};
 		            	  if(!results.containsKey(user)) {
 		            		  HashMap<Integer, Object[]> result = new HashMap<Integer, Object[]>();
 		            		  result.put(1, values);

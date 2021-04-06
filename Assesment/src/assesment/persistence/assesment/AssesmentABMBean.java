@@ -339,6 +339,10 @@ public abstract class AssesmentABMBean implements SessionBean {
         		UserAssesmentResult ua = (UserAssesmentResult)it.next();
         		session.delete(ua);
         	}
+
+        	sqlUpdate = session.createSQLQuery("UPDATE sendedreports SET resend = 't' WHERE login = '"+user+"' AND assessment = "+assessment);
+        	sqlUpdate.executeUpdate();
+        	
         }catch (Exception e) {
             handler.getException(e,"createFeedback",userSessionData.getFilter().getLoginName());
         }
@@ -385,6 +389,9 @@ public abstract class AssesmentABMBean implements SessionBean {
         		UserAssesmentResult ua = (UserAssesmentResult)it.next();
         		session.delete(ua);
         	}
+
+        	sqlUpdate = session.createSQLQuery("UPDATE sendedreports SET resend = 't' WHERE login = '"+user+"'");
+        	sqlUpdate.executeUpdate();
 
         }catch (Exception e) {
             handler.getException(e,"deleteResults",userSessionData.getFilter().getLoginName());

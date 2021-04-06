@@ -222,6 +222,8 @@
 				} else {
 					response.sendRedirect("./reportgrupomodelo.jsp");
 				}
+			}else if(group.getId().equals(GroupData.GUINEZ_ADMINISTRACION) || group.getId().equals(GroupData.GUINEZ_FAENA)){
+				response.sendRedirect("./report.jsp?id="+AssesmentData.GUINEZ_INGENIERIA+"&group="+group.getId());
 			}else {
 				response.sendRedirect("./reportgroup.jsp");
 			}
