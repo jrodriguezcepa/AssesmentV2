@@ -18,6 +18,7 @@ import assesment.communication.module.ModuleData;
 import assesment.persistence.corporation.tables.Corporation;
 import assesment.persistence.hibernate.HibernateAccess;
 import assesment.persistence.module.tables.Module;
+import assesment.persistence.module.tables.ModuleBKP;
 
 public class Assesment {
 

@@ -47,7 +47,21 @@ public class UserAnswerBKP {
         this.never=(Boolean)data[8];
     }
 
-    public Integer getAnswer() {
+    public UserAnswerBKP(UserAnswer userAnswer) {
+        this.id=userAnswer.getId();
+        this.question=userAnswer.getQuestion().getId();
+        if(userAnswer.getAnswer() != null)
+        	this.answer=userAnswer.getAnswer().getId();
+        this.text=userAnswer.getText();
+        this.date=userAnswer.getDate();
+        this.distance=userAnswer.getDistance();
+        this.unit=userAnswer.getUnit();
+        this.country=userAnswer.getCountry();
+        this.never=userAnswer.isNever();
+        multioptions = new HashSet();
+	}
+
+	public Integer getAnswer() {
         return answer;
     }
 
@@ -127,4 +141,7 @@ public class UserAnswerBKP {
         this.never = never;
     }
 
+    public void addMultioption(AnswerBKP answer) {
+    	multioptions.add(answer);
+    }
 }

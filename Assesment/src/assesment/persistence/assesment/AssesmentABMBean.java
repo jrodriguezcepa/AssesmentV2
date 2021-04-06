@@ -2,7 +2,9 @@ package assesment.persistence.assesment;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 import javax.ejb.SessionBean;
 
@@ -643,7 +645,7 @@ public abstract class AssesmentABMBean implements SessionBean {
     * @param userRequest - Logged user
     * @throws Exception
     */
-   public void backUpAssessment(Integer assessmentId, UserSessionData userSessionData) throws Exception {
+   public void backUpAssessmentOriginal(Integer assessmentId, UserSessionData userSessionData) throws Exception {
        if (userSessionData == null) {
            throw new DeslogedException("backUpAssessment","session = null");
        }
@@ -790,6 +792,132 @@ public abstract class AssesmentABMBean implements SessionBean {
 	       	}
 	    catch (Exception e) {
            handler.getException(e,"backUpAssessment",userSessionData.getFilter().getLoginName());
+       }
+   }
+
+   
+   /**
+    * @ejb.interface-method
+    * @ejb.permission role-name = "administrator"
+    * Create a corporation  
+    * @param data - Contains the data of the new corporation
+    * @param userRequest - Logged user
+    * @throws Exception
+    */
+   public void backUpAssessment(Integer assessmentId, UserSessionData userSessionData) throws Exception {
+       if (userSessionData == null) {
+           throw new DeslogedException("backUpAssessment","session = null");
+       }
+       if (assessmentId == null) {
+           throw new InvalidDataException("backUpAssessment","data = null");
+       }
+       try {
+           Session session = HibernateAccess.currentSession();
+           
+           Query delete1 = session.createQuery("DELETE FROM Feedback f WHERE f.pk.assesment.id = "+assessmentId);
+           delete1.executeUpdate();
+           
+           Query delete2 = session.createQuery("DELETE FROM AccessCode ac WHERE ac.assesment.id = "+assessmentId);
+           delete2.executeUpdate();
+
+           Assesment assessment = (Assesment) session.load(Assesment.class, assessmentId);
+           AssesmentBKP assessmentBKP=new AssesmentBKP(assessment);
+           bkpText(assessment.getName());
+           
+           HashMap<Integer, AnswerBKP> answers = new HashMap<Integer, AnswerBKP>();
+           //respaldo de modules
+           Iterator it = assessment.getModuleSet().iterator();
+	       while (it.hasNext()) {
+	    	   Module module=(Module)it.next();
+	    	   ModuleBKP moduleBKP=new ModuleBKP(module, assessmentBKP);
+	           bkpText(module.getKey());
+	            
+	           //respaldo questions
+		       Iterator itQ=module.getQuestionSet().iterator();
+		       while (itQ.hasNext()) {
+		    	   Question question=(Question)itQ.next();
+		    	   QuestionBKP questionBKP=new QuestionBKP(question, moduleBKP);
+		           bkpText(question.getKey());
+
+		           //respaldo answers
+			       Iterator itA=question.getAnswerSet().iterator();
+			       while (itA.hasNext()) {
+			    	   Answer answer=(Answer)itA.next();
+			    	   AnswerBKP answerBKP=new AnswerBKP(answer, questionBKP);
+			    	   answers.put(answerBKP.getId(), answerBKP);
+			           bkpText(answer.getKey());
+
+			           questionBKP.addAnswer(answerBKP);
+			       }
+
+			       moduleBKP.addQuestion(questionBKP);
+		       }
+	            
+	           assessmentBKP.addModule(moduleBKP);
+	       }
+	       session.save(assessmentBKP);
+	       
+           //respaldo usuarios
+           Query q1 = session.createQuery("SELECT ua FROM UserAssesment ua WHERE ua.pk.assesment.id = "+assessmentId);
+           Iterator itU = q1.iterate();
+           while(itU.hasNext()) {
+        	   Collection<String> mo = new LinkedList<String>();
+          		UserAssesment ua= (UserAssesment)itU.next();
+          		UserAssesmentBKP uabkp =new UserAssesmentBKP(ua, assessmentBKP);
+          		
+          		if(ua.getAnswers() != null) {
+          			Iterator itAn = ua.getAnswers().iterator();
+          			while(itAn.hasNext()) {
+          				UserAnswer userAnswer = (UserAnswer)itAn.next();
+          				UserAnswerBKP answerusr =new UserAnswerBKP(userAnswer);
+
+          				Iterator itMO = userAnswer.getMultioptions().iterator();
+          				
+          				while(itMO.hasNext()) {
+          					Answer a = (Answer)itMO.next();
+          					answerusr.addMultioption(answers.get(a.getId()));
+          				}
+          				uabkp.addAnswer(answerusr);
+          			}
+          		}
+          		
+          		if(ua.getPsianswers() != null) {
+          			Iterator itPsiAn = ua.getPsianswers().iterator();
+          			while(itPsiAn.hasNext()) {
+          				UserPsiAnswer userPsiAnswer = (UserPsiAnswer)itPsiAn.next();
+          				UserPsiAnswerBKP answerPsiusr =new UserPsiAnswerBKP(userPsiAnswer);
+
+          				uabkp.addPsiAnswer(answerPsiusr);
+          			}
+          		}
+          		
+          		session.save(uabkp);
+          		
+                Iterator<String> itMo = mo.iterator();
+                while(itMo.hasNext()) {
+    				Query q = session.createSQLQuery(itMo.next());
+                    q.executeUpdate();
+                }
+
+          		session.delete(ua);
+          	}
+
+           session.delete(assessment);
+       } catch (Exception e) {
+           handler.getException(e,"backUpAssessment",userSessionData.getFilter().getLoginName());
+       }
+   }
+   
+   private void bkpText(String key) throws Exception {
+       Session session = HibernateAccess.currentSession();
+	   Query q = session.createQuery("SELECT gm FROM GeneralMessage gm WHERE gm.primaryKey.labelKey = '"+key+"'");
+	   Iterator it = q.iterate();
+	   while(it.hasNext()) {
+		   GeneralMessage txt = (GeneralMessage)it.next();
+           GeneralMessageBKP txtBKP=new GeneralMessageBKP(txt);
+           System.out.println(txtBKP);
+           session.save(txtBKP);
+           session.delete(txt);
        }
    }
 }

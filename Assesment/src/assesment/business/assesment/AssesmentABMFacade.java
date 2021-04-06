@@ -69,7 +69,8 @@ public interface AssesmentABMFacade
 
    public void changeAssesmentReportView( java.lang.Integer category,java.lang.Integer assesment,java.lang.Integer show,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-   
-   public void backUpAssessment( java.lang.Integer assessmentId,assesment.communication.administration.user.UserSessionData userSessionData )
-	  throws java.lang.Exception, java.rmi.RemoteException;
+
+   public void backUpAssessment( java.lang.Integer assesment,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

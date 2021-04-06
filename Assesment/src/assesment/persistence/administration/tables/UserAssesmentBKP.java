@@ -16,6 +16,7 @@ import java.util.Set;
 import org.hibernate.HibernateException;
 
 import assesment.persistence.assesment.tables.AssesmentBKP;
+import assesment.persistence.question.tables.AnswerBKP;
 import assesment.persistence.user.tables.User;
 import assesment.persistence.user.tables.UserAssesmentData;
 
@@ -48,7 +49,10 @@ public class UserAssesmentBKP implements Serializable {
     private boolean reportSended;
     private Date acceptTerms;
     
-    public UserAssesmentBKP(){}
+    public UserAssesmentBKP() {
+    	answers = new HashSet();
+    	psianswers = new HashSet();
+    }
     
     public UserAssesmentBKP(UserAssesment ua, AssesmentBKP assesment){
     	UserAssesmentBKPPK pk=new UserAssesmentBKPPK();
@@ -72,6 +76,8 @@ public class UserAssesmentBKP implements Serializable {
     	this.endDate=ua.getEndDate();
     	this.reportSended=ua.isReportSended();
     	this.acceptTerms=ua.isAcceptTerms();
+    	answers = new HashSet();
+    	psianswers = new HashSet();
     }
 
 	
@@ -343,6 +349,14 @@ public class UserAssesmentBKP implements Serializable {
 
 	public void setPk(UserAssesmentBKPPK pk) {
 		this.pk = pk;
+	}
+
+	public void addAnswer(UserAnswerBKP answerusr) {
+		answers.add(answerusr);
+	}
+
+	public void addPsiAnswer(UserPsiAnswerBKP answerPsiusr) {
+		psianswers.add(answerPsiusr);
 	}
 
 }

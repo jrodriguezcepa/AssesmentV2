@@ -33,7 +33,7 @@ public class AnswersUserBKP implements Serializable{
     	this.answer=(Integer)data[2];
     }
 	
-    public Integer getAssesment() {
+	public Integer getAssesment() {
 		return assesment;
 	}
 	public void setAssesment(Integer assesment) {

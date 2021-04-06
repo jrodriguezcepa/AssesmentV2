@@ -4,20 +4,11 @@
  */
 package assesment.persistence.assesment.tables;
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.HashSet;
 import java.util.Set;
 
-import org.hibernate.Session;
-
-import assesment.communication.assesment.AssesmentAttributes;
-import assesment.communication.assesment.AssesmentData;
-import assesment.communication.module.ModuleData;
 import assesment.persistence.corporation.tables.Corporation;
-import assesment.persistence.hibernate.HibernateAccess;
-import assesment.persistence.module.tables.Module;
 import assesment.persistence.module.tables.ModuleBKP;
 
 public class AssesmentBKP {
@@ -92,7 +83,7 @@ public class AssesmentBKP {
     	this.certificateImageES=assessment.getCertificateImageES();	
     	this.certificateImageEN=assessment.getCertificateImageEN();	
     	this.certificateImagePT=assessment.getCertificateImagePT();	
-    	//this.moduleSet=assessment.getModuleSet();	
+    	this.moduleSet=new HashSet<ModuleBKP>();	
     	this.archived=assessment.isArchived();	
     	this.showEmailWRT=assessment.isShowEmailWRT();	
     	this.dcActivity=assessment.getDcActivity();	
@@ -374,5 +365,9 @@ public class AssesmentBKP {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	public void addModule(ModuleBKP moduleBKP) {
+		moduleSet.add(moduleBKP);
 	}
 }

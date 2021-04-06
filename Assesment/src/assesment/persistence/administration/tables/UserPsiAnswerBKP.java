@@ -31,7 +31,13 @@ public class UserPsiAnswerBKP {
     	this.psianswer=(Integer)d[2];
     }
 
-    public Integer getId() {
+    public UserPsiAnswerBKP(UserPsiAnswer userPsiAnswer) {
+    	id = userPsiAnswer.getId();
+    	psiquestion = userPsiAnswer.getPsiquestion().getId();
+    	psianswer = userPsiAnswer.getPsianswer().getId();
+    }
+
+	public Integer getId() {
         return id;
     }
 

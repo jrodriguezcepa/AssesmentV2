@@ -60,4 +60,8 @@ public class GeneralMessageBKP {
 	public void setPrimaryKey(GeneralMessageBKPPK primaryKey) {
 		this.primaryKey = primaryKey;
 	}
+
+	public String toString() {
+		return primaryKey.getLabelKey()+", "+primaryKey.getLanguage().getName()+", "+text;
+	}
 }

@@ -48,6 +48,7 @@ public class QuestionBKP {
     	this.testType=question.getTestType();
     	this.groupId=question.getGroupId();
     	this.wrt=question.isWrt();
+    	answerSet = new HashSet<AnswerBKP>();
     }
 
     public Integer getId() {
@@ -129,6 +130,10 @@ public class QuestionBKP {
 
 	public void setWrt(boolean wrt) {
 		this.wrt = wrt;
+	}
+
+	public void addAnswer(AnswerBKP answerBKP) {
+		answerSet.add(answerBKP);
 	}
 
 }

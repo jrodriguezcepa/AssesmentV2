@@ -5,6 +5,7 @@
 package assesment.persistence.module.tables;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -39,6 +40,7 @@ public class ModuleBKP {
     	this.key=module.getKey();
     	this.order=module.getOrder();
     	this.type=module.getType();
+    	questionSet = new HashSet<QuestionBKP>();
     }
 
     public Integer getId() {
@@ -89,5 +91,9 @@ public class ModuleBKP {
     public void setType(Integer type) {
         this.type = type;
     }
+
+	public void addQuestion(QuestionBKP questionBKP) {
+		questionSet.add(questionBKP);
+	}
 
 }
