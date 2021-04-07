@@ -193,9 +193,9 @@ public interface UsReport
 
    public java.util.HashMap getWRTUserAnswers( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-   
+
    public java.util.HashMap getWRTUserAnswersByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
-		      throws java.lang.Exception, java.rmi.RemoteException;
+      throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.util.HashMap getWRTUserAnswers( java.lang.Integer assessment,java.lang.Integer group,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
@@ -280,5 +280,8 @@ public interface UsReport
 
    public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
+   
+   public java.util.Collection getUserAssesmentsCountbkp( assesment.communication.assesment.AssesmentAttributes assesment,assesment.communication.administration.user.UserSessionData userSessionData )
+	   throws java.lang.Exception, java.rmi.RemoteException;
 
 }

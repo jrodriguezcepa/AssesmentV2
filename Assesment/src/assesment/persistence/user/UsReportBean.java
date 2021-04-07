@@ -3095,4 +3095,51 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
      	}
      	return values;
 	}
+ 	
+ 	
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator"
+	 */
+	public Collection<UserAnswerReportData> getUserAssesmentsCountbkp(AssesmentAttributes assesment,
+			UserSessionData userSessionData) throws Exception {
+		Collection<UserAnswerReportData> result = new LinkedList<UserAnswerReportData>();
+		try {
+			Session session = HibernateAccess.currentSession();
+
+			String queryStr = "SELECT u.firstname,u.lastname,u.loginname as login FROM userassesmentsbkp ua "
+					+ "JOIN users AS u ON ua.loginname = u.loginname " + "WHERE assesment = "
+					+ String.valueOf(assesment.getId())
+					+ " AND ua.loginname NOT IN (SELECT loginname FROM useranswersbkp WHERE assesment = "
+					+ String.valueOf(assesment.getId()) + ")";
+			Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING)
+					.addScalar("lastname", Hibernate.STRING).addScalar("login", Hibernate.STRING);
+			Iterator it = query.list().iterator();
+			while (it.hasNext()) {
+				Object[] data = (Object[]) it.next();
+				result.add(new UserAnswerReportData(data[0] + " " + data[1], (String) data[2], 0));
+			}
+
+			queryStr = "SELECT firstname,lastname,count(*) AS count, u.loginname as login,psiresult1 "
+					+ "FROM userassesmentsbkp ua " + "JOIN users AS u ON ua.loginname = u.loginname "
+					+ "JOIN useranswersbkp AS a on ua.loginname = a.loginname " + "WHERE ua.assesment = "
+					+ String.valueOf(assesment.getId()) + " AND a.assesment = " + String.valueOf(assesment.getId())
+					+ " GROUP BY firstname,lastname,login,psiresult1";
+			query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING)
+					.addScalar("lastname", Hibernate.STRING).addScalar("count", Hibernate.INTEGER)
+					.addScalar("login", Hibernate.STRING).addScalar("psiresult1", Hibernate.INTEGER);
+			it = query.list().iterator();
+			while (it.hasNext()) {
+				Object[] data = (Object[]) it.next();
+				int count = ((Integer) data[2]).intValue();
+				if (data[4] != null && assesment.isPsitest()) {
+					count += 48;
+				}
+				result.add(new UserAnswerReportData(data[0] + " " + data[1], (String) data[3], count));
+			}
+		} catch (Exception e) {
+			handler.getException(e, "getUserAssesmentsCountbkp", userSessionData.getFilter().getLoginName());
+		}
+		return result;
+	}
 }

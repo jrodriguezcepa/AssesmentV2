@@ -108,6 +108,45 @@ public class TextContainer {
         }
         return null;
     }
+    public Object[][] getTextsbkp(String language,AssesmentAccess bean,UserSessionData userSessionData) 
+    throws NamingException, CreateException, DeslogedException, InvalidDataException, CommunicationProblemException, RemoteException {
+        LangReport languageReport = null;
+            try {
+                String key = language;
+                if(texts.containsKey(key)) {
+                    return (Object[][])texts.get(key);
+                }else {
+                	Locale locale=new Locale(language,"");
+                	Object[][] contents = bean.getLanguageReportFacade().findAllMessagesbkp(locale,userSessionData);
+                	synchronized (texts) {
+                		texts.put(key,contents);
+                	}	
+                	return contents;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+            return null;
+    }
     
+    public Object[][] getTextsbkp(String language,AssesmentAccessRemote bean,UserSessionData userSessionData) throws Exception {
+        try {
+            String key = language;
+            if(texts.containsKey(key)) {
+                return (Object[][])texts.get(key);
+            }else {
+            	Locale locale=new Locale(language,"");
+                Object[][] contents = bean.getLanguageReportFacade().findAllMessagesbkp(locale,userSessionData);
+                synchronized (texts) {
+                    texts.put(key,contents);
+                }	
+                return contents;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }   
     
 }

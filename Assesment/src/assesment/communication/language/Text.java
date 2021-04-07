@@ -58,7 +58,7 @@ public class Text extends ListResourceBundle implements Serializable {
 	    }
 	    return (label==null) ? key : label;
 	}
-
+	
     /**
      * @param string
      * @return

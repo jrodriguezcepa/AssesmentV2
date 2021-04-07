@@ -244,4 +244,7 @@ public interface UsReportFacade
    public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public assesment.communication.report.UsersReportDataSource findUsersAssesmentbkp( java.lang.Integer assesment,assesment.communication.administration.user.UserSessionData userSessionData,assesment.communication.language.Text messages )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

@@ -17,6 +17,7 @@ import assesment.communication.module.ModuleData;
 import assesment.communication.question.QuestionData;
 import assesment.persistence.assesment.tables.AssesmentBKP;
 import assesment.persistence.hibernate.HibernateAccess;
+import assesment.persistence.question.tables.Question;
 import assesment.persistence.question.tables.QuestionBKP;
 
 public class ModuleBKP {
@@ -28,7 +29,8 @@ public class ModuleBKP {
     private String key;
     private Integer order;
     private Integer type;
-    
+    private Integer green;
+    private Integer yellow;
     private Set<QuestionBKP> questionSet; 
     
     public ModuleBKP() {
@@ -40,7 +42,20 @@ public class ModuleBKP {
     	this.key=module.getKey();
     	this.order=module.getOrder();
     	this.type=module.getType();
+    	this.green=module.getGreen();
+    	this.yellow=module.getYellow();
     	questionSet = new HashSet<QuestionBKP>();
+    }
+    
+    public ModuleData getData() {
+        Collection<QuestionData> questions = new LinkedList<QuestionData>();
+        Iterator<QuestionBKP> it = questionSet.iterator();
+        while(it.hasNext()) {
+            questions.add(it.next().getData());
+        }
+        int greenV = (green != null) ? green : assesment.getGreen();
+        int yellowV = (yellow != null) ? yellow : assesment.getYellow();
+        return new ModuleData(id,key,order,assesment.getId(),type,questions, greenV, yellowV);
     }
 
     public Integer getId() {
@@ -94,6 +109,22 @@ public class ModuleBKP {
 
 	public void addQuestion(QuestionBKP questionBKP) {
 		questionSet.add(questionBKP);
+	}
+
+	public Integer getGreen() {
+		return green;
+	}
+
+	public void setGreen(Integer green) {
+		this.green = green;
+	}
+
+	public Integer getYellow() {
+		return yellow;
+	}
+
+	public void setYellow(Integer yellow) {
+		this.yellow = yellow;
 	}
 
 }

@@ -186,6 +186,7 @@ public abstract class LangReportBean implements SessionBean,Serializable {
         return texts;
     }
 
+    
     /**
      * @ejb.permission role-name="administrator" 
      * @ejb.interface-method view-type = "remote"
@@ -211,6 +212,70 @@ public abstract class LangReportBean implements SessionBean,Serializable {
             }
         }catch (Exception e) {
             handler.getException(e,"getCompleteText",userSessionData.getFilter().getLoginName());
+        }
+        return texts;
+    }
+    
+	/**
+	 * @ejb.interface-method  
+	 * @ejb.permission role-name = "systemaccess,administrator,resetpassword,accesscode,pepsico_candidatos,basf_assessment,clientreporter,cepareporter,webinar"
+	 * @param locale
+	 * @return Object[][]
+	 * @throws InvalidDataException
+	 * @throws CommunicationProblemException
+	 */
+	public Object[][] findMessagesbkp(Locale locale) throws Exception {
+		if(locale==null){
+			throw new InvalidDataException("findMessagesbkp","language = null");
+		}
+		Object[][] messages=null;
+		try{
+		    Session session=HibernateAccess.currentSession();
+            Query query=session.createSQLQuery("SELECT labelkey,text FROM generalmessagesbkp WHERE language = '"+locale.getLanguage()+"'").addScalar("labelkey",Hibernate.STRING).addScalar("text",Hibernate.STRING);
+            Collection list1 = query.list();
+            
+            messages=new Object[list1.size()][2];
+            int i = 0;
+            
+            Iterator it = list1.iterator();
+            while(it.hasNext()){
+                messages[i] = (Object[])it.next();
+                i++;
+            }
+            
+            return messages;
+		} catch(Exception e){
+			handler.getException(e,"findMessagesbkp","user");
+		}
+		return messages;
+
+	}
+	
+    /**
+     * @ejb.permission role-name="systemaccess,administrator,accesscode" 
+     * @ejb.interface-method view-type = "remote"
+     */
+    public String[] findTextsbkp(String key,UserSessionData userSessionData) throws Exception {
+        String[] texts = {key, key, key};
+    	if(userSessionData == null) {
+            throw new DeslogedException("findTextsbkp","session = null");
+        }
+        try{
+            Session session=HibernateAccess.currentSession();
+            Query q = session.createSQLQuery("SELECT language, text FROM generalmessagesbkp WHERE labelkey = '"+key+"' AND language IN ('es','en','pt')").addScalar("language", Hibernate.STRING).addScalar("text", Hibernate.STRING);
+            Iterator it = q.list().iterator();
+            while(it.hasNext()) {
+            	Object[] data = (Object[])it.next();
+            	if(data[0].equals("es")) {
+            		texts[0] = (String)data[1];
+            	} else if(data[0].equals("en")) {
+            		texts[1] = (String)data[1];
+            	} else if(data[0].equals("pt")) {
+            		texts[2] = (String)data[1];
+            	}
+            }
+        }catch (Exception e) {
+            handler.getException(e,"findTextsbkp",userSessionData.getFilter().getLoginName());
         }
         return texts;
     }

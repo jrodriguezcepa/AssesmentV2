@@ -76,6 +76,9 @@ public interface AssesmentABM
    public void changeAssesmentReportView( java.lang.Integer assessmentId,java.lang.Integer categoryId,java.lang.Integer show,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public void backUpAssessmentOriginal( java.lang.Integer assessmentId,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public void backUpAssessment( java.lang.Integer assessmentId,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 

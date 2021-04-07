@@ -1555,4 +1555,22 @@ public abstract class UsReportFacadeBean implements SessionBean {
         }
         return values;
  	}
+ 	
+    /**
+     * @ejb.interface-method
+     * @ejb.permission role-name = "administrator,systemaccess"
+     */
+    public UsersReportDataSource findUsersAssesmentbkp(Integer assesment, UserSessionData userSessionData,Text messages) throws Exception {
+        try {
+            AssesmentReport assesmentReport = AssesmentReportUtil.getHome().create();
+            AssesmentAttributes attributes = assesmentReport.findAssesmentAttributesbkp(assesment,userSessionData);
+            UsReport userReport = UsReportUtil.getHome().create();
+            UsersReportDataSource datasource = new UsersReportDataSource(userReport.getUserAssesmentsCountbkp(attributes,userSessionData),assesmentReport.getAssesmentQuestionCountbkp(attributes,userSessionData,true),messages,assesment);
+            return datasource;
+        } catch (Exception exception) {
+            handler.handleException("findUsersAssesmentbkp", exception);
+        }
+        return null; 
+    }
+    
 }

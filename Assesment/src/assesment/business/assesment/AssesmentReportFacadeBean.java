@@ -985,4 +985,50 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	        }
 	        return null;
 	    }
+	    
+	    /**
+	     * @ejb.interface-method 
+	     * @ejb.permission role-name = "administrator,systemaccess,clientreporter,cepareporter"
+	     */
+	    public ListResult findAssesmentsbkp(String name,String corporation,String archived,UserSessionData userSessionData) throws Exception {
+	        if (userSessionData == null) {
+	            throw new DeslogedException("findAssesments","userSessionData = null");
+	        }
+	        try {
+	            AssesmentReportHome home = AssesmentReportUtil.getHome();
+	            AssesmentReport assesmentReport = home.create();
+	            return assesmentReport.findAssesmentsbkp(name,corporation,archived,userSessionData);
+	        }catch (Exception e) {
+	            handler.handleException("findAssesments",e);
+	        }
+	        return null;
+	    }
+	    
+	    /**
+	     * @ejb.interface-method 
+	     * @ejb.permission role-name = "administrator,systemaccess,clientreporter"
+	     * @param id
+	     * @return
+	     * @throws Exception
+	     */
+	    public AssesmentData findAssesmentbkp(Integer id,UserSessionData userSessionData) throws Exception {
+	        if (userSessionData == null) {
+	            throw new DeslogedException("findAssesment","userSessionData ? null");
+	        }
+	        if (id == null) {
+	            throw new InvalidDataException("findAssesment","id = null");
+	        }
+	        try {
+	            AssesmentReportHome home = AssesmentReportUtil.getHome();
+	            AssesmentReport assesmentReport = home.create();
+	            long start = System.currentTimeMillis();
+	            AssesmentData data = assesmentReport.findAssesmentbkp(id, userSessionData);
+	            System.out.println("Dur 1: "+String.valueOf(System.currentTimeMillis() - start));
+	            return data;
+	        }catch (Exception e) {
+	            handler.handleException("findAssesmentbkp",e);
+	        }
+	        return null;
+	    }
+	    
 }

@@ -50,6 +50,14 @@ public class QuestionBKP {
     	this.wrt=question.isWrt();
     	answerSet = new HashSet<AnswerBKP>();
     }
+    public QuestionData getData() {
+        Collection<AnswerData> answers = new LinkedList<AnswerData>();
+        Iterator<AnswerBKP> it = answerSet.iterator();
+        while(it.hasNext()) {
+            answers.add(it.next().getData());
+        }
+        return new QuestionData(id,key,module.getId(),order,type,image,testType,groupId,wrt,answers);
+    }
 
     public Integer getId() {
         return id;

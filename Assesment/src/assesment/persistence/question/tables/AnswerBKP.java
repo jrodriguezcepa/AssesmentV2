@@ -27,7 +27,9 @@ public class AnswerBKP {
     	this.resultType=answer.getResultType();
     }
 
-
+    public AnswerData getData() {
+        return new AnswerData(id,key,order,resultType);
+    }
     public Integer getId() {
         return id;
     }

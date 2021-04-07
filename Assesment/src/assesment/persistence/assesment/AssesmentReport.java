@@ -118,4 +118,16 @@ public interface AssesmentReport
    public assesment.communication.assesment.GroupUsersData getGroupUsersResults( java.lang.Integer groupId,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public assesment.communication.util.ListResult findAssesmentsbkp( java.lang.String name,java.lang.String corporation,java.lang.String archived,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public assesment.communication.assesment.AssesmentData findAssesmentbkp( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public assesment.communication.assesment.AssesmentAttributes findAssesmentAttributesbkp( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public java.lang.Integer getAssesmentQuestionCountbkp( assesment.communication.assesment.AssesmentAttributes assesment,assesment.communication.administration.user.UserSessionData userSessionData,boolean all )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

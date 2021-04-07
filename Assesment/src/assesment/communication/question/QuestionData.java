@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import assesment.communication.language.Text;
+import assesment.communication.language.TextBKP;
 
 public class QuestionData implements Comparable {
 
@@ -253,6 +254,16 @@ public class QuestionData implements Comparable {
 	}
 
     public String getKey(Text messages) {
+    	if(type.intValue() == QuestionData.YOU_TUBE_VIDEO) {
+    		return "YouTube Video";
+    	}
+    	if(type.intValue() == QuestionData.VIDEO) {
+    		return "Video";
+    	}
+        return messages.getText(key);
+    }
+    
+    public String getKey(TextBKP messages) {
     	if(type.intValue() == QuestionData.YOU_TUBE_VIDEO) {
     		return "YouTube Video";
     	}

@@ -4,10 +4,15 @@
  */
 package assesment.persistence.assesment.tables;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Set;
-
+import assesment.communication.module.ModuleData;
+import assesment.communication.assesment.AssesmentAttributes;
+import assesment.communication.assesment.AssesmentData;
 import assesment.persistence.corporation.tables.Corporation;
 import assesment.persistence.module.tables.ModuleBKP;
 
@@ -99,8 +104,22 @@ public class AssesmentBKP {
     	this.link=assessment.getLink();	
 
     }
-
-
+    
+    public AssesmentData getData() {
+        Collection<ModuleData> modules = new LinkedList<ModuleData>();
+        Iterator<ModuleBKP> it = moduleSet.iterator();
+        while(it.hasNext()) {
+            modules.add(it.next().getData());
+        }
+        AssesmentData assessmentData = new AssesmentData(id,name,description,corporation.getId(),start,end,modules,status,psitest,elearning,instantFeedback,reportFeedback,errorFeedback,psiFeedback,green,yellow,certificate,certificateImageES,certificateImageEN,certificateImagePT,archived, showEmailWRT, terms, link_es, link_en, link_pt, icon, attachesPDF, attachenPDF, attachptPDF, untilApproved, link);
+        assessmentData.setCorporationName(corporation.getName());
+        return assessmentData;
+    }
+    
+    public AssesmentAttributes getAssesment() {
+        return new AssesmentAttributes(id,name,description,corporation.getId(),start,end,status,psitest,elearning,instantFeedback,reportFeedback,errorFeedback,psiFeedback,green,yellow,certificate,certificateImageES,certificateImageEN,certificateImagePT,archived, showEmailWRT, terms, link_es, link_en, link_pt, icon, attachesPDF, attachenPDF, attachptPDF, untilApproved, link);
+    }
+    
     public Integer getId() {
         return id;
     }

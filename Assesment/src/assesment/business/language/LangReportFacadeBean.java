@@ -111,4 +111,41 @@ public abstract class LangReportFacadeBean implements SessionBean {
         }
         return values;
     }
+	/**
+	 * @ejb.interface-method view-type = "remote"
+     * @ejb.permission role-name="systemaccess,resetpassword,administrator,accesscode,pepsico_candidatos,basf_assessment,clientreporter,cepareporter,webinar" 
+	 */
+	public Object[][] findAllMessagesbkp(Locale locale,UserSessionData userSessionData) throws Exception {
+		if(userSessionData==null){
+			throw new DeslogedException("findAllMessages","session = null");
+		}
+		try{
+			LangReportHome lngReportHome=LangReportUtil.getHome();
+            LangReport languageReport=lngReportHome.create();
+			return languageReport.findMessagesbkp(locale);
+		} catch(Exception e){
+            handler.handleException("findAllMessagesbkp",e);
+		}
+        return null;
+	}
+	
+    /**
+     * @ejb.permission role-name="administrator,accesscode" 
+     * @ejb.interface-method view-type = "remote"
+     */
+    public String[] findTextsbkp(String key,UserSessionData userSessionData) throws Exception {
+        if(userSessionData==null){
+            throw new DeslogedException("findTextsbkp","session = null");
+        }
+        String values[] = new String[3]; 
+        try{
+            LangReport languageReport=LangReportUtil.getHome().create();
+            return languageReport.findTextsbkp(key,userSessionData);
+        }catch (Exception e) {
+            handler.handleException("findTextsbkp",e);
+        }
+        return values;
+    }
+  
+   
 }

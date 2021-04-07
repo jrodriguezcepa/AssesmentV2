@@ -53,6 +53,7 @@ import assesment.persistence.administration.tables.AccessCode;
 import assesment.persistence.administration.tables.AssessmentUserData;
 import assesment.persistence.administration.tables.UserMultiAssessment;
 import assesment.persistence.assesment.tables.Assesment;
+import assesment.persistence.assesment.tables.AssesmentBKP;
 import assesment.persistence.assesment.tables.Category;
 import assesment.persistence.assesment.tables.Group;
 import assesment.persistence.hibernate.HibernateAccess;
@@ -1810,5 +1811,143 @@ public abstract class AssesmentReportBean implements SessionBean {
 		      }
 		      return results;
 		  }
-	
+		    /**
+		     * @ejb.interface-method 
+		     * @ejb.permission role-name = "administrator,systemaccess,clientreporter,cepareporter"
+		     */
+		    public ListResult findAssesmentsbkp(String name,String corporation,String archived,UserSessionData userSessionData) throws Exception {
+		        Session session = null;
+		        try {
+		 
+		            session = HibernateAccess.currentSession();
+		            String queryCountStr = "SELECT COUNT(*) AS count FROM assesmentsbkp AS a JOIN generalmessagesbkp gm ON gm.labelkey = a.name WHERE gm.language = '"+userSessionData.getLenguage()+"' AND lower(gm.text) like lower(:name) ";
+		            if(!PersistenceUtil.empty(corporation)) {
+		            	queryCountStr += "AND a.corporation = "+corporation;
+		            }
+		            switch(Integer.parseInt(archived)) {
+			            case 0:
+			            	queryCountStr += " AND NOT a.archived"; 
+			            	break;
+			            case 1:
+			            	queryCountStr += " AND a.archived"; 
+			        }
+		            
+		            Query queryCount = session.createSQLQuery(queryCountStr).addScalar("count",Hibernate.INTEGER);
+		            queryCount.setParameter("name", "%"+name+"%");
+		            Integer total = (Integer)queryCount.uniqueResult();
+		            if(total == null) {
+		                total = 0;
+		            }
+
+		            String queryStr = "SELECT a.id,a.name as assesment,c.name as corporation,a.astart,a.aend,count(question.id)as count FROM assesmentsbkp AS a " +
+		                    "JOIN corporations c ON a.corporation = c.id " +
+		                    "JOIN generalmessagesbkp gm ON gm.labelkey = a.name " +
+		                    "LEFT JOIN modulesbkp m ON m.assesment = a.id " +
+		                    "LEFT JOIN questionsbkp question on question.module = m.id "+
+		                    "WHERE gm.language = '"+userSessionData.getLenguage()+"' AND lower(gm.text) like lower(:name) ";
+		            if(!PersistenceUtil.empty(corporation)) {
+		                queryStr += "AND a.corporation = "+corporation;
+		            }
+		            switch(Integer.parseInt(archived)) {
+			            case 0:
+			            	queryStr += " AND NOT a.archived"; 
+			            	break;
+			            case 1:
+			            	queryStr += " AND a.archived"; 
+		            }
+		            queryStr += " GROUP BY a.id,a.name,a.astart,a.aend,c.name ORDER BY a.name";
+		            Query query = session.createSQLQuery(queryStr).addScalar("id",Hibernate.INTEGER).addScalar("assesment",Hibernate.STRING).addScalar("corporation",Hibernate.STRING).addScalar("aend",Hibernate.DATE).addScalar("astart",Hibernate.DATE).addScalar("count",Hibernate.INTEGER);
+		            query.setParameter("name", "%"+name+"%");
+		            
+		            Iterator iter = query.list().iterator();
+		            Collection<Object[]> list = new LinkedList<Object[]>();
+		            while (iter.hasNext()) {
+		                list.add((Object[])iter.next());
+		            }
+		            
+		            return new ListResult(list,total);
+		        }catch (Exception e) {
+		            handler.getException(e,"findAssesmentsbkp",userSessionData.getFilter().getLoginName());
+		        }
+		        return null;
+		    }
+		    
+		    
+	    /**
+	     * @ejb.interface-method 
+	     * @ejb.permission role-name = "administrator,systemaccess,basf_assessment,clientreporter,cepareporter"
+	     * @param name
+	     * @param userRequest
+	     * @return
+	     * @throws Exception
+	     */
+	    public AssesmentData findAssesmentbkp(Integer id, UserSessionData userSessionData) throws Exception {
+	        if (id == null) {
+	            throw new InvalidDataException("findAssesment","id = null");
+	        }
+	        if (userSessionData == null) {
+	            throw new DeslogedException("findAssesment","session = null");
+	        }
+
+	        Session session = null;
+	        try {
+	            session = HibernateAccess.currentSession();
+	            AssesmentBKP assesment = (AssesmentBKP)session.load(AssesmentBKP.class,id);
+	            return assesment.getData();
+	        } catch (Exception e) {
+	            handler.getException(e,"findAssesment",userSessionData.getFilter().getLoginName());
+	        }
+	        return null;
+	    }	
+	    
+	    /**
+	     * @ejb.interface-method 
+	     * @ejb.permission role-name = "administrator,systemaccess,accesscode,clientreporter"
+	     * @param name
+	     * @param userRequest
+	     * @return
+	     * @throws Exception
+	     */
+	    public AssesmentAttributes findAssesmentAttributesbkp(Integer id, UserSessionData userSessionData) throws Exception {
+	        if (id == null) {
+	            throw new InvalidDataException("findAssesmentAttributesbkp","id = null");
+	        }
+	        if (userSessionData == null) {
+	            throw new DeslogedException("findAssesmentAttributesbkp","session = null");
+	        }
+
+	        Session session = null;
+	        try {
+	            session = HibernateAccess.currentSession();
+	            AssesmentBKP assesment = (AssesmentBKP)session.load(AssesmentBKP.class,id);
+	            return assesment.getAssesment();
+	        } catch (Exception e) {
+	            handler.getException(e,"findAssesmentAttributesbkp",userSessionData.getFilter().getLoginName());
+	        }
+	        return null;
+	    }
+	    
+	    /**
+	     * @ejb.interface-method 
+	     * @ejb.permission role-name = "administrator,systemaccess,pepsico_candidatos,clientreporter,cepareporter"
+	     */
+	    public Integer getAssesmentQuestionCountbkp(AssesmentAttributes assesment,UserSessionData userSessionData, boolean all) throws Exception {
+	        Session session = null;
+	        try {
+	            session = HibernateAccess.currentSession();
+	            String queryStr = "SELECT COUNT(*) AS count FROM questionsbkp q JOIN modulesbkp AS m ON m.id = q.module WHERE m.assesment = "+String.valueOf(assesment.getId());
+	            if(!all) {
+	                queryStr += " AND q.testtype = "+String.valueOf(QuestionData.TEST_QUESTION);
+	            }
+	            Query query = session.createSQLQuery(queryStr).addScalar("count",Hibernate.INTEGER);
+	            int value = ((Integer)query.uniqueResult()).intValue();
+	            if(assesment.isPsitest() && all) {
+	                value += 48;
+	            }
+	            return new Integer(value);
+	        }catch (Exception e) {
+	            handler.getException(e,"getAssesmentQuestionCountbkp",userSessionData.getFilter().getLoginName());
+	        }
+	        return null;
+	    }
 }
