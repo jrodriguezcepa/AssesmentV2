@@ -215,4 +215,29 @@ public abstract class ModuleReportFacadeBean implements SessionBean {
         }
         return null;
     }
+    
+	/**
+	 * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator"
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public ModuleAttribute findModuleAttributesbkp(Integer id,UserSessionData userSessionData) throws Exception {
+		if (userSessionData == null) {
+			throw new DeslogedException("findModuleAttributesbkp","userSessionData = null");
+		}
+		if (id == null) {
+			throw new InvalidDataException("findModuleAttributesbkp","id = null");
+		}
+		try {
+            ModuleReportHome home = ModuleReportUtil.getHome();
+            ModuleReport moduleReport = home.create();
+			return moduleReport.findModuleAttributesbkp(id, userSessionData);
+		}catch (Exception e) {
+            handler.handleException("findModuleAttributesbkp",e);
+		}
+		return null;
+	}
+	
 }

@@ -139,13 +139,6 @@ function deleteIFConfirm(form,msg){
 			</td>
 		</tr>
 		<tr>
-	    	<td width="100%" valign="top">
-       			<a href="layout.jsp?refer=/assesment/create.jsp?type=create&target=list"> 
-       				<input type="button" class="button" value='<%=messages.getText("corporation.message.new")%>'> 
-				</a>
-			</td>
-	  	</tr>
-		<tr>
 			<td colspan="3">
 				<html:form action="/AssesmentDelete" >
 					<html:hidden property="assesment" />
@@ -168,6 +161,8 @@ function deleteIFConfirm(form,msg){
 				boolean linetwo = false;
 				while(it.hasNext()){
 					AssesmentListData assesment = it.next();
+					HashMap<String, String> messagesbkp = sys.getLanguageReportFacade().findAssessmentBKPTexts(assesment.getId(), sys.getUserSessionData());
+
 %>	            		<tr class='<%=(linetwo)?"linetwo":"lineone"%>'>
 <%					linetwo = !linetwo;	
 %>          	    		<td width="5%" align="left">
@@ -175,7 +170,7 @@ function deleteIFConfirm(form,msg){
 							</td>
 		              		<td width="35%" align="left">
 					        	<a href='layout.jsp?refer=/assesment/viewbkp.jsp?assesment=<%=String.valueOf(assesment.getId())%>' >
-	        			        	<%=messages.getText((String)assesment.getName())%>
+	        			        	<%=messagesbkp.get((String)assesment.getName())%>
 	                			</a>
 							</td>
             				<td width="25%" align="left"><%=assesment.getCorporation()%></td>
@@ -192,11 +187,7 @@ function deleteIFConfirm(form,msg){
 				</html:form>
 			</td>
 		</tr>
-   		<tr>
-			<td colspan="5" align="right">
-               	<input name="button2" type="button" onClick="javascript:deleteIFConfirm(document.forms['AssesmentDeleteForm'],'<%=messages.getText("assesment.delete.confirm")%>');" value=<%=messages.getText("generic.messages.delete")%> class="input"/>
-			</td>
-      	</tr>
+ 
 		<jsp:include  page='../component/titleend.jsp' />
 	</body>
 <%

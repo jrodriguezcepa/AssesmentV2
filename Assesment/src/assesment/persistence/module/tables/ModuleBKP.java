@@ -58,6 +58,12 @@ public class ModuleBKP {
         return new ModuleData(id,key,order,assesment.getId(),type,questions, greenV, yellowV);
     }
 
+    public ModuleAttribute getAttributes() {
+        int greenV = (green != null) ? green : assesment.getGreen();
+        int yellowV = (yellow != null) ? yellow : assesment.getYellow();
+        return new ModuleAttribute(id,key,order,assesment.getId(),type,greenV,yellowV);
+    }
+
     public Integer getId() {
         return id;
     }

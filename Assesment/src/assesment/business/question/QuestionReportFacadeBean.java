@@ -394,4 +394,25 @@ public abstract class QuestionReportFacadeBean implements SessionBean {
    	public Collection getTotalAnswers(Integer assessment, Text messages, UserSessionData userSessionData) throws Exception {
         return QuestionReportUtil.getHome().create().getTotalAnswers(assessment, messages, userSessionData);
     }
+   	
+	/**
+	 * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator"
+	 */
+	public QuestionData findQuestionBKP(Integer id,UserSessionData userSessionData,int type) throws Exception {
+		if (userSessionData == null) {
+			throw new DeslogedException("findQuestionBKP","userSessionData = null");
+		}
+		if (id == null) {
+			throw new InvalidDataException("findQuestionBKP","id = null");
+		}
+		try {
+            QuestionReportHome home = QuestionReportUtil.getHome();
+            QuestionReport questionReport = home.create();
+			return questionReport.findQuestionBKP(id, userSessionData, type);
+		}catch (Exception e) {
+            handler.handleException("findQuestionBKP",e);
+		}
+		return null;
+	}
 }

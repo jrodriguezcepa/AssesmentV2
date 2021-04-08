@@ -52,4 +52,6 @@ public interface QuestionReportFacade
    public java.util.Collection getTotalAnswers( java.lang.Integer assessment,assesment.communication.language.Text messages,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public assesment.communication.question.QuestionData findQuestionBKP( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData,int type )
+		      throws java.lang.Exception, java.rmi.RemoteException;
 }

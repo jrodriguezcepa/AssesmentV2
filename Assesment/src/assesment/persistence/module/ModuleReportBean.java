@@ -27,6 +27,7 @@ import assesment.persistence.assesment.AssesmentReportBean;
 import assesment.persistence.hibernate.HibernateAccess;
 import assesment.persistence.module.tables.GenericModule;
 import assesment.persistence.module.tables.Module;
+import assesment.persistence.module.tables.ModuleBKP;
 import assesment.persistence.util.ExceptionHandler;
 
 /**
@@ -204,6 +205,29 @@ public abstract class ModuleReportBean implements SessionBean {
             return ((Module)q.uniqueResult()).getData();
         } catch (Exception e) {
             handler.getException(e,"findModule",userSessionData.getFilter().getLoginName());
+        }
+        return null;
+    }
+    
+    /**
+     * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator"
+     */
+    public ModuleAttribute findModuleAttributesbkp(Integer id, UserSessionData userSessionData) throws Exception {
+        if (id == null) {
+            throw new InvalidDataException("findModuleAttributesbkp","id = null");
+        }
+        if (userSessionData == null) {
+            throw new DeslogedException("findModuleAttributesbkp","session = null");
+        }
+
+        Session session = null;
+        try {
+            session = HibernateAccess.currentSession();
+            ModuleBKP module = (ModuleBKP)session.load(ModuleBKP.class,id);
+            return module.getAttributes();
+        } catch (Exception e) {
+            handler.getException(e,"findModuleAttributesbkp",userSessionData.getFilter().getLoginName());
         }
         return null;
     }

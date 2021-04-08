@@ -127,7 +127,12 @@ height: 100%;
 											</ul>
 										</li>
 										<li><a href="layout.jsp?refer=/assesment/groupList.jsp"><%=messages.getText("system.data.groups")%></a></li>
-										<li><a href="layout.jsp?refer=/assesment/list.jsp"><%=messages.getText("generic.data.assesment")%></a></li>
+										<li><a href=""><%=messages.getText("generic.data.assesment")%></a>
+											<ul>
+												<li><a href="layout.jsp?refer=/assesment/list.jsp"><%=messages.getText("generic.actives")%></a></li>
+												<li><a href="layout.jsp?refer=/assesment/listbkp.jsp"><%=messages.getText("generic.backedup")%></a></li>
+											</ul>
+										</li>
 										<li><a href=""><%=messages.getText("generic.data.webinar")%></a>
 											<ul>
 												<li><a href="layout.jsp?refer=/assesment/webinarList.jsp"><%=messages.getText("generic.messages.course")%></a></li>

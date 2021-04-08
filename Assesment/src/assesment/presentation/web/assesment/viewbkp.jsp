@@ -108,7 +108,7 @@
 		}else {
 			id = new Integer((String)session.getAttribute("assesment"));
 		}
-		
+		session.setAttribute("assessment", id);
 		AssesmentReportFacade report = sys.getAssesmentReportFacade();
 		if(id != null){
 			data = report.findAssesmentbkp(id,sys.getUserSessionData());
@@ -119,56 +119,7 @@
 <head/>
 
 	<body>
-		<form action="./layout.jsp?refer=/assesment/list.jsp" name='back' method="post">
-		</form>	
-		<form action="./layout.jsp?refer=/assesment/create.jsp" name='edit' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="type" 	value="edit" />
-		</form>	
-		<form action="./layout.jsp?refer=/module/create.jsp" name='module' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="type" 			value="create" />
-		</form>	
-		<form action="./layout.jsp?refer=/module/selectlist.jsp" name='import_module' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-		</form>	
-		<form action="./layout.jsp?refer=/assesment/feedback.jsp" name='create_feedback' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="type" 			value="create" />
-		</form>	
-		<form action="./layout.jsp?refer=/assesment/users.jsp" name='detail' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-		</form>	
-		<form action="./report.jsp" name='wrt' method="post" target="_blank">
-			<input type="hidden" name="id" 		value='<%=String.valueOf(id)%>' />
-		</form>	
-		<form action="./layout.jsp?refer=/assesment/feedback.jsp" name='modify_feedback' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="email"/>
-			<input type="hidden" name="type" 			value="edit" />
-		</form>	
-		<form action="./layout.jsp?refer=/assesment/tags.jsp" name='associate_tag' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-		</form>	
-		<html:form action="/DeleteFeedback" >
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="email"/>
-	  	</html:form>
-		<html:form action="/AssesmentDelete" >
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-	  	</html:form>
-		<html:form action="/ModuleDelete" >
-			<input type="hidden" name="module" 			/>
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="target" 			value="assesment" />
-	  	</html:form>
-		<form action="./layout.jsp?refer=/module/changeOrder.jsp" name='order' method="post">
-			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
-		</form>	
-		<html:form action="/DeleteAssesmentTag">
-			<html:hidden property="assesment" value='<%=String.valueOf(id)%>' />
-			<html:hidden property="tags" />
-		</html:form>
+		
 		<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+messages.getText(data.getName())%>' />
 <%		if(data != null && data.isArchived()) {
 %>			<tr>
@@ -440,9 +391,7 @@
 									<table width="100%" border="0" cellpadding="0" cellspacing="0">
 										<tr class="line">
 											<td align="left">
-    											<a href='<%="./layout.jsp?refer=/module/view.jsp?module="+String.valueOf(module.getId())%>'>
-													<span style="color:#333333; font-size:18;"><%=" - "+messagesbkp.get(module.getKey())%><span>
-												</a>
+												<span style="color:#333333; font-size:18;"><%=" - "+messagesbkp.get(module.getKey())%><span>
 											</td>
 										</tr>
    										<tr>
@@ -474,8 +423,8 @@
 							    String linkHide = "javascript:hideQuestions('questionsResume"+String.valueOf(module.getId())+"','questionsDetail"+String.valueOf(module.getId())+"');";
 %>																	<tr class="line">
 																		<td align="left" width="70%">
-																			<a href='<%="./layout.jsp?refer=/question/view.jsp?question="+String.valueOf(question.getId())+"&target=assesment"%>' >
-																				<%="- "+question.getKey(messagesbkp)%>
+																			<a href='<%="./layout.jsp?refer=/question/viewbkp.jsp?question="+String.valueOf(question.getId())+"&target=assesment"%>' >
+																				<%="- "+messagesbkp.get(question.getKey())%>
 																			</a>
 																		</td>
 																		<td align="right" width="30%">
@@ -515,8 +464,8 @@
     								hide = false;
     								String linkHide = "javascript:hideQuestions('questionsResume"+String.valueOf(module.getId())+"','questionsDetail"+String.valueOf(module.getId())+"');";
 %>																		<td align="left" width="70%">
-																			<a href='<%="./layout.jsp?refer=/question/view.jsp?question="+String.valueOf(question.getId())+"&module=assesment"%>' >
-																				<%="   - "+question.getKey(messages)%>
+																			<a href='<%="./layout.jsp?refer=/question/viewbkp.jsp?question="+String.valueOf(question.getId())+"&module=assesment"%>' >
+																				<%="   - "+messagesbkp.get(question.getKey())%>
 																			</a>
 																		</td>
 																		<td align="right" width="30%">
@@ -528,8 +477,8 @@
 																		</td>
 <%								}else {	
 %>																		<td align="left" width="95%" colspan="2">
-																			<a href='<%="./layout.jsp?refer=/question/view.jsp?question="+String.valueOf(question.getId())+"&module=assesment"%>' >
-																				<%="   - "+question.getKey(messages)%>
+																			<a href='<%="./layout.jsp?refer=/question/viewbkp.jsp?question="+String.valueOf(question.getId())+"&module=assesment"%>' >
+																				<%="   - "+messagesbkp.get(question.getKey())%>
 																			</a>
 																		</td>
 <%								}
@@ -540,20 +489,7 @@
 														</td>
 													</tr>
 <%						}
-						if(data.getStatus().intValue() == AssesmentAttributes.EDITABLE) {
-%>		
-													<tr class="line">
-			    										<td align="right" colspan="3">
-			    											<a href='<%="./layout.jsp?refer=/module/selectlist2.jsp?module="+String.valueOf(module.getId())+"&target=assesment"%>'>
-				    											<input type=button class="input" value='<%=messages.getText("module.action.existingquestion")%>' />
-				    										</a>
-			    											<a href='<%="./layout.jsp?refer=/question/create.jsp?type=create&module="+String.valueOf(module.getId())+"&target=assesment"%>'>
-							    								<input type=button class="input" value='<%=messages.getText("module.action.newquestion")%>' />
-			    											</a>
-			   												<input type=button class="input" onclick='<%="javascript:confirmDeleteModule(document.forms['ModuleDeleteForm'],'"+messages.getText("module.delete.confirm")+"',"+String.valueOf(module.getId())+");"%>' value='<%=messages.getText("module.messages.delete")%>' />
-			    										</td>
-			    									</tr>
-<%					}
+
 %>												</table>
 											</td>
 										</tr>

@@ -36,6 +36,7 @@ import assesment.persistence.hibernate.HibernateAccess;
 import assesment.persistence.question.tables.GenericQuestion;
 import assesment.persistence.question.tables.PsiQuestion;
 import assesment.persistence.question.tables.Question;
+import assesment.persistence.question.tables.QuestionBKP;
 import assesment.persistence.question.tables.Video;
 import assesment.persistence.util.ExceptionHandler;
 import assesment.persistence.util.Util;
@@ -810,4 +811,32 @@ public abstract class QuestionReportBean implements SessionBean {
  		}
   		return userValues;
    	}
+   	
+    /**
+     * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator,systemaccess"
+     */
+    public QuestionData findQuestionBKP(Integer id, UserSessionData userSessionData,int type) throws Exception {
+        if (id == null) {
+            throw new InvalidDataException("findQuestionBKP","id = null");
+        }
+        if (userSessionData == null) {
+            throw new DeslogedException("findQuestionBKP","session = null");
+        }
+
+        Session session = null;
+        try {
+            session = HibernateAccess.currentSession();
+            if(type == QuestionData.NORMAL) {
+                QuestionBKP question = (QuestionBKP)session.load(QuestionBKP.class,id);
+                return question.getData();
+            }else {
+                GenericQuestion question = (GenericQuestion)session.load(GenericQuestion.class,id);
+                return question.getData();
+            }
+        } catch (Exception e) {
+            handler.getException(e,"findQuestionBKP",userSessionData.getFilter().getLoginName());
+        }
+        return null;
+    }
 }
