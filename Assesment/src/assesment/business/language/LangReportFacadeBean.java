@@ -7,6 +7,7 @@
 package assesment.business.language;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Locale;
 
 import javax.ejb.SessionBean;
@@ -111,41 +112,19 @@ public abstract class LangReportFacadeBean implements SessionBean {
         }
         return values;
     }
-	/**
-	 * @ejb.interface-method view-type = "remote"
-     * @ejb.permission role-name="systemaccess,resetpassword,administrator,accesscode,pepsico_candidatos,basf_assessment,clientreporter,cepareporter,webinar" 
-	 */
-	public Object[][] findAllMessagesbkp(Locale locale,UserSessionData userSessionData) throws Exception {
-		if(userSessionData==null){
-			throw new DeslogedException("findAllMessages","session = null");
-		}
-		try{
-			LangReportHome lngReportHome=LangReportUtil.getHome();
-            LangReport languageReport=lngReportHome.create();
-			return languageReport.findMessagesbkp(locale);
-		} catch(Exception e){
-            handler.handleException("findAllMessagesbkp",e);
-		}
-        return null;
-	}
-	
+  
     /**
-     * @ejb.permission role-name="administrator,accesscode" 
+     * @ejb.permission role-name="systemaccess,administrator,accesscode" 
      * @ejb.interface-method view-type = "remote"
      */
-    public String[] findTextsbkp(String key,UserSessionData userSessionData) throws Exception {
-        if(userSessionData==null){
-            throw new DeslogedException("findTextsbkp","session = null");
-        }
-        String values[] = new String[3]; 
+    public HashMap<String, String> findAssessmentBKPTexts(Integer assessment, UserSessionData userSessionData) throws Exception {
         try{
             LangReport languageReport=LangReportUtil.getHome().create();
-            return languageReport.findTextsbkp(key,userSessionData);
+            return languageReport.findAssessmentBKPTexts(assessment, userSessionData);
         }catch (Exception e) {
-            handler.handleException("findTextsbkp",e);
+            handler.handleException("findAssessmentBKPTexts",e);
         }
-        return values;
+        return new HashMap<String, String>();
     }
-  
-   
+
 }

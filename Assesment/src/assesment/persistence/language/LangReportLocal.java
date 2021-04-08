@@ -16,6 +16,4 @@ public interface LangReportLocal
 
    public java.util.HashMap findAllNativeMessages(  ) throws java.lang.Exception;
 
-   public java.lang.Object[][] findMessagesbkp( java.util.Locale locale ) throws java.lang.Exception;
-
 }

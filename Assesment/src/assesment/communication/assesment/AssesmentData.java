@@ -244,6 +244,7 @@ public class AssesmentData extends AssesmentAttributes {
 
 	public static final int SAFEFLEET_ACADEMY_KMS = 1383;
 	public static final int SAFEFLEET_ACADEMY_EVENTS = 1386;
+	public static final int SAFEFLEET_ACADEMY_HISTORY = 1391;
 	public static final int SAFEFLEET_ACADEMY_COLLABORATOR = 1631;
 	public static final int SAFEFLEET_ACADEMY_DRIVERDETRAN = 1625;
 	public static final int SAFEFLEET_ACADEMY_COLLABORATORDETRAN = 1626;
@@ -258,6 +259,7 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int ABBOTT_NEWDRIVERS = 1707;
 	public static final int ABBEVIE_LATAM = 1712;
 	public static final int GDC = 1711;
+
 
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;

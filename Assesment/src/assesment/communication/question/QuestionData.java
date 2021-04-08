@@ -6,12 +6,12 @@ package assesment.communication.question;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 import assesment.communication.language.Text;
-import assesment.communication.language.TextBKP;
 
 public class QuestionData implements Comparable {
 
@@ -263,14 +263,14 @@ public class QuestionData implements Comparable {
         return messages.getText(key);
     }
     
-    public String getKey(TextBKP messages) {
+    public String getKey(HashMap<String, String> messages) {
     	if(type.intValue() == QuestionData.YOU_TUBE_VIDEO) {
     		return "YouTube Video";
     	}
     	if(type.intValue() == QuestionData.VIDEO) {
     		return "Video";
     	}
-        return messages.getText(key);
+        return messages.get(key);
     }
 
 	public static boolean isFirstNameQuestion(int questionId) {

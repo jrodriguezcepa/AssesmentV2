@@ -94,7 +94,6 @@ public class AssesmentAccess {
 	private UserSessionData userSessionData;
 	
 	private Text text;
-	private TextBKP textbkp;
 
 	private Object value;
 	
@@ -667,35 +666,6 @@ public class AssesmentAccess {
 	public boolean isTelematics() {
 		int id = (hasAssessment()) ? userSessionData.getFilter().getAssesment().intValue() : 0;
 		return (id == AssesmentData.REPORTE_ACCIDENTE || id == AssesmentData.COACHING_TELEMATICS_1 || id == AssesmentData.COACHING_TELEMATICS_2 || id == AssesmentData.COACHING_TELEMATICS_3 || id == AssesmentData.COACHING_TELEMATICS_4 || id == AssesmentData.COACHING_TELEMATICS_5);
-	}
-	/**
-	 * 
-	 * @throws DeslogedException
-	 * @throws InvalidDataException
-	 * @throws RemoteException
-	 * @throws CommunicationProblemException
-	 * @throws NamingException
-	 * @throws CreateException
-	 */
-	public void loadTextBKP() throws DeslogedException, InvalidDataException,RemoteException,
-	   CommunicationProblemException, NamingException, CreateException {
-	    long start = System.currentTimeMillis();
-	    if(userSessionData.getLenguage().equals("vt") || userSessionData.getLenguage().equals("in") || userSessionData.getLenguage().equals("id") || userSessionData.getLenguage().equals("ph") || userSessionData.getLenguage().equals("pk")) {
-			text = new Text_vt(userSessionData.getLenguage());
-			text.setContents(TextContainer.getInstance().getTextsbkp("en",this,userSessionData));
-	    }else {
-			textbkp = new TextBKP();
-			textbkp.setContents(TextContainer.getInstance().getTextsbkp(userSessionData.getLenguage(),this,userSessionData));
-	    }
-		System.out.println("-------->>>>> "+String.valueOf(System.currentTimeMillis()-start));
-	}
-
-	public TextBKP getTextbkp() {
-		return textbkp;
-	}
-
-	public void setTextbkp(TextBKP textbkp) {
-		this.textbkp = textbkp;
 	}
 	
 

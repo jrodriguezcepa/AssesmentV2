@@ -27,10 +27,8 @@ public interface LangReport
 
    public java.lang.String[] getCompleteText( java.lang.String key,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-   
-   public java.lang.Object[][] findMessagesbkp( java.util.Locale locale )
-		      throws java.lang.Exception, java.rmi.RemoteException;
-   
-   public java.lang.String[] findTextsbkp( java.lang.String key,assesment.communication.administration.user.UserSessionData userSessionData )
-		      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public java.util.HashMap findAssessmentBKPTexts( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

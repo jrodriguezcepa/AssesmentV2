@@ -180,7 +180,7 @@
 								color = "card badge-orange";
 							} else if(map.containsKey(assessment.getId())) {
 								if(map.get(assessment.getId()) != null) {
-									if((assessment.getId() == AssesmentData.MONDELEZ_DA || assessment.getId() == AssesmentData.MONDELEZ_DA_V2) && (gId == GroupData.MONDELEZ_LIDERES || gId == GroupData.MONDELEZ_PROVISIONALDRIVERS || gId == GroupData.MONDELEZ_NEWDRIVERS)) {
+									if((group.getId().equals(GroupData.GRUPO_MODELO) && assessment.getId() != AssesmentData.GRUPO_MODELO_FOTO) || ((assessment.getId() == AssesmentData.MONDELEZ_DA || assessment.getId() == AssesmentData.MONDELEZ_DA_V2) && (gId == GroupData.MONDELEZ_LIDERES || gId == GroupData.MONDELEZ_PROVISIONALDRIVERS || gId == GroupData.MONDELEZ_NEWDRIVERS))) {
 										boolean repeat = !sys.getUserReportFacade().isResultGreen(userData.getLoginName(), assessment.getId(), userSessionData);
 										if(repeat) {
 											repeat = sys.getUserReportFacade().getFailedAssesments(userSessionData.getFilter().getLoginName(), assessment.getId(), userSessionData) == 0;

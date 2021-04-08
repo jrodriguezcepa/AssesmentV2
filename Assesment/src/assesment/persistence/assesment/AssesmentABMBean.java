@@ -822,7 +822,7 @@ public abstract class AssesmentABMBean implements SessionBean {
 
            Assesment assessment = (Assesment) session.load(Assesment.class, assessmentId);
            AssesmentBKP assessmentBKP=new AssesmentBKP(assessment);
-           bkpText(assessment.getName());
+           bkpText(assessment.getName(),assessmentId);
            
            HashMap<Integer, AnswerBKP> answers = new HashMap<Integer, AnswerBKP>();
            //respaldo de modules
@@ -830,14 +830,14 @@ public abstract class AssesmentABMBean implements SessionBean {
 	       while (it.hasNext()) {
 	    	   Module module=(Module)it.next();
 	    	   ModuleBKP moduleBKP=new ModuleBKP(module, assessmentBKP);
-	           bkpText(module.getKey());
+	           bkpText(module.getKey(),assessmentId);
 	            
 	           //respaldo questions
 		       Iterator itQ=module.getQuestionSet().iterator();
 		       while (itQ.hasNext()) {
 		    	   Question question=(Question)itQ.next();
 		    	   QuestionBKP questionBKP=new QuestionBKP(question, moduleBKP);
-		           bkpText(question.getKey());
+		           bkpText(question.getKey(),assessmentId);
 
 		           //respaldo answers
 			       Iterator itA=question.getAnswerSet().iterator();
@@ -845,7 +845,7 @@ public abstract class AssesmentABMBean implements SessionBean {
 			    	   Answer answer=(Answer)itA.next();
 			    	   AnswerBKP answerBKP=new AnswerBKP(answer, questionBKP);
 			    	   answers.put(answerBKP.getId(), answerBKP);
-			           bkpText(answer.getKey());
+			           bkpText(answer.getKey(),assessmentId);
 
 			           questionBKP.addAnswer(answerBKP);
 			       }
@@ -861,7 +861,6 @@ public abstract class AssesmentABMBean implements SessionBean {
            Query q1 = session.createQuery("SELECT ua FROM UserAssesment ua WHERE ua.pk.assesment.id = "+assessmentId);
            Iterator itU = q1.iterate();
            while(itU.hasNext()) {
-        	   Collection<String> mo = new LinkedList<String>();
           		UserAssesment ua= (UserAssesment)itU.next();
           		UserAssesmentBKP uabkp =new UserAssesmentBKP(ua, assessmentBKP);
           		
@@ -893,12 +892,7 @@ public abstract class AssesmentABMBean implements SessionBean {
           		
           		session.save(uabkp);
           		
-                Iterator<String> itMo = mo.iterator();
-                while(itMo.hasNext()) {
-    				Query q = session.createSQLQuery(itMo.next());
-                    q.executeUpdate();
-                }
-
+               
           		session.delete(ua);
           	}
 
@@ -908,14 +902,14 @@ public abstract class AssesmentABMBean implements SessionBean {
        }
    }
    
-   private void bkpText(String key) throws Exception {
+   private void bkpText(String key, Integer assessment) throws Exception {
        Session session = HibernateAccess.currentSession();
 	   Query q = session.createQuery("SELECT gm FROM GeneralMessage gm WHERE gm.primaryKey.labelKey = '"+key+"'");
 	   Iterator it = q.iterate();
 	   while(it.hasNext()) {
 		   GeneralMessage txt = (GeneralMessage)it.next();
            GeneralMessageBKP txtBKP=new GeneralMessageBKP(txt);
-           System.out.println(txtBKP);
+           txtBKP.setAssessment(assessment);
            session.save(txtBKP);
            session.delete(txt);
        }

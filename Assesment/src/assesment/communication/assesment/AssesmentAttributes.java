@@ -405,7 +405,8 @@ public class AssesmentAttributes implements Comparable<AssesmentAttributes> {
 	public String getAssessmentLink(UserData user) {
 		if((id.equals(AssesmentData.SAFEFLEET_ACADEMY_KMS) || id.equals(AssesmentData.SAFEFLEET_ACADEMY_EVENTS)
 				|| id.equals(AssesmentData.SAFEFLEET_ACADEMY_COLLABORATOR) || id.equals(AssesmentData.SAFEFLEET_ACADEMY_DRIVERDETRAN) 
-				|| id.equals(AssesmentData.SAFEFLEET_ACADEMY_COLLABORATORDETRAN)) && user.getDatacenter() != null) {
+				|| id.equals(AssesmentData.SAFEFLEET_ACADEMY_COLLABORATORDETRAN) || id.equals(AssesmentData.SAFEFLEET_ACADEMY_HISTORY)) 
+				&& user.getDatacenter() != null) {
         	Integer driver = user.getDatacenter(); 
         	String hash = new MD5().encriptar("jjacademy_"+driver);
         	int type = -1;
@@ -424,6 +425,9 @@ public class AssesmentAttributes implements Comparable<AssesmentAttributes> {
 	        		break;
 	        	case AssesmentData.	SAFEFLEET_ACADEMY_COLLABORATORDETRAN:
 	        		type = 5;
+	        		break;
+	        	case AssesmentData.	SAFEFLEET_ACADEMY_HISTORY:
+	        		type = 6;
 	        		break;
         	}
         	return "https://fdmpro.cepasafedrive.com/datacenter/home.jsp?jj=jjacademy&hash="+hash+"&driver="+driver+"&type="+type;

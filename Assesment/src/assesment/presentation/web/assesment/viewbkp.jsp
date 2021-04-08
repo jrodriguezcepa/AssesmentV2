@@ -86,12 +86,10 @@
 <%!	AssesmentData data;
    	AssesmentAccess sys; 
    	Text messages;
-   	TextBKP messagesbkp;
 
 %>
 <%
 	sys = (AssesmentAccess)session.getAttribute("AssesmentAccess"); 
-	sys.loadTextBKP();
 	String check = Util.checkPermission(sys,SecurityConstants.ADMINISTRATOR);
 	if(check!=null) {
 		response.sendRedirect(request.getContextPath()+check);
@@ -103,7 +101,6 @@
 		dispatcher.include(request,response);
 		
 		messages=sys.getText();
-		messagesbkp=sys.getTextbkp();
 
 		Integer id = null;
 		if(!Util.empty(request.getParameter("assesment"))) {
@@ -115,8 +112,8 @@
 		AssesmentReportFacade report = sys.getAssesmentReportFacade();
 		if(id != null){
 			data = report.findAssesmentbkp(id,sys.getUserSessionData());
+			HashMap<String, String> messagesbkp = sys.getLanguageReportFacade().findAssessmentBKPTexts(id, sys.getUserSessionData());
 			String corporationName = data.getCorporationName();
-			String[] texts = sys.getLanguageReportFacade().findTextsbkp(data.getName(),sys.getUserSessionData());
 %>
 
 <head/>
@@ -183,21 +180,9 @@
 					<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.assesment.data")%>' />
     				<table width="100%" border="0" align="center" cellpadding="5" cellspacing="5">
 						<tr class="line">
-							<td align="left"><%=messages.getText("assesment.data.name")+" ("+messages.getText("es")+")"%></td>
+							<td align="left"><%=messages.getText("assesment.data.name")%></td>
 							<td align="right">
-						   		<%=texts[0]%>              
-							</td>
-				        </tr>
-						<tr class="line">
-							<td align="left"><%=messages.getText("assesment.data.name")+" ("+messages.getText("en")+")"%></td>
-							<td align="right">
-						   		<%=texts[1]%>              
-							</td>
-				        </tr>
-						<tr class="line">
-							<td align="left"><%=messages.getText("assesment.data.name")+" ("+messages.getText("pt")+")"%></td>
-							<td align="right">
-						   		<%=texts[2]%>              
+						   		<%=messagesbkp.get(data.getName())%>              
 							</td>
 				        </tr>
 						<tr class="line">
@@ -456,7 +441,7 @@
 										<tr class="line">
 											<td align="left">
     											<a href='<%="./layout.jsp?refer=/module/view.jsp?module="+String.valueOf(module.getId())%>'>
-													<span style="color:#333333; font-size:18;"><%=" - "+messagesbkp.getText(module.getKey())%><span>
+													<span style="color:#333333; font-size:18;"><%=" - "+messagesbkp.get(module.getKey())%><span>
 												</a>
 											</td>
 										</tr>
