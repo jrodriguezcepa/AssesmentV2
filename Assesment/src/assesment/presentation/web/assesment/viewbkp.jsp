@@ -119,6 +119,9 @@
 <head/>
 
 	<body>
+		<form action="./layout.jsp?refer=/assesment/usersbkp.jsp" name='detail' method="post">
+			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
+		</form>	
 		
 		<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+messages.getText(data.getName())%>' />
 <%		if(data != null && data.isArchived()) {
@@ -522,6 +525,12 @@
     					<tr class="line">
     						<td align="left"><%=messages.getText("report.users.total.finalized")%></td>
     						<td align="right"><%=dataSource.getAll()%></td>
+    					</tr>	
+     					<tr class="line">
+    						<td align="right" colspan="2">
+    							<input type="button" class="input" value='WRT' onclick="document.forms['wrt'].submit();" />
+    							<input type="button" class="input" value='<%=messages.getText("report.users.total.detail")%>' onclick="document.forms['detail'].submit();" />
+    						</td>
     					</tr>			    					
 <%		}
 %>			    	</table>

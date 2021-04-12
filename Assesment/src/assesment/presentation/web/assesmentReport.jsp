@@ -346,6 +346,13 @@
 		
 		String refresh="assesmentReport.jsp?id="+assesmentId;
 		String report="reportAssesment.jsp?id="+assesmentId;
+		String rec0="util/mutual/recommendation0_"+language+"/index.html";
+		String rec1="util/mutual/recommendation1_"+language+"/index.html";
+		String rec2="util/mutual/recommendation2_"+language+"/index.html";
+		String rec3="util/mutual/recommendation3_"+language+"/index.html";
+		String rec4="util/mutual/recommendation4_"+language+"/index.html";
+		String rec5="util/mutual/recommendation5_"+language+"/index.html";
+
 
 		boolean odd=true;
 		CountryConstants countries= new CountryConstants();
@@ -472,7 +479,7 @@
 <%		}else{ 
 %>			<td style="text-align: center;"><%=messages.getText("generic.uncompleted")%></td>
 <%		}
-		if(assesment.getId()==AssesmentData.MUTUAL_DA||assesment.getId()==AssesmentData.ABBOTT_NEWDRIVERS){
+		if(assesment.getId()==AssesmentData.MUTUAL_DA||assesment.getId()==AssesmentData.ABBOTT_NEWDRIVERS||assesment.getId()==AssesmentData.SUMITOMO){
 		if(result.getModule4Completed()){ 	
 %>			<td style="<%=result.getColorM4()%>;text-align: center;"><%=String.valueOf(result.getModule4())%>%</td>
 <%		}else{ 
@@ -505,7 +512,7 @@
 <%      }else{ 
 %>			<td style="text-align: center;"><%= String.valueOf(result.getRanking())%></td>
 <%		}
-	}else if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
+	}else if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA || Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO){
 		if(!result.getBehaviourCompleted()|| !result.getModule1Completed() || !result.getModule2Completed()||!result.getModule3Completed()||
 		!result.getModule4Completed()){ 	
 %>			<td style="text-align: center;"><%=messages.getText("generic.uncompleted")%></td>
@@ -531,18 +538,18 @@
 				<th><span class="thText"><%=messages.getText("report.users.name")%></span></th>
 				<th><span class="thText"><%=messages.getText("user.data.lastname")%></span></th>
 				<th><span class="thText"><%=messages.getText("generic.data.username")%></span></th>
-<% 		if(cedi==null && assesment.getId()!=AssesmentData.ABBEVIE_LATAM){
+<% 		if(cedi==null && assesment.getId()!=AssesmentData.ABBEVIE_LATAM&&  assesment.getId()!=AssesmentData.SUMITOMO){
 %>				<th><span class="thText"><%=messages.getText("generic.data.company")%></span></th>
 <% 		}
 %>
 <%  		Iterator iter=assesment.getModuleIterator();
 			while (iter.hasNext()){
 				ModuleData mod=(ModuleData)iter.next();
-%>				<th><div style="display:flex;align-items: center;"><a target="_blank"  href="util/mutual/recommendation0/index.html"  ><img src="images/mutual_info.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment"+assesmentId+".module"+mod.getId()+".name")%> <%=messages.getText("generic.data.recommendation")%></span></div></th>
+%>				<th><div style="display:flex;align-items: center;"><a target="_blank"  href='<%=rec0%>'  ><img src="images/mutual_info.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment"+assesmentId+".module"+mod.getId()+".name")%> <%=messages.getText("generic.data.recommendation")%></span></div></th>
 <% 			}
 %>			
 
-<%		 %><th><div style="display:flex;align-items: center;"><a  target="_blank" href="util/mutual/recommendation0/index.html" ><img src="images/mutual_info.png" alt="info"></a><span class="thText"><%=messages.getText("assessment.psi")%> <%=messages.getText("generic.data.recommendation")%></span></div></th>
+<%		 %><th><div style="display:flex;align-items: center;"><a  target="_blank" href='<%=rec0 %>' ><img src="images/mutual_info.png" alt="info"></a><span class="thText"><%=messages.getText("assessment.psi")%> <%=messages.getText("generic.data.recommendation")%></span></div></th>
 				
 		</tr>	
 <%    	it = results.iterator();
@@ -555,7 +562,7 @@
 			<td><%=result.getFirstName().toUpperCase()%></td>
 			<td><%=result.getLastName().toUpperCase()%></td>
 			<td><%=result.getLogin().toLowerCase()%></td>
-<% 		if(cedi==null  && assesment.getId()!=AssesmentData.ABBEVIE_LATAM){
+<% 		if(cedi==null  && assesment.getId()!=AssesmentData.ABBEVIE_LATAM && assesment.getId()!=AssesmentData.SUMITOMO){
 %>			<td><%=result.getLocation()%></td>
 <% 		}
 %>
@@ -564,14 +571,13 @@
 <%		}else if(result.getMod1Recommendation().equals("question25099.answer83751.text")){
 %>			<td style="color: #228B22;"><%=messages.getText(result.getMod1Recommendation())%></td>
 <%		}else{
-%>			<td style="color: #da2a2a;"><a target="_blank" href="util/mutual/recommendation1/index.html"><%=messages.getText(result.getMod1Recommendation())%></td>
+%>			<td style="color: #da2a2a;"><a target="_blank" href='<%=rec1%>'><%=messages.getText(result.getMod1Recommendation())%></td>
 			
 <%		}
-	String rec2="util/mutual/recommendation2/index.html";
-	String rec3="util/mutual/recommendation3/index.html";
-	if(assesment.getId()==AssesmentData.ABBEVIE_LATAM){
+
+	if(assesment.getId()==AssesmentData.ABBEVIE_LATAM||assesment.getId()==AssesmentData.SUMITOMO){
 		rec3=rec2;
-		rec2="util/abbevie/recommendation2/index.html";
+		rec2="util/abbevie/recommendation2_"+language+"/index.html";
 	}
 %>	
 <%		if(!result.getModule2Completed()){
@@ -590,14 +596,14 @@
 %>			<td style="color: #da2a2a;" ><a target="_blank" href='<%=rec3%>'><%=messages.getText(result.getMod3Recommendation())%></td>
 			
 <%		}
-	if(assesment.getId()==AssesmentData.MUTUAL_DA){
+	if(assesment.getId()==AssesmentData.MUTUAL_DA ||assesment.getId()==AssesmentData.SUMITOMO){
 %>
 <%		if(!result.getModule4Completed()){
 %>			<td><%=messages.getText("generic.uncompleted")%></td>
 <%		}else if(result.getMod4Recommendation().equals("question25099.answer83751.text")){
 %>			<td style="color: #228B22;"><%=messages.getText(result.getMod4Recommendation())%></td>
 <%		}else{
-%>			<td style="color: #da2a2a;"><a target="_blank" href="util/mutual/recommendation4/index.html"><%=messages.getText(result.getMod4Recommendation())%></td>
+%>			<td style="color: #da2a2a;"><a target="_blank" href='<%=rec4%>'><%=messages.getText(result.getMod4Recommendation())%></td>
 			
 <%		}
 	}%>
@@ -606,7 +612,7 @@
 <%		}else if(result.getPsiColor().equals("background-color: rgb(30, 209, 105);")){
 %>			<td style="color: #228B22;"><%=messages.getText("question25099.answer83751.text")%></td>
 <%		}else{
-%>			<td style="color: #da2a2a;"><a target="_blank" href="util/mutual/recommendation5/index.html"><%=messages.getText("generic.data.apply")%></td>
+%>			<td style="color: #da2a2a;"><a target="_blank" href='<%=rec5%>'><%=messages.getText("generic.data.apply")%></td>
 			
 <%		}%>
 			

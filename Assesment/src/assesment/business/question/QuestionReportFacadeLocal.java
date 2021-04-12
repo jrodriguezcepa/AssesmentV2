@@ -40,4 +40,6 @@ public interface QuestionReportFacadeLocal
 
    public assesment.communication.question.QuestionData findQuestionBKP( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData,int type ) throws java.lang.Exception;
 
+   public java.lang.String[][] getCompleteAnswersBKP( java.lang.Integer assessment,java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

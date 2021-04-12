@@ -61,6 +61,8 @@
 			response.sendRedirect("./assesmentReport.jsp?id=1613");		
 		}else if(Integer.parseInt(assessmentId) == AssesmentData.ABBOTT_NEWDRIVERS) {
 			response.sendRedirect("./assesmentReport.jsp?id=1707");		
+		}else if(Integer.parseInt(assessmentId) == AssesmentData.SUMITOMO) {
+			response.sendRedirect("./assesmentReport.jsp?id=1728");		
 		}
 		else {
 			UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);

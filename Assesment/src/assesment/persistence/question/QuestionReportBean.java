@@ -839,4 +839,48 @@ public abstract class QuestionReportBean implements SessionBean {
         }
         return null;
     }
+    
+    /**
+     * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator,systemaccess"
+     */
+   	public String[][] getCompleteAnswersBKP(Integer assessment, String login, UserSessionData userSessionData) throws Exception {
+  	   try {
+   			String sql = "select q.key as question, ad.text, ad.date, a.key as answer" +
+   					" from useranswersbkp ua " +
+   					"join answerdatabkp ad on ua.answer = ad.id " +
+   					"join questionsbkp q on q.id = ad.question " +
+   					"join modulesbkp m on m.id = q.module " +
+   					"left join answersbkp a on a.id = ad.answer " +
+   					"where ua.assesment = "+assessment.toString()+" and loginname = '"+login+"'" +
+   					"order by moduleorder, questionorder";
+ 	        Session session = HibernateAccess.currentSession();
+ 	        SQLQuery q = session.createSQLQuery(sql);
+ 	        q.addScalar("question",Hibernate.STRING);
+ 	        q.addScalar("text",Hibernate.STRING);
+ 	        q.addScalar("date",Hibernate.DATE);
+ 	        q.addScalar("answer",Hibernate.STRING);
+ 	        
+ 	        Collection set = q.list();
+ 	        String[][] values = new String[set.size()][2];
+ 	        int index = 0;
+ 	        Iterator it = set.iterator();
+ 	        while(it.hasNext()) {
+ 	        	Object[] data = (Object[])it.next();
+ 	        	values[index][0] = (String) data[0];
+ 	        	if(data[1] != null) {
+ 		        	values[index][1] = (String) data[1];
+ 	        	} else if(data[2] != null) {
+ 		        	values[index][1] = Util.formatDate((Date) data[2]);
+ 	        	} else {
+ 		        	values[index][1] = (String) data[3];
+ 	        	}
+ 	        	index++;
+ 	        }
+ 	        return values;
+ 		}catch (Exception e) {
+ 	        handler.getException(e,"getCompleteAnswersBKP",userSessionData.getFilter().getLoginName());
+ 		}
+  		return null;
+    	}
 }

@@ -41,27 +41,39 @@ public class ErrorReportDataSource implements JRDataSource {
 
     public Object getFieldValue(JRField field) throws JRException {
     	if(field.getName().equals("modulo")) {
+    		System.out.println("*");
+
     		return messages.getText(values[index-1][0]);
     	}
     	if(field.getName().equals("pregunta")) {
+    		System.out.println("**");
+
     		return messages.getText(values[index-1][1]);
     	}
     	if(field.getName().equals("error")) {
+    		System.out.println("***");
+
     		String txt = messages.getText(values[index-1][2]);
     		if(txt.length() > 150)
     			return null;
     		return messages.getText(values[index-1][2]);
     	}
     	if(field.getName().equals("errorL")) {
+    		System.out.println("****");
+
     		return messages.getText(values[index-1][2]);
     	}
     	if(field.getName().equals("correcta")) {
+    		System.out.println("*****");
+
     		String txt = messages.getText(values[index-1][3]);
     		if(txt.length() > 150)
     			return null;
     		return messages.getText(values[index-1][3]);
     	}
     	if(field.getName().equals("correctaL")) {
+    		System.out.println("******");
+
     		return messages.getText(values[index-1][3]);
     	}
     	return null;

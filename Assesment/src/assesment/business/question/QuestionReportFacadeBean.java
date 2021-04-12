@@ -415,4 +415,13 @@ public abstract class QuestionReportFacadeBean implements SessionBean {
 		}
 		return null;
 	}
+	
+	   /**
+	    * @ejb.interface-method 
+	    * @ejb.permission role-name = "administrator,systemaccess"
+	    */
+	  	public String[][] getCompleteAnswersBKP(Integer assessment, String login, UserSessionData userSessionData) throws Exception {
+	        return QuestionReportUtil.getHome().create().getCompleteAnswersBKP(assessment,login,userSessionData);
+	    }
+
 }

@@ -90,4 +90,6 @@ public interface AssesmentReportLocal
 
    public java.lang.Integer getAssesmentQuestionCountbkp( assesment.communication.assesment.AssesmentAttributes assesment,assesment.communication.administration.user.UserSessionData userSessionData,boolean all ) throws java.lang.Exception;
 
+   public java.util.Collection getAssessmentUsersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

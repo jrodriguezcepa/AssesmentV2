@@ -136,4 +136,6 @@ public interface AssesmentReportFacade
    public assesment.communication.assesment.AssesmentData findAssesmentbkp( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getAssessmentUsersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
+	   throws java.lang.Exception, java.rmi.RemoteException;
 }

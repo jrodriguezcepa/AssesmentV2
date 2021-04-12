@@ -56,6 +56,8 @@ public class DownloadMutualReportAction  extends AbstractAction {
 		        response.setHeader("Content-Disposition", "inline; filename=ReportAbbottNewdrivers.xls");
 	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM) {
 		        response.setHeader("Content-Disposition", "inline; filename=ReportAbbevieLatam.xls");
+	        }else if(Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO) {
+		        response.setHeader("Content-Disposition", "inline; filename=ReportSUMITOMO.xls");
 	        }
 	        WritableWorkbook w = Workbook.createWorkbook(response.getOutputStream());
 	        WritableSheet s = w.createSheet("Mutual de Seguridad", 0);
@@ -98,14 +100,29 @@ public class DownloadMutualReportAction  extends AbstractAction {
 				  length=9;
 
 	        }
+	        else if(Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO) {
+	        	  s.addCell(new Label(4,0,messages.getText("assesment1728.module4511.name")));
+			      s.addCell(new Label(5,0,messages.getText("assesment1728.module4512.name")));
+			      s.addCell(new Label(6,0,messages.getText("assesment1728.module4513.name")));
+			      s.addCell(new Label(7,0,messages.getText("assesment1728.module4514.name")));
+			      s.addCell(new Label(8,0,messages.getText("assessment.psi")));
+			      s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
+			      s.addCell(new Label(10,0,messages.getText("assesment1728.module4511.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(11,0,messages.getText("assesment1728.module4512.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(12,0,messages.getText("assesment1728.module4513.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(13,0,messages.getText("assesment1728.module4514.name")+messages.getText("generic.data.recommendation")));
+			      length=13;
+	        }
 
 	    	Iterator it = r.iterator();
 
 			int index = 1;
 			while(it.hasNext()) {
 				UserMutualReportData result = (UserMutualReportData)it.next();
+				boolean mutual=Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA;
+				if(Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO) mutual=true;
 				for(int i = 0; i <= length; i++) {
-					s.addCell(new Label(i,index, result.getValue(i,messages, Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA, Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM)));
+					s.addCell(new Label(i,index, result.getValue(i,messages, mutual , Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM)));
 				}
 				index++;
 			}

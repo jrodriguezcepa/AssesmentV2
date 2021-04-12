@@ -1681,7 +1681,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 				Integer lengthRes=(size*2)+7;
 			
 				String queryStr="";
-				if(cedi!=null ||assesment==AssesmentData.ABBOTT_NEWDRIVERS ||assesment==AssesmentData.ABBEVIE_LATAM) {
+				if(cedi!=null ||assesment==AssesmentData.ABBOTT_NEWDRIVERS ||assesment==AssesmentData.ABBEVIE_LATAM||assesment==AssesmentData.SUMITOMO) {
 					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
@@ -1733,7 +1733,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 									noResult=false;
 								}
 							}
-							if(!noResult&&assesment==AssesmentData.MUTUAL_DA) {
+							if(!noResult&&(assesment==AssesmentData.MUTUAL_DA||assesment==AssesmentData.SUMITOMO)) {
 								result.add(new UserMutualReportData(ret));	
 							}else if(!noResult&&assesment==AssesmentData.ABBOTT_NEWDRIVERS) {
 								result.add(new UserMutualReportData(ret, true));	
@@ -1950,4 +1950,70 @@ public abstract class AssesmentReportBean implements SessionBean {
 	        }
 	        return null;
 	    }
+	    
+	    /**
+	     * @ejb.interface-method
+	     * @ejb.permission role-name = "administrator"
+	     */
+	    public Collection<AssessmentUserData> getAssessmentUsersBKP (Integer assessment, UserSessionData userSessionData) throws Exception {
+	    	LinkedList<AssessmentUserData> list = new LinkedList<AssessmentUserData>();
+	    	try {
+	            Session session = HibernateAccess.currentSession();
+	            SQLQuery query = session.createSQLQuery("SELECT firstname, lastname, u.loginname, u.email, u.extraData3, enddate IS NOT NULL AS finished, psitestid IS NOT NULL AS psi, sr.id, sr.sended, sr.certificate, ua.assesment, uar.correct, uar.incorrect " +
+	            		"FROM userassesmentsbkp ua " +
+	            		"LEFT JOIN sendedreports sr ON sr.login = ua.loginname AND sr.assessment = ua.assesment " +
+	            		"LEFT JOIN userassesmentresults uar on uar.login = ua.loginname AND uar.assesment = ua.assesment " + 
+	            		"JOIN users u ON u.loginname = ua.loginname " +
+	            		"WHERE ua.assesment = "+assessment);
+	            query.addScalar("firstname", Hibernate.STRING);
+	            query.addScalar("lastname", Hibernate.STRING);
+	            query.addScalar("loginname", Hibernate.STRING);
+	            query.addScalar("email", Hibernate.STRING);
+	            query.addScalar("extraData3", Hibernate.STRING);
+	            query.addScalar("finished", Hibernate.BOOLEAN);
+	            query.addScalar("psi", Hibernate.BOOLEAN);
+	            query.addScalar("id", Hibernate.INTEGER);
+	            query.addScalar("sended", Hibernate.BOOLEAN);
+	            query.addScalar("certificate", Hibernate.BOOLEAN);
+	            query.addScalar("assesment", Hibernate.INTEGER);
+	            query.addScalar("correct", Hibernate.INTEGER);
+	            query.addScalar("incorrect", Hibernate.INTEGER);
+	            
+	            HashMap<String, AssessmentUserData> values = new HashMap<String, AssessmentUserData>();
+	            Iterator it = query.list().iterator();
+	            while(it.hasNext()) {
+	            	Object[] data = (Object[])it.next();
+	            	values.put((String)data[2], new AssessmentUserData(data));
+	            }
+	            
+	            query = session.createSQLQuery("SELECT loginname, COUNT(*) AS c FROM useranswersbkp WHERE assesment = "+assessment+" GROUP BY loginname").addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
+	            it = query.list().iterator();
+	            while(it.hasNext()) {
+	            	Object[] data = (Object[])it.next();
+	            	if(values.containsKey(data[0])) {
+	            		values.get(data[0]).setAnswers((Integer) data[1]);
+	            	}
+	            }
+	            
+	            query = session.createSQLQuery("SELECT loginname, count(*) AS c FROM useranswersbkp ua " +
+	            		"JOIN answerdatabkp ad ON ad.id = ua.answer " +
+	            		"JOIN questionsbkp q ON ad.question = q.id " +
+	            		"JOIN answersbkp a ON a.id = ad.answer " +
+	            		"WHERE assesment = "+assessment+" AND q.testtype = 1 AND a.type = 0 " +
+	            		"GROUP BY loginname").addScalar("loginname", Hibernate.STRING).addScalar("c", Hibernate.INTEGER);
+	            it = query.list().iterator();
+	            while(it.hasNext()) {
+	            	Object[] data = (Object[])it.next();
+	            	if(values.containsKey(data[0])) {
+	            		values.get(data[0]).setCorrect((Integer) data[1]);
+	            	}
+	            }
+
+	            list.addAll(values.values());
+	        } catch (Exception e) {
+	            handler.getException(e,"getAssessmentUsersBKP", userSessionData.getFilter().getLoginName());
+	        }
+	    	return list;
+	    }
+
 }

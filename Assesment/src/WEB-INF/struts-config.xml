@@ -546,6 +546,12 @@
 			<form-property name="login" type="java.lang.String" />
 			<form-property name="reportType" type="java.lang.String" />
 		</form-bean>		
+		
+		<form-bean name="DownloadResultReportBKPForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assessment" type="java.lang.String" />
+			<form-property name="login" type="java.lang.String" />
+			<form-property name="reportType" type="java.lang.String" />
+		</form-bean>	
 
 		<form-bean name="UploadFileForm" type="assesment.presentation.actions.user.UploadFileForm" />
 		
@@ -1283,6 +1289,10 @@
         <forward name="back" path="/layout.jsp?refer=/report/java.jsp"/>
 	</action>
 
+    <action path="/DownloadResultBKP" type="assesment.presentation.actions.report.DownloadResultReportBKPAction" name="DownloadResultReportBKPForm" scope="session">
+        <forward name="back" path="/index.jsp"/>
+	</action>
+	
     <action path="/UploadFile" type="assesment.presentation.actions.user.UploadFileAction" name="UploadFileForm" scope="session">
         <forward name="back" path="/uploadmodule.jsp"/>
 	</action>

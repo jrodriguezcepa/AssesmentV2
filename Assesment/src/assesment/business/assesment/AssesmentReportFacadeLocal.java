@@ -94,4 +94,6 @@ public interface AssesmentReportFacadeLocal
 
    public assesment.communication.assesment.AssesmentData findAssesmentbkp( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.Collection getAssessmentUsersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

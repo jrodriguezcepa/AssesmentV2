@@ -2258,6 +2258,34 @@
          </method-params>
       </method>
    </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReport</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getAssessmentUsersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getAssessmentUsersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
 
    <method-permission >
       <description><![CDATA[description not supported yet by ejbdoclet]]></description>
@@ -5214,6 +5242,38 @@
          </method-params>
       </method>
    </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>QuestionReport</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getCompleteAnswersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>QuestionReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getCompleteAnswersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
 
    <method-permission >
       <description><![CDATA[description not supported yet by ejbdoclet]]></description>
@@ -6093,6 +6153,38 @@
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
             <method-param>int</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>QuestionReportFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getCompleteAnswersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>QuestionReportFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getCompleteAnswersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
    </method-permission>
@@ -15549,6 +15641,34 @@
          <ejb-name>AssesmentReportFacade</ejb-name>
          <method-intf>Remote</method-intf>
          <method-name>findAssesmentbkp</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getAssessmentUsersBKP</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getAssessmentUsersBKP</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>

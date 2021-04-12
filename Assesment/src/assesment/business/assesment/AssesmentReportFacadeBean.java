@@ -1031,4 +1031,18 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	        return null;
 	    }
 	    
+	    /**
+	     * @ejb.interface-method
+	     * @ejb.permission role-name = "administrator"
+	     */
+	    public Collection<AssessmentUserData> getAssessmentUsersBKP (Integer assessment, UserSessionData userSessionData) throws Exception {
+	    	try {
+	    		return AssesmentReportUtil.getHome().create().getAssessmentUsersBKP(assessment, userSessionData);
+	    	} catch (Exception e) {
+	    		e.printStackTrace();
+	            handler.handleException("getAssessmentUsersBKP", e);
+			}
+	    	return new LinkedList<AssessmentUserData>();
+	    }
+	    
 }
