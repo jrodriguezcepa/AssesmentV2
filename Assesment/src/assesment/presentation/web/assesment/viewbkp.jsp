@@ -122,8 +122,12 @@
 		<form action="./layout.jsp?refer=/assesment/usersbkp.jsp" name='detail' method="post">
 			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
 		</form>	
+		<form action="./report.jsp" name='wrt' method="post" target="_blank">
+			<input type="hidden" name="id" 	value='<%=String.valueOf(id)%>' />
+			<input type="hidden" name="bkp" 	value='1' />
+		</form>	
 		
-		<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+messages.getText(data.getName())%>' />
+		<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+messagesbkp.get(data.getName())%>' />
 <%		if(data != null && data.isArchived()) {
 %>			<tr>
 				<td class="red" colspan="3"><%=messages.getText("messages.archivedassesment")%></td>

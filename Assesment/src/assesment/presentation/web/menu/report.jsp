@@ -40,6 +40,7 @@
 	boolean check = false;
 	String assessmentId = request.getParameter("id");
 	String groupId = request.getParameter("group");
+	String bkp = request.getParameter("bkp");
 	Collection c = new LinkedList();
 	if(userSessionData.getRole().equals(SecurityConstants.ADMINISTRATOR) || userSessionData.getRole().equals(SecurityConstants.CEPA_REPORTER)) {
 		check = true;
@@ -67,7 +68,12 @@
 		else {
 			UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 			AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
-			AssessmentReportData dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReport(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReport(new Integer(assessmentId),sys.getUserSessionData());
+			AssessmentReportData dataSource = null;
+			if(bkp!=null){
+				dataSource = assessmentReport.getAssessmentReportBKP(new Integer(assessmentId),sys.getUserSessionData());	
+			}else{
+				dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReport(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReport(new Integer(assessmentId),sys.getUserSessionData());	
+			}
 			sys.setValue(dataSource);
 		    AssesmentData assesment = dataSource.getAssessment();
 		    String logoName = "./flash/images/logo"+assesment.getCorporationId()+".png";

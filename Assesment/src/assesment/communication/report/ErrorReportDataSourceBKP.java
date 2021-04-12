@@ -8,24 +8,20 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRField;
 
-public class ErrorReportDataSource implements JRDataSource {
+public class ErrorReportDataSourceBKP implements JRDataSource {
 
     private String[][] values;
     private int index = 0;
     private int full;
-	private Text messages;
+	private HashMap messages;
     
-    public ErrorReportDataSource(String[][] values, Text messages) {
+    public ErrorReportDataSourceBKP(String[][] values, HashMap messages) {
     	this.values = values;
     	full = values.length;
     	this.messages = messages;
     }
     
-    public ErrorReportDataSource(String[][] values, HashMap messages) {
-    	this.values = values;
-    	full = values.length;
-    }
-    public ErrorReportDataSource(int modules) {
+    public ErrorReportDataSourceBKP(int modules) {
     	values = new String[modules][4];
     }
 
@@ -47,30 +43,31 @@ public class ErrorReportDataSource implements JRDataSource {
 
     public Object getFieldValue(JRField field) throws JRException {
     	if(field.getName().equals("modulo")) {
-    		return messages.getText(values[index-1][0]);
+    		return messages.get(values[index-1][0]);
     	}
     	if(field.getName().equals("pregunta")) {
-    		return messages.getText(values[index-1][1]);
+    		return messages.get(values[index-1][1]);
     	}
     	if(field.getName().equals("error")) {
-    		String txt = messages.getText(values[index-1][2]);
+    		String txt = (String)messages.get(values[index-1][2]);
     		if(txt.length() > 150)
     			return null;
-    		return messages.getText(values[index-1][2]);
+    		return messages.get(values[index-1][2]);
     	}
     	if(field.getName().equals("errorL")) {
-    		return messages.getText(values[index-1][2]);
+    		return messages.get(values[index-1][2]);
     	}
     	if(field.getName().equals("correcta")) {
-    		String txt = messages.getText(values[index-1][3]);
+    		String txt =(String) messages.get(values[index-1][3]);
     		if(txt.length() > 150)
     			return null;
-    		return messages.getText(values[index-1][3]);
+    		return messages.get(values[index-1][3]);
     	}
     	if(field.getName().equals("correctaL")) {
-    		return messages.getText(values[index-1][3]);
+    		return messages.get(values[index-1][3]);
     	}
     	return null;
     }
+
 
 }

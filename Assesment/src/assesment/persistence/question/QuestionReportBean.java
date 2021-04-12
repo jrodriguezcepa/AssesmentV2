@@ -883,4 +883,45 @@ public abstract class QuestionReportBean implements SessionBean {
  		}
   		return null;
     	}
+   	
+    /**
+     * @ejb.interface-method 
+     * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+     */
+    public Collection getQuestionReportBKP(Integer assessment, UserSessionData userSessionData) throws Exception {
+    	try {
+			String filter = "";
+			if(userSessionData.getFilter().getLoginName().startsWith("charla")) {
+				filter = " AND u.loginname IN (SELECT loginname FROM usersaccess WHERE passworddate > NOW() - INTERVAL '2 hour' AND loginname LIKE 'generate_es_%_"+assessment+"') ";
+			}
+			if(assessment.intValue() == AssesmentData.TIMAC_BRASIL || assessment.intValue() == AssesmentData.TIMAC_BRASIL_EBTWPLUS) {
+				filter = " AND u.firstname != 'DESLIGADO' ";
+			}
+            String sql = "select m.id AS mid,m.key AS mkey,m.moduleorder,q.id AS qid,q.key AS qkey,q.questionorder,a.type, count(*) AS count " +
+            		"from userassesmentsbkp ua " +
+            		"join users u on u.loginname = ua.loginname " +
+            		"join useranswersbkp uas on uas.loginname = ua.loginname " +
+            		"join answerdatabkp ad on ad.id = uas.answer " +
+            		"join questionsbkp q on ad.question = q.id " +
+            		"join answersbkp a on ad.answer = a.id " +
+            		"join modulesbkp m on m.id = q.module " +
+            		"where ua.assesment = "+assessment+" and uas.assesment = ua.assesment and ua.enddate is not null " + filter +
+            		"and q.testtype = "+QuestionData.TEST_QUESTION+
+            		" group by m.id,m.key,m.moduleorder,q.id,q.key,q.questionorder,a.type";
+            Session session = HibernateAccess.currentSession();
+            SQLQuery q = session.createSQLQuery(sql);
+            q.addScalar("mid",Hibernate.INTEGER);
+            q.addScalar("mkey",Hibernate.STRING);
+            q.addScalar("moduleorder",Hibernate.INTEGER);
+            q.addScalar("qid",Hibernate.INTEGER);
+            q.addScalar("qkey",Hibernate.STRING);
+            q.addScalar("questionorder",Hibernate.INTEGER);
+            q.addScalar("type",Hibernate.INTEGER);
+            q.addScalar("count",Hibernate.INTEGER);
+            return q.list();
+    	}catch (Exception e) {
+            handler.getException(e,"getQuestionReportBKP",userSessionData.getFilter().getLoginName());
+		}
+    	return null;
+    }
 }

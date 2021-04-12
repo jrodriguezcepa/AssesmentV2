@@ -227,7 +227,8 @@ public class DownloadResultReportBKPAction  extends AbstractAction {
 
 	        	} else {
 			        int reportType = Integer.parseInt(actionForm.getString("reportType"));
-			        String sendId = new GenerateReportBKP(sys, loginname, Integer.parseInt(assessment), reportType).getSendId();
+			        HashMap<String, String> messagesbkp=sys.getLanguageReportFacade().findAssessmentBKPTexts(Integer.parseInt(assessment), sys.getUserSessionData());
+			        String sendId = new GenerateReportBKP(sys, loginname, Integer.parseInt(assessment),messagesbkp, reportType).getSendId();
 			        
 		        	String fileName = (reportType == 1) ? AssesmentData.FLASH_PATH+"/reports/DA_Report_"+sendId+".pdf" : AssesmentData.FLASH_PATH+"/reports/DA_Certificate_"+sendId+".pdf"; 
 		        	if(sendId != null) {

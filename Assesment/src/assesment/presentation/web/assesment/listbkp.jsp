@@ -159,9 +159,10 @@ function deleteIFConfirm(form,msg){
 <%			}else {
 		    	Iterator<AssesmentListData> it = Util.getAssessmentIterator(result.getElements(), messages);
 				boolean linetwo = false;
+				HashMap<String, String> messagesbkp=null;
 				while(it.hasNext()){
 					AssesmentListData assesment = it.next();
-					HashMap<String, String> messagesbkp = sys.getLanguageReportFacade().findAssessmentBKPTexts(assesment.getId(), sys.getUserSessionData());
+					messagesbkp = sys.getLanguageReportFacade().findAssessmentBKPTexts(assesment.getId(), sys.getUserSessionData());
 
 %>	            		<tr class='<%=(linetwo)?"linetwo":"lineone"%>'>
 <%					linetwo = !linetwo;	

@@ -28,6 +28,7 @@ import assesment.business.AssesmentAccess;
 import assesment.communication.assesment.AssesmentData;
 import assesment.communication.language.Text;
 import assesment.communication.report.ErrorReportDataSource;
+import assesment.communication.report.ErrorReportDataSourceBKP;
 import assesment.communication.report.LogisticaReportDataSource;
 import assesment.communication.report.ModuleReportDataSource;
 import assesment.communication.report.ModuleSurveyReportDataSource;
@@ -45,7 +46,7 @@ public class GenerateReportBKP {
 	}
 
 
-	public GenerateReportBKP(AssesmentAccess sys, String user, int assessment, int type) {
+	public GenerateReportBKP(AssesmentAccess sys, String user,int assessment,  HashMap messagesbkp, int type) {
 		try {
 			this.sys = sys;
 	    	Class.forName("org.postgresql.Driver");
@@ -64,7 +65,7 @@ public class GenerateReportBKP {
 
 	    	set = st1.executeQuery("select a.name, c.name, count(*), c.id, a.psitest, a.reportfeedback,a.certificate,a.certificateimage"+language+",a.green,a.yellow,a.dcactivity,c.dc5id from assesmentsbkp a join corporations c on c.id = a.corporation join modulesbkp m on m.assesment = a.id where a.id = "+assessment+" group by a.name, c.name, c.id, a.psitest, a.reportfeedback,a.certificate,a.certificateimage"+language+",a.green,a.yellow,a.dcactivity,c.dc5id");
 	    	set.next();
-	    	String assessmentName = messages.getText(set.getString(1));
+	    	String assessmentName = (String)messagesbkp.get(set.getString(1));
 	    	int moduleCount = set.getInt(3);
 	    	String corporationId = set.getString(4);
 	    	boolean psi = set.getBoolean(5);
@@ -105,181 +106,12 @@ public class GenerateReportBKP {
 
 	        if(type == 1) {
 	        	String fileName = AssesmentData.REPORT_PATH + "DA_Report_"+sendId+".pdf";
-	        	createTotalReport(enddate, messages, st1, fileName, user, new Integer(assessment), assessmentName, userName, moduleCount, psi, corporationId);
+	        	createTotalReport(enddate, messages, messagesbkp, st1, fileName, user, new Integer(assessment), assessmentName, userName, moduleCount, psi, corporationId);
 	        }else {
 	        	String fileName = AssesmentData.REPORT_PATH + "DA_Certificate_"+sendId+".pdf";
 	        	createCertificate(enddate, messages,  fileName, user, assessment, userName, certificateImage);
 	        }
 
-	        st0.close();
-	        st1.close();
-	        st2.close();
-	        
-	        connDA.close();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	public GenerateReportBKP(AssesmentAccess sys, String user, int assessment) {
-		try {
-			this.sys = sys;
-	    	Class.forName("org.postgresql.Driver");
-	    	Connection connDA = DriverManager.getConnection("jdbc:postgresql://localhost:5432/assesment","postgres","pr0v1s0r1A");
-
-	        Statement st0 = connDA.createStatement();
-	        Statement st1 = connDA.createStatement();
-	        Statement st2 = connDA.createStatement();
-	        
-	        Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
-	        Statement stDC = connDC.createStatement();
-
-	        Text messages = sys.getText();
-	        
-	        ResultSet set = st1.executeQuery("select firstname, lastname, language, email, datacenter from users where loginname = '"+user+"'");
-	    	set.next();
-	    	String userName = set.getString(1).trim().toUpperCase()+" "+set.getString(2).trim().toUpperCase();
-	    	String email = set.getString(4);    
-	    	if(assessment == 425) {
-	    		ResultSet set2 = st2.executeQuery("select text from useranswersbkp ua " +
-	    				"join answerdatabkp ad on ua.answer = ad.id " +
-	    				"where loginname = '"+user+"' " +
-	    				"and question in (24354, 24355)" +
-	    				" order by question desc");
-		    	if(set2.next()) {
-		    		userName = set2.getString(1);
-			    	if(set2.next()) {
-			    		email = set2.getString(1);
-			    		userName += " ("+email+")";
-			    	}
-		    	}
-	    	}
-	    	String language = set.getString(3);    	
-	    	String datacenter = set.getString(5);
-
-	    	try {
-        		
-	
-		    	set = st1.executeQuery("select a.name, c.name, count(*), c.id, a.psitest, a.reportfeedback,a.certificate,a.certificateimage"+language+",a.green,a.yellow,a.dcactivity,c.dc5id from assesmentsbkp a join corporations c on c.id = a.corporation join modulesbkp m on m.assesment = a.id where a.id = "+assessment+" group by a.name, c.name, c.id, a.psitest, a.reportfeedback,a.certificate,a.certificateimage"+language+",a.green,a.yellow,a.dcactivity,c.dc5id");
-		    	set.next();
-		    	String assessmentName = messages.getText(set.getString(1));
-		    	int moduleCount = set.getInt(3);
-		    	String corporationId = set.getString(4);
-		    	boolean psi = set.getBoolean(5);
-		    	boolean reportFeedback = set.getBoolean(6);
-		    	boolean certificate = set.getBoolean(7);
-		    	String certificateImage = set.getString(8);
-		    	if(certificateImage == null) {
-		    		certificateImage = "certificate_default_"+language+".jpg";
-		    	}
-		    	int green = set.getInt(9);
-		    	int yellow = set.getInt(10);
-		    	String dcActivity = set.getString(11);
-		    	String dcId = set.getString(12);
-		    	
-	            /*Collection<String> feedbacks = new LinkedList<String>();
-		    	set = st1.executeQuery("select distinct email from feedbacks where assesment = "+assessment);
-	            if(set.next()) {
-				    if(!reportFeedback) {
-				    	email = set.getString(1);
-				    }else {
-				    	feedbacks.add(set.getString(1));
-				    }
-	            }
-	            while(set.next()) {
-			    	feedbacks.add(set.getString(1));
-			    }
-	            Collection<String> files = new LinkedList<String>();*/
-	            
-	        	String sql = "select a.type, count(*), ua.enddate, ua.elearningredirect " +
-	        			"from userassesmentsbkp ua, useranswersbkp uas, answerdatabkp ad, questionsbkp q, answersbkp a " +
-	        			"where ua.loginname = '"+user+"' " +
-	        			"and ua.assesment = " + assessment + " " +
-	        			"and uas.assesment = ua.assesment " +
-	        			"and uas.loginname = ua.loginname " +
-	        			"and ad.id = uas.answer " +
-	        			"and q.id = ad.question " +
-	        			"and a.id = ad.answer " +
-	        			"and q.testtype = 1 " +
-	        			"group by a.type, ua.enddate, ua.elearningredirect";
-	        	int[] values = {0,0};
-	        	set = st1.executeQuery(sql);
-	        	String redirect = null;
-	        	Calendar enddate = Calendar.getInstance();
-	        	while(set.next()) {
-	        		values[set.getInt(1)] = set.getInt(2);
-	        		enddate.setTime(set.getDate(3));
-	        		redirect = set.getString(4);
-	        	}
-	        	
-	        	sendId = parseString(assessmentName+"_"+userName);
-	
-	        	String fileName = AssesmentData.REPORT_PATH + "DA_Report_"+sendId+".pdf";
-		        double result = 0; 
-		        boolean greenResult = false;
-	        	if(assessment == AssesmentData.CEPA_BR_LOGISTICA) {
-			        createLogisticReport(enddate, messages, st1, fileName, user, new Integer(assessment), assessmentName, userName);
-			        //files.add(fileName);
-	        	}else if(assessment == AssesmentData.SURVEY) {
-				    createSurveyReport(enddate, messages, st1, fileName, user, new Integer(assessment), assessmentName, userName);
-				    //files.add(fileName);
-	        	}else {
-			        createTotalReport(enddate, messages, st1, fileName, user, new Integer(assessment), assessmentName, userName, moduleCount, psi, corporationId);
-			        //files.add(fileName);
-		
-			        result = new Double(values[0]  * 100.0).doubleValue() / new Double(values[0]+values[1]).doubleValue(); 
-			        greenResult = result >= green;
-	
-			        if(certificate && greenResult) {
-			        	fileName = AssesmentData.REPORT_PATH + "DA_Certificate_"+sendId+".pdf";
-			        	createCertificate(enddate, messages,  fileName, user, assessment, userName, certificateImage);
-			        	//files.add(fileName);
-			        }
-		        	
-	        	}	
-
-	        	if(assessment == AssesmentData.BAYERMX_ELEARNINGPACK_MONITORES && result < green) {
-    				String sqlInsert = "INSERT INTO userassesments (assesment, loginname) VALUES (259,'"+user+"')";
-    				st1.execute(sqlInsert);
-    			}
-
-	        	if(dcActivity != null) {
-		        	if(datacenter == null && dcId != null) {
-		        		datacenter = linkDC(userName, email, user, dcId, st1, st2, stDC);
-		        	}
-			    	if(datacenter != null) {
-			    		try {
-			    			if(assessment == AssesmentData.BAYERMX_ELEARNINGPACK_MONITORES && result < green) {
-			    				//String sqlInsert = "INSERT INTO userassesments (assesment, loginname) VALUES (259,'"+userName+"')";
-			    				//st1.execute(sqlInsert);
-			    			}else {
-				    			ResultSet setDC = stDC.executeQuery("select nextval('electronicactivity_sequence')");
-				    			setDC.next();
-				    			Integer idElectronic = setDC.getInt(1);
-	
-				    			String note = "";
-				    			if(result >= green) {
-				    				note = "generic.activity.note.apruved";
-				    			} else if(result >= yellow) {
-				    				note = "generic.activity.note.apruvedwithobservations";
-				    			} else {
-				    				note = "generic.activity.note.notapruved";
-				    			}
-				    			String insertElectronic = "INSERT INTO electronicactivity VALUES ("+idElectronic+",'"+dcActivity+"','"+formatDate(enddate)+"',"+datacenter+",'"+note+"','f')";
-				    			stDC.execute(insertElectronic);
-			    			}				    			
-			    		}catch (Exception e) {
-			    			e.printStackTrace();
-			    		}
-			    	}
-		        }
-        	}catch (Exception e) {
-        		sendError(st1,st2, user, userName);
-        		e.printStackTrace();
-        	}
-	        
-	        stDC.close();
-	        connDC.close();
-	        
 	        st0.close();
 	        st1.close();
 	        st2.close();
@@ -421,7 +253,7 @@ public class GenerateReportBKP {
         return out;
     }
 
-    public FileOutputStream createTotalReport(Calendar enddate, Text messages, Statement st, String fileName,String user, Integer assessment, String assessmentName, String userName, int moduleCount, boolean psi, String corporationId) throws Exception {
+    public FileOutputStream createTotalReport(Calendar enddate, Text messages, HashMap messagesbkp,Statement st, String fileName,String user, Integer assessment, String assessmentName, String userName, int moduleCount, boolean psi, String corporationId) throws Exception {
     	
     	//JasperCompileManager.compileReportToFile("C:\\flash\\jasper\\TotalReport1.jrxml", "C:\\flash\\jasper\\TotalReport.jasper");
     	//JasperCompileManager.compileReportToFile("C:\\flash\\jasper\\ModuleSubreport5.jrxml", "C:\\flash\\jasper\\ModuleSubreport5.jasper");
@@ -502,7 +334,7 @@ public class GenerateReportBKP {
         if(data.length > 0) {
             FileInputStream input2 = new FileInputStream(new File(AssesmentData.JASPER_PATH +  "ErrorSubreport.jasper"));
             JasperReport errorSubreport = (JasperReport)JRLoader.loadObject(input2);
-            ErrorReportDataSource errorDatasource = new ErrorReportDataSource(data,messages);
+            ErrorReportDataSourceBKP errorDatasource = new ErrorReportDataSourceBKP(data,messagesbkp);
 			params.put("subreport2", errorDatasource);
 			params.put("sub2", errorSubreport);
 			params.put("errores",messages.getText("user.report.errortitle"));

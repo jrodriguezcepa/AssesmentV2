@@ -283,5 +283,13 @@ public interface UsReport
    
    public java.util.Collection getUserAssesmentsCountbkp( assesment.communication.assesment.AssesmentAttributes assesment,assesment.communication.administration.user.UserSessionData userSessionData )
 	   throws java.lang.Exception, java.rmi.RemoteException;
-
+   
+   public java.util.Collection getUsersReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
+	    throws java.lang.Exception, java.rmi.RemoteException;
+   
+   public java.util.HashMap getWRTUserAnswersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
+		 throws java.lang.Exception, java.rmi.RemoteException;
+   
+   public java.util.Collection getNotStartedUsersReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
+		throws java.lang.Exception, java.rmi.RemoteException;
 }

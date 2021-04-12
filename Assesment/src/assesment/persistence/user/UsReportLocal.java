@@ -193,4 +193,10 @@ public interface UsReportLocal
 
    public java.util.Collection getUserAssesmentsCountbkp( assesment.communication.assesment.AssesmentAttributes assesment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.Collection getUsersReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
+   public java.util.HashMap getWRTUserAnswersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
+   public java.util.Collection getNotStartedUsersReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }
