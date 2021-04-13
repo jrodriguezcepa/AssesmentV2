@@ -1,5 +1,7 @@
 package assesment.communication.report;
 
+import java.util.HashMap;
+
 import assesment.communication.language.Text;
 import assesment.communication.question.AnswerData;
 
@@ -73,6 +75,13 @@ public class QuestionReportData {
 		return line;
 	}
 
+	public String getLineBKP(int index, HashMap messages) {
+		String line = "data.setCell("+index+", 0, '"+(String)messages.get(key)+"');";
+		line += "data.setCell("+index+", 1, "+correct+");";
+		line += "data.setCell("+index+", 2, "+incorrect+");";
+		return line;
+	}
+	
 	public void setAnswer(Integer answer) {
 		this.answer = answer;
 	}

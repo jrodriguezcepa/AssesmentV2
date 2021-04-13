@@ -122,9 +122,8 @@
 		<form action="./layout.jsp?refer=/assesment/usersbkp.jsp" name='detail' method="post">
 			<input type="hidden" name="assesment" 		value='<%=String.valueOf(id)%>' />
 		</form>	
-		<form action="./report.jsp" name='wrt' method="post" target="_blank">
+		<form action="./reportbkp.jsp" name='wrt' method="post" target="_blank">
 			<input type="hidden" name="id" 	value='<%=String.valueOf(id)%>' />
-			<input type="hidden" name="bkp" 	value='1' />
 		</form>	
 		
 		<jsp:include  page='<%="../component/titlecomponent.jsp?title="+messages.getText("generic.assesment")+" "+messagesbkp.get(data.getName())%>' />

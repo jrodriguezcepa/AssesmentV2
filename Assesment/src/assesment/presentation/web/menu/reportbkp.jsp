@@ -24,7 +24,7 @@
 <%@page import="assesment.communication.assesment.AssesmentAttributes"%>
 
 <%@page import="java.util.Collection"%>
-
+<%@page import="java.util.HashMap"%>
 <%@page import="java.util.LinkedList"%>
 
 <%@ taglib uri="/WEB-INF/struts-html.tld"
@@ -65,10 +65,11 @@
 			response.sendRedirect("./assesmentReport.jsp?id=1728");		
 		}
 		else {
+			HashMap<String, String> messagesbkp=sys.getLanguageReportFacade().findAssessmentBKPTexts(new Integer(assessmentId), sys.getUserSessionData());
 			UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 			AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
 			AssessmentReportData dataSource = null;
-			dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReport(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReport(new Integer(assessmentId),sys.getUserSessionData());	
+			dataSource = assessmentReport.getAssessmentReportBKP(new Integer(assessmentId),sys.getUserSessionData());	
 			sys.setValue(dataSource);
 		    AssesmentData assesment = dataSource.getAssessment();
 		    String logoName = "./flash/images/logo"+assesment.getCorporationId()+".png";
@@ -211,7 +212,7 @@
     	  		ModuleReportData moduleReportData = dataSource.getModuleReportData(module.getId());
     	  		if(moduleReportData != null) {
     	  			data1 = true;
-%>    	  			,['<%=messages.getText(module.getKey())%>',<%=String.valueOf(moduleReportData.getGreen())%>,<%=String.valueOf(moduleReportData.getYellow())%>, <%=String.valueOf(moduleReportData.getRed())%>, '']
+%>    	  			,['<%=messagesbkp.get(module.getKey())%>',<%=String.valueOf(moduleReportData.getGreen())%>,<%=String.valueOf(moduleReportData.getYellow())%>, <%=String.valueOf(moduleReportData.getRed())%>, '']
 <%    	  		}
     	  	}    
 %>    	  	]);	 
@@ -243,7 +244,7 @@
     	  		ModuleReportData moduleReportData = dataSource.getModuleReportData(module.getId());
     	  		if(moduleReportData != null) {
     	  			data = true;
-%>    	  			,['<%=messages.getText(module.getKey())%>',<%=String.valueOf(moduleReportData.getCorrect())%>,<%=String.valueOf(moduleReportData.getIncorrect())%>, '']
+%>    	  			,['<%=messagesbkp.get(module.getKey())%>',<%=String.valueOf(moduleReportData.getCorrect())%>,<%=String.valueOf(moduleReportData.getIncorrect())%>, '']
 <%    	  		}
     	  	}    	  	
 %>    	  	]);	 
@@ -279,7 +280,7 @@
 		}
 		QuestionData[] wrts = dataSource.getWRTQuestions();
 		for(int i = 0; i < wrts.length && wrts[i] != null; i++) {
-%>	          data.addColumn('string', '<%=messages.getText(wrts[i].getKey())%>');
+%>	          data.addColumn('string', '<%=messagesbkp.get(wrts[i].getKey())%>');
 <%		}
 %>        data.addColumn('number', '<%=messages.getText("module.resultreport.right")%>');
           data.addColumn('number', '<%=messages.getText("module.resultreport.wrong")%>');
@@ -328,7 +329,7 @@
           data.addRows(<%=String.valueOf(module.getQuestionSize())%>);
 <%			Iterator<QuestionReportData> itQuestions = module.getQuestionIterator();
 			while(itQuestions.hasNext()) {
-%>				<%=itQuestions.next().getLine(index,messages)%>
+%>				<%=itQuestions.next().getLineBKP(index,messagesbkp)%>
 <%				index++;
 			}
 %>
@@ -432,15 +433,10 @@
 				<form name="assessments" action="./report_assessment.jsp" method="post">
 					<fieldset id="username_block" class="active">
 						 <div class="titleReport" align="left">
-						 	<div id="nameAssessment"><h1 class="customer_logo" >Assessment: <%=messages.getText(dataSource.getAssessment().getName())%></h1></div>
+						 	<div id="nameAssessment"><h1 class="customer_logo" >Assessment: <%=messagesbkp.get(dataSource.getAssessment().getName())%></h1></div>
 						 	<div id="logoCorporation"><img src='<%=logoName%>'></div>
 						 </div>
-<%			if(userSessionData.getRole().equals(SecurityConstants.CEPA_REPORTER)  || userSessionData.getRole().equals(SecurityConstants.ADMINISTRATOR) || c.size() > 1) {
-%>						 <div class="userReport" align="left">
-					 		<input type="submit"  class="button" value="Cambiar de Assessment" />
-						 </div>
-<%			}
-%>						 <div class="tabs" align="center">
+						 <div class="tabs" align="center">
 							  <button type="button" onclick="tabChange1()" class="btn btn-default"><%=messages.getText("assesment.feedback.report1")%></button>
 							  <button type="button" onclick="tabChange2()" class="btn btn-default"><%=messages.getText("generic.data.moduleresults")%></button>
 							  <button type="button" onclick="tabChange3()" class="btn btn-default"><%=messages.getText("report.users.title")%></button>
@@ -540,7 +536,7 @@
 		while(itModules.hasNext()) {
 			ModuleReportData module	= itModules.next();		
 %>		    				<div>
-		    					<div id="titlePage"><h2><%=messages.getText(module.getKey())%></h2></div>
+		    					<div id="titlePage"><h2><%=messagesbkp.get(module.getKey())%></h2></div>
 								<div id="questiontable<%=String.valueOf(qIndex)%>"></div>
 		    				</div>
 <%			qIndex++;
