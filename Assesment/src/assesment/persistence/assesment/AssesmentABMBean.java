@@ -1,5 +1,7 @@
 package assesment.persistence.assesment;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -819,10 +821,21 @@ public abstract class AssesmentABMBean implements SessionBean {
            
            Query delete2 = session.createQuery("DELETE FROM AccessCode ac WHERE ac.assesment.id = "+assessmentId);
            delete2.executeUpdate();
-           
+           ArrayList<String> usuarios=new ArrayList<String>();
+          
+           Query set = session.createSQLQuery("SELECT loginname FROM reporterassesments WHERE assesment= "+assessmentId);
+           Iterator itUsers = set.list().iterator();
+           while(itUsers.hasNext()) {
+        	   String login = (String)itUsers.next();
+        	   usuarios.add(login);
+           }
            Query delete3 = session.createSQLQuery("DELETE FROM reporterassesments WHERE assesment = "+assessmentId);
            delete3.executeUpdate();
-
+           
+           for(int j=0; j<usuarios.size();j++) {
+        	   Query delete4 = session.createSQLQuery("DELETE FROM users WHERE loginname = '"+usuarios.get(j)+"'");
+               delete4.executeUpdate();
+           }
            Assesment assessment = (Assesment) session.load(Assesment.class, assessmentId);
            AssesmentBKP assessmentBKP=new AssesmentBKP(assessment);
            bkpText(assessment.getName(),assessmentId);
