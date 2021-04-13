@@ -819,11 +819,31 @@ public abstract class AssesmentABMBean implements SessionBean {
            
            Query delete2 = session.createQuery("DELETE FROM AccessCode ac WHERE ac.assesment.id = "+assessmentId);
            delete2.executeUpdate();
+           
+           Query delete3 = session.createSQLQuery("DELETE FROM reporterassesments WHERE assesment = "+assessmentId);
+           delete3.executeUpdate();
 
            Assesment assessment = (Assesment) session.load(Assesment.class, assessmentId);
            AssesmentBKP assessmentBKP=new AssesmentBKP(assessment);
            bkpText(assessment.getName(),assessmentId);
            
+       	//ejecutar solo una vez para cargar psiquestions y psianswers
+	     /*  	
+     	  Query psiquestions = session.createSQLQuery("SELECT * from psiquestions").addScalar("id",Hibernate.INTEGER).addScalar("key",Hibernate.STRING).addScalar("questionorder", Hibernate.INTEGER);
+     	  Iterator itPsi = psiquestions.list().iterator();
+            	while(itPsi.hasNext()) {
+            		Object[] data= (Object[])itPsi.next();
+            		PsiQuestionBKP pq =new PsiQuestionBKP(data);
+            		session.save(pq);
+            	}
+      	   Query psiAnswers = session.createSQLQuery("SELECT * from psianswers").addScalar("id",Hibernate.INTEGER).addScalar("psiquestion",Hibernate.INTEGER).addScalar("key",Hibernate.STRING).addScalar("answerorder", Hibernate.INTEGER);
+      	   itPsi = psiAnswers.list().iterator();
+         	while(itPsi.hasNext()) {
+         		Object[] data= (Object[])itPsi.next();
+         		PsiAnswerBKP psa =new PsiAnswerBKP(data);
+         		session.save(psa);
+         	}*/
+         
            HashMap<Integer, AnswerBKP> answers = new HashMap<Integer, AnswerBKP>();
            //respaldo de modules
            Iterator it = assessment.getModuleSet().iterator();
