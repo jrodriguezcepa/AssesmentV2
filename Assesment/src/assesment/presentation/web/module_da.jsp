@@ -369,6 +369,13 @@
 						upmCharla = true;
 					}
 				}
+				if(assessmentId == AssesmentData.MDP_CHARLA) {
+					if(sys.getUserReportFacade().isResultRed(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData)) {
+						sys.getUserABMFacade().associateAssesment(userSessionData.getFilter().getLoginName(), AssesmentData.MDP_CHARLA_V2, userSessionData);
+						userSessionData.getFilter().setAssesment(AssesmentData.MDP_CHARLA_V2);
+						upmCharla = true;
+					}
+				}
 				if(deleteResults) {
 					Collection list = new LinkedList();
 					list.add(userSessionData.getFilter().getLoginName());

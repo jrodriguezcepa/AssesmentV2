@@ -89,6 +89,19 @@
 				</tr>
 				<tr>
 		    		<td valign="top">
+						<jsp:include  page='../component/utilitybox2top.jsp?title=Charla MDP' />
+							<table width="100%" border="0" cellpadding="5" cellspacing="5">
+								<tr class="line">
+									<td align="right">
+										<input type="button" class="button" value='<%=messages.getText("generic.report.open") %>' onclick="javascript:openReport(12);">
+									</td>
+								</tr>
+						</table>
+						<jsp:include  page="../component/utilitybox2bottom.jsp" />
+					</td>
+				</tr>
+				<tr>
+		    		<td valign="top">
 						<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("report.java.timac")%>' />
 							<table width="100%" border="0" cellpadding="5" cellspacing="5">
 								<tr class="line">

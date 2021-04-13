@@ -180,8 +180,11 @@ public class AssesmentData extends AssesmentAttributes {
 	
 	public static final int HOJA_RUTA_2019 = 501;
 
-	public static final int UPM_CHARLA = 1709;
-	public static final int UPM_CHARLA_V2 = 1710;
+	public static final int MDP_CHARLA = 1725;
+	public static final int MDP_CHARLA_V2 = 1732;
+
+	public static final int UPM_CHARLA = 1729;
+	public static final int UPM_CHARLA_V2 = 1730;
 
 	public static final int GRUPO_MODELO_FOTO = 1586;
 	public static final int GRUPO_MODELO_EBTW = 1614;
@@ -259,7 +262,9 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int ABBOTT_NEWDRIVERS = 1707;
 	public static final int ABBEVIE_LATAM = 1712;
 	public static final int GDC = 1711;
+	public static final int ASTRAZENECA_BRASIL_DRIVERASSESSMENT = 1714;
 	public static final int SUMITOMO = 1728;
+
 
 
 
@@ -466,6 +471,7 @@ public class AssesmentData extends AssesmentAttributes {
      	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
      	     	id.intValue() == AssesmentData.ABBEVIE_LATAM || 
      	     	id.intValue() == AssesmentData.BAYER_ARGENTINA_DEMO || 
+     	     	id.intValue() == AssesmentData.ASTRAZENECA_BRASIL_DRIVERASSESSMENT || 
      			id.intValue() == AssesmentData.MUTUAL_DA);
 	}
 	

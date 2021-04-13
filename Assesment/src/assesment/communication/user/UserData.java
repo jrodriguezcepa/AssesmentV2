@@ -20,6 +20,9 @@ public class UserData implements Serializable, Comparable<UserData> {
     public static final String CHARLAUPM = "charlaupm.ingreso";
     public static final String HABILITARUPM = "charlaupm.habilitar";
     
+    public static final String REGISTROMDP = "charlamdp.registro";
+    public static final String CHARLAMDP = "charlamdp.ingreso";
+
     public static final String ADMINISTRATOR = "administrator";
     public static final String SYSTEMACCESS = "systemaccess";
     public static final String FIRSTACCESS = "firstAccess";

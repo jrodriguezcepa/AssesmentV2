@@ -123,6 +123,9 @@ public class JavaReportAction  extends AbstractAction {
 				case 11:
 					openTimacReport(response, sys);
 					break;
+				case 12:
+					openCharlaMDPReport(response, sys);
+					break;
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -1308,6 +1311,7 @@ public class JavaReportAction  extends AbstractAction {
 			e.printStackTrace();
 		}
     }
+    
 	 private void openCharlaUPMReport(HttpServletResponse response, AssesmentAccess sys) throws Exception {
 	    	
 
@@ -1339,7 +1343,7 @@ public class JavaReportAction  extends AbstractAction {
 	     ResultSet setFDM = stFDM.executeQuery("SELECT d.id, firstname, lastname, corporationid, d1.resourcekey "
 	     		+ "FROM drivers d "
 	     		+ "JOIN divorgitemlevel1s d1 ON d1.id = d.divorg1 "
-	     		+ "WHERE d.id IN (70275, 70276, 70280, 70281, 70282, 70302, 70308, 70309, 70310, 70312, 70313, 70314, 70324, 70325, 70344, 70350, 70353, 70370, 70389, 70401, 70402, 70421, 70424, 70425, 70428, 70441, 70442, 70445, 70457, 70459, 70467, 70473, 70476, 70478, 70501, 70505, 70507, 70515, 70518, 70520, 70537, 70540, 70542, 70544, 70553, 70559, 70573, 70633, 70635, 70638, 70639, 70640, 71073, 71074, 71076, 71190, 71192, 71193, 71195, 71216, 71246, 71247, 71249, 71286, 71291, 71383, 71394, 71396, 71403, 71430, 71473, 71475, 71728, 71750, 71783, 71927, 71935, 71941, 71949, 71961, 71963, 71966, 71968, 71971, 72000, 72009, 72020, 93396, 96472, 96473, 102082, 110528, 115078, 115154, 115177, 115279, 115311, 115313, 115375, 115405, 115429, 115479, 115778, 115909, 116027, 117583, 119549, 119914, 120681, 120806, 120912, 120920, 120969, 121163, 121199, 121279, 121525, 121526, 121624, 123668, 124026, 124043, 124045, 124415, 124441, 124908, 125058, 125182, 125503, 125545, 125551, 125746, 125747, 125806, 125845, 125863, 125868, 125889, 126472, 126746, 126912, 127072, 140053, 140082, 140681, 140728, 141072, 141094, 141232, 141234, 141264, 142613, 142928, 143338, 143386, 143588, 144364, 145237, 145262, 145882, 145895, 145955, 146013, 146015, 146024, 146025, 146323, 146491, 146508, 146682, 146722, 146736, 146739, 146866, 146983, 150814, 155246, 155514, 155815, 156002, 156060, 156065, 157727, 158475, 159945, 160360, 161148, 161299, 161509, 161589, 161664, 161671, 161943, 162988, 163273, 163275, 164175, 164244, 164523, 165176, 166654, 166780, 167022, 167077, 167133, 167621, 168006, 168058, 168228, 168280, 169973, 171088, 171217, 171559, 171731, 171746, 171803, 171982, 172129, 174825, 175767, 175768, 175771, 175805, 178617, 178858, 179673, 180409, 180411, 180414, 180728, 181814, 182048, 182142, 184521, 184559, 185017, 186829, 186831, 186838, 186840, 187476, 187896, 195748, 197019, 198533, 198673, 199115, 200215, 200880, 202660, 202662, 202727, 202871, 202872, 202884, 202939, 203022, 203514, 203515, 204373, 204376, 204377, 204378, 204838, 205095, 206062, 206204, 206221, 206961, 207698, 207905, 208118, 208230, 209051, 209095, 209332, 209651, 209652, 209653, 210264, 210536, 210625, 210801, 210802, 210829, 211923, 211928, 212150, 212154, 212412, 212482, 213425, 213471, 213576, 214340, 214372, 214605, 214823, 214875, 215152, 215443, 215677, 215934, 215993, 217822, 218309, 218937, 219447, 219516, 220032, 220238, 220240, 227417, 227425, 228212, 228905, 229056, 236109, 237034, 237272, 237653, 237655, 238146, 238882, 240345, 240374, 240701, 246756, 247002, 247683, 247705, 247860, 247986, 248100, 248249, 248520, 248905, 249174, 250224, 250798, 251181, 251340, 251542, 251997, 252274, 252415, 252417, 252881, 253058, 253123, 253142, 253221, 253277, 253554, 253561, 253565, 253568, 253571, 254270, 254571, 254599, 255156, 255180, 255906, 255945, 256058, 256601, 256746, 256751, 257020, 257473, 257583, 257738, 257813, 258362, 261030, 261158, 261162, 263021, 266386, 266773, 267192, 268222, 271798, 272070, 273208, 273230, 273418, 273500, 273739, 273900, 274136, 274259, 274646, 275562, 275658, 275672, 276235, 276256, 276318, 276564, 276573, 277482, 277669, 277796, 277969, 278523, 278894, 278969, 279188, 279862, 280543, 280545, 281327, 282573, 283528, 283537, 284205, 284294, 284575, 286493, 286686, 286833, 286835, 286839, 287047, 287413, 287459, 288107, 290191, 290642, 290700, 291120, 291476, 291745, 292110, 292225, 292395, 296096, 296130, 296193, 296558, 296683, 297019, 301598, 302041, 302455, 303753, 303838, 303840, 303978, 305238, 305449, 308237, 308374, 312768, 313546, 314445, 315485, 315558, 315873, 316180, 317231, 317294, 317414, 317848, 317978, 318042, 318049, 318050, 318218, 318490, 318493, 318788, 318794, 318811, 321358, 323984, 324081, 324217, 325397, 325931, 326237, 326777, 327152, 327162, 327339, 327341, 327798, 328261, 328628, 329174, 329267, 329481, 329587, 330604, 330605, 330640, 330694, 330709, 331051, 331147, 331156, 332705, 333003, 334710, 335141, 337184, 13260222, 13313267, 13338279, 13399250, 13422410, 13422412, 13469802)");
+	     		+ "WHERE d.id IN (0)");
 	     
 	     
 	     Collection<UsuarioCharlaUPM> finalList = new LinkedList<UsuarioCharlaUPM>();
@@ -1407,7 +1411,108 @@ public class JavaReportAction  extends AbstractAction {
 	 	
 	 	 ExcelGenerator.generatorObjectXLS(valuesXLS, "Charlas UPM report", response.getOutputStream());
 	 }
-	 
+
+	   
+		 private void openCharlaMDPReport(HttpServletResponse response, AssesmentAccess sys) throws Exception {
+		    	
+
+		     /*Connection connDA = DriverManager.getConnection("jdbc:postgresql://177.71.248.87:5432/assesment","postgres","pr0v1s0r1A");
+		     Statement stDA = connDA.createStatement();
+			 
+		     UsReportFacade usReport = sys.getUserReportFacade();
+		     ResultSet set = stDA.executeQuery("select distinct loginname from userassesments where assesment = 1052 and loginname like 'tmc_%' and loginname not like 'tmc_a%'");
+		     while(set.next()) {
+		    	 String login = set.getString(1);
+		    	 String id = login.replace("tmc_", "");
+		    	 Object[] data = usReport.existTimacUser(id, sys.getUserSessionData());
+		    	 System.out.println(login+" --> "+data[0]+" -- "+data[1]+" -- "+data[2]+" -- "+data[3]);
+		     }
+		     
+		     stDA.close();
+		     connDA.close();*/
+		     
+		     
+		     response.setHeader("Content-Type", "application/vnd.ms-excel");
+		     response.setHeader("Content-Disposition", "inline; filename=CharlasMDPReport.xls");
+		     Text messages=sys.getText();
+		
+		     Class.forName("org.postgresql.Driver");
+
+		     Connection connFDM = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://"+FDM_SERVER+":5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
+		     Statement stFDM = connFDM.createStatement();
+
+		     ResultSet setFDM = stFDM.executeQuery("SELECT d.id, firstname, lastname, corporationid, d1.resourcekey "
+		     		+ "FROM drivers d "
+		     		+ "JOIN divorgitemlevel1s d1 ON d1.id = d.divorg1 "
+		     		+ "WHERE d.id IN (0)");
+		     
+		     
+		     Collection<UsuarioCharlaUPM> finalList = new LinkedList<UsuarioCharlaUPM>();
+		     
+		     HashMap<Integer, UsuarioCharlaUPM> values = new HashMap<Integer, UsuarioCharlaUPM>();
+		     while(setFDM.next()) {
+		    	 values.put(setFDM.getInt(1), new UsuarioCharlaUPM(setFDM.getString(2), setFDM.getString(3), setFDM.getString(4), setFDM.getString(5)));
+		     }
+		     
+		     setFDM.close();
+		     connFDM.close();
+		     
+		     Connection conn1 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/assesment","postgres","pr0v1s0r1A");
+		     
+		     Statement st = conn1.createStatement();
+			 
+		     ResultSet setUsers = st.executeQuery("SELECT extradata, firstname, lastname, extradata2, brithdate + interval '30 year', enddate, uar.correct, uar.incorrect, uar2.correct, uar2.incorrect, u.datacenter "+
+	 								   	  "FROM userassesments ua "+
+	 								      "JOIN users u ON u.loginname = ua.loginname "+ 
+	 								      "LEFT JOIN userassesmentresults uar ON uar.login = ua.loginname AND uar.assesment = ua.assesment "+
+	 								      "LEFT JOIN userassesmentresults uar2 ON uar2.login = ua.loginname AND uar2.assesment = ua.assesment + 1 "+
+	 								      "WHERE ua.assesment = "+ AssesmentData.MDP_CHARLA);
+		 	 while(setUsers.next()) {
+		 		 boolean doNew = true;
+			     if(setUsers.getString(11)!=null) {
+			    	 Integer idDataCenter=Integer.parseInt(setUsers.getString(11));
+				     if(values.containsKey(idDataCenter)) {
+				    	 UsuarioCharlaUPM usuario = values.get(idDataCenter);
+				    	 usuario.setRegister(setUsers.getTimestamp(5));
+				    	 usuario.setEndDate(setUsers.getTimestamp(6));
+				    	 usuario.setCorrect1(setUsers.getInt(7));
+				    	 usuario.setIncorrect1(setUsers.getInt(8));
+				    	 usuario.setCorrect2(setUsers.getInt(9));
+				    	 usuario.setIncorrect2(setUsers.getInt(10));
+				    	 doNew = false;
+				     }
+			     }
+			     if(doNew) {
+			    	 finalList.add(new UsuarioCharlaUPM(setUsers.getString(2), setUsers.getString(3), setUsers.getString(1), setUsers.getString(4), setUsers.getTimestamp(5), setUsers.getTimestamp(6), setUsers.getInt(7), setUsers.getInt(8), setUsers.getInt(9), setUsers.getInt(10)));
+			     }
+		 	 }	     
+		     
+		 	 finalList.addAll(values.values());
+		 	 
+		     ArrayList<Integer> driversAssesment =new ArrayList(); 
+		     ArrayList<Object> row1 = new ArrayList<Object>();
+		     ArrayList<Object> row2 = new ArrayList<Object>();
+			 String[] columns = {"CI","NOMBRES","APELLIDOS","CONTRATISTA","REGISTRO","FINALIZACIÓN","CORRECTAS TEST 1","ICORRECTAS TEST 1","CORRECTAS TEST 2","ICORRECTAS TEST 2"};
+
+		     row1.add(new String[]{"CHARLAS MDP","0","10",String.valueOf(HSSFColor.GREY_25_PERCENT.index)});
+		     for(int i = 0; i < columns.length; i++) {
+		     	row2.add(new Object[]{columns[i],new Short(HSSFColor.GREY_25_PERCENT.index)});
+		     }
+
+		     ArrayList<ArrayList<Object>> valuesXLS = new ArrayList<ArrayList<Object>>();
+		     
+		     valuesXLS.add(row1);
+		     valuesXLS.add(row2);
+
+		     Collections.sort((List)finalList);
+		     Iterator<UsuarioCharlaUPM> it = finalList.iterator();
+		 	 while(it.hasNext()) {
+			     valuesXLS.add(it.next().getLine());
+		 	 }
+		 	
+		 	 ExcelGenerator.generatorObjectXLS(valuesXLS, "Charlas MDP report", response.getOutputStream());
+		 }
+
 	 private void openTimacReport(HttpServletResponse response, AssesmentAccess sys) throws Exception {
 	    	
 	     response.setHeader("Content-Type", "application/vnd.ms-excel");

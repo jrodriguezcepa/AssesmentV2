@@ -52,7 +52,7 @@ public class Util {
     public static boolean isRegistrable() {
     	Calendar c = Calendar.getInstance();
     	int day = c.get(Calendar.DATE);
-    	if(day != 31)
+    	/*if(day != 31)
     		return false;
     	int hour = c.get(Calendar.HOUR_OF_DAY);
     	int minute = c.get(Calendar.MINUTE);
@@ -65,11 +65,31 @@ public class Util {
 				return minute >= 45;
 			case 14:
 				return minute <= 10;
-    	}
-    	return false;
+    	}*/
+    	return true;
     }
     
-	public static String getInValue(HttpServletRequest request,HttpSession session,String name) {
+    public static boolean isRegistrableMDP() {
+    	Calendar c = Calendar.getInstance();
+    	int day = c.get(Calendar.DATE);
+    	/*if(day != 31)
+    		return false;
+    	int hour = c.get(Calendar.HOUR_OF_DAY);
+    	int minute = c.get(Calendar.MINUTE);
+    	switch(hour) {
+			case 8:
+				return minute >= 45;
+			case 9:
+				return minute <= 10;
+			case 13:
+				return minute >= 45;
+			case 14:
+				return minute <= 10;
+    	}*/
+    	return true;
+    }
+
+    public static String getInValue(HttpServletRequest request,HttpSession session,String name) {
 		String value = request.getParameter(name);
 		if(Util.empty(name)) {
 			value = String.valueOf(session.getAttribute(name));

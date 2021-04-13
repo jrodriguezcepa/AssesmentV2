@@ -213,6 +213,10 @@
 			response.sendRedirect("./register_upm.jsp");
 		}else if(login.equals(UserData.CHARLAUPM)) {
 			response.sendRedirect("./charla_upm.jsp");
+		}else if(login.equals(UserData.REGISTROMDP)) {
+			response.sendRedirect("./register_mdp.jsp");
+		}else if(login.equals(UserData.CHARLAMDP)) {
+			response.sendRedirect("./charla_mdp.jsp");
 		}else if(role.equals(SecurityConstants.CLIENTGROUP_REPORTER)) {
 			GroupData group = sys.getAssesmentReportFacade().getUserGroup(login,userSession);
 			if(group.getId().equals(GroupData.GRUPO_MODELO)) {
