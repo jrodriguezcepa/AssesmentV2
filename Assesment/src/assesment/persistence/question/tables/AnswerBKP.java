@@ -15,6 +15,7 @@ public class AnswerBKP {
     private String key;
     private Integer order;
     private Integer resultType;
+    private Float points;
     
     public AnswerBKP() {
     }
@@ -28,7 +29,7 @@ public class AnswerBKP {
     }
 
     public AnswerData getData() {
-        return new AnswerData(id,key,order,resultType);
+        return new AnswerData(id,key,order,resultType, points);
     }
     public Integer getId() {
         return id;

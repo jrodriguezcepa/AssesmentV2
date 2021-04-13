@@ -15,7 +15,7 @@ public class Answer {
     private String key;
     private Integer order;
     private Integer resultType;
-    
+    private Float points;
     public Answer() {
     }
 
@@ -68,7 +68,7 @@ public class Answer {
     }
     
     public AnswerData getData() {
-        return new AnswerData(id,key,order,resultType);
+        return new AnswerData(id,key,order,resultType, points);
     }
 
     public void setData(AnswerData data) {
@@ -76,4 +76,12 @@ public class Answer {
         order = data.getOrder();
         resultType = data.getResultType();
     }
+
+	public Float getPoints() {
+		return points;
+	}
+
+	public void setPoints(Float points) {
+		this.points = points;
+	}
 }

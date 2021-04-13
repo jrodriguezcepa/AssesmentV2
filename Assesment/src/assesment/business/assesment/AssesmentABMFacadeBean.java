@@ -377,7 +377,7 @@ public abstract class AssesmentABMFacadeBean implements SessionBean {
                while(answers.hasNext()) {
             	   AnswerData answerData = (AnswerData)answers.next();
                    answerTexts[answerIndex] = languageReport.getCompleteText(answerData.getKey(),userSessionData);
-                   newAnswers.add(new AnswerData(null,"",new Integer(answerIndex+1),answerData.getResultType()));
+                   newAnswers.add(new AnswerData(null,"",new Integer(answerIndex+1),answerData.getResultType(),answerData.getPoints()));
                    answerIndex++;
                }
            }else {

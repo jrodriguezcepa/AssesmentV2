@@ -316,7 +316,7 @@ public abstract class QuestionABMFacadeBean implements SessionBean {
                 while(answers.hasNext()) {
                     AnswerData answerData = (AnswerData)answers.next();
                     answerTexts[answerIndex] = getTexts(answerData.getKey(),languageReport,userSessionData);
-                    newAnswers.add(new AnswerData(null,"",new Integer(answerIndex+1),answerData.getResultType()));
+                    newAnswers.add(new AnswerData(null,"",new Integer(answerIndex+1),answerData.getResultType(), answerData.getPoints()));
                     answerIndex++;
                 }
             }else {

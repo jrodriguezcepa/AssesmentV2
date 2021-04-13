@@ -58,7 +58,7 @@ public class PsiAnswer {
     }
 
     public AnswerData getData() {
-        return new AnswerData(id,key,order,null);
+        return new AnswerData(id,key,order,null, null);
     }
 
     public void setData(AnswerData data) {

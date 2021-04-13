@@ -15,7 +15,8 @@ public class GenericAnswer {
     private String key;
     private Integer order;
     private Integer resultType;
-    
+    private Float points;
+
     public GenericAnswer() {
     }
 
@@ -25,6 +26,7 @@ public class GenericAnswer {
         key = data.getKey();
         order = data.getOrder();
         resultType = data.getResultType();
+        points=data.getPoints();
     }
 
     public Integer getId() {
@@ -68,7 +70,7 @@ public class GenericAnswer {
     }
     
     public AnswerData getData() {
-        return new AnswerData(id,key,order,resultType);
+        return new AnswerData(id,key,order,resultType, points);
     }
 
     public void setData(AnswerData data) {

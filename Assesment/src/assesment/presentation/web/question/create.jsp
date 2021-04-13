@@ -337,7 +337,7 @@
 				  						</html:select>   
 									</td>
 								</tr>
-							</table
+							</table>
 						<jsp:include  page="../component/utilitybox2bottom.jsp" />
 					</td>
 				</tr>
@@ -396,6 +396,16 @@
 							   												<html:option value='<%=String.valueOf(AnswerData.CORRECT)%>'><%=messages.getText("question.result.correct")%></html:option>
 							   												<html:option value='<%=String.valueOf(AnswerData.INCORRECT)%>'><%=messages.getText("question.result.incorrect")%></html:option>
 							   											</html:select>              
+																	</td>
+																</tr>
+																<tr class="line">
+																	<td align="left"><%=messages.getText("generic.messages.points")%></td>
+																	<td align="right">
+							   											<select>
+							   												<option value='0.2'> 0.1</option>
+							   												<option value='0.5'> 0.5</option>
+							   												<option value='0.9'> 0.9</option>
+							   											</select>              
 																	</td>
 																</tr>
 															</table>

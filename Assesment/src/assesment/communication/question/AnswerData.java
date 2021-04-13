@@ -14,6 +14,8 @@ public class AnswerData implements Comparable {
     private String key;
     private Integer order;
     private Integer resultType;
+    private Float points;
+
 
     public AnswerData() {
     }
@@ -24,12 +26,14 @@ public class AnswerData implements Comparable {
      * @param order
      * @param resultType
      */
-    public AnswerData(Integer id, String key, Integer order, Integer resultType) {
+    public AnswerData(Integer id, String key, Integer order, Integer resultType, Float points) {
         super();
         this.id = id;
         this.key = key;
         this.order = order;
         this.resultType = resultType;
+        this.points = points;
+
     }
 
 
@@ -68,4 +72,12 @@ public class AnswerData implements Comparable {
     public int compareTo(Object o) {
         return order.compareTo(((AnswerData)o).order);
     }
+    
+	public Float getPoints() {
+		return points;
+	}
+
+	public void setPoints(Float points) {
+		this.points = points;
+	}
 }
