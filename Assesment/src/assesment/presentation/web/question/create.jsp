@@ -401,11 +401,7 @@
 																<tr class="line">
 																	<td align="left"><%=messages.getText("generic.messages.points")%></td>
 																	<td align="right">
-							   											<select>
-							   												<option value='0.2'> 0.1</option>
-							   												<option value='0.5'> 0.5</option>
-							   												<option value='0.9'> 0.9</option>
-							   											</select>              
+							   											<html:text property='<%="answerpoint"+i%>' styleClass="input" style="width:20%;"/>
 																	</td>
 																</tr>
 															</table>

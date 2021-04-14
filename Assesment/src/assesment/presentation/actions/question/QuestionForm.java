@@ -55,180 +55,210 @@ public class QuestionForm extends ActionForm {
     private String en_answer1;
     private String pt_answer1;
     private String answertype1;
+    private String answerpoint1;
     private String answer2;
     private String key2;
     private String es_answer2;
     private String en_answer2;
     private String pt_answer2;
     private String answertype2;
+    private String answerpoint2;
     private String answer3;
     private String key3;
     private String es_answer3;
     private String en_answer3;
     private String pt_answer3;
     private String answertype3;
+    private String answerpoint3;
     private String answer4;
     private String key4;
     private String es_answer4;
     private String en_answer4;
     private String pt_answer4;
     private String answertype4;
+    private String answerpoint4;
     private String answer5;
     private String key5;
     private String es_answer5;
     private String en_answer5;
     private String pt_answer5;
     private String answertype5;
+    private String answerpoint5;
     private String answer6;
     private String key6;
     private String es_answer6;
     private String en_answer6;
     private String pt_answer6;
     private String answertype6;
+    private String answerpoint6;
     private String answer7;
     private String key7;
     private String es_answer7;
     private String en_answer7;
     private String pt_answer7;
     private String answertype7;
+    private String answerpoint7;
     private String answer8;
     private String key8;
     private String es_answer8;
     private String en_answer8;
     private String pt_answer8;
     private String answertype8;
+    private String answerpoint8;
     private String answer9;
     private String key9;
     private String es_answer9;
     private String en_answer9;
     private String pt_answer9;
     private String answertype9;
+    private String answerpoint9;
     private String answer10;
     private String key10;
     private String es_answer10;
     private String en_answer10;
     private String pt_answer10;
     private String answertype10;
+    private String answerpoint10;
     private String answer11;
     private String key11;
     private String es_answer11;
     private String en_answer11;
     private String pt_answer11;
     private String answertype11;
+    private String answerpoint11;
     private String answer12;
     private String key12;
     private String es_answer12;
     private String en_answer12;
     private String pt_answer12;
     private String answertype12;
+    private String answerpoint12;
     private String answer13;
     private String key13;
     private String es_answer13;
     private String en_answer13;
     private String pt_answer13;
     private String answertype13;
+    private String answerpoint13;
     private String answer14;
     private String key14;
     private String es_answer14;
     private String en_answer14;
     private String pt_answer14;
     private String answertype14;
+    private String answerpoint14;
     private String answer15;
     private String key15;
     private String es_answer15;
     private String en_answer15;
     private String pt_answer15;
     private String answertype15;
+    private String answerpoint15;
     private String answer16;
     private String key16;
     private String es_answer16;
     private String en_answer16;
     private String pt_answer16;
     private String answertype16;
+    private String answerpoint16;
     private String answer17;
     private String key17;
     private String es_answer17;
     private String en_answer17;
     private String pt_answer17;
     private String answertype17;
+    private String answerpoint17;
     private String answer18;
     private String key18;
     private String es_answer18;
     private String en_answer18;
     private String pt_answer18;
     private String answertype18;
+    private String answerpoint18;
     private String answer19;
     private String key19;
     private String es_answer19;
     private String en_answer19;
     private String pt_answer19;
     private String answertype19;
+    private String answerpoint19;
     private String answer20;
     private String key20;
     private String es_answer20;
     private String en_answer20;
     private String pt_answer20;
     private String answertype20;
+    private String answerpoint20;
     private String answer21;
     private String key21;
     private String es_answer21;
     private String en_answer21;
     private String pt_answer21;
     private String answertype21;
+    private String answerpoint21;
     private String answer22;
     private String key22;
     private String es_answer22;
     private String en_answer22;
     private String pt_answer22;
     private String answertype22;
+    private String answerpoint22;
     private String answer23;
     private String key23;
     private String es_answer23;
     private String en_answer23;
     private String pt_answer23;
     private String answertype23;
+    private String answerpoint23;
     private String answer24;
     private String key24;
     private String es_answer24;
     private String en_answer24;
     private String pt_answer24;
     private String answertype24;
+    private String answerpoint24;
     private String answer25;
     private String key25;
     private String es_answer25;
     private String en_answer25;
     private String pt_answer25;
     private String answertype25;
+    private String answerpoint25;
     private String answer26;
     private String key26;
     private String es_answer26;
     private String en_answer26;
     private String pt_answer26;
     private String answertype26;
+    private String answerpoint26;
     private String answer27;
     private String key27;
     private String es_answer27;
     private String en_answer27;
     private String pt_answer27;
     private String answertype27;
+    private String answerpoint27;
     private String answer28;
     private String key28;
     private String es_answer28;
     private String en_answer28;
     private String pt_answer28;
     private String answertype28;
+    private String answerpoint28;
     private String answer29;
     private String key29;
     private String es_answer29;
     private String en_answer29;
     private String pt_answer29;
     private String answertype29;
+    private String answerpoint29;
     private String answer30;
     private String key30;
     private String es_answer30;
     private String en_answer30;
     private String pt_answer30;
     private String answertype30;
+    private String answerpoint30;
 
 
     private String order;
@@ -276,6 +306,7 @@ public class QuestionForm extends ActionForm {
             en_answer1 = answerTexts[1];
             pt_answer1 = answerTexts[2];
             answertype1 = String.valueOf(answer.getResultType());
+            answerpoint1 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -286,6 +317,7 @@ public class QuestionForm extends ActionForm {
             en_answer2 = answerTexts[1];
             pt_answer2 = answerTexts[2];
             answertype2 = String.valueOf(answer.getResultType());
+            answerpoint2 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -296,6 +328,7 @@ public class QuestionForm extends ActionForm {
             en_answer3 = answerTexts[1];
             pt_answer3 = answerTexts[2];
             answertype3 = String.valueOf(answer.getResultType());
+            answerpoint3 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -306,6 +339,7 @@ public class QuestionForm extends ActionForm {
             en_answer4 = answerTexts[1];
             pt_answer4 = answerTexts[2];
             answertype4 = String.valueOf(answer.getResultType());
+            answerpoint4 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -316,6 +350,7 @@ public class QuestionForm extends ActionForm {
             en_answer5 = answerTexts[1];
             pt_answer5 = answerTexts[2];
             answertype5 = String.valueOf(answer.getResultType());
+            answerpoint5 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -326,6 +361,7 @@ public class QuestionForm extends ActionForm {
             en_answer6 = answerTexts[1];
             pt_answer6 = answerTexts[2];
             answertype6 = String.valueOf(answer.getResultType());
+            answerpoint6 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -336,6 +372,7 @@ public class QuestionForm extends ActionForm {
             en_answer7 = answerTexts[1];
             pt_answer7 = answerTexts[2];
             answertype7 = String.valueOf(answer.getResultType());
+            answerpoint7 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -346,6 +383,7 @@ public class QuestionForm extends ActionForm {
             en_answer8 = answerTexts[1];
             pt_answer8 = answerTexts[2];
             answertype8 = String.valueOf(answer.getResultType());
+            answerpoint8 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -356,6 +394,7 @@ public class QuestionForm extends ActionForm {
             en_answer9 = answerTexts[1];
             pt_answer9 = answerTexts[2];
             answertype9 = String.valueOf(answer.getResultType());
+            answerpoint9 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -366,6 +405,7 @@ public class QuestionForm extends ActionForm {
             en_answer10 = answerTexts[1];
             pt_answer10 = answerTexts[2];
             answertype10 = String.valueOf(answer.getResultType());
+            answerpoint10 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -376,6 +416,7 @@ public class QuestionForm extends ActionForm {
             en_answer11 = answerTexts[1];
             pt_answer11 = answerTexts[2];
             answertype11 = String.valueOf(answer.getResultType());
+            answerpoint11 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -386,6 +427,7 @@ public class QuestionForm extends ActionForm {
             en_answer12 = answerTexts[1];
             pt_answer12 = answerTexts[2];
             answertype12 = String.valueOf(answer.getResultType());
+            answerpoint13 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -396,6 +438,7 @@ public class QuestionForm extends ActionForm {
             en_answer13 = answerTexts[1];
             pt_answer13 = answerTexts[2];
             answertype13 = String.valueOf(answer.getResultType());
+            answerpoint13 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -406,6 +449,7 @@ public class QuestionForm extends ActionForm {
             en_answer14 = answerTexts[1];
             pt_answer14 = answerTexts[2];
             answertype14 = String.valueOf(answer.getResultType());
+            answerpoint14 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -416,6 +460,7 @@ public class QuestionForm extends ActionForm {
             en_answer15 = answerTexts[1];
             pt_answer15 = answerTexts[2];
             answertype15 = String.valueOf(answer.getResultType());
+            answerpoint15 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -426,6 +471,7 @@ public class QuestionForm extends ActionForm {
             en_answer16 = answerTexts[1];
             pt_answer16 = answerTexts[2];
             answertype16 = String.valueOf(answer.getResultType());
+            answerpoint16 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -436,6 +482,7 @@ public class QuestionForm extends ActionForm {
             en_answer17 = answerTexts[1];
             pt_answer17 = answerTexts[2];
             answertype17 = String.valueOf(answer.getResultType());
+            answerpoint17 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -446,6 +493,7 @@ public class QuestionForm extends ActionForm {
             en_answer18 = answerTexts[1];
             pt_answer18 = answerTexts[2];
             answertype18 = String.valueOf(answer.getResultType());
+            answerpoint18 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -456,6 +504,7 @@ public class QuestionForm extends ActionForm {
             en_answer19 = answerTexts[1];
             pt_answer19 = answerTexts[2];
             answertype19 = String.valueOf(answer.getResultType());
+            answerpoint19 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -466,6 +515,7 @@ public class QuestionForm extends ActionForm {
             en_answer20 = answerTexts[1];
             pt_answer20 = answerTexts[2];
             answertype20 = String.valueOf(answer.getResultType());
+            answerpoint20 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -476,6 +526,7 @@ public class QuestionForm extends ActionForm {
             en_answer21 = answerTexts[1];
             pt_answer21 = answerTexts[2];
             answertype21 = String.valueOf(answer.getResultType());
+            answerpoint21 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -486,6 +537,7 @@ public class QuestionForm extends ActionForm {
             en_answer22 = answerTexts[1];
             pt_answer22 = answerTexts[2];
             answertype22 = String.valueOf(answer.getResultType());
+            answerpoint22 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -496,6 +548,7 @@ public class QuestionForm extends ActionForm {
             en_answer23 = answerTexts[1];
             pt_answer23 = answerTexts[2];
             answertype23 = String.valueOf(answer.getResultType());
+            answerpoint23 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -506,6 +559,7 @@ public class QuestionForm extends ActionForm {
             en_answer24 = answerTexts[1];
             pt_answer24 = answerTexts[2];
             answertype24 = String.valueOf(answer.getResultType());
+            answerpoint24 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -516,6 +570,7 @@ public class QuestionForm extends ActionForm {
             en_answer25 = answerTexts[1];
             pt_answer25 = answerTexts[2];
             answertype25 = String.valueOf(answer.getResultType());
+            answerpoint25 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -526,6 +581,7 @@ public class QuestionForm extends ActionForm {
             en_answer26 = answerTexts[1];
             pt_answer26 = answerTexts[2];
             answertype26 = String.valueOf(answer.getResultType());
+            answerpoint26 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -536,6 +592,7 @@ public class QuestionForm extends ActionForm {
             en_answer27 = answerTexts[1];
             pt_answer27 = answerTexts[2];
             answertype27 = String.valueOf(answer.getResultType());
+            answerpoint27 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -546,6 +603,7 @@ public class QuestionForm extends ActionForm {
             en_answer28 = answerTexts[1];
             pt_answer28 = answerTexts[2];
             answertype28 = String.valueOf(answer.getResultType());
+            answerpoint28 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -556,6 +614,7 @@ public class QuestionForm extends ActionForm {
             en_answer29 = answerTexts[1];
             pt_answer29 = answerTexts[2];
             answertype29 = String.valueOf(answer.getResultType());
+            answerpoint29 = String.valueOf(answer.getPoints());
         }
         if(it.hasNext()) {
             AnswerData answer = it.next();
@@ -566,6 +625,7 @@ public class QuestionForm extends ActionForm {
             en_answer30 = answerTexts[1];
             pt_answer30 = answerTexts[2];
             answertype30 = String.valueOf(answer.getResultType());
+            answerpoint30 = String.valueOf(answer.getPoints());
         }
     }
 
@@ -832,6 +892,18 @@ public class QuestionForm extends ActionForm {
 	                if(empty(getAnswerType(i))) {
 	                    return "question.error.emptyanswertype";
 	                }
+	                if(empty(getAnswerType(i))) {
+	                    return "question.error.emptyanswertype";
+	                }
+	                try {
+	                	float point = Float.parseFloat(getAnswerPoint(i));
+	                	if(point < 0 || point > 1) {
+		                    return "question.error.emptyanswerpoint";
+	                	}
+	                }catch(Exception e) {
+	                    return "question.error.emptyanswerpoint";
+	                }
+
 	            }
 	        }
         }
@@ -915,6 +987,7 @@ public class QuestionForm extends ActionForm {
                 answer.setKey(getKey(i));
                 answer.setOrder(new Integer(i));
                 answer.setResultType(new Integer(getAnswerType(i)));
+                answer.setPoints(new Float(getAnswerPoint(i)));
                 answers.add(answer);
             }
             questionData.setAnswers(answers);
@@ -1327,6 +1400,72 @@ public class QuestionForm extends ActionForm {
                 return answertype29;
             case 30:
                 return answertype30;
+        }
+        return null;
+    }
+
+    private String getAnswerPoint(int index) {
+        switch(index) {
+            case 1:
+                return answerpoint1;
+            case 2:
+                return answerpoint2;
+            case 3:
+                return answerpoint3;
+            case 4:
+                return answerpoint4;
+            case 5:
+                return answerpoint5;
+            case 6:
+                return answerpoint6;
+            case 7:
+                return answerpoint7;
+            case 8:
+                return answerpoint8;
+            case 9:
+                return answerpoint9;
+            case 10:
+                return answerpoint10;
+            case 11:
+                return answerpoint11;
+            case 12:
+                return answerpoint12;
+            case 13:
+                return answerpoint13;
+            case 14:
+                return answerpoint14;
+            case 15:
+                return answerpoint15;
+            case 16:
+                return answerpoint16;
+            case 17:
+                return answerpoint17;
+            case 18:
+                return answerpoint18;
+            case 19:
+                return answerpoint19;
+            case 20:
+                return answerpoint20;
+            case 21:
+                return answerpoint21;
+            case 22:
+                return answerpoint22;
+            case 23:
+                return answerpoint23;
+            case 24:
+                return answerpoint24;
+            case 25:
+                return answerpoint25;
+            case 26:
+                return answerpoint26;
+            case 27:
+                return answerpoint27;
+            case 28:
+                return answerpoint28;
+            case 29:
+                return answerpoint29;
+            case 30:
+                return answerpoint30;
         }
         return null;
     }
@@ -2701,6 +2840,246 @@ public class QuestionForm extends ActionForm {
 
 	public void setPt_videoKey(String pt_videoKey) {
 		this.pt_videoKey = pt_videoKey;
+	}
+
+	public String getAnswerpoint1() {
+		return answerpoint1;
+	}
+
+	public void setAnswerpoint1(String answerpoint1) {
+		this.answerpoint1 = answerpoint1;
+	}
+
+	public String getAnswerpoint2() {
+		return answerpoint2;
+	}
+
+	public void setAnswerpoint2(String answerpoint2) {
+		this.answerpoint2 = answerpoint2;
+	}
+
+	public String getAnswerpoint3() {
+		return answerpoint3;
+	}
+
+	public void setAnswerpoint3(String answerpoint3) {
+		this.answerpoint3 = answerpoint3;
+	}
+
+	public String getAnswerpoint4() {
+		return answerpoint4;
+	}
+
+	public void setAnswerpoint4(String answerpoint4) {
+		this.answerpoint4 = answerpoint4;
+	}
+
+	public String getAnswerpoint5() {
+		return answerpoint5;
+	}
+
+	public void setAnswerpoint5(String answerpoint5) {
+		this.answerpoint5 = answerpoint5;
+	}
+
+	public String getAnswerpoint6() {
+		return answerpoint6;
+	}
+
+	public void setAnswerpoint6(String answerpoint6) {
+		this.answerpoint6 = answerpoint6;
+	}
+
+	public String getAnswerpoint7() {
+		return answerpoint7;
+	}
+
+	public void setAnswerpoint7(String answerpoint7) {
+		this.answerpoint7 = answerpoint7;
+	}
+
+	public String getAnswerpoint8() {
+		return answerpoint8;
+	}
+
+	public void setAnswerpoint8(String answerpoint8) {
+		this.answerpoint8 = answerpoint8;
+	}
+
+	public String getAnswerpoint9() {
+		return answerpoint9;
+	}
+
+	public void setAnswerpoint9(String answerpoint9) {
+		this.answerpoint9 = answerpoint9;
+	}
+
+	public String getAnswerpoint10() {
+		return answerpoint10;
+	}
+
+	public void setAnswerpoint10(String answerpoint10) {
+		this.answerpoint10 = answerpoint10;
+	}
+
+	public String getAnswerpoint11() {
+		return answerpoint11;
+	}
+
+	public void setAnswerpoint11(String answerpoint11) {
+		this.answerpoint11 = answerpoint11;
+	}
+
+	public String getAnswerpoint12() {
+		return answerpoint12;
+	}
+
+	public void setAnswerpoint12(String answerpoint12) {
+		this.answerpoint12 = answerpoint12;
+	}
+
+	public String getAnswerpoint13() {
+		return answerpoint13;
+	}
+
+	public void setAnswerpoint13(String answerpoint13) {
+		this.answerpoint13 = answerpoint13;
+	}
+
+	public String getAnswerpoint14() {
+		return answerpoint14;
+	}
+
+	public void setAnswerpoint14(String answerpoint14) {
+		this.answerpoint14 = answerpoint14;
+	}
+
+	public String getAnswerpoint15() {
+		return answerpoint15;
+	}
+
+	public void setAnswerpoint15(String answerpoint15) {
+		this.answerpoint15 = answerpoint15;
+	}
+
+	public String getAnswerpoint16() {
+		return answerpoint16;
+	}
+
+	public void setAnswerpoint16(String answerpoint16) {
+		this.answerpoint16 = answerpoint16;
+	}
+
+	public String getAnswerpoint17() {
+		return answerpoint17;
+	}
+
+	public void setAnswerpoint17(String answerpoint17) {
+		this.answerpoint17 = answerpoint17;
+	}
+
+	public String getAnswerpoint18() {
+		return answerpoint18;
+	}
+
+	public void setAnswerpoint18(String answerpoint18) {
+		this.answerpoint18 = answerpoint18;
+	}
+
+	public String getAnswerpoint19() {
+		return answerpoint19;
+	}
+
+	public void setAnswerpoint19(String answerpoint19) {
+		this.answerpoint19 = answerpoint19;
+	}
+
+	public String getAnswerpoint20() {
+		return answerpoint20;
+	}
+
+	public void setAnswerpoint20(String answerpoint20) {
+		this.answerpoint20 = answerpoint20;
+	}
+
+	public String getAnswerpoint21() {
+		return answerpoint21;
+	}
+
+	public void setAnswerpoint21(String answerpoint21) {
+		this.answerpoint21 = answerpoint21;
+	}
+
+	public String getAnswerpoint22() {
+		return answerpoint22;
+	}
+
+	public void setAnswerpoint22(String answerpoint22) {
+		this.answerpoint22 = answerpoint22;
+	}
+
+	public String getAnswerpoint23() {
+		return answerpoint23;
+	}
+
+	public void setAnswerpoint23(String answerpoint23) {
+		this.answerpoint23 = answerpoint23;
+	}
+
+	public String getAnswerpoint24() {
+		return answerpoint24;
+	}
+
+	public void setAnswerpoint24(String answerpoint24) {
+		this.answerpoint24 = answerpoint24;
+	}
+
+	public String getAnswerpoint25() {
+		return answerpoint25;
+	}
+
+	public void setAnswerpoint25(String answerpoint25) {
+		this.answerpoint25 = answerpoint25;
+	}
+
+	public String getAnswerpoint26() {
+		return answerpoint26;
+	}
+
+	public void setAnswerpoint26(String answerpoint26) {
+		this.answerpoint26 = answerpoint26;
+	}
+
+	public String getAnswerpoint27() {
+		return answerpoint27;
+	}
+
+	public void setAnswerpoint27(String answerpoint27) {
+		this.answerpoint27 = answerpoint27;
+	}
+
+	public String getAnswerpoint28() {
+		return answerpoint28;
+	}
+
+	public void setAnswerpoint28(String answerpoint28) {
+		this.answerpoint28 = answerpoint28;
+	}
+
+	public String getAnswerpoint29() {
+		return answerpoint29;
+	}
+
+	public void setAnswerpoint29(String answerpoint29) {
+		this.answerpoint29 = answerpoint29;
+	}
+
+	public String getAnswerpoint30() {
+		return answerpoint30;
+	}
+
+	public void setAnswerpoint30(String answerpoint30) {
+		this.answerpoint30 = answerpoint30;
 	}
 
 }

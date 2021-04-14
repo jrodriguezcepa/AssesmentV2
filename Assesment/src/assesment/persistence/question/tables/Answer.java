@@ -25,6 +25,7 @@ public class Answer {
         key = data.getKey();
         order = data.getOrder();
         resultType = data.getResultType();
+        points = data.getPoints();
     }
 
     public Integer getId() {
@@ -75,6 +76,7 @@ public class Answer {
         key = data.getKey();
         order = data.getOrder();
         resultType = data.getResultType();
+        points = data.getPoints();
     }
 
 	public Float getPoints() {

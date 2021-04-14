@@ -28,15 +28,18 @@ public class UserAssesmentResult implements Serializable{
 	private Integer correct;
 	private Integer incorrect;
 	
+	private Float points;
+	
 	public UserAssesmentResult() {
 	}
 	
-	public UserAssesmentResult(String login, Integer assesment, Integer type, Integer correct, Integer incorrect) {
+	public UserAssesmentResult(String login, Integer assesment, Integer type, Integer correct, Integer incorrect, Float points) {
 		this.login = login;
 		this.assesment = assesment;
 		this.type = type;
 		this.correct = correct;
 		this.incorrect = incorrect;
+		this.points = points;
 	}
 
 	public Integer getId() {
@@ -87,4 +90,13 @@ public class UserAssesmentResult implements Serializable{
 		this.incorrect = incorrect;
 	}
 
+	public Float getPoints() {
+		return points;
+	}
+
+	public void setPoints(Float points) {
+		this.points = points;
+	}
+
+	
 }
