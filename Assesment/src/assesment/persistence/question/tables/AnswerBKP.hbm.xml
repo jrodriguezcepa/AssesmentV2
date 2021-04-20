@@ -17,6 +17,7 @@
 	    <property name="order" column="answerorder" type="java.lang.Integer" not-null="true"/>
 
 	    <property name="resultType" column="type" type="java.lang.Integer" not-null="true"/>
+	    <property name="points" column="points" type="java.lang.Float" />
 	    
   	</class>
 

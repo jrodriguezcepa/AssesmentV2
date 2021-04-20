@@ -26,6 +26,7 @@ public class AnswerBKP {
     	this.key=answer.getKey();
     	this.order=answer.getOrder();
     	this.resultType=answer.getResultType();
+    	this.points=answer.getPoints();
     }
 
     public AnswerData getData() {
@@ -70,5 +71,13 @@ public class AnswerBKP {
     public void setResultType(Integer resultType) {
         this.resultType = resultType;
     }
+
+	public Float getPoints() {
+		return points;
+	}
+
+	public void setPoints(Float points) {
+		this.points = points;
+	}
 
 }

@@ -203,6 +203,12 @@
 						}	
 %>												</td>
 											</tr>
+											<tr class="line">
+												<td align="left"><%=messages.getText("question.data.points")%></td>
+												<td align="right">
+													<%=(answer.getPoints() == null) ? "---" : String.valueOf(answer.getPoints())%>
+												</td>
+											</tr>											
 <%					}		
 %>
 										</table>
