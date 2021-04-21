@@ -227,6 +227,8 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int MERCANCIAS_PELIGROSAS = 1130;
 	public static final int MERCANCIAS_PELIGROSAS_RENOVACION = 1129;
 	
+	private static final int VESTAS_DA = 1221;
+
 	public static final int MERCADO_LIVRE_START = 1281;
 	public static final int MERCADO_LIBRE_START = 1301;
 	
@@ -264,6 +266,11 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int GDC = 1711;
 	public static final int ASTRAZENECA_BRASIL_DRIVERASSESSMENT = 1714;
 	public static final int SUMITOMO = 1728;
+
+	private static final int BAYER_CONOSUR_DA = 1743;
+	private static final int GUINEZ_INGENIERIA_V2 = 1746;
+
+
 
 
 
@@ -459,20 +466,28 @@ public class AssesmentData extends AssesmentAttributes {
 	}
 
 	public boolean isPsi() {
-		return (id.intValue() == AssesmentData.MINCIVIL_COLOMBIA || 
+		return (id.intValue() == AssesmentData.MUTUAL_DA ||
+				id.intValue() == AssesmentData.GUINEZ_INGENIERIA || 
+				id.intValue() == AssesmentData.GUINEZ_INGENIERIA_V2 || 
+				id.intValue() == AssesmentData.MONDELEZ_DA || 
+				id.intValue() == AssesmentData.MONDELEZ_DA_V2 || 
+				id.intValue() == AssesmentData.UPL_NEWHIRE || 
+				id.intValue() == AssesmentData.ASTRAZENECA_BRASIL_DRIVERASSESSMENT || 
+				id.intValue() == AssesmentData.SUMITOMO || 
+				id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2020 ||
+     	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
+     	     	id.intValue() == AssesmentData.ABBEVIE_LATAM || 
+     			id.intValue() == AssesmentData.BAYER_CONOSUR_DA || 
+     			id.intValue() == AssesmentData.VESTAS_DA || 
+				
+				id.intValue() == AssesmentData.MINCIVIL_COLOMBIA || 
 				id.intValue() == AssesmentData.CCFC || 
 				id.intValue() == AssesmentData.SAFEFLEET_MEX || 
 				id.intValue() == AssesmentData.SAFEFLEET_LATAM || 
-				id.intValue() == AssesmentData.MONDELEZ_DA || 
-				id.intValue() == AssesmentData.GUINEZ_INGENIERIA || 
-				id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2020 || 
-				id.intValue() == AssesmentData.UPL_NEWHIRE || 
+				 
      			id.intValue() == AssesmentData.LIGHT_VEHICLES_2020 || 
-     	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
-     	     	id.intValue() == AssesmentData.ABBEVIE_LATAM || 
-     	     	id.intValue() == AssesmentData.BAYER_ARGENTINA_DEMO || 
-     	     	id.intValue() == AssesmentData.ASTRAZENECA_BRASIL_DRIVERASSESSMENT || 
-     			id.intValue() == AssesmentData.MUTUAL_DA);
+     	     	id.intValue() == AssesmentData.BAYER_ARGENTINA_DEMO
+     	     	);
 	}
 	
 }

@@ -187,7 +187,7 @@ public class UserReportData {
 			if(secondUser < 60) {
 				level = messages.getText("generic.report.lowlevel");
 				colorStr = "background-color:red; color:white;";
-			} else if(secondUser < 60) {
+			} else if(secondUser < 80) {
 				level = messages.getText("generic.report.meddiumlevel");
 				colorStr = "background-color:yellow; color:gray;";
 			}else {
@@ -383,7 +383,7 @@ public class UserReportData {
 	}
 
 	public void addSecondUser(Integer correct, Integer incorrect) {
-		secondUser = correct * 100.0 / incorrect;
+		secondUser = correct * 100.0 / (correct + incorrect);
 	}
 
 }
