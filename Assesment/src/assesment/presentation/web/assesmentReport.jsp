@@ -5,6 +5,7 @@
 <%@page import="assesment.business.AssesmentAccess"%>
 <%@page import="assesment.communication.administration.user.UserSessionData"%>
 <%@page import="assesment.communication.corporation.CediAttributes"%>
+<%@page import="assesment.communication.corporation.CediData"%>
 <%@page import="assesment.communication.report.UserMutualReportData"%>
 <%@page import="assesment.communication.user.UserData"%>
 <%@page import=" assesment.communication.assesment.AssesmentData"%>
@@ -439,6 +440,7 @@
 <%		} %>
 
 			<th><div style="display:flex;align-items: center;"><a href='<%=refresh+"&sort=behaviour"%>'><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assessment.psi")%></div></th>
+			<th><div style="display:flex;align-items: center;"><span class="thText"><%=messages.getText("question.type.date")%></span></div></th>
 			<th><div style="display:flex;align-items: center;"><a href='<%=refresh+"&sort=ranking"%>' ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("generic.data.ranking")%>(%)</span></div></th>
 			
 		</tr>
@@ -459,7 +461,8 @@
 			<td style="word-wrap: break-word;"><%=result.getEmail().toLowerCase()%></td>
 			<td><%=result.getLogin().toLowerCase()%></td>
 <% 		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
-%>			<td><%=result.getLocation()%></td>
+			String loc=result.getLocation()==null?"--":sys.getCorporationReportFacade().findCedi(Integer.parseInt(result.getLocation()), userSessionData).getName();
+%>			<td><%=loc%></td>
 <% 		}
 %>	
 <% 		if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA){ 
@@ -503,6 +506,11 @@
 <%		}else{ 
 %>			<td style="text-align: center;"><%=messages.getText("generic.uncompleted")%></td>
 <%		} 
+		if(result.getEndDate()!=null){ 
+%>			<td  style="text-align: center;"><%= result.getEndDate()%></td>
+<%		}else{ 
+%>			<td style="text-align: center;">--</td>
+<%		}
 %>
 <%	if (Integer.parseInt(assesmentId)==AssesmentData.ABBOTT_NEWDRIVERS){
 		
@@ -563,7 +571,8 @@
 			<td><%=result.getLastName().toUpperCase()%></td>
 			<td><%=result.getLogin().toLowerCase()%></td>
 <% 		if(cedi==null  && assesment.getId()!=AssesmentData.ABBEVIE_LATAM && assesment.getId()!=AssesmentData.SUMITOMO){
-%>			<td><%=result.getLocation()%></td>
+			String loc=result.getLocation()==null?"--":sys.getCorporationReportFacade().findCedi(Integer.parseInt(result.getLocation()), userSessionData).getName();
+%>			<td><%=loc%></td>
 <% 		}
 %>
 <%		if(!result.getModule1Completed()){

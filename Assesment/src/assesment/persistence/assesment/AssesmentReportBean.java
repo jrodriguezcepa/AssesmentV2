@@ -1678,11 +1678,11 @@ public abstract class AssesmentReportBean implements SessionBean {
 						pos++;
 					}
 				}
-				Integer lengthRes=(size*2)+7;
+				Integer lengthRes=(size*2)+8;
 			
 				String queryStr="";
 				if(cedi!=null ||assesment==AssesmentData.ABBOTT_NEWDRIVERS ||assesment==AssesmentData.ABBEVIE_LATAM||assesment==AssesmentData.SUMITOMO) {
-					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country "+
+					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country, ua.enddate "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
 							+ "WHERE assesment = " + assesment;
@@ -1691,21 +1691,20 @@ public abstract class AssesmentReportBean implements SessionBean {
 					if(cedi!=null) queryStr+= " AND u.location="+cedi; 
 				}else if(assesment==AssesmentData.MUTUAL_DA ) {
 					
-					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,c.name AS location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country  "+
+					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country, ua.enddate  "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
-							+ "JOIN cedi c ON c.id=u.location "
 							+ "WHERE assesment = " + assesment;
 							//+ " AND ua.enddate IS NOT NULL "
 							//+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL"; 
 				}
-				Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING).addScalar("email", Hibernate.STRING).addScalar("loginname", Hibernate.STRING).addScalar("location", Hibernate.STRING).addScalar("behaviour", Hibernate.STRING).addScalar("country", Hibernate.STRING);
+				Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING).addScalar("email", Hibernate.STRING).addScalar("loginname", Hibernate.STRING).addScalar("location", Hibernate.STRING).addScalar("behaviour", Hibernate.STRING).addScalar("country", Hibernate.STRING).addScalar("enddate", Hibernate.STRING);
 				
 				List list = query.list();
 				if (list != null && list.size() > 0) {
 					Iterator iter = list.iterator();
 					while (iter.hasNext()) {
-						int pos=6;
+						int pos=7;
 						String[] ret=new String[lengthRes];
 						Object[] data=(Object[]) iter.next();
 						String loginName=(String)data[3];
