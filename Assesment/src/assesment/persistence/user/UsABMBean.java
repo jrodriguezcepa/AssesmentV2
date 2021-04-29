@@ -979,7 +979,7 @@ public abstract class UsABMBean implements SessionBean {
                 	if(v != -1)
                 		wrong += v;
                 }            	
-                right=15-wrong;
+                right=20-wrong;
                 
                 UserAssesmentResult result = new UserAssesmentResult(userId, assesmentId, 2, right, wrong, points);
                 session.save(result);

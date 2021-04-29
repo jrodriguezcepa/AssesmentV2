@@ -278,9 +278,9 @@ public class NewHireReport {
 	        document.add(semaforo);
     		
 			Image flecha = Image.getInstance(AssesmentData.FLASH_PATH+"/images/flechaNH.png");
-            if(values[0] <= 9) {
+            if(values[0] <= 4) {
             	flecha.setAbsolutePosition(168, 590);
-            } else if(values[0] <= 12) {
+            } else if(values[0] <= 8) {
             	flecha.setAbsolutePosition(168, 550);
             } else {
             	flecha.setAbsolutePosition(168, 510);
@@ -296,12 +296,12 @@ public class NewHireReport {
 	        document.add(semaforo); 
     		
 	        flecha = Image.getInstance(AssesmentData.FLASH_PATH+"/images/flechaNH.png");
-            if(values[1] > 18) {
-            	flecha.setAbsolutePosition(348, 510);
-            } else if(values[1] > 12) {
+            if(values[1] <= 6) {
+            	flecha.setAbsolutePosition(348, 590);
+            } else if(values[1] <= 12) {
             	flecha.setAbsolutePosition(348, 550);
             } else {
-            	flecha.setAbsolutePosition(348, 590);
+            	flecha.setAbsolutePosition(348, 510);
             }
             flecha.scalePercent(24);
 	        document.add(flecha);
