@@ -72,12 +72,13 @@ public class DownloadMutualReportAction  extends AbstractAction {
 		        s.addCell(new Label(6,0,messages.getText("assesment1613.module4355.name")));
 		        s.addCell(new Label(7,0,messages.getText("assesment1613.module4357.name")));
 		        s.addCell(new Label(8,0,messages.getText("assessment.psi")));
-		        s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
-		        s.addCell(new Label(10,0,messages.getText("assesment1613.module4354.name")+messages.getText("generic.data.recommendation")));
-		        s.addCell(new Label(11,0,messages.getText("assesment1613.module4356.name")+messages.getText("generic.data.recommendation")));
-		        s.addCell(new Label(12,0,messages.getText("assesment1613.module4355.name")+messages.getText("generic.data.recommendation")));
-		        s.addCell(new Label(13,0,messages.getText("assesment1613.module4357.name")+messages.getText("generic.data.recommendation")));
-				length=13;
+		        s.addCell(new Label(9,0,messages.getText("question.type.date")));
+		        s.addCell(new Label(10,0,messages.getText("generic.data.ranking")));
+		        s.addCell(new Label(11,0,messages.getText("assesment1613.module4354.name")+messages.getText("generic.data.recommendation")));
+		        s.addCell(new Label(12,0,messages.getText("assesment1613.module4356.name")+messages.getText("generic.data.recommendation")));
+		        s.addCell(new Label(13,0,messages.getText("assesment1613.module4355.name")+messages.getText("generic.data.recommendation")));
+		        s.addCell(new Label(14,0,messages.getText("assesment1613.module4357.name")+messages.getText("generic.data.recommendation")));
+				length=14;
 	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBOTT_NEWDRIVERS) {
 	        	  s.addCell(new Label(4,0,messages.getText("user.data.country")));
 	        	  s.addCell(new Label(5,0,messages.getText("assesment1707.module4472.name")));
@@ -87,8 +88,9 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			      s.addCell(new Label(9,0,messages.getText("assesment1707.module4470.name")));
 			      s.addCell(new Label(10,0,messages.getText("assesment1707.module4471.name")));
 			      s.addCell(new Label(11,0,messages.getText("assessment.psi")));
-			      s.addCell(new Label(12,0,messages.getText("generic.data.ranking")));
-				  length=12;
+			      s.addCell(new Label(12,0,messages.getText("question.type.date")));
+			      s.addCell(new Label(13,0,messages.getText("generic.data.ranking")));
+				  length=13;
 
 	        }else if(Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM) {
 	        	  s.addCell(new Label(4,0,messages.getText("user.data.country")));
@@ -96,8 +98,9 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			      s.addCell(new Label(6,0,messages.getText("assesment1712.module4480.name")));
 			      s.addCell(new Label(7,0,messages.getText("assesment1712.module4481.name")));
 			      s.addCell(new Label(8,0,messages.getText("assessment.psi")));
-			      s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
-				  length=9;
+			      s.addCell(new Label(9,0,messages.getText("question.type.date")));			      
+			      s.addCell(new Label(10,0,messages.getText("generic.data.ranking")));
+				  length=10;
 
 	        }
 	        else if(Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO) {
@@ -106,12 +109,13 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			      s.addCell(new Label(6,0,messages.getText("assesment1728.module4513.name")));
 			      s.addCell(new Label(7,0,messages.getText("assesment1728.module4514.name")));
 			      s.addCell(new Label(8,0,messages.getText("assessment.psi")));
-			      s.addCell(new Label(9,0,messages.getText("generic.data.ranking")));
-			      s.addCell(new Label(10,0,messages.getText("assesment1728.module4511.name")+messages.getText("generic.data.recommendation")));
-			      s.addCell(new Label(11,0,messages.getText("assesment1728.module4512.name")+messages.getText("generic.data.recommendation")));
-			      s.addCell(new Label(12,0,messages.getText("assesment1728.module4513.name")+messages.getText("generic.data.recommendation")));
-			      s.addCell(new Label(13,0,messages.getText("assesment1728.module4514.name")+messages.getText("generic.data.recommendation")));
-			      length=13;
+			      s.addCell(new Label(9,0,messages.getText("question.type.date")));
+			      s.addCell(new Label(10,0,messages.getText("generic.data.ranking")));
+			      s.addCell(new Label(11,0,messages.getText("assesment1728.module4511.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(12,0,messages.getText("assesment1728.module4512.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(13,0,messages.getText("assesment1728.module4513.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(14,0,messages.getText("assesment1728.module4514.name")+messages.getText("generic.data.recommendation")));
+			      length=14;
 	        }
 
 	    	Iterator it = r.iterator();

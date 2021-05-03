@@ -468,14 +468,16 @@ public class UserMutualReportData {
 			case 8:
 				return  messages.getText(getPsiText());
 			case 9:
-				return String.valueOf(ranking);
+				return endDate;
 			case 10:
-				return messages.getText(getMod1Recommendation());
+				return String.valueOf(ranking);
 			case 11:
-				return messages.getText(getMod2Recommendation());
+				return messages.getText(getMod1Recommendation());
 			case 12:
-				return messages.getText(getMod3Recommendation());
+				return messages.getText(getMod2Recommendation());
 			case 13:
+				return messages.getText(getMod3Recommendation());
+			case 14:
 				return messages.getText(getMod4Recommendation());
 			}
 		}else if(abbevie) {
@@ -497,12 +499,14 @@ public class UserMutualReportData {
 			case 7:
 				return  messages.getText(getPsiText());
 			case 8:
-				return String.valueOf(ranking);
+				return endDate;
 			case 9:
-				return messages.getText(getMod1Recommendation());
+				return String.valueOf(ranking);
 			case 10:
-				return messages.getText(getMod2Recommendation());
+				return messages.getText(getMod1Recommendation());
 			case 11:
+				return messages.getText(getMod2Recommendation());
+			case 12:
 				return messages.getText(getMod3Recommendation());
 
 		}
@@ -535,6 +539,8 @@ public class UserMutualReportData {
 			case 11:
 				return  messages.getText(getPsiText());
 			case 12:
+				return endDate;
+			case 13:
 				return String.valueOf(ranking);
 		}
 		}
