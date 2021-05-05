@@ -2061,6 +2061,8 @@
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -2078,6 +2080,8 @@
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -8664,6 +8668,7 @@
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -11540,6 +11545,7 @@
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -11555,6 +11561,7 @@
          <method-name>findCediUsers</method-name>
          <method-params>
             <method-param>java.lang.Integer[]</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
@@ -15632,6 +15639,8 @@
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>
@@ -15649,6 +15658,8 @@
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
          </method-params>
       </method>

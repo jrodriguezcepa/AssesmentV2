@@ -254,7 +254,7 @@ public interface UsReport
    public java.util.Collection findCediUsers( java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection findCediUsers( java.lang.Integer[] cedis,java.lang.String cedi,java.lang.String firstname,java.lang.String lastname,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.Collection findCediUsers( java.lang.Integer[] cedis,java.lang.String cedi,java.lang.String firstname,java.lang.String lastname,java.lang.String userName,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.util.Collection findCediMissingUsers( java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
@@ -280,16 +280,17 @@ public interface UsReport
 
    public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-   
+
    public java.util.Collection getUserAssesmentsCountbkp( assesment.communication.assesment.AssesmentAttributes assesment,assesment.communication.administration.user.UserSessionData userSessionData )
-	   throws java.lang.Exception, java.rmi.RemoteException;
-   
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.Collection getUsersReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
-	    throws java.lang.Exception, java.rmi.RemoteException;
-   
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.HashMap getWRTUserAnswersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
-		 throws java.lang.Exception, java.rmi.RemoteException;
-   
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public java.util.Collection getNotStartedUsersReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
-		throws java.lang.Exception, java.rmi.RemoteException;
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

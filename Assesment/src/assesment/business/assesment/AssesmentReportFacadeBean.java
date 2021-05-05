@@ -939,9 +939,9 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 		 * @ejb.interface-method
 		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
 		 */
-		public Collection findMutualAssesmentResults(Integer assesment,Integer cedi, UserSessionData userSessionData) throws Exception {
+		public Collection findMutualAssesmentResults(Integer assesment,Integer cedi, String from, String to, UserSessionData userSessionData) throws Exception {
 	        try {
-	            return AssesmentReportUtil.getHome().create().findMutualAssesmentResults(assesment,cedi, userSessionData);
+	            return AssesmentReportUtil.getHome().create().findMutualAssesmentResults(assesment,cedi, from, to,userSessionData);
 	        }catch (Exception e) {
 	            handler.handleException("findMutualAssesmentResults",e);
 	        }

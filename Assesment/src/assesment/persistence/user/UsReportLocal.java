@@ -173,7 +173,7 @@ public interface UsReportLocal
 
    public java.util.Collection findCediUsers( java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
-   public java.util.Collection findCediUsers( java.lang.Integer[] cedis,java.lang.String cedi,java.lang.String firstname,java.lang.String lastname,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+   public java.util.Collection findCediUsers( java.lang.Integer[] cedis,java.lang.String cedi,java.lang.String firstname,java.lang.String lastname,java.lang.String userName,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public java.util.Collection findCediMissingUsers( java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 

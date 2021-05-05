@@ -46,7 +46,7 @@ public class DownloadCediReportAction  extends AbstractAction {
 			Integer cedi=new Integer(((DynaActionForm)form).getString("cedi"));
 			Integer[] cedis = {new Integer(cedi)};
 
-	        Collection<UserData> users = sys.getUserReportFacade().findCediUsers(cedis,"","","", sys.getUserSessionData());
+	        Collection<UserData> users = sys.getUserReportFacade().findCediUsers(cedis,"","","", "",sys.getUserSessionData());
 
 	        response.setHeader("Content-Type", "application/vnd.ms-excel");
 	        response.setHeader("Content-Disposition", "inline; filename=Total.xls");

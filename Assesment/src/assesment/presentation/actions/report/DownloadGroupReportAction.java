@@ -110,7 +110,7 @@ public class DownloadGroupReportAction  extends AbstractAction {
 			if(grupoModelo) {
 				UserData us = sys.getUserReportFacade().findUserByPrimaryKey(sys.getUserSessionData().getFilter().getLoginName(),sys.getUserSessionData());
 				cedis = sys.getCorporationReportFacade().findCediUser(us.getLoginName(), sys.getUserSessionData());
-				users =  sys.getUserReportFacade().findCediUsers(cedis, "","","", sys.getUserSessionData());
+				users =  sys.getUserReportFacade().findCediUsers(cedis, "","","", "", sys.getUserSessionData());
 				usersData = sys.getAssesmentReportFacade().getUserCediResults(cedis, sys.getUserSessionData());
 
 			}

@@ -48,6 +48,7 @@
 	String value = "";
 	String firstName = "";
 	String lastName = "";
+	String userName = "";
 
 	if(request.getParameter("value")!=null){
 		value = request.getParameter("value");
@@ -58,6 +59,9 @@
 	if(request.getParameter("lastName")!=null){
 		lastName = request.getParameter("lastName");
 	}	
+	if(request.getParameter("userName")!=null){
+		userName = request.getParameter("userName");
+	}	
 	String link="reportgrupomodelo.jsp";
 	HashMap<Integer, int[]> graphs = new HashMap<Integer, int[]>();
 	if(role.equals(SecurityConstants.ADMINISTRATOR) || role.equals(SecurityConstants.CLIENTGROUP_REPORTER)) {
@@ -67,7 +71,7 @@
 		int idGroup = 14;
 		int colspan = 4;
 		Integer[] cedis = sys.getCorporationReportFacade().findCediUser(userData.getLoginName(), userSessionData);
-		Collection<UserData> users = usReport.findCediUsers(cedis, value, firstName, lastName, sys.getUserSessionData());
+		Collection<UserData> users = usReport.findCediUsers(cedis, value, firstName, lastName, userName, sys.getUserSessionData());
 		graphs.put(1, new int[]{0, 0, 0, 0});
 		graphs.put(2, new int[]{0, 0, 0, 0});
 
@@ -312,11 +316,13 @@
 							<td align="left" class="searchText">
 								<form action="<%=link%>" method="post">
 									<span style="width:30px">Nombre</span>
-									<input type="text" name="firstName" style="width: 300px;"  class="input" value='<%=firstName%>'/>
+									<input type="text" name="firstName" style="width: 200px;"  class="input" value='<%=firstName%>'/>
 									<span style="width:30px">Apellido</span>
-									<input type="text" name="lastName" style="width: 300px;"  class="input" value='<%=lastName%>'/>
+									<input type="text" name="lastName" style="width: 200px;"  class="input" value='<%=lastName%>'/>
+									<span style="width:30px">Usuario</span>
+									<input type="text" name="userName" style="width: 200px;"  class="input" value='<%=userName%>'/>
 									<span style="width:30px"><%=messages.getText("generic.cedi")%></span>
-									<input type="text" name="value" style="width: 300px;"  class="input" value='<%=value%>'/>
+									<input type="text" name="value" style="width: 200;"  class="input" value='<%=value%>'/>
 									<input name="button" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
 								</form>
 							</td>

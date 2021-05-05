@@ -2723,7 +2723,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 	 * @ejb.permission role-name = "administrator, systemaccess"
 	 * @throws Exception
 	 */
-	public Collection<UserData> findCediUsers(Integer[] cedis, String cedi, String firstname, String lastname, UserSessionData userSessionData) throws Exception {
+	public Collection<UserData> findCediUsers(Integer[] cedis, String cedi, String firstname, String lastname,String userName, UserSessionData userSessionData) throws Exception {
 		Collection<UserData> users = new LinkedList<UserData>();
 		try {
 			Session session = HibernateAccess.currentSession();
@@ -2733,6 +2733,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 					+ "WHERE u.loginname IN (SELECT loginname FROM usergroups WHERE groupid = "+GroupData.GRUPO_MODELO+") "
 					+ "AND lower(u.firstname) like '%"+firstname.toLowerCase()+"%' "
 					+ "AND lower(u.lastname) like '%"+lastname.toLowerCase()+"%' "
+					+ "AND lower(u.loginname) like '%"+userName.toLowerCase()+"%' "
 					+ "AND lower(c.name) like '%"+cedi.toLowerCase()+"%' "
 					+ "AND role = '"+UserData.GROUP_ASSESSMENT+"' ";
 			if(cedis != null && cedis.length > 0) {

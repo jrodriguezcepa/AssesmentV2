@@ -1461,9 +1461,9 @@ public abstract class UsReportFacadeBean implements SessionBean {
 	 * @ejb.permission role-name = "administrator, systemaccess"
 	 * @throws Exception
 	 */
-	public Collection<UserData> findCediUsers(Integer[] cedis, String cedi, String firstname, String lastname,UserSessionData userSessionData) throws Exception {
+	public Collection<UserData> findCediUsers(Integer[] cedis, String cedi, String firstname, String lastname, String userName, UserSessionData userSessionData) throws Exception {
         try{
-        	return UsReportUtil.getHome().create().findCediUsers(cedis, cedi, firstname, lastname, userSessionData);
+        	return UsReportUtil.getHome().create().findCediUsers(cedis, cedi, firstname, lastname, userName, userSessionData);
         } catch (Exception e) {
             handler.handleException("findCediUsers", e);
         }

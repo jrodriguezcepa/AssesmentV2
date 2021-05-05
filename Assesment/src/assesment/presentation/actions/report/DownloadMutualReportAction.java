@@ -46,7 +46,7 @@ public class DownloadMutualReportAction  extends AbstractAction {
 	        Text messages = sys.getText();
 	        String assesmentId=(String)session.getAttribute("assesmentId");
 	        Integer cedi=(Integer)session.getAttribute("cedi");
-			Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cedi, sys.getUserSessionData());
+			Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cedi, null,null, sys.getUserSessionData());
 
 	    	
 	        response.setHeader("Content-Type", "application/vnd.ms-excel");

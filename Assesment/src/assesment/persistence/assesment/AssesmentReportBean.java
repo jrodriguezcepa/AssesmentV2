@@ -1657,9 +1657,16 @@ public abstract class AssesmentReportBean implements SessionBean {
 		 * @ejb.interface-method
 		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
 		 */
-		public Collection findMutualAssesmentResults(Integer assesment, Integer cedi, UserSessionData userSessionData) throws Exception {
+		public Collection findMutualAssesmentResults(Integer assesment, Integer cedi, String from, String to, UserSessionData userSessionData) throws Exception {
 			Session session = null;
-			Collection result = new LinkedList();
+			String date= "";
+			 System.out.println("***");
+			 System.out.println(from);
+			 System.out.println(to);
+
+			 date=(from!=null&&!from.equals("--"))?(" AND enddate >= '"+from+"' "): "";
+			 date+=(to!=null&&!to.equals("--"))?" AND enddate <= '"+to+"' ":"";
+			 Collection result = new LinkedList();
 			try {
 				session = HibernateAccess.currentSession();
 				Query qryMod = session.createSQLQuery("select id from modules where assesment="+assesment+" order by moduleorder").addScalar("id", Hibernate.INTEGER);
@@ -1685,7 +1692,8 @@ public abstract class AssesmentReportBean implements SessionBean {
 					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country, ua.enddate "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
-							+ "WHERE assesment = " + assesment;
+							+ "WHERE assesment = " + assesment+ date;
+
 						//	+ " AND ua.enddate IS NOT NULL "
 						//	+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL "
 					if(cedi!=null) queryStr+= " AND u.location="+cedi; 
@@ -1694,7 +1702,8 @@ public abstract class AssesmentReportBean implements SessionBean {
 					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country, ua.enddate  "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
-							+ "WHERE assesment = " + assesment;
+							+ "WHERE assesment = " + assesment
+							+ date;
 							//+ " AND ua.enddate IS NOT NULL "
 							//+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL"; 
 				}

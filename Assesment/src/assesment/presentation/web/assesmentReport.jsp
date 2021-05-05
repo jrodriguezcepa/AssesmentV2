@@ -29,6 +29,7 @@
 	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	String language = (sys != null) ? sys.getUserSessionData().getLenguage() : System.getProperty("user.language");
     String next = (sys.getUserSessionData().getRole().equals(SecurityConstants.ADMINISTRATOR)) ? "index.jsp" : "logout.jsp";
+	String link="assesmentReport.jsp";
 
 %>
 
@@ -287,6 +288,12 @@
 			  	margin-top:10px;
 			  	margin-left:20px;
 			  }
+			.searchText {
+				color: #1D272D;
+				font-family: Roboto, Helvetica, Arial, sans-serif;
+				font-size: 13;
+				text-align: left;
+			}
 		</style>
 	
 	</head>
@@ -354,11 +361,41 @@
 		String rec4="util/mutual/recommendation4_"+language+"/index.html";
 		String rec5="util/mutual/recommendation5_"+language+"/index.html";
 
+		link+="?id="+assesmentId;
+		String since_day = "";
+		String since_month = "";
+		String since_year = "";
+
+		String until_day = "";
+		String until_month = "";
+		String until_year = "";
+
+		if(request.getParameter("since_day")!=null){
+			since_day = request.getParameter("since_day");
+		}	
+		if(request.getParameter("since_month")!=null){
+			since_month = request.getParameter("since_month");
+		}	
+		if(request.getParameter("since_year")!=null){
+			since_year = request.getParameter("since_year");
+		}	
+		if(request.getParameter("until_day")!=null){
+			until_day = request.getParameter("until_day");
+		}	
+		if(request.getParameter("until_month")!=null){
+			until_month = request.getParameter("until_month");
+		}	
+		if(request.getParameter("until_year")!=null){
+			until_year = request.getParameter("until_year");
+		}	
+		
+		String date_from=since_year+"-"+since_month+"-"+since_day;
+		String date_to=until_year+"-"+until_month+"-"+until_day;
 
 		boolean odd=true;
 		CountryConstants countries= new CountryConstants();
 		countries.setLAData(messages);
-		Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cediId, sys.getUserSessionData());
+		Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cediId, date_from, date_to, sys.getUserSessionData());
 		ArrayList<UserMutualReportData> results = new ArrayList(r);
 		if(request.getParameter("sort")!=null){
 			String criteria=(String)request.getParameter("sort");
@@ -407,6 +444,24 @@
 		<div class="col-10"><label for="r2"><img id="right_btn" src="images/mutual_right.png" alt="right"></label></div>
 <%	} %>
 	</div>
+	</br>
+	<table width="100%" border="0" cellpadding="1" cellspacing="1">
+
+		<tr class="searchText">
+			<form action="<%=link%>" method="post">
+				<span style="width:30px;padding-right:10px;"><%=messages.getText("generic.messages.from") %></span>
+				<input type="text" name="since_day" style="width: 45px;"  class="input" value='<%=since_day%>' placeholder="dd"/>/
+				<input type="text" name="since_month" style="width: 45px;"  class="input" value='<%=since_month%>' placeholder="mm" />/
+				<input type="text" name="since_year" style="width: 60px;"  class="input" value='<%=since_year%>' placeholder="yyyy"/>
+			    <span style="width:30px;padding-left:10px;padding-right:10px;"><%=messages.getText("generic.messages.to") %></span>
+				<input type="text" name="until_day" style="width: 45px;"  class="input" value='<%=until_day%>' placeholder="dd"/>/
+				<input type="text" name="until_month" style="width: 45px;"  class="input" value='<%=until_month%>' placeholder="mm"/>/
+				<input type="text" name="until_year" style="width: 60px;padding-right:10px;"  class="input" value='<%=until_year%>' placeholder="yyyy"/>
+				<input name="button"   style="padding-left:10px;" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
+			</form>
+			</td>
+		</tr>
+	</table>
 	<div class="slidershow middle">
 
 		<div class="slides">

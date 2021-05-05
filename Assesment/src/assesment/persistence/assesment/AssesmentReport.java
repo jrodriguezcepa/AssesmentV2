@@ -112,7 +112,7 @@ public interface AssesmentReport
    public java.lang.Integer getAssesmentId( java.lang.String user,java.lang.String webinarCode,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection findMutualAssesmentResults( java.lang.Integer assesment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.Collection findMutualAssesmentResults( java.lang.Integer assesment,java.lang.Integer cedi,java.lang.String from,java.lang.String to,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public assesment.communication.assesment.GroupUsersData getGroupUsersResults( java.lang.Integer groupId,assesment.communication.administration.user.UserSessionData userSessionData )

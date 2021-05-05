@@ -223,7 +223,7 @@ public interface UsReportFacade
    public java.util.Collection findCediUsers( java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection findCediUsers( java.lang.Integer[] cedis,java.lang.String cedi,java.lang.String firstname,java.lang.String lastname,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.Collection findCediUsers( java.lang.Integer[] cedis,java.lang.String cedi,java.lang.String firstname,java.lang.String lastname,java.lang.String userName,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.lang.String getCurrentTimacUser( java.lang.String cpf,assesment.communication.administration.user.UserSessionData userSessionData )
