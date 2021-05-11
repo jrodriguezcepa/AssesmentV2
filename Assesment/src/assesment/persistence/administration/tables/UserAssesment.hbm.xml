@@ -60,6 +60,8 @@
 			<column name="reportsendede" default="false" />
 		</property>
 		<property name="acceptTerms"	column="acceptTerms" 	type="java.util.Date" />
+		<property name="creationDate"	column="creationdate" 	type="java.util.Date" />
+		<property name="fdmRegistry"	column="fdmregistry" 	type="java.lang.Integer" />
 	</class>
 
 </hibernate-mapping>
