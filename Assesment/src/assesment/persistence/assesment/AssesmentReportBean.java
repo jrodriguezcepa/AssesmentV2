@@ -1660,13 +1660,9 @@ public abstract class AssesmentReportBean implements SessionBean {
 		public Collection findMutualAssesmentResults(Integer assesment, Integer cedi, String from, String to, UserSessionData userSessionData) throws Exception {
 			Session session = null;
 			String date= "";
-			 System.out.println("***");
-			 System.out.println(from);
-			 System.out.println(to);
-
-			 date=(from!=null&&!from.equals("--"))?(" AND enddate >= '"+from+"' "): "";
-			 date+=(to!=null&&!to.equals("--"))?" AND enddate <= '"+to+"' ":"";
-			 Collection result = new LinkedList();
+			date=(from!=null&&!from.equals("--"))?(" AND enddate >= '"+from+"' "): "";
+			date+=(to!=null&&!to.equals("--"))?" AND enddate <= '"+to+"' ":"";
+			Collection result = new LinkedList();
 			try {
 				session = HibernateAccess.currentSession();
 				Query qryMod = session.createSQLQuery("select id from modules where assesment="+assesment+" order by moduleorder").addScalar("id", Hibernate.INTEGER);
@@ -2023,5 +2019,58 @@ public abstract class AssesmentReportBean implements SessionBean {
 	        }
 	    	return list;
 	    }
+
+	    /**
+		 * @ejb.interface-method
+		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
+		 */
+		public HashMap<String, Object[]> findMutualAssesmentGlobalResults(Integer assesment, Integer cedi, UserSessionData userSessionData) throws Exception {
+			Session session = null;
+			HashMap<String, Object[]> result = new HashMap();
+			try {
+				session = HibernateAccess.currentSession();
+				String q="select c.name from userassesments ua join users u on u.loginname=ua.loginname  join cedi c on c.id=u.location where assesment="+assesment+" and ua.enddate is not null group by c.name"; 
+				Query qry = session.createSQLQuery(q).addScalar("name", Hibernate.STRING);
+				List listCompanies = qry.list();
+			
+				if (listCompanies != null && listCompanies.size() > 0) {				
+					Iterator iter = listCompanies.iterator();
+					while (iter.hasNext()) {
+						String cediName=(String) iter.next();
+						String q2="select count (*) from userassesments ua join users u on u.loginname=ua.loginname left join cedi c on c.id=u.location where c.name='"+cediName+"' and assesment=1613 and ua.enddate is not null"; 
+						Query queryCount = session.createSQLQuery(q2).addScalar("count", Hibernate.INTEGER);
+						Integer end=(Integer)queryCount.uniqueResult();
+						q2="select count (*) from userassesments ua join users u on u.loginname=ua.loginname left join cedi c on c.id=u.location where c.name='"+cediName+"' and assesment=1613 and ua.enddate is null"; 
+						queryCount = session.createSQLQuery(q2).addScalar("count", Hibernate.INTEGER);
+						Integer pending=(Integer)queryCount.uniqueResult();
+						String status=null;
+						if(end>=50) {
+							q2="select max (enddate) as enddate from userassesments ua join users u on u.loginname=ua.loginname left join cedi c on c.id=u.location where c.name='"+cediName+"' and assesment=1613 and ua.enddate is not null"; 
+							queryCount = session.createSQLQuery(q2).addScalar("enddate", Hibernate.STRING);
+							String d=(String)queryCount.uniqueResult();
+							status="CERRADA "+d.substring(0, 10);
+						}else if(end >0) {
+							q2="select min (enddate) as enddate from userassesments ua join users u on u.loginname=ua.loginname left join cedi c on c.id=u.location where c.name='"+cediName+"' and assesment=1613 and ua.enddate is not null"; 
+							queryCount = session.createSQLQuery(q2).addScalar("enddate", Hibernate.STRING);
+							String d=(String)queryCount.uniqueResult();
+							status="ABIERTA "+d.substring(0, 10);	
+						}else {
+							status="--";
+						}
+						int disp=(cediName.equals("VULE"))?55:50;
+						
+						Object[] value= {disp, pending, end, status};
+						result.put(cediName, value);
+						//System.out.println((Integer)result.get(cediName)[0]+ (Integer)result.get(cediName)[1]+ (Integer)result.get(cediName)[2]+ (Integer)result.get(cediName)[3]);
+
+					}
+			
+				
+			}
+
+			} catch (Exception e) {
+	            handler.getException(e,"findMutualAssesmentGlobalResults", userSessionData.getFilter().getLoginName());
+	        }
+			return result;}
 
 }

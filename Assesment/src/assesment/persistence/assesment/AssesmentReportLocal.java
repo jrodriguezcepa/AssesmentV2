@@ -92,4 +92,6 @@ public interface AssesmentReportLocal
 
    public java.util.Collection getAssessmentUsersBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.HashMap findMutualAssesmentGlobalResults( java.lang.Integer assesment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

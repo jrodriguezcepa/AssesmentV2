@@ -87,7 +87,7 @@
 			.row img{
 				width: 60%;
 			}
-			  .table, .table2 {
+			.table, .table2 {
 				width: 100%;
 				border-collapse: collapse;
 				border-bottom: 1px solid #d6d6d6;
@@ -95,6 +95,45 @@
 				table-layout: fixed;
 			
 			}
+			.table3 {
+				width: 60%;
+				margin:auto;
+				margin-bottom:15px;
+				border-collapse: collapse;
+				border-bottom: 1px solid #d6d6d6;
+				margin-top: 5px;
+				table-layout: fixed;
+			
+			}
+			.table3 th{
+				font-family: 'Roboto', sans-serif;
+				font-weight: 300;
+				font-size: 1.5vw;
+				white-space: normal;
+				color: white;
+				background-color: green;
+				border-top:1px solid #d8cccc;
+				border-left:1px solid #a39999;
+				border-right:1px solid #dcdcdc;
+			}
+			.table3 td {
+				text-align:center;
+				font-family: 'Roboto', sans-serif;
+				font-weight: 600;
+				font-size: 1vw;
+				white-space: normal;
+				color: #434343;
+				padding:10px;
+				border-top:1px solid #d8cccc;
+				border-left:1px solid #a39999;
+				border-right:1px solid #dcdcdc;
+			}
+			
+			.fstCol{
+				width: 40%;
+				color: white;
+				background-color: #81b214;
+				}
 			
 			.table th, .table2 th,  .table td, .table2 td {
 				
@@ -289,9 +328,10 @@
 			  	margin-left:20px;
 			  }
 			.searchText {
+				font-family: 'Roboto', sans-serif;
+				font-weight: 300;
+				font-size: 1.5vw;
 				color: #1D272D;
-				font-family: Roboto, Helvetica, Arial, sans-serif;
-				font-size: 13;
 				text-align: left;
 			}
 		</style>
@@ -396,6 +436,13 @@
 		CountryConstants countries= new CountryConstants();
 		countries.setLAData(messages);
 		Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cediId, date_from, date_to, sys.getUserSessionData());
+		HashMap globalResults =null;
+		Set <String> keys = null;
+		if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
+			globalResults = sys.getAssesmentReportFacade().findMutualAssesmentGlobalResults(Integer.parseInt(assesmentId),cediId, sys.getUserSessionData());
+			keys = globalResults.keySet();
+		}
+		
 		ArrayList<UserMutualReportData> results = new ArrayList(r);
 		if(request.getParameter("sort")!=null){
 			String criteria=(String)request.getParameter("sort");
@@ -428,6 +475,58 @@
 	<div class="title">
 		<%=cediName %>
 	</div>
+<%	if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){ 
+%>	
+	<div>
+		<table class="table3">
+			<tr>
+				<td style="width:30%"> </td>
+<%			for (String comp : keys) {
+%>				<th>
+					<%=comp %>
+				</th>
+<%			}
+%>
+			</tr>
+			<tr>
+				<td class="fstCol" style="color:white">Usuarios disponibles</td>
+<%			for (String comp : keys) {
+%>				<td style="color:#3995D2">
+					<%=(Integer)((Object[])globalResults.get(comp))[0] %>
+				</td>
+<%			}
+%>
+			</tr>
+			<tr>
+				<td  class="fstCol" style="color:white">Usuarios incompletos</td>
+<%			for (String comp : keys) {
+%>				<td style="color:#F3273C">
+					<%=(Integer)((Object[])globalResults.get(comp))[1] %>
+				</td>
+<%			}
+%>
+			</tr>
+			<tr>
+				<td  class="fstCol" style="color:white">Usuarios Finalizados</td>
+<%			for (String comp : keys) {
+%>				<td style="color:#43CB3E">
+					<%=(Integer)((Object[])globalResults.get(comp))[2] %>
+				</td>
+<%			}
+%>
+			</tr>
+			<tr>
+				<td  class="fstCol" style="color:white">Estatus de la Actividad</td>
+<%			for (String comp : keys) {
+%>				<td>
+					<%=((Object[])globalResults.get(comp))[3]==null?"--":(String)((Object[])globalResults.get(comp))[3] %>
+				</td>
+<%			}
+%>
+			</tr>
+		</table>
+	</div>
+<%} %>
 	<div class="row">
 		<div class="col-1"><a href='<%=refresh%>' class="button"><%=messages.getText("generic.data.refresh")%>  <img  src="images/mutual_refresh.png" alt="left"></a></div>
 		<div class="col-2"><html:form action="/DownloadMutualReport" method="post"><a href="" class="button"><html:submit style="all:unset;"><%=messages.getText("generic.data.downloadxls")%> </html:submit><img  src="images/mutual_download.png" alt="left"></a></html:form></div>
@@ -447,17 +546,17 @@
 	</br>
 	<table width="100%" border="0" cellpadding="1" cellspacing="1">
 
-		<tr class="searchText">
-			<form action="<%=link%>" method="post">
-				<span style="width:30px;padding-right:10px;"><%=messages.getText("generic.messages.from") %></span>
+		<tr>
+			<form action="<%=link%>" method="post" class="searchText">
+				<span style="width:30px;padding-right:10px;font-size:1vw;font-family:'Roboto';"><%=messages.getText("generic.messages.from") %></span>
 				<input type="text" name="since_day" style="width: 45px;"  class="input" value='<%=since_day%>' placeholder="dd"/>/
 				<input type="text" name="since_month" style="width: 45px;"  class="input" value='<%=since_month%>' placeholder="mm" />/
 				<input type="text" name="since_year" style="width: 60px;"  class="input" value='<%=since_year%>' placeholder="yyyy"/>
-			    <span style="width:30px;padding-left:10px;padding-right:10px;"><%=messages.getText("generic.messages.to") %></span>
+			    <span style="width:30px;padding-left:10px;padding-right:10px;font-size:1vw;font-family:'Roboto';"><%=messages.getText("generic.messages.to") %></span>
 				<input type="text" name="until_day" style="width: 45px;"  class="input" value='<%=until_day%>' placeholder="dd"/>/
 				<input type="text" name="until_month" style="width: 45px;"  class="input" value='<%=until_month%>' placeholder="mm"/>/
-				<input type="text" name="until_year" style="width: 60px;padding-right:10px;"  class="input" value='<%=until_year%>' placeholder="yyyy"/>
-				<input name="button"   style="padding-left:10px;" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
+				<input type="text" name="until_year" style="width: 60px;margin-right:10px;"  class="input" value='<%=until_year%>' placeholder="yyyy"/>
+				<input name="button"   style="margin-left:5px;padding-left:10px;font-size:1vw;" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
 			</form>
 			</td>
 		</tr>

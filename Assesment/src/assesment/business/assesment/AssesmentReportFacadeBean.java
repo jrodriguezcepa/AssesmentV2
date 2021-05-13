@@ -1124,5 +1124,18 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	    	return reportData;
 	    }
 
+		/**
+		 * @ejb.interface-method
+		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
+		 */
+		public HashMap findMutualAssesmentGlobalResults(Integer assesment,Integer cedi, UserSessionData userSessionData) throws Exception {
+	        try {
+	            return AssesmentReportUtil.getHome().create().findMutualAssesmentGlobalResults(assesment,cedi, userSessionData);
+	        }catch (Exception e) {
+	            handler.handleException("findMutualAssesmentGlobalResults",e);
+	        }
+	        return null;
+	    }
+
 	    
 }
