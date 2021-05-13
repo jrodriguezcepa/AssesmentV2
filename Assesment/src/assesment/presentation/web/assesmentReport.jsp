@@ -330,7 +330,7 @@
 			.searchText {
 				font-family: 'Roboto', sans-serif;
 				font-weight: 300;
-				font-size: 1.5vw;
+				font-size: 1vw;
 				color: #1D272D;
 				text-align: left;
 			}
@@ -546,17 +546,17 @@
 	</br>
 	<table width="100%" border="0" cellpadding="1" cellspacing="1">
 
-		<tr>
+		<tr><td>
 			<form action="<%=link%>" method="post" class="searchText">
-				<span style="width:30px;padding-right:10px;font-size:1vw;font-family:'Roboto';"><%=messages.getText("generic.messages.from") %></span>
-				<input type="text" name="since_day" style="width: 45px;"  class="input" value='<%=since_day%>' placeholder="dd"/>/
-				<input type="text" name="since_month" style="width: 45px;"  class="input" value='<%=since_month%>' placeholder="mm" />/
-				<input type="text" name="since_year" style="width: 60px;"  class="input" value='<%=since_year%>' placeholder="yyyy"/>
-			    <span style="width:30px;padding-left:10px;padding-right:10px;font-size:1vw;font-family:'Roboto';"><%=messages.getText("generic.messages.to") %></span>
-				<input type="text" name="until_day" style="width: 45px;"  class="input" value='<%=until_day%>' placeholder="dd"/>/
-				<input type="text" name="until_month" style="width: 45px;"  class="input" value='<%=until_month%>' placeholder="mm"/>/
-				<input type="text" name="until_year" style="width: 60px;margin-right:10px;"  class="input" value='<%=until_year%>' placeholder="yyyy"/>
-				<input name="button"   style="margin-left:5px;padding-left:10px;font-size:1vw;" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
+				<span style="width:30px;padding-right:10px;"><%=messages.getText("generic.messages.from") %></span>
+				<input type="text" name="since_day" style="width: 45px;height:25px"  class="input" value='<%=since_day%>' placeholder="dd"/> /
+				<input type="text" name="since_month" style="width: 45px;height:25px"  class="input" value='<%=since_month%>' placeholder="mm" /> /
+				<input type="text" name="since_year" style="width: 60px;height:25px"  class="input" value='<%=since_year%>' placeholder="yyyy"/>
+			    <span style="width:30px;padding-left:10px;padding-right:10px;"><%=messages.getText("generic.messages.to") %></span>
+				<input type="text" name="until_day" style="width: 45px;height:25px"  class="input" value='<%=until_day%>' placeholder="dd"/> /
+				<input type="text" name="until_month" style="width: 45px;height:25px"  class="input" value='<%=until_month%>' placeholder="mm"/> /
+				<input type="text" name="until_year" style="width: 60px;height:25px;margin-right:10px;"  class="input" value='<%=until_year%>' placeholder="yyyy"/>
+				<input name="button"   style="margin-left:5px;padding-left:10px;height:25px" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
 			</form>
 			</td>
 		</tr>
