@@ -132,20 +132,68 @@
 		}
 		</script>
 		<style type="text/css">
-			body {
-				background-color: #FFFFFF;
-				margin-left: 10px;
-				margin-top: 10px;
-				margin-right: 10px;
-				margin-bottom: 0px;
-			}
+			body{
+                background-color: rgb(241, 238, 238);
+            }
+            #rcorners1 {
+                margin:auto;
+                margin-bottom:1.5%;
+                border-radius: 10px;
+                background: #f8f8f8;
+                padding: 20px;
+                padding-bottom: 40px;
+                width: 95%;
+                height: 15px;
+                box-shadow: 0 4px 8px 0 rgba(129, 128, 128, 0.2), 0 6px 10px 0 rgba(121, 120, 120, 0.19);
+            }
+              #rcorners2 {
+                margin:auto;
+                border-radius: 10px;
+                background: #f8f8f8;
+                width: 95%;
+                padding:20px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                box-shadow: 0 4px 8px 0 rgba(129, 128, 128, 0.2), 0 6px 10px 0 rgba(121, 120, 120, 0.19);
+            }
+            .textInput{
+                margin-bottom:20px;
+                margin-right:5px;
+
+                width: 19%;
+                height: 30px;
+                border-radius: 5px;
+                background-color: rgb(227, 230, 235);
+                border-width: 0px;
+                color: red;
+                padding:5px;
+            }
+            .button{
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-weight: 500;
+                margin-left:30px;
+                margin-bottom:20px;
+                color: rgb(255, 255, 255);
+                background-color: black;
+                border-radius: 5px;
+                width: 10%;
+                height: 38px;
+                padding:5px;
+                border-width: 0px;
+                cursor:pointer;
+
+            }
+            .button:hover{
+                background-color: rgb(58, 55, 55);
+
+            }
 			.title {
-				margin-left: 10px;
-				margin-top: 20px;
-				margin-bottom: 20px;
+				width:100%;
+				margin:auto;
 				color: #1D272D;
 				font-family: Roboto, Helvetica, Arial, sans-serif;
 				font-size: 2.5em;
+				text-align:center;
 			}
 			.subtitle {
 				margin-left: 10px;
@@ -155,88 +203,129 @@
 				font-family: Roboto, Helvetica, Arial, sans-serif;
 				font-size: 1.5em;
 			}
-			.tabla {
-				margin-left: 10px;
-				color: #1D272D;
-				font-family: Roboto, Helvetica, Arial, sans-serif;
+            .table{
+                border-collapse: collapse;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 				font-size: 11;
-				text-align: center;
-				width:98%;
-				padding: 0;
-				border-spacing: 0;
-			}
+				table-layout: fixed;
+                width: 100%;
+                margin: auto;
+
+            }
+            .table th{
+                background: #f8f8f8;
+ 				word-wrap: break-word;   
+            }
+            .table td:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+
+            }
+            .table td:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+            }
+            .table  tr:nth-child(even) {
+
+                background: #CCC
+            }
+            .table tr:nth-child(even):hover {
+
+                background: rgb(243, 237, 237)
+            }
+            .table tr:nth-child(odd) {
+
+                background:rgb(227, 230, 235);
+             }
+            .table tr:nth-child(odd):hover {
+
+                background: rgb(243, 237, 237)
+             }
+            .table td{
+
+                border-style:none;
+                border-width: 0.5px;
+                border-collapse:collapse;
+                border-left-color: darkkhaki;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:1px;
+                padding-right:1px;
+                text-align: center;
+                white-space: nowrap;
+    			height: 30px;
+    			overflow:hidden;
+
+             }
 			.cell {
 				min-width: 130px;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
+				border-style: none;
 				text-align: center;
 				height: 30px;
 			}
 			.cellText {
-				color: #1D272D;
-				font-family: Roboto, Helvetica, Arial, sans-serif;
-				font-size: 11;
-				text-align: center;
 				text-align: center;
 			}
-			.cell1 {
-				background-color: white;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: center;
-				height: 30px;
-			}
-			.cellData {
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: left;
-				padding: 5px;
-				height: 30px;
-			}
-			.cellData1 {
-				background-color: #DCDCDC;
-				border-color: black;
-				border-width: 1px;
-				border-style: solid;
-				text-align: left;
-				padding: 5px;
-				height: 30px;
-			}
+
 			.cellRed {
-				background-color: red;
+				background-color: #F37566;
 				color:white;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
+				border-style: none;
 				text-align: center;
-				height: 30px;
 				vertical-align: middle;
 			}
 			.cellYellow {
-				background-color: yellow;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: center;
-				height: 30px;
+				border-style:none;
+                border-width: 0.5px;
+                border-collapse:collapse;
+                border-left-color: darkkhaki;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:1px;
+                padding-right:1px;
+                text-align: center;
+                white-space: nowrap;
+    			height: 30px;	
+				background-color: #EFE358;
 			}
 			.cellGreen {
-				background-color: green;
+			 	border-style:solid;
+                border-width: 0.5px;
+                border-left:0px;
+                border-right:0px;
+                border-top:0px;
+                border-bottom:0.5px;
+                border-collapse:collapse;
+                border-bottom-color: grey;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:1px;
+                padding-right:1px;
+                text-align: center;
+                white-space: nowrap;
+    			height: 30px;	
+				background-color: #70C160;
 				color:white;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: center;
-				height: 30px;
+				
 			}
-			.searchText {
-				color: #1D272D;
-				font-family: Roboto, Helvetica, Arial, sans-serif;
-				font-size: 13;
-				text-align: left;
+			
+			.subTable{
+                border-collapse: collapse;
+                border-style:none;
+                font-size:11;
+                height:10px;
+                margin:auto;
+			}
+			.subTable td{
+				padding:0;
+				word-wrap:break-word
+				border-style: none;
+				
+			}
+			.subTable img{
+				width:10px;
+				height:10px;
 			}
 		</style>
 	</head>
@@ -257,90 +346,33 @@
 		</div>
 		<br>
 		<br>
-		<div>
-			<table width="100%">
-				<tr>
-					<td class="title" width="30%" align="left">
-						Grupo Modelo
-					</td>
-					<td width="20%" align="center">
-						<a href="javascript:document.forms['DownloadGroupReportForm'].submit()" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("assesment.report.download")%>
-							</span>
-						</a>
-					</td>
-					<td width="20%" align="center">
-						<a href="associateDA.jsp?type=1" style="text-decoration: none;">
-							<span class="subtitle">
-								Asociar DA
-							</span>
-						</a>
-					</td>
-					<td width="20%" align="center">
-						<a href="associateDA.jsp?type=2" style="text-decoration: none;">
-							<span class="subtitle">
-								Asociar eBTW
-							</span>
-						</a>
-					</td>
+		<div class="title">
+			Grupo Modelo
+		</div>
+		 <div id="rcorners1">
+		 	<form action="<%=link%>" method="post">
+	            <input name="firstName" class="textInput" type="text" placeholder="Nombre" value='<%=firstName%>'>
+	            <input name="lastName" class="textInput" type="text" placeholder="Apellido" value='<%=lastName%>'>
+	            <input name="userName" class="textInput" type="text" placeholder="Usuario" value='<%=userName%>'>
+	            <input name="value" class="textInput" type="text" placeholder="CEDI" value='<%=value%>'>
+	            <input name="button" class="button"  type="submit" value="BUSCAR">
+	         </form>
+	         
+        </div>
+		<div id="rcorners2">
+            <div> 
+                <input class="button"  type="button" value="Descargar" onclick="javascript:document.forms['DownloadGroupReportForm'].submit()">
+                <input class="button"  type="button" value="Asociar DA"  onclick="window.location.href='associateDA.jsp?type=1'">
+
+                <input class="button"  type="button" value="Asociar eBTW"  onclick="window.location.href='associateDA.jsp?type=2'">
 <%			if(role.equals(SecurityConstants.ADMINISTRATOR)) {
-%>					<td width="10%" align="center">
-						<a href="javascript:document.forms['back'].submit();" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("generic.messages.back")%>
-							</span>
-						</a>
-					</td>
+%>                <input class="button"  type="button" value='<%=messages.getText("generic.messages.back").toUpperCase()%>'  onclick="javascript:document.forms['back'].submit();">
 <%			} else {
-%>					<td width="10%" align="center">
-						<a href="logout.jsp" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("generic.messages.logout")%>
-							</span>
-						</a>
-					</td>
+%>                <input class="button"  type="button" value='<%=messages.getText("generic.messages.logout").toUpperCase()%>'  onclick="window.location.href='logout.jsp'">
 <%			} 
-%>				</tr>
-			</table>
-		</div>
-		 <tr>
-	    		<td width="100%" valign="top">
-		    		<table width="100%" border="0" cellpadding="1" cellspacing="1">
-		    			<tr>
-		    				<div class="searchText" style="font-weight:600;"><%= messages.getText("generic.messages.search")%></div>
-		    			
-		    			</tr>
-		    			
-						<tr>
-							<td align="left" class="searchText">
-								<form action="<%=link%>" method="post">
-									<span style="width:30px">Nombre</span>
-									<input type="text" name="firstName" style="width: 200px;"  class="input" value='<%=firstName%>'/>
-									<span style="width:30px">Apellido</span>
-									<input type="text" name="lastName" style="width: 200px;"  class="input" value='<%=lastName%>'/>
-									<span style="width:30px">Usuario</span>
-									<input type="text" name="userName" style="width: 200px;"  class="input" value='<%=userName%>'/>
-									<span style="width:30px"><%=messages.getText("generic.cedi")%></span>
-									<input type="text" name="value" style="width: 200;"  class="input" value='<%=value%>'/>
-									<input name="button" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
-								</form>
-							</td>
-						</tr>
-					</table>
-					<jsp:include  page="component/utilitybox2bottom.jsp" />
-				</td>
-    		</tr>
-		<div id="closeContent" style="width: 100%; text-align: center; display:none;">
-			<a href="javascript:cerrarGraph()" >
-				<img src="imgs/cross.png">
-			</a>
-		</div>
-		<div id="graphContent" style="width: 100%; text-align: center;">
-		</div>
-		<br>
-		<div>
-			<table class="tabla">
+%>         </div>
+            <div>
+			<table class="table">
 				<tr>
 					<th><%=messages.getText("user.data.nickname").toUpperCase()%></th>
 					<th><%=messages.getText("user.data.firstname").toUpperCase()%></th>
@@ -361,23 +393,22 @@
 			while(it.hasNext()) {
 				UserData user = it.next();
 				HashMap<Integer, Object[]> values = (userResults.containsKey(user.getLoginName())) ? userResults.get(user.getLoginName()) : new HashMap<Integer, Object[]>();
-				String cellName = (line) ? "cellData1" : "cellData";
-				line = !line;
+				
 %>				<tr>
-					<td class="<%=cellName%>"><%=user.getLoginName() %></td>
-					<td class="<%=cellName%>"><%=user.getFirstName() %></td>
-					<td class="<%=cellName%>"><%=user.getLastName() %></td>
-					<td class="<%=cellName%>"><%=(user.getEmail() == null) ? "---" : user.getEmail() %></td>
-					<td class="<%=cellName%>"><%=(user.getExtraData2() == null) ? "---" : user.getExtraData2() %></td>
+					<td ><%=user.getLoginName() %></td>
+					<td><%=user.getFirstName() %></td>
+					<td><%=user.getLastName() %></td>
+					<td><%=(user.getEmail() == null) ? "---" : user.getEmail() %></td>
+					<td style="word-wrap:break-word"><%=(user.getExtraData2() == null) ? "---" : user.getExtraData2() %></td>
 <%				Object[] data0 = {null,null,null,null,null};
 				if(values.containsKey(0)) {
 					data0 = values.get(0);
 				}
 %>
-					<td class="<%=cellName%>"><%=(data0[1] == null) ? "---" : messages.getText((String)data0[1])%></td>
-					<td class="<%=cellName%>"><%=(data0[2] == null) ? "---" : messages.getText((String)data0[2])%></td>
-					<td class="<%=cellName%>"><%=(data0[3] == null) ? "---" : Util.formatDate((Date)data0[3])%></td>
-					<td class="<%=cellName%>"><%=(data0[4] == null) ? "---" : Util.formatDate((Date)data0[4])%></td>
+					<td style="word-wrap: break-word;"><%=(data0[1] == null) ? "---" : messages.getText((String)data0[1])%></td>
+					<td style="word-wrap:break-word"><%=(data0[2] == null) ? "---" : messages.getText((String)data0[2])%></td>
+					<td style="word-wrap:break-word"><%=(data0[3] == null) ? "---" : Util.formatDate((Date)data0[3])%></td>
+					<td style="word-wrap:break-word"><%=(data0[4] == null) ? "---" : Util.formatDate((Date)data0[4])%></td>
 <%				if(data0[0] != null) {
 %>					<td class="cellGreen">
 						<a href="javascript:openFoto('<%=user.getLoginName()%>')">
@@ -385,13 +416,13 @@
 						</a>
 					</td>
 <%				}else {
-%>					<td class="<%=cellName%>">Pendiente</td>
+%>					<td>Pendiente</td>
 <%				}
 				if(values.containsKey(1)) {
 					Object[] data = values.get(1);
 					if(((Integer)data[0]).intValue() == 0) {
 							graphs.get(1)[3]++;
-%>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
+%>					<td><%=messages.getText("generic.report.pending")%></td>
 <%					} else {
 						String className = "cellGreen";
 						String color = "white";
@@ -412,15 +443,15 @@
 								graphs.get(1)[2]++;
 							}
 						}
-%>					<td class="<%=className%>">
-						<table>
+%>					<td class="<%=className%>" style="padding:0;word-wrap:break-word">
+						<table class="subTable">
 							<tr>
-								<td width="75%" class="cellText">
+								<td width="75%" class="<%=className%>">
 									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
 										<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
 									</a>
 								</td>
-								<td width="25%"  class="cellText">
+								<td width="25%"  class="<%=className%>">
 <%						if(className.equals("cellGreen")) {
 %>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",2);"%>'>
 										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
@@ -433,7 +464,7 @@
 <%						}
 				} else {
 					graphs.get(1)[3]++;
-%>					<td class="<%=cellName%>">
+%>					<td>
 						No asociado
 					</td>
 <%				}
@@ -441,7 +472,7 @@
 					Object[] data = values.get(2);
 					if(((Integer)data[0]).intValue() == 0) {
 							graphs.get(2)[3]++;
-%>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
+%>					<td><%=messages.getText("generic.report.pending")%></td>
 <%					} else {
 						String className = "cellGreen";
 						String color = "white";
@@ -462,8 +493,8 @@
 								graphs.get(2)[2]++;
 							}
 						}
-%>					<td class="<%=className%>">
-						<table>
+%>					<td class="<%=className%>" style="padding:0">
+						<table class="subTable">
 							<tr>
 								<td width="75%" class="<%=className%>">
 									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
@@ -483,14 +514,17 @@
 <%						}
 				} else {
 					graphs.get(2)[3]++;
-%>					<td class="<%=cellName%>">
+%>					<td>
 						No asociado
 					</td>
 <%				}
 %>				</tr>						
 <%			}
-%>			</table>
+%>			</table>            
+            </div>
 		</div>
+
+		
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		<script type="text/javascript">
 		  google.charts.load('current', {'packages':['corechart']});
