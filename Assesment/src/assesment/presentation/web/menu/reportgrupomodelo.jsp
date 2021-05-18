@@ -327,6 +327,23 @@
 				width:10px;
 				height:10px;
 			}
+			div.wrap {
+			    width:90%;
+			    height:50px;
+			    position: relative;
+			}
+			
+			.wrap img {
+			     position: absolute;
+			}
+			
+			.wrap img:nth-of-type(1) {
+			    left: 0;
+			}
+			
+			.wrap img:nth-of-type(2) {
+			    right: 0;
+			}
 		</style>
 	</head>
 	<body>
@@ -341,14 +358,17 @@
 		<form action="./viewFoto.jsp" name='fotos' method="post" target="_blank">
 			<input type="hidden" name="user" />
 		</form>	
-		<div>
-			<img src="./imgs/logocepa.jpg">
+		<div class="wrap">
+			<img src="./images/main_logo_large.png">
+			<img width="5%" src="./images/grupo-modelo.png">
 		</div>
 		<br>
 		<br>
-		<div class="title">
+		<br>
+		<div  class="title">
 			Grupo Modelo
 		</div>
+		<br>
 		 <div id="rcorners1">
 		 	<form action="<%=link%>" method="post">
 	            <input name="firstName" class="textInput" type="text" placeholder="Nombre" value='<%=firstName%>'>

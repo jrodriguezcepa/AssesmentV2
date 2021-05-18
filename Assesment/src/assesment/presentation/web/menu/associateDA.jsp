@@ -239,7 +239,23 @@
 
              }
 			
-		
+			div.wrap {
+			    width:90%;
+			    height:50px;
+			    position: relative;
+			}
+			
+			.wrap img {
+			     position: absolute;
+			}
+			
+			.wrap img:nth-of-type(1) {
+			    left: 0;
+			}
+			
+			.wrap img:nth-of-type(2) {
+			    right: 0;
+			}		
 		
 			
 		</style>
@@ -248,10 +264,12 @@
 		<form name="back" action="reportgrupomodelo.jsp">
 		</form>
 
-		<div>
-			<div style="float:left"><img src="./images/main_logo_large.png"></div>
-			<div style="float:right"><img width="15%" src="./images/grupo-modelo.png"></div>
+		<div class="wrap">
+			<img src="./images/main_logo_large.png">
+			<img width="5%" src="./images/grupo-modelo.png">
 		</div>
+			<br>
+			<br>
 			<br>
 			
 			<div>
@@ -303,7 +321,7 @@
 						</tr>						
 	<%			}
 	%>				</table>
-			</div>
+			</div></br>
 		<div>
 <%			if(type == 1) {
 %>				<input type="button" class="button" value="Asociar Livianos" onclick="javascript:doAsociate(1,'Confirma que desea asociar estos usuarios al Driver Assessment de Livianos?');" />
