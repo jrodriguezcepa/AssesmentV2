@@ -24,7 +24,7 @@
 	RequestDispatcher dispatcher=request.getRequestDispatcher("/util/jsp/message.jsp");
 	dispatcher.include(request,response);
 
-	AssesmentData data = sys.getAssesmentReportFacade().findAssesment(AssesmentData.MDP_CHARLA, sys.getUserSessionData());
+	AssesmentData data = sys.getAssesmentReportFacade().findAssesment(AssesmentData.LUMIN_CHARLA,sys.getUserSessionData());
 
 	int action = 0;
 	if(Util.isNumber(request.getParameter("action"))) {
@@ -79,7 +79,7 @@
 		</header>		
 		<section id="content" style="padding-top: 50px;">
 			<section class="grid_container">
-				<html:form action="/RegisterMDP" style="padding-right: 0px;">
+				<html:form action="/RegisterLumin" style="padding-right: 0px;">
 					<html:hidden property="action" value="<%=String.valueOf(action) %>"/>
 					<fieldset id="username_block" class="active">
 						<div>
@@ -88,9 +88,9 @@
 							</label>
 						</div>
 						<div>
-		                  	<label for="accesscode"><%=messages.getText("charlas.mdp.register")%></label>
+		                  	<label for="accesscode"><%=messages.getText("charlas.lumin.register")%></label>
 						</div>
-<%		if(Util.isRegistrableMDP()) {
+<%		if(Util.isRegistrableLumin()) {
 			if(action == 0) {
 %>						<div>
 		                  	<label for="accesscode"><%=messages.getText("generic.messages.insertci")%></label>
@@ -108,7 +108,7 @@
 %>						<div>
 		                  	<label for="accesscode">
 		                  		<span class="red">
-		                  			<%=messages.getText("mdp.charla.cinotfounded")%>
+		                  			<%=messages.getText("lumin.charla.cinotfounded")%>
 		                  		</span>
 		                  	</label>
 						</div>
@@ -130,7 +130,7 @@
 								<html:option value=''></html:option>
 <%      	  	Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
         		Statement stDC = connDC.createStatement();
-	        	ResultSet set = stDC.executeQuery("SELECT resourcekey FROM divorgitemlevel1s WHERE active AND divorg = 456435 ORDER BY resourcekey");
+	        	ResultSet set = stDC.executeQuery("SELECT resourcekey FROM divorgitemlevel1s WHERE active AND divorg = 205 ORDER BY resourcekey");
 	        	while(set.next()) {
 	        		String s = set.getString(1);
 %>           					<html:option value='<%=s%>'><%=s%></html:option>

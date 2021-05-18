@@ -242,4 +242,19 @@ public abstract class CorpReportFacadeBean implements SessionBean {
 	}
 	
 
+	/**
+	 * @ejb.interface-method 
+     * @ejb.permission role-name = "systemaccess,administrator, clientreporter"
+	 * @throws Exception
+	 */
+	public Integer getCompletedCediUsers(Integer cedi, UserSessionData userSessionData) throws Exception {
+  		try {
+  			return CorpReportUtil.getHome().create().getCompletedCediUsers(cedi, userSessionData);
+  		} catch (Exception e) {
+  			e.printStackTrace();
+			handler.handleException("getCompletedCediUsers",e);
+		}
+  		return null;
+	}
+
 }

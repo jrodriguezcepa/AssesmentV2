@@ -72,19 +72,33 @@ public class Util {
     public static boolean isRegistrableMDP() {
     	Calendar c = Calendar.getInstance();
     	int day = c.get(Calendar.DATE);
-    	/*if(day != 31)
-    		return false;
-    	int hour = c.get(Calendar.HOUR_OF_DAY);
-    	int minute = c.get(Calendar.MINUTE);
-    	switch(hour) {
-			case 8:
-				return minute >= 45;
-			case 9:
-				return minute <= 10;
-			case 13:
-				return minute >= 45;
-			case 14:
-				return minute <= 10;
+    	/*if(day == 23 || day >= 26) {
+	    	int hour = c.get(Calendar.HOUR_OF_DAY);
+	    	int minute = c.get(Calendar.MINUTE);
+	    	switch(hour) {
+				case 10: case 15:
+					return minute >= 15 && minute <= 40;
+				case 8: case 13:
+					return minute <= 10;
+				case 7: case 12:
+					return minute >= 45;
+	    	}
+    	}*/
+    	return true;
+    }
+
+    public static boolean isRegistrableLumin() {
+    	Calendar c = Calendar.getInstance();
+    	int day = c.get(Calendar.DATE);
+    	/*if(day == 19) {
+	    	int hour = c.get(Calendar.HOUR_OF_DAY);
+	    	int minute = c.get(Calendar.MINUTE);
+	    	switch(hour) {
+				case 9: case 11: case 16:
+					return minute <= 10;
+				case 8: case 10: case 15:
+					return minute >= 45;
+	    	}
     	}*/
     	return true;
     }

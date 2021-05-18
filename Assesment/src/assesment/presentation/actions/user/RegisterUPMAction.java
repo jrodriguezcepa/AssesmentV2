@@ -59,10 +59,6 @@ public class RegisterUPMAction extends AbstractAction {
         	session.setAttribute("Msg", "Formato o largo de C.I. incorrecto");
         	return mapping.findForward("error");
         }else {
-        	Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
-        	Statement stDC = connDC.createStatement();
-	
-        	ResultSet set = stDC.executeQuery("SELECT d.id, d.firstname, d.lastname, d1.resourcekey FROM drivers d JOIN divorgitemlevel1s d1 on d1.id = d.divorg1 WHERE d.corporation = 9 AND TRIM(d.corporationid) = '"+code+"'");
 	    	UserData userData = new UserData();
 	    	 
 	    	String login = "charla_"+AssesmentData.UPM_CHARLA+"_"+user;
@@ -70,6 +66,11 @@ public class RegisterUPMAction extends AbstractAction {
 	    		session.setAttribute("Msg", "Usuario ya registrado");
 	            return mapping.findForward("error");
 	        }else {
+	        	Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
+	        	Statement stDC = connDC.createStatement();
+		
+	        	ResultSet set = stDC.executeQuery("SELECT d.id, d.firstname, d.lastname, d1.resourcekey FROM drivers d JOIN divorgitemlevel1s d1 on d1.id = d.divorg1 WHERE d.corporation = 9 AND TRIM(d.corporationid) = '"+user+"'");
+
 	        	userData.setLoginName(login);
 		        userData.setPassword(login);
 		        Calendar c = Calendar.getInstance();
@@ -87,23 +88,31 @@ public class RegisterUPMAction extends AbstractAction {
 	        		 userData.setExtraData2(set.getString(4));
 	        	 }else {
 	 		        if(action == 0) {
+	 		    		stDC.close();
+	 		        	connDC.close();
 	 		        	return mapping.findForward("register");
 		        	 }else {
 		        		 String v = createData.getString("firstName");
 		        		 if(Util.empty(v)) {
 		        			 session.setAttribute("Msg", "Ingrese Nombre");
+		     	    		stDC.close();
+		    	        	connDC.close();
 		        			 return mapping.findForward("register");
 		        		 }
 		        		 userData.setFirstName(v);
 		        		 v = createData.getString("lastName");
 		        		 if(Util.empty(v)) {
 		        			 session.setAttribute("Msg", "Ingrese Apellido");
+		        			 stDC.close();
+		        			 connDC.close();
 		        			 return mapping.findForward("register");
 		        		 }
 		        		 userData.setLastName(v);
 		        		 v = createData.getString("company");
 		        		 if(Util.empty(v)) {
 		        			 session.setAttribute("Msg", "Seleccione Contratista");
+		        			 stDC.close();
+		        			 connDC.close();
 		        			 return mapping.findForward("register");
 		        		 }
 		        		 userData.setExtraData2(v);
@@ -111,6 +120,7 @@ public class RegisterUPMAction extends AbstractAction {
 		        }
 		        sys.getUserABMFacade().userCreate(userData, AssesmentData.UPM_CHARLA, userSessionData);
 		        session.setAttribute("registereduser", login);
+		        stDC.close();
 	        	connDC.close();
 	        }
 	   	 	return mapping.findForward("next");

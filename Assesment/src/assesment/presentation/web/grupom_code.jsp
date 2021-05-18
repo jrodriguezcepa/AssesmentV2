@@ -35,58 +35,94 @@
 		<title>CEPA Driver Assessment</title>
 		<link rel="shortcut icon" type="image/ico" href="images/favicon.ico">
 		<link rel="stylesheet" href="styles/fonts/pontano_sans.css">
-		<link rel="stylesheet" href="styles/base.css">
 		<link rel="stylesheet" href="styles/jquery-ui-1.10.3.custom.min.css">
 		<!--[if lt IE 9]>
 			<script type="text/javascript" src="scripts/html5shiv.min.js"></script>
 		<![endif]-->
 		<style type="text/css">
-		.buttonRed{
-			background-color: red;
-			color: white;
-			font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
-			font-size: 18px;
-			margin-top: .3em;
-	        border-radius: 0.2em;
-			-moz-border-radius: 0.2em;
-			-webkit-border-radius: 0.2em;
-			border: 1px solid #999;
-			text-align: center;
-			width:90px;
-		    height:35px;
-		}
+			.fondo{
+				background-color: #EBEBEB;
+			}
+			.contenedor{
+				width:100%;
+			}
+			.box{
+				background-color: #F1F4F9;
+				margin: 0 auto;
+				margin-top:20px;
+				width:412px;
+				height:313px;
+	        	border-radius: 1.2em;
+				-moz-border-radius: 1.2em;
+				-webkit-border-radius: 1.2em;
+				border: 0px solid #C9C9C9;
+				box-shadow: 2px 2px #CCCCCC;'
+			}
+			.text{
+				background-color: #DDE4EA;
+				padding-left:10px;
+				font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
+				font-size:1.2em;
+				width:350px;
+				height:50px;
+	        	border-radius: 0.8em;
+				-moz-border-radius: 0.8em;
+				-webkit-border-radius: 0.8em;
+				border: 0px solid #C9C9C9;
+				margin:30px;
+			}
+			.button{
+				background-color: #0F172A;
+				color: #FFFFFF;
+				padding-left:10px;
+				font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
+				font-size:0.8em;
+				width:160px;
+				height:50px;
+	        	border-radius: 0.8em;
+				-moz-border-radius: 0.8em;
+				-webkit-border-radius: 0.8em;
+				border: 0px solid #C9C9C9;
+				margin-left:30px;
+			}
+			.logo {
+				margin-left:30px;
+				margin-rigth:30px;
+				margin-top:20px;
+				width:75px;
+			}
 		</style>
 	</head>
-	<body class="login">
+	<body class="fondo">
 		<form name="logout" action="./logout.jsp" method="post"></form>
 		<header style="height: 50px;">
 		</header>		
-		<section id="content" style="padding-top: 50px;">
-			<section class="grid_container">
-				<html:form action="/CediAccess" style="padding-right: 0px;">
-					<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
-					<fieldset id="username_block" class="active">
-						<div>
-							<label for="logo">
-								<img src='images/main_logo_large.png'>
-							</label>
+		<html:form action="/CediAccess" style="padding-right: 0px;">
+			<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
+			<div class="contenedor">
+				<div class="box">
+					<div>
+						<div style="float: left; width: 250px;">
+							<img src="styles/grupomodelo/UI_Logo_CEPA.png" class="logo"/>
 						</div>
 						<div>
-		                  	<label for="accesscode"><%=Util.formatHTML("Código CEDI")%></label>
-							<html:text property="code" />
+							<img src="styles/grupomodelo/UI_Logo_GMM.png" class="logo"/>
+						</div>
+					</div>
+					<div>
+						<input name="code" class="text" placeholder="CODIGO CEDI"/>
+					</div>
+					<div>
+						<div style="float: left; width: 190px;">
+							<html:submit styleClass="button" value="ENTRAR"/>
 						</div>
 						<div>
-							<div style="float: left; width: 250px;">
-								<input type="button" class="button" value="<%=messages.getText("generic.messages.enter")%>" onclick="javascript:document.forms['CediAccessForm'].submit();" style="width: 200px;"/>
-							</div>
-							<div>
-				  				<input class="buttonRed" value='<%=messages.getText("generic.messages.logout")%>' onClick="javascript:document.forms['logout'].submit()" />
-							</div>
+							<html:cancel styleClass="button" value="SALIR"/>
 						</div>
-					</fieldset>
-				</html:form>
-			</section>
-		</section>
+					</div>
+				</div>
+			</div>
+		</html:form>
 		<script type="text/javascript" src="scripts/jquery-2.0.2.min.js"></script>
 		<script type="text/javascript" src="scripts/assessment.js"></script>
 	</body>

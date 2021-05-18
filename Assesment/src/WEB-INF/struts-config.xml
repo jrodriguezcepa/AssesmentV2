@@ -749,6 +749,12 @@
 			<forward name="next" path="/success_mdp.jsp" />
 		</action>
 
+		<action path="/RegisterLumin" type="assesment.presentation.actions.user.RegisterLuminAction" name="CharlaMDPForm" scope="request">
+			<forward name="error" path="/register_lumin.jsp" />
+			<forward name="register" path="/register_lumin.jsp?action=1" />
+			<forward name="next" path="/success_lumin.jsp" />
+		</action>
+
 		<action path="/HabilitarUPM" type="assesment.presentation.actions.user.HabilitarUPMAction" name="CharlaUPMForm" scope="request">
 			<forward name="next" path="/habilitar_upm.jsp" />
 		</action>
@@ -760,6 +766,11 @@
 
 		<action path="/MDP" type="assesment.presentation.actions.user.MDPAction" name="CharlaMDPForm" scope="request">
 			<forward name="error" path="/charla_mdp.jsp" />
+			<forward name="next" path="/relogin.jsp" />
+		</action>
+		
+		<action path="/Lumin" type="assesment.presentation.actions.user.LuminAction" name="CharlaMDPForm" scope="request">
+			<forward name="error" path="/charla_lumin.jsp" />
 			<forward name="next" path="/relogin.jsp" />
 		</action>
 		

@@ -1,3 +1,7 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="assesment.communication.question.QuestionData"%>
 <%@page language="java"
 	import="assesment.business.*"
@@ -192,7 +196,80 @@ function deleteIFConfirm(form,msg){
 					</div>
 				</td>
 			</tr>
+<%			if(advance[5] != null) {
+%>			<tr>
+				<td colspan="2">
+					<div>
+						<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("generic.webinar.fdmsync")%>' />
+<%				Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
+				Statement stDC = connDC.createStatement();
+				
+				ResultSet set = stDC.executeQuery("SELECT ca.date, gm2.text, ca.code, c.name, d.firstname, d.lastname, d.corporationid, d.email, gm1.text, ca.activityid, d.id "+
+							"FROM activityregistry ar JOIN cepaactivity ca on ca.activityid = ar.activity "+
+							"JOIN drivers d ON d.id = ar.driver "+
+							"JOIN corporations c ON c.id = ca.corporation "+
+							"JOIN generalmessages gm1 ON gm1.labelkey = ar.note "+
+							"JOIN generalmessages gm2 ON gm2.labelkey = ca.type "+
+							"WHERE activityregistryid = " + advance[5] +
+							" AND gm1.language = 'es' "+
+							"AND gm2.language = 'es'");
+				if(set.next()) {
+%>				    	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
+				  			<tr class="line">
+			    				<th align="left">
+									<%=messages.getText("generic.activity")+": "%>
+								</th>
+			    				<td align="right">
+				    				<a href='<%="https://fdmpro.cepasafedrive.com/datacenter/home.jsp?refer=/activity/schedule/CEPAActivityScheduleView.jsp?id="+set.getInt(10)%>'  target="_blank">
+										<%=Util.formatDate(set.getDate(1))+" - "+set.getString(2)%>
+									</a>
+								</td>
+							</tr>
+					  		<tr class="line">
+			    				<th align="left">
+									<%=messages.getText("generic.corporation")+": "%>
+								</th>
+			    				<td align="right">
+									<%=set.getString(4)%>
+								</td>
+							</tr>
+					  		<tr class="line">
+			    				<th align="left">
+									<%=messages.getText("role.systemacces.name")+": "%>
+								</th>
+			    				<td align="right">
+				    				<a href='<%="https://fdmpro.cepasafedrive.com/datacenter/home.jsp?refer=/driver/DriverView.jsp?id="+set.getInt(11)%>'  target="_blank">
+										<%=set.getString(5)+" "+set.getString(6)%>
+									</a>
+								</td>
+							</tr>
+					  		<tr class="line">
+			    				<th align="left">
+									<%=messages.getText("user.data.mail")+": "%>
+								</th>
+			    				<td align="right">
+									<%=set.getString(8)%>
+								</td>
+							</tr>
+					  		<tr class="line">
+			    				<th align="left">
+									<%=messages.getText("module3856.question46964.text")+": "%>
+								</th>
+			    				<td align="right">
+									<%=set.getString(7)%>
+								</td>
+							</tr>
+
+<%				}
+				stDC.close();
+				connDC.close();
+%>
+						<jsp:include page="../component/utilityboxbottom.jsp" />
+					</div>
+				</td>
+			</tr>
 <%			}
+		}
 %>   
 
 		<jsp:include  page='../component/titleend.jsp' />

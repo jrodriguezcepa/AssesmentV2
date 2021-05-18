@@ -29,7 +29,7 @@ import assesment.communication.user.UserData;
 import assesment.presentation.translator.web.util.AbstractAction;
 import assesment.presentation.translator.web.util.Util;
 
-public class RegisterMDPAction extends AbstractAction {
+public class RegisterLuminAction extends AbstractAction {
 
     public ActionForward cancel(HttpSession session,ActionMapping mapping, ActionForm form) {
         return mapping.findForward("logout");
@@ -44,7 +44,7 @@ public class RegisterMDPAction extends AbstractAction {
         String code = createData.getString("code");
         int action = Integer.parseInt(createData.getString("action"));
         if(code == null || code.trim().length() == 0) {
-            return mapping.findForward("error");
+            return mapping.findForward("errosr");
         }
 
         String user = "";
@@ -62,10 +62,10 @@ public class RegisterMDPAction extends AbstractAction {
         	Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
         	Statement stDC = connDC.createStatement();
 	
-        	ResultSet set = stDC.executeQuery("SELECT d.id, d.firstname, d.lastname, d1.resourcekey FROM drivers d JOIN divorgitemlevel1s d1 on d1.id = d.divorg1 WHERE d.corporation = 50 AND TRIM(d.corporationid) = '"+user+"'");
+        	ResultSet set = stDC.executeQuery("SELECT d.id, d.firstname, d.lastname, d1.resourcekey FROM drivers d JOIN divorgitemlevel1s d1 on d1.id = d.divorg1 WHERE d.corporation = 19 AND TRIM(d.corporationid) = '"+user+"'");
 	    	UserData userData = new UserData();
 	    	 
-	    	String login = "charla_"+AssesmentData.MDP_CHARLA+"_"+user;
+	    	String login = "charla_"+AssesmentData.LUMIN_CHARLA+"_"+user;
 	    	if(sys.getUserReportFacade().userExist(login, userSessionData)) {
 	    		session.setAttribute("Msg", "Usuario ya registrado");
 	            return mapping.findForward("error");
@@ -109,7 +109,7 @@ public class RegisterMDPAction extends AbstractAction {
 		        		 userData.setExtraData2(v);
 		        	 }
 		        }
-		        sys.getUserABMFacade().userCreate(userData, AssesmentData.MDP_CHARLA, userSessionData);
+		        sys.getUserABMFacade().userCreate(userData, AssesmentData.LUMIN_CHARLA, userSessionData);
 		        session.setAttribute("registereduser", login);
 	        	connDC.close();
 	        }

@@ -51,6 +51,11 @@ import assesment.persistence.util.Util;
  * @ejb.bean name="UsReport" jndi-name="ejb/UsReport" type="Stateless"
  *           transaction-type="Container"
  * 
+ * @ejb.ejb-ref ejb-name = "UsABM" ref-name = "ejb/UsABM" view-type =
+ *              "remote"
+ * 
+ * @jboss.ejb-ref-jndi jndi-name = "ejb/UsABM" ref-name = "UsABM"
+ * 
  *           <!-- end-xdoclet-definition -->
  * @generated
  */
@@ -2920,12 +2925,32 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             if(it.hasNext()) {
             	return (String)it.next();
             }
-            query = session.createSQLQuery("SELECT DISTINCT u.loginname FROM users u " + 
+            Calendar now = Calendar.getInstance();
+            Calendar end = Calendar.getInstance();
+            query = session.createSQLQuery("SELECT DISTINCT u.loginname, ua.enddate FROM users u JOIN userassesments ua ON ua.loginname = u.loginname " + 
             		"WHERE u.loginname LIKE 'tmc_%"+cpf+"' " + 
-            		"AND u.role IN ('"+UserData.SYSTEMACCESS+"', '"+UserData.MULTIASSESSMENT+"', '"+UserData.GROUP_ASSESSMENT+"')").addScalar("loginname",Hibernate.STRING);
+            		"AND u.role IN ('"+UserData.SYSTEMACCESS+"', '"+UserData.MULTIASSESSMENT+"', '"+UserData.GROUP_ASSESSMENT+"') "
+            	+ "AND ua.assesment = "+AssesmentData.TIMAC_BRASIL_DA_2020+" AND enddate IS NOT NULL ORDER BY enddate DESC").addScalar("loginname",Hibernate.STRING).addScalar("enddate", Hibernate.DATE);
             it = query.list().iterator();
             if(it.hasNext()) {
-            	return (String)it.next();
+            	Object[] data = (Object[])it.next();
+            	end.setTime((Date)data[1]);
+            	end.add(Calendar.YEAR, 1);
+            	if(now.after(end)) {
+            		MD5 md5 = new MD5();
+            		String next = getNextTimacUser(cpf, userSessionData);
+            		
+            		UserData user = findUserByPrimaryKey("tmc_"+cpf, null, userSessionData);
+		        	user.setLoginName(next);
+		        	user.setPassword(md5.encriptar(next));
+		     		user.setStartDate(Calendar.getInstance().getTime());
+		     		
+		     		String[] assesments = {String.valueOf(AssesmentData.TIMAC_BRASIL_DA_2020), String.valueOf(AssesmentData.TIMAC_BRASIL_EBTW_2020)};
+		        	UsABMUtil.getHome().create().userCreate(user, assesments, userSessionData);
+		        	return next;
+            	}else {
+            		return (String)data[0];
+            	}
             }
         } catch (Exception e) {
 			handler.getException(e, "getCurrentTimacUser", userSessionData.getFilter().getLoginName());

@@ -306,7 +306,6 @@ public abstract class CorpReportBean implements SessionBean {
 		return new ListResult(new LinkedList(),0);
 	}
 
-	
 	/**
 	 * @ejb.interface-method 
      * @ejb.permission role-name = "systemaccess,administrator, clientreporter"
@@ -330,4 +329,30 @@ public abstract class CorpReportBean implements SessionBean {
 		return null;
 	}
 
+	/**
+	 * @ejb.interface-method 
+     * @ejb.permission role-name = "systemaccess,administrator, clientreporter"
+	 * @throws Exception
+	 */
+	public Integer getCompletedCediUsers(Integer cedi, UserSessionData userSessionData) throws Exception {
+		Integer count = 0;
+		if (cedi == null) {
+			throw new InvalidDataException("getCompletedCediUsers","id = null");
+		}
+		if (userSessionData == null) {
+			throw new DeslogedException("getCompletedCediUsers","session = null");
+		}
+		try {
+			Session session = HibernateAccess.currentSession();
+			String sql = "SELECT COUNT(*) AS c FROM users u "+
+			"JOIN userassesments ua ON ua.loginname = u.loginname "+
+			"WHERE location = " + cedi +
+			" AND role = 'systemaccess' AND enddate IS NOT NULL";
+			Query q = session.createSQLQuery(sql).addScalar("c", Hibernate.INTEGER);
+			count = (Integer) q.uniqueResult();
+		}catch (Exception e) {
+            handler.getException(e,"getCompletedCediUsers",userSessionData.getFilter().getLoginName());
+		}
+		return count;
+	}
 }

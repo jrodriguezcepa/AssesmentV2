@@ -19,6 +19,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import assesment.business.AssesmentAccess;
+import assesment.business.administration.corporation.CorpReportFacade;
 import assesment.communication.assesment.AssesmentData;
 import assesment.communication.assesment.GroupData;
 import assesment.communication.corporation.CediData;
@@ -45,7 +46,8 @@ public class UserMutualCreateAction extends AbstractAction {
         
         String code = createData.getCompany();
         
-        Integer id = sys.getCorporationReportFacade().findCediCode(code, CediData.MUTUAL, sys.getUserSessionData());
+        CorpReportFacade corporationReport = sys.getCorporationReportFacade();
+        Integer id = corporationReport.findCediCode(code, CediData.MUTUAL, sys.getUserSessionData());
         if(id == null) {
            	session.setAttribute("Msg","Código de empresa incorrecto");
             createData.setPassword(null);
@@ -53,6 +55,13 @@ public class UserMutualCreateAction extends AbstractAction {
             return mapping.findForward("back");
         }
 
+        Integer count = corporationReport.getCompletedCediUsers(id, sys.getUserSessionData());
+        if(count >= 50) {
+           	session.setAttribute("Msg","Este código ha superado el número máximo de usuarios");
+            createData.setPassword(null);
+            createData.setRePassword(null);
+            return mapping.findForward("back");
+        }
         
         String nick = createData.getLoginname();
         if(!Util.checkEmail(nick)) {

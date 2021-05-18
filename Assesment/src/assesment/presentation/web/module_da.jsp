@@ -206,14 +206,24 @@
 %>		       <div class="cepa_logo">CEPA Safe Drive</div>
                <span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
 <%		}
+		boolean sumitomo = false;
+		if(userData.getRole().equals(UserData.GROUP_ASSESSMENT)) {
+			GroupData group = sys.getAssesmentReportFacade().getUserGroup(userSessionData.getFilter().getLoginName(),userSessionData);
+			sumitomo = group.getId().equals(GroupData.SUMITOMO);
+			String exitLink = (sumitomo) ? "group.jsp" : "select_da.jsp";
+%>             <span class="exit"><a href='<%=exitLink%>'><%=messages.getText("generic.messages.back")%></a></span>
+<%		}else {
 %>             <span class="exit"><a href="logout.jsp"><%=messages.getText("generic.messages.logout")%></a></span>
-            </div>
+<%		}
+%>            </div>
          </section>
       </header>
 
 	<form name="logout" action="./logout.jsp" method="post"></form>
 <%		if(userData.getLoginName().startsWith("marsh2019_")) {
 %>	<form name="selectda" action="./marsh.jsp" method="post"></form>
+<%		} else if(sumitomo){
+%>	<form name="selectda" action="./group.jsp" method="post"></form>
 <%		} else {
 %>	<form name="selectda" action="./select_da.jsp" method="post"></form>
 <%		}
@@ -515,7 +525,29 @@
 %>				<form>
 					<fieldset id="username_block" class="active">
 						<div>
+<%				if(sumitomo){
+%>							<br>
 							<br>
+							<h2 class="title">
+								<%=messages.getText("assesment.report.sumitomomessage1")%>
+							</h2>
+							<br>
+							<h4 class="title">
+								<%=messages.getText("assesment.report.footermessage1")%>
+							</h4>
+							<br>	
+							<hr>
+							<br>
+							<div>
+				  				<input type="button" class="buttonGreen" value='<%=messages.getText("generic.messages.continue")%>' onClick="javascript:document.forms['selectda'].submit()" />
+							</div>
+							<br>
+							<hr>
+							<div>
+				  				<input class="button" value='<%=messages.getText("generic.messages.logout")%>' onClick="javascript:document.forms['logout'].submit()" />
+							</div>
+<%				}else {
+%>							<br>
 							<br>
 							<h2 class="title">
 								<%=messages.getText("assesment.report.footermessage1")%>
@@ -552,7 +584,7 @@
 				  				<input type="button" class="buttonGreen" value='<%=messages.getText("generic.messages.continue")%>' onClick='<%="javascript:enterDA("+AssesmentData.TIMAC_BRASIL_DA_2020+")"%>' />
 							</div>
 <%					} else {
-						if(userSessionData.getRole().equals(UserData.MULTIASSESSMENT)) {
+						if(userSessionData.getRole().equals(UserData.MULTIASSESSMENT) || userSessionData.getRole().equals(UserData.GROUP_ASSESSMENT)) {
 							Calendar c = Calendar.getInstance();
 %>							<hr>
 							<br>
@@ -566,6 +598,7 @@
 				  				<input class="button" value='<%=messages.getText("generic.messages.logout")%>' onClick="javascript:document.forms['logout'].submit()" />
 							</div>
 <%					}
+				}
 %>						</div>
 					</fieldset>  
 				</form>

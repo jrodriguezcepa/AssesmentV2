@@ -216,6 +216,36 @@
 				text-align: center;
 				height: 30px;
 			}
+			.button1{
+				background-color: #0F172A;
+				color: #FFFFFF;
+				padding-left:10px;
+				font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
+				font-size:0.8em;
+			    width: 130px;
+			    height: 40px;
+			    border-radius: 0.8em;
+			    -moz-border-radius: 0.8em;
+			    -webkit-border-radius: 0.8em;
+			    border: 0px solid #C9C9C9;
+			    margin-left: 30px;
+			    margin-top: 10px;
+			}
+			.button2{
+				background-color: #3A3A3A;
+				color: #FFFFFF;
+				padding-left:10px;
+				font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
+				font-size:0.8em;
+			    width: 160px;
+			    height: 40px;
+			    border-radius: 0.8em;
+			    -moz-border-radius: 0.8em;
+			    -webkit-border-radius: 0.8em;
+			    border: 0px solid #C9C9C9;
+			    margin-left: 10px;
+			    margin-top: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -238,31 +268,36 @@
 			</div>
 			<br>
 			<div>
-				 <tr>
-	    		<td width="100%" valign="top">
-		    		<table width="100%" border="0" cellpadding="1" cellspacing="1">
-		    			<tr>
-		    				<div class="searchText" style="font-weight:600;"><%= messages.getText("generic.messages.search")%></div>
-		    			
-		    			</tr>
-		    			
-						<tr>
-							<td align="left" class="searchText">
-								<form action="<%=link%>" method="post">
-									<span style="width:30px">Nombre</span>
-									<input type="text" name="firstName" style="width: 300px;"  class="input" value='<%=firstName%>'/>
-									<span style="width:30px">Apellido</span>
-									<input type="text" name="lastName" style="width: 300px;"  class="input" value='<%=lastName%>'/>
-									<span style="width:30px"><%=messages.getText("generic.cedi")%></span>
-									<input type="text" name="value" style="width: 300px;"  class="input" value='<%=value%>'/>
-									<input name="button" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
-								</form>
-							</td>
-						</tr>
-					</table>
-					<jsp:include  page="component/utilitybox2bottom.jsp" />
-				</td>
-    		</tr>
+	    		<table width="100%" border="0" cellpadding="1" cellspacing="1">
+	    			<tr>
+	    				<div class="searchText" style="font-weight:600;"><%= messages.getText("generic.messages.search")%></div>
+	    			</tr>
+					<tr>
+						<td align="left" class="searchText">
+							<form action="<%=link%>" method="post">
+								<span style="width:30px">Nombre</span>
+								<input type="text" name="firstName" style="width: 300px;"  class="input" value='<%=firstName%>'/>
+								<span style="width:30px">Apellido</span>
+								<input type="text" name="lastName" style="width: 300px;"  class="input" value='<%=lastName%>'/>
+								<span style="width:30px"><%=messages.getText("generic.cedi")%></span>
+								<input type="text" name="value" style="width: 300px;"  class="input" value='<%=value%>'/>
+								<input name="button" type="submit" value='<%=messages.getText("generic.messages.search")%>' class="input"/>
+							</form>
+						</td>
+					</tr>
+				</table>
+    		</div>
+    		ç<br>
+			<div align="right">
+<%			if(type == 1) {
+%>				<input type="button" class="button1" value="Asociar Livianos" onclick="javascript:doAsociate(1,'Confirma que desea asociar estos usuarios al Driver Assessment de Livianos?');" />
+				<input type="button" class="button1" value="Asociar Pesados" onclick="javascript:doAsociate(2,'Confirma que desea asociar estos usuarios al Driver Assessment de Pesados?');" />
+<%			}else {
+%>				<input type="button" class="button1" value="Asociar eBTW" onclick="javascript:doAsociate(3,'Confirma que desea asociar estos usuarios al eBTW?');" />
+<%			}
+%>				<input type="button" class="button2" value="Cancelar" onclick="javascript:document.forms['back'].submit();" />
+			</div>
+			<br>
     		<html:form action="/CediAsociateAssessment">
 			<html:hidden property="type" />
 			<html:hidden property="list" value="<%=String.valueOf(type)%>" />
@@ -293,15 +328,17 @@
 %>				</table>
 			</div>
 			<br>
-			<div>
+			<div align="right">
 <%			if(type == 1) {
-%>				<input type="button" class="input" value="Asociar Livianos" onclick="javascript:doAsociate(1,'Confirma que desea asociar estos usuarios al Driver Assessment de Livianos?');" />
-				<input type="button" class="input" value="Asociar Pesados" onclick="javascript:doAsociate(2,'Confirma que desea asociar estos usuarios al Driver Assessment de Pesados?');" />
+%>				<input type="button" class="button1" value="Asociar Livianos" onclick="javascript:doAsociate(1,'Confirma que desea asociar estos usuarios al Driver Assessment de Livianos?');" />
+				<input type="button" class="button1" value="Asociar Pesados" onclick="javascript:doAsociate(2,'Confirma que desea asociar estos usuarios al Driver Assessment de Pesados?');" />
 <%			}else {
-%>				<input type="button" class="input" value="Asociar eBTW" onclick="javascript:doAsociate(3,'Confirma que desea asociar estos usuarios al eBTW?');" />
+%>				<input type="button" class="button1" value="Asociar eBTW" onclick="javascript:doAsociate(3,'Confirma que desea asociar estos usuarios al eBTW?');" />
 <%			}
-%>				<input type="button" class="input" value="Cancelar" onclick="javascript:document.forms['back'].submit();" />
+%>				<input type="button" class="button2" value="Cancelar" onclick="javascript:document.forms['back'].submit();" />
 			</div>
+			<br>
+			<br>
 		</html:form>
 	</body>
 <%	}

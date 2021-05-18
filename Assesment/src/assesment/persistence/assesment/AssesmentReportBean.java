@@ -1288,58 +1288,59 @@ public abstract class AssesmentReportBean implements SessionBean {
 		return codes;
 	}
 	
-		/**
-	 * @ejb.interface-method
-	 * @ejb.permission role-name = "administrator,systemaccess"
-	 */
-	public String[] getWebinarAdvance(String wbCode, String assesmentId,String login, UserSessionData userSessionData) throws Exception {
-		Session session = null;
-		String[] result = new String[5];
-		
-		try {
-			session = HibernateAccess.currentSession();
-			String sql="select  ua.enddate, uar.correct, uar.incorrect "+
-						"from userassesments ua "+
-						"join userassesmentresults uar on uar.login=ua.loginname "+
-						"join users u on u.loginname=ua.loginname "+
-						"where uar.login='"+login+"' "+
-						"and u.extradata3='"+wbCode+"' "+
-						" and ua.assesment="+assesmentId;
-			
-			Query q = session.createSQLQuery(sql);
-			List list = q.list();
-			String percentString="";
-			if (list.size() != 0) {
-				Object[] data = (Object[]) list.get(0);
-				if(data[0]!=null) {
-					result[0]="Completo";
-					int total=((Integer)data[1])+((Integer)data[2]); 
-					int correct=(Integer)data[1];
-					float percent=(((float)correct)/total*100);
-					percentString = "" +String.valueOf(percent)+ "%";
-					
-				}else {
-					result[0]="Incompleto";
-				}
+	/**
+ * @ejb.interface-method
+ * @ejb.permission role-name = "administrator,systemaccess"
+ */
+public String[] getWebinarAdvance(String wbCode, String assesmentId,String login, UserSessionData userSessionData) throws Exception {
+	Session session = null;
+	String[] result = new String[6];
 
-				result[1]=String.valueOf(data[0]);
-				result[2]=String.valueOf(data[1]);
-				result[3]=String.valueOf(data[2]);
-				result[4]=percentString;
+	try {
+		session = HibernateAccess.currentSession();
+		String sql="select  ua.enddate, uar.correct, uar.incorrect, ua.fdmregistry "+
+					"from userassesments ua "+
+					"join userassesmentresults uar on uar.login=ua.loginname "+
+					"join users u on u.loginname=ua.loginname "+
+					"where uar.login='"+login+"' "+
+					"and u.extradata3='"+wbCode+"' "+
+					" and ua.assesment="+assesmentId;
 
-			
+		Query q = session.createSQLQuery(sql);
+		List list = q.list();
+		String percentString="";
+		if (list.size() != 0) {
+			Object[] data = (Object[]) list.get(0);
+			if(data[0]!=null) {
+				result[0]="Completo";
+				int total=((Integer)data[1])+((Integer)data[2]);
+				int correct=(Integer)data[1];
+				float percent=(((float)correct)/total*100);
+				percentString = "" +String.valueOf(percent)+ "%";
+
 			}else {
-				result[0]="Pendiente";
-				result[1]="Pendiente";
-				result[2]="Pendiente";
-				result[3]="Pendiente";
+				result[0]="Incompleto";
 			}
 
-		} catch (Exception e) {
-			handler.getException(e, "getWebinarAdvance", userSessionData.getFilter().getLoginName());
+			result[1]=String.valueOf(data[0]);
+			result[2]=String.valueOf(data[1]);
+			result[3]=String.valueOf(data[2]);
+			result[4]=percentString;
+			if(data[3] != null)
+				result[5]=String.valueOf(data[3]);
+
+		}else {
+			result[0]="Pendiente";
+			result[1]="Pendiente";
+			result[2]="Pendiente";
+			result[3]="Pendiente";
 		}
-		return result;
+
+	} catch (Exception e) {
+		handler.getException(e, "getWebinarAdvance", userSessionData.getFilter().getLoginName());
 	}
+	return result;
+}
 
 	/**
 	 * @ejb.interface-method
@@ -1412,14 +1413,15 @@ public abstract class AssesmentReportBean implements SessionBean {
 	          Iterator it = q.list().iterator();
 	          while(it.hasNext()) {
 	        	  Object[] data = (Object[])it.next();
-	        	  if(((Integer)data[1]).equals(AssesmentData.GRUPO_MODELO_EBTW)) {
+	        	  int daId = (Integer)data[1];
+	        	  if(daId == AssesmentData.GRUPO_MODELO_EBTW) {
 		        	  if(data[5] == null || ((Integer)data[5]).intValue() == 1) {
 		        		  String user = (String) data[0];
 		        		  Integer da = (Integer)data[1];
 		        		  Date end = (Date) data[2];
 		        		  Integer correct = (Integer) data[3];
 		        		  Integer incorrect = (Integer) data[4];
-		        		  
+
 		        		  int r = (end == null) ? 0 : 1;
 		          		  Object[] values = {new Integer(r), end, correct, incorrect, da};
 		            	  if(!results.containsKey(user)) {
@@ -1430,14 +1432,15 @@ public abstract class AssesmentReportBean implements SessionBean {
 		            		  results.get(user).put(2, values);
 		            	  }
 		        	  }
-	        	  }else {
+	        	  }else if(daId == 1553 || daId == 1557 || daId ==1558 || daId ==1559 || daId ==1560 || daId ==1569 || daId ==1570 || daId ==1571 || daId ==1572 || daId ==1573
+	        			  || daId ==1561 || daId ==1562 || daId ==1563 || daId ==1564 || daId ==1565 || daId ==1574 || daId ==1575 || daId ==1576 || daId ==1577 || daId ==1578){
 		        	  if(data[5] == null || ((Integer)data[5]).intValue() == 1) {
 		        		  String user = (String) data[0];
 		        		  Integer da = (Integer)data[1];
 		        		  Date end = (Date) data[2];
 		        		  Integer correct = (Integer) data[3];
 		        		  Integer incorrect = (Integer) data[4];
-		        		  
+
 		        		  int r = (end == null) ? 0 : 1;
 		          		  Object[] values = {new Integer(r), end, correct, incorrect, da};
 		            	  if(!results.containsKey(user)) {
@@ -1448,7 +1451,7 @@ public abstract class AssesmentReportBean implements SessionBean {
 		            		  results.get(user).put(1, values);
 		            	  }
 		        	  }
-	        	  }	        	  
+	        	  }
 	          }
         	  String sql2 = "SELECT uas.loginname, q.questionorder, q.type, ad.text, ad.date, a.key " + 
         	  		"FROM useranswers uas " + 

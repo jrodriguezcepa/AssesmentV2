@@ -84,8 +84,13 @@
 			    background-color: white;
 			}
 		</style>
+	</head>
+		
   	</head>
   	<body class="home">
+		<html:form action="/SelectAssessment">
+			<html:hidden property="assessment"/>
+		</html:form>
 	    <noscript>You need to enable JavaScript to run this app.</noscript>
     	<nav class="navbar bg-transparent-light fixed-top navbar-light shadow-sm">
       		<div class="container">
@@ -180,7 +185,9 @@
 								color = "card badge-orange";
 							} else if(map.containsKey(assessment.getId())) {
 								if(map.get(assessment.getId()) != null) {
-									if((group.getId().equals(GroupData.GRUPO_MODELO) && assessment.getId() != AssesmentData.GRUPO_MODELO_FOTO) || ((assessment.getId() == AssesmentData.MONDELEZ_DA || assessment.getId() == AssesmentData.MONDELEZ_DA_V2) && (gId == GroupData.MONDELEZ_LIDERES || gId == GroupData.MONDELEZ_PROVISIONALDRIVERS || gId == GroupData.MONDELEZ_NEWDRIVERS))) {
+									if((group.getId().equals(GroupData.GRUPO_MODELO) && assessment.getId() != AssesmentData.GRUPO_MODELO_FOTO)
+											|| ((assessment.getId() == AssesmentData.MONDELEZ_DA || assessment.getId() == AssesmentData.MONDELEZ_DA_V2) && (gId == GroupData.MONDELEZ_LIDERES || gId == GroupData.MONDELEZ_PROVISIONALDRIVERS || gId == GroupData.MONDELEZ_NEWDRIVERS))
+											|| (assessment.getId() == AssesmentData.KOF_ASESORES || assessment.getId() == AssesmentData.KOF_COORDINADORES)) {
 										boolean repeat = !sys.getUserReportFacade().isResultGreen(userData.getLoginName(), assessment.getId(), userSessionData);
 										if(repeat) {
 											repeat = sys.getUserReportFacade().getFailedAssesments(userSessionData.getFilter().getLoginName(), assessment.getId(), userSessionData) == 0;
@@ -257,6 +264,9 @@
 							if(!link.startsWith("./uploadmodule.jsp"))
 								target = "target='blank'";
 						}
+					}
+					if(group.getId().equals(GroupData.SUMITOMO) && link.startsWith("./newmodule.jsp")) {
+						link = "javascript:enterDA("+assessment.getId()+")";
 					}
 					switch(category.getType().intValue()) {
 						case 1:

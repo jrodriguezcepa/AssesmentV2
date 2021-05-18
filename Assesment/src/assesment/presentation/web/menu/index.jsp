@@ -217,6 +217,10 @@
 			response.sendRedirect("./register_mdp.jsp");
 		}else if(login.equals(UserData.CHARLAMDP)) {
 			response.sendRedirect("./charla_mdp.jsp");
+		}else if(login.equals(UserData.REGISTROLUMIN)) {
+			response.sendRedirect("./register_lumin.jsp");
+		}else if(login.equals(UserData.CHARLALUMIN)) {
+			response.sendRedirect("./charla_lumin.jsp");
 		}else if(role.equals(SecurityConstants.CLIENTGROUP_REPORTER)) {
 			GroupData group = sys.getAssesmentReportFacade().getUserGroup(login,userSession);
 			if(group.getId().equals(GroupData.GRUPO_MODELO)) {
@@ -332,79 +336,89 @@
 			sys.getUserABMFacade().saveLogin(date,userSession);
 			if(sys.getUserSessionData().getFilter().getAssesment() != null) {
 				int assId = sys.getUserSessionData().getFilter().getAssesment().intValue();
-				int terms = userReport.terms(login, sys.getUserSessionData()).intValue();
-				System.out.println("terms "+terms);
-				if(terms > 0 && assId != AssesmentData.UPM_CHARLA && assId != AssesmentData.UPM_CHARLA_V2 && assId != AssesmentData.ALRIYADAH_INITIALA
-						 && assId != AssesmentData.ALRIYADAH_INITIALB  && assId != AssesmentData.ALRIYADAH_FINAL&& assId != AssesmentData.GDC) {
-					response.sendRedirect("terms_"+terms+".jsp");
+				boolean blockMutual = false;
+				if(assId == AssesmentData.MUTUAL_DA) {
+					UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(login, sys.getUserSessionData());
+			        Integer count = sys.getCorporationReportFacade().getCompletedCediUsers(userData.getLocation(), sys.getUserSessionData());
+			        blockMutual = count >= 50;
+				}
+				if(blockMutual) {
+					response.sendRedirect("mutualExcedUser.jsp");
 				}else {
-					switch(assId) {
-						case AssesmentData.ALRIYADAH_INITIALA:
-					    	response.sendRedirect("alriyadahInitialA.jsp");
-					    	break;
-						case AssesmentData.ALRIYADAH_INITIALB:
-					    	response.sendRedirect("alriyadahInitialB.jsp");
-					    	break;
-						case AssesmentData.ALRIYADAH_FINAL:
-					    	response.sendRedirect("alriyadahFinalT.jsp");
-					    	break;
-						case AssesmentData.GDC:
-					    	response.sendRedirect("GDCForm.jsp");
-					    	break;
-						case AssesmentData.ASTRAZENECA_2:
-						case AssesmentData.ASTRAZENECA_2013:
-					    	response.sendRedirect("az.jsp");
-					    	break;
-						case AssesmentData.DEMO_MOVILES:
-					    	response.sendRedirect("moviles.jsp");
-					    	break;
-						case AssesmentData.MONSANTO_EMEA:
-					    	response.sendRedirect("emea.jsp");
-					    	break;
-						case AssesmentData.FRAYLOG_FATIGA:
-					    	response.sendRedirect("repeat_da.jsp");
-					    	break;
-						case AssesmentData.JJ_5:		
-				    		String redirect = userReport.getElearningURL(user,userSession.getFilter().getAssesment(),userSession);
-				    		if(redirect != null && redirect.length() > 0) {
-					    		response.sendRedirect(redirect);
-				    		}else {
-					    		response.sendRedirect("../flash/assessment/?lang="+userSession.getLenguage());
-				    		}
-				    		break;
-						default:
-				    		redirect = userReport.getElearningURL(user,userSession.getFilter().getAssesment(),userSession);
-				    		if(redirect != null && redirect.length() > 0) {
-					    		response.sendRedirect(redirect);
-				    		}else {
-								AssesmentData assesment = sys.getAssesmentReportFacade().findAssesment(userSession.getFilter().getAssesment(),userSession);
-								if(assesment.getStatus().intValue() != AssesmentData.NO_EDITABLE) {
-							    	response.sendRedirect("./noassessment.jsp");
-								}else {
-					    			if(isMSIE) {
-							    		response.sendRedirect("../flash/assessment/?lang="+userSession.getLenguage());
-					    			}else {
-										userSession.getFilter().setAssessmentData(assesment);
-										Iterator it = assesment.getModuleIterator();
-										while(it.hasNext()) {
-											ModuleData module = (ModuleData)it.next();
-											module.setAnswered(userReport.getQuestionCount(user,module.getId(),userSession.getFilter().getAssesment(),userSession));
-										}
-										if(assesment.isPsitest()) {
-											assesment.setPsiCount(userReport.getQuestionCount(user,new Integer(0),userSession.getFilter().getAssesment(),userSession));
-										}
-										String lng = sys.getUserSessionData().getLenguage();
-										if(lng.equals("vt") || lng.equals("in") || lng.equals("id") || lng.equals("ph") || lng.equals("pk")) {
-									    	response.sendRedirect("./module_vt.jsp");
-										}else {
-									    	response.sendRedirect("./module_da.jsp");
-//									    	response.sendRedirect("./newmodule.jsp?id="+assesment.getId());
-										}
-					    			}
-								}
-				    		}
-					    	break;
-				    }
+					int terms = userReport.terms(login, sys.getUserSessionData()).intValue();
+					System.out.println("terms "+terms);
+					if(terms > 0 && assId != AssesmentData.UPM_CHARLA && assId != AssesmentData.UPM_CHARLA_V2 && assId != AssesmentData.ALRIYADAH_INITIALA
+							 && assId != AssesmentData.ALRIYADAH_INITIALB  && assId != AssesmentData.ALRIYADAH_FINAL&& assId != AssesmentData.GDC) {
+						response.sendRedirect("terms_"+terms+".jsp");
+					}else {
+						switch(assId) {
+							case AssesmentData.ALRIYADAH_INITIALA:
+						    	response.sendRedirect("alriyadahInitialA.jsp");
+						    	break;
+							case AssesmentData.ALRIYADAH_INITIALB:
+						    	response.sendRedirect("alriyadahInitialB.jsp");
+						    	break;
+							case AssesmentData.ALRIYADAH_FINAL:
+						    	response.sendRedirect("alriyadahFinalT.jsp");
+						    	break;
+							case AssesmentData.GDC:
+						    	response.sendRedirect("GDCForm.jsp");
+						    	break;
+							case AssesmentData.ASTRAZENECA_2:
+							case AssesmentData.ASTRAZENECA_2013:
+						    	response.sendRedirect("az.jsp");
+						    	break;
+							case AssesmentData.DEMO_MOVILES:
+						    	response.sendRedirect("moviles.jsp");
+						    	break;
+							case AssesmentData.MONSANTO_EMEA:
+						    	response.sendRedirect("emea.jsp");
+						    	break;
+							case AssesmentData.FRAYLOG_FATIGA:
+						    	response.sendRedirect("repeat_da.jsp");
+						    	break;
+							case AssesmentData.JJ_5:		
+					    		String redirect = userReport.getElearningURL(user,userSession.getFilter().getAssesment(),userSession);
+					    		if(redirect != null && redirect.length() > 0) {
+						    		response.sendRedirect(redirect);
+					    		}else {
+						    		response.sendRedirect("../flash/assessment/?lang="+userSession.getLenguage());
+					    		}
+					    		break;
+							default:
+					    		redirect = userReport.getElearningURL(user,userSession.getFilter().getAssesment(),userSession);
+					    		if(redirect != null && redirect.length() > 0) {
+						    		response.sendRedirect(redirect);
+					    		}else {
+									AssesmentData assesment = sys.getAssesmentReportFacade().findAssesment(userSession.getFilter().getAssesment(),userSession);
+									if(assesment.getStatus().intValue() != AssesmentData.NO_EDITABLE) {
+								    	response.sendRedirect("./noassessment.jsp");
+									}else {
+						    			if(isMSIE) {
+								    		response.sendRedirect("../flash/assessment/?lang="+userSession.getLenguage());
+						    			}else {
+											userSession.getFilter().setAssessmentData(assesment);
+											Iterator it = assesment.getModuleIterator();
+											while(it.hasNext()) {
+												ModuleData module = (ModuleData)it.next();
+												module.setAnswered(userReport.getQuestionCount(user,module.getId(),userSession.getFilter().getAssesment(),userSession));
+											}
+											if(assesment.isPsitest()) {
+												assesment.setPsiCount(userReport.getQuestionCount(user,new Integer(0),userSession.getFilter().getAssesment(),userSession));
+											}
+											String lng = sys.getUserSessionData().getLenguage();
+											if(lng.equals("vt") || lng.equals("in") || lng.equals("id") || lng.equals("ph") || lng.equals("pk")) {
+										    	response.sendRedirect("./module_vt.jsp");
+											}else {
+										    	response.sendRedirect("./module_da.jsp");
+	//									    	response.sendRedirect("./newmodule.jsp?id="+assesment.getId());
+											}
+						    			}
+									}
+					    		}
+						    	break;
+					    }
+					}
 				}
 			}else {
 		    	response.sendRedirect("./noassessment.jsp");

@@ -1220,6 +1220,8 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 	        
 	        Collection<String> assesmentIds = new LinkedList<String>();
         	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_FOTO));
+        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_CEPATIP));
+        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_CUESTIONARIO));
 	        
 	        int[] assesments = new int[0];
 	        

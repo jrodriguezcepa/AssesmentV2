@@ -157,7 +157,7 @@ public class UsuarioCharlaUPM implements Comparable<UsuarioCharlaUPM> {
 	private String formatDate(Calendar date) {
 		if(date == null)
 			return null;
-		return date.get(Calendar.DATE)+"/"+String.valueOf(date.get(Calendar.MONTH))+"/"+date.get(Calendar.YEAR)+" "+formatTime(date.get(Calendar.HOUR_OF_DAY))+":"+formatTime(date.get(Calendar.MINUTE)) ;
+		return date.get(Calendar.DATE)+"/"+String.valueOf(date.get(Calendar.MONTH)+1)+"/"+date.get(Calendar.YEAR)+" "+formatTime(date.get(Calendar.HOUR_OF_DAY))+":"+formatTime(date.get(Calendar.MINUTE)) ;
 	}
 
 	private String formatTime(int time) {

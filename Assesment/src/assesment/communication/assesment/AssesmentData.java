@@ -186,8 +186,12 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int UPM_CHARLA = 1729;
 	public static final int UPM_CHARLA_V2 = 1730;
 
+	public static final int LUMIN_CHARLA = 1772;
+
 	public static final int GRUPO_MODELO_FOTO = 1586;
 	public static final int GRUPO_MODELO_EBTW = 1614;
+	public static final int GRUPO_MODELO_CEPATIP = 1646;
+	public static final int GRUPO_MODELO_CUESTIONARIO = 1652;
 
 	public static final int SANOFI_BRASIL_EBTW_2019 = 985;
 	public static final int SANOFI_BRASIL_DA_2019 = 713;
@@ -270,10 +274,11 @@ public class AssesmentData extends AssesmentAttributes {
 	private static final int BAYER_CONOSUR_DA = 1743;
 	private static final int GUINEZ_INGENIERIA_V2 = 1746;
 
+	public static final int BAYERCONOSUR_ACADEMY_HISTORY = 1764;
 
 
-
-
+	public static final int KOF_ASESORES = 1744;
+	public static final int KOF_COORDINADORES = 1774;
 
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;

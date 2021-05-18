@@ -28,4 +28,6 @@ public interface CorpReportLocal
 
    public assesment.communication.corporation.CediData findCedi( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.lang.Integer getCompletedCediUsers( java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

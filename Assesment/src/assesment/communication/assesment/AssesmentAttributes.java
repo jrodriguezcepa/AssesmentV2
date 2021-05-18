@@ -430,7 +430,12 @@ public class AssesmentAttributes implements Comparable<AssesmentAttributes> {
 	        		type = 6;
 	        		break;
         	}
-        	return "https://fdmpro.cepasafedrive.com/datacenter/home.jsp?jj=jjacademy&hash="+hash+"&driver="+driver+"&type="+type;
+        	return "https://fdmpro.cepasafedrive.com/datacenter/home.jsp?jj=jjacademy&hash="+hash+"&driver="+driver+"&type="+type+"&lang="+user.getLanguage();
+		}
+		if(id.equals(AssesmentData.BAYERCONOSUR_ACADEMY_HISTORY)) {
+        	Integer driver = user.getDatacenter(); 
+        	String hash = new MD5().encriptar("bayeracademy_"+driver);
+        	return "https://fdmpro.cepasafedrive.com/datacenter/home.jsp?jj=bayeracademy&hash="+hash+"&driver="+driver+"&type=6&lang="+user.getLanguage();
 		}
 		if(link == null) {
 			return "./newmodule.jsp?id="+id;
