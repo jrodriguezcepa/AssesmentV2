@@ -2030,9 +2030,10 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 		public HashMap<String, Object[]> findMutualAssesmentGlobalResults(Integer assesment, Integer cedi, UserSessionData userSessionData) throws Exception {
 			Session session = null;
 			HashMap<String, Object[]> result = new HashMap();
+			String filter=(cedi==null)?" ":" and c.id="+cedi;
 			try {
 				session = HibernateAccess.currentSession();
-				String q="select c.name from userassesments ua join users u on u.loginname=ua.loginname  join cedi c on c.id=u.location where assesment="+assesment+" and ua.enddate is not null group by c.name"; 
+				String q="select c.name from userassesments ua join users u on u.loginname=ua.loginname  join cedi c on c.id=u.location where assesment="+assesment+" and ua.enddate  is not null"+ filter +"group by c.name"; 
 				Query qry = session.createSQLQuery(q).addScalar("name", Hibernate.STRING);
 				List listCompanies = qry.list();
 			
