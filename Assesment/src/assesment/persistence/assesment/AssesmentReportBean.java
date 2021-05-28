@@ -1451,6 +1451,24 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 		            		  results.get(user).put(1, values);
 		            	  }
 		        	  }
+	        	  } else if(daId == AssesmentData.GRUPO_MODELO_CUESTIONARIO) {
+		        	  if(data[5] == null || ((Integer)data[5]).intValue() == 1) {
+		        		  String user = (String) data[0];
+		        		  Integer da = (Integer)data[1];
+		        		  Date end = (Date) data[2];
+		        		  Integer correct = (Integer) data[3];
+		        		  Integer incorrect = (Integer) data[4];
+
+		        		  int r = (end == null) ? 0 : 1;
+		          		  Object[] values = {new Integer(r), end, correct, incorrect, da};
+		            	  if(!results.containsKey(user)) {
+		            		  HashMap<Integer, Object[]> result = new HashMap<Integer, Object[]>();
+		            		  result.put(3, values);
+		            		  results.put(user, result);
+		            	  }else {
+		            		  results.get(user).put(3, values);
+		            	  }
+		        	  }
 	        	  }
 	          }
         	  String sql2 = "SELECT uas.loginname, q.questionorder, q.type, ad.text, ad.date, a.key " + 

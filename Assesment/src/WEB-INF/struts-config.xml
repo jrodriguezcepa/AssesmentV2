@@ -1307,7 +1307,12 @@
     <action path="/DownloadGroup" type="assesment.presentation.actions.report.DownloadGroupReportAction" name="DownloadGroupReportForm" scope="session">
         <forward name="back" path="/reportgroup.jsp"/>
 	</action>
-	    <action path="/DownloadCedi" type="assesment.presentation.actions.report.DownloadCediReportAction" name="DownloadCediReportForm" scope="session">
+
+    <action path="/DownloadGrupoModelo" type="assesment.presentation.actions.report.DownloadGrupoModeloReportAction" name="DownloadGroupReportForm" scope="session">
+        <forward name="back" path="/reportgroup.jsp"/>
+	</action>
+	
+	<action path="/DownloadCedi" type="assesment.presentation.actions.report.DownloadCediReportAction" name="DownloadCediReportForm" scope="session">
         <forward name="back" path="/index.jsp"/>
 	</action>
 

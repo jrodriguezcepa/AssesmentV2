@@ -19,7 +19,6 @@ import assesment.business.AssesmentAccess;
 import assesment.business.administration.user.UsReportFacade;
 import assesment.communication.administration.user.UserSessionData;
 import assesment.communication.assesment.AssesmentData;
-import assesment.communication.assesment.GroupData;
 import assesment.communication.language.Text;
 import assesment.communication.user.UserData;
 import assesment.communication.util.MD5;
@@ -67,6 +66,7 @@ public class UserAccessAction extends AbstractAction {
         	UserSessionData userSessionData = sys.getUserSessionData();
 
         	if(prefix.equals("tmc")) {
+        		id = Util.getTimacCPF(id);
         		String user = report.getCurrentTimacUser(id, userSessionData);
         		if(user != null) {
 		            session.setAttribute("user",user);

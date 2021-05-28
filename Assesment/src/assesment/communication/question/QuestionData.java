@@ -281,7 +281,8 @@ public class QuestionData implements Comparable {
 				questionId == 48522 || questionId == 48740 || questionId == 48746 ||
 				questionId == 50772 || questionId == 50794 || questionId == 50816 ||
 				questionId == 50838 || questionId == 51046 || questionId == 51025 || 
-				questionId == 50983 || questionId == 50939 || questionId == 50961;
+				questionId == 50983 || questionId == 50939 || questionId == 50961 || 
+				questionId == 52860;
 	}
 
 	public static boolean isLastNameQuestion(int questionId) {
@@ -292,7 +293,8 @@ public class QuestionData implements Comparable {
 				questionId == 48523 || questionId == 48741 || questionId == 48747 ||
 				questionId == 50773 || questionId == 50795 || questionId == 50817 ||
 				questionId == 50839 || questionId == 51047 || questionId == 51026 || 
-				questionId == 50984 || questionId == 50940 || questionId == 50962 ;
+				questionId == 50984 || questionId == 50940 || questionId == 50962 || 
+				questionId == 52861;
 	}
 
 	public static int getUPLValue(int questionId, int answer) {

@@ -1220,8 +1220,6 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 	        
 	        Collection<String> assesmentIds = new LinkedList<String>();
         	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_FOTO));
-        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_CEPATIP));
-        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_CUESTIONARIO));
 	        
 	        int[] assesments = new int[0];
 	        
@@ -1237,6 +1235,8 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 	        
 	        if(ebtw == 1) {
 	        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_EBTW));
+	        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_CEPATIP));
+	        	assesmentIds.add(String.valueOf(AssesmentData.GRUPO_MODELO_CUESTIONARIO));
 	        }
 			userABM.userCreate(data, (String[])assesmentIds.toArray(new String[0]), userSessionData);
 			

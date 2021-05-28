@@ -352,11 +352,15 @@
 			<html:hidden property="login" />
 			<html:hidden property="reportType" />
 		</html:form>	
-		<html:form action="/DownloadGroup">
+		<html:form action="/DownloadGrupoModelo">
 			<html:hidden property="group" value="<%=String.valueOf(GroupData.GRUPO_MODELO)%>" />
 		</html:form>
 		<form action="./viewFoto.jsp" name='fotos' method="post" target="_blank">
 			<input type="hidden" name="user" />
+		</form>	
+		<form action="./layout.jsp" name='back' method="post">
+			<input type="hidden" name="refer" value="/assesment/viewGroup.jsp" />
+			<input type="hidden" name="id" value="<%=String.valueOf(GroupData.GRUPO_MODELO)%>" />
 		</form>	
 		<div class="wrap">
 			<img src="./images/main_logo_large.png">
@@ -406,6 +410,7 @@
 					<th>Foto</th>
 					<th>Driver Assessment</th>
 					<th>eBTW</th>
+					<th>Cuestionario Pendientes</th>
 				</tr>
 <%			HashMap<String, HashMap<Integer, Object[]>> userResults = assessmentReport.getUserCediResults(cedis, sys.getUserSessionData());
 			Iterator<UserData> it = users.iterator();
@@ -534,6 +539,40 @@
 <%						}
 				} else {
 					graphs.get(2)[3]++;
+%>					<td>
+						No asociado
+					</td>
+<%				}
+				if(values.containsKey(3)) {
+					Object[] data = values.get(3);
+					if(((Integer)data[0]).intValue() == 0) {
+%>					<td><%=messages.getText("generic.report.pending")%></td>
+<%					} else {
+						String className = "cellGreen";
+						String color = "white";
+						int percent = 0;
+						if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
+							percent = 100;
+						}else {
+							percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
+							if(percent < 50) {
+								className = "cellRed";
+							} else if(percent < 70) {
+								className = "cellYellow";
+								color = "#1D272D";
+							}
+						}
+%>					<td class="<%=className%>" style="padding:0">
+						<table class="subTable">
+							<tr>
+								<td width="100%" class="<%=className%>">
+									<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
+								</td>
+							</tr>
+						</table>
+					</td>
+<%						}
+				} else {
 %>					<td>
 						No asociado
 					</td>

@@ -225,7 +225,7 @@ public abstract class CorpReportBean implements SessionBean {
             	StringTokenizer st = new StringTokenizer((String)data[1], ",");
             	boolean found = false;
             	while(st.hasMoreTokens() && !found) {
-                	found = st.nextToken().equalsIgnoreCase(user);
+                	found = st.nextToken().trim().equalsIgnoreCase(user);
                 	if(found)
                 		ids.add((Integer)data[0]);
             	}

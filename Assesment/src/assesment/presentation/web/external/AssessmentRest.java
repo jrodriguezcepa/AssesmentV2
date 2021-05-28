@@ -115,8 +115,9 @@ public class AssessmentRest {
 		try{
 			User userSys =new User(user,password);
 			AssesmentAccessRemote sys = CacheManager.getInstance().login(userSys);
-			if(id != null && id.length() > 0){
-				return sys.getUserABMFacade().saveTimacUser(id, firstName, lastName, email, sys.getUserSessionData());
+			if(id != null && id.length() > 0) {
+				String cpf = Util.getTimacCPF(id);
+				return sys.getUserABMFacade().saveTimacUser(cpf, firstName, lastName, email, sys.getUserSessionData());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -133,8 +134,9 @@ public class AssessmentRest {
 		try{
 			User userSys =new User(user,password);
 			AssesmentAccessRemote sys = CacheManager.getInstance().login(userSys);
-			if(id != null && id.length() > 0){
-				return sys.getUserReportFacade().existTimacUser(id, sys.getUserSessionData());
+			if(id != null && id.length() > 0) {
+				String cpf = Util.getTimacCPF(id);
+				return sys.getUserReportFacade().existTimacUser(cpf, sys.getUserSessionData());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
@@ -154,8 +156,9 @@ public class AssessmentRest {
 			AssesmentAccessRemote sys = CacheManager.getInstance().login(userSys);
 			if(id != null && id.length() > 0){
 				GenerateReport gReport = new GenerateReport(sys.getText(),"pt");
-		        String fileName = AssesmentData.FLASH_PATH+"/wstimac/"+id+"_"+da+".pdf";
-				gReport.getReport(id, da, type, fileName);
+				String cpf = Util.getTimacCPF(id);
+		        String fileName = AssesmentData.FLASH_PATH+"/wstimac/"+cpf+"_"+da+".pdf";
+				gReport.getReport(cpf, da, type, fileName);
 	            
 	        	return Base64.encode(new Util().read(new File(fileName)));
 			}

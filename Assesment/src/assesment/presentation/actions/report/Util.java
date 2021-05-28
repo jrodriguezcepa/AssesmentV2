@@ -1042,4 +1042,11 @@ public class Util {
         }
         return result.toString();
 	}
+
+	public static String getTimacCPF(String code) {
+		String v = new String(code);
+		while(v.length() < 11)
+			v = "0"+v;
+		return v;
+	}
 }

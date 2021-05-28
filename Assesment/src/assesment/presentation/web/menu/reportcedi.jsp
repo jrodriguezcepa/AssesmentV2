@@ -125,20 +125,68 @@
 		}
 		</script>
 		<style type="text/css">
-			body {
-				background-color: #FFFFFF;
-				margin-left: 10px;
-				margin-top: 10px;
-				margin-right: 10px;
-				margin-bottom: 0px;
-			}
+			body{
+                background-color: rgb(241, 238, 238);
+            }
+            #rcorners1 {
+                margin:auto;
+                margin-bottom:1.5%;
+                border-radius: 10px;
+                background: #f8f8f8;
+                padding: 20px;
+                padding-bottom: 40px;
+                width: 95%;
+                height: 15px;
+                box-shadow: 0 4px 8px 0 rgba(129, 128, 128, 0.2), 0 6px 10px 0 rgba(121, 120, 120, 0.19);
+            }
+              #rcorners2 {
+                margin:auto;
+                border-radius: 10px;
+                background: #f8f8f8;
+                width: 95%;
+                padding:20px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                box-shadow: 0 4px 8px 0 rgba(129, 128, 128, 0.2), 0 6px 10px 0 rgba(121, 120, 120, 0.19);
+            }
+            .textInput{
+                margin-bottom:20px;
+                margin-right:5px;
+
+                width: 19%;
+                height: 30px;
+                border-radius: 5px;
+                background-color: rgb(227, 230, 235);
+                border-width: 0px;
+                color: red;
+                padding:5px;
+            }
+            .button{
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-weight: 500;
+                margin-left:30px;
+                margin-bottom:20px;
+                color: rgb(255, 255, 255);
+                background-color: black;
+                border-radius: 5px;
+                width: 10%;
+                height: 38px;
+                padding:5px;
+                border-width: 0px;
+                cursor:pointer;
+
+            }
+            .button:hover{
+                background-color: rgb(58, 55, 55);
+
+            }
 			.title {
-				margin-left: 10px;
-				margin-top: 20px;
-				margin-bottom: 20px;
+				width:100%;
+				margin:auto;
 				color: #1D272D;
 				font-family: Roboto, Helvetica, Arial, sans-serif;
 				font-size: 2.5em;
+				text-align:center;
 			}
 			.subtitle {
 				margin-left: 10px;
@@ -148,82 +196,146 @@
 				font-family: Roboto, Helvetica, Arial, sans-serif;
 				font-size: 1.5em;
 			}
-			.tabla {
-				margin-left: 10px;
-				color: #1D272D;
-				font-family: Roboto, Helvetica, Arial, sans-serif;
+            .table{
+                border-collapse: collapse;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 				font-size: 11;
-				text-align: center;
-				width:98%;
-				padding: 0;
-				border-spacing: 0;
-			}
+				table-layout: fixed;
+                width: 100%;
+                margin: auto;
+
+            }
+            .table th{
+                background: #f8f8f8;
+ 				word-wrap: break-word;   
+            }
+            .table td:first-child {
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+
+            }
+            .table td:last-child {
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+
+            }
+            .table  tr:nth-child(even) {
+
+                background: #CCC
+            }
+            .table tr:nth-child(even):hover {
+
+                background: rgb(243, 237, 237)
+            }
+            .table tr:nth-child(odd) {
+
+                background:rgb(227, 230, 235);
+             }
+            .table tr:nth-child(odd):hover {
+
+                background: rgb(243, 237, 237)
+             }
+            .table td{
+
+                border-style:none;
+                border-width: 0.5px;
+                border-collapse:collapse;
+                border-left-color: darkkhaki;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:1px;
+                padding-right:1px;
+                text-align: center;
+                white-space: nowrap;
+    			height: 30px;
+    			overflow:hidden;
+
+             }
 			.cell {
 				min-width: 130px;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
+				border-style: none;
 				text-align: center;
 				height: 30px;
 			}
 			.cellText {
-				color: #1D272D;
-				font-family: Roboto, Helvetica, Arial, sans-serif;
-				font-size: 11;
-				text-align: center;
 				text-align: center;
 			}
-			.cell1 {
-				background-color: white;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: center;
-				height: 30px;
-			}
-			.cellData {
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: left;
-				padding: 5px;
-				height: 30px;
-			}
-			.cellData1 {
-				background-color: #DCDCDC;
-				border-color: black;
-				border-width: 1px;
-				border-style: solid;
-				text-align: left;
-				padding: 5px;
-				height: 30px;
-			}
+
 			.cellRed {
-				background-color: red;
+				background-color: #F37566;
 				color:white;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
+				border-style: none;
 				text-align: center;
-				height: 30px;
 				vertical-align: middle;
 			}
 			.cellYellow {
-				background-color: yellow;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: center;
-				height: 30px;
+				border-style:none;
+                border-width: 0.5px;
+                border-collapse:collapse;
+                border-left-color: darkkhaki;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:1px;
+                padding-right:1px;
+                text-align: center;
+                white-space: nowrap;
+    			height: 30px;	
+				background-color: #EFE358;
 			}
 			.cellGreen {
-				background-color: green;
+			 	border-style:solid;
+                border-width: 0.5px;
+                border-left:0px;
+                border-right:0px;
+                border-top:0px;
+                border-bottom:0.5px;
+                border-collapse:collapse;
+                border-bottom-color: grey;
+                padding-top:15px;
+                padding-bottom:15px;
+                padding-left:1px;
+                padding-right:1px;
+                text-align: center;
+                white-space: nowrap;
+    			height: 30px;	
+				background-color: #70C160;
 				color:white;
-				border-color: #1D272D;
-				border-width: 1px;
-				border-style: solid;
-				text-align: center;
-				height: 30px;
+				
+			}
+			
+			.subTable{
+                border-collapse: collapse;
+                border-style:none;
+                font-size:11;
+                height:10px;
+                margin:auto;
+			}
+			.subTable td{
+				padding:0;
+				word-wrap:break-word
+				border-style: none;
+				
+			}
+			.subTable img{
+				width:10px;
+				height:10px;
+			}
+			div.wrap {
+			    width:90%;
+			    height:50px;
+			    position: relative;
+			}
+			
+			.wrap img {
+			     position: absolute;
+			}
+			
+			.wrap img:nth-of-type(1) {
+			    left: 0;
+			}
+			
+			.wrap img:nth-of-type(2) {
+			    right: 0;
 			}
 		</style>
 	</head>
@@ -246,78 +358,39 @@
 		<form action="./viewFoto.jsp" name='fotos' method="post" target="_blank">
 			<input type="hidden" name="user" />
 		</form>	
-		
-		<div>
-			<img src="./imgs/logocepa.jpg">
+		<div class="wrap">
+			<img src="./images/main_logo_large.png">
+			<img width="5%" src="./images/grupo-modelo.png">
 		</div>
 		<br>
 		<br>
-		<div>
-			<table width="100%">
-				<tr>
-					<td class="title" width="50%" align="left">
-						Grupo Modelo
-					</td>
-					<td width="20%" align="center">
-						<a href="javascript:document.forms['DownloadCediReportForm'].submit()" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("assesment.report.download")%>
-							</span>
-						</a>
-					</td>
-					<td width="20%" align="center">
-<%			String linkTotal = "javascript:openGraph(0,'"+messages.getText("report.users.total.count")+"')";
-%>					
-						<a href="<%=linkTotal%>" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("report.users.total.count")%>
-							</span>
-						</a>
-					</td>
-<%			if(role.equals(SecurityConstants.ADMINISTRATOR)) {
-%>					<td width="10%" align="center">
-						<a href="javascript:document.forms['back'].submit();" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("generic.messages.back")%>
-							</span>
-						</a>
-					</td>
-<%			} else {
-%>					<td width="10%" align="center">
-						<a href="logout.jsp" style="text-decoration: none;">
-							<span class="subtitle">
-								<%=messages.getText("generic.messages.logout")%>
-							</span>
-						</a>
-					</td>
-<%			} 
-%>				</tr>
-			</table>
+		<br>
+		<div  class="title">
+			Grupo Modelo
 		</div>
 		<br>
-		<div id="closeContent" style="width: 100%; text-align: center; display:none;">
-			<a href="javascript:cerrarGraph()" >
-				<img src="imgs/cross.png">
-			</a>
-		</div>
-		<div id="graphContent" style="width: 100%; text-align: center;">
-		</div>
-		<br>
-		<div>
-			<table class="tabla">
-				<tr>
-					<th><%=messages.getText("user.data.nickname").toUpperCase()%></th>
-					<th><%=messages.getText("user.data.firstname").toUpperCase()%></th>
-					<th><%=messages.getText("user.data.lastname").toUpperCase()%></th>
-					<th><%=messages.getText("user.data.mail").toUpperCase()%></th>
-					<th>Posición</th>
-					<th>Tipo de licencia</th>
-					<th>Vigencia de la licencia</th>
-					<th>Fecha de nacimiento</th>
-					<th>Foto</th>
-					<th>Driver Assessment</th>
-					<th>eBTW</th>
-				</tr>
+		<div id="rcorners2">
+            <div> 
+                <input class="button"  type="button" value="Descargar" onclick="javascript:document.forms['DownloadCediReportForm'].submit()">
+                <input class="button"  type="button" value='<%=messages.getText("generic.messages.logout").toUpperCase()%>'  onclick="window.location.href='logout.jsp'">
+         	</div>
+			<br>
+			<div>
+				<table class="table">
+					<tr>
+						<th><%=messages.getText("user.data.nickname").toUpperCase()%></th>
+						<th><%=messages.getText("user.data.firstname").toUpperCase()%></th>
+						<th><%=messages.getText("user.data.lastname").toUpperCase()%></th>
+						<th><%=messages.getText("user.data.mail").toUpperCase()%></th>
+						<th>Posición</th>
+						<th>Tipo de licencia</th>
+						<th>Vigencia de la licencia</th>
+						<th>Fecha de nacimiento</th>
+						<th>Foto</th>
+						<th>Driver Assessment</th>
+						<th>eBTW</th>
+						<th>Cuestionario Pendientes</th>
+					</tr>
 <%			Integer[] cedis = {new Integer(cedi)};
 			HashMap<String, HashMap<Integer, Object[]>> userResults = assessmentReport.getUserCediResults(cedis, sys.getUserSessionData());
 			Iterator<UserData> it = users.iterator();
@@ -327,34 +400,34 @@
 				HashMap<Integer, Object[]> values = (userResults.containsKey(user.getLoginName())) ? userResults.get(user.getLoginName()) : new HashMap<Integer, Object[]>();
 				String cellName = (line) ? "cellData1" : "cellData";
 				line = !line;
-%>				<tr>
-					<td class="<%=cellName%>"><%=user.getLoginName() %></td>
-					<td class="<%=cellName%>"><%=user.getFirstName() %></td>
-					<td class="<%=cellName%>"><%=user.getLastName() %></td>
-					<td class="<%=cellName%>"><%=(user.getEmail() == null) ? "---" : user.getEmail() %></td>
+%>					<tr>
+						<td class="<%=cellName%>"><%=user.getLoginName() %></td>
+						<td class="<%=cellName%>"><%=user.getFirstName() %></td>
+						<td class="<%=cellName%>"><%=user.getLastName() %></td>
+						<td class="<%=cellName%>"><%=(user.getEmail() == null) ? "---" : user.getEmail() %></td>
 <%				Object[] data0 = {null,null,null,null,null};
 				if(values.containsKey(0)) {
 					data0 = values.get(0);
 				}
 %>
-					<td class="<%=cellName%>"><%=(data0[1] == null) ? "---" : messages.getText((String)data0[1])%></td>
-					<td class="<%=cellName%>"><%=(data0[2] == null) ? "---" : messages.getText((String)data0[2])%></td>
-					<td class="<%=cellName%>"><%=(data0[3] == null) ? "---" : Util.formatDate((Date)data0[3])%></td>
-					<td class="<%=cellName%>"><%=(data0[4] == null) ? "---" : Util.formatDate((Date)data0[4])%></td>
+						<td class="<%=cellName%>"><%=(data0[1] == null) ? "---" : messages.getText((String)data0[1])%></td>
+						<td class="<%=cellName%>"><%=(data0[2] == null) ? "---" : messages.getText((String)data0[2])%></td>
+						<td class="<%=cellName%>"><%=(data0[3] == null) ? "---" : Util.formatDate((Date)data0[3])%></td>
+						<td class="<%=cellName%>"><%=(data0[4] == null) ? "---" : Util.formatDate((Date)data0[4])%></td>
 <%				if(data0[0] != null) {
-%>					<td class="cellGreen">
-						<a href="javascript:openFoto('<%=user.getLoginName()%>')">
-							<span style="color:white;">Ver</span>
-						</a>
-					</td>
+%>						<td class="cellGreen">
+							<a href="javascript:openFoto('<%=user.getLoginName()%>')">
+								<span style="color:white;">Ver</span>
+							</a>
+						</td>
 <%				}else {
-%>					<td class="<%=cellName%>">Pendiente</td>
+%>						<td class="<%=cellName%>">Pendiente</td>
 <%				}
 				if(values.containsKey(1)) {
 					Object[] data = values.get(1);
 					if(((Integer)data[0]).intValue() == 0) {
 							graphs.get(1)[3]++;
-%>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
+%>						<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
 <%					} else {
 						String className = "cellGreen";
 						String color = "white";
@@ -375,36 +448,36 @@
 								graphs.get(1)[2]++;
 							}
 						}
-%>					<td class="<%=className%>">
-						<table>
-							<tr>
-								<td width="75%" class="cellText">
-									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
-										<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
-									</a>
-								</td>
-								<td width="25%"  class="cellText">
+%>						<td class="<%=className%>" style="padding:0;word-wrap:break-word">
+							<table class="subTable">
+								<tr>
+									<td width="75%" class="<%=className%>">
+										<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
+											<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
+										</a>
+									</td>
+									<td width="25%"  class="<%=className%>">
 <%						if(className.equals("cellGreen")) {
-%>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",2);"%>'>
-										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
-									</a>
+%>										<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",2);"%>'>
+											<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
+										</a>
 <%						}
-%>								</td>
-							</tr>
-						</table>
-					</td>
+%>									</td>
+								</tr>
+							</table>
+						</td>
 <%						}
 				} else {
 					graphs.get(1)[3]++;
-%>					<td class="<%=cellName%>">
-						No asociado
-					</td>
+%>						<td class="<%=cellName%>">
+							No asociado
+						</td>
 <%				}
 				if(values.containsKey(2)) {
 					Object[] data = values.get(2);
 					if(((Integer)data[0]).intValue() == 0) {
 							graphs.get(2)[3]++;
-%>					<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
+%>						<td class="<%=cellName%>"><%=messages.getText("generic.report.pending")%></td>
 <%					} else {
 						String className = "cellGreen";
 						String color = "white";
@@ -425,68 +498,70 @@
 								graphs.get(2)[2]++;
 							}
 						}
-%>					<td class="<%=className%>">
-						<table>
-							<tr>
-								<td width="75%" class="cellText">
-									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
-										<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
-									</a>
-								</td>
-								<td width="25%"  class="cellText">
+%>						<td class="<%=className%>" style="padding:0">
+							<table class="subTable">
+								<tr>
+									<td width="75%" class="<%=className%>">
+										<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",1);"%>'>
+											<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
+										</a>
+									</td>
+									<td width="25%"  class="<%=className%>">
 <%						if(className.equals("cellGreen")) {
-%>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",2);"%>'>
-										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
-									</a>
+%>										<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\","+data[4]+",2);"%>'>
+											<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
+										</a>
 <%						}
-%>								</td>
-							</tr>
-						</table>
-					</td>
-<%						}
+%>									</td>
+								</tr>
+							</table>
+						</td>
+<%					}
 				} else {
 					graphs.get(2)[3]++;
-%>					<td class="<%=cellName%>">
-						No asociado
-					</td>
+%>						<td class="<%=cellName%>">
+							No asociado
+						</td>
 <%				}
-%>				</tr>						
+				if(values.containsKey(3)) {
+					Object[] data = values.get(3);
+					if(((Integer)data[0]).intValue() == 0) {
+%>					<td><%=messages.getText("generic.report.pending")%></td>
+<%					} else {
+						String className = "cellGreen";
+						String color = "white";
+						int percent = 0;
+						if(((Integer)data[2]).intValue() == 0 && ((Integer)data[3]).intValue() == 0) {
+							percent = 100;
+						}else {
+							percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
+							if(percent < 50) {
+								className = "cellRed";
+							} else if(percent < 70) {
+								className = "cellYellow";
+								color = "#1D272D";
+							}
+						}
+%>						<td class="<%=className%>"  style="padding:0">
+							<table class="subTable">
+								<tr>
+									<td width="100%" class="<%=className%>">
+										<span style='color:<%=color%>;'><%=Util.formatDate((Date)data[1])+" ("+percent+"%)"%></span>
+									</td>
+								</tr>
+							</table>
+						</td>
+<%						}
+				} else {
+%>						<td>
+							No asociado
+						</td>
+<%				}
+%>					</tr>						
 <%			}
-%>			</table>
+%>				</table>
+			</div>
 		</div>
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		<script type="text/javascript">
-		  google.charts.load('current', {'packages':['corechart']});
-		  google.charts.setOnLoadCallback(drawChart);
-		  var data = [];
-
-		  function drawChart() {
-<%			int[] v = {0, 0, 0, 0};
-			int[] t = (int[])graphs.get(1);
-%>			
-			var d = new google.visualization.DataTable();
-	        d.addColumn('string', 'V1');
-	        d.addColumn('number', 'V2');
-	 		d.addRow(['<%=messages.getText("generic.report.lowlevel")+" ("+t[0]+")"%>', <%=String.valueOf(t[0])%>]);
-	 		d.addRow(['<%=messages.getText("generic.report.meddiumlevel")+" ("+t[1]+")"%>', <%=String.valueOf(t[1])%>]);
-	 		d.addRow(['<%=messages.getText("generic.report.highlevel")+" ("+t[2]+")"%>', <%=String.valueOf(t[2])%>]);
-			d.addRow(['<%=messages.getText("generic.report.pending")+" ("+t[3]+")"%>', <%=String.valueOf(t[3])%>]);
-			data[<%=String.valueOf(1)%>] = d;
-<%			for(int j = 0; j < 4; j++) {
-				v[j] += t[j];
-			}
-%>
-	 		
-	 		d = new google.visualization.DataTable();
-	        d.addColumn('string', 'V1');
-	        d.addColumn('number', 'V2');
-	 		d.addRow(['<%=messages.getText("generic.report.lowlevel")+" ("+v[0]+")"%>', <%=String.valueOf(v[0])%>]);
-	 		d.addRow(['<%=messages.getText("generic.report.meddiumlevel")+" ("+v[1]+")"%>', <%=String.valueOf(v[1])%>]);
-	 		d.addRow(['<%=messages.getText("generic.report.highlevel")+" ("+v[2]+")"%>', <%=String.valueOf(v[2])%>]);
-	 		d.addRow(['<%=messages.getText("generic.report.pending")+" ("+v[3]+")"%>', <%=String.valueOf(v[3])%>]);
-	 		data[0] = d;
-		  }
-		</script>
 	</body>
 <%	}
 %>

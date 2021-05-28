@@ -30,7 +30,7 @@ import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 
-public class DownloadCediReportAction  extends AbstractAction {
+public class DownloadGrupoModeloReportAction  extends AbstractAction {
 
     public ActionForward cancel(HttpSession session, ActionMapping mapping, ActionForm form) {
         return null;
@@ -41,12 +41,10 @@ public class DownloadCediReportAction  extends AbstractAction {
 	        HttpSession session = request.getSession();
 	    	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	        Text messages = sys.getText();
-
+	        
 	        GroupData group = sys.getAssesmentReportFacade().findGroup(new Integer(((DynaActionForm)form).getString("group")), sys.getUserSessionData());
-			Integer cedi=new Integer(((DynaActionForm)form).getString("cedi"));
-			Integer[] cedis = {new Integer(cedi)};
 
-	        Collection<UserData> users = sys.getUserReportFacade().findCediUsers(cedis,"","","", "",sys.getUserSessionData());
+			Collection<UserData> users = sys.getUserReportFacade().findGroupUsers(group.getId(), sys.getUserSessionData());
 
 	        response.setHeader("Content-Type", "application/vnd.ms-excel");
 	        response.setHeader("Content-Disposition", "inline; filename=Total.xls");
@@ -54,22 +52,27 @@ public class DownloadCediReportAction  extends AbstractAction {
 	        ArrayList<ArrayList<Object>> rows = new ArrayList<ArrayList<Object>>();
 	        ArrayList<Object> row = new ArrayList<Object>();
 	        row.add(new Object[] {messages.getText("user.data.nickname"), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-	       row.add(new Object[] {messages.getText("user.data.firstname"), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+	        row.add(new Object[] {messages.getText("user.data.firstname"), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
 	        row.add(new Object[] {messages.getText("user.data.lastname"), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
 	        row.add(new Object[] {messages.getText("user.data.mail"), new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-	        row.add(new Object[] {"CEDI", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-	        row.add(new Object[] {"Posición", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-	        row.add(new Object[] {"Tipo de licencia", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-	        row.add(new Object[] {"Vigencia de la licencia", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
-	        row.add(new Object[] {"Fecha de nacimiento", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+        	row.add(new Object[] {"CEDI", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+ 	        row.add(new Object[] {"Posición", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+ 	        row.add(new Object[] {"Tipo de licencia", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+ 	        row.add(new Object[] {"Vigencia de la licencia", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
+ 	        row.add(new Object[] {"Fecha de nacimiento", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
  	        row.add(new Object[] {"Foto", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
  	    	row.add(new Object[] {"Driver Assessment", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
  	    	row.add(new Object[] {"eBTW", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
  	    	row.add(new Object[] {"Cuestionario Pendientes", new Short(new HSSFColor.GREY_25_PERCENT().getIndex())});
 			rows.add(row);
 
+			Integer[] cedis=null;
+			UserData us = sys.getUserReportFacade().findUserByPrimaryKey(sys.getUserSessionData().getFilter().getLoginName(),sys.getUserSessionData());
+			cedis = sys.getCorporationReportFacade().findCediUser(us.getLoginName(), sys.getUserSessionData());
+			users =  sys.getUserReportFacade().findCediUsers(cedis, "","","", "", sys.getUserSessionData());
+			
 			HashMap<String, HashMap<Integer, Object[]>> userResults = sys.getAssesmentReportFacade().getUserCediResults(cedis, sys.getUserSessionData());
-
+			
 			Iterator<UserData> it = users.iterator();
 			while(it.hasNext()) {
 		        ArrayList<Object> rowUser = new ArrayList<Object>();
@@ -120,59 +123,6 @@ public class DownloadCediReportAction  extends AbstractAction {
 				n = n.substring(0, 30);
 			n = n.replaceAll("/", " ");
 			ExcelGenerator.generatorObjectXLS(rows, n, response.getOutputStream());
-	        /*
-	        WritableWorkbook w = Workbook.createWorkbook(response.getOutputStream());
-	        WritableSheet s = w.createSheet(group.getName(), 0);
-
-	        s.addCell(new Label(0,0,messages.getText("user.data.nickname")));
-	        s.addCell(new Label(1,0,messages.getText("user.data.firstname")));
-	        s.addCell(new Label(2,0,messages.getText("user.data.lastname")));
-	        s.addCell(new Label(3,0,messages.getText("user.data.mail")));
-	        Iterator<CategoryData> itC = group.getOrderedCategories();
-			AssesmentAttributes[] assessmentIds = new AssesmentAttributes[group.getAssessmentCount()];
-			int index = 0;
-			while(itC.hasNext()) {
-				CategoryData c = itC.next();
-				Iterator<AssesmentAttributes> itA = c.getOrderedAssesments();
-				while(itA.hasNext()) {
-					AssesmentAttributes a = itA.next();
-					assessmentIds[index] = a;
-					s.addCell(new Label(index+4,0,messages.getText(a.getName())));
-					s.setS
-					index++;
-				}
-			}
-			
-			HashMap<String, HashMap<Integer, Object[]>> userResults = sys.getAssesmentReportFacade().getUserGroupResults(group.getId(), sys.getUserSessionData());
-			Iterator<UserData> it = users.iterator();
-			index = 1;
-			while(it.hasNext()) {
-				UserData user = it.next();
-				HashMap<Integer, Object[]> values = (userResults.containsKey(user.getLoginName())) ? userResults.get(user.getLoginName()) : new HashMap<Integer, Object[]>();
-				s.addCell(new Label(0,index,user.getLoginName()));
-				s.addCell(new Label(1,index,user.getFirstName()));
-				s.addCell(new Label(2,index,user.getLastName()));
-				s.addCell(new Label(3,index,user.getEmail()));
-				for(int i = 0; i < assessmentIds.length; i++) {
-					AssesmentAttributes assAtt = assessmentIds[i]; 
-					if(values.containsKey(assAtt.getId())) {
-						Object[] data = values.get(assAtt.getId());
-						if(((Integer)data[0]).intValue() == 0) {
-							s.addCell(new Label(i+4,index,"---"));
-						} else {
-							int percent = ((Integer)data[2]).intValue() * 100 / (((Integer)data[2]).intValue() + ((Integer)data[3]).intValue());
-							s.addCell(new Label(i+4,index,Util.formatDate((Date)data[1])+" ("+percent+"%)"));
-						}
-					}else {
-						s.addCell(new Label(i+4,index,"---"));
-					}
-				}
-				index++;
-			}
-
-			w.write();
-			w.close();
-			*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

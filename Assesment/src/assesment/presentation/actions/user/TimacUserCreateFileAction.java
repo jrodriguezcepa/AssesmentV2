@@ -104,6 +104,7 @@ public class TimacUserCreateFileAction extends AbstractAction {
 			if(Util.empty(cpf)) {
 				throw new Exception("Linea "+line+": apellido vacío.");
 			}
+			cpf = Util.getTimacCPF(cpf);
 			String extraData = reader.get(4).trim();
 			String extraData2 = reader.get(5).trim();
 

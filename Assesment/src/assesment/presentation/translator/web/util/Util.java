@@ -90,16 +90,16 @@ public class Util {
     public static boolean isRegistrableLumin() {
     	Calendar c = Calendar.getInstance();
     	int day = c.get(Calendar.DATE);
-    	/*if(day == 19) {
+    	if(day == 19) {
 	    	int hour = c.get(Calendar.HOUR_OF_DAY);
 	    	int minute = c.get(Calendar.MINUTE);
 	    	switch(hour) {
-				case 9: case 11: case 16:
+				case 8: case 11: case 16:
 					return minute <= 10;
-				case 8: case 10: case 15:
+				case 7: case 10: case 15:
 					return minute >= 45;
 	    	}
-    	}*/
+    	}
     	return true;
     }
 
@@ -615,4 +615,12 @@ public class Util {
 		}
     	return true;
     }
+
+
+	public static String getTimacCPF(String code) {
+		String v = new String(code);
+		while(v.length() < 11)
+			v = "0"+v;
+		return v;
+	}
 }

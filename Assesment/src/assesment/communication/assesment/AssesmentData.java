@@ -219,6 +219,7 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int BTWPLUS2_WEBINAR = 1324;
 	public static final int HRD_WEBINAR = 1327;
 	public static final int WEBINAR_4X4 = 1471;
+	public static final int MOTO_WEBINAR = 1804;
 
 	public static final int SAFEFLEET_WEBINARPLUS = 1615;
 	public static final int SAFEFLEET_WEBINARPLUS2 = 1616;
@@ -269,7 +270,8 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int ABBEVIE_LATAM = 1712;
 	public static final int GDC = 1711;
 	public static final int ASTRAZENECA_BRASIL_DRIVERASSESSMENT = 1714;
-	public static final int SUMITOMO = 1728;
+	public static final int SUMITOMO = 1754;
+	public static final int SUMITOMO_4X4 = 1754;
 
 	private static final int BAYER_CONOSUR_DA = 1743;
 	private static final int GUINEZ_INGENIERIA_V2 = 1746;
@@ -279,6 +281,7 @@ public class AssesmentData extends AssesmentAttributes {
 
 	public static final int KOF_ASESORES = 1744;
 	public static final int KOF_COORDINADORES = 1774;
+
 
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;
@@ -456,6 +459,7 @@ public class AssesmentData extends AssesmentAttributes {
 				 id.intValue() == BTWPLUS2_WEBINAR || 
 				 id.intValue() == PESADOS_WEBINAR || 
 				 id.intValue() == HRD_WEBINAR || 
+				 id.intValue() == MOTO_WEBINAR || 
 				 id.intValue() == WEBINAR_4X4 || 
 				 id.intValue() == BTW2_REFRESH_WEBINAR ||
 				 id.intValue() == MONITORES_WEBINAR ||
@@ -479,6 +483,7 @@ public class AssesmentData extends AssesmentAttributes {
 				id.intValue() == AssesmentData.UPL_NEWHIRE || 
 				id.intValue() == AssesmentData.ASTRAZENECA_BRASIL_DRIVERASSESSMENT || 
 				id.intValue() == AssesmentData.SUMITOMO || 
+				id.intValue() == AssesmentData.SUMITOMO_4X4 || 
 				id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2020 ||
      	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
      	     	id.intValue() == AssesmentData.ABBEVIE_LATAM || 

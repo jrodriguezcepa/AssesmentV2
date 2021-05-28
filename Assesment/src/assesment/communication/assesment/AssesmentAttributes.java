@@ -460,4 +460,7 @@ public class AssesmentAttributes implements Comparable<AssesmentAttributes> {
 		return showReport;
 	}
 
+	public boolean isGMEvaluacion() {
+		return id == AssesmentData.GRUPO_MODELO_EBTW || id == 1553 || (id >= 1557 && id <= 1565) || (id >= 1569 && id <= 1578);
+	}
 }

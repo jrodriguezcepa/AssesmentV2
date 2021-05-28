@@ -121,6 +121,9 @@ public class WebinarAction extends AbstractAction {
 		        	} else if(isTritren(activityType)) {
 		        		session.setAttribute("g", String.valueOf(AssesmentData.TRITREN_WEBINAR));
 		        		session.setAttribute("p","29573138f81d34ddb6c64976d321faed");
+		        	} else if(isMoto(activityType)) {
+		        		session.setAttribute("g", String.valueOf(AssesmentData.MOTO_WEBINAR));
+		        		session.setAttribute("p","6819ee1417d29913864fdadc708200e8");
 		        	}else{
 		        		session.setAttribute("g", String.valueOf(AssesmentData.BTWPLUS_WEBINAR));
 		        		session.setAttribute("p","424bc7ad54c3c02020fff287374827ae");
@@ -136,6 +139,10 @@ public class WebinarAction extends AbstractAction {
             return mapping.findForward("error");
         }
     }
+
+	private boolean isMoto(String activity) {
+		return activity.equals("tablet.form.motocycle");
+	}
 
 	private boolean isTritren(String activity) {
 		return activity.equals("tablet.form.tritren");
