@@ -44,6 +44,10 @@ public class GroupData {
 	public static final int GRUPO_MODELO = 97;
 	public static final int FMB_MENTORIA = 110;
 	public static final int SUMITOMO = 116;
+	
+	public static final int ABBOTT_LOW = 108;
+	public static final int ABBOTT_HIGH = 129;
+	
 	public static final int GUINEZ_ADMINISTRACION = 131;
 	public static final int GUINEZ_FAENA = 132;
 	
@@ -196,6 +200,13 @@ public class GroupData {
 		return c;
 	}
 	
+	public boolean isGroup(int[] ids) {
+		for(int i = 0; i < ids.length; i++) {
+			if(ids[i] == id.intValue())
+				return true;
+		}
+		return false; 
+	}
 	
 }
 

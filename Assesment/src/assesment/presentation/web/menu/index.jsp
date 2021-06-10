@@ -340,7 +340,7 @@
 				if(assId == AssesmentData.MUTUAL_DA) {
 					UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(login, sys.getUserSessionData());
 			        Integer count = sys.getCorporationReportFacade().getCompletedCediUsers(userData.getLocation(), sys.getUserSessionData());
-			        blockMutual = count >= 50;
+			        blockMutual = (userData.getLocation() == 514) ? count >= 55 : count >= 50;
 				}
 				if(blockMutual) {
 					response.sendRedirect("mutualExcedUser.jsp");

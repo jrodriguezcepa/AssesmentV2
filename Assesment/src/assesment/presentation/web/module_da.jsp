@@ -206,11 +206,11 @@
 %>		       <div class="cepa_logo">CEPA Safe Drive</div>
                <span class="username"><%=userData.getFirstName()+" "+userData.getLastName() %></span>
 <%		}
-		boolean sumitomo = false;
+		boolean groupBack = false;
 		if(userData.getRole().equals(UserData.GROUP_ASSESSMENT)) {
 			GroupData group = sys.getAssesmentReportFacade().getUserGroup(userSessionData.getFilter().getLoginName(),userSessionData);
-			sumitomo = group.getId().equals(GroupData.SUMITOMO);
-			String exitLink = (sumitomo) ? "group.jsp" : "select_da.jsp";
+			groupBack = group.isGroup(new int[]{GroupData.SUMITOMO, GroupData.ABBOTT_HIGH, GroupData.ABBOTT_LOW});
+			String exitLink = (groupBack) ? "group.jsp" : "select_da.jsp";
 %>             <span class="exit"><a href='<%=exitLink%>'><%=messages.getText("generic.messages.back")%></a></span>
 <%		}else {
 %>             <span class="exit"><a href="logout.jsp"><%=messages.getText("generic.messages.logout")%></a></span>
@@ -222,7 +222,7 @@
 	<form name="logout" action="./logout.jsp" method="post"></form>
 <%		if(userData.getLoginName().startsWith("marsh2019_")) {
 %>	<form name="selectda" action="./marsh.jsp" method="post"></form>
-<%		} else if(sumitomo){
+<%		} else if(groupBack){
 %>	<form name="selectda" action="./group.jsp" method="post"></form>
 <%		} else {
 %>	<form name="selectda" action="./select_da.jsp" method="post"></form>
@@ -525,7 +525,7 @@
 %>				<form>
 					<fieldset id="username_block" class="active">
 						<div>
-<%				if(sumitomo){
+<%				if(groupBack){
 %>							<br>
 							<br>
 							<h2 class="title">

@@ -282,7 +282,12 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int KOF_ASESORES = 1744;
 	public static final int KOF_COORDINADORES = 1774;
 
-
+	public static final int ABBOTT_BRASIL_DA = 1775;
+	public static final int ABBOTT_COLOMBIA_DA = 1821;
+	public static final int ABBOTT_MEXICO_DA = 1814;
+	
+	public static final int GUINEZ_INGENIERIA_V3 = 1830;
+	
     private Collection<ModuleData> modules;
 	private Integer psiCount = 0;
 
@@ -486,6 +491,9 @@ public class AssesmentData extends AssesmentAttributes {
 				id.intValue() == AssesmentData.SUMITOMO_4X4 || 
 				id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2020 ||
      	     	id.intValue() == AssesmentData.ABBOTT_NEWDRIVERS || 
+     	     	id.intValue() == AssesmentData.ABBOTT_BRASIL_DA || 
+     	     	id.intValue() == AssesmentData.ABBOTT_COLOMBIA_DA || 
+     	     	id.intValue() == AssesmentData.ABBOTT_MEXICO_DA || 
      	     	id.intValue() == AssesmentData.ABBEVIE_LATAM || 
      			id.intValue() == AssesmentData.BAYER_CONOSUR_DA || 
      			id.intValue() == AssesmentData.VESTAS_DA || 
@@ -496,7 +504,8 @@ public class AssesmentData extends AssesmentAttributes {
 				id.intValue() == AssesmentData.SAFEFLEET_LATAM || 
 				 
      			id.intValue() == AssesmentData.LIGHT_VEHICLES_2020 || 
-     	     	id.intValue() == AssesmentData.BAYER_ARGENTINA_DEMO
+     	     	id.intValue() == AssesmentData.BAYER_ARGENTINA_DEMO ||
+     	     	id.intValue() == AssesmentData.GUINEZ_INGENIERIA_V3
      	     	);
 	}
 	

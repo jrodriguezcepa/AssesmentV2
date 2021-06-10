@@ -265,7 +265,7 @@
 								target = "target='blank'";
 						}
 					}
-					if(group.getId().equals(GroupData.SUMITOMO) && link.startsWith("./newmodule.jsp")) {
+					if(group.isGroup(new int[]{GroupData.SUMITOMO, GroupData.ABBOTT_HIGH, GroupData.ABBOTT_LOW}) && link.startsWith("./newmodule.jsp")) {
 						link = "javascript:enterDA("+assessment.getId()+")";
 					}
 					switch(category.getType().intValue()) {

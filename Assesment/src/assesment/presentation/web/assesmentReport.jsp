@@ -519,8 +519,12 @@
 				<td  class="fstCol" style="color:white">Estatus de la Actividad</td>
 <%			for (String comp : keys) {
 %>				<td>
-					<%=((Object[])globalResults.get(comp))[3]==null?"--":(String)((Object[])globalResults.get(comp))[3] %>
-				</td>
+<%				if (comp.equals("STP")) {
+%>					CERRADA 2021-06-01			
+<%				}else {
+%>					<%=((Object[])globalResults.get(comp))[3]==null?"--":(String)((Object[])globalResults.get(comp))[3] %>
+<%				}
+%>				</td>
 <%			}
 %>
 			</tr>

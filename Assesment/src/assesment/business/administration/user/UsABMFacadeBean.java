@@ -1172,6 +1172,7 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
  	public String[][] saveTimacUsers(Collection<UserData> users, UserSessionData userSessionData) throws Exception {
  		Collection<String> created = new LinkedList<String>();
  		Collection<String> exist = new LinkedList<String>();
+ 		Collection<String> logins = new LinkedList<String>();
  		try {
      		UsReport usReport = UsReportUtil.getHome().create();
      		UsABM usABM = UsABMUtil.getHome().create();
@@ -1187,7 +1188,8 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 	     			exist.add(user.getLoginName());
 	     		}else {
 		        	created.add(user.getLoginName());
-
+		        	logins.add(login);
+	     				
 		        	user.setLoginName(login);
 		        	user.setPassword(md5.encriptar(login));
 		     		user.setStartDate(Calendar.getInstance().getTime());
@@ -1199,7 +1201,7 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
      	}catch (Exception e) {
      		handler.handleException("saveTimacUser",e);
      	}
-     	String[][] s = {(String[])created.toArray(new String[0]),(String[])exist.toArray(new String[0])};
+     	String[][] s = {(String[])created.toArray(new String[0]),(String[])exist.toArray(new String[0]),(String[])logins.toArray(new String[0])};
      	return s;
 	}
 

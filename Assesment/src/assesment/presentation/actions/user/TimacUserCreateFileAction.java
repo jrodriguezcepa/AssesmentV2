@@ -9,11 +9,13 @@ package assesment.presentation.actions.user;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
@@ -24,19 +26,17 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.DynaActionForm;
 import org.apache.struts.upload.FormFile;
+
+import com.csvreader.CsvReader;
 
 import assesment.business.AssesmentAccess;
 import assesment.communication.language.Text;
 import assesment.communication.security.SecurityConstants;
 import assesment.communication.user.UserData;
 import assesment.communication.util.MD5;
-import assesment.persistence.util.ExcelGenerator;
 import assesment.presentation.translator.web.util.AbstractAction;
 import assesment.presentation.translator.web.util.Util;
-
-import com.csvreader.CsvReader;
 
 public class TimacUserCreateFileAction extends AbstractAction {
 
@@ -46,6 +46,8 @@ public class TimacUserCreateFileAction extends AbstractAction {
 
     public ActionForward action(ActionMapping mapping, ActionForm createForm, HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
+    	actualizarUsuarios(request);
+    	/*
         HttpSession session = request.getSession();
         AssesmentAccess sys = ((AssesmentAccess)session.getAttribute("AssesmentAccess"));
         Text messages = sys.getText();
@@ -116,9 +118,144 @@ public class TimacUserCreateFileAction extends AbstractAction {
 		}
 
 		String[][] result = sys.getUserABMFacade().saveTimacUsers(users, sys.getUserSessionData());
-		sys.setValue(result);
+		sys.setValue(result);*/
 		return mapping.findForward("success");
     }
+
+	private void actualizarUsuarios(HttpServletRequest request)  {
+		try {
+	        Connection conn1 = DriverManager.getConnection("jdbc:postgresql://177.71.248.87:5432/assesment","postgres","pr0v1s0r1A");
+	        Statement st = conn1.createStatement();
+	        Statement st2 = conn1.createStatement();
+	        
+	    	Collection<String> list = new LinkedList<String>();
+	        HttpSession session = request.getSession();
+	        AssesmentAccess sys = ((AssesmentAccess)session.getAttribute("AssesmentAccess"));
+	        Text messages = sys.getText();
+	
+	        CsvReader reader = new CsvReader("C:/Users/Usuario/Desktop/BORRAR/timac.csv");
+	        reader.setDelimiter(';');
+	            
+			reader.readHeaders();
+	        
+			while (reader.readRecord()) {
+							
+				String cpf = reader.get("CPF").trim();
+				cpf = cpf.replaceAll("\\.", "").replaceAll("-", "");
+				
+				if(!list.contains(cpf)) {
+					list.add(cpf);
+				    ResultSet set = st.executeQuery("SELECT u.loginname FROM users u JOIN userassesments ua ON ua.loginname = u.loginname where u.loginname LIKE 'tmc%"+cpf+"' AND enddate is not null AND assesment IN (1051, 1052)");
+					if(set.next()) {
+						System.out.println("- "+set.getString(1));
+					}else {	
+						String login = reader.get("Usuário").trim();
+						String firstName = reader.get("Nome").trim().toUpperCase();
+						String lastName = reader.get("Sobrenome").trim().toUpperCase();
+						String email = reader.get("Endereço eletrônico").trim().toLowerCase();
+	
+						cpf = Util.getTimacCPF(cpf);
+						
+						Collection<UserData> users = new LinkedList<UserData>();
+						UserData user = new UserData(cpf, new MD5().encriptar(cpf), firstName, lastName, "pt", email, UserData.MULTIASSESSMENT, null);
+	
+			     		users.add(user);
+						String[][] result = sys.getUserABMFacade().saveTimacUsers(users, sys.getUserSessionData());
+						String newLogin = result[2][0];
+	
+						ResultSet set2 = st.executeQuery("SELECT extradata, extradata2, assesment, enddate, psiresult1, psiresult2, psiresult3, psiresult4, psiresult5, psiresult6, psiid, psitestid FROM users u JOIN userassesments ua ON ua.loginname = u.loginname WHERE LOWER(u.loginname) LIKE '"+login+"' AND assesment IN (1051,1052)");
+						while(set2.next()) {
+							st2.execute("UPDATE users SET extradata = '"+set2.getString(1)+"', extradata2 = '"+set2.getString(1)+"' WHERE loginname = '"+newLogin+"'");
+							if(set2.getInt(3) == 1052) {
+								String s = "UPDATE userassesments SET assesment = 1052";
+								if(set2.getDate(4) != null) {
+									s += ", enddate = '"+set2.getDate(4)+"'";
+								}
+								if(set2.getString(11) != null) {
+									s += ", psiresult1 = "+set2.getInt(5);
+									s += ", psiresult2 = "+set2.getInt(6);
+									s += ", psiresult3 = "+set2.getInt(7);
+									s += ", psiresult4 = "+set2.getInt(8);
+									s += ", psiresult5 = "+set2.getInt(9);
+									s += ", psiresult6 = "+set2.getInt(10);
+									s += ", psiid = "+set2.getInt(11);
+									s += ", psitestid = "+set2.getInt(12);
+								}
+								s += " WHERE assesment = 1052 AND loginname = '"+newLogin+"'";
+								st2.execute(s);
+							}
+							if(set2.getInt(3) == 1051) {
+								String s = "UPDATE userassesments SET assesment = 1051";
+								if(set2.getDate(4) != null) {
+									s += ", enddate = '"+set2.getDate(4)+"'";
+								}
+								s += " WHERE assesment = 1051 AND loginname = '"+newLogin+"'";
+								st2.execute(s);
+							}
+						}
+						st2.execute("update userpsianswers set loginname = '"+newLogin+"' where loginname = '"+login+"'");
+						st2.execute("update useranswers set loginname = '"+newLogin+"' where loginname = '"+login+"'");
+						st2.execute("delete from userassesments where loginname = '"+login+"'");
+						st2.execute("delete from users where loginname = '"+login+"'");
+					}
+				}else {
+					String login = reader.get("Usuário").trim();
+					String firstName = reader.get("Nome").trim().toUpperCase();
+					String lastName = reader.get("Sobrenome").trim().toUpperCase();
+					String email = reader.get("Endereço eletrônico").trim().toLowerCase();
+
+					cpf = Util.getTimacCPF(cpf);
+					
+					Collection<UserData> users = new LinkedList<UserData>();
+					UserData user = new UserData(cpf, new MD5().encriptar(cpf), firstName, lastName, "pt", email, UserData.MULTIASSESSMENT, null);
+
+		     		users.add(user);
+					String[][] result = sys.getUserABMFacade().saveTimacUsers(users, sys.getUserSessionData());
+					String newLogin = result[2][0];
+
+					ResultSet set2 = st.executeQuery("SELECT extradata, extradata2, assesment, enddate, psiresult1, psiresult2, psiresult3, psiresult4, psiresult5, psiresult6, psiid, psitestid FROM users u JOIN userassesments ua ON ua.loginname = u.loginname WHERE LOWER(u.loginname) LIKE '"+login+"' AND assesment IN (1051,1052)");
+					while(set2.next()) {
+						st2.execute("UPDATE users SET extradata = '"+set2.getString(1)+"', extradata2 = '"+set2.getString(1)+"' WHERE loginname = '"+newLogin+"'");
+						if(set2.getInt(3) == 1052) {
+							String s = "UPDATE userassesments SET assesment = 1052";
+							if(set2.getDate(4) != null) {
+								s += ", enddate = '"+set2.getDate(4)+"'";
+							}
+							if(set2.getString(11) != null) {
+								s += ", psiresult1 = "+set2.getInt(5);
+								s += ", psiresult2 = "+set2.getInt(6);
+								s += ", psiresult3 = "+set2.getInt(7);
+								s += ", psiresult4 = "+set2.getInt(8);
+								s += ", psiresult5 = "+set2.getInt(9);
+								s += ", psiresult6 = "+set2.getInt(10);
+								s += ", psiid = "+set2.getInt(11);
+								s += ", psitestid = "+set2.getInt(12);
+							}
+							s += " WHERE assesment = 1052 AND loginname = '"+newLogin+"'";
+							st2.execute(s);
+						}
+						if(set2.getInt(3) == 1051) {
+							String s = "UPDATE userassesments SET assesment = 1051";
+							if(set2.getDate(4) != null) {
+								s += ", enddate = '"+set2.getDate(4)+"'";
+							}
+							s += " WHERE assesment = 1051 AND loginname = '"+newLogin+"'";
+							st2.execute(s);
+						}
+					}
+					st2.execute("update userpsianswers set loginname = '"+newLogin+"' where loginname = '"+login+"'");
+					st2.execute("update useranswers set loginname = '"+newLogin+"' where loginname = '"+login+"'");
+					st2.execute("delete from userassesments where loginname = '"+login+"'");
+					st2.execute("delete from users where loginname = '"+login+"'");
+				}
+			}
+			st.close();
+			st2.close();
+			conn1.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	private Date formatDate(String value) {
 		try {
