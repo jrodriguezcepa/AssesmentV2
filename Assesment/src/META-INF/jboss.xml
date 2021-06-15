@@ -232,6 +232,10 @@
          <ejb-name>UsReport</ejb-name>
          <jndi-name>ejb/UsReport</jndi-name>
          <local-jndi-name>UsReportLocal</local-jndi-name>
+         <ejb-ref>
+            <ejb-ref-name>ejb/UsABM</ejb-ref-name>
+            <jndi-name>ejb/UsABM</jndi-name>
+         </ejb-ref>
 
       </session>
       <session>

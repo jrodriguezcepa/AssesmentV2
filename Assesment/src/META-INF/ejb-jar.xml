@@ -511,6 +511,14 @@
          <session-type>Stateless</session-type>
          <transaction-type>Container</transaction-type>
 
+         <ejb-ref >
+            <ejb-ref-name>ejb/UsABM</ejb-ref-name>
+            <ejb-ref-type>Session</ejb-ref-type>
+            <home>assesment.persistence.user.UsABMHome</home>
+            <remote>assesment.persistence.user.UsABM</remote>
+            <ejb-link>UsABM</ejb-link>
+         </ejb-ref>
+
       </session>
 
       <session >
@@ -2324,6 +2332,44 @@
          </method-params>
       </method>
    </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReport</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>findGuinezAssesmentResults</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>findGuinezAssesmentResults</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
 
    <method-permission >
       <description><![CDATA[description not supported yet by ejbdoclet]]></description>
@@ -2619,6 +2665,38 @@
          <ejb-name>CorpReport</ejb-name>
          <method-intf>Remote</method-intf>
          <method-name>findCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>systemaccess</role-name>
+         <role-name>administrator</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>CorpReport</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getCompletedCediUsers</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>systemaccess</role-name>
+         <role-name>administrator</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>CorpReport</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getCompletedCediUsers</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
@@ -7400,6 +7478,38 @@
          <ejb-name>CorpReportFacade</ejb-name>
          <method-intf>Remote</method-intf>
          <method-name>findCedi</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>systemaccess</role-name>
+         <role-name>administrator</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>CorpReportFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>getCompletedCediUsers</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>systemaccess</role-name>
+         <role-name>administrator</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>CorpReportFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>getCompletedCediUsers</method-name>
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
@@ -15692,6 +15802,44 @@
          <method-params>
             <method-param>java.lang.Integer</method-param>
             <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Local</method-intf>
+         <method-name>findGuinezAssesmentResults</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
+            <method-param>assesment.communication.administration.user.UserSessionData</method-param>
+         </method-params>
+      </method>
+   </method-permission>
+   <method-permission >
+      <description><![CDATA[description not supported yet by ejbdoclet]]></description>
+         <role-name>administrator</role-name>
+         <role-name>systemaccess</role-name>
+         <role-name> clientreporter</role-name>
+      <method >
+         <description><![CDATA[]]></description>
+         <ejb-name>AssesmentReportFacade</ejb-name>
+         <method-intf>Remote</method-intf>
+         <method-name>findGuinezAssesmentResults</method-name>
+         <method-params>
+            <method-param>java.lang.Integer</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>

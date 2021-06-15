@@ -1693,19 +1693,29 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 					size=listModules.size();
 				}
 				String[] modules=new String[size];
+				if (assesment==AssesmentData.GUINEZ_INGENIERIA_V3)
+					modules = new String[size-1];
 				if (listModules != null && listModules.size() > 0) {				
 					Iterator iter = listModules.iterator();
 					int pos=0;
 					while (iter.hasNext()) {
 						Integer data=(Integer) iter.next();
-						modules[pos]=String.valueOf(data);
-						pos++;
+						if(assesment!=AssesmentData.GUINEZ_INGENIERIA_V3) {
+							modules[pos]=String.valueOf(data);
+							pos++;
+
+						}else {
+							if(data != 4657) {
+								modules[pos]=String.valueOf(data);
+								pos++;		
+							}
+						}
 					}
 				}
 				Integer lengthRes=(size*2)+8;
 			
 				String queryStr="";
-				if(cedi!=null ||assesment==AssesmentData.ABBOTT_NEWDRIVERS ||assesment==AssesmentData.ABBEVIE_LATAM||assesment==AssesmentData.SUMITOMO) {
+				if(cedi!=null ||assesment==AssesmentData.ABBOTT_NEWDRIVERS ||assesment==AssesmentData.ABBEVIE_LATAM||assesment==AssesmentData.SUMITOMO ||assesment==AssesmentData.GUINEZ_INGENIERIA_V3) {
 					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname,u.location, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country, ua.enddate "+
 							"FROM userassesments ua "
 							+ "JOIN users u ON u.loginname=ua.loginname "
@@ -1765,6 +1775,9 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 							}
 							else if(!noResult&&assesment==AssesmentData.ABBEVIE_LATAM) {
 								result.add(new UserMutualReportData(ret, true, true));	
+							}
+							else if(!noResult&&assesment==AssesmentData.GUINEZ_INGENIERIA_V3) {
+								result.add(new UserMutualReportData(ret, assesment));
 							}
 						}
 					}
@@ -2094,5 +2107,111 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 	            handler.getException(e,"findMutualAssesmentGlobalResults", userSessionData.getFilter().getLoginName());
 	        }
 			return result;}
+		
+		/**
+		 * @ejb.interface-method
+		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
+		 */
+		public Collection findGuinezAssesmentResults(Integer assesment, String division, String from, String to, UserSessionData userSessionData) throws Exception {
+			Session session = null;
+			String date= "";
+			date=(from!=null&&!from.equals("--"))?(" AND enddate >= '"+from+"' "): "";
+			date+=(to!=null&&!to.equals("--"))?" AND enddate <= '"+to+"' ":"";
+			Collection result = new LinkedList();
+			try {
+				session = HibernateAccess.currentSession();
+				Query qryMod = session.createSQLQuery("select id from modules where assesment="+assesment+" order by moduleorder").addScalar("id", Hibernate.INTEGER);
+				List listModules = qryMod.list();
+				int size=0;
+				if (listModules != null && listModules.size() > 0) {
+					size=listModules.size();
+				}
+				String[] modules=new String[size];
+				if (assesment==AssesmentData.GUINEZ_INGENIERIA_V3)
+					modules = new String[size-1];
+				if (listModules != null && listModules.size() > 0) {				
+					Iterator iter = listModules.iterator();
+					int pos=0;
+					while (iter.hasNext()) {
+						Integer data=(Integer) iter.next();
+						if(assesment!=AssesmentData.GUINEZ_INGENIERIA_V3) {
+							modules[pos]=String.valueOf(data);
+							pos++;
+
+						}else {
+							if(data != 4657) {
+								modules[pos]=String.valueOf(data);
+								pos++;		
+							}
+						}
+					}
+				}
+				Integer lengthRes=(size*2)+10;
+			
+				String queryStr="";
+				if(division!=null ||assesment==AssesmentData.GUINEZ_INGENIERIA_V3) {
+					queryStr = "SELECT u.firstname, u.lastname, u.email, ua.loginname, u.extradata as division, (psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6)/6 as behaviour, u.country, ua.enddate "+
+							"FROM userassesments ua "
+							+ "JOIN users u ON u.loginname=ua.loginname "
+							+ "WHERE assesment = " + assesment+ date;
+
+						//	+ " AND ua.enddate IS NOT NULL "
+						//	+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL "
+					if(division!=null) queryStr+= " AND u.extradata='"+division+"'"; 
+				}
+				Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING).addScalar("email", Hibernate.STRING).addScalar("loginname", Hibernate.STRING).addScalar("division", Hibernate.STRING).addScalar("behaviour", Hibernate.STRING).addScalar("country", Hibernate.STRING).addScalar("enddate", Hibernate.STRING);
+				
+				List list = query.list();
+				if (list != null && list.size() > 0) {
+					Iterator iter = list.iterator();
+					while (iter.hasNext()) {
+						int pos=7;
+						String[] ret=new String[lengthRes];
+						Object[] data=(Object[]) iter.next();
+						String loginName=(String)data[3];
+						if(loginName!=null) {
+							boolean noResult=true;
+							for(int i=0; i<data.length; i++) {
+								ret[i]=(String)data[i];
+							}
+							for(int i=0; i<modules.length; i++) {
+								String q = "SELECT uar.correct, uar.incorrect from userassesmentresults uar WHERE uar.login='"+loginName+"' AND uar.type="+modules[i]+" AND uar.assesment="+assesment;
+								query = session.createSQLQuery(q).addScalar("correct", Hibernate.INTEGER).addScalar("incorrect", Hibernate.INTEGER);
+								query.setMaxResults(1);
+								if(query.list()!=null && query.list().size() > 0) {
+									Object[] results=(Object[]) query.list().get(0);
+									ret[pos+1]=String.valueOf(results[0]);
+									ret[pos+2]=String.valueOf(results[1]);
+									pos=pos+2;
+									noResult=false;
+								}else {
+									ret[pos+1]=null;
+									ret[pos+2]=null;
+									pos=pos+2;
+									noResult=false;
+								}
+							}
+							//consulta modulo 1 
+							String q ="SELECT COUNT(*) = (select count (*) from questions where module=4657  AND testtype =0) AS completed "+
+			                		"FROM useranswers ua "+
+			                		"JOIN answerdata ad ON ad.id = ua.answer "+
+			                		"JOIN questions q ON q.id = ad.question   "+
+			                		"JOIN answers a ON a.id = ad.answer "+
+			                		"WHERE loginname = '"+loginName+"' AND assesment = "+assesment+" AND q.module=4657 "+
+			                		" AND q.testtype = 0";
+							query = session.createSQLQuery(q).addScalar("completed", Hibernate.BOOLEAN);
+							Boolean module1completed = (Boolean)query.uniqueResult();	
+							ret[pos+1] = String.valueOf(module1completed);
+							if(!noResult&&assesment==AssesmentData.GUINEZ_INGENIERIA_V3) {
+								result.add(new UserMutualReportData(ret, assesment));
+							}
+						}
+					}
+				}
+			} catch (Exception e) {
+				handler.getException(e, "findMutualAssesmentResults", userSessionData.getFilter().getLoginName());
+			}
+			return result;
+		}
 
 }

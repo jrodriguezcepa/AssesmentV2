@@ -30,7 +30,8 @@ public interface ModuleReportFacade
 
    public assesment.communication.module.ModuleData getPersonalDataModule( java.lang.Integer assesment,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-   
+
    public assesment.communication.module.ModuleAttribute findModuleAttributesbkp( java.lang.Integer id,assesment.communication.administration.user.UserSessionData userSessionData )
-		      throws java.lang.Exception, java.rmi.RemoteException;
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

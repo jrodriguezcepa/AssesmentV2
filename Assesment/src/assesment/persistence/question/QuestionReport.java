@@ -72,7 +72,8 @@ public interface QuestionReport
 
    public java.lang.String[][] getCompleteAnswersBKP( java.lang.Integer assessment,java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-   
+
    public java.util.Collection getQuestionReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData )
-       throws java.lang.Exception, java.rmi.RemoteException;
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

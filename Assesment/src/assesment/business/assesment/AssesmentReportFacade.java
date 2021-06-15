@@ -123,7 +123,10 @@ public interface AssesmentReportFacade
 
    public java.util.Collection findMutualAssesmentResults( java.lang.Integer assesment,java.lang.Integer cedi,java.lang.String from,java.lang.String to,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
-
+   
+   public java.util.Collection findGuinezAssesmentResults( java.lang.Integer assesment,java.lang.String division,java.lang.String from,java.lang.String to,assesment.communication.administration.user.UserSessionData userSessionData )
+	  throws java.lang.Exception, java.rmi.RemoteException;
+   
    public java.util.Collection getWebinarPersonalData( java.lang.String login,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 

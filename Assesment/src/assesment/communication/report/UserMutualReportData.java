@@ -23,6 +23,7 @@ public class UserMutualReportData {
 	private String login;
 	private String location;
 	private String endDate;
+	private String division;
 	private int module1;
 	private int module2;
 	private int module3;
@@ -64,6 +65,7 @@ public class UserMutualReportData {
 	private String mod5Recommendation;
 	private String mod6Recommendation;
 	private String country;
+	private boolean module1Guinez;
 	
 	public UserMutualReportData() {
 	}
@@ -204,6 +206,45 @@ public class UserMutualReportData {
 
 	}
 
+	public UserMutualReportData(String[] data, Integer assessment) {
+		switch(assessment) {
+			case AssesmentData.GUINEZ_INGENIERIA_V3:
+				this.assesment=new Integer(1830);
+				this.firstName = (data[0] == null) ? "" : data[0];
+				this.lastName = (data[1] == null) ? "" : data[1];
+				this.email = (data[2] == null) ? "" : data[2];
+				this.login = (data[3] == null) ? "" : data[3];
+				this.module1Completed=(data[8]==null)?false:true;
+				this.module2Completed=(data[10]==null)?false:true;
+				this.module3Completed=(data[12]==null)?false:true;
+				this.behaviourCompleted=(data[5]==null)?false:true;
+				this.division = (data[4] == null) ? "" : data[4];
+				this.behaviour= (data[5]==null)?0:Integer.parseInt(data[5]);
+				this.correctM1 = (data[8]==null)?0:Integer.parseInt(data[8]);
+				this.incorrectM1 = (data[9]==null)?0: Integer.parseInt(data[9]);
+				this.correctM2 = (data[10]==null)?0:Integer.parseInt(data[10]);
+				this.incorrectM2 = (data[11]==null)?0:Integer.parseInt(data[11]);
+				this.correctM3 = (data[12]==null)?0:Integer.parseInt(data[12]);
+				this.incorrectM3 =(data[13]==null)?0: Integer.parseInt(data[13]);
+				this.module1 = (data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9])));
+				this.module2 =(data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11])));
+				this.module3 =(data[12]==null)?0: (data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13])));
+				this.colorM1 = getModuleColor( (data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9]))));
+				this.colorM2 = getModuleColor((data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11]))));
+				this.colorM3 = getModuleColor((data[12]==null)?0: (data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13]))));
+				this.ranking =  ((data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9]))))
+						+ ((data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11]))))
+						+ ((data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13]))));
+				this.totalColor = getModuleColor(ranking/3);
+				this.mod1Recommendation=getTextRecommendation(1, (data[8]==null)?0:((Integer.parseInt(data[8])*100)/(Integer.parseInt(data[8])+Integer.parseInt(data[9]))) );
+				this.mod2Recommendation=getTextRecommendation(2,(data[10]==null)?0:((Integer.parseInt(data[10])*100)/(Integer.parseInt(data[10])+Integer.parseInt(data[11]))));
+				this.mod3Recommendation=getTextRecommendation(3,(data[12]==null)?0:((Integer.parseInt(data[12])*100)/(Integer.parseInt(data[12])+Integer.parseInt(data[13]))));
+				this.country=data[6];
+				this.endDate=(data[7]!=null?data[7].substring(0, 10):"--");
+				this.module1Guinez = (data[14].equals("true"))?true:false;
+				break;
+		}
+	}
 
 	public String getLogin() {
 		return login;
@@ -301,6 +342,12 @@ public class UserMutualReportData {
 	public void setBehaviour(int behaviour) {
 		this.behaviour = behaviour;
 	}
+	public String getDivision() {
+		return division;
+	}
+	public void setDivision(String division) {
+		this.division = division;
+	}
 	public String getColorM1() {
 		return colorM1;
 	}
@@ -330,6 +377,12 @@ public class UserMutualReportData {
 	}
 	public String getTotalColor() {
 		return totalColor;
+	}
+	public boolean isModule1Guinez() {
+		return module1Guinez;
+	}
+	public void setModule1Guinez(boolean module1Guinez) {
+		this.module1Guinez = module1Guinez;
 	}
 	public String getMod1Recommendation() {
 		return mod1Recommendation;

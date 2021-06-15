@@ -730,7 +730,8 @@ public abstract class UsABMBean implements SessionBean {
             }
             
             if(assesment.intValue() == AssesmentData.MUTUAL_DA ||assesment.intValue() == AssesmentData.ABBOTT_NEWDRIVERS
-            		||assesment.intValue() == AssesmentData.ABBEVIE_LATAM ||assesment.intValue() == AssesmentData.SUMITOMO) {
+            		||assesment.intValue() == AssesmentData.ABBEVIE_LATAM ||assesment.intValue() == AssesmentData.SUMITOMO
+            		|| assesment.intValue() == AssesmentData.GUINEZ_INGENIERIA_V3) {
             	int right = 0;
 	            int wrong = 0;
 	            int module = 0;

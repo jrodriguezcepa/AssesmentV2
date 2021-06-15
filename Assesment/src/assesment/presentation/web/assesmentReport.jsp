@@ -409,7 +409,9 @@
 		String until_day = "";
 		String until_month = "";
 		String until_year = "";
-
+		
+		String division = null;
+		
 		if(request.getParameter("since_day")!=null){
 			since_day = request.getParameter("since_day");
 		}	
@@ -432,10 +434,18 @@
 		String date_from=since_year+"-"+since_month+"-"+since_day;
 		String date_to=until_year+"-"+until_month+"-"+until_day;
 
+		if(request.getParameter("div")!=null){
+			division = String.valueOf(request.getParameter("div"));
+		}	
 		boolean odd=true;
 		CountryConstants countries= new CountryConstants();
 		countries.setLAData(messages);
-		Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cediId, date_from, date_to, sys.getUserSessionData());
+		Collection r = null;
+		if(Integer.parseInt(assesmentId) == AssesmentData.GUINEZ_INGENIERIA_V3){
+			r = sys.getAssesmentReportFacade().findGuinezAssesmentResults(Integer.parseInt(assesmentId),division, date_from, date_to, sys.getUserSessionData());
+		}else{
+			r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cediId, date_from, date_to, sys.getUserSessionData());
+		}
 		HashMap globalResults =null;
 		Set <String> keys = null;
 		if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
@@ -579,11 +589,14 @@
 <% 		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
 %>			<th><span class="thText"><%=messages.getText("generic.data.company")%></span></th>
 <% 		}
+ 		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
+%>			<th><span class="thText">División</span></th>
+<% 		}
 		if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
 %>			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module1" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4354.name")%></span></div></th>
 			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module2" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4356.name")%></span></div></th>
 			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module3" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4355.name")%></span></div></th>
-			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module4" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4357.name")%></span></div></th>
+			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module4" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4357.name")%></span></div></th>	
 <%		}else if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA){
 %>		<th><span class="thText"><%=messages.getText("user.data.country")%></span></th>	
 <%  		Iterator iter=assesment.getModuleIterator();
@@ -593,7 +606,7 @@
 %>				<th><div style="display:flex;align-items: center;"><a href='<%=refresh+"&sort=module"+cont%>' ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment"+assesmentId+".module"+mod.getId()+".name")%></span></div></th>
 
 <% 				cont++;
-}%>			
+			}%>			
 
 <%		} %>
 
@@ -623,8 +636,18 @@
 %>			<td><%=loc%></td>
 <% 		}
 %>	
+<% 		//division de guinez ingenieria	
+		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
+%>			<td><%=result.getDivision()==null?"--":result.getDivision()%></td>
+<% 		}
+%>	
 <% 		if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA){ 
 %>			<td><%=messages.getText(countries.find(result.getCountry()))%></td>
+<% 		}
+%>
+<% 		//primer modulo de guinez, sin nota
+		if(Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
+%>			<td><%=result.isModule1Guinez()?"Completo":"Incompleto"%></td>
 <% 		}
 %>		
 <%		if(result.getModule1Completed()){ 
@@ -685,7 +708,7 @@
 <%      }else{ 
 %>			<td  style="<%=result.getTotalColor()%>; text-align:center;"><%= String.valueOf(result.getRanking())%></td>
 <%		}
-	}else if(Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM){
+	}else if(Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM ||Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3 ){
 		if(!result.getBehaviourCompleted()|| !result.getModule1Completed() || !result.getModule2Completed()||!result.getModule3Completed()){ 	
 		%>			<td style="text-align: center;"><%=messages.getText("generic.uncompleted")%></td>
 		<%      }else{ 
@@ -694,7 +717,7 @@
 	}
 %>	</tr>
 <%		
-}
+}  
 %>
 
 	</table>
@@ -704,7 +727,7 @@
 				<th><span class="thText"><%=messages.getText("report.users.name")%></span></th>
 				<th><span class="thText"><%=messages.getText("user.data.lastname")%></span></th>
 				<th><span class="thText"><%=messages.getText("generic.data.username")%></span></th>
-<% 		if(cedi==null && assesment.getId()!=AssesmentData.ABBEVIE_LATAM&&  assesment.getId()!=AssesmentData.SUMITOMO){
+<% 		if(cedi==null && assesment.getId()!=AssesmentData.ABBEVIE_LATAM&&  assesment.getId()!=AssesmentData.SUMITOMO &&  assesment.getId()!=AssesmentData.GUINEZ_INGENIERIA_V3 ){
 %>				<th><span class="thText"><%=messages.getText("generic.data.company")%></span></th>
 <% 		}
 %>
@@ -728,12 +751,19 @@
 			<td><%=result.getFirstName().toUpperCase()%></td>
 			<td><%=result.getLastName().toUpperCase()%></td>
 			<td><%=result.getLogin().toLowerCase()%></td>
-<% 		if(cedi==null  && assesment.getId()!=AssesmentData.ABBEVIE_LATAM && assesment.getId()!=AssesmentData.SUMITOMO){
+<% 		if(cedi==null&& assesment.getId()!=AssesmentData.GUINEZ_INGENIERIA_V3  && assesment.getId()!=AssesmentData.ABBEVIE_LATAM && assesment.getId()!=AssesmentData.SUMITOMO){
 			String loc=result.getLocation()==null?"--":sys.getCorporationReportFacade().findCedi(Integer.parseInt(result.getLocation()), userSessionData).getName();
 %>			<td><%=loc%></td>
 <% 		}
 %>
-<%		if(!result.getModule1Completed()){
+<% 		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
+	%>			<td>No aplica</td>
+	<% 		}
+	%>
+<% 	if(assesment.getId()==AssesmentData.GUINEZ_INGENIERIA_V3){
+		rec1="#";
+	}
+		if(!result.getModule1Completed()){
 %>			<td><%=messages.getText("generic.uncompleted")%></td>
 <%		}else if(result.getMod1Recommendation().equals("question25099.answer83751.text")){
 %>			<td style="color: #228B22;"><%=messages.getText(result.getMod1Recommendation())%></td>
@@ -790,7 +820,7 @@
 	
 	
 		</table>
-<%}
+<%} 
 %>
 	</div>
   </div>

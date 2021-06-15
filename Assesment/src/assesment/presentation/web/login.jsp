@@ -12,7 +12,7 @@
 	String userName; String password; String sessionExpired; String accesscode; 
 %>
 
-<%	userName="";
+<%	userName ="";
 	password = "";
 	accesscode = "";
 	sessionExpired="";
