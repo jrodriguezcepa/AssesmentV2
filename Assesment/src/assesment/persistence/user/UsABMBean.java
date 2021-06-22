@@ -1356,4 +1356,5 @@ public abstract class UsABMBean implements SessionBean {
             handler.getException(e, "deleteSendedReport", userSessionData.getFilter().getLoginName());
         }		
 	}
+	
 }

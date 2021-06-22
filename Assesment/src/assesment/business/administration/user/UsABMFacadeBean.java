@@ -1344,4 +1344,5 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
             handler.handleException("deleteSendedReport", exception);
         } 
 	}    
+	   
 }

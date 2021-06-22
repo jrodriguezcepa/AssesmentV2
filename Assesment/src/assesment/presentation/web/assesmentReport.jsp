@@ -60,6 +60,7 @@
 			.col-8 {width: 4.5%;}
 			.col-9 {width:	1%;}
 			.col-10 {width: 4.5%;}
+			.col-11 {width: 50%;}
 			
 			[class*="col-"] {
 				float: left;
@@ -544,12 +545,16 @@
 	<div class="row">
 		<div class="col-1"><a href='<%=refresh%>' class="button"><%=messages.getText("generic.data.refresh")%>  <img  src="images/mutual_refresh.png" alt="left"></a></div>
 		<div class="col-2"><html:form action="/DownloadMutualReport" method="post"><a href="" class="button"><html:submit style="all:unset;"><%=messages.getText("generic.data.downloadxls")%> </html:submit><img  src="images/mutual_download.png" alt="left"></a></html:form></div>
+<%	if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA && Integer.parseInt(assesmentId)!=AssesmentData.GUINEZ_INGENIERIA_V3){
+%>	
 		<div class="col-3"><a href='<%=report+"&action=2"%>' class="button"><%=messages.getText("generic.data.generalresults")%></a></div>
 		<div class="col-4"><a href='<%=report+"&action=3"%>' class="button"><%=messages.getText("generic.data.questionsranking")%></a></div>
 		<div class="col-5"><a href='<%=report+"&action=4"%>' class="button"><%=messages.getText("generic.data.behavtest")%></a></div>
 		<div class="col-6"></div>
 		<div class="col-7"></div>
-<% 
+<%	}else{
+%>		<div class="col-11"></div>
+<% }
 	if(Integer.parseInt(assesmentId)!=AssesmentData.ABBOTT_NEWDRIVERS){
 %>	
 		<div class="col-8"><label for="r1"><img  id="left_btn" src="images/mutual_left.png" alt="left"></label></div>
@@ -590,16 +595,17 @@
 %>			<th><span class="thText"><%=messages.getText("generic.data.company")%></span></th>
 <% 		}
  		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
-%>			<th><span class="thText">División</span></th>
+%>			<th><span class="thText">Centro de Costo</span></th>
 <% 		}
 		if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
 %>			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module1" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4354.name")%></span></div></th>
 			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module2" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4356.name")%></span></div></th>
 			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module3" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4355.name")%></span></div></th>
 			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module4" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4357.name")%></span></div></th>	
-<%		}else if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA){
+<%		}else if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA ){
+			if(Integer.parseInt(assesmentId)!=AssesmentData.GUINEZ_INGENIERIA_V3){
 %>		<th><span class="thText"><%=messages.getText("user.data.country")%></span></th>	
-<%  		Iterator iter=assesment.getModuleIterator();
+<%}  		Iterator iter=assesment.getModuleIterator();
 			int cont=1;
 			while (iter.hasNext()){
 				ModuleData mod=(ModuleData)iter.next();
@@ -638,10 +644,10 @@
 %>	
 <% 		//division de guinez ingenieria	
 		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
-%>			<td><%=result.getDivision()==null?"--":result.getDivision()%></td>
+%>			<td><%=result.getDivision().equals("")?"--":result.getDivision()%></td>
 <% 		}
 %>	
-<% 		if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA){ 
+<% 		if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA && Integer.parseInt(assesmentId)!=AssesmentData.GUINEZ_INGENIERIA_V3){ 
 %>			<td><%=messages.getText(countries.find(result.getCountry()))%></td>
 <% 		}
 %>
