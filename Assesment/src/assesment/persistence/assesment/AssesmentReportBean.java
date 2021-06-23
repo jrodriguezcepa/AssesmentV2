@@ -2157,7 +2157,7 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 
 						//	+ " AND ua.enddate IS NOT NULL "
 						//	+ "AND psiresult1+psiresult2+psiresult3+psiresult4+psiresult5+psiresult6 IS NOT NULL "
-					if(division!=null) queryStr+= " AND u.extradata='"+division+"'"; 
+					if(division!=null && !division.equals("") ) queryStr+= " AND u.extradata='"+division+"'"; 
 				}
 				Query query = session.createSQLQuery(queryStr).addScalar("firstname", Hibernate.STRING).addScalar("lastname", Hibernate.STRING).addScalar("email", Hibernate.STRING).addScalar("loginname", Hibernate.STRING).addScalar("division", Hibernate.STRING).addScalar("behaviour", Hibernate.STRING).addScalar("country", Hibernate.STRING).addScalar("enddate", Hibernate.STRING);
 				

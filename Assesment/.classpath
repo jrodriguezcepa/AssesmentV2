@@ -83,6 +83,6 @@
 	<classpathentry kind="var" path="ASSESMENT/groovy-all-2.0.1.jar"/>
 	<classpathentry kind="var" path="ASSESMENT/catalina.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="var" path="DATACENTER"/>
+	<classpathentry exported="true" kind="var" path="DATACENTER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

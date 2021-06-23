@@ -1,0 +1,13 @@
+<server>
+	<mbean code="org.jboss.hibernate.jmx.Hibernate" name="jboss.har:service=AssesmentHibernate">
+	  <attribute name="DatasourceName">java:/assesmentDS</attribute>
+	  <attribute name="SessionFactoryName">java:/hibernate/AssesmentSessionFactory</attribute>
+	  <attribute name="Dialect">org.hibernate.dialect.PostgreSQLDialect</attribute>
+	  <attribute name="CacheProviderClass">org.hibernate.cache.HashtableCacheProvider</attribute>
+	  <attribute name="Hbm2ddlAuto">update</attribute>
+	  <attribute name="ShowSqlEnabled">true</attribute>
+	  <attribute name="Username">postgres</attribute>
+	  <attribute name="Password">pr0v1s0r1A</attribute>
+	  <attribute name="ReflectionOptimizationEnabled">true</attribute>
+	</mbean>
+</server>

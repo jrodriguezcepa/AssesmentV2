@@ -244,6 +244,9 @@
 				case 1:
 					Integer aId = ((AssesmentAttributes)assessments.iterator().next()).getId();
 					String link = (aId.intValue() == AssesmentData.FRAYLOG_FATIGA) ? "reportmultianswer.jsp?id="+aId : "report.jsp?id="+aId;
+					if(aId.intValue()== AssesmentData.GUINEZ_INGENIERIA_V3){
+						link = "assesmentReport.jsp?id="+aId;
+					}
 					response.sendRedirect("./"+link);
 					break;
 				default:

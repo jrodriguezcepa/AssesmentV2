@@ -365,6 +365,8 @@
 		String assesmentId=String.valueOf(AssesmentData.MUTUAL_DA);
 		String columns="";
 		String cediName="";
+		String division = "";
+
 		if (request.getParameter("id")!=null){
 			assesmentId=(String)request.getParameter("id");
 
@@ -384,6 +386,13 @@
 		Integer cediId=null;
 		if(sys.getCorporationReportFacade().findCediUser(login, userSessionData).length!=0){
 			cediId=sys.getCorporationReportFacade().findCediUser(login, userSessionData)[0];
+		}
+		//si assessment = Guinez Ingenieria V3
+		// obtengo division: user.getDivision
+		if (Integer.parseInt(assesmentId) ==  AssesmentData.GUINEZ_INGENIERIA_V3){
+			division = user.getExtraData();
+			if (division != null && !division.equals("") )
+				cediName+= " - Centro de Costo: "+ division;
 		}
 		if (cediId!=null){
 			cedi=sys.getCorporationReportFacade().findCediAttributes(cediId, userSessionData);
@@ -411,7 +420,6 @@
 		String until_month = "";
 		String until_year = "";
 		
-		String division = null;
 		
 		if(request.getParameter("since_day")!=null){
 			since_day = request.getParameter("since_day");
@@ -545,16 +553,12 @@
 	<div class="row">
 		<div class="col-1"><a href='<%=refresh%>' class="button"><%=messages.getText("generic.data.refresh")%>  <img  src="images/mutual_refresh.png" alt="left"></a></div>
 		<div class="col-2"><html:form action="/DownloadMutualReport" method="post"><a href="" class="button"><html:submit style="all:unset;"><%=messages.getText("generic.data.downloadxls")%> </html:submit><img  src="images/mutual_download.png" alt="left"></a></html:form></div>
-<%	if(Integer.parseInt(assesmentId)!=AssesmentData.MUTUAL_DA && Integer.parseInt(assesmentId)!=AssesmentData.GUINEZ_INGENIERIA_V3){
-%>	
 		<div class="col-3"><a href='<%=report+"&action=2"%>' class="button"><%=messages.getText("generic.data.generalresults")%></a></div>
 		<div class="col-4"><a href='<%=report+"&action=3"%>' class="button"><%=messages.getText("generic.data.questionsranking")%></a></div>
 		<div class="col-5"><a href='<%=report+"&action=4"%>' class="button"><%=messages.getText("generic.data.behavtest")%></a></div>
 		<div class="col-6"></div>
 		<div class="col-7"></div>
-<%	}else{
-%>		<div class="col-11"></div>
-<% }
+<%
 	if(Integer.parseInt(assesmentId)!=AssesmentData.ABBOTT_NEWDRIVERS){
 %>	
 		<div class="col-8"><label for="r1"><img  id="left_btn" src="images/mutual_left.png" alt="left"></label></div>
