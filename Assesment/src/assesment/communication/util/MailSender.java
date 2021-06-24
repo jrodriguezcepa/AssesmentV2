@@ -617,6 +617,13 @@ public class MailSender implements Serializable{
 	        props.put("mail.smtp.host", "smtp.mandrillapp.com");
 	        props.put("mail.smtp.port", "587");
 
+			if(!isProductionServer()) {
+				toMail = new LinkedList<String>();
+				toMail.add("cepasafedrive@gmail.com");
+				subject = "TESTING - "+subject;
+				bccMail = new LinkedList<String>();
+				bccMail.add("jrodriguez@cepasafedrive.com");
+			}
 
 	        mailSession = Session.getInstance(props,
 	          new javax.mail.Authenticator() {
@@ -742,6 +749,8 @@ public class MailSender implements Serializable{
 			    }
 			    message.setContent(multipart);
 			    
+				
+
 	        	Transport.send(message);
 			
 				return true;

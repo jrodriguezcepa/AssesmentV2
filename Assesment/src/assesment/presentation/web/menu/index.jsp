@@ -1,3 +1,4 @@
+<%@page import="assesment.communication.corporation.CediData"%>
 <%@page import="assesment.communication.util.MD5"%>
 <%@page import="assesment.communication.assesment.GroupData"%>
 <%@page language="java"
@@ -343,14 +344,14 @@
 				if(assId == AssesmentData.MUTUAL_DA) {
 					UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(login, sys.getUserSessionData());
 			        Integer count = sys.getCorporationReportFacade().getCompletedCediUsers(userData.getLocation(), sys.getUserSessionData());
-			        blockMutual = (userData.getLocation() == 514) ? count >= 55 : count >= 50;
+			        blockMutual = count >= CediData.getMutualMax(userData.getLocation());
 				}
 				if(blockMutual) {
 					response.sendRedirect("mutualExcedUser.jsp");
 				}else {
 					int terms = userReport.terms(login, sys.getUserSessionData()).intValue();
 					System.out.println("terms "+terms);
-					if(terms > 0 && assId != AssesmentData.UPM_CHARLA && assId != AssesmentData.UPM_CHARLA_V2 && assId != AssesmentData.ALRIYADAH_INITIALA
+					if(terms > 0 && assId != AssesmentData.UPM_CHARLA && assId != AssesmentData.ALRIYADAH_INITIALA
 							 && assId != AssesmentData.ALRIYADAH_INITIALB  && assId != AssesmentData.ALRIYADAH_FINAL&& assId != AssesmentData.GDC) {
 						response.sendRedirect("terms_"+terms+".jsp");
 					}else {

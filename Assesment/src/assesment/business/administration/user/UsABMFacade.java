@@ -153,4 +153,5 @@ public interface UsABMFacade
 
    public void deleteSendedReport( java.lang.String user,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
+
 }

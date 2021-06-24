@@ -188,6 +188,9 @@
 	<html:form action="/SelectAssessment">
 		<html:hidden property="assessment"/>
 	</html:form>
+	<html:form action="/DeleteUserResult">
+		<html:hidden property="assessment" value="<%=String.valueOf(assessmentId)%>"/>
+	</html:form>
    <body>
       <header id="header">
          <section class="grid_container">
@@ -364,6 +367,11 @@
 				if((!userData.getLoginName().equals("andrea.delgado.pmm") && assesment.isUntilApproved()) || userData.isCoaching()) {
 					deleteResults = !sys.getUserReportFacade().isResultGreen(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData);
 				}
+				if(assessmentId == AssesmentData.PMI_NEWHIRE) {
+					if(sys.getUserReportFacade().getFailedAssesments(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData) < 2) {
+						deleteResults = !sys.getUserReportFacade().isResultGreen(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData);
+					}
+				}
 				if(false && (userData.getLocation() == null || userData.getLocation().intValue() != -1)) {
 					deleteResults = !sys.getUserReportFacade().isResultGreen(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData);
 					if(deleteResults) {
@@ -372,13 +380,6 @@
 					}
 				}
 				boolean upmCharla = false;
-				if(assessmentId == AssesmentData.UPM_CHARLA) {
-					if(sys.getUserReportFacade().isResultRed(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData)) {
-						sys.getUserABMFacade().associateAssesment(userSessionData.getFilter().getLoginName(), AssesmentData.UPM_CHARLA_V2, userSessionData);
-						userSessionData.getFilter().setAssesment(AssesmentData.UPM_CHARLA_V2);
-						upmCharla = true;
-					}
-				}
 				if(assessmentId == AssesmentData.MDP_CHARLA) {
 					if(sys.getUserReportFacade().isResultRed(userSessionData.getFilter().getLoginName(), assesment.getId(), userSessionData)) {
 						sys.getUserABMFacade().associateAssesment(userSessionData.getFilter().getLoginName(), AssesmentData.MDP_CHARLA_V2, userSessionData);
@@ -387,10 +388,6 @@
 					}
 				}
 				if(deleteResults) {
-					Collection list = new LinkedList();
-					list.add(userSessionData.getFilter().getLoginName());
-					sys.getAssesmentABMFacade().deleteResults(assesment.getId(), list, 1, userSessionData);
-					sys.getUserABMFacade().failAssessment(assessmentId, userSessionData.getFilter().getLoginName(), null, userSessionData);
 %>				<form>
 					<fieldset id="username_block" class="active">
 						<div>
@@ -406,7 +403,7 @@
 							</h2>
 							<br>
 							<div>
-					  			<input class="button" value='<%=messages.getText("generic.messages.repeat")%>' onClick="javascript:document.forms['home'].submit()" />
+					  			<input class="button" value='<%=messages.getText("generic.messages.repeat")%>' onClick="javascript:document.forms['DeleteUserAssessmentForm'].submit()" />
 							</div>
 						</div>
 					</fieldset>

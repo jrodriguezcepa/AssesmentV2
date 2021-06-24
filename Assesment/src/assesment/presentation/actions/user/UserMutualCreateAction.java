@@ -56,10 +56,8 @@ public class UserMutualCreateAction extends AbstractAction {
         }
 
         Integer count = corporationReport.getCompletedCediUsers(id, sys.getUserSessionData());
-        int max = 50;
-        if(id.intValue() == 514) {
-        	max = 55;
-        }
+        
+        int max = CediData.getMutualMax(id.intValue());
         if(count >= max) {
            	session.setAttribute("Msg","Este código ha superado el número máximo de usuarios");
             createData.setPassword(null);

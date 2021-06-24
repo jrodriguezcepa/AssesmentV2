@@ -29,6 +29,7 @@ import assesment.communication.assesment.AssesmentAttributes;
 import assesment.communication.assesment.AssesmentListData;
 import assesment.communication.language.Text;
 import assesment.communication.question.VideoData;
+import assesment.communication.security.SecurityConstants;
 import assesment.communication.util.MD5;
 
 /**
@@ -50,22 +51,23 @@ public class Util {
     }
 
     public static boolean isRegistrable() {
-    	Calendar c = Calendar.getInstance();
-    	int day = c.get(Calendar.DATE);
-    	/*if(day != 31)
-    		return false;
-    	int hour = c.get(Calendar.HOUR_OF_DAY);
-    	int minute = c.get(Calendar.MINUTE);
-    	switch(hour) {
-			case 8:
-				return minute >= 45;
-			case 9:
-				return minute <= 10;
-			case 13:
-				return minute >= 45;
-			case 14:
-				return minute <= 10;
-    	}*/
+    	if(SecurityConstants.isProductionServer()) {
+	    	Calendar c = Calendar.getInstance();
+	    	int day = c.get(Calendar.DATE);
+	    	if(day < 21 || day > 25)
+	    		return false;
+	    	int hour = c.get(Calendar.HOUR_OF_DAY);
+	    	int minute = c.get(Calendar.MINUTE);
+	    	switch(hour) {
+	    		case 7: case 12:
+					return minute >= 45;
+				case 8: case 13:
+					return minute <= 10;
+				case 10: case 15:
+					return minute >= 15 && minute <= 40;
+	    	}
+	    	return false;
+    	}
     	return true;
     }
     

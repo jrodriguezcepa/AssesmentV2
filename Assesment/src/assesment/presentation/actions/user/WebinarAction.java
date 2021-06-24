@@ -72,10 +72,10 @@ public class WebinarAction extends AbstractAction {
 	    			if(activityType.equals("datatype.scheduledactivitytype.teoricobayerpesados")) {
 		        		session.setAttribute("g", String.valueOf(AssesmentData.BAYER_WEBINARPESADOS));
 		        		session.setAttribute("p","97771519f02dab5a6fbc3f9c210020b7");
-	    			} else if(activityType.equals("datatype.scheduledactivitytype.teoricobayeragro")) {
+	    			} else if(activityType.equals("datatype.scheduledactivitytype.teoricobayeragro") || activityType.equals("tablet.form.ebtwplus.onboard")) {
 		        		session.setAttribute("g", String.valueOf(AssesmentData.BAYER_WEBINARAGRO));
 		        		session.setAttribute("p","f1415553382a708f291eed3754b589bd");
-	    			} else if(activityType.equals("datatype.scheduledactivitytype.teoricobayerreboque")) {
+	    			} else if(activityType.equals("datatype.scheduledactivitytype.teoricobayerreboque") || activityType.equals("tablet.form.btw1plusonboard")) {
 		        		session.setAttribute("g", String.valueOf(AssesmentData.BAYER_WEBINARREBOQUE));
 		        		session.setAttribute("p","fe88c0a97070cdd04964de5f11ab453f");
 	    			} else if(activityType.equals("datatype.scheduledactivitytype.teoricobayerrenovation")) {

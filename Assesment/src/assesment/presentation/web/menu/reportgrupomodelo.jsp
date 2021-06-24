@@ -528,7 +528,7 @@
 								</td>
 								<td width="25%" class="<%=className%>">
 <%						if(className.equals("cellGreen")) {
-%>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\",1516,2);"%>'>
+%>									<a href='<%="javascript:generateReport(\""+user.getLoginName()+"\",1614,2);"%>'>
 										<img src="./imgs/downloadw.png" style="margin: 3px; width:20px;">
 									</a>
 <%						}

@@ -183,8 +183,7 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int MDP_CHARLA = 1725;
 	public static final int MDP_CHARLA_V2 = 1732;
 
-	public static final int UPM_CHARLA = 1729;
-	public static final int UPM_CHARLA_V2 = 1730;
+	public static final int UPM_CHARLA = 1817;
 
 	public static final int LUMIN_CHARLA = 1772;
 
@@ -241,6 +240,8 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int MONDELEZ_DA_V2 = 1566;
 	public static final int MONDELEZ_FILES = 1379;
 
+	public static final int PMI_NEWHIRE = 1449;
+	
 	public static final int UPL_NEWHIRE = 1489;
 
 	public static final int BTW2_REFRESH_WEBINAR = 1504;

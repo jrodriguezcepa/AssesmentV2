@@ -96,7 +96,7 @@ public class CediRegisterAction extends AbstractAction {
             session.setAttribute("password", passwd);
         	
             MailSender sender = new MailSender();
-        	String mailBody = getBody(nick, passwd);
+        	String mailBody = getBody(nick, passwd, type);
         	String title="Nuevo Usuario";
         	LinkedList to =new LinkedList();
             if(!Util.empty(mail)) {
@@ -155,7 +155,7 @@ public class CediRegisterAction extends AbstractAction {
         return null;
     }
 
-    private  String getBody(String loginname, String password) {
+    private  String getBody(String loginname, String password, int type) {
     	String body;
        body = "	<html>"
        		+ "	<body>";
@@ -163,8 +163,12 @@ public class CediRegisterAction extends AbstractAction {
        body += "<p style=\"text-align:center;\"><b>"+Util.emailTranslation("INVITACIÓN a participar \"Grupo Modelo Driver Assessment Online\"")+"</b></p><div>";
        body += "<div style='max-width:800px;margin-left:20px;font-family:arial;font-size:.89em;'>";
        body += "<p style=\"text-align:justify;\">"+Util.emailTranslation("Como parte de las actividades de seguridad y prevención, Grupo Modelo ha decidido aplicar la herramienta CEPA Driver Assessment para los conductores y colaboradores de la organización.")+"</p>";
-       body += "<p style=\"text-align:justify;\">"+Util.emailTranslation("Con los datos de acceso a continuación podrá acceder a la plataforma online. La aplicación contiene un un cuestionario breve y tendrá la oportunidad de agregar una fotografía de la licencia dentro de la misma aplicación.")+"<p>";        
-       body += "<p style=\"text-align:justify;\">"+Util.emailTranslation("Por favor tenga en cuenta que deberá completar cada uno de los módulos en su totalidad; de lo contrario, el sistema no lo tomará como concluido.")+"</p>";
+       if(type == 3) {
+    	   body += "<p style=\"text-align:justify;\">"+Util.emailTranslation("Con los datos de acceso a continuación podrá acceder a la plataforma online. Tendrá la oportunidad de agregar una fotografía de la licencia dentro de la misma aplicación.")+"<p>";        
+       }else {
+    	   body += "<p style=\"text-align:justify;\">"+Util.emailTranslation("Con los datos de acceso a continuación podrá acceder a la plataforma online. La aplicación contiene un un cuestionario breve y tendrá la oportunidad de agregar una fotografía de la licencia dentro de la misma aplicación.")+"<p>";        
+    	   body += "<p style=\"text-align:justify;\">"+Util.emailTranslation("Por favor tenga en cuenta que deberá completar cada uno de los módulos en su totalidad; de lo contrario, el sistema no lo tomará como concluido.")+"</p>";
+       }
        body += "Link: "+" www.cepada.com";
        body += "<br>";
        body += "Usuario: "+loginname;
@@ -172,12 +176,14 @@ public class CediRegisterAction extends AbstractAction {
        body += "Password: "+password;
        body += "<br>";
        body += "<div><p style=\"text-align:justify;\">"+Util.emailTranslation("Para aclarar dudas y/o consultas, por favor comunicarse directamente con: soportemx@cepamobility.com")+"</p></div>";
-       body += "<p><b>"+Util.emailTranslation("Información para el usuario:")+"</b></p>";
-       body += "<div><ul>" + 
-            		   "<li>"+Util.emailTranslation("El sistema guarda sus repuestas automáticamente, podrá retomar su sesión cuantas veces lo desee hasta completar la actividad;")+"</li>"+ 
-            		   "<li>"+Util.emailTranslation("Tiempo de ejecución: aproximadamente 30 minutos por actividad;")+"</li>"+ 
-            		   "<li>"+Util.emailTranslation("Requerimientos: se podrá realizar desde cualquier dispositivo con conexión a internet.")+"</li>" + 
-            		   "</ul></div>";
+       if(type != 3) {
+	       body += "<p><b>"+Util.emailTranslation("Información para el usuario:")+"</b></p>";
+	       body += "<div><ul>" + 
+	            		   "<li>"+Util.emailTranslation("El sistema guarda sus repuestas automáticamente, podrá retomar su sesión cuantas veces lo desee hasta completar la actividad;")+"</li>"+ 
+	            		   "<li>"+Util.emailTranslation("Tiempo de ejecución: aproximadamente 30 minutos por actividad;")+"</li>"+ 
+	            		   "<li>"+Util.emailTranslation("Requerimientos: se podrá realizar desde cualquier dispositivo con conexión a internet.")+"</li>" + 
+	            		   "</ul></div>";
+       }
        body += "<div><p style=\"text-align:center;\"><b>"+Util.emailTranslation("¡Gracias por su participación! ¡Su aporte es sumamente valioso!")+"</b></p></div><br>";
        body	+= "<div style='max-width:700px;'>";
        body	+= "<p><img src='http://ebtw.cepasafedrive.com/imgs/email_feedback.png' alt='feedback'  style='max-width:700px;'/></p>";

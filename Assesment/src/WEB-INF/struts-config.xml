@@ -110,6 +110,10 @@
 		<form-bean name="SelectAssessmentForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="assessment" type="java.lang.String" />
 		</form-bean>
+
+		<form-bean name="DeleteUserAssessmentForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="assessment" type="java.lang.String" />
+		</form-bean>
 		
 		<form-bean name="EmeaAccessCodeForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="accesscode" type="java.lang.String" />
@@ -661,6 +665,9 @@
 
 		<action path="/SelectAssessment" type="assesment.presentation.actions.user.SelectUserAssessmentAction" name="SelectAssessmentForm" scope="request">
 			<forward name="next" path="/module_da.jsp" />
+		</action>
+		<action path="/DeleteUserResult" type="assesment.presentation.actions.assesment.AssesmentDeleteResultAction" name="DeleteUserAssessmentForm" scope="request">
+			<forward name="next" path="/index.jsp" />
 		</action>
 		
 		<action path="/AccessCode" type="assesment.presentation.actions.user.AccessCodeAction" name="AccessCodeForm" scope="request">

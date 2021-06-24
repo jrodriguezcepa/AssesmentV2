@@ -204,15 +204,17 @@ function deleteIFConfirm(form,msg){
 <%				Connection connDC = (SecurityConstants.isProductionServer()) ? DriverManager.getConnection("jdbc:postgresql://18.229.182.37:5432/datacenter5","postgres","pr0v1s0r1A") : DriverManager.getConnection("jdbc:postgresql://localhost:5432/datacenter5","postgres","pr0v1s0r1A");
 				Statement stDC = connDC.createStatement();
 				
-				ResultSet set = stDC.executeQuery("SELECT ca.date, gm2.text, ca.code, c.name, d.firstname, d.lastname, d.corporationid, d.email, gm1.text, ca.activityid, d.id "+
+				String sql = "SELECT ca.date, gm2.text, ca.code, c.name, d.firstname, d.lastname, d.corporationid, d.email, gm1.text, ca.activityid, d.id "+
 							"FROM activityregistry ar JOIN cepaactivity ca on ca.activityid = ar.activity "+
 							"JOIN drivers d ON d.id = ar.driver "+
 							"JOIN corporations c ON c.id = ca.corporation "+
 							"JOIN generalmessages gm1 ON gm1.labelkey = ar.note "+
 							"JOIN generalmessages gm2 ON gm2.labelkey = ca.type "+
 							"WHERE activityregistryid = " + advance[5] +
-							" AND gm1.language = 'es' "+
-							"AND gm2.language = 'es'");
+							" AND gm1.language = '"+sys.getUserSessionData().getLenguage()+"' "+
+							"AND gm2.language = '"+sys.getUserSessionData().getLenguage()+"'";
+				System.out.println(sql);
+				ResultSet set = stDC.executeQuery(sql);
 				if(set.next()) {
 %>				    	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
 				  			<tr class="line">

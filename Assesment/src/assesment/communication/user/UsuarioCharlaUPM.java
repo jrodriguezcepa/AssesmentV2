@@ -16,12 +16,10 @@ public class UsuarioCharlaUPM implements Comparable<UsuarioCharlaUPM> {
 	private Calendar endDate;
 	private Integer correct1;
 	private Integer incorrect1;
-	private Integer correct2;
-	private Integer incorrect2;
 	
 	
 	public UsuarioCharlaUPM(String firstName, String lastName, String ci, String contractor, Timestamp registerD,
-			Timestamp endDateD, Integer correct1, Integer incorrect1, Integer correct2, Integer incorrect2) {
+			Timestamp endDateD, Integer correct1, Integer incorrect1) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -37,8 +35,6 @@ public class UsuarioCharlaUPM implements Comparable<UsuarioCharlaUPM> {
 		}
 		this.correct1 = correct1;
 		this.incorrect1 = incorrect1;
-		this.correct2 = correct2;
-		this.incorrect2 = incorrect2;
 	}
 
 	public UsuarioCharlaUPM(String firstName, String lastName, String ci, String contractor) {
@@ -119,22 +115,6 @@ public class UsuarioCharlaUPM implements Comparable<UsuarioCharlaUPM> {
 		this.incorrect1 = incorrect1;
 	}
 
-	public Integer getCorrect2() {
-		return correct2;
-	}
-
-	public void setCorrect2(Integer correct2) {
-		this.correct2 = correct2;
-	}
-
-	public Integer getIncorrect2() {
-		return incorrect2;
-	}
-
-	public void setIncorrect2(Integer incorrect2) {
-		this.incorrect2 = incorrect2;
-	}
-
 	public ArrayList<Object> getLine() {
         ArrayList<Object> row = new ArrayList<Object>();
  		row.add(ci);
@@ -147,10 +127,6 @@ public class UsuarioCharlaUPM implements Comparable<UsuarioCharlaUPM> {
  			row.add(correct1);
  		if(incorrect1 != null)
  			row.add(incorrect1);
- 		if(correct2 != null)
- 			row.add(correct2);
- 		if(incorrect2 != null)
- 			row.add(incorrect2);
 		return row;
 	}
 

@@ -46,8 +46,6 @@ public class TimacUserCreateFileAction extends AbstractAction {
 
     public ActionForward action(ActionMapping mapping, ActionForm createForm, HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
-    	actualizarUsuarios(request);
-    	/*
         HttpSession session = request.getSession();
         AssesmentAccess sys = ((AssesmentAccess)session.getAttribute("AssesmentAccess"));
         Text messages = sys.getText();
@@ -118,7 +116,7 @@ public class TimacUserCreateFileAction extends AbstractAction {
 		}
 
 		String[][] result = sys.getUserABMFacade().saveTimacUsers(users, sys.getUserSessionData());
-		sys.setValue(result);*/
+		sys.setValue(result);
 		return mapping.findForward("success");
     }
 

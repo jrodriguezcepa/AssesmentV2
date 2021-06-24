@@ -1278,8 +1278,8 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 			        assessmentId = assesments[x];
 		        }else {
 			        assessmentId = AssesmentData.GRUPO_MODELO_EBTW;
-			    	userABM.associateAssesment(user, 1646, userSessionData);
-		        	userABM.associateAssesment(user, 1652, userSessionData);
+			    	userABM.associateAssesment(user, AssesmentData.GRUPO_MODELO_CEPATIP, userSessionData);
+		        	userABM.associateAssesment(user, AssesmentData.GRUPO_MODELO_CUESTIONARIO, userSessionData);
 		        }
 		        
 		        if(assessmentId != 0) {

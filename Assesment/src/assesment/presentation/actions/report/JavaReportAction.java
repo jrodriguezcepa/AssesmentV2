@@ -1343,7 +1343,7 @@ public class JavaReportAction  extends AbstractAction {
 	     ResultSet setFDM = stFDM.executeQuery("SELECT d.id, firstname, lastname, corporationid, d1.resourcekey "
 	     		+ "FROM drivers d "
 	     		+ "JOIN divorgitemlevel1s d1 ON d1.id = d.divorg1 "
-	     		+ "WHERE d.id IN (0)");
+	     		+ "WHERE d.id IN (204376, 255906, 318493, 141232, 70310, 279862, 143588, 71396, 171982, 318794, 70276, 186829, 70421, 70544, 339138, 70442, 227418, 117584, 142613, 326777, 142928, 171803, 212482, 124441, 71949, 70633, 71971, 291476, 70473, 125806, 126472, 71249, 145237, 120969, 161671, 155246, 219447, 115154, 115078, 185017, 70308, 125182, 212154, 168006, 337652, 326237, 317848, 248100, 253561, 180409, 263021, 121526, 157727, 210801, 168058, 126075, 71193, 257473, 125863, 115778, 71190, 115279, 317414, 163273, 121525, 210536, 156060, 115313, 211928, 124415, 158542, 115311, 125551, 119914, 71195, 206961, 146323, 125747, 286833, 180414, 110528, 124026, 155514, 167077, 202660, 318050, 208118, 70389, 140807, 228212, 116027, 255180, 329481, 209051, 274136, 146015, 250798, 247002, 161943, 186840, 175805, 70424, 70454, 220240, 161148, 296677, 261030, 146491, 251542, 203022, 261158, 71946, 125058, 297019, 70518, 164175, 156002, 163275, 70638, 70478, 274259, 214875, 273230, 71941, 206062, 71961, 261162, 296193, 146736, 71430, 70559, 187896, 93396, 210802, 71076, 121279, 71750, 164523, 268222, 115375, 70344, 123668, 280308, 70325, 71073, 210829, 213576, 249174, 70476, 275562, 70282, 71475, 165176, 71963, 308374, 238149, 13469802, 117583, 214605, 252881, 252274, 248925, 171746, 206068, 127072, 203514, 337621, 273900, 154939, 71291, 257113, 71473, 125545, 213425, 218309, 115909, 214340, 317986, 126912, 254270, 209653, 70402, 70515, 249107, 96472, 70635, 71927, 236109, 179673, 186838, 282167, 338987, 273418, 275658, 145882, 278894, 325931, 70537, 276318, 72020, 71728, 251181, 237272, 72000, 274646, 256058, 96473, 167133, 166780, 281373, 257813, 247705, 338851, 209095, 146024, 202727, 296558, 124908, 161509, 71394, 71968, 145955, 305449, 178617, 291745, 161299, 175771, 280543, 171088, 282573, 204838, 253554, 318049, 195748, 13422412, 312768, 227425, 200880, 125503, 334710, 198533, 13313267, 303753, 120681, 286839, 240374, 124043, 125746, 161589, 318788, 250224, 276256, 248249, 141094, 279188, 266386, 146739, 212150, 121624, 13338279, 13260222, 215152, 274555, 210264, 330640, 205095, 296683, 276573, 209332, 175767, 160319, 286795, 253571, 256746, 158475, 339141, 257020, 314445, 13422410, 169973, 337184, 180411, 335141, 146722, 271798, 240701, 332705, 281327, 203515, 143386, 315558, 282535, 287459, 164244, 215443, 150814, 290642, 252415, 318218, 204377, 240345, 182048, 276564, 324217, 167022, 213471, 210625, 338761, 255945, 237653, 143338, 333003, 220032, 325397, 209651, 253058, 303840, 301598, 317231, 330709, 125845, 211923, 72009, 184521, 199115, 302041, 207905, 273739, 70391, 146682, 214823, 286493, 206221, 296130, 247860, 253277, 146013, 252417, 159945, 317978, 241258, 328628, 273208, 208230, 141072, 296096, 277796, 237034, 315873, 247683, 317294, 275672, 287413, 278523, 257738, 168228, 237655, 318490, 218937, 284205, 253221, 156065, 228905, 217822, 180728, 219516, 197019, 337580, 288107, 272070, 218938, 327152, 287047, 292110, 277669, 198673, 253123, 124045, 338764, 337599, 329267, 327339, 324081, 337602, 215677, 273500, 302126, 337649, 213367, 251997, 238882, 296049, 258362, 315485, 171217, 284575, 337651, 256751, 227417, 316138, 277482, 276540, 329678, 286835, 328261, 292225, 330604, 241652, 277969, 303091, 321358, 248520, 257583, 168280)");
 	     
 	     
 	     Collection<UsuarioCharlaUPM> finalList = new LinkedList<UsuarioCharlaUPM>();
@@ -1360,29 +1360,26 @@ public class JavaReportAction  extends AbstractAction {
 	     
 	     Statement st = conn1.createStatement();
 		 
-	     ResultSet setUsers = st.executeQuery("SELECT extradata, firstname, lastname, extradata2, brithdate + interval '30 year', enddate, uar.correct, uar.incorrect, uar2.correct, uar2.incorrect, u.datacenter "+
+	     ResultSet setUsers = st.executeQuery("SELECT extradata, firstname, lastname, extradata2, brithdate + interval '30 year', enddate, uar.correct, uar.incorrect, u.datacenter "+
  								   	  "FROM userassesments ua "+
  								      "JOIN users u ON u.loginname = ua.loginname "+ 
  								      "LEFT JOIN userassesmentresults uar ON uar.login = ua.loginname AND uar.assesment = ua.assesment "+
- 								      "LEFT JOIN userassesmentresults uar2 ON uar2.login = ua.loginname AND uar2.assesment = ua.assesment + 1 "+
  								      "WHERE ua.assesment = "+ AssesmentData.UPM_CHARLA);
 	 	 while(setUsers.next()) {
 	 		 boolean doNew = true;
-		     if(setUsers.getString(11)!=null) {
-		    	 Integer idDataCenter=Integer.parseInt(setUsers.getString(11));
+		     if(setUsers.getString(9)!=null) {
+		    	 Integer idDataCenter=Integer.parseInt(setUsers.getString(9));
 			     if(values.containsKey(idDataCenter)) {
 			    	 UsuarioCharlaUPM usuario = values.get(idDataCenter);
 			    	 usuario.setRegister(setUsers.getTimestamp(5));
 			    	 usuario.setEndDate(setUsers.getTimestamp(6));
 			    	 usuario.setCorrect1(setUsers.getInt(7));
 			    	 usuario.setIncorrect1(setUsers.getInt(8));
-			    	 usuario.setCorrect2(setUsers.getInt(9));
-			    	 usuario.setIncorrect2(setUsers.getInt(10));
 			    	 doNew = false;
 			     }
 		     }
 		     if(doNew) {
-		    	 finalList.add(new UsuarioCharlaUPM(setUsers.getString(2), setUsers.getString(3), setUsers.getString(1), setUsers.getString(4), setUsers.getTimestamp(5), setUsers.getTimestamp(6), setUsers.getInt(7), setUsers.getInt(8), setUsers.getInt(9), setUsers.getInt(10)));
+		    	 finalList.add(new UsuarioCharlaUPM(setUsers.getString(2), setUsers.getString(3), setUsers.getString(1), setUsers.getString(4), setUsers.getTimestamp(5), setUsers.getTimestamp(6), setUsers.getInt(7), setUsers.getInt(8)));
 		     }
 	 	 }	     
 	     
@@ -1391,7 +1388,7 @@ public class JavaReportAction  extends AbstractAction {
 	     ArrayList<Integer> driversAssesment =new ArrayList(); 
 	     ArrayList<Object> row1 = new ArrayList<Object>();
 	     ArrayList<Object> row2 = new ArrayList<Object>();
-		 String[] columns = {"CI","NOMBRES","APELLIDOS","CONTRATISTA","REGISTRO","FINALIZACIÓN","CORRECTAS TEST 1","ICORRECTAS TEST 1","CORRECTAS TEST 2","ICORRECTAS TEST 2"};
+		 String[] columns = {"CI","NOMBRES","APELLIDOS","CONTRATISTA","REGISTRO","FINALIZACIÓN","CORRECTAS TEST 1","INCORRECTAS TEST 1"};
 
 	     row1.add(new String[]{"CHARLAS UPM","0","10",String.valueOf(HSSFColor.GREY_25_PERCENT.index)});
 	     for(int i = 0; i < columns.length; i++) {
@@ -1477,13 +1474,11 @@ public class JavaReportAction  extends AbstractAction {
 				    	 usuario.setEndDate(setUsers.getTimestamp(6));
 				    	 usuario.setCorrect1(setUsers.getInt(7));
 				    	 usuario.setIncorrect1(setUsers.getInt(8));
-				    	 usuario.setCorrect2(setUsers.getInt(9));
-				    	 usuario.setIncorrect2(setUsers.getInt(10));
 				    	 doNew = false;
 				     }
 			     }
 			     if(doNew) {
-			    	 finalList.add(new UsuarioCharlaUPM(setUsers.getString(2), setUsers.getString(3), setUsers.getString(1), setUsers.getString(4), setUsers.getTimestamp(5), setUsers.getTimestamp(6), setUsers.getInt(7), setUsers.getInt(8), setUsers.getInt(9), setUsers.getInt(10)));
+			    	 finalList.add(new UsuarioCharlaUPM(setUsers.getString(2), setUsers.getString(3), setUsers.getString(1), setUsers.getString(4), setUsers.getTimestamp(5), setUsers.getTimestamp(6), setUsers.getInt(7), setUsers.getInt(8)));
 			     }
 		 	 }	     
 		     
