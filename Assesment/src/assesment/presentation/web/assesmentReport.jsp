@@ -97,7 +97,7 @@
 			
 			}
 			.table3 {
-				width: 60%;
+				width: 90%;
 				margin:auto;
 				margin-bottom:15px;
 				border-collapse: collapse;
@@ -109,13 +109,14 @@
 			.table3 th{
 				font-family: 'Roboto', sans-serif;
 				font-weight: 300;
-				font-size: 1.5vw;
+				font-size: 1.2vw;
 				white-space: normal;
 				color: white;
 				background-color: green;
 				border-top:1px solid #d8cccc;
 				border-left:1px solid #a39999;
 				border-right:1px solid #dcdcdc;
+				width:100px;
 			}
 			.table3 td {
 				text-align:center;
@@ -131,7 +132,7 @@
 			}
 			
 			.fstCol{
-				width: 40%;
+				width: 15%;
 				color: white;
 				background-color: #81b214;
 				}
@@ -499,54 +500,35 @@
 	<div>
 		<table class="table3">
 			<tr>
-				<td style="width:30%"> </td>
-<%			for (String comp : keys) {
-%>				<th>
-					<%=comp %>
-				</th>
-<%			}
-%>
-			</tr>
-			<tr>
+				<td style="width:40%"> </td>
 				<td class="fstCol" style="color:white">Usuarios disponibles</td>
+				<td  class="fstCol" style="color:white">Usuarios incompletos</td>
+				<td  class="fstCol" style="color:white">Usuarios Finalizados</td>
+				<td  class="fstCol" style="color:white">Estatus de la Actividad</td>
+			</tr>
 <%			for (String comp : keys) {
-%>				<td style="color:#3995D2">
+%>
+			<tr>
+				<th><%=comp %></th>
+				<td style="color:#3995D2">
 					<%=(Integer)((Object[])globalResults.get(comp))[0] %>
 				</td>
-<%			}
-%>
-			</tr>
-			<tr>
-				<td  class="fstCol" style="color:white">Usuarios incompletos</td>
-<%			for (String comp : keys) {
-%>				<td style="color:#F3273C">
+				<td style="color:#3995D2">
 					<%=(Integer)((Object[])globalResults.get(comp))[1] %>
 				</td>
-<%			}
-%>
-			</tr>
-			<tr>
-				<td  class="fstCol" style="color:white">Usuarios Finalizados</td>
-<%			for (String comp : keys) {
-%>				<td style="color:#43CB3E">
+				<td style="color:#3995D2">
 					<%=(Integer)((Object[])globalResults.get(comp))[2] %>
 				</td>
-<%			}
-%>
-			</tr>
-			<tr>
-				<td  class="fstCol" style="color:white">Estatus de la Actividad</td>
-<%			for (String comp : keys) {
-%>				<td>
+				<td>
 <%				if (comp.equals("STP")) {
 %>					CERRADA 2021-06-01			
 <%				}else {
 %>					<%=((Object[])globalResults.get(comp))[3]==null?"--":(String)((Object[])globalResults.get(comp))[3] %>
 <%				}
 %>				</td>
+			</tr>
 <%			}
 %>
-			</tr>
 		</table>
 	</div>
 <%} %>

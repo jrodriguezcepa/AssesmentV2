@@ -1117,11 +1117,11 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 	 */
  	public Integer saveTimacUser(String id, String firstName, String lastName, String email, UserSessionData userSessionData) throws Exception {
      	try {
-     		String login = "tmc_"+id;
-     		
      		UsReport usReport = UsReportUtil.getHome().create();
      		
-     		if(usReport.userExist(login, userSessionData)) {
+ 			String login = usReport.getNextTimacUser(id, userSessionData);
+ 			
+     		if(login == null) {
      			return 2;
      		}else {
 	     		UserData user = new UserData(login, new MD5().encriptar(login), firstName, lastName, "pt", email, UserData.MULTIASSESSMENT, null);

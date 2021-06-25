@@ -51,7 +51,7 @@
 	String groupId = request.getParameter("group");
 	Integer cedi=(Integer)session.getAttribute("cedi");
 	Collection c = new LinkedList();
-	if(userSessionData.getRole().equals(SecurityConstants.ADMINISTRATOR) || userSessionData.getRole().equals(SecurityConstants.CEPA_REPORTER) || userSessionData.getRole().equals(SecurityConstants.CLIENT_REPORTER)) {
+	if(userSessionData.getRole().equals(SecurityConstants.ADMINISTRATOR) || userSessionData.getRole().equals(SecurityConstants.CEPA_REPORTER) || userSessionData.getRole().equals(SecurityConstants.CLIENT_REPORTER) || userSessionData.getRole().equals(SecurityConstants.CLIENTGROUP_REPORTER)) {
 		check = true;
 	}
 	if(check) {

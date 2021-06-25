@@ -50,7 +50,7 @@ public class UserCreateAction extends AbstractAction {
         String extradata = createData.getExtraData();
         String extradata2 = createData.getExtraData2();
         
-        //sys.getUserABMFacade().saveTimacUser(nick, firstName, lastName, "rodriguez.jme@gmail.com", sys.getUserSessionData());
+        //sys.getUserABMFacade().saveTimacUser("02451614145", "KAHUE", "PIRES REIS", "rodriguez.jme@gmail.com", sys.getUserSessionData());
         Date expiry = null;
         if(Integer.parseInt(createData.getExpiryType()) == UserData.WITH_EXPIRY) {
             expiry = Util.getDate(createData.getUserExpiryDay(),createData.getUserExpiryMonth(),createData.getUserExpiryYear());

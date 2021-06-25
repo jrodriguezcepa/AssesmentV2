@@ -1753,8 +1753,9 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 								String q = "SELECT uar.correct, uar.incorrect from userassesmentresults uar WHERE uar.login='"+loginName+"' AND uar.type="+modules[i]+" AND uar.assesment="+assesment;
 								query = session.createSQLQuery(q).addScalar("correct", Hibernate.INTEGER).addScalar("incorrect", Hibernate.INTEGER);
 								query.setMaxResults(1);
-								if(query.list()!=null && query.list().size() > 0) {
-									Object[] results=(Object[]) query.list().get(0);
+								List l = query.list(); 
+								if(l != null && l.size() > 0) {
+									Object[] results=(Object[]) l.get(0);
 									ret[pos+1]=String.valueOf(results[0]);
 									ret[pos+2]=String.valueOf(results[1]);
 									pos=pos+2;

@@ -30,10 +30,10 @@ public class CopiarModuloAssessment {
 
             Statement st6 = conn.createStatement();
 
-            int[] assessmentId = {1644};
+            int[] assessmentId = {1845};
             /*ResultSet set = st1.executeQuery("SELECT MAX(moduleorder) FROM modules WHERE assesment = "+assessmentId);
             set.next();*/
-            int moduleOrder = 1;//set.getInt(1)+1;
+            int moduleOrder = 0;//set.getInt(1)+1;
             
             int moduleId = -1; 
             ResultSet set = st1.executeQuery("SELECT MAX(id) FROM modules");
@@ -53,8 +53,9 @@ public class CopiarModuloAssessment {
             String sql = "";
 
             for(int i = 0; i < assessmentId.length; i++) {
-	            set = st1.executeQuery("SELECT * FROM modules WHERE id IN (3642)");
+	            set = st1.executeQuery("SELECT * FROM modules WHERE id IN (3946,3939,3948,3944,3950,3952) order by assesment");
 	        	while(set.next()) {
+	        		moduleOrder++;
 	        		String oldModuleId = set.getString("id");
 	        		String newKey = "assesment"+assessmentId[i]+".module"+moduleId+".name"; 
 	        		sql = "INSERT INTO modules VALUES ("+moduleId+","+assessmentId[i]+",'"+newKey+"',"+moduleOrder+","+set.getString(5)+");\n"; 
