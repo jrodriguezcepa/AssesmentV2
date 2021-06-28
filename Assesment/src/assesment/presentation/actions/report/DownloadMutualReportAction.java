@@ -46,7 +46,15 @@ public class DownloadMutualReportAction  extends AbstractAction {
 	        Text messages = sys.getText();
 	        String assesmentId=(String)session.getAttribute("assesmentId");
 	        Integer cedi=(Integer)session.getAttribute("cedi");
-			Collection r = sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cedi, null,null, sys.getUserSessionData());
+	        String division=(String)session.getAttribute("division");
+
+			Collection r = null;
+			if(Integer.parseInt(assesmentId)==(AssesmentData.GUINEZ_INGENIERIA_V3)){
+				r= sys.getAssesmentReportFacade().findGuinezAssesmentResults(Integer.parseInt(assesmentId),division, null,null, sys.getUserSessionData());
+
+			}else {
+				r= sys.getAssesmentReportFacade().findMutualAssesmentResults(Integer.parseInt(assesmentId),cedi, null,null, sys.getUserSessionData());	
+			}
 
 	    	
 	        response.setHeader("Content-Type", "application/vnd.ms-excel");
@@ -58,6 +66,8 @@ public class DownloadMutualReportAction  extends AbstractAction {
 		        response.setHeader("Content-Disposition", "inline; filename=ReportAbbevieLatam.xls");
 	        }else if(Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO) {
 		        response.setHeader("Content-Disposition", "inline; filename=ReportSUMITOMO.xls");
+	        }else if(Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3) {
+		        response.setHeader("Content-Disposition", "inline; filename=ReportGuinezIngenieria.xls");
 	        }
 	        WritableWorkbook w = Workbook.createWorkbook(response.getOutputStream());
 	        WritableSheet s = w.createSheet("Mutual de Seguridad", 0);
@@ -117,7 +127,20 @@ public class DownloadMutualReportAction  extends AbstractAction {
 			      s.addCell(new Label(14,0,messages.getText("assesment1728.module4514.name")+messages.getText("generic.data.recommendation")));
 			      length=14;
 	        }
+	        else if(Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3) {
+	        	  s.addCell(new Label(4,0, "Centro de costo"));
+			      s.addCell(new Label(5,0,messages.getText("assesment1830.module4658.name")));
+			      s.addCell(new Label(6,0,messages.getText("assesment1830.module4659.name")));
+			      s.addCell(new Label(7,0,messages.getText("assesment1830.module4660.name")));
+			      s.addCell(new Label(8,0,messages.getText("assessment.psi")));
+			      s.addCell(new Label(9,0,messages.getText("question.type.date")));
+			      s.addCell(new Label(10,0,messages.getText("generic.data.ranking")));
+			      s.addCell(new Label(11,0,messages.getText("assesment1830.module4658.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(12,0,messages.getText("assesment1830.module4659.name")+messages.getText("generic.data.recommendation")));
+			      s.addCell(new Label(13,0,messages.getText("assesment1830.module4660.name")+messages.getText("generic.data.recommendation")));
 
+			      length=13;
+	        }
 	    	Iterator it = r.iterator();
 
 			int index = 1;
@@ -125,9 +148,11 @@ public class DownloadMutualReportAction  extends AbstractAction {
 				UserMutualReportData result = (UserMutualReportData)it.next();
 				boolean mutual=Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA;
 				if(Integer.parseInt(assesmentId)==AssesmentData.SUMITOMO) mutual=true;
+
 				for(int i = 0; i <= length; i++) {
-					s.addCell(new Label(i,index, result.getValue(i,messages, mutual , Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM)));
+					s.addCell(new Label(i,index, result.getValue(i,messages, mutual , Integer.parseInt(assesmentId), Integer.parseInt(assesmentId)==AssesmentData.ABBEVIE_LATAM)));
 				}
+
 				index++;
 			}
 			w.write();

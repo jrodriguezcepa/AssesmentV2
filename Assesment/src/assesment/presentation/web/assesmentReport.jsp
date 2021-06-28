@@ -402,7 +402,8 @@
 			cediName=cedi.getName();
 		}
 		if(cedi!=null) session.setAttribute("cedi", cedi.getId());
-		
+		if(division!=null) session.setAttribute("division", division);
+
 		String refresh="assesmentReport.jsp?id="+assesmentId;
 		String report="reportAssesment.jsp?id="+assesmentId;
 		String rec0="util/mutual/recommendation0_"+language+"/index.html";

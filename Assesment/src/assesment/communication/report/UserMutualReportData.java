@@ -499,7 +499,41 @@ public class UserMutualReportData {
 			Collections.sort(results, new Sortbybehaviour());
 		}
 	}
-	public String getValue(int i, Text messages, boolean mutual, boolean abbevie) {
+	public String getValue(int i, Text messages, boolean mutual,Integer assesment, boolean abbevie) {
+		if(assesment == AssesmentData.GUINEZ_INGENIERIA_V3) {
+			switch(i) {
+			case 0:
+				return firstName;
+			case 1:
+				return lastName;
+			case 2:
+				return email;
+			case 3:
+				return login;
+			case 4:
+				return division;
+			case 5:
+				return String.valueOf(module1);
+			case 6:
+				return String.valueOf(module2);
+			case 7:
+				return String.valueOf(module3);
+			case 8:
+				return  messages.getText(getPsiText());
+			case 9:
+				return endDate;
+			case 10:
+				return String.valueOf(ranking);
+			case 11:
+				return messages.getText(getMod1Recommendation());
+			case 12:
+				return messages.getText(getMod2Recommendation());
+			case 13:
+				return messages.getText(getMod3Recommendation());
+			}
+			return null;
+		}
+		
 		if(mutual) {
 			switch(i) {
 			case 0:
@@ -597,6 +631,7 @@ public class UserMutualReportData {
 				return String.valueOf(ranking);
 		}
 		}
+
 		return null;
 	}
 
