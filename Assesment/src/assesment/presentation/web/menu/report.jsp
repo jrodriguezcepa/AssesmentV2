@@ -57,14 +57,10 @@
 	}
 	
 	if(check) {
-		if(Integer.parseInt(assessmentId) == AssesmentData.MUTUAL_DA) {
-			response.sendRedirect("./assesmentReport.jsp?id=1613");		
-		}else if(Integer.parseInt(assessmentId) == AssesmentData.ABBOTT_NEWDRIVERS) {
-			response.sendRedirect("./assesmentReport.jsp?id=1707");		
-		}else if(Integer.parseInt(assessmentId) == AssesmentData.SUMITOMO) {
-			response.sendRedirect("./assesmentReport.jsp?id=1728");		
-		}
-		else {
+		int assId = Integer.parseInt(assessmentId);
+		if(assId == AssesmentData.MUTUAL_DA || assId == AssesmentData.ABBOTT_NEWDRIVERS || assId == AssesmentData.SUMITOMO || assId == AssesmentData.GUINEZ_INGENIERIA_V3) {
+			response.sendRedirect("./assesmentReport.jsp?id="+assessmentId);		
+		} else {
 			UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 			AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
 			AssessmentReportData dataSource = null;

@@ -1673,7 +1673,8 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 	      	}
 	  return assesmentId;    
 	  }
-	  
+
+	
 		/**
 		 * @ejb.interface-method
 		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"

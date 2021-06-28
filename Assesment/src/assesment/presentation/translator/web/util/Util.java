@@ -54,17 +54,17 @@ public class Util {
     	if(SecurityConstants.isProductionServer()) {
 	    	Calendar c = Calendar.getInstance();
 	    	int day = c.get(Calendar.DATE);
-	    	if(day < 21 || day > 25)
+	    	if(day != 30)
 	    		return false;
 	    	int hour = c.get(Calendar.HOUR_OF_DAY);
 	    	int minute = c.get(Calendar.MINUTE);
 	    	switch(hour) {
-	    		case 7: case 12:
+	    		case 8: case 13:
 					return minute >= 45;
-				case 8: case 13:
+				case 9: case 14:
 					return minute <= 10;
-				case 10: case 15:
-					return minute >= 15 && minute <= 40;
+//				case 10: case 15:
+//					return minute >= 15 && minute <= 40;
 	    	}
 	    	return false;
     	}
