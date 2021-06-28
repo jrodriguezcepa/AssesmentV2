@@ -2216,4 +2216,44 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 			return result;
 		}
 
+
+	    /**
+		 * @ejb.interface-method
+		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
+		 */
+		public HashMap<String, Object[]> findGuinezAssesmentGlobalResults(Integer assesment, String division, UserSessionData userSessionData) throws Exception {
+			Session session = null;
+			HashMap<String, Object[]> result = new HashMap();
+			String filter=(division!=null && division.equals(""))?" ":" and u.extradata='"+division+"'";
+			try {
+				session = HibernateAccess.currentSession();
+				String q="select u.extradata from userassesments ua join users u on u.loginname=ua.loginname where assesment="+assesment+" and ua.enddate  is not null"+ filter +"group by u.extradata"; 
+				Query qry = session.createSQLQuery(q).addScalar("extradata", Hibernate.STRING);
+				List listCompanies = qry.list();
+			
+				if (listCompanies != null && listCompanies.size() > 0) {				
+					Iterator iter = listCompanies.iterator();
+					while (iter.hasNext()) {
+						String divisionName=(String) iter.next();
+						String q2="select count (*) from userassesments ua join users u on u.loginname=ua.loginname where u.extradata='"+divisionName+"' and assesment=1830 and ua.enddate is not null"; 
+						Query queryCount = session.createSQLQuery(q2).addScalar("count", Hibernate.INTEGER);
+						Integer end=(Integer)queryCount.uniqueResult();
+						q2="select count (*) from userassesments ua join users u on u.loginname=ua.loginname  where u.extradata='"+divisionName+"' and assesment=1830"; 
+						queryCount = session.createSQLQuery(q2).addScalar("count", Hibernate.INTEGER);
+						Integer total=(Integer)queryCount.uniqueResult();												
+						Object[] value= {total, end};
+						if(divisionName!=null && !divisionName.equals(""))
+							result.put(divisionName, value);
+						//System.out.println((Integer)result.get(cediName)[0]+ (Integer)result.get(cediName)[1]+ (Integer)result.get(cediName)[2]+ (Integer)result.get(cediName)[3]);
+
+					}
+			
+				
+			}
+
+			} catch (Exception e) {
+	            handler.getException(e,"findMutualAssesmentGlobalResults", userSessionData.getFilter().getLoginName());
+	        }
+			return result;
+	}
 }

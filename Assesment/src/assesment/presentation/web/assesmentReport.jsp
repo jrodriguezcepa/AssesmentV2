@@ -462,7 +462,10 @@
 			globalResults = sys.getAssesmentReportFacade().findMutualAssesmentGlobalResults(Integer.parseInt(assesmentId),cediId, sys.getUserSessionData());
 			keys = globalResults.keySet();
 		}
-		
+		if (Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
+			globalResults = sys.getAssesmentReportFacade().findGuinezAssesmentGlobalResults(Integer.parseInt(assesmentId),division, sys.getUserSessionData());
+			keys = globalResults.keySet();
+		}		
 		ArrayList<UserMutualReportData> results = new ArrayList(r);
 		if(request.getParameter("sort")!=null){
 			String criteria=(String)request.getParameter("sort");
@@ -526,6 +529,32 @@
 %>					<%=((Object[])globalResults.get(comp))[3]==null?"--":(String)((Object[])globalResults.get(comp))[3] %>
 <%				}
 %>				</td>
+			</tr>
+<%			}
+%>
+		</table>
+	</div>
+<%} %>
+
+<%	if (Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){ 
+%>	
+	<div>
+		<table class="table3">
+			<tr>
+				<td style="width:40%"> </td>
+				<td class="fstCol" style="color:white">Total de usuarios</td>
+				<td  class="fstCol" style="color:white">Usuarios Finalizados</td>
+			</tr>
+<%			for (String comp : keys) {
+%>
+			<tr>
+				<th><%=comp %></th>
+				<td style="color:#3995D2">
+					<%=(Integer)((Object[])globalResults.get(comp))[0] %>
+				</td>
+				<td style="color:#3995D2">
+					<%=(Integer)((Object[])globalResults.get(comp))[1] %>
+				</td>
 			</tr>
 <%			}
 %>

@@ -139,4 +139,7 @@ public interface AssesmentReport
    public java.util.Collection findGuinezAssesmentResults( java.lang.Integer assesment,java.lang.String division,java.lang.String from,java.lang.String to,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.HashMap findGuinezAssesmentGlobalResults( java.lang.Integer assesment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

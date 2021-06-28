@@ -1148,6 +1148,18 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	        }
 	        return null;
 	    }
-
+		/**
+		 * @ejb.interface-method
+		 * @ejb.permission role-name = "administrator,systemaccess, clientreporter"
+		 */
+		public HashMap findGuinezAssesmentGlobalResults(Integer assesment,String division, UserSessionData userSessionData) throws Exception {
+	        try {
+	            return AssesmentReportUtil.getHome().create().findGuinezAssesmentGlobalResults(assesment,division, userSessionData);
+	        }catch (Exception e) {
+	            handler.handleException("findGuinezAssesmentGlobalResults",e);
+	        }
+	        return null;
+	    }
+	    
 	    
 }
