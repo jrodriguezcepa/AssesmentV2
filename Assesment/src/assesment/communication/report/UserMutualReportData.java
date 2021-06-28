@@ -497,6 +497,8 @@ public class UserMutualReportData {
 			Collections.sort(results, new Sortbyranking());
 		}else if(criteria.equals("behaviour")){
 			Collections.sort(results, new Sortbybehaviour());
+		}else if(criteria.equals("division")){
+			Collections.sort(results, new Sortbydivision());
 		}
 	}
 	public String getValue(int i, Text messages, boolean mutual,Integer assesment, boolean abbevie) {
@@ -914,5 +916,14 @@ class Sortbybehaviour implements Comparator<UserMutualReportData>
 	public int compare(UserMutualReportData a, UserMutualReportData b)
 	{
 	return a.getBehaviour() - b.getBehaviour();
+	}
+}
+
+class Sortbydivision implements Comparator<UserMutualReportData>
+{
+
+	public int compare(UserMutualReportData a, UserMutualReportData b)
+	{
+		return a.getDivision().compareTo(b.getDivision());
 	}
 }

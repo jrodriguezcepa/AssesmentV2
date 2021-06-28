@@ -611,7 +611,7 @@
 %>			<th><span class="thText"><%=messages.getText("generic.data.company")%></span></th>
 <% 		}
  		if(cedi==null&&Integer.parseInt(assesmentId)==AssesmentData.GUINEZ_INGENIERIA_V3){
-%>			<th><span class="thText">Centro de Costo</span></th>
+%>			<th><span class="thText" style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=division" ><img src="images/mutual_filter.png" alt="filter"></a>Centro de Costo</span></th>
 <% 		}
 		if (Integer.parseInt(assesmentId)==AssesmentData.MUTUAL_DA){
 %>			<th><div style="display:flex;align-items: center;"><a href="/assesment/assesmentReport.jsp?sort=module1" ><img src="images/mutual_filter.png" alt="filter"></a><span class="thText"><%=messages.getText("assesment1613.module4354.name")%></span></div></th>
