@@ -24,6 +24,7 @@
 <%@page import="assesment.communication.assesment.AssesmentAttributes"%>
 
 <%@page import="java.util.Collection"%>
+<%@page import="java.util.Set"%>
 
 <%@page import="java.util.LinkedList"%>
 
@@ -50,6 +51,7 @@
 	String report="reportAssesment.jsp?id="+assessmentId;
 	String groupId = request.getParameter("group");
 	Integer cedi=(Integer)session.getAttribute("cedi");
+	String division=(String)session.getAttribute("division");
 	Collection c = new LinkedList();
 	if(userSessionData.getRole().equals(SecurityConstants.ADMINISTRATOR) || userSessionData.getRole().equals(SecurityConstants.CEPA_REPORTER) || userSessionData.getRole().equals(SecurityConstants.CLIENT_REPORTER) || userSessionData.getRole().equals(SecurityConstants.CLIENTGROUP_REPORTER)) {
 		check = true;
@@ -57,7 +59,14 @@
 	if(check) {
 		UserData userData = sys.getUserReportFacade().findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 		AssesmentReportFacade assessmentReport = sys.getAssesmentReportFacade();
-		AssessmentReportData dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),cedi,sys.getUserSessionData());
+		AssessmentReportData dataSource = null;
+		if(Integer.parseInt(assessmentId) == AssesmentData.GUINEZ_INGENIERIA_V3){
+			dataSource = assessmentReport.getAssessmentReportByDivision(new Integer(assessmentId),division,sys.getUserSessionData());
+		}else{
+			//dataSource = (Util.isNumber(groupId)) ? assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),new Integer(groupId), sys.getUserSessionData()) : assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),cedi,sys.getUserSessionData());
+			dataSource =  assessmentReport.getAssessmentReportByCedi(new Integer(assessmentId),cedi,sys.getUserSessionData());
+
+		}
 		sys.setValue(dataSource);
 	    AssesmentData assesment = dataSource.getAssessment();
 	    String action=request.getParameter("action");
@@ -421,7 +430,41 @@
           
 <%    }
 	else if (action.equals("2")){
-%> 		var data = new google.visualization.DataTable();
+		if(Integer.parseInt(assessmentId) == AssesmentData.GUINEZ_INGENIERIA_V3 && (division==null
+				|| division.equals(""))){
+			//divisiones 
+			Set <String> keys  = sys.getAssesmentReportFacade().findGuinezAssesmentGlobalResults(Integer.parseInt(assessmentId),division, sys.getUserSessionData()).keySet();
+			for (String div: keys){ 
+				AssessmentReportData aux = assessmentReport.getAssessmentReportByDivision(new Integer(assessmentId),div,sys.getUserSessionData());
+
+%>
+				let <%="data_"+div%> = new google.visualization.DataTable();
+				<%="data_"+div%>.addColumn('string', 'Topping');
+				<%="data_"+div%>.addColumn('number', 'Slices');
+				<%="data_"+div%>.addRows([
+				  ['<%=messages.getText("report.generalresult.lowlevel")%>', <%=String.valueOf(aux.getRed())%>],
+				  ['<%=messages.getText("report.generalresult.meddiumlevel")%>', <%=String.valueOf(aux.getYellow())%>],
+				  ['<%=messages.getText("report.generalresult.highlevel")%>', <%=String.valueOf(aux.getGreen())%>]
+				]);
+				
+				// Set chart options 
+				let <%="options_"+div%> = {'title': "Centro de costo: "+<%="'"+div+"'"%>,'width':200,
+				               'colors':['red','yellow','green'],
+				               chartArea:{left:50,top:50,width:'70%',height:'70%'},
+				               legend: 'none',
+				               'height':200};
+				
+				// Instantiate and draw our chart, passing in some options.
+				let <%="div_"+div%> = document.createElement("div");
+				<%="div_"+div%>.setAttribute("id",<%="'"+div+"'"%>);
+				document.getElementById('pie-division').appendChild(<%="div_"+div%>);
+				let <%="chart_"+div%> = new google.visualization.PieChart(document.getElementById(<%="'"+div+"'"%>));
+				 <%="chart_"+div%>.draw( <%="data_"+div%>,  <%="options_"+div%>);
+<%			}
+		}	//if assesment es Guinez y division distinto de null o distinto de "" 
+			//recorro todas las divisiones de guinez y para cada una hago append child en pie y muestro grafica ahi 
+%> 		console.log("entro a grafico pie");
+		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'Topping');
 		data.addColumn('number', 'Slices');
 		data.addRows([
@@ -440,7 +483,9 @@
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.PieChart(document.getElementById('pie'));
 		chart.draw(data, options);
-<%}else if(action.equals("3")){
+		console.log("paso por grafico pie");
+<%}
+	else if(action.equals("3")){
 %>		
 <%		for(int i = 1; i <= dataSource.getModules().size(); i++) {		
 %>			drawTableQuestion<%=String.valueOf(i)%>();
@@ -586,6 +631,7 @@
 <%				}
 %>		    <div style="display:flex;width:100%;">
  			<div id="pie" style="float:left"></div>
+ 			
  			<div id="resume" style="float:right">
 <%				if(action.equals("2")){				
 %>	    			<div id="userState">
@@ -702,11 +748,15 @@
 								<td align="center"><%=percents[2]+" %"%></td>
 							</tr>
 						</table>
+						
+						
 		    		</div>
 <%					}
 %>
 				</div>
 			</div>
+			<div id="pie-division" style="clear:both;display:flex;flex-wrap: wrap;width:100%"></div>    		
+			
 		</div>
 				
 		</section>

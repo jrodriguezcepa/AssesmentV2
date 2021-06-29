@@ -104,4 +104,6 @@ public interface AssesmentReportFacadeLocal
 
    public java.util.HashMap findGuinezAssesmentGlobalResults( java.lang.Integer assesment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public assesment.communication.report.AssessmentReportData getAssessmentReportByDivision( java.lang.Integer assessment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

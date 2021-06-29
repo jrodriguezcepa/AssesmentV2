@@ -1160,6 +1160,86 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	        }
 	        return null;
 	    }
-	    
+
+
+	    /**
+	     * @ejb.interface-method
+	     * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+	     */
+	    public AssessmentReportData getAssessmentReportByDivision(Integer assessment, String division,  UserSessionData userSessionData) throws Exception {
+	    	AssessmentReportData reportData = new AssessmentReportData();
+	    	try {
+	    		AssesmentReport assessmentReport = AssesmentReportUtil.getHome().create();
+	    		reportData.setAssessment(assessmentReport.findAssesment(assessment, userSessionData));
+	    		reportData.setAnswerTestCount(assessmentReport.getAssesmentQuestionCount(reportData.getAssessment(), userSessionData, false));
+	    		
+	    		UsReport userReport = UsReportUtil.getHome().create();
+	    		Collection userValues = userReport.getUsersReportByDivision(assessment,division,userSessionData);
+	    		HashMap<String, HashMap<Integer, String>> wrtAswers = userReport.getWRTUserAnswersByDivision(assessment, division,userSessionData);
+	    		Iterator it = userValues.iterator();
+	    		HashMap<String,UserReportData> mapUsers = new HashMap<String,UserReportData>();
+	    		HashMap<Integer,ModuleReportData> mapModules = new HashMap<Integer,ModuleReportData>();
+	    		while(it.hasNext()) {
+	    			Object[] data = (Object[])it.next();
+	    			if(mapUsers.containsKey(data[0])) {
+	    				mapUsers.get(data[0]).addResult(((Integer)data[6]).intValue(), ((Integer)data[7]).intValue());
+	    			}else {
+	    				UserReportData userReportData = new UserReportData((String)data[0],(String)data[1],(String)data[2],(String)data[3],(Date)data[4]);
+	    				userReportData.addResult(((Integer)data[6]).intValue(), ((Integer)data[7]).intValue());
+	    				userReportData.setPSI(data);
+	    				if(wrtAswers.containsKey(userReportData.getLogin())) {
+	    					userReportData.setWRTAnswers(wrtAswers.get(userReportData.getLogin()));
+	    				}
+	    				mapUsers.put(userReportData.getLogin(), userReportData);
+	    			}
+	    			if(data[4] != null) {
+		    			if(mapModules.containsKey(data[5])) {
+		    				mapModules.get(data[5]).addUserResult((String)data[0], (Integer)data[6], (Integer)data[7]);
+		    			}else {
+		    				ModuleReportData moduleReportData = new ModuleReportData((Integer)data[5]);
+		    				moduleReportData.addUserResult((String)data[0], (Integer)data[6], (Integer)data[7]);
+		    				mapModules.put((Integer)data[5], moduleReportData);
+		    			}
+	    			}
+	    		}
+
+	     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE) {
+	     			Collection results2 = userReport.findResults(assessment, 2, userSessionData);
+	     			it = results2.iterator();
+	     			while(it.hasNext()) {
+	     				Object[] data = (Object[])it.next();
+	     				mapUsers.get((String)data[0]).addSecondUser((Integer)data[1], (Integer)data[2]);
+	     			}
+	     		}
+	    		
+	    		QuestionReport questionReport = QuestionReportUtil.getHome().create();
+	    		Collection questionValues = questionReport.getQuestionReportByDivision(assessment,division,userSessionData);
+	    		it = questionValues.iterator();
+	     		while(it.hasNext()) {
+	     			Object[] data = (Object[])it.next();
+	     			mapModules.get(data[0]).addQuestion(data);
+	     		}
+
+	     		reportData.setModules(mapModules.values());
+
+	     		Iterator<UserReportData> itUsers = mapUsers.values().iterator();
+	    		while(itUsers.hasNext()) {
+	    			reportData.addUser(itUsers.next());
+	    		}
+	     		
+	    		Collection userNotStarted = userReport.getNotStartedUsersReport(assessment,userSessionData);
+	    		Iterator itNotStarted = userNotStarted.iterator();
+	    		while(itNotStarted.hasNext()) {
+	    			Object[] data = (Object[])itNotStarted.next();
+	    			reportData.addNotStartedUser(new UserReportData((String)data[0],(String)data[1],(String)data[2],(String)data[3],null,true));
+	    		}
+
+	    	} catch (Exception e) {
+	    		e.printStackTrace();
+	            handler.handleException("getAssessmentReport", e);
+			}
+	    	return reportData;
+	    }
+
 	    
 }

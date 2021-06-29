@@ -54,4 +54,6 @@ public interface QuestionReportLocal
 
    public java.util.Collection getQuestionReportBKP( java.lang.Integer assessment,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.Collection getQuestionReportByDivision( java.lang.Integer assessment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }
