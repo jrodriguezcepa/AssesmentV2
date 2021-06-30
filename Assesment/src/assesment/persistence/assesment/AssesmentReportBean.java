@@ -2227,7 +2227,7 @@ public String[] getWebinarAdvance(String wbCode, String assesmentId,String login
 			String filter=(division!=null && division.equals(""))?" ":" and u.extradata='"+division+"'";
 			try {
 				session = HibernateAccess.currentSession();
-				String q="select u.extradata from userassesments ua join users u on u.loginname=ua.loginname where assesment="+assesment+" and ua.enddate  is not null"+ filter +"group by u.extradata"; 
+				String q="select u.extradata from userassesments ua join users u on u.loginname=ua.loginname where assesment="+assesment+" "+ filter +"group by u.extradata"; 
 				Query qry = session.createSQLQuery(q).addScalar("extradata", Hibernate.STRING);
 				List listCompanies = qry.list();
 			
