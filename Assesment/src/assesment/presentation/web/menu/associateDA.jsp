@@ -47,6 +47,7 @@
 	String value = "";
 	String firstName = "";
 	String lastName = "";
+	String userName = "";
 
 	if(request.getParameter("value")!=null){
 		value = request.getParameter("value");
@@ -56,7 +57,10 @@
 	}	
 	if(request.getParameter("lastName")!=null){
 		lastName = request.getParameter("lastName");
-	}
+	}	
+	if(request.getParameter("userName")!=null){
+		userName = request.getParameter("userName");
+	}	
 
 	int type = Integer.parseInt(request.getParameter("type"));
 	String link="associateDA.jsp?type="+type;
@@ -65,7 +69,7 @@
 		UserData userData = usReport.findUserByPrimaryKey(userSessionData.getFilter().getLoginName(),userSessionData);
 		Integer[] cedis = sys.getCorporationReportFacade().findCediUser(userData.getLoginName(), userSessionData);
 		//Collection<UserData> users = usReport.findCediMissingUsers(cedis, type, sys.getUserSessionData());
-		Collection<UserData> users = usReport.findCediMissingUsers(value, firstName, lastName, cedis, type, sys.getUserSessionData());
+		Collection<UserData> users = usReport.findCediMissingUsers(value, firstName, lastName, userName, cedis, type, sys.getUserSessionData());
 
 		String da = (type == 1) ? "Driver Assessment" : "eBTW";
 
@@ -140,7 +144,7 @@
                 margin-bottom:20px;
                 margin-right:5px;
 
-                width: 25%;
+                width: 19%;
                 height: 30px;
                 border-radius: 5px;
                 background-color: rgb(227, 230, 235);
@@ -281,6 +285,7 @@
 		 	<form action="<%=link%>" method="post">
 	            <input name="firstName" class="textInput" type="text" placeholder="Nombre" value='<%=firstName%>'>
 	            <input name="lastName" class="textInput" type="text" placeholder="Apellido" value='<%=lastName%>'>
+	            <input name="userName" class="textInput" type="text" placeholder="Usuario" value='<%=userName%>'>
 	            <input name="value" class="textInput" type="text" placeholder="CEDI" value='<%=value%>'>
 	            <input name="button" class="button"  type="submit" value="BUSCAR">
 	         </form> 

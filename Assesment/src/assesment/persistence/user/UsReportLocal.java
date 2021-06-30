@@ -177,7 +177,7 @@ public interface UsReportLocal
 
    public java.util.Collection findCediMissingUsers( java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
-   public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName,java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+   public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName,java.lang.String userName,java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public boolean userExistsIdNumber( java.lang.String idNumber,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 

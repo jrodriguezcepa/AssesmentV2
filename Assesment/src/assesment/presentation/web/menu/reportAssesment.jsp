@@ -461,9 +461,8 @@
 				let <%="chart_"+div%> = new google.visualization.PieChart(document.getElementById(<%="'"+div+"'"%>));
 				 <%="chart_"+div%>.draw( <%="data_"+div%>,  <%="options_"+div%>);
 <%			}
-		}	//if assesment es Guinez y division distinto de null o distinto de "" 
-			//recorro todas las divisiones de guinez y para cada una hago append child en pie y muestro grafica ahi 
-%> 		console.log("entro a grafico pie");
+		}	
+%> 		
 		var data = new google.visualization.DataTable();
 		data.addColumn('string', 'Topping');
 		data.addColumn('number', 'Slices');
@@ -483,7 +482,6 @@
 		// Instantiate and draw our chart, passing in some options.
 		var chart = new google.visualization.PieChart(document.getElementById('pie'));
 		chart.draw(data, options);
-		console.log("paso por grafico pie");
 <%}
 	else if(action.equals("3")){
 %>		

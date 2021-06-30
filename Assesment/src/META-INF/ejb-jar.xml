@@ -8968,6 +8968,7 @@
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>java.lang.Integer[]</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
@@ -11828,6 +11829,7 @@
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
+            <method-param>java.lang.String</method-param>
             <method-param>java.lang.Integer[]</method-param>
             <method-param>java.lang.Integer</method-param>
             <method-param>assesment.communication.administration.user.UserSessionData</method-param>
@@ -11844,6 +11846,7 @@
          <method-intf>Remote</method-intf>
          <method-name>findCediMissingUsers</method-name>
          <method-params>
+            <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
             <method-param>java.lang.String</method-param>
