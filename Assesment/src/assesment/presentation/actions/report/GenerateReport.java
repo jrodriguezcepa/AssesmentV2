@@ -424,7 +424,7 @@ public class GenerateReport {
     public FileOutputStream createTotalReport(Calendar enddate, Text messages, Statement st, String fileName,String user, Integer assessment, String assessmentName, String userName, int moduleCount, boolean psi, String corporationId) throws Exception {
     	
     	//JasperCompileManager.compileReportToFile("C:\\flash\\jasper\\TotalReport1.jrxml", "C:\\flash\\jasper\\TotalReport.jasper");
-    	//JasperCompileManager.compileReportToFile("C:\\flash\\jasper\\ModuleSubreport5.jrxml", "C:\\flash\\jasper\\ModuleSubreport5.jasper");
+    	//JasperCompileManager.compileReportToFile("C:\\flash\\jasper\\observacionesPsicological.jrxml", "C:\\flash\\jasper\\observacionesPsicological.jasper");
     	
         HashMap map = findUsersResults(st, assessment, user);
 

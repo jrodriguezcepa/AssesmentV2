@@ -3083,7 +3083,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
      						"JOIN userassesments ua ON u.loginname = ua.loginname " + 
      						"JOIN assesments a ON a.id = ua.assesment " +
      						"LEFT JOIN userassesmentresults uar ON uar.login = ua.loginname AND uar.assesment = ua.assesment " + 
-     						"WHERE u.loginname LIKE 'tmc_%"+id+"' ORDER BY u.loginname, ua.assesment");
+     						"WHERE u.loginname LIKE 'tmc_%"+id+"' AND ua.assesment IN ("+AssesmentData.TIMAC_BRASIL_DA_2020+","+AssesmentData.TIMAC_BRASIL_EBTW_2020+") ORDER BY u.loginname, ua.assesment");
      		q.addScalar("loginname", Hibernate.STRING);
      		q.addScalar("assesment", Hibernate.INTEGER);
      		q.addScalar("enddate", Hibernate.DATE);
