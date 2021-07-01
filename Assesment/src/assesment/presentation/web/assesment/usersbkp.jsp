@@ -163,7 +163,7 @@
 								</td>
 <%						if(data.isCertificate()) {
 							boolean certSanofi = true;
-							if(id.intValue() == AssesmentData.SANOFI_BRASIL_DA_2019) {
+							if(id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2019) {
 								certSanofi = sys.getUserReportFacade().isResultGreen(user.getLoginname(), new Integer(AssesmentData.SANOFI_BRASIL_EBTW_2019), sys.getUserSessionData());
 							}
 							if(id.intValue() == AssesmentData.TIMAC_BRASIL_DA_2020) {

@@ -193,7 +193,7 @@ public class AssesmentData extends AssesmentAttributes {
 	public static final int GRUPO_MODELO_CUESTIONARIO = 1652;
 
 	public static final int SANOFI_BRASIL_EBTW_2019 = 985;
-	public static final int SANOFI_BRASIL_DA_2019 = 713;
+	public static final int TIMAC_BRASIL_DA_2019 = 713;
 	
 	public static final int TIMAC_BRASIL_EBTW_2020 = 1051;
 	public static final int TIMAC_BRASIL_DA_2020 = 1052;

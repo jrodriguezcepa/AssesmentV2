@@ -20,6 +20,7 @@ import org.hibernate.Query;
 import org.hibernate.classic.Session;
 
 import assesment.communication.administration.user.UserSessionData;
+import assesment.communication.assesment.AssesmentData;
 import assesment.communication.corporation.CediAttributes;
 import assesment.communication.corporation.CediData;
 import assesment.communication.corporation.CorporationAttributes;
@@ -346,7 +347,7 @@ public abstract class CorpReportBean implements SessionBean {
 			Session session = HibernateAccess.currentSession();
 			String sql = "SELECT COUNT(*) AS c FROM users u "+
 			"JOIN userassesments ua ON ua.loginname = u.loginname "+
-			"WHERE location = " + cedi +
+			"WHERE location = " + cedi + " AND assesment = " + AssesmentData.MUTUAL_DA +
 			" AND role = 'systemaccess' AND enddate IS NOT NULL";
 			Query q = session.createSQLQuery(sql).addScalar("c", Hibernate.INTEGER);
 			count = (Integer) q.uniqueResult();
