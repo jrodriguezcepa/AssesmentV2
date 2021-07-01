@@ -70,7 +70,7 @@ public class DownloadMutualReportAction  extends AbstractAction {
 		        response.setHeader("Content-Disposition", "inline; filename=ReportGuinezIngenieria.xls");
 	        }
 	        WritableWorkbook w = Workbook.createWorkbook(response.getOutputStream());
-	        WritableSheet s = w.createSheet("Mutual de Seguridad", 0);
+	        WritableSheet s = w.createSheet("Reporte", 0);
 	        int length=0;
 	        s.addCell(new Label(0,0,messages.getText("user.data.firstname")));
 	        s.addCell(new Label(1,0,messages.getText("user.data.lastname")));
