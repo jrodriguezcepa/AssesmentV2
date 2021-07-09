@@ -3407,5 +3407,63 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		return values;
 	}
 
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+	 */
+	public Collection getNotStartedUsersReportByCedi(Integer assessment, Integer cedi, UserSessionData userSessionData) throws Exception {
+		try {
+			String filter = cedi!=null? " AND u.location = "+cedi : "";
+			if(userSessionData.getFilter().getLoginName().startsWith("charla")) {
+				filter = " AND u.loginname IN (SELECT loginname FROM usersaccess WHERE passworddate > NOW() - INTERVAL '2 hour' AND loginname LIKE 'generate_es_%_"+assessment+"') ";
+			}
+			
+			String sql = "select u.loginname,u.firstname,u.lastname,u.email " + "from userassesments ua "
+					+ "join users u on u.loginname = ua.loginname "  
+					+ "join cedi c on c.id = u.location " + 
+					"where ua.assesment = " + assessment + filter 
+					+ " and u.loginname not in (select distinct loginname from useranswers where assesment = " + assessment + ")";
+			Session session = HibernateAccess.currentSession();
+			SQLQuery question = session.createSQLQuery(sql);
+			question.addScalar("loginname", Hibernate.STRING);
+			question.addScalar("firstname", Hibernate.STRING);
+			question.addScalar("lastname", Hibernate.STRING);
+			question.addScalar("email", Hibernate.STRING);
+			return question.list();
+		} catch (Exception e) {
+			handler.getException(e, "getUsersReport", userSessionData.getFilter().getLoginName());
+		}
+		return new LinkedList();
+	}
 
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,clientreporter,cepareporter,systemaccess"
+	 */
+	public Collection getNotStartedUsersReportByDivision(Integer assessment, String division, UserSessionData userSessionData) throws Exception {
+		try {
+			String filter = "";
+			if (division!=null && !division.equals("")) {
+				 filter = " AND u.extradata = '"+division+"'";
+			}
+			if(userSessionData.getFilter().getLoginName().startsWith("charla")) {
+				filter = " AND u.loginname IN (SELECT loginname FROM usersaccess WHERE passworddate > NOW() - INTERVAL '2 hour' AND loginname LIKE 'generate_es_%_"+assessment+"') ";
+			}
+			
+			String sql = "select u.loginname,u.firstname,u.lastname,u.email " + "from userassesments ua "
+					+ "join users u on u.loginname = ua.loginname "  +
+					"where ua.assesment = " + assessment + filter 
+					+ " and u.loginname not in (select distinct loginname from useranswers where assesment = " + assessment + ")";
+			Session session = HibernateAccess.currentSession();
+			SQLQuery question = session.createSQLQuery(sql);
+			question.addScalar("loginname", Hibernate.STRING);
+			question.addScalar("firstname", Hibernate.STRING);
+			question.addScalar("lastname", Hibernate.STRING);
+			question.addScalar("email", Hibernate.STRING);
+			return question.list();
+		} catch (Exception e) {
+			handler.getException(e, "getUsersReport", userSessionData.getFilter().getLoginName());
+		}
+		return new LinkedList();
+	}
 }

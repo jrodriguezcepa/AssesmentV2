@@ -299,4 +299,9 @@ public interface UsReport
    public java.util.HashMap getWRTUserAnswersByDivision( java.lang.Integer assessment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection getNotStartedUsersReportByCedi( java.lang.Integer assessment, java.lang.Integer cedi, assesment.communication.administration.user.UserSessionData userSessionData )
+	  throws java.lang.Exception, java.rmi.RemoteException;
+
+   public java.util.Collection getNotStartedUsersReportByDivision( java.lang.Integer assessment, java.lang.String division, assesment.communication.administration.user.UserSessionData userSessionData )
+	  throws java.lang.Exception, java.rmi.RemoteException;
 }

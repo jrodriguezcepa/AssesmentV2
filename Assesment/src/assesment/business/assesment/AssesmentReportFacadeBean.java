@@ -524,7 +524,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
     			reportData.addUser(itUsers.next());
     		}
      		
-    		Collection userNotStarted = userReport.getNotStartedUsersReport(assessment,userSessionData);
+    		Collection userNotStarted = userReport.getNotStartedUsersReportByCedi(assessment,cedi,userSessionData);
     		Iterator itNotStarted = userNotStarted.iterator();
     		while(itNotStarted.hasNext()) {
     			Object[] data = (Object[])itNotStarted.next();
@@ -1227,7 +1227,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	    			reportData.addUser(itUsers.next());
 	    		}
 	     		
-	    		Collection userNotStarted = userReport.getNotStartedUsersReport(assessment,userSessionData);
+	    		Collection userNotStarted = userReport.getNotStartedUsersReportByDivision(assessment,division,userSessionData);
 	    		Iterator itNotStarted = userNotStarted.iterator();
 	    		while(itNotStarted.hasNext()) {
 	    			Object[] data = (Object[])itNotStarted.next();
