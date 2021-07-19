@@ -1572,5 +1572,4 @@ public abstract class UsReportFacadeBean implements SessionBean {
         }
         return null; 
     }
-    
 }

@@ -708,7 +708,6 @@ public class MailSender implements Serializable{
 		   // Si tiene algun destinatario ahi si mando el mail
 		    if ((addressBcc != null && addressBcc.length > 0) ||
 		    		(addressTo != null && addressTo.length > 0) ){
-		    
 			    message.setFrom( new InternetAddress(fromMail,fromName) );			  
 			    message.setSentDate(new Date());
 			    message.setSubject(subject);
