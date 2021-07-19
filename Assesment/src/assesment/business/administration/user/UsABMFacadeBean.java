@@ -1120,6 +1120,7 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
      		UsReport usReport = UsReportUtil.getHome().create();
      		
  			String login = usReport.getNextTimacUser(id, userSessionData);
+			System.out.println("getNextTimacUser: "+login);
  			
      		if(login == null) {
      			return 2;
@@ -1132,6 +1133,7 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
 	        	return 1;
      		}
      	}catch (Exception e) {
+     		e.printStackTrace();
      		handler.handleException("saveTimacUser",e);
      	}
      	return 0;

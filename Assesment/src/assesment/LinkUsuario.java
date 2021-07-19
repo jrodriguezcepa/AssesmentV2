@@ -33,7 +33,7 @@ public class LinkUsuario {
 				insert = "INSERT INTO userassesments VALUES ("+assessment+",'"+login+"');\n";
 				fos.write(insert.getBytes());
 				
-				System.out.println("http://www.cepada.com/assesment/index.jsp?login="+key+i);
+				System.out.println("https://www.cepada.com/assesment/index.jsp?login="+key+i);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();

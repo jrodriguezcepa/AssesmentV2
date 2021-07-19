@@ -2924,6 +2924,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             	    "AND enddate IS NULL").addScalar("loginname",Hibernate.STRING);
             Iterator it = query.list().iterator();
             if(it.hasNext()) {
+    			System.out.println("getNextTimacUser: YA EXISTE USUARIO");
             	return (String)it.next();
             }
             Calendar now = Calendar.getInstance();
@@ -2935,6 +2936,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
             it = query.list().iterator();
             if(it.hasNext()) {
             	Object[] data = (Object[])it.next();
+    			System.out.println("Resultado: "+data[0]);
             	end.setTime((Date)data[1]);
             	end.add(Calendar.YEAR, 1);
             	if(now.after(end)) {
@@ -2947,9 +2949,11 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 		     		user.setStartDate(Calendar.getInstance().getTime());
 		     		
 		     		String[] assesments = {String.valueOf(AssesmentData.TIMAC_BRASIL_DA_2020), String.valueOf(AssesmentData.TIMAC_BRASIL_EBTW_2020)};
+	    			System.out.println("Mas de un año: "+data[0]);
 		        	UsABMUtil.getHome().create().userCreate(user, assesments, userSessionData);
 		        	return next;
             	}else {
+	    			System.out.println("Devuelvo: "+data[0]);
             		return (String)data[0];
             	}
             }

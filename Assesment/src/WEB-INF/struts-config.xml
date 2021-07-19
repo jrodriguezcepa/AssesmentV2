@@ -58,6 +58,12 @@
 			<form-property name="company" type="java.lang.String" />
 		</form-bean>
 
+		<form-bean name="CediMultiAccessForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+			<form-property name="company" type="java.lang.String" />
+		</form-bean>
+
 		<form-bean name="CediRegisterForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="loginname" type="java.lang.String" />
 			<form-property name="password" type="java.lang.String" />
@@ -718,6 +724,12 @@
 		</action>
 		
 		<action path="/CediAccess" type="assesment.presentation.actions.user.CediAccessAction" name="CediAccessForm" scope="request">
+			<forward name="logout" path="/logout.jsp" />
+			<forward name="error" path="/grupom_code.jsp" />
+			<forward name="next" path="/grupom_register.jsp" />
+		</action>
+
+		<action path="/CediMultiAccess" type="assesment.presentation.actions.user.CediAccessAction" name="CediMultiAccessForm" scope="request">
 			<forward name="logout" path="/logout.jsp" />
 			<forward name="error" path="/grupom_code.jsp" />
 			<forward name="next" path="/grupom_register.jsp" />

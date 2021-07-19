@@ -52,7 +52,7 @@ public class ResourcesServlet extends HttpServlet {
 		try{
 			
 			String url = request.getRequestURL().toString();
-            if(!url.equals("http://www.cepada.com/assesment/flash/images/")) {
+            if(!url.equals("https://www.cepada.com/assesment/flash/images/")) {
 			
 				OutputStream oos = response.getOutputStream();
 	

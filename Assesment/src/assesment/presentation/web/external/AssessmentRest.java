@@ -112,17 +112,21 @@ public class AssessmentRest {
 	@Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	public Integer saveTimacUser(@QueryParam("user") String user,@QueryParam("password") String password, @QueryParam("id") String id, @QueryParam("firstname") String firstName, @QueryParam("lastname") String lastName, @QueryParam("email") String email) throws RemoteException {
+		Integer v = 0;
 		try{
+			System.out.println("---------- INICIO TIMAC USER ---------------------------");
 			User userSys =new User(user,password);
 			AssesmentAccessRemote sys = CacheManager.getInstance().login(userSys);
 			if(id != null && id.length() > 0) {
 				String cpf = Util.getTimacCPF(id);
-				return sys.getUserABMFacade().saveTimacUser(cpf, firstName, lastName, email, sys.getUserSessionData());
+				System.out.println("CPF: "+cpf);
+				v = sys.getUserABMFacade().saveTimacUser(cpf, firstName, lastName, email, sys.getUserSessionData());
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return 0;
+		System.out.println("---------- FIN TIMAC USER ---------------------------");
+		return v;
 	}
 
 

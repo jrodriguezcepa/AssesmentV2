@@ -937,7 +937,7 @@ public class GenerateReport {
  						body +=	"			<tr>" +
  						"				<td>" +
  						"					Adjuntamos reporte de evaluaci&oacute;n del eLearning Pack 2016, <b>su calificaci&oacute;n fue menor al 80% y tiene habilitada una segunda oportunidad para realizarlo con &eacute;xito.</b><br> " +
- 						"					Por favor, vuelva a ingresar a <a href='http://www.cepada.com'>www.cepada.com</a> <b>con el mismo usuario/contrase&ntilde;a</b> y aproveche al m&aacute;ximo la oportunidad. " +
+ 						"					Por favor, vuelva a ingresar a <a href='https://www.cepada.com'>www.cepada.com</a> <b>con el mismo usuario/contrase&ntilde;a</b> y aproveche al m&aacute;ximo la oportunidad. " +
  						"				</td>" +
  						"			</tr>";
  					} else {
@@ -983,7 +983,7 @@ public class GenerateReport {
  						body +=	"			<tr>" +
  						"				<td>" +
  						"					Adjuntamos reporte de evaluaci&oacute;n del eLearning Pack 2016, <b>su calificaci&oacute;n fue menor al 80% y tiene habilitada una segunda oportunidad para realizarlo con &eacute;xito.</b><br> " +
- 						"					Por favor, vuelva a ingresar a <a href='http://www.cepada.com'>www.cepada.com</a> <b>con el mismo usuario/contrase&ntilde;a</b> y aproveche al m&aacute;ximo la oportunidad, le recordamos que la fecha l&iacute;mite para realizarlo es el d&iacute;a 16 de Septiembre a las 5:00 pm " +
+ 						"					Por favor, vuelva a ingresar a <a href='https://www.cepada.com'>www.cepada.com</a> <b>con el mismo usuario/contrase&ntilde;a</b> y aproveche al m&aacute;ximo la oportunidad, le recordamos que la fecha l&iacute;mite para realizarlo es el d&iacute;a 16 de Septiembre a las 5:00 pm " +
  						"				</td>" +
  						"			</tr>";
  					} else {

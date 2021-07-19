@@ -1315,20 +1315,20 @@ public class JavaReportAction  extends AbstractAction {
 	 private void openCharlaUPMReport(HttpServletResponse response, AssesmentAccess sys) throws Exception {
 	    	
 
-	     /*Connection connDA = DriverManager.getConnection("jdbc:postgresql://177.71.248.87:5432/assesment","postgres","pr0v1s0r1A");
+	     Connection connDA = DriverManager.getConnection("jdbc:postgresql://177.71.248.87:5432/assesment","postgres","pr0v1s0r1A");
 	     Statement stDA = connDA.createStatement();
 		 
 	     UsReportFacade usReport = sys.getUserReportFacade();
-	     ResultSet set = stDA.executeQuery("select distinct loginname from userassesments where assesment = 1052 and loginname like 'tmc_%' and loginname not like 'tmc_a%'");
-	     while(set.next()) {
-	    	 String login = set.getString(1);
+	    // ResultSet set = stDA.executeQuery("select distinct loginname from userassesments where assesment = 1052 and loginname like 'tmc_%' and loginname not like 'tmc_a%'");
+	   //  while(set.next()) {
+	    	 String login = "tmc_03148952138";
 	    	 String id = login.replace("tmc_", "");
 	    	 Object[] data = usReport.existTimacUser(id, sys.getUserSessionData());
 	    	 System.out.println(login+" --> "+data[0]+" -- "+data[1]+" -- "+data[2]+" -- "+data[3]);
-	     }
+	  //   }
 	     
 	     stDA.close();
-	     connDA.close();*/
+	     connDA.close();
 	     
 	     
 	     response.setHeader("Content-Type", "application/vnd.ms-excel");

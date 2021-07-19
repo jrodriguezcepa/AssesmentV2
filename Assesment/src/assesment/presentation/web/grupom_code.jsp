@@ -36,9 +36,19 @@
 		<link rel="shortcut icon" type="image/ico" href="images/favicon.ico">
 		<link rel="stylesheet" href="styles/fonts/pontano_sans.css">
 		<link rel="stylesheet" href="styles/jquery-ui-1.10.3.custom.min.css">
-		<!--[if lt IE 9]>
-			<script type="text/javascript" src="scripts/html5shiv.min.js"></script>
-		<![endif]-->
+		<script type="text/javascript">
+			function changeLogin(value) {
+				var div1 = document.getElementById('loginCedi');
+				var div2 = document.getElementById('loginUsuario');
+				if(value == 2) {
+					div1.style.display='';
+					div2.style.display='none';
+				}else {
+					div1.style.display='none';
+					div2.style.display='';
+				}
+			}
+		</script>
 		<style type="text/css">
 			.fondo{
 				background-color: #EBEBEB;
@@ -71,6 +81,12 @@
 				border: 0px solid #C9C9C9;
 				margin:30px;
 			}
+			.texto{
+				padding-left:10px;
+				font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
+				font-size:0.9em;
+				margin:5px;
+			}
 			.button{
 				background-color: #0F172A;
 				color: #FFFFFF;
@@ -97,32 +113,69 @@
 		<form name="logout" action="./logout.jsp" method="post"></form>
 		<header style="height: 50px;">
 		</header>		
-		<html:form action="/CediAccess" style="padding-right: 0px;">
-			<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
-			<div class="contenedor">
-				<div class="box">
-					<div>
-						<div style="float: left; width: 250px;">
-							<img src="styles/grupomodelo/UI_Logo_CEPA.png" class="logo"/>
-						</div>
-						<div>
-							<img src="styles/grupomodelo/UI_Logo_GMM.png" class="logo"/>
-						</div>
+		<div class="contenedor">
+			<div class="box">
+				<div>
+					<div style="float: left; width: 250px;">
+						<img src="styles/grupomodelo/UI_Logo_CEPA.png" class="logo"/>
 					</div>
 					<div>
-						<input name="code" class="text" placeholder="CODIGO CEDI"/>
+						<img src="styles/grupomodelo/UI_Logo_GMM.png" class="logo"/>
 					</div>
-					<div>
-						<div style="float: left; width: 190px;">
-							<html:submit styleClass="button" value="ENTRAR"/>
-						</div>
-						<div>
-							<html:cancel styleClass="button" value="SALIR"/>
-						</div>
+				</div>
+				<div>
+					<div id="loginCedi">
+						<html:form action="/CediAccess" style="padding-right: 0px;">
+							<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
+							<div>
+								<input name="code" class="text" placeholder="CODIGO CEDI"/>
+							</div>
+							<!-- div>
+								<a href="javascript:changeLogin(1);">
+									<span class="texto">
+										Soy administrador de CEDIs.
+									</span>
+								</a>
+							</div -->
+							<div>
+								<div style="float: left; width: 190px;">
+									<html:submit styleClass="button" value="ENTRAR"/>
+								</div>
+								<div>
+									<html:cancel styleClass="button" value="SALIR"/>
+								</div>
+							</div>
+						</html:form>
+					</div>
+					<div id="loginUsuario" style="display: none;">
+						<html:form action="/CediMultiAccess" style="padding-right: 0px;">
+							<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
+							<div>
+								<input name="user" class="text" placeholder="USUARIO"/>
+							</div>
+							<div>
+								<input type="password" name="password" class="text" placeholder="CONTRASEÑA"/>
+							</div>
+							<div>
+								<a href="javascript:changeLogin(2);">
+									<span class="texto">
+										Ingresar código CEDI.
+									</span>
+								</a>
+							</div>
+							<div>
+								<div style="float: left; width: 190px;">
+									<html:submit styleClass="button" value="ENTRAR"/>
+								</div>
+								<div>
+									<html:cancel styleClass="button" value="SALIR"/>
+								</div>
+							</div>
+						</html:form>
 					</div>
 				</div>
 			</div>
-		</html:form>
+		</div>
 		<script type="text/javascript" src="scripts/jquery-2.0.2.min.js"></script>
 		<script type="text/javascript" src="scripts/assessment.js"></script>
 	</body>

@@ -50,14 +50,14 @@ public class UserCreateAction extends AbstractAction {
         String extradata = createData.getExtraData();
         String extradata2 = createData.getExtraData2();
         
-        //sys.getUserABMFacade().saveTimacUser("02451614145", "KAHUE", "PIRES REIS", "rodriguez.jme@gmail.com", sys.getUserSessionData());
-        Date expiry = null;
+        sys.getUserABMFacade().saveTimacUser("31960260944", "CESAE AUGUSTO","GUERRA FOES", "rodriguez.jme@gmail.com", sys.getUserSessionData());
+        /*Date expiry = null;
         if(Integer.parseInt(createData.getExpiryType()) == UserData.WITH_EXPIRY) {
             expiry = Util.getDate(createData.getUserExpiryDay(),createData.getUserExpiryMonth(),createData.getUserExpiryYear());
-        }
+        }*/
 
         try {
-
+/*
             if(createData.getType().equals("password")) {
                 if(Util.empty(mail)) {
                     session.setAttribute("Msg","user.error.emptymail");
@@ -115,7 +115,7 @@ public class UserCreateAction extends AbstractAction {
                 if(!Util.empty(senderAddress[0])) {
                 	sender.send(mail,"CEPA DATA CENTER",senderAddress[0],senderAddress[1],title,password);
                 }
-            }
+            }*/
             
             return mapping.findForward("list");
                 
