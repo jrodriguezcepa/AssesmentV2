@@ -533,6 +533,7 @@ public abstract class UsABMBean implements SessionBean {
 	}
 	
 	public boolean validateUserCreateData(UserData data,UserSessionData userRequest){
+		System.out.println(data.getPassword()+" "+data.getFirstName()+" "+data.getLastName()+" "+data.getLanguage());
 		if (data.getPassword() == null || data.getPassword().trim().length() == 0) {
 			return false;
 		}

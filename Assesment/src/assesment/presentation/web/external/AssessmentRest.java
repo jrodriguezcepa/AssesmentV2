@@ -115,6 +115,9 @@ public class AssessmentRest {
 		Integer v = 0;
 		try{
 			System.out.println("---------- INICIO TIMAC USER ---------------------------");
+			System.out.println("Datos: "+id+" - "+firstName+" - "+lastName+" - "+email);
+			firstName = firstName.replaceAll("_", " ");
+			lastName = lastName.replaceAll("_", " ");
 			User userSys =new User(user,password);
 			AssesmentAccessRemote sys = CacheManager.getInstance().login(userSys);
 			if(id != null && id.length() > 0) {
