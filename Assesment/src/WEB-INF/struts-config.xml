@@ -729,7 +729,7 @@
 			<forward name="next" path="/grupom_register.jsp" />
 		</action>
 
-		<action path="/CediMultiAccess" type="assesment.presentation.actions.user.CediAccessAction" name="CediMultiAccessForm" scope="request">
+		<action path="/CediMultiAccess" type="assesment.presentation.actions.user.CediMultiAccessAction" name="CediMultiAccessForm" scope="request">
 			<forward name="logout" path="/logout.jsp" />
 			<forward name="error" path="/grupom_code.jsp" />
 			<forward name="next" path="/grupom_register.jsp" />

@@ -130,13 +130,14 @@
 							<div>
 								<input name="code" class="text" placeholder="CODIGO CEDI"/>
 							</div>
-							<!-- div>
+							<div>
+								<br>
 								<a href="javascript:changeLogin(1);">
 									<span class="texto">
 										Soy administrador de CEDIs.
 									</span>
 								</a>
-							</div -->
+							</div>
 							<div>
 								<div style="float: left; width: 190px;">
 									<html:submit styleClass="button" value="ENTRAR"/>

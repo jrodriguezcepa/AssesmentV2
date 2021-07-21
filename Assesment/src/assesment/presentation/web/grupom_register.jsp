@@ -2,6 +2,8 @@
 <%@page import="assesment.presentation.translator.web.util.Util"%>
 <%@ page language="java"
 	import="assesment.business.*"	
+	import="assesment.business.administration.corporation.*"	
+	
 	import="assesment.communication.language.*"
 	import="assesment.communication.assesment.AssesmentAttributes"
 	import="java.util.Collection"
@@ -9,7 +11,7 @@
 	import="assesment.presentation.translator.web.util.OptionItem"
 	import="assesment.communication.user.UserData"
 	import="assesment.communication.util.CountryConstants"
-	import="java.util.Iterator"
+	import="java.util.Iterator"	
 	import="assesment.communication.util.CountryData"
 	import="assesment.communication.language.tables.LanguageData"
 	import="assesment.presentation.actions.user.UserCreateForm"
@@ -36,10 +38,22 @@
 		if(Util.isNumber(c))
 			cedi = new Integer(c); 
 	}
+	CorpReportFacade corpReportFacade = sys.getCorporationReportFacade();
 	String cediName="";
 	if(cedi!=null){
-		CediAttributes cediAttributes = sys.getCorporationReportFacade().findCediAttributes(new Integer(cedi),sys.getUserSessionData());
+		CediAttributes cediAttributes = corpReportFacade.findCediAttributes(new Integer(cedi),sys.getUserSessionData());
 		cediName = cediAttributes.getName().toUpperCase();
+	}
+	Integer [] cedis = null;
+	LinkedList <CediAttributes> cedisAttributes = null;
+	if (cedi == null){
+		cedis = (Integer[])session.getAttribute("cedis");
+		if (cedis != null){
+			for (Integer i: cedis){
+				CediAttributes aux = corpReportFacade.findCediAttributes(new Integer(i),sys.getUserSessionData());
+				cedisAttributes.add(aux);
+			}
+		}
 	}
 %>   
 
@@ -128,8 +142,10 @@
 		<header style="height: 50px;">
 		</header>		
 		<html:form action="/CediRegister">
-			<html:hidden property="cedi" value='<%=String.valueOf(cedi)%>'/>
-			<html:hidden property="company" value='<%=String.valueOf(CediData.GRUPO_MODELO)%>'/>
+<%			if(cedi != null){
+%>			<html:hidden property="cedi" value='<%=String.valueOf(cedi)%>'/>
+<%			}
+%>			<html:hidden property="company" value='<%=String.valueOf(CediData.GRUPO_MODELO)%>'/>
 			<div class="contenedor">
 				<div class="box">
 					<div>
@@ -140,9 +156,26 @@
 							<img src="styles/grupomodelo/UI_Logo_GMM.png" class="logo"/>
 						</div>
 					</div>
-					<div class="cedi">
-						CEDI: <b><%= cediName %></b>
-					</div>
+<%					if(cedi != null){
+%>						<div class="cedi">
+							CEDI: <b><%= cediName %></b>
+						</div>
+<%					}else{
+	
+%>						
+						<div class="cedi">
+							CEDI: 
+							<select name="cedi" style="width: 100px;" class="input">
+			        			<option value=""><%=messages.getText("generic.messages.select")%></option>
+<% 									//Iterator<CediAttributes> it = cedisAttributes.iterator();
+			   						//while(it.hasNext()) {
+			        					//CediAttributes c = it.next();
+%>			        		
+<%			    					//}
+%>						  </select>
+					  </div>
+<%		    		}
+%>
 					<div>
 						<input name="loginname" class="text" placeholder='<%=messages.getText("user.data.nickname").toUpperCase()+"*"%>'/>
 					</div>
