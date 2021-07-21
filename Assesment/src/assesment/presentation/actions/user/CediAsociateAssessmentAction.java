@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +25,6 @@ import org.apache.struts.action.DynaActionForm;
 
 import assesment.business.AssesmentAccess;
 import assesment.communication.administration.user.UserSessionData;
-import assesment.communication.assesment.AssesmentAttributes;
 import assesment.communication.corporation.CediAttributes;
 import assesment.communication.language.Text;
 import assesment.communication.user.UserData;
@@ -56,31 +56,36 @@ public class CediAsociateAssessmentAction extends AbstractAction {
 	        	String userName = (String)it.next();
 	        	UserData user = sys.getUserReportFacade().findUserByPrimaryKey(userName, sys.getUserSessionData());
 	        	CediAttributes cedi=sys.getCorporationReportFacade().findCediAttributes(user.getLocation(), sys.getUserSessionData());
-	        	String cediManager = cedi.getLoginName();
-	        	ArrayList<UserData> managerUsers = managers.get(cediManager);
-	        	if(managerUsers!=null) {
-		        	managerUsers.add(user);
-	        	}else {
-	        		managerUsers = new ArrayList<UserData>();
-	        		managerUsers.add(user);
+	        	StringTokenizer cediManagerT = new StringTokenizer(cedi.getLoginName(), ",");
+	        	while(cediManagerT.hasMoreTokens()) {
+	        		String cediManager = cediManagerT.nextToken().trim();
+		        	ArrayList<UserData> managerUsers = managers.get(cediManager);
+		        	if(managerUsers!=null) {
+			        	managerUsers.add(user);
+		        	}else {
+		        		managerUsers = new ArrayList<UserData>();
+		        		managerUsers.add(user);
+		        	}
+		        	managers.put(cediManager, managerUsers);
 	        	}
-	        	managers.put(cediManager, managerUsers);
 	        }
 	        Set<String> keys = managers.keySet();
        
 	    	for(String i: keys) {
 	        	UserData manager = sys.getUserReportFacade().findUserByPrimaryKey(i, sys.getUserSessionData());
-	    		String body = "<table>";
-	    	    body += "<tr><td>eBTW asociados: </td><tr>";	 
-	    		for (UserData j: managers.get(i)) {
-	        	    body += "<tr><td></td><tr>";
-	        	    body += "<tr><td>Nombre: "+ j.getFirstName() + " "+j.getLastName() +" </td><tr>";
-	        	    body += "<tr><td>Usuario: "+ j.getLoginName() +" </td><tr>";
-	        	    body += "<tr><td></td><tr>";
-
-	    		}
-	    	    body += "</table>";
-	    		sendEmail(null,sys,body,"eBTW asociados",manager.getEmail(),files,null);
+	        	if(manager.getEmail() != null) {
+		    		String body = "<table>";
+		    	    body += "<tr><td>eBTW asociados: </td><tr>";	 
+		    		for (UserData j: managers.get(i)) {
+		        	    body += "<tr><td></td><tr>";
+		        	    body += "<tr><td>Nombre: "+ j.getFirstName() + " "+j.getLastName() +" </td><tr>";
+		        	    body += "<tr><td>Usuario: "+ j.getLoginName() +" </td><tr>";
+		        	    body += "<tr><td></td><tr>";
+	
+		    		}
+		    	    body += "</table>";
+		    		sendEmail(null,sys,body,"eBTW asociados",manager.getEmail(),files,null);
+	        	}
 	    		//sendEmail(null,sys,body,"eBTW asociados","crodriguez@cepasafedrive.com",files,null);
 	    	}	
     	}
