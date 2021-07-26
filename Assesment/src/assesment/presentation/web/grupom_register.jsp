@@ -45,7 +45,7 @@
 		cediName = cediAttributes.getName().toUpperCase();
 	}
 	Integer [] cedis = null;
-	LinkedList <CediAttributes> cedisAttributes = null;
+	LinkedList <CediAttributes> cedisAttributes = new LinkedList <CediAttributes>();
 	if (cedi == null){
 		cedis = (Integer[])session.getAttribute("cedis");
 		if (cedis != null){
@@ -161,17 +161,15 @@
 							CEDI: <b><%= cediName %></b>
 						</div>
 <%					}else{
-	
-%>						
-						<div class="cedi">
+%>						<div class="cedi">
 							CEDI: 
-							<select name="cedi" style="width: 100px;" class="input">
+							<select name="cedi" style="width: 200px;" class="input">
 			        			<option value=""><%=messages.getText("generic.messages.select")%></option>
-<% 									//Iterator<CediAttributes> it = cedisAttributes.iterator();
-			   						//while(it.hasNext()) {
-			        					//CediAttributes c = it.next();
-%>			        		
-<%			    					//}
+<% 									Iterator<CediAttributes> it = cedisAttributes.iterator();
+			   						while(it.hasNext()) {
+			        					CediAttributes c = it.next();
+%>			        		    <option value='<%=c.getId()%>'><%=c.getName()%></option>
+<%			    					}
 %>						  </select>
 					  </div>
 <%		    		}

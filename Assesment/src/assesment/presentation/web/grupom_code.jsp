@@ -80,6 +80,7 @@
 				-webkit-border-radius: 0.8em;
 				border: 0px solid #C9C9C9;
 				margin:30px;
+				margin-bottom:0px;
 			}
 			.texto{
 				padding-left:10px;
@@ -130,13 +131,16 @@
 							<div>
 								<input name="code" class="text" placeholder="CODIGO CEDI"/>
 							</div>
-							<div>
+							<div class = "texto">
 								<br>
+							
 								<a href="javascript:changeLogin(1);">
 									<span class="texto">
 										Soy administrador de CEDIs.
 									</span>
 								</a>
+								<br>
+								
 							</div>
 							<div>
 								<div style="float: left; width: 190px;">
@@ -153,16 +157,16 @@
 							<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
 							<div>
 								<input name="user" class="text" placeholder="USUARIO"/>
+								<input type="password" name="password" class="text" placeholder="CONTRASEÑA" style="margin-top:-10px"/>
 							</div>
-							<div>
-								<input type="password" name="password" class="text" placeholder="CONTRASEÑA"/>
-							</div>
-							<div>
+						
+							<div class = "texto">
 								<a href="javascript:changeLogin(2);">
 									<span class="texto">
 										Ingresar código CEDI.
 									</span>
 								</a>
+								<br><br>
 							</div>
 							<div>
 								<div style="float: left; width: 190px;">
