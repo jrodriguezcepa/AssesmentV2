@@ -186,11 +186,17 @@
 							} else if(map.containsKey(assessment.getId())) {
 								if(map.get(assessment.getId()) != null) {
 									if((group.getId().equals(GroupData.GRUPO_MODELO) && assessment.isGMEvaluacion())
+											|| group.getId().equals(GroupData.ELANCO_EBTWPLUS)
 											|| ((assessment.getId() == AssesmentData.MONDELEZ_DA || assessment.getId() == AssesmentData.MONDELEZ_DA_V2) && (gId == GroupData.MONDELEZ_LIDERES || gId == GroupData.MONDELEZ_PROVISIONALDRIVERS || gId == GroupData.MONDELEZ_NEWDRIVERS))
 											|| (assessment.getId() == AssesmentData.KOF_ASESORES || assessment.getId() == AssesmentData.KOF_COORDINADORES)) {
 										boolean repeat = !sys.getUserReportFacade().isResultGreen(userData.getLoginName(), assessment.getId(), userSessionData);
 										if(repeat) {
-											repeat = sys.getUserReportFacade().getFailedAssesments(userSessionData.getFilter().getLoginName(), assessment.getId(), userSessionData) == 0;
+											int failed = sys.getUserReportFacade().getFailedAssesments(userSessionData.getFilter().getLoginName(), assessment.getId(), userSessionData); 
+											if(group.getId().equals(GroupData.ELANCO_EBTWPLUS)) {
+												repeat = failed < 3;
+											}else {
+												repeat = failed == 0;
+											}
 										}
 										if(repeat) {
 											link += "&delete=1";	

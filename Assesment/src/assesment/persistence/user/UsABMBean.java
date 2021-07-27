@@ -972,7 +972,7 @@ public abstract class UsABMBean implements SessionBean {
 	            session.save(result);
             }
             
-            if(assesmentId.intValue() == AssesmentData.UPL_NEWHIRE) {
+            if(assesmentId.intValue() == AssesmentData.UPL_NEWHIRE || assesmentId.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
                 right = 0;
                 wrong = 0;
                 points = 0;

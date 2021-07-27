@@ -100,7 +100,7 @@
 	   			<td width="100%">
 					<form name='<%="users_"+role%>'>
 						<jsp:include  page='<%="../component/utilitybox2top.jsp?title="+messages.getText("role."+role+".name")%>' />
-		   				<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2" height="100">
+		   				<table width="100%" border="0" align="center" cellpadding="2" cellspacing="2">
 		   					<tr>
 		   						<td align="center" class="guide2" width="2%"></td>
 		   						<td align="center" class="guide2" width="23%"><%=messages.getText("user.data.nickname") %></td>
@@ -112,7 +112,7 @@
 				while(it.hasNext()) {
 					UserData user = it.next();
 	            	color = !color;
-%>
+%>							
 		   					<tr class='<%=(color) ? "lineone" : "linetwo"%>'>
 		   						<td align="center"><input type="checkbox" name="<%=user.getLoginName()%>" value="<%=user.getLoginName()%>"/></td>
 		   						<td align="left"><%=user.getLoginName()%></td>

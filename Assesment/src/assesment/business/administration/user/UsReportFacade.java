@@ -10,6 +10,9 @@ public interface UsReportFacade
    extends javax.ejb.EJBObject
 {
 
+   public boolean login( java.lang.String loginName,java.lang.String passwd )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public assesment.communication.user.UserData findUserByPrimaryKey( java.lang.String userPK,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
@@ -238,7 +241,7 @@ public interface UsReportFacade
    public java.util.Collection findCediMissingUsers( java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName, java.lang.String userName, java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName,java.lang.String userName,java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public java.lang.Object[] existTimacUser( java.lang.String id,assesment.communication.administration.user.UserSessionData userSessionData )

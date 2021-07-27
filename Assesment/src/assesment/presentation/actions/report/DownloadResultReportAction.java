@@ -206,7 +206,7 @@ public class DownloadResultReportAction  extends AbstractAction {
 	    	   	    report.executeReport(out, 1);
 		            out.flush();
 		            out.close();
-	        	} else if(Integer.parseInt(assessment) == AssesmentData.UPL_NEWHIRE) {
+	        	} else if(Integer.parseInt(assessment) == AssesmentData.UPL_NEWHIRE || Integer.parseInt(assessment) == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
 	        		
 	        		Class.forName("org.postgresql.Driver");
 	                Connection conn1 = DriverManager.getConnection("jdbc:postgresql://localhost:5432/assesment","postgres","pr0v1s0r1A");

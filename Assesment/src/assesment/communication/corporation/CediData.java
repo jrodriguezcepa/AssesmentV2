@@ -3,10 +3,6 @@
  */
 package assesment.communication.corporation;
 
-import java.util.Collection;
-
-import assesment.communication.assesment.AssesmentData;
-
 public class CediData extends CediAttributes {
 
     public static final int GRUPO_MODELO = 1;
@@ -14,6 +10,7 @@ public class CediData extends CediAttributes {
 
     public static final int COVEPA = 514;
     public static final int AUSTRAL = 526;
+	public static final int RESITER = 518;
 
     public CediData() {
         super();
@@ -30,6 +27,8 @@ public class CediData extends CediAttributes {
    				return 55;
    			case AUSTRAL:
    				return 100;
+   			case RESITER:
+   				return 70;
    		}
    		return 50;
    	}

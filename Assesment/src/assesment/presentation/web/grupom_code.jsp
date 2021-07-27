@@ -15,6 +15,17 @@
 
 <%	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	Text messages = sys.getText();
+
+	String login1 = "";
+	String login2 = "style='display: none;'";
+	
+	String msg = (String)session.getAttribute("Msg");
+	if(msg!=null){
+		if(msg.equals("Usuario incorrecto") || msg.equals("Usuario sin CEDI asociado")) {
+			login1 = login2;
+			login2 = "";
+		}
+	}
 	
 	RequestDispatcher dispatcher=request.getRequestDispatcher("/util/jsp/message.jsp");
 	dispatcher.include(request,response);
@@ -61,7 +72,19 @@
 				margin: 0 auto;
 				margin-top:20px;
 				width:412px;
-				height:313px;
+				height:320px;
+	        	border-radius: 1.2em;
+				-moz-border-radius: 1.2em;
+				-webkit-border-radius: 1.2em;
+				border: 0px solid #C9C9C9;
+				box-shadow: 2px 2px #CCCCCC;'
+			}
+			.box2{
+				background-color: #F1F4F9;
+				margin: 0 auto;
+				margin-top:20px;
+				width:412px;
+				height:400px;
 	        	border-radius: 1.2em;
 				-moz-border-radius: 1.2em;
 				-webkit-border-radius: 1.2em;
@@ -84,9 +107,14 @@
 			}
 			.texto{
 				padding-left:10px;
+				color: #333333;
+				padding-top:10px;
+				padding-bottom:10px;
 				font-family: 'Roboto Thin',"Helvetica Neue", Helvetica, Arial, "Pontano Sans", Verdana, sans-serif;
 				font-size:0.9em;
+				font-weight: bold;
 				margin:5px;
+				
 			}
 			.button{
 				background-color: #0F172A;
@@ -115,7 +143,7 @@
 		<header style="height: 50px;">
 		</header>		
 		<div class="contenedor">
-			<div class="box">
+			<div id="loginCedi" class="box" <%=login1%>>
 				<div>
 					<div style="float: left; width: 250px;">
 						<img src="styles/grupomodelo/UI_Logo_CEPA.png" class="logo"/>
@@ -125,22 +153,18 @@
 					</div>
 				</div>
 				<div>
-					<div id="loginCedi">
+					<div>
 						<html:form action="/CediAccess" style="padding-right: 0px;">
 							<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
 							<div>
 								<input name="code" class="text" placeholder="CODIGO CEDI"/>
 							</div>
-							<div class = "texto">
-								<br>
-							
-								<a href="javascript:changeLogin(1);">
+							<div style="margin:10px;">
+								<a href="javascript:changeLogin(1);" style="text-decoration: none;">
 									<span class="texto">
-										Soy administrador de CEDIs.
+										Soy administrador de CEDIs
 									</span>
 								</a>
-								<br>
-								
 							</div>
 							<div>
 								<div style="float: left; width: 190px;">
@@ -152,18 +176,31 @@
 							</div>
 						</html:form>
 					</div>
-					<div id="loginUsuario" style="display: none;">
+				</div>
+			</div>
+			<div  id="loginUsuario" class="box2" <%=login2%>>
+				<div>
+					<div style="float: left; width: 250px;">
+						<img src="styles/grupomodelo/UI_Logo_CEPA.png" class="logo"/>
+					</div>
+					<div>
+						<img src="styles/grupomodelo/UI_Logo_GMM.png" class="logo"/>
+					</div>
+				</div>
+				<div>
+					<div>
 						<html:form action="/CediMultiAccess" style="padding-right: 0px;">
 							<html:hidden property="company" value="<%=String.valueOf(CediData.GRUPO_MODELO)%>" />
 							<div>
 								<input name="user" class="text" placeholder="USUARIO"/>
-								<input type="password" name="password" class="text" placeholder="CONTRASEÑA" style="margin-top:-10px"/>
 							</div>
-						
-							<div class = "texto">
-								<a href="javascript:changeLogin(2);">
+							<div>
+								<input type="password" name="password" class="text" placeholder="CONTRASEÑA"/>
+							</div>
+							<div style="margin:10px;">
+								<a href="javascript:changeLogin(2);" style="text-decoration: none;">
 									<span class="texto">
-										Ingresar código CEDI.
+										Ingresar código CEDI
 									</span>
 								</a>
 								<br><br>
