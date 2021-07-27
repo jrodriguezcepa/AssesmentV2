@@ -21,6 +21,8 @@ import java.util.LinkedList;
 import javax.ejb.CreateException;
 import javax.ejb.SessionBean;
 
+import org.hibernate.classic.Session;
+
 import assesment.business.AssesmentAccess;
 import assesment.business.util.ExceptionHandler;
 import assesment.communication.administration.MultiAnswerUserData;
@@ -46,12 +48,15 @@ import assesment.communication.report.UsersReportDataSource;
 import assesment.communication.user.UserData;
 import assesment.communication.util.GenerateReport;
 import assesment.communication.util.ListResult;
+import assesment.communication.util.MD5;
 import assesment.persistence.administration.tables.AssessmentUserData;
 import assesment.persistence.assesment.AssesmentReport;
 import assesment.persistence.assesment.AssesmentReportUtil;
+import assesment.persistence.hibernate.HibernateAccess;
 import assesment.persistence.user.UsReport;
 import assesment.persistence.user.UsReportHome;
 import assesment.persistence.user.UsReportUtil;
+import assesment.persistence.user.tables.User;
 import assesment.persistence.util.Util;
 
 /**
@@ -85,6 +90,25 @@ public abstract class UsReportFacadeBean implements SessionBean {
 	public void ejbCreate() throws CreateException {
 		// TODO Auto-generated method stub
 
+	}
+
+
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name =
+	 *                 "systemaccess,administrator,accesscode,clientreporter,cepareporter"
+	 * 
+	 * @param loginName
+	 * @param passwd
+	 * @return boolean
+	 */
+	public boolean login(String loginName, String passwd) throws Exception {
+		try {
+			return UsReportUtil.getHome().create().login(loginName, passwd);
+		} catch (Exception e) {
+            handler.handleException("login", e);
+		}
+		return false;
 	}
 
 	/**

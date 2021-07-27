@@ -242,7 +242,8 @@ public class AssesmentData extends AssesmentAttributes {
 
 	public static final int PMI_NEWHIRE = 1449;
 	
-	public static final int UPL_NEWHIRE = 1489;
+	public static final int UPL_NEWHIRE = 1867;
+	public static final int AGROBIOLOGICA_NEWHIRE = 1489;
 
 	public static final int BTW2_REFRESH_WEBINAR = 1504;
 	public static final int MONITORES_WEBINAR = 1517;
@@ -487,6 +488,7 @@ public class AssesmentData extends AssesmentAttributes {
 				id.intValue() == AssesmentData.MONDELEZ_DA || 
 				id.intValue() == AssesmentData.MONDELEZ_DA_V2 || 
 				id.intValue() == AssesmentData.UPL_NEWHIRE || 
+				id.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE || 
 				id.intValue() == AssesmentData.ASTRAZENECA_BRASIL_DRIVERASSESSMENT || 
 				id.intValue() == AssesmentData.SUMITOMO || 
 				id.intValue() == AssesmentData.SUMITOMO_4X4 || 

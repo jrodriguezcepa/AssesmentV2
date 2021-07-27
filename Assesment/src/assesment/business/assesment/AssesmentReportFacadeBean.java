@@ -420,7 +420,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
     			}
     		}
 
-     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE) {
+     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE || assessment.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
      			Collection results2 = userReport.findResults(assessment, 2, userSessionData);
      			it = results2.iterator();
      			while(it.hasNext()) {
@@ -500,7 +500,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
     			}
     		}
 
-     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE) {
+     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE || assessment.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
      			Collection results2 = userReport.findResults(assessment, 2, userSessionData);
      			it = results2.iterator();
      			while(it.hasNext()) {
@@ -579,7 +579,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
     			}
     		}
 
-     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE) {
+     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE || assessment.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
      			Collection results2 = userReport.findResults(assessment, 2, userSessionData);
      			it = results2.iterator();
      			while(it.hasNext()) {
@@ -1098,7 +1098,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	    			}
 	    		}
 
-	     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE) {
+	     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE || assessment.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
 	     			Collection results2 = userReport.findResults(assessment, 2, userSessionData);
 	     			it = results2.iterator();
 	     			while(it.hasNext()) {
@@ -1203,7 +1203,7 @@ public abstract class AssesmentReportFacadeBean implements SessionBean {
 	    			}
 	    		}
 
-	     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE) {
+	     		if(assessment.intValue() == AssesmentData.UPL_NEWHIRE || assessment.intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
 	     			Collection results2 = userReport.findResults(assessment, 2, userSessionData);
 	     			it = results2.iterator();
 	     			while(it.hasNext()) {

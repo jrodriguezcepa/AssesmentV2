@@ -45,7 +45,7 @@ public class CediAsociateAssessmentAction extends AbstractAction {
         DynaActionForm createData = (DynaActionForm) createForm;
         Collection users = Util.stringToCollection(createData.getString("list"));
         int type = Integer.parseInt(createData.getString("type"));
-    	//sys.getUserABMFacade().userCediAsociate(users, type, sys.getUserSessionData());
+    	sys.getUserABMFacade().userCediAsociate(users, type, sys.getUserSessionData());
       
     	if(type>=3) {
             Collection<String> files = new LinkedList<String>();

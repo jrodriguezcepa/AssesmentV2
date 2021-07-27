@@ -43,14 +43,15 @@ public class CediMultiAccessAction extends AbstractAction {
             String loginName = createData.getString("user");
             String password = createData.getString("password");
             String company = createData.getString("company");
-            if(loginName == null || loginName.trim().length() == 0) {
+            if(Util.empty(loginName) || Util.empty(password) || !sys.getUserReportFacade().login(loginName, password)) {
             	session.setAttribute("Msg", "Usuario incorrecto");
                 return mapping.findForward("error");
             }
+            
 
             Integer[] cedis = sys.getCorporationReportFacade().findCediUser(loginName, sys.getUserSessionData());
 
-            if(cedis == null) {
+            if(cedis == null || cedis.length == 0) {
             	session.setAttribute("Msg", "Usuario sin CEDI asociado");
                 return mapping.findForward("error");
             }

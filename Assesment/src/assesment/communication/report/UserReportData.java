@@ -128,7 +128,7 @@ public class UserReportData {
 		column++;
 		line += "data.setCell("+index+", "+column+", "+incorrect+", '"+incorrect+"', {style: 'color:black;'});";
 		column++;
-		if(assessment.getId().intValue() == AssesmentData.UPL_NEWHIRE) {
+		if(assessment.getId().intValue() == AssesmentData.UPL_NEWHIRE || assessment.getId().intValue() == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
 			line += getSecondStyle(index,column,messages);
 			column++;
 		}

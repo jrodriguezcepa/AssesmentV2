@@ -51,6 +51,8 @@ public class GroupData {
 	public static final int GUINEZ_ADMINISTRACION = 131;
 	public static final int GUINEZ_FAENA = 132;
 	
+	public static final int ELANCO_EBTWPLUS = 178;
+	
 	public GroupData(Integer id, Integer corporation, String name, boolean initialText, String image, Integer layout, boolean repeatable) {
 		this.id = id;
 		this.corporation = corporation; 

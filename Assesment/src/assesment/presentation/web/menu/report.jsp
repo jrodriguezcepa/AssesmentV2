@@ -279,7 +279,7 @@
 <%		}
 %>        data.addColumn('number', '<%=messages.getText("module.resultreport.right")%>');
           data.addColumn('number', '<%=messages.getText("module.resultreport.wrong")%>');
-<%		if(Integer.parseInt(assessmentId) == AssesmentData.UPL_NEWHIRE) {
+<%		if(Integer.parseInt(assessmentId) == AssesmentData.UPL_NEWHIRE || Integer.parseInt(assessmentId) == AssesmentData.AGROBIOLOGICA_NEWHIRE) {
 %>			data.addColumn('string', '<%=messages.getText("generic.newhire.driverprofile")%>');
 			data.addColumn('string', '<%=messages.getText("generic.newhire.basictest")%>');
 <%		}else {
