@@ -688,7 +688,7 @@ public abstract class UsABMBean implements SessionBean {
             if (answer == null) {
                 throw new InvalidDataException("saveAnswer","answer is null");
             }
-
+            
             Session session = HibernateAccess.currentSession();
             
             UserAssesment userAssesment = (UserAssesment)session.load(UserAssesment.class,new UserAssesmentPK(user,assesment));
