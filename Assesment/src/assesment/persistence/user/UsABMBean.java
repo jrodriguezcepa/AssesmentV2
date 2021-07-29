@@ -674,7 +674,7 @@ public abstract class UsABMBean implements SessionBean {
      * @ejb.permission role-name = "systemaccess,administrator,basf_assessment"
      */
     public int[] saveAnswer(String user,Integer assesment,UserAnswerData answer,UserSessionData userSessionData,boolean psico,boolean feedback) throws Exception {
-        int[] values = {0,0};
+    	int[] values = {0,0};
         try {
             if (userSessionData == null) {
                 throw new DeslogedException("saveAnswer","session = null");
@@ -733,6 +733,7 @@ public abstract class UsABMBean implements SessionBean {
             if(assesment.intValue() == AssesmentData.MUTUAL_DA ||assesment.intValue() == AssesmentData.ABBOTT_NEWDRIVERS
             		||assesment.intValue() == AssesmentData.ABBEVIE_LATAM ||assesment.intValue() == AssesmentData.SUMITOMO
             		|| assesment.intValue() == AssesmentData.GUINEZ_INGENIERIA_V3) {
+
             	int right = 0;
 	            int wrong = 0;
 	            int module = 0;
@@ -775,22 +776,20 @@ public abstract class UsABMBean implements SessionBean {
 			                	Object[] data = (Object[]) it.next();
 			                	int moduleId = ((Integer)data[0]).intValue(); 
 			                	if(moduleId != module) {
-			                		if(module != 0) {
-			                			Query q3 = session.createQuery("SELECT r FROM UserAssesmentResult r WHERE r.assesment = "+assesment+" AND r.login = '"+user+"' AND r.type = "+module);
-			                            Iterator it3 = q3.list().iterator();
-			                            if(it3.hasNext()) {
-			                            	UserAssesmentResult r = (UserAssesmentResult)it3.next();
-			                                r.setCorrect(right);
-			                                r.setIncorrect(wrong);
-			                                session.update(r);
-			                            }else {
-			                            	UserAssesmentResult result = new UserAssesmentResult(user, assesment, module, right, wrong, points);
-			                    	        session.save(result);
-			                            }
-			                            right = 0;
-			                            wrong = 0;
-			                            points = 0;
-			                    	}
+		                			Query q3 = session.createQuery("SELECT r FROM UserAssesmentResult r WHERE r.assesment = "+assesment+" AND r.login = '"+user+"' AND r.type = "+module);
+		                            Iterator it3 = q3.list().iterator();
+		                            if(it3.hasNext()) {
+		                            	UserAssesmentResult r = (UserAssesmentResult)it3.next();
+		                                r.setCorrect(right);
+		                                r.setIncorrect(wrong);
+		                                session.update(r);
+		                            }else {
+		                            	UserAssesmentResult result = new UserAssesmentResult(user, assesment, module, right, wrong, points);
+		                    	        session.save(result);
+		                            }
+		                            right = 0;
+		                            wrong = 0;
+		                            points = 0;
 			                    	module = moduleId;
 			                    }
 			                    if(((Integer)data[1]).intValue() == AnswerData.CORRECT) {
