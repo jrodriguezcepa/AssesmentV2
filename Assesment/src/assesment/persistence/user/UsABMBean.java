@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -28,7 +27,6 @@ import assesment.communication.question.QuestionData;
 import assesment.communication.security.SecurityConstants;
 import assesment.communication.user.UserData;
 import assesment.communication.util.MD5;
-import assesment.persistence.administration.tables.AnswersUser;
 import assesment.persistence.administration.tables.FailedAssessment;
 import assesment.persistence.administration.tables.ReporterAssesment;
 import assesment.persistence.administration.tables.UserAnswer;
@@ -45,6 +43,7 @@ import assesment.persistence.administration.tables.UserSpecificAnswer;
 import assesment.persistence.assesment.tables.Assesment;
 import assesment.persistence.assesment.tables.Group;
 import assesment.persistence.hibernate.HibernateAccess;
+import assesment.persistence.user.tables.ForgotPassword;
 import assesment.persistence.user.tables.User;
 import assesment.persistence.user.tables.UserAccess;
 import assesment.persistence.user.tables.UserCode;
@@ -422,6 +421,30 @@ public abstract class UsABMBean implements SessionBean {
             handler.getException(e, "persistence.user.modifyPassword", userRequest.getFilter().getLoginName());
         }
     }
+
+	/**
+	 * @ejb.interface-method
+     * @ejb.permission role-name = "administrator,accesscode"
+	 * Modify the password of the logged user.
+	 * @param password	- New Password
+	 * @param userRequest	- Logged user 	
+	 * @throws Exception
+	 */
+	public void resetPassword(UserData userData, Integer resetId, UserSessionData userSessionData) throws Exception {
+		try {
+            Session session = HibernateAccess.currentSession();
+			modifyPassword(userData.getLoginName(), userData.getPassword(), userSessionData);
+			
+			ForgotPassword forgot = (ForgotPassword)session.load(ForgotPassword.class, resetId);
+			if(forgot != null) {
+				forgot.setUsed(true);
+				session.save(forgot);
+			}
+					
+		} catch (Exception e) {
+            handler.getException(e, "resetPassword", userSessionData.getFilter().getLoginName());
+        }
+	}
 
     /**
      * @ejb.interface-method
@@ -1355,6 +1378,27 @@ public abstract class UsABMBean implements SessionBean {
 		} catch (Exception e) {
             handler.getException(e, "deleteSendedReport", userSessionData.getFilter().getLoginName());
         }		
+	}
+	
+    /**
+	 * @ejb.interface-method
+     * @ejb.permission role-name = "administrator,accesscode,systemaccess"
+	 * 
+	 * @param data
+	 * @param userRequest
+	 * @throws Exception
+	 */
+	public String forgotPassword(UserData user, UserSessionData userSessionData) throws Exception {
+		String key = null;
+		try {
+			Calendar c = Calendar.getInstance();
+			key =  new MD5().encriptar(user.getLoginName() + "_" + c.getTimeInMillis());
+			ForgotPassword forgot = new ForgotPassword(key, user.getLoginName(), c.getTime());
+			HibernateAccess.currentSession().save(forgot);
+		} catch (Exception e) {
+            handler.getException(e, "forgotPassword", userSessionData.getFilter().getLoginName());
+        }
+		return key;
 	}
 	
 }

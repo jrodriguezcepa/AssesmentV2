@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -22,6 +23,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.classic.Session;
 
 import assesment.communication.administration.UserAnswerData;
+import assesment.communication.administration.user.ForgotPasswordData;
 import assesment.communication.administration.user.UserSessionData;
 import assesment.communication.assesment.AssesmentAttributes;
 import assesment.communication.assesment.AssesmentData;
@@ -41,6 +43,7 @@ import assesment.persistence.administration.tables.UserAssesment;
 import assesment.persistence.administration.tables.UserMultiAssessment;
 import assesment.persistence.assesment.tables.Assesment;
 import assesment.persistence.hibernate.HibernateAccess;
+import assesment.persistence.user.tables.ForgotPassword;
 import assesment.persistence.user.tables.User;
 import assesment.persistence.util.ExceptionHandler;
 import assesment.persistence.util.PersistenceUtil;
@@ -388,7 +391,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 
 	/**
 	 * @ejb.interface-method
-	 * @ejb.permission role-name = "systemaccess,administrator"
+	 * @ejb.permission role-name = "systemaccess,administrator,accesscode"
 	 * @param value
 	 * @param userRequest
 	 * @param attribute
@@ -410,7 +413,7 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 			String queryStr = "select count(*) from User u " + " where u.loginName != 'resetpassword' ";
 
 			Query query = getQuery(queryStr, attribute, value, userSessionData, false);
-			Integer total = (Integer) query.uniqueResult();
+			Integer total = ((Long) query.uniqueResult()).intValue();
 
 			queryStr = "select u from User u " + " where u.loginName != 'resetpassword' ";
 			query = getQuery(queryStr, attribute, value, userSessionData, true);
@@ -471,6 +474,42 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 			handler.getException(e, "findUserByEmail", userSessionData.getFilter().getLoginName());
 		}
 		return data;
+	}
+
+
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator, accesscode"
+	 */
+	public Collection findForgotUserUserByEmail(String email, UserSessionData userSessionData) throws Exception {
+		try {
+			if (email == null) {
+				throw new InvalidDataException("findForgotUserUserByEmail", "email = null");
+			}
+			if (userSessionData == null) {
+				throw new DeslogedException("findForgotUserUserByEmail", "userSessionData = null");
+			}
+			Session session = HibernateAccess.currentSession();
+
+			Query query = session.createSQLQuery("SELECT loginname FROM users WHERE lower(email) = '"+email.trim().toLowerCase()+"' " + 
+					"AND role IN ('administrator','clientgroupreporter','clientreporter','cepareporter') " + 
+					"AND loginname NOT LIKE 'generate_%' " + 
+					"AND loginname NOT LIKE 'coaching_%' " + 
+					"AND loginname NOT LIKE 'tmc_%' " + 
+					"AND loginname NOT LIKE 'charla_%' " + 
+					"UNION (SELECT DISTINCT u.loginname FROM users u " + 
+					"JOIN userassesments ua ON u.loginname = ua.loginname " + 
+					"WHERE lower(email) = '"+email.trim().toLowerCase()+"' " + 
+					"AND role IN ('multiassessment', 'groupassessment', 'systemaccess') " + 
+					"AND u.loginname NOT LIKE 'generate_%' " + 
+					"AND u.loginname NOT LIKE 'coaching_%' " + 
+					"AND u.loginname NOT LIKE 'tmc_%' " +
+					"AND u.loginname NOT LIKE 'charla_%')").addScalar("loginname", Hibernate.STRING);
+			return query.list();
+		} catch (Exception e) {
+			handler.getException(e, "findForgotUserUserByEmail", userSessionData.getFilter().getLoginName());
+		}
+		return new LinkedList();
 	}
 
 	/**
@@ -3469,5 +3508,40 @@ public abstract class UsReportBean implements javax.ejb.SessionBean {
 			handler.getException(e, "getUsersReport", userSessionData.getFilter().getLoginName());
 		}
 		return new LinkedList();
+	}
+
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,accesscode,systemaccess"
+	 */
+	public ForgotPasswordData findPasswordRecovery(String key, UserSessionData userSessionData) throws Exception {
+		ForgotPasswordData passwordData = new ForgotPasswordData();
+		try {
+			String sql = "SELECT id, login, key, date, used "
+					+ "FROM forgotpassword "
+					+ "WHERE key = '" + key + "' "
+					+ "ORDER BY date DESC";
+			Session session = HibernateAccess.currentSession();
+			SQLQuery question = session.createSQLQuery(sql);
+			question.addScalar("id", Hibernate.INTEGER);
+			question.addScalar("login", Hibernate.STRING);
+			question.addScalar("key", Hibernate.STRING);
+			question.addScalar("date", Hibernate.TIMESTAMP);
+			question.addScalar("used", Hibernate.BOOLEAN);
+			Iterator it = question.list().iterator();
+			if(it.hasNext()) {
+				Object[] data = (Object[])it.next();
+				passwordData.setId((Integer)data[0]);
+				passwordData.setLogin((String)data[1]);
+				passwordData.setKey((String)data[2]);
+				Calendar c = Calendar.getInstance();
+				c.setTime((Timestamp)data[3]);
+				passwordData.setDate(c);
+				passwordData.setUsed((Boolean)data[4]);
+			}
+		} catch (Exception e) {
+			handler.getException(e, "findPasswordRecovery", userSessionData.getFilter().getLoginName());
+		}
+		return passwordData;
 	}
 }

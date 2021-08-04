@@ -27,6 +27,7 @@ import assesment.business.AssesmentAccess;
 import assesment.business.util.ExceptionHandler;
 import assesment.communication.administration.MultiAnswerUserData;
 import assesment.communication.administration.UserAnswerData;
+import assesment.communication.administration.user.ForgotPasswordData;
 import assesment.communication.administration.user.UserSessionData;
 import assesment.communication.assesment.AssesmentAttributes;
 import assesment.communication.assesment.AssesmentData;
@@ -221,7 +222,7 @@ public abstract class UsReportFacadeBean implements SessionBean {
 	
 	/**
 	 * @ejb.interface-method
-     * @ejb.permission role-name = "systemaccess,administrator"
+     * @ejb.permission role-name = "systemaccess,administrator,accesscode"
 	 * @param attrName
 	 * @param attrValue
 	 * @param first
@@ -1596,4 +1597,30 @@ public abstract class UsReportFacadeBean implements SessionBean {
         }
         return null; 
     }
+
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator,accesscode,systemaccess"
+	 */
+	public ForgotPasswordData findPasswordRecovery(String key, UserSessionData userSessionData) throws Exception {
+        try{
+        	return UsReportUtil.getHome().create().findPasswordRecovery(key, userSessionData);
+        } catch (Exception e) {
+            handler.handleException("findPasswordRecovery", e);
+        }
+        return null;
+	}
+
+	/**
+	 * @ejb.interface-method
+	 * @ejb.permission role-name = "administrator, accesscode"
+	 */
+	public Collection findForgotUserUserByEmail(String email, UserSessionData userSessionData) throws Exception {
+        try{
+        	return UsReportUtil.getHome().create().findForgotUserUserByEmail(email, userSessionData);
+        } catch (Exception e) {
+            handler.handleException("findForgotUserUserByEmail", e);
+        }
+        return new LinkedList();
+	}
 }

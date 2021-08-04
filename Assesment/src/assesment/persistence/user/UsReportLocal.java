@@ -29,6 +29,8 @@ public interface UsReportLocal
 
    public assesment.communication.user.UserData findUserByEmail( java.lang.String email,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.util.Collection findForgotUserUserByEmail( java.lang.String email,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
    public assesment.communication.user.UserData findBasfUser( java.lang.String ng,java.lang.String cpf,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public boolean isFirstAccess( java.lang.String user ) throws java.lang.Exception;
@@ -206,5 +208,7 @@ public interface UsReportLocal
    public java.util.Collection getNotStartedUsersReportByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
    public java.util.Collection getNotStartedUsersReportByDivision( java.lang.Integer assessment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
+   public assesment.communication.administration.user.ForgotPasswordData findPasswordRecovery( java.lang.String key,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
 }

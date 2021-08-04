@@ -18,27 +18,64 @@ public class ResetPasswordForm extends ActionForm {
 
     private static final long serialVersionUID = 1L;
 
-	private String email;
-	private String language;
+	private String recovery;
+	private String password;
+	private String confirmation;
+	private String type;
+
+	private String user;
+
+	private String key;
 
 	public ResetPasswordForm() {
-        language = "en";
 	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getRecovery() {
+		return recovery;
+	}
 
-    public String getLanguage() {
-        return language;
-    }
+	public void setRecovery(String recovery) {
+		this.recovery = recovery;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getConfirmation() {
+		return confirmation;
+	}
+
+	public void setConfirmation(String confirmation) {
+		this.confirmation = confirmation;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
 }

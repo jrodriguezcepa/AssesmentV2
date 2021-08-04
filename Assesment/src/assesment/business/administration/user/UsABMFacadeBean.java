@@ -38,6 +38,7 @@ import assesment.persistence.user.UsABMHome;
 import assesment.persistence.user.UsABMUtil;
 import assesment.persistence.user.UsReport;
 import assesment.persistence.user.UsReportUtil;
+import assesment.persistence.user.tables.ForgotPassword;
 import assesment.persistence.user.tables.UserPassword;
 
 /**
@@ -1347,4 +1348,38 @@ public abstract class UsABMFacadeBean implements javax.ejb.SessionBean {
         } 
 	}    
 	   
+
+    /**
+	 * @ejb.interface-method
+     * @ejb.permission role-name = "administrator,accesscode,systemaccess"
+	 * 
+	 * @param data
+	 * @param userRequest
+	 * @throws Exception
+	 */
+	public String forgotPassword(UserData user, UserSessionData userSessionData) throws Exception {
+		try {
+			return UsABMUtil.getHome().create().forgotPassword(user, userSessionData);
+		} catch (Exception e) {
+			handler.handleException("forgotPassword", e);
+        }
+		return null;
+	}
+	
+	/**
+	 * @ejb.interface-method
+     * @ejb.permission role-name = "administrator,accesscode"
+	 * Modify the password of the logged user.
+	 * @param password	- New Password
+	 * @param userRequest	- Logged user 	
+	 * @throws Exception
+	 */
+	public void resetPassword(UserData userData, Integer resetId, UserSessionData userSessionData) throws Exception {
+		try {
+			UsABMUtil.getHome().create().resetPassword(userData, resetId, userSessionData);
+		} catch (Exception e) {
+			handler.handleException("resetPassword", e);
+        }
+	}
+
 }

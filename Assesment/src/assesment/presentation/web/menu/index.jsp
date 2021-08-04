@@ -50,7 +50,13 @@
  	UserSessionData userSession=sys.getUserSessionData(); 
 	String login = sys.getUserSessionData().getFilter().getLoginName();
 	
-	if(request.getUserPrincipal().getName().equals("accesscode") && request.getParameter("assessment") != null && request.getParameter("telematics") != null) {
+	if(userSession.getRole().equals("accesscode") && login.startsWith("forgotpassword")) {
+		session.setAttribute("AssesmentAccess", sys);
+		response.sendRedirect("./forgotPassword.jsp");
+	} else if(userSession.getRole().equals("accesscode") && login.startsWith("recoverypassword")) {
+		session.setAttribute("AssesmentAccess", sys);
+		response.sendRedirect("./resetPassword.jsp?key="+request.getParameter("passwordrecovery"));
+	} else if(request.getUserPrincipal().getName().equals("accesscode") && request.getParameter("assessment") != null && request.getParameter("telematics") != null) {
 		Collection codes = userReport.getUserList("telematics_%_"+request.getParameter("telematics"),userSession);
 		int max = 0;
 		Iterator it = codes.iterator();

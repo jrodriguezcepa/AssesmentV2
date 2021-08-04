@@ -22,10 +22,15 @@
 			type="org.apache.struts.action.DynaActionForm" />
 
 		<form-bean name="ResetPasswordForm"
-			type="assesment.presentation.translator.web.user.ResetPasswordForm" />
+			type="assesment.presentation.translator.web.administration.user.ResetPasswordForm" />
 
 		<form-bean name="AccessCodeForm" type="org.apache.struts.action.DynaActionForm">
 			<form-property name="accesscode" type="java.lang.String" />
+		</form-bean>
+
+		<form-bean name="ForgotPasswordForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="user" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
 		</form-bean>
 
 		<form-bean name="WebinarForm" type="org.apache.struts.action.DynaActionForm">
@@ -626,28 +631,13 @@
 			<forward name="init" path="/end.jsp" />
 		</action>
 
-		<action path="/Resetpassword"
-			type="assesment.presentation.translator.web.user.ResetPasswordAction"
-			name="ResetPasswordForm" scope="request"
-			input="/resetPassword.jsp">
-			<forward name="cancel" path="/login.jsp" />
-			<forward name="nouser" path="/resetPassword.jsp?message=2" />
-			<forward name="back" path="/resetPassword.jsp?message=1" />
-			<forward name="reset"
-				path="/resetPasswordSuccess.jsp?type=1" />
-			<forward name="newuser"
-				path="/resetPasswordSuccess.jsp?type=2" />
+		<action path="/ResetPassword" type="assesment.presentation.translator.web.administration.user.ResetPasswordAction" name="ResetPasswordForm" scope="request">
+			<forward name="cancel" path="/logout.jsp" />
+			<forward name="back" path="/resetPassword.jsp" />
+			<forward name="resend" path="/success.jsp?type=3" />
+			<forward name="success" path="/success.jsp?type=2" />
 		</action>
 
-  	<action path="/Resetpassword" type="assesment.presentation.translator.web.user.ResetPasswordAction" name="ResetPasswordForm" 
-  				 scope="request" input="/resetPassword.jsp">
-  		<forward name="cancel" path="/login.jsp"/>
-  		<forward name="nouser" path="/resetPassword.jsp?message=2"/>
-  		<forward name="back" path="/resetPassword.jsp?message=1"/>
-  		<forward name="reset" path="/resetPasswordSuccess.jsp?type=1"/>
-  		<forward name="newuser" path="/resetPasswordSuccess.jsp?type=2"/>
-  	</action>
-  	
  
  
  		<action path="/ResetPasswordUser" type="assesment.presentation.translator.web.administration.user.UserResetOwnPasswordAction" name="UserCreateForm" scope="request">
@@ -659,6 +649,12 @@
 		<action path="/EmeaAccessCode" type="assesment.presentation.actions.user.EmeaAccessCodeAction" name="EmeaAccessCodeForm" scope="request">
 			<forward name="next" path="/emea.jsp" />
 			<forward name="error" path="/accesscode.jsp?error=emptycode" />
+		</action>
+
+		<action path="/ForgotPassword" type="assesment.presentation.actions.user.ForgotPasswordAction" name="ForgotPasswordForm" scope="request">
+			<forward name="back" path="/forgotPassword.jsp" />
+			<forward name="multiple" path="/forgotPasswordList.jsp" />
+			<forward name="next" path="/success.jsp?type=1" />
 		</action>
 
 		<action path="/BasfNewUser" type="assesment.presentation.actions.user.BasfCreateUserAction" name="BasfNewUser" scope="request">

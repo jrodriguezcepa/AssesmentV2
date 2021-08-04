@@ -163,7 +163,7 @@
 <%					}else{
 %>						<div class="cedi">
 							CEDI: 
-							<select name="cedi" style="width: 200px;" class="input">
+							<select name="cedi" style="width: 400px;" class="text">
 			        			<option value=""><%=messages.getText("generic.messages.select")%></option>
 <% 									Iterator<CediAttributes> it = cedisAttributes.iterator();
 			   						while(it.hasNext()) {

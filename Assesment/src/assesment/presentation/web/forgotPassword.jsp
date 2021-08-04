@@ -1,37 +1,27 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="assesment.communication.administration.user.ForgotPasswordData"%>
 <%@page import="assesment.communication.language.Text"%>
 <%@page import="assesment.business.AssesmentAccess"%>
+<%@page import="java.util.Enumeration"%>
 <%@ page language="java"
-	import="assesment.presentation.translator.web.administration.user.*"	
-	import="assesment.presentation.translator.web.util.*"
-	import="org.apache.struts.action.*"	
+	import="assesment.presentation.translator.web.util.*"	
+	import="assesment.presentation.translator.web.administration.user.*"
+	import="assesment.communication.util.MD5"
 %>
+
 
 <%@ taglib uri="/WEB-INF/struts-html.tld"
         prefix="html"
 %>
 
 <html:html>
-<%! RequestDispatcher dispatcher; String context; String pathMsg; String pathGarbagecolector;%>
-<%
-	context=request.getContextPath();
-	pathMsg="/util/jsp/message.jsp";
-	
-	dispatcher=request.getRequestDispatcher(pathMsg);
+<%	
+	String context=request.getContextPath();
+	String pathMsg="/util/jsp/message.jsp";
+
+	RequestDispatcher dispatcher=request.getRequestDispatcher(pathMsg);
 	dispatcher.include(request,response);
-	
+
 	AssesmentAccess sys = (AssesmentAccess)session.getAttribute("AssesmentAccess");
 	Text messages = sys.getText();
-
-	String key = request.getParameter("key");
-	if(key == null) {
-		key = (String)session.getAttribute("key");
-	}
-		
-	ForgotPasswordData data = sys.getUserReportFacade().findPasswordRecovery(key, sys.getUserSessionData());
-	Calendar c = Calendar.getInstance();
-	c.add(Calendar.HOUR, -2);
 %>
 	<head>
 		<meta charset="iso-8859-1">
@@ -64,7 +54,7 @@
 		    -webkit-border-radius: 0.2em;
 		    border: 1px solid #999;
 		    text-align: center;
-		    width: 150px;
+		    width: 90px;
 		    height: 35px;
 		}
 		</style>
@@ -74,58 +64,59 @@
 		</header>		
 		<section id="content" style="padding-top: 50px;">
 			<section class="grid_container">
-				<html:form action="/ResetPassword">
-					<html:hidden property="recovery" value="<%=String.valueOf(data.getId())%>" />
-					<html:hidden property="key" value="<%=data.getKey()%>" />
-					<html:hidden property="user" value="<%=data.getLogin()%>" />
+				<html:form action="/ForgotPassword">
 					<fieldset id="username_block" class="active">
 						<div>
 							<div>
-								<label for="logo">
-									<img src='images/main_logo_large.png'>
-								</label>
+								<table style="width: 100%;">
+		                     		<tr>
+			                     		<td width="80%">	
+											<label for="logo">
+												<img src='images/main_logo_large.png'>
+											</label>
+			                     		</td>
+			                     		<td width="20%" align="right">	
+											<label for="logo">
+												<a href="logout.jsp">
+													<img src='images/error.png' style="width:40px">
+												</a>
+											</label>
+			                     		</td>
+		                     		<tr>
+	                     		</table>
 							</div>
-<% 		if(data == null || data.getId() == null) {
-%>							<div class="col-xs-12" align="left">
-							 	<label for="username">
-							     	<%=messages.getText("user.forgotpassword.expiredlink")%>
-								</label>
-							</div>
-							<div class="col-xs-12" align="center">
-								<html:cancel styleClass="buttonRed" value='<%=messages.getText("user.forgotpassword.backtologin")%>' style="background-color:red; color:white;"/>
-							</div>
-<%		}else {	
-			if(!data.isUsed() && c.before(data.getDate())) {
-%>							<html:hidden property="type" value="1" />
 							<div class="col-xs-12" align="left">
 		                     	<label for="username">
-			                     	<%=messages.getText("user.forgotpassword.newdata")%>
+			                     	<%=messages.getText("user.forgotpassword.insertdata")%>
 								</label>
 							</div>
 							<div class="col-xs-12">
-								<input type="password" name="password" class="textLogin" placeholder='<%=messages.getText("user.data.pass")%>'/>
+								<table>
+		                     		<tr>
+			                     		<td style="padding: 10px;">	
+			                     			<img src='images/message.png' style="width:40px;">
+			                     		</td>
+			                     		<td valign="middle" style="padding: 10px;">
+											<input type="text" name="email" class="textLogin" placeholder='<%=messages.getText("user.data.mail")%>'/>
+			                     		</td>
+		                     		<tr>
+	                     		</table>
 							</div>
 							<div class="col-xs-12">
-								<input type="password" name="confirmation" class="textLogin" placeholder='<%=messages.getText("user.data.confirmpassword")%>'/>
+								<table>
+		                     		<tr>
+			                     		<td style="padding: 10px;">	
+			                     			<img src='images/user.png' style="width:40px;">
+			                     		</td>
+			                     		<td valign="middle" style="padding: 10px;">
+											<input type="text" name="user" class="textLogin" placeholder='<%=messages.getText("report.userresult.user")%>'/>
+			                     		</td>
+		                     		<tr>
+	                     		</table>
 							</div>
 							<div class="col-xs-12" align="right">
 								<html:submit styleClass="button" value='<%=messages.getText("generic.exception.send")%>' />
-								<html:cancel styleClass="buttonRed" value='<%=messages.getText("generic.messages.back")%>' />
 							</div>
-<%			}else {
-%>							<html:hidden property="type" value="2" />
-							<div class="col-xs-12" align="left">
-		                     	<label for="username">
-			                     	<%=messages.getText("user.forgotpassword.expiredlink")%>
-								</label>
-							</div>
-							<div class="col-xs-12" align="center">
-								<html:submit styleClass="button" value='<%=messages.getText("user.forgotpassword.resendlink")%>' />
-								<html:cancel styleClass="buttonRed" value='<%=messages.getText("user.forgotpassword.backtologin")%>' style="background-color:red; color:white;"/>
-							</div>
-<%			}
-		}
-%>
 						</div>
 					</fieldset>
 				</html:form>

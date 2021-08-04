@@ -154,4 +154,10 @@ public interface UsABMFacade
    public void deleteSendedReport( java.lang.String user,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.lang.String forgotPassword( assesment.communication.user.UserData user,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public void resetPassword( assesment.communication.user.UserData userData,java.lang.Integer resetId,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

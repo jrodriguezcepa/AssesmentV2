@@ -38,6 +38,9 @@ public interface UsReport
    public assesment.communication.user.UserData findUserByEmail( java.lang.String email,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public java.util.Collection findForgotUserUserByEmail( java.lang.String email,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public assesment.communication.user.UserData findBasfUser( java.lang.String ng,java.lang.String cpf,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
@@ -260,7 +263,7 @@ public interface UsReport
    public java.util.Collection findCediMissingUsers( java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName, java.lang.String userName, java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
+   public java.util.Collection findCediMissingUsers( java.lang.String cedi,java.lang.String firstName,java.lang.String lastName,java.lang.String userName,java.lang.Integer[] cedis,java.lang.Integer type,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public boolean userExistsIdNumber( java.lang.String idNumber,assesment.communication.administration.user.UserSessionData userSessionData )
@@ -299,9 +302,13 @@ public interface UsReport
    public java.util.HashMap getWRTUserAnswersByDivision( java.lang.Integer assessment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection getNotStartedUsersReportByCedi( java.lang.Integer assessment, java.lang.Integer cedi, assesment.communication.administration.user.UserSessionData userSessionData )
-	  throws java.lang.Exception, java.rmi.RemoteException;
+   public java.util.Collection getNotStartedUsersReportByCedi( java.lang.Integer assessment,java.lang.Integer cedi,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
 
-   public java.util.Collection getNotStartedUsersReportByDivision( java.lang.Integer assessment, java.lang.String division, assesment.communication.administration.user.UserSessionData userSessionData )
-	  throws java.lang.Exception, java.rmi.RemoteException;
+   public java.util.Collection getNotStartedUsersReportByDivision( java.lang.Integer assessment,java.lang.String division,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public assesment.communication.administration.user.ForgotPasswordData findPasswordRecovery( java.lang.String key,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

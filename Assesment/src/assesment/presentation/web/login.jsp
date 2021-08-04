@@ -17,23 +17,25 @@
 	accesscode = "";
 	sessionExpired="";
 	String body = "";
+	MD5 md5 = new MD5();
 
 	if(!Util.empty(request.getParameter("session"))) {
 		sessionExpired=request.getParameter("session");
-	}
-    if(!Util.empty(request.getParameter("user")) && !Util.empty(request.getParameter("password"))) {
+	} 
+	if(!Util.empty(request.getParameter("user")) && !Util.empty(request.getParameter("password"))) {
     	if(Util.isValidUser(request.getParameter("user"), request.getParameter("password"))) {
 		    userName = request.getParameter("user");
 		    password = request.getParameter("password");
     	}
-	}
-	if(!Util.empty(request.getParameter("user_ache"))) {
+	} else if(!Util.empty(request.getParameter("passwordrecovery")) && !Util.empty(request.getParameter("l"))) {
+		userName = "recoverypassword"+request.getParameter("l");
+		password = md5.encriptar(userName);
+	} else if(!Util.empty(request.getParameter("user_ache"))) {
     	if(Util.isValidUser(request.getParameter("user_ache"), null)) {
 		    userName = request.getParameter("user_ache");
 		    password = Util.passwordAche(userName);
     	}
-	}
-	if(!Util.empty(request.getParameter("emea"))) {
+	} else if(!Util.empty(request.getParameter("emea"))) {
     	if(Util.isValidAccessCode(request.getParameter("emea"))) {
 			userName = "accesscode";
 			password = "accesscode";
@@ -72,17 +74,16 @@
 			password = "epdemo_"+request.getParameter("p");
 		}
 	}else if(!Util.empty(request.getParameter("login"))) {
-		MD5 md5 = new MD5();
 		userName = md5.encriptar(request.getParameter("login"));
 	    password = md5.encriptar(userName);
-	}
-	if(!Util.empty(request.getParameter("access"))) {
+	} else if(!Util.empty(request.getParameter("access"))) {
     	if(Util.isValidAccessCode(request.getParameter("emea"))) {
 			userName = "accesscode";
 			password = "accesscode";
 			accesscode = request.getParameter("access");
     	}
 	}
+	
 	int className=1;
 	if(!Util.empty(userName) && !Util.empty(password)) {
 		className=0;
@@ -115,12 +116,19 @@
       		document.forms['loginForm'].j_password.style.display = 'none';
       		document.forms['loginForm'].j_username.value = 'accesscode';
       		document.forms['loginForm'].j_password.value = 'accesscode';
-    		javascript:document.forms['loginForm'].submit();      
+    		document.forms['loginForm'].submit();      
   		}
   		function enter(user,password){
       		document.forms['loginForm'].j_username.value = user;
       		document.forms['loginForm'].j_password.value = password;
-    		javascript:document.forms['loginForm'].submit();      
+    		document.forms['loginForm'].submit();      
+  		}
+  		function forgotPassword(user,password) {
+      		$(".login_0").hide();
+      		$(".login_1").show();
+      		document.forms['loginForm'].j_username.value = user;
+      		document.forms['loginForm'].j_password.value = password;
+    		document.forms['loginForm'].submit();      
   		}
 	</script>
 	<style>
@@ -140,8 +148,8 @@
 					<input type="hidden" name="accesscode" value='<%=accesscode%>'/>		
 					<input type="hidden" name="telematics" value='<%=request.getParameter("telematics")%>'/>		
 					<input type="hidden" name="assessment" value='<%=request.getParameter("assessment")%>'/>
-					<fieldset id="username_block" class="active">
-						<div class='<%="login_"+String.valueOf(1-className)%>'>
+					<div class='<%="login_"+String.valueOf(1-className)%>'>
+						<fieldset id="username_block" class="active">
 							<div>
 								<label for="logo">
 									<img src='images/main_logo_large.png'>
@@ -151,31 +159,50 @@
 								<label for="username">Usu&aacute;rio / Usuario / User</label>
 								<input id="j_username" name="j_username" type="text" >
 							</div>
-							<!--
-							<div class="error">
-								<label for="username">User / Usuario / Usuï¿½rio</label>
-								<div class="error_text">Debe ingresar un usuario correcto</div>
-								<input id="username" name="username" type="text" >
-							</div>
-							-->
 							<div>
 								<label for="password">Senha / Clave / Password</label>
 								<input id="j_password" name="j_password" type="password" >
 							</div>
-	
 							<input class="button" type="submit" value="Entrar / Enter" >
-	
+							<hr>
+							<div>
+	                     		<table>
+		                     		<tr>
+			                     		<td style="padding: 10px;">
+											<img src='images/password.png' style="width:40px;">
+			                     		</td>
+			                     		<td valign="middle" style="padding: 2px;">
+	                     					<a href="javascript:forgotPassword('<%="forgotpasswordpt"%>', '<%=md5.encriptar("forgotpasswordpt")%>');" style="color:#555; text-decoration:none; padding:10px; font-size:1.1em;">Esqueci minha senha</a>
+			                     		</td>
+			                     		<td valign="middle" style="padding: 2px;">
+	                     			 		| 
+			                     		</td>
+			                     		<td valign="middle" style="padding: 2px;">
+	                     			 		<a href="javascript:forgotPassword('<%="forgotpasswordes"%>', '<%=md5.encriptar("forgotpasswordes")%>');" style="color:#555; text-decoration:none; padding:10px; font-size:1.1em;" >Olvidé contraseña</a> 
+			                     		</td>
+			                     		<td valign="middle" style="padding: 2px;">
+	                     			 		| 
+			                     		</td>
+			                     		<td valign="middle" style="padding: 2px;">
+			                     			 <a href="javascript:forgotPassword('<%="forgotpassworden"%>', '<%=md5.encriptar("forgotpassworden")%>');" style="color:#555; text-decoration:none; padding:10px; font-size:1.1em;">Forgot Password</a>
+			                     		</td>
+		                     		<tr>
+	                     		</table>
+							</div>
+							<hr>
 							<p class="block">
 			                     Se voc&ecirc; possui um c&oacute;digo de acesso, favor clicar aqu&iacute;:<br>
 			                     Si Usted tiene c&oacute;digo de acceso por favor haga click aqu&iacute;:<br>
 			                     If you have an access code, please click here:<br>
 			                     <a href="javascript:ac();" class="switch">C&oacute;digo de Acceso / C&oacute;digo de Acesso / Access Code</a>
 							</p>
-						</div>
-						<div class='<%="login_"+String.valueOf(className)%>' style="align-content: center;">
+						</fieldset>
+					</div>
+					<div class='<%="login_"+String.valueOf(className)%>' style="align-content: center;">
+						<fieldset id="username_block" class="active">
 							<img src='images/wait.gif'>
-						</div>
-					</fieldset>
+						</fieldset>
+					</div>
 				</form>
 			</section>
 		</section>

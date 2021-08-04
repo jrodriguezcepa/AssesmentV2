@@ -84,4 +84,8 @@ public interface UsABMFacadeLocal
 
    public void deleteSendedReport( java.lang.String user,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
+   public java.lang.String forgotPassword( assesment.communication.user.UserData user,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
+   public void resetPassword( assesment.communication.user.UserData userData,java.lang.Integer resetId,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
 }

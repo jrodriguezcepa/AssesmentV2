@@ -28,6 +28,8 @@ public interface UsABMLocal
 
    public void userResetOwnPassword( java.lang.String password,assesment.communication.administration.user.UserSessionData userRequest ) throws java.lang.Exception;
 
+   public void resetPassword( assesment.communication.user.UserData userData,java.lang.Integer resetId,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
    public void userSwitchLanguage( java.lang.String lngName,assesment.communication.administration.user.UserSessionData userRequest ) throws java.lang.Exception;
 
    public void userDelete( java.lang.String user,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
@@ -77,5 +79,7 @@ public interface UsABMLocal
    public void userChangeGroup( java.lang.String user,java.lang.Integer groupOld,java.lang.Integer groupNew,assesment.communication.administration.user.UserSessionData userRequest ) throws java.lang.Exception;
 
    public void deleteSendedReport( java.lang.String user,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
+
+   public java.lang.String forgotPassword( assesment.communication.user.UserData user,assesment.communication.administration.user.UserSessionData userSessionData ) throws java.lang.Exception;
 
 }

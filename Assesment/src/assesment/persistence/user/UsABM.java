@@ -37,6 +37,9 @@ public interface UsABM
    public void userResetOwnPassword( java.lang.String password,assesment.communication.administration.user.UserSessionData userRequest )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public void resetPassword( assesment.communication.user.UserData userData,java.lang.Integer resetId,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
    public void userSwitchLanguage( java.lang.String lngName,assesment.communication.administration.user.UserSessionData userRequest )
       throws java.lang.Exception, java.rmi.RemoteException;
 
@@ -110,6 +113,9 @@ public interface UsABM
       throws java.lang.Exception, java.rmi.RemoteException;
 
    public void deleteSendedReport( java.lang.String user,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public java.lang.String forgotPassword( assesment.communication.user.UserData user,assesment.communication.administration.user.UserSessionData userSessionData )
       throws java.lang.Exception, java.rmi.RemoteException;
 
 }

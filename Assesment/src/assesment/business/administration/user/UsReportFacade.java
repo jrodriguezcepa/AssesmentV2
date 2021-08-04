@@ -250,4 +250,10 @@ public interface UsReportFacade
    public assesment.communication.report.UsersReportDataSource findUsersAssesmentbkp( java.lang.Integer assesment,assesment.communication.administration.user.UserSessionData userSessionData,assesment.communication.language.Text messages )
       throws java.lang.Exception, java.rmi.RemoteException;
 
+   public assesment.communication.administration.user.ForgotPasswordData findPasswordRecovery( java.lang.String key,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
+   public java.util.Collection findForgotUserUserByEmail( java.lang.String email,assesment.communication.administration.user.UserSessionData userSessionData )
+      throws java.lang.Exception, java.rmi.RemoteException;
+
 }

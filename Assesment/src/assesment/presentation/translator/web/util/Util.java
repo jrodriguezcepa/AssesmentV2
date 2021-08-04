@@ -22,15 +22,21 @@ import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 import assesment.business.AssesmentAccess;
+import assesment.communication.administration.user.UserSessionData;
 import assesment.communication.assesment.AssesmentAttributes;
 import assesment.communication.assesment.AssesmentListData;
 import assesment.communication.language.Text;
 import assesment.communication.question.VideoData;
 import assesment.communication.security.SecurityConstants;
+import assesment.communication.user.UserData;
 import assesment.communication.util.MD5;
+import assesment.communication.util.MailSender;
 
 /**
  * @author jrodriguez
@@ -624,5 +630,65 @@ public class Util {
 		while(v.length() < 11)
 			v = "0"+v;
 		return v;
+	}
+
+	public static void sendPassword(UserData userData, AssesmentAccess sys) throws Exception {
+    	if(!empty(userData.getEmail())) {
+    		String key = sys.getUserABMFacade().forgotPassword(userData, sys.getUserSessionData());
+            UserSessionData userSessionData = sys.getUserSessionData();
+	        MailSender sender = new MailSender();
+	        Collection toMail = new LinkedList();
+	
+	        String link = "https://www.cepada.com/assesment/index.jsp?l="+userSessionData.getLenguage()+"&passwordrecovery="+key;
+	        Text messages = sys.getText();
+			String body = "<div style='background-color:white;'>\n" + 
+					"	<div style='text-align:center'>\n" + 
+					"		<img src='http://ebtw.cepasafedrive.com/imgs/logo_da.png' style='margin:20px'>\n" + 
+					"	</div>\n" + 
+					"	<div style='width:100%;height:50px;text-align:center'>\n" + 
+					"		<span style='font-family:Arial;font-size:1.5em;color:#000000'>\n" + 
+					" "+messages.getText("user.forgotpassword.mailmsg1")+"<b>CEPA DA</b> "+messages.getText("user.forgotpassword.mailmsg2")+" \n" + 
+					"		</span>\n" + 
+					"	</div>\n" + 
+					"	<div style='width:100%;height:120px;text-align:center;vertical-align:middle;'>\n" + 
+					"		<a href='"+link+"'>\n" + 
+					"			<input type='button' style='background: url(\"http://ebtw.cepasafedrive.com/imgs/button_da.png\") no-repeat; width:260px; height:70px; border:0px; text-align:center; color:white; font-size:1.2em; font-weight:bold;' value='"+messages.getText("user.forgotpassword.button")+"'>\n" + 
+					"		</a>\n" + 
+					"	</div>\n" + 
+					"	<div style='text-align:center;'>\n" + 
+					"		<div style='background: url(\"http://ebtw.cepasafedrive.com/imgs/back_da.png\"); width:100%;'>\n" + 
+					"			<br>\n" + 
+					"			<br>\n" + 
+					"			<div style='font-family:Arial; text-align:center; color:white; font-size:1.2em;'>\n" + 
+					"				"+messages.getText("user.forgotpassword.mailmsg3")+"\n" + 
+					"				<br>\n" + 
+					"				"+messages.getText("user.forgotpassword.mailmsg4")+" <a href='mailto:help@cepamobility.com' style='font-family:Arial; text-align:center; color:white; font-size:1.2em;'>help@cepamobility.com</a>\n" + 
+					"				<br>\n" + 
+					"				<br>\n" + 
+					"				<img src='http://ebtw.cepasafedrive.com/imgs/logoblack_da.png' style='margin:20px'>\n" + 
+					"			</div>\n" + 
+					"			<br>\n" + 
+					"			<br>\n" + 
+					"		</div>\n" + 
+					"	</div>\n" + 
+					"</div>";
+
+            boolean sended = false;
+            int count = 10;
+            while(!sended && count > 0) {
+            	try {
+	                String[] senderAddress = sender.getAvailableMailAddress();
+	                if(!empty(senderAddress[0])) {
+	                	sender.sendImageMandrill(toMail,"CEPA - DA", "support@cepasafedrive.com",
+	            				messages.getText("user.forgotpassword.emailtitle"), body, new LinkedList<String>(),
+	            				new LinkedList<String>(), "support@cepasafedrive.com", "", new LinkedList<String>(),  null);
+	                	sended = true;
+	                }
+            	}catch (Exception e) {
+					e.printStackTrace();
+				}
+	            count--;
+            }
+    	}
 	}
 }
